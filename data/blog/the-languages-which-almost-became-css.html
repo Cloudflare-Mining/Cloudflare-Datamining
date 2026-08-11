@@ -10,8 +10,30 @@
 <p>In early 1993 the Mosaic browser had not yet reached 1.0. Those browsers that did exist dealt solely with HTML. There was no method of specifying the style of HTML whatsoever, meaning whatever the browser decided an <code>&lt;h1&gt;</code> should look like, that’s what you got.</p>
 <p>In June of that year, Robert Raisch made <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0445.html" target="_blank" rel="noopener noreferrer">a proposal</a> to the www-talk mailing list to create a “an easily parsable format to deliver stylistic information along with Web documents” which would be called RRP.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>@BODY fo(fa=he,si=18)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>@BODY fo(fa=he,si=18)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>If you have no idea what this code is doing you are forgiven. This particular rule is setting the font family (<code>fa</code>) to helvetica (<code>he</code>), and the font size (<code>si</code>) to 18 points. It made sense to make the content of this new format as terse as was possible as it was born in the era before gzipping and when connection speeds hovered around 14.4k.</p>
 <p>Some interesting things missing from this proposal were any mention of units, all numbers being interpreted based on their context (font sizes were always in points for example). This could be attributed to RRP being designed more as a “set of HINTS or SUGGESTIONS to the renderer” rather than a specification. This was considered necessary because the same stylesheet needed to function for both the common line-mode browsers (like <a href="https://en.wikipedia.org/wiki/Lynx_(web_browser)" target="_blank" rel="noopener noreferrer">Lynx</a>, and the graphical browsers which were becoming increasingly popular.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -20,7 +42,11 @@
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
 <p>Interestingly, RRP did include a method of specifying a columnar layout, a feature which wouldn’t make it to CSS until 2011. For example, three columns, each of width ‘80 units’ would look like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>@P co(nu=3,wi=80)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>@P co(nu=3,wi=80)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It’s a little hard to parse, but not much worse than <code>white-space: nowrap</code> perhaps.</p>
 <p>It’s worth noting that RRP did not support any of the ‘cascading’ we associate with stylesheets today. A given document could only have one active stylesheet at a time, which is a logical way to think about styling a document, even if it’s foreign to us today.</p>
@@ -41,12 +67,20 @@
 <span class="line"><span>  (H1   fontSize=largest</span></span>
 <span class="line"><span>        BGColor=red</span></span>
 <span class="line"><span>        FGColor=white)</span></span>
-<span class="line"><span>)</span></span></code></pre>
+<span class="line"><span>)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this case we are applying color selections to the body and specifically styling <code>H1</code>s which appear within the body. Rather than using repeated selectors to handle the nesting, PWP used a parenthesis system which is evocative of the indentation systems used by languages like Stylus and SASS which are preferred by some developers to CSS today. This makes PWP’s syntax potentially better in at least one way than the CSS language which would eventually become the lingua franca of the web.</p>
 <p>PWP is also notable for introducing the method of referring to external stylesheets we still use today:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;LINK REL="STYLE" HREF="URL_to_a_stylesheet"&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;LINK REL="STYLE" HREF="URL_to_a_stylesheet"&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ViolaWWW was unfortunately written to work chiefly with the <a href="https://en.wikipedia.org/wiki/X_Window_System" target="_blank" rel="noopener noreferrer">X Windowing System</a> which was only popular on Unix systems. When Mosaic was ported to Windows it quickly left Viola in the dust.</p>
 <h3>Stylesheets Before the Web</h3>
@@ -70,7 +104,11 @@
 <span class="line"><span>  &lt;e-i-c gi="h2"&gt;&lt;font size="20pt" bckcol="red", fgcol="white"&gt;&lt;/e-i-c&gt;</span></span>
 <span class="line"><span>  &lt;e-i-c gi="a"&gt;&lt;font fgcol="red"&gt;&lt;/e-i-c&gt;</span></span>
 <span class="line"><span>  &lt;e-i-c gi="cmd kbd screen listing example"&gt;&lt;font style="monoser"&gt;&lt;/e-i-c&gt;</span></span>
-<span class="line"><span>&lt;/outspec&gt;</span></span></code></pre>
+<span class="line"><span>&lt;/outspec&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you’re a bit confused what a <code>docdesc</code> or <code>charlist</code> are, so were the<br>members of <code>www-talk</code>. The only contextual information given was that <code>e-i-c</code> means ‘element in context’. FOSI is notable however for introducing the <code>em</code> unit which has now become the preferred method for people who know more about CSS than you to style things.</p>
 <p>The language conflict which was playing out was actually as old as programming itself. It was the battle of functional ‘lisp-style’ syntax vs the syntax of more declarative languages. Pei-Yuan himself <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0297.html" target="_blank" rel="noopener noreferrer">described</a> his syntax as “LISP’ish,” but it was only a matter of time until a true LISP variant entered the stage.</p>
@@ -86,7 +124,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>(element H1</span></span>
 <span class="line"><span>  (make paragraph</span></span>
 <span class="line"><span>    font-size: 14pt</span></span>
-<span class="line"><span>    font-weight: 'bold))</span></span></code></pre>
+<span class="line"><span>    font-weight: 'bold))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As it was a programming language, you could even define functions:</p>
 <div class="emdash-code">
@@ -96,7 +138,11 @@
 <span class="line"><span>    font-weight: 'bold))</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>(element h1 (create-heading 24pt))</span></span>
-<span class="line"><span>(element h2 (create-heading 18pt))</span></span></code></pre>
+<span class="line"><span>(element h2 (create-heading 18pt))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And use mathematical constructs in your styling, for example to ‘stripe’ the rows of a table:</p>
 <div class="emdash-code">
@@ -104,13 +150,21 @@
 <span class="line"><span>  (if (= (modulo (child-number) 2)</span></span>
 <span class="line"><span>        0)</span></span>
 <span class="line"><span>    ...   ;even-row</span></span>
-<span class="line"><span>    ...)) ;odd-row</span></span></code></pre>
+<span class="line"><span>    ...)) ;odd-row</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As a final way of kindling your jealousy, DSSSL could treat inherited values as<br>variables, and do math on them:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>(element H1</span></span>
 <span class="line"><span>  (make paragraph</span></span>
-<span class="line"><span>    font-size: (+ 4pt (inherited-font-size))))</span></span></code></pre>
+<span class="line"><span>    font-size: (+ 4pt (inherited-font-size))))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>DSSSL did, unfortunately, have the fatal flaw which would plague all<br>Scheme-like languages: too many parenthesis. Additionally, it was arguably <em>too complete</em> of a spec when it was finally published which made it intimidating to browser developers. The DSSSL spec included over 210 separate styleable properties.</p>
 <p>The team did go on to create <a href="https://en.wikipedia.org/wiki/XSL" target="_blank" rel="noopener noreferrer">XSL</a>, a language for document transformation which is no less confusing, but which would be decidedly more popular.</p>
@@ -123,12 +177,20 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>*LI.prebreak: 0.5</span></span>
 <span class="line"><span>*LI.postbreak: 0.5</span></span>
 <span class="line"><span>*OL.LI.label: 1</span></span>
-<span class="line"><span>*OL*OL.LI.label: A</span></span></code></pre>
+<span class="line"><span>*OL*OL.LI.label: A</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Using <code>.</code> to signify direct children, and <code>*</code> to specify ancestors.</p>
 <p>His language also has the cool property of defining how features like links work in the stylesheet itself:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>*A.anchor: !HREF</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>*A.anchor: !HREF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this case we specified that the destination of the link element is the value of its <code>HREF</code> attribute. The idea that the behavior of elements like links should be controllable was popular in several proposals. In the era pre-JavaScript, there was not an existing way of controlling such things, so it seemed logical to include it in these new proposals.</p>
 <p>One functional <a href="http://people.opera.com/howcome/2006/phd/archive/tigger.cc.uic.edu/~cmsmcq/style-primitives.html" target="_blank" rel="noopener noreferrer">proposal</a>, introduced in 1994 by a gentleman with the name ‘C.M. Sperberg-McQueen’, includes the same behavior functionally:</p>
@@ -136,7 +198,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>(style a</span></span>
 <span class="line"><span>  (block #f)     ; format as inline phrase</span></span>
 <span class="line"><span>  (color blue)   ; in blue if you’ve got it</span></span>
-<span class="line"><span>  (click (follow (attval 'href)))  ; and on click, follow url</span></span></code></pre>
+<span class="line"><span>  (click (follow (attval 'href)))  ; and on click, follow url</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>His language also introduced the <code>content</code> keyword as a way of controlling the content of an HTML element from the stylesheet, a concept which was later introduced into CSS 2.1.</p>
 <h3>What Might Have Been</h3>
@@ -145,13 +211,21 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>H1 {</span></span>
 <span class="line"><span>  fontSize: 20;</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It quickly gets more interesting. You could express element position based on not just the sizes specified for them (<code>Width</code>), but the actual (<code>Actual Width</code>) sizes the browser rendered them as:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>LI {</span></span>
 <span class="line"><span>  VertPos: Top = LeftSib . Actual Bottom;</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You’ll also notice you can use the element’s left sibling as a constraint.</p>
 <p>You can also add logical expressions to your styles. For example to style only anchor elements which have<br><code>hrefs</code>:</p>
@@ -161,7 +235,11 @@
 <span class="line"><span>    fgColor = "blue";</span></span>
 <span class="line"><span>    underlineNumber = 1;</span></span>
 <span class="line"><span>  endif</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That styling could be extended to do all manner of things we resort to classes today to accomplish:</p>
 <div class="emdash-code">
@@ -173,7 +251,11 @@
 <span class="line"><span>    VertPos: Top = LeftSib.Actual Bottom;</span></span>
 <span class="line"><span>    HorizPos: Left = LeftSib.Left;</span></span>
 <span class="line"><span>  endif</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Support for functionality like this could have perhaps truly enabled the dream of separating content from style. Unfortunately this language was plagued by being a bit too extensible, meaning it would have been very possible for its implementation to vary considerably from browser to browser. Additionally, it was published in a series of papers in the academic world, rather than on the www-talk mailing list where most of the functional work was being done. It was never integrated into a mainstream browser.</p>
 <h3>The Ghost of CSS Past</h3>
@@ -181,7 +263,11 @@
 <p>Like most good ideas, the original proposal was pretty nutty.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>h1.font.size = 24pt 100%</span></span>
-<span class="line"><span>h2.font.size = 20pt 40%</span></span></code></pre>
+<span class="line"><span>h2.font.size = 20pt 40%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note the percentages at the end of rules. This percentage referred to how much ‘ownership’ the current stylesheet was taking over this value. If a previous stylesheet had defined the <code>h2</code> font size as <code>30pt</code>, with <code>60%</code> ownership, and this stylesheet styled <code>h2</code>s as <code>20px 40%</code>, the two values would be combined based on their ownership percentage to get some value around <code>26pt</code>.</p>
 <p>It is pretty clear how this proposal was made in the era of document-based HTML pages, as there is no way compromise-based design would work in our app-oriented world. Nevertheless, it did include the fundamental idea that stylesheets should cascade. In other words, it should be possible for multiple stylesheets to be applied to the same page.</p>
@@ -192,16 +278,28 @@
 <span class="line"><span>Font   o-----x--------------o 64%</span></span>
 <span class="line"><span>Color  o-x------------------o 90%</span></span>
 <span class="line"><span>Margin o-------------x------o 37%</span></span>
-<span class="line"><span>Volume o---------x----------o 50%</span></span></code></pre>
+<span class="line"><span>Volume o---------x----------o 50%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Like many of these proposals, it included features which would not make it into CSS for decades, if ever. For example, it was possible to write logical expressions based on the user’s environment:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>AGE &gt; 3d ? background.color = pale_yellow : background.color = white</span></span>
-<span class="line"><span>DISPLAY_HEIGHT &gt; 30cm ? http://NYT.com/style : http://LeMonde.fr/style</span></span></code></pre>
+<span class="line"><span>DISPLAY_HEIGHT &gt; 30cm ? http://NYT.com/style : http://LeMonde.fr/style</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In a somewhat optimistic sci-fi vision of the future, it was believed your browser would know how relevant a given piece of content was to you, allowing it to show it to you at a larger size:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>RELEVANCE &gt; 80 ? h1.font.size *= 1.5</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>RELEVANCE &gt; 80 ? h1.font.size *= 1.5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>You Know What Happened Next</h3>
 <blockquote>
@@ -227,7 +325,11 @@
 <span class="line"><span>}</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>classes.punk.all.color = "#00FF00"</span></span>
-<span class="line"><span>ids.z098y.letterSpacing = "0.3em"</span></span></code></pre>
+<span class="line"><span>ids.z098y.letterSpacing = "0.3em"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You could even define functions which would be evaluated <em>every time the tag was encountered</em>:</p>
 <div class="emdash-code">
@@ -239,7 +341,11 @@
 <span class="line"><span>  }</span></span>
 <span class="line"><span>}</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>tag.UL.apply = evaluate_style();</span></span></code></pre>
+<span class="line"><span>tag.UL.apply = evaluate_style();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The idea that we should simplify the dividing line between styles and scripts is certainly reasonable, and is now even experiencing a resurgence of sorts in the <a href="https://facebook.github.io/react/tips/inline-styles.html" target="_blank" rel="noopener noreferrer">React community</a>.</p>
 <p>JavaScript was itself a very new language at this time, but via some reverse engineering Internet Explorer had already added support for it into IE3 (as “JScript”). The bigger issue was the community had already rallied around CSS, and Netscape was, at this time, viewed as <a href="https://lists.w3.org/Archives/Public/www-style/1996Jun/0068.html" target="_blank" rel="noopener noreferrer">bullies</a> by much of the standards community. When Netscape did <a href="https://www.w3.org/Submission/1996/1/WD-jsss-960822" target="_blank" rel="noopener noreferrer">submit</a> JSSS to the standards committee, it fell on deaf ears. Three years later, Netscape 6 dropped support for JSSS and it died a (mostly) quiet death.</p>

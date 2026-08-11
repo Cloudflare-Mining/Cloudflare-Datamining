@@ -142,8 +142,30 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>L'SDK mantiene l'agente attivo automaticamente durante l'esecuzione della fibra, senza necessità di una configurazione speciale. Per il lavoro misurato in minuti, keepAlive()/keepAliveWhile() impedisce l'eliminazione durante il lavoro attivo. Per le operazioni più lunghe (pipeline CI, revisioni di design, generazione di video), l'agente avvia il lavoro, mantiene l'ID del processo, va in modalità di ibernazione e si riattiva al callback.</p>
 <h3>Delega del lavoro: subagenti tramite Facets</h3>
 <p>Un singolo agente non dovrebbe fare tutto da solo. I <a href="https://developers.cloudflare.com/agents/api-reference/sub-agents" target="_blank" rel="noopener noreferrer"><u>subagenti</u></a> sono Durable Objects secondari collocati insieme a quello principale tramite <a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Facets</u></a>, ciascuno con il proprio SQLite isolato e il proprio contesto di esecuzione:</p>
@@ -171,7 +193,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">synthesize</span><span class="sk-24292e-fff">(research, review);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I subagenti sono isolati a livello di archiviazione. Ognuno ha il proprio database SQLite e non c'è condivisione implicita di dati tra di loro. Ciò viene imposto dal runtime in cui la latenza RPC del subagente è una chiamata di funzione. TypeScript rileva un uso improprio in fase di compilazione.</p>
 <h3>Conversazioni che persistono: l'API Session</h3>
@@ -189,7 +215,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> forked</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.sessions.</span><span class="sk-6f42c1-ffc799">fork</span><span class="sk-24292e-fff">(session.id, messageId, </span><span class="sk-032f62-99ffe4">"alternative-approach"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Session è utilizzabile direttamente con <code>Agent</code> ed è il livello di archiviazione su cui si basa la classe di base <code>Think</code>.</p>
 <h2>Dai richiami degli strumenti all'esecuzione del codice</h2>
@@ -206,7 +236,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> results;</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Invece di 100 viaggi di andata e ritorno al modello, esegui semplicemente un singolo programma. Questo consente di utilizzare un minor numero di token, avere un'esecuzione più rapida e fruire di risultati migliori. Il <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>server Cloudflare API MCP</u></a> lo dimostra su larga scala. Esponiamo solo due strumenti <code>(search()</code> e <code>execute())</code>, che consumano circa 1.000 token, rispetto a circa 1,17 milioni di token per l'equivalente non ottimizzato di uno strumento per endpoint. Si tratta di una riduzione del 99,9%.</p>
 <h3>La primitiva mancante: sandbox sicure</h3>
@@ -408,7 +442,11 @@
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Questo è effettivamente tutto ciò di cui hai bisogno per avere un agente di chat funzionante con streaming, persistenza, interruzione/annullamento, gestione degli errori, flussi ripristinabili e un file system del workspace integrato. Distribuisci con <code>npx wrangler deploy</code>.</p>
 <p>Think prende le decisioni per te. Quando hai bisogno di maggiore controllo, puoi sovrascrivere quelle che ti interessano:</p>
@@ -478,7 +516,11 @@
 <span class="line"><span class="sk-24292e-fff">    → </span><span class="sk-6f42c1-ffc799">afterToolCall</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  → </span><span class="sk-6f42c1-ffc799">onStepFinish</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">→ </span><span class="sk-6f42c1-ffc799">onChatResponse</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Passa a un modello a basso costo per i turni di follow-up, limita gli strumenti che può utilizzare e passa nel contesto lato client ad ogni turno. Registra anche ogni richiamo degli strumenti all'analisi e attiva automaticamente un altro turno di follow-up al completamento del modello, il tutto senza sostituire <code>onChatMessage</code>.</p>
 <h3>Memoria persistente e lunghe conversazioni</h3>
@@ -496,7 +538,11 @@
 <span class="line"><span class="sk-24292e-fff">    })</span></span>
 <span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">withCachedPrompt</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Le sessioni sono flessibili. Puoi eseguire più conversazioni per agente ed effettuarne il fork per provare una direzione diversa senza perdere l'originale.<strong>&nbsp;</strong></p>
 <p>Man mano che il contesto cresce, Think gestisce i limiti con una compattazione non distruttiva. I messaggi meno recenti vengono riepilogati anziché rimossi, mentre la cronologia completa rimane archiviata in SQLite.<strong>&nbsp;</strong></p>
@@ -531,7 +577,11 @@
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Estensioni autoprodotte</h3>
 <p>Think porta l'esecuzione del codice un ulteriore passo avanti. Un agente può scrivere le proprie estensioni: programmi TypeScript che vengono eseguiti in Dynamic Worker, dichiarando le autorizzazioni per l'accesso alla rete e le operazioni del workspace.</p>
@@ -545,7 +595,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "workspace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"read-write"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>ExtensionManager</code> di Think raggruppa l'estensione (facoltativamente con dipendenze npm tramite <code>@cloudflare/worker-bundler</code>), la carica in un Dynamic Worker e registra i nuovi strumenti. L'estensione persiste nell'archiviazione del DO e sopravvive all'ibernazione. La prossima volta che l'utente chiede informazioni sulle richieste pull, l'agente ha uno strumento <code>github_create_pr </code>che non esisteva 30 secondi prima.</p>
 <p>Questo è il tipo di ciclo di automiglioramento che rende gli agenti davvero più utili nel tempo. Non attraverso la messa a punto o RLHF, ma tramite il codice. L'agente è in grado di scrivere nuove funzionalità per se stesso, il tutto in TypeScript in sandbox, verificabile e revocabile.</p>
@@ -554,13 +608,21 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> researcher</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">subAgent</span><span class="sk-24292e-fff">(ResearchSession, </span><span class="sk-032f62-99ffe4">"research"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> researcher.</span><span class="sk-6f42c1-ffc799">chat</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Research this: ${</span><span class="sk-24292e-fff">task</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, streamRelay);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ogni istanza secondaria ottiene la propria struttura ad albero di conversazioni, memoria, strumenti e modello. L'elemento principale non ha bisogno di conoscere i dettagli.</p>
 <h3>Introduzione</h3>
 <p>Project Think è sperimentale. L'interfaccia API è stabile ma continuerà ad evolversi nei prossimi giorni e nelle prossime settimane. Lo stiamo già utilizzando internamente per creare la nostra infrastruttura di agenti in background e lo stiamo condividendo in anticipo in modo che tu possa costruire insieme a noi.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/think</span><span class="sk-032f62-99ffe4"> agents</span><span class="sk-032f62-99ffe4"> ai</span><span class="sk-032f62-99ffe4"> @cloudflare/shell</span><span class="sk-032f62-99ffe4"> zod</span><span class="sk-032f62-99ffe4"> workers-ai-provider</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/think</span><span class="sk-032f62-99ffe4"> agents</span><span class="sk-032f62-99ffe4"> ai</span><span class="sk-032f62-99ffe4"> @cloudflare/shell</span><span class="sk-032f62-99ffe4"> zod</span><span class="sk-032f62-99ffe4"> workers-ai-provider</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/server.ts</span></span>
@@ -584,7 +646,11 @@
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/client.tsx</span></span>
@@ -596,7 +662,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">messages</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">sendMessage</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">status</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> useAgentChat</span><span class="sk-24292e-fff">({ agent });</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Render your chat UI</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Think usa lo stesso protocollo WebSocket di <code>@cloudflare/ai-chat</code>, quindi i componenti dell'interfaccia utente esistenti funzionano immediatamente. Se hai creato su <a href="https://developers.cloudflare.com/agents/api-reference/chat-agents" target="_blank" rel="noopener noreferrer"><code><u>AIChatAgent</u></code></a>, il tuo codice client non cambia.</p>
 <h2>La terza ondata</h2>

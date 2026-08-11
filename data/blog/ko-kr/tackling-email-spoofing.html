@@ -15,8 +15,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4"> Thu,</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-032f62-99ffe4"> Sep</span><span class="sk-005cc5-ffc799"> 2021</span><span class="sk-032f62-99ffe4"> 10:30:02</span><span class="sk-005cc5-99ffe4"> -0500</span><span class="sk-24292e-fff"> (CDT)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">product-updates@cloudflare.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Reply-To:</span><span class="sk-032f62-99ffe4"> product-updates@cloudflare.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my_personal_email_addres</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my_personal_email_addres</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>위와 같은 이메일을 받게 되면 저는 자동으로 이 이메일을 Cloudflare가 보냈다고 가정합니다. 하지만 누구라도 자기 메일 서버에서 From 헤더를 수정해서 이메일을 보낼 수 있습니다. 이 블로그 게시물의 뒤에서 살펴볼 적절한 검사를 이메일 공급자가 수행하지 않는다면 실제 발신자가 Cloudflare가 아닌데도 Cloudflare라고 믿게 될 수 있습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="156" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=640&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 712w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=750&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=828&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1080&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1280&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1424&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 1424w" alt="BLOG-667 Embedded Image - qPVxMF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp" data-lightbox-width="712" data-lightbox-height="156" data-astro-cid-7nvefuv6="true" sizes="(min-width: 712px) 712px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="712" height="156" class="pt-portable-image-media"></div>
@@ -46,7 +68,11 @@
 <p>SPF는 해당 도메인에서 이메일을 보낼 수 있도록 승인된 IP 주소와 도메인의 목록을 지정합니다. SPF 정책은 도메인의 TXT 레코드로 발표되므로 누구나 DNS를 통해 액세스할 수 있습니다. cloudflare.com의 TXT 레코드를 살펴보겠습니다.</p>
 <p>SPF TXT 레코드는 언제나 v=spf1로 시작해야 합니다. 여기에는 ip4 또는 ip6 메커니즘을 이용해 이메일을 발송하는 서버의 IP 주소 목록이 포함되는 경우가 많습니다. include 메커니즘은 다른 도메인에 있는 다른 SPF를 참조하기 위해 이용합니다. 이는 주로 귀사를 대신해 이메일을 보내야 하는 다른 공급자에 의존하는 경우에 이뤄집니다. 위의 cloudflare.com에 대한 SPF 레코드에서 몇 가지 예를 볼 수 있습니다. 여기에서는 Zendesk를 고객 지원 소프트웨어로, Mandrill을 마케팅 및 거래 이메일에 이용하고 있습니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflare.com</span><span class="sk-032f62-99ffe4"> 	TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflare.com</span><span class="sk-032f62-99ffe4"> 	TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>마지막으로 catch-all 메커니즘인 -all은 지정되지 않은 모든 수신 이메일을 어떻게 처리해야 할지 지정합니다. catch-all 메커니즘 앞에는 +(Allow), ~(Softfail), -(Fail) 등의 한정자가 붙습니다. Allow 한정자는 SPF 레코드를 쓸모없게 만들고 모든 IP 주소와 도메인이 귀사를 대신해 이메일을 보낼 수 있으므로 사용하지 않는 것이 좋습니다. Softfail은 수신 메일 서버에 따라 다르게 해석되며 이메일을 스팸이나 안전하지 않은 것으로 분류합니다. Fail은 지정되지 않은 소스에서 온 이메일은 전혀 수락하지 말라고 말합니다.</p>
 <p>위 그림에는 수신된 이메일이 SPF를 준수하는지 확인하는 절차가 표시되어 있습니다.</p>
@@ -64,7 +90,11 @@
 <p>여기에 DKIM의 역할이 있습니다. DKIM은 <a href="https://www.cloudflare.com/ko-kr/learning/ssl/how-does-public-key-encryption-work" target="_blank" rel="noopener noreferrer">공개 키 암호화</a>를 이용해 이메일의 특정 부분(대개는 본문 및 특정 헤더)에 암호로 서명하는 메커니즘을 제공합니다. 작동 방식을 자세히 살펴보기 전에 cloudflare.com에 사용되는 DKIM 레코드를 살펴보겠습니다.</p>
 <p>DKIM 레코드의 구조는 ._domainkey.이며 여기에서 selector는 이메일 공급자가 제공합니다. DKIM TXT 레코드의 내용은 항상 v=DKIM1으로 시작하며 공개 키가 이어집니다. k 태그를 이용해 참조되는 공개 키 유형과 p 태그 뒤에 이어지는 공개 키 자체를 볼 수 있습니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">google._domainkey.cloudflare.com.</span><span class="sk-032f62-99ffe4">	TXT</span><span class="sk-032f62-99ffe4">	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">google._domainkey.cloudflare.com.</span><span class="sk-032f62-99ffe4">	TXT</span><span class="sk-032f62-99ffe4">	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>다음은 서명과 DKIM 검사가 작동하는 단계를 간략하게 설명한 것입니다.</p>
 <ol>
@@ -83,7 +113,11 @@
 <span class="line"><span class="sk-24292e-fff">   bh</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">uMixy0BsCqhbru4fqPZQdeZY5Pq865sNAnOAxNgUS0s</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">   b</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">LiIvJeRyqMo0gngiCygwpiKphJjYezb5kXBKCNj8DqRVcCk7obK6OUg4o+EufEbB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    tRYQfQhgIkx5m70IqA6dP+DBZUcsJyS9C+vm2xRK7qyHi2hUFpYS5pkeiNVoQk/Wk4w</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    ZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU</span><span class="sk-032f62-99ffe4">=</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    ZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU</span><span class="sk-032f62-99ffe4">=</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>DKIM 지정에 대한 전체적인 설명은 <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank" rel="noopener noreferrer">RFC4871</a>과 <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank" rel="noopener noreferrer">RFC5672</a>을 참조하시기 바랍니다.</p>
 <h3>도메인 기반 메시지 인증 보고 및 일치(DMARC: Domain-based Message Authentication Reporting and Conformance)</h3>
@@ -93,7 +127,11 @@
 <p>정책 태그(p)는 이메일 수신자가 SPF 또는 DKIM 검사를 통과하지 못한 이메일을 어떻게 처리해야 하는지 지시하며, none, reject, quarantine 중 하나의 값을 갖습니다. none 정책은 '모니터링만 시행'이라고도 하며 검사를 통과하지 못한 이메일도 수락합니다. quarantine을 지정하면 이메일 수신자는 SPF 또는 DKIM을 통과하지 못한 이메일을 스팸 폴더에 넣습니다. reject의 경우에는 SPF나 DKIM을 통과하지 못한 이메일을 누락시키며 전달하지 않습니다.</p>
 <p>백분율 태그(pct)를 이용하면 지정된 정책을 수신 이메일의 부분 집합에만 적용합니다. 이는 DMARC 적용을 확대하면서 일부 부분 집합에 대해 테스트하여 적절히 구성되었는지 확인하고자 할 때 유용합니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">_dmarc.cloudflare.com.</span><span class="sk-032f62-99ffe4">   TXT</span><span class="sk-032f62-99ffe4">   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">_dmarc.cloudflare.com.</span><span class="sk-032f62-99ffe4">   TXT</span><span class="sk-032f62-99ffe4">   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위 레코드에서 볼 수 있는 마지막 태그는 보고 URI(rua)로서, 일치하지 않는 이메일에 대해 총합 보고서(대개는 일간)를 수신할 이메일 주소를 지정하는 것입니다.</p>
 <p>위에 DMARC의 단계별 작동 방식이 표시되어 있습니다.</p>
@@ -249,7 +287,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">example.com</span><span class="sk-032f62-99ffe4">			TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 -all"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">._domainkey.example.com.	TXT	</span><span class="sk-032f62-99ffe4">"v=DKIM1; p="</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">_dmarc.example.com.</span><span class="sk-032f62-99ffe4">		TXT</span><span class="sk-032f62-99ffe4">	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">_dmarc.example.com.</span><span class="sk-032f62-99ffe4">		TXT</span><span class="sk-032f62-99ffe4">	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>캐나다</p>
 <p>24</p>

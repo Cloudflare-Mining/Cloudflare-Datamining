@@ -12,8 +12,30 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># id</span></span>
 <span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,65534</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">nogroup</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># cat /proc/self/uid_map</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">         0</span><span class="sk-005cc5-ffc799">       1000</span><span class="sk-005cc5-ffc799">          1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">         0</span><span class="sk-005cc5-ffc799">       1000</span><span class="sk-005cc5-ffc799">          1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In most cases using unshare is harmless, and is intended to run with lower privileges. However, this syscall has been known to be used to <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank" rel="noopener noreferrer">escalate privileges</a>.</p>
 <p>Syscalls <em>clone</em> and <em>clone3</em> are worth looking into as they also have the ability to <em>CLONE_NEWUSER</em>. However, for this post we’re going to focus on unshare.</p>
 <p>Debian solved this problem with this <a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch" target="_blank" rel="noopener noreferrer">"add sysctl to disallow unprivileged CLONE_NEWUSER by default"</a> patch, but it was not mainlined. Another similar patch <a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org" target="_blank" rel="noopener noreferrer">"sysctl: allow CLONE_NEWUSER to be disabled"</a> attempted to mainline, and was met with push back. A critique is the <a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org" target="_blank" rel="noopener noreferrer">inability to toggle this feature</a> for specific applications. In the article “<a href="https://lwn.net/Articles/673597" target="_blank" rel="noopener noreferrer">Controlling access to user namespaces</a>” the author wrote: “... the current patches do not appear to have an easy path into the mainline.” And as we can see, the patches were ultimately not included in the vanilla kernel.</p>
@@ -22,14 +44,22 @@
 <h3>Track down an appropriate hook candidate</h3>
 <p>First, let us track down the syscall we’re targeting. We can find the prototype in the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank" rel="noopener noreferrer"><em>include/linux/syscalls.h</em></a> file. From there, it’s not as obvious to track down, but the line:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* kernel/fork.c */</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* kernel/fork.c */</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Gives us a clue of where to look next in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank" rel="noopener noreferrer"><em>kernel/fork.c</em></a>. There a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank" rel="noopener noreferrer"><em>ksys_unshare()</em></a> is made. Digging through that function, we find a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a>. This looks promising.</p>
 <p>Up to this point, we’ve identified the syscall implementation, but the next question to ask is what hooks are available for us to use? Because we know from the <a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank" rel="noopener noreferrer">man-pages</a> that unshare is used to mutate tasks, we look at the task-based hooks in <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank" rel="noopener noreferrer"><em>include/linux/lsm_hooks.h</em></a>. Back in the function <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> we saw a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a>. This looks very familiar to the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank" rel="noopener noreferrer"><em>cred_prepare</em></a> hook. To verify we have our match via <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a>, we see a call to the security hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank" rel="noopener noreferrer"><em>security_prepare_creds()</em></a> which ultimately calls the hook:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
 <span class="line"><span class="sk-24292e-fff">rc </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> call_int_hook</span><span class="sk-24292e-fff">(cred_prepare, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, new, old, gfp);</span></span>
-<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Without going much further down this rabbithole, we know this is a good hook to use because <em>prepare_creds()</em> is called right before <em>create_user_ns()</em> in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> which is the operation we’re trying to block.</p>
 <h3>LSM BPF solution</h3>
@@ -46,7 +76,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">DYNAMIC_FTRACE</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNCTION_TRACER</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">HAVE_DYNAMIC_FTRACE</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">HAVE_DYNAMIC_FTRACE</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A boot option <code>lsm=bpf</code> may be necessary if <code>CONFIG_LSM</code> does not contain “bpf” in the list.</p>
 <p>Let’s start with our preamble:</p>
@@ -63,7 +97,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;bpf/bpf_core_read.h&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> X86_64_UNSHARE_SYSCALL</span><span class="sk-005cc5-ffc799"> 272</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> UNSHARE_SYSCALL</span><span class="sk-24292e-fff"> X86_64_UNSHARE_SYSCALL</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> UNSHARE_SYSCALL</span><span class="sk-24292e-fff"> X86_64_UNSHARE_SYSCALL</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next we set up our necessary structures for CO-RE relocation in the following way:</p>
 <p><em>deny_unshare.bpf.c</em>:</p>
@@ -92,7 +130,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">char</span><span class="sk-24292e-fff"> LICENSE</span><span class="sk-d73a49-a0a0a0">[]</span><span class="sk-6f42c1-ffc799"> SEC</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"license"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "GPL"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We don’t need to fully-flesh out the structs; we just need the absolute minimum information a program needs to function. CO-RE will do whatever is necessary to perform the relocations for your kernel. This makes writing the LSM BPF programs easy!</p>
 <p><em>deny_unshare.bpf.c</em>:</p>
@@ -137,7 +179,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">EPERM;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Creating the program is the first step, the second is loading and attaching the program to our desired hook. There are several ways to do this: <a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">Cilium ebpf</a> project, <a href="https://github.com/libbpf/libbpf-rs" target="_blank" rel="noopener noreferrer">Rust bindings</a>, and several others on the <a href="https://ebpf.io/projects" target="_blank" rel="noopener noreferrer">ebpf.io</a> project landscape page. We’re going to use native libbpf.</p>
 <p><em>deny_unshare.c</em>:</p>
@@ -184,7 +230,11 @@
 <span class="line"><span class="sk-24292e-fff">cleanup:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    deny_unshare_bpf__destroy</span><span class="sk-24292e-fff">(skel);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> err;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Lastly, to compile, we use the following Makefile:</p>
 <p><em>Makefile</em>:</p>
@@ -224,33 +274,53 @@
 <span class="line"><span>	$(CC) -g -Wall -c $&lt; -o $@.o</span></span>
 <span class="line"><span>	$(CC) -g -o $@ $(LIBS_DIR) $@.o $(LIBS)</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>.DELETE_ON_ERROR:</span></span></code></pre>
+<span class="line"><span>.DELETE_ON_ERROR:</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Result</h3>
 <p>In a new terminal window run:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> run</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LSM</span><span class="sk-032f62-99ffe4"> loaded!</span><span class="sk-032f62-99ffe4"> ctrl+c</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> exit.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">LSM</span><span class="sk-032f62-99ffe4"> loaded!</span><span class="sk-032f62-99ffe4"> ctrl+c</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> exit.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In another terminal window, we’re successfully blocked!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">unshare:</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Cannot</span><span class="sk-032f62-99ffe4"> allocate</span><span class="sk-032f62-99ffe4"> memory</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> id</span></span>
-<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The policy has an additional feature to always allow privilege pass through:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># id</span></span>
-<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the unprivileged case the syscall early aborts. What is the performance impact in the privileged case?</p>
 <h3>Measure performance</h3>
 <p>We’re going to use a one-line unshare that’ll map the user namespace, and execute a command within for the measurements:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -frU</span><span class="sk-005cc5-99ffe4"> --kill-child</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "exit 0"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -frU</span><span class="sk-005cc5-99ffe4"> --kill-child</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "exit 0"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With a resolution of CPU cycles for syscall unshare enter/exit, we’ll measure the following as root user:</p>
 <ol>
@@ -261,21 +331,37 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> su</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># cd /sys/kernel/debug/tracing</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At this point, we’re enabling tracing for the syscall enter and exit for unshare specifically. Now we set the time-resolution of our enter/exit calls to count CPU cycles:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># echo 'x86-tsc' &gt; trace_clock </span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># echo 'x86-tsc' &gt; trace_clock </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next we begin our measurements:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
-<span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">92014</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">92014</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Run the policy in a new terminal window, and then run our next syscall:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
-<span class="line"><span class="sk-24292e-fff">[2] </span><span class="sk-6f42c1-ffc799">92019</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[2] </span><span class="sk-6f42c1-ffc799">92019</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we have our two calls for comparison:</p>
 <div class="emdash-code">
@@ -296,7 +382,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">         unshare-92014</span><span class="sk-24292e-fff">   [002] ..... 762950852622321: sys_unshare -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 0x0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         unshare-92019</span><span class="sk-24292e-fff">   [007] ..... 762975980681895: sys_unshare(</span><span class="sk-6f42c1-ffc799">unshare_flags:</span><span class="sk-005cc5-ffc799"> 10000000</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         unshare-92019</span><span class="sk-24292e-fff">   [007] ..... 762975980752033: sys_unshare -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 0x0</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>unshare-92014 used 63294 cycles.unshare-92019 used 70138 cycles.</p>
 <p>We have a 6,844 (~10%) cycle penalty between the two measurements. Not bad!</p>

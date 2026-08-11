@@ -46,8 +46,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm"</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">"test"</span><span class="sk-24292e-fff">], { stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>只要您提供相同的 ID，后续请求就可以从世界任何地方访问这个沙盒。</p>
 <h2>安全凭据注入</h2>
 <p>在智能体工作负载中，最难解决的问题之一便是身份认证。您通常需要让智能体访问私有服务，却无法完全放心地将原始凭据交由其处理。&nbsp;</p>
@@ -62,7 +84,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>要深入了解其工作原理——包括身份感知凭据注入、动态修改规则以及与 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers 绑定</u></a>集成——请阅读我们近期关于<a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>Sandbox 认证</u></a>的博客文章。</p>
 <h2>真正的终端，而非模拟</h2>
@@ -83,7 +109,11 @@
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>并使用 <code>xterm addon</code> 从客户端调用：</p>
 <div class="emdash-code">
@@ -99,7 +129,11 @@
 <span class="line"><span class="sk-24292e-fff">term.</span><span class="sk-6f42c1-ffc799">loadAddon</span><span class="sk-24292e-fff">(addon);</span></span>
 <span class="line"><span class="sk-24292e-fff">term.</span><span class="sk-6f42c1-ffc799">open</span><span class="sk-24292e-fff">(document.</span><span class="sk-6f42c1-ffc799">getElementById</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"terminal-container"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">addon.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">({ sandboxId: </span><span class="sk-032f62-99ffe4">"my-session"</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这允许智能体和开发人员使用完整的 PTY 来实时调试这些会话。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -128,7 +162,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">, { context: ctx, </span><span class="sk-6f42c1-ffc799">onStdout</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">line</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(line.text) });</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// result contains matplotlib charts, structured json output, and Pandas tables in HTML</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>启动服务器。获取 URL。上线发布。</h2>
 <p>当智能体能够即时构建内容并向您展示成果时，其实用价值会更高。Sandboxes 支持后台进程、就绪性检查和<a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>预览 URL</u></a>。借助该能力，智能体可启动开发服务器并分享实时预览链接，全程无需离开对话界面。</p>
@@ -146,7 +184,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// url is a live public URL the agent can share with the user</span></span>
 <span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Preview: ${</span><span class="sk-24292e-fff">url</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>使用 <em><code>waitForPort()</code></em> 和 <em><code>waitForLog()</code></em>，智能体可依据运行中程序发出的真实信号编排任务，而非依赖猜测。这比一种常见的替代方法要好得多，后者通常是执行 <code>sleep(2000)</code> 并期待有效。</p>
 <h2>观察文件系统并即时响应</h2>
@@ -165,7 +207,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'npx tsc --noEmit'</span><span class="sk-24292e-fff">, { cwd: </span><span class="sk-032f62-99ffe4">'/workspace'</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这是悄然改变智能体能力的基础组件之一。能够实时监控文件系统的智能体，可与人类开发人员参与相同的反馈循环流程。</p>
 <h2>通过快照快速唤醒</h2>
@@ -179,7 +225,11 @@
 <span class="line"><span class="sk-e36209-fff">  sleepAfter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "5m"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-e36209-fff">  persistAcrossSessions</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {type: </span><span class="sk-032f62-99ffe4">"disk"</span><span class="sk-24292e-fff">}; </span><span class="sk-6a737d-8b8b8b94">// you can also specify individual directories</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您还可以通过编程方式创建快照，并手动恢复。该功能适用于为工作创建检查点或分叉会话。例如，如果您想并行运行智能体的四个实例，则可基于同一状态快速启动四个沙箱环境。</p>
 <div class="emdash-code">
@@ -196,7 +246,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">(forks);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>快照存储在您帐户内的 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 中，为您提供持久性和位置无关性。R2 的<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分层缓存</u></a>系统可在全球任何地区实现快速恢复。</p>
 <p>在未来版本中，实时内存状态也将被捕获，从而允许正在运行的进程从其中断的地方准确恢复。终端和编辑器将重新打开，并恢复到上次关闭时的状态。</p>

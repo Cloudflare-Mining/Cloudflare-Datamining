@@ -26,8 +26,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> user </span><span class="sk-d73a49-a0a0a0">of</span><span class="sk-24292e-fff"> cursor) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(user.name, user.email);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This may come as a surprise to some. Querying a database is I/O, right? I/O should always be asynchronous, right? Isn't this a violation of the natural order of JavaScript?</p>
 <p>It's OK! The database content is probably cached in memory already, and SQLite is being called as a library in the same thread as the application, so the query often actually won't spend any time at all waiting for I/O. Even if it does have to go to disk, it's a local SSD. You might as well consider the local disk as just another layer in the memory cache hierarchy: L5 cache, if you will. In any case, it will respond quickly.</p>
 <p>Meanwhile, synchronous queries provide some big benefits. First, the logistics of asynchronous event loops have a cost, so in the common case where the data is already in memory, a synchronous query will actually complete faster than an async one.</p>
@@ -75,7 +97,11 @@
 <span class="line"><span class="sk-24292e-fff">  doc.authorName </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> sql.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">      "SELECT name FROM users WHERE id = ?"</span><span class="sk-24292e-fff">, doc.authorId).</span><span class="sk-6f42c1-ffc799">one</span><span class="sk-24292e-fff">().name;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you are an experienced SQL user, you are probably cringing at this code, and for good reason: this code does 101 queries! If the application is talking to the database across a network with 5ms latency, this will take 505ms to run, which is slow enough for humans to notice.</p>
 <div class="emdash-code">
@@ -86,7 +112,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  ORDER BY documents.lastModified DESC</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  LIMIT 100</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">toArray</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here we've used SQL features to turn our 101 queries into one query. Great! Except, what does it mean? We used an inner join, which is not to be confused with a left, right, or cross join. What's the difference? Honestly, I have no idea! I had to look up joins just to write this example and I'm already confused.</p>
 <p>Well, good news: You don't need to figure it out. Because <strong>when using SQLite as a library, the first example above <em>works just fine</em>.</strong> It'll perform about the same as the second fancy version.</p>
@@ -159,7 +189,11 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.sql.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`UPDATE seats SET occupant = ? WHERE seatId = ?`</span><span class="sk-24292e-fff">, occupant, seatId);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(With just a little more code, we could extend this example to allow clients to subscribe to seat changes with <a href="https://developers.cloudflare.com/durable-objects/reference/websockets/#_top" target="_blank" rel="noopener noreferrer"><u>WebSockets</u></a>, so that if multiple people are choosing their seats at the same time, they can see in real time as seats become unavailable. But, that's outside the scope of this blog post, which is just about SQL storage.)</p>
 <p>Then in wrangler.toml, <a href="https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations" target="_blank" rel="noopener noreferrer"><u>define a migration</u></a> setting up your DO class like usual, but instead of using new_classes, use new_sqlite_classes:</p>
@@ -167,7 +201,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[migrations]]</span></span>
 <span class="line"><span class="sk-24292e-fff">tag </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "v1"</span></span>
 <span class="line"><span class="sk-24292e-fff">new_sqlite_classes </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"FlightSeating"</span><span class="sk-24292e-fff">]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>SQLite-backed objects also support the existing <a href="https://developers.cloudflare.com/durable-objects/api/transactional-storage-api" target="_blank" rel="noopener noreferrer"><u>key/value-based storage API</u></a>: KV data is stored into a hidden table in the SQLite database. So, existing applications built on DOs will work when deployed using SQLite-backed objects.</p>
 <p>However, because SQLite-backed objects are based on an all-new storage backend, it is currently not possible to switch an existing deployed DO class to use SQLite. You must ask for SQLite when initially deploying the new DO class; you cannot change it later. We plan to begin migrating existing DOs to the new storage backend in 2025.</p>

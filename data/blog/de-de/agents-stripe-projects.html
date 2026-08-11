@@ -5,8 +5,30 @@
 <h2>Ohne Konfiguration oder manuelles Eingreifen in den Produktivbetrieb: so funktioniert’s</h2>
 <p>Installieren Sie die <a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe-CLI</u></a> mit dem <a href="https://docs.stripe.com/projects" target="_blank" rel="noopener noreferrer"><u>Stripe Projects-Plugin</u></a>, melden Sie sich bei Stripe an und starten Sie dann ein neues Projekt:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">stripe projects init</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">stripe projects init</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Fordern Sie dann Ihren Agenten auf, etwas Neues zu programmieren und auf einer neuen Domain bereitzustellen. In diesem zweiminütigen Video können Sie sich alle Schritte im Zeitraffer ansehen:</p>
 <div id="html-block-k10" class="html-block">
 	<div style="padding-top:54.48275862068967%">
@@ -70,6 +92,10 @@
 <h2>Agenten die Möglichkeit zur Bereitstellung und Zahlung geben</h2>
 <p>Stripe Projects befindet sich in der offenen Beta-Phase. Sie können damit loslegen, auch wenn Sie noch kein Cloudflare-Konto haben. Installieren Sie einfach die <a href="https://docs.stripe.com/stripe-cli/install" target="_blank" rel="noopener noreferrer"><u>Stripe CLI</u></a>, melden Sie sich bei Stripe an und starten Sie ein neues Projekt:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">stripe projects init</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">stripe projects init</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Fordern Sie Ihren Agenten auf, etwas Neues auf Cloudflare zu erstellen, und zeigen Sie uns, was dabei herausgekommen ist!</p>

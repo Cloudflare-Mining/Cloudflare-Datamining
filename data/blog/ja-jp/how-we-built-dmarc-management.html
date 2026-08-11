@@ -32,8 +32,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> message.</span><span class="sk-6f42c1-ffc799">forward</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"inbox@corp"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>プログラムに、受信メールを処理する機能が備わっているため、スケーラブルかつ効率的な方法で、DMARCレポートメールの受信を処理するのに最適な方法のように思えました。Email RoutingとWorkersは、世界中から無限の数のメールを受信するという激務をこなすことができます。必要なものの概要は以下の通りです：</p>
 <ol>
 	<li>メール受信とレポート抽出</li>
@@ -68,7 +90,11 @@
 <span class="line"><span class="sk-24292e-fff">  auto</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff"> context </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> IoContext</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">current</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">awaitIo</span><span class="sk-24292e-fff">(kj::</span><span class="sk-6f42c1-ffc799">mv</span><span class="sk-24292e-fff">(sendP));</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>処理中のメールの受信者を取得します。これは使用されたRUAです。 RUAは、特定のドメインに関する、集約されたDMARC処理フィードバックをどこに報告する必要があるかを示すDMARC構成パラメータです。 この受信者は、メッセージの「to」属性で確認することができます。</li>
@@ -87,28 +113,48 @@
 </ol>
 <p>将来的には、ワークフローに <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>を統合して、レポートを非同期的に処理し、クライアントがレポートの完成を待つのを回避することも検討しています。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> ruaID</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> message.to</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> ruaID</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> message.to</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Workersインフラストラクチャのみに依存してこのプロジェクトをエンドツーエンドで何とか実装を成し遂げ、スケーラビリティ、パフォーマンス、ストレージ、セキュリティの問題を心配することなく、重要なアプリケーションを構築することが可能であり、有利であることを証明できました。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> accountInfoRaw</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> env.KV_DMARC_REPORTS.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">dmarc:$</span><span class="sk-032f62-99ffe4">{ruaID}</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> accountInfoRaw</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> env.KV_DMARC_REPORTS.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">dmarc:$</span><span class="sk-032f62-99ffe4">{ruaID}</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>オープンソーシング</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> rawEmail</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">message.raw</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> arrayBuffer</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> rawEmail.arrayBuffer</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> arrayBuffer</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> rawEmail.arrayBuffer</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>先に述べたように、お客様が有効化して、利用できるマネージドサービスを構築し、当社が、お客様に代わり、それを管理します。しかし、当社が行ったことはすべて、お客様のアカウントでデプロイできるため、お客様自身のDMARCレポートを管理できます。これは簡単で、無料です。これを支援するために、上記の方法でDMARCレポートを処理するWorkerのオープンソースバージョンを公開しています。 <a href="https://github.com/cloudflare/dmarc-email-worker" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/dmarc-email-worker</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> parser</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> PostalMime.default</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> email</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> parser.parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> email</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> parser.parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>データを表示するダッシュボードがない場合は、 WorkerからAnalytics Engineに<a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying" target="_blank" rel="noopener noreferrer">クエリー</a>を行うことも可能です。また、リレーショナルデータベースに保存したい場合は、 <a href="https://developers.cloudflare.com/d1/platform/client-api" target="_blank" rel="noopener noreferrer">D1</a> が役立ちます。可能性は無限であり、これらのツールで何を構築するのかを見いだせたら嬉しく思います。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">await</span><span class="sk-032f62-99ffe4"> env.R2_DMARC_REPORTS.put</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    `${date.getUTCFullYear</span><span class="sk-24292e-fff">()</span><span class="sk-6f42c1-ffc799">}/${date.getUTCMonth</span><span class="sk-24292e-fff">() + 1}</span><span class="sk-6f42c1-ffc799">/$</span><span class="sk-032f62-99ffe4">{attachment.filename}`</span><span class="sk-6f42c1-ffc799">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    attachment.content</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  )</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>投稿してください、自身のものを作ってください、私たちは耳を傾けます。</p>
 <div class="emdash-code">
@@ -156,7 +202,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">      &lt;</span><span class="sk-6f42c1-ffc799">/spf</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-6f42c1-ffc799">/auth_results</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-6f42c1-ffc799">/record</span><span class="sk-24292e-fff">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/feedback</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/feedback</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>最後に</h3>
 <p>この記事で、Workersのプラットフォームの理解を深めていただけたら幸いです。 今日、Cloudflareはこのプラットフォームを活用して、ほとんどのサービスを構築しています。お客様もそうすべきだと思います。</p>

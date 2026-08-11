@@ -24,14 +24,40 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "bucketId"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:00 GMT",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "lastCheckInTime"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:54 GMT",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "acceptedAt"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:54 GMT"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>これをさらに理解するために、待機室ステートの内容を見てみます。上で説明した顧客の場合、"Mon, 11 Sep 2023 11:45:54 GMT"時点で、状態は次のようになっていました。</p>
 <p>前述のとおり、この顧客のコンフィギュレーションでは、<em>1分あたりの新規ユーザー数は200</em>、_総アクティブユーザー数は_200であったことが分かります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{  </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "activeUsers"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 50,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>つまり、200人に対応できるところにアクティブユーザーが50人しかいないため、新しいユーザーのためのスペースがあることを示しています。したがって、あと150人分のスペースがあることになります。この50人のユーザーが、サンノゼ（20人）とロンドン（30人）の2つのデータセンターから来たと仮定します。また弊社では、全世界で活動しているWorkerの数と、状態が計算されるデータセンターで活動しているWorkerの数も記録しています。下のキーはサンノゼで計算されたものです。</p>
 <p>"Mon, 11 Sep 2023 11:45:54 GMT",の時点で、サンノゼのデータセンターでその待機室へのリクエストがあったとします。</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>サンノゼに到達したユーザーがオリジンに到達できるか確認するために、まず過去1分間のトラフィック履歴をチェックし、その時点でのトラフィックの分布を見ます。というのも、世界の特定の地域で人気があるWebサイトが多くあるためです。これらのWebサイトの多くでは、同じデータセンターからトラフィックが来る傾向があります。</p>
 <p>"Mon, 11 Sep 2023 11:44:00 GMT"時点のトラフィック履歴を見ると、サンノゼにはその時点で200人中20人（10％）のユーザーがアクセスしていることがわかります。最新の時刻"Mon, 11 Sep 2023 11:45:54 GMT"では、過去1分間のトラフィック履歴と同じ比率でWebサイトで利用可能なスロットを分割します。つまり、サンノゼから送れるのは150スロットの10%、つまり15ユーザーということになります。また"dataCenterWorkersActive"は3なので、アクティブなWorkerが3つあることもわりかます。</p>
@@ -66,7 +96,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ステートキーはまた、世界中で湧き出るように発生したWorkerの数（globalWorkersActive）も記録しています。割り当てられたAnywhereスロットは、利用可能であれば世界中のすべてのアクティブWorkerに分配されます。待機室の状態を見ると、globalWorkersActiveは10となっています。つまり、アクティブなWorkerごとに、113÷10≒11人ものユーザーを送ることができます。つまり、Mon, 11 Sep 2023 11:45:00 GMTにWorkerに来た最初の11人のユーザーはオリジンに受け入れられます。余分なユーザーは、キューに入れられます。前述したMon, 11 Sep 2023 11:45: 00 GMTの時点でのサンノゼでの余剰スロット（5）により、サンノゼのWorkerからWebサイトに最大16（5＋11）ユーザを確実に受け入れることができることになります。</p>
 <h2>Workerレベルでのキューイングは、データセンターで利用可能なスロットの前にユーザーをキューに入れてしまう可能性があります。</h2>
@@ -106,13 +140,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>利用率が低いときに利用できるスロットを増やすことを狙い、利用率に比例して動くworkerMultiplierを追加しました。利用率が低いと倍率は低くなり、利用率が高いと1に近くなります。</p>
 <p>utilization - 限界からどれだけ離れているか。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">workerMultiplier</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (utilization)^curveFactor</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">adaptedWorkerCount</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> actualWorkerCount</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> workerMultiplier</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">adaptedWorkerCount</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> actualWorkerCount</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> workerMultiplier</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>curveFactor - _curveFactor_は調整可能な指数で、Workerのカウントが低いときに、どれだけ積極的に余分な予算を配分するかを決定します。これを理解するために、y = xとy = x^2が値0と1の間でどのように見えるかを示すグラフを見てみましょう。</p>
 <p>y=xのグラフは、(0, 0)と(1, 1)を通る直線になります。</p>
@@ -166,7 +208,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>サンノゼのDurable Objectカウンターは、データセンターに新しいユーザーが来るたびに、その時点のカウンターの値を返し続けます。Workerに戻った後、値を1増やします。つまり、Workerに最初に来た15人の新規ユーザーは、ユニークなカウンターの値を得ることになります。したがって、あるユーザーの受信値が15未満の場合、そのユーザーはデータセンターのスロットを使用することができることになります。</p>
 <p>データセンターで利用可能なスロットがなくなると、ユーザーはAnywhereデータセンターに割り当てられたスロットを利用することができます。サンノゼのWorkerのチケットの値が15となった時点で、サンノゼのスロットを使ってWebサイトにアクセスすることは不可能だとわかります。</p>

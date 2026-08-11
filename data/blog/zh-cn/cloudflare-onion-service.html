@@ -48,8 +48,30 @@
 </figure>
 <p>同样，Cloudflare拥有为客户网站提供服务的IP地址，我们运行10个.onion地址。将它们视为Tor网络中的10个Cloudflare存在点（或PoP）。确切的请求头看起来像这样，除了包含所有10个.onion地址，每个地址以前缀“cflare”开头：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>这只是表明“cloudflare.com”可以通过洋葱服务“cflare2n [...].onion”使用HTTP / 2（“h2”）通过虚拟端口443进行权威访问。字段“ma”(max –age)表示客户端应该记住备用服务是否存在多长时间，“persist”表示在网络中断时是否应该清除备用服务缓存。</p>
 <p>一旦浏览器收到此请求头，它就会尝试为alt-svc请求头中公布的洋葱服务创建一个新的Tor电路，并确认侦听虚拟端口443的服务器可以为“cloudflare.com”提供有效的证书——即，原始主机名，而不是.onion地址。</p>
 <p>然后，洋葱服务将Client Hello数据包中继到本地服务器，该服务器可以为“cloudflare.com”提供证书。这样，Tor守护程序本身可以非常小。以下是一个示例配置文件：</p>
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServiceVersion</span><span class="sk-005cc5-ffc799"> 3</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServicePort</span><span class="sk-005cc5-ffc799"> 443</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SafeLogging</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>请注意使用上面的配置，因为它可以为不需要匿名的洋葱服务启用非匿名设置。澄清一下，这不会牺牲Tor用户的隐私或匿名性，只会牺牲服务器的隐私或匿名性。此外，它还可以改善电路的延迟。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -83,7 +109,11 @@
 <p>请记住，洋葱服务的Tor电路带有一个电路号，我们可以用它来限制电路的速率。现在，问题是如何用最少的努力将这个数字通知给nginx这样的服务器。事实证明，只需<a href="https://github.com/torproject/tor/pull/343" target="_blank" rel="noopener noreferrer">稍微调整</a>Tor二进制文件，我们就可以在转发到服务器的每个包的开头插入<a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank" rel="noopener noreferrer">代理协议</a>头。该协议旨在帮助TCP代理传递在转换过程中可能丢失的参数，如源和目标IP地址，并且已经得到nginx、Apache、Caddy等的支持。</p>
 <p>对我们来说幸运的是，IPv6空间非常庞大，我们可以将Tor电路编号编码为未使用范围内的IP地址，并使用代理协议将其发送到服务器。以下是我们的Tor守护程序将在连接中插入的标头示例：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在这种情况下，0x1234ABCD对源IP地址的最后32位中的电路编号进行编码。然后，本地Cloudflare服务器可以透明地使用该IP来分配信誉，显示图灵测试或在需要时阻止请求。</p>
 <p>请注意，即使洋葱服务中继的请求没有携带IP地址，您也会在日志中看到如上所示的IP地址，国家代码为“T1”。此IP仅指定洋葱服务所看到的电路号，而不是实际的用户IP地址。实际上，2405：8100：8000 :: / 48是分配给Cloudflare的未使用的子网，我们没有为此目的进行全局路由。</p>
@@ -128,7 +158,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cflaresuje2rb7w2u3w43pn4luxdi6o7oatv6r2zrfb5xvsugj35d2qd.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareer7qekzp3zeyqvcfktxfrmncse4ilc7trbf6bp6yzdabxuload.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareub6dtu7nvs3kqmoigcjdwap2azrkx5zohb2yk7gqjkwoyotwqd.onion</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em><a href="https://blog.cloudflare.com/subscribe">订阅</a>我们的公告栏中每日更新的博客。</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

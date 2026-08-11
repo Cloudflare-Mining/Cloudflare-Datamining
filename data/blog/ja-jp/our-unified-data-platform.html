@@ -71,15 +71,41 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> datasets</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">search_datasets</span><span class="sk-24292e-fff">({ query: </span><span class="sk-032f62-99ffe4">"billing product revenue"</span><span class="sk-24292e-fff"> })</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> queryId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">start_query</span><span class="sk-24292e-fff">({ sql: </span><span class="sk-032f62-99ffe4">"SELECT ..."</span><span class="sk-24292e-fff"> })</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">fetch_results</span><span class="sk-24292e-fff">({ queryId, mode: </span><span class="sk-032f62-99ffe4">"inject"</span><span class="sk-24292e-fff"> })</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">create_chart</span><span class="sk-24292e-fff">({ chartType: </span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, data: results.rows, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> })</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">create_chart</span><span class="sk-24292e-fff">({ chartType: </span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, data: results.rows, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> })</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>そのJavaScriptは、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>WorkerLoader</u></a>を経由して、サンドボックス化されたDynamic Worker分離で実行されます。モデルは、複雑な複数ステップのワークフローを1回のラウンドトリップで、すでに非常に慣れ親しんでいる言語で表現することができます。より速く、より安価で、生成されるワークフローはコードとして監査可能です。</p>
 <h3>セキュリティモデルはデータモデル</h3>
 <p>Skipperの処理はすべて、呼び出し元のユーザーとして実行されます。テーブルへのアクセス権限がない場合、Skipperは代わりにクエリを実行できません。PIIの送信を要求すると、許可が確認されます。保存したクエリがチームメンバーと共有される場合、グループメンバーシップが変更されるため、保存時ではなく閲覧時にアクセスが確認されます。</p>
 <p>共有ダッシュボードには独自のひねりがあります。一つのプレースホルダーdivとスクリプトタグで、あらゆるCloudflareツールに埋め込むことができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> data-skipper-dashboard</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"dash-123"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://skipper.cloudflare.com/embed.js"</span><span class="sk-6f42c1-ffc799"> async</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://skipper.cloudflare.com/embed.js"</span><span class="sk-6f42c1-ffc799"> async</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>iframeはコンテンツに合わせて自動サイズ変更します。コンテンツセキュリティポリシー（CSP）<code>frame-ancestors</code> は、企業ドメイン外からの埋め込みをブロックします。Cloudflare Accessは依然としてiframeコンテンツにアクセスできます。そのため、認証されていない閲覧者はデータを見るのではなく、iframeでAccessログインページにアクセスします。所有者以外の閲覧者は、元のテーブルに対してチェックされます。アクセス権限がない場合は、リクエストするために適切なグループに指し示されます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

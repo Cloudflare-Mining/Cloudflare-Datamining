@@ -55,8 +55,30 @@
 <p>これをターミナルから実行すれば、すぐに体感できます！Angular、Next、Qwik、Remixといった、ファーストクラスでしっかりサポートされているフルスタックフレームワークのCLIと統合するこの<a href="https://blog.cloudflare.com/making-cloudflare-for-web">http://blog.cloudflare.com/making-cloudflare-for-web新たなCLI体験</a>では、新しいプロジェクトの作成の在り方を完全にコントロールすることができます。また、このツールから、ウィザードのような操作で、強力なスターターテンプレートを用い様々なWorkersをデプロイできます。</p>
 <h3>アプリケーションに必要なものすべてが1か所でみつかる</h3>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>PagesとWorkersのプロジェクトリストダッシュボードを統合したことで、体験の統合に一歩近づきました。アプリケーションをデプロイ後、すべてのPagesとWorkersが1つのページに表示され、ダッシュボードの中をこまごまと移動する必要がなくなります。Workers / Pages Functionsの利用状況を1か所で把握できます。将来的には、これらのカードは「Pages」や「Workers」ではなく、アセットや機能、リソースを組み合わせた「プロジェクト」として識別できるようになるでしょう。</p>
 <div id="html-block-k2s" class="html-block">
 	<div style="padding-top:56.25%"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/729d2f3c66c717696b784e01b30d6e64/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F729d2f3c66c717696b784e01b30d6e64%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>

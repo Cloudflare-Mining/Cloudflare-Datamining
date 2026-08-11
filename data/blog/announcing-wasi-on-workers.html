@@ -19,20 +19,50 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   Compiling</span><span class="sk-032f62-99ffe4"> hello_world</span><span class="sk-032f62-99ffe4"> v0.1.0</span><span class="sk-24292e-fff"> (/Users/benyule/hello_world)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Finished</span><span class="sk-032f62-99ffe4"> release</span><span class="sk-24292e-fff"> [optimized] target(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) in 0.28s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./target/release/hello_world</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>It doesn’t get much simpler than this. You’ll notice we only define a main() function followed by a println to stdout.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, let’s take the exact same program and compile against the wasm32-wasi target, and run it in an ‘off the shelf’ wasm runtime such as <a href="https://wasmtime.dev" target="_blank" rel="noopener noreferrer">Wasmtime</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> --target</span><span class="sk-032f62-99ffe4"> wasm32-wasi</span><span class="sk-005cc5-99ffe4"> --release</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wasmtime</span><span class="sk-032f62-99ffe4"> target/wasm32-wasi/release/hello_world.wasm</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Neat! The same code compiles and runs in multiple POSIX environments.</p>
 <p>Finally, let’s take the binary we just generated for Wasmtime, but instead publish it to Workers using Wrangler2.</p>
@@ -40,7 +70,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler@wasm</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> target/wasm32-wasi/release/hello_world.wasm</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> http://localhost:8787/</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Unsurprisingly, it works! The same code is compatible in multiple POSIX environments and the same binary is compatible across multiple WASM runtimes.</p>
 <h3>Running your CLI apps in the cloud</h3>
@@ -49,7 +83,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> git@github.com:sharkdp/hexyl.git</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> ./hexyl</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> --target</span><span class="sk-032f62-99ffe4"> wasm32-wasi</span><span class="sk-005cc5-99ffe4"> --release</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> --target</span><span class="sk-032f62-99ffe4"> wasm32-wasi</span><span class="sk-005cc5-99ffe4"> --release</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And without further modification we were able to take a real-world program and create something we can now run or deploy. Again, let's tell wrangler2 to preview hexyl, but this time give it some input.</p>
 <div class="emdash-code">
@@ -59,22 +97,38 @@
 <span class="line"><span class="sk-6f42c1-ffc799">┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">│00000000│</span><span class="sk-005cc5-ffc799"> 48</span><span class="sk-005cc5-ffc799"> 65</span><span class="sk-032f62-99ffe4"> 6c</span><span class="sk-032f62-99ffe4"> 6c</span><span class="sk-032f62-99ffe4"> 6f</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-005cc5-ffc799"> 77</span><span class="sk-032f62-99ffe4"> 6f</span><span class="sk-032f62-99ffe4"> ┊</span><span class="sk-005cc5-ffc799"> 72</span><span class="sk-032f62-99ffe4"> 6c</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-005cc5-ffc799"> 21</span><span class="sk-032f62-99ffe4"> 0a</span><span class="sk-032f62-99ffe4">          │Hello</span><span class="sk-032f62-99ffe4"> wo┊rld!_</span><span class="sk-032f62-99ffe4">   │</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Give it a try yourself by hitting <a href="https://hexly.examples.workers.dev" target="_blank" rel="noopener noreferrer">https://hexyl.examples.workers.dev</a>.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "Hello world\!"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-032f62-99ffe4"> https://hexyl.examples.workers.dev/</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> --data-binary</span><span class="sk-032f62-99ffe4"> @-</span><span class="sk-005cc5-99ffe4"> --output</span><span class="sk-032f62-99ffe4"> -</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "Hello world\!"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-032f62-99ffe4"> https://hexyl.examples.workers.dev/</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> --data-binary</span><span class="sk-032f62-99ffe4"> @-</span><span class="sk-005cc5-99ffe4"> --output</span><span class="sk-032f62-99ffe4"> -</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A more useful example, but requires a bit more work, would be to deploy a utility such as swc (swc.rs), to the cloud and use it as an on demand JavaScript/TypeScript transpilation service. Here, we have a few extra steps to ensure that the compiled output is as small as possible, but it otherwise runs out-of-the-box. Those steps are detailed in <a href="https://github.com/zebp/wasi-example-swc" target="_blank" rel="noopener noreferrer">https://github.com/zebp/wasi-example-swc</a>, but for now let’s gloss over that and interact with the hosted example.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> "const x = (x, y) =&gt; x * y;"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> --data-binary</span><span class="sk-032f62-99ffe4"> @-</span><span class="sk-032f62-99ffe4"> https://swc-wasi.examples.workers.dev/</span><span class="sk-005cc5-99ffe4"> --output</span><span class="sk-032f62-99ffe4"> -</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> x=function</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">a,b</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">{return</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">b}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> x=function</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">a,b</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">{return</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">b}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we can also do the same with C/C++, but requires a little more lifting to get our Makefile right. Here we show an example of compiling zstd and uploading it as a streaming compression service.</p>
 <p><a href="https://github.com/zebp/wasi-example-zstd" target="_blank" rel="noopener noreferrer">https://github.com/zebp/wasi-example-zstd</a></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> "Hello world\!"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-032f62-99ffe4"> https://zstd.examples.workers.dev/</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> --data-binary</span><span class="sk-032f62-99ffe4"> @-</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> file</span><span class="sk-032f62-99ffe4"> -</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> "Hello world\!"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> curl</span><span class="sk-032f62-99ffe4"> https://zstd.examples.workers.dev/</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> --data-binary</span><span class="sk-032f62-99ffe4"> @-</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> file</span><span class="sk-032f62-99ffe4"> -</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>What if I want to use WASI from within a JavaScript Worker?</h3>
 <p>Wrangler can make it really easy to deploy code without having to worry about the Workers ecosystem, but in some cases you may actually want to invoke your WASI based WASM module from Javascript. This can be achieved with the following simple boilerplate. An updated README will be kept at <a href="https://github.com/cloudflare/workers-wasi" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/workers-wasi</a>.</p>
@@ -103,7 +157,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // Finally, let's reply with the WASM's output.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(stdout.readable);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now with our JavaScript boilerplate and wasm, we can easily deploy our worker with Wrangler’s WASM feature.</p>
 <div class="emdash-code">
@@ -111,7 +169,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-032f62-99ffe4"> Upload:</span><span class="sk-005cc5-ffc799"> 473.89</span><span class="sk-032f62-99ffe4"> KiB</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-032f62-99ffe4"> gzip:</span><span class="sk-005cc5-ffc799"> 163.79</span><span class="sk-032f62-99ffe4"> KiB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Uploaded</span><span class="sk-032f62-99ffe4"> wasi-javascript</span><span class="sk-24292e-fff"> (2.75 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Published</span><span class="sk-032f62-99ffe4"> wasi-javascript</span><span class="sk-24292e-fff"> (0.30 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  wasi-javascript.zeb.workers.dev</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  wasi-javascript.zeb.workers.dev</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Back to the future</h2>
 <p>For those of you who have been around for the better part of the past couple of decades, you may notice this looks very similar to RFC3875, better known as CGI (The Common Gateway Interface). While our example here certainly does not conform to the specification, you can imagine how this can be extended to turn the stdin of a basic 'command line' application into a full-blown http handler.</p>

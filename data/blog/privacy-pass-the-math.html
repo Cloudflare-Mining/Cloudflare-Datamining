@@ -113,8 +113,30 @@
 </ul>
 <p>Note that correctness follows since</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">A</span><span class="sk-6f42c1-ffc799">' = sG + cY = (k-cx)G + cxG = kG and B'</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sM</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> cZ</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> r</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">k-cx</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">T</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> crxT</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> krT</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> kM</span><span class="sk-24292e-fff"> </span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">A</span><span class="sk-6f42c1-ffc799">' = sG + cY = (k-cx)G + cxG = kG and B'</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sM</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> cZ</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> r</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">k-cx</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">T</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> crxT</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> krT</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> kM</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We write DLEQ(Z/M == Y/G) to denote the proof that is created by S and validated by C.In summary, if both parties have a consistent view of <code>(G,Y)</code> for the same epoch then the proof should verify correctly. As long as the discrete log problem remains hard to solve, then this proof remains zero-knowledge (in the random oracle model). For our use-case the proof verifies that the same key <code>x</code> is used for each invocation of the protocol, as long as <code>(G,Y)</code> does not change.</p>
 <h4>Batching the proofs</h4>
 <p>Unfortunately, a drawback of the proof above is that it has to be instantiated for each individual token sent in the protocol. Since we send 30 tokens by default, this would require the server to also send 30 DLEQ proofs (with two EC elements each) and the client to verify each proof individually.</p>
@@ -127,7 +149,11 @@
 	<li>S generates composite group elements:</li>
 </ul>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">M</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (c_1*M_1) + ... + (</span><span class="sk-6f42c1-ffc799">c_n*M_n</span><span class="sk-24292e-fff">), Z = (</span><span class="sk-6f42c1-ffc799">c_1*Z_1</span><span class="sk-24292e-fff">) + ... + (</span><span class="sk-6f42c1-ffc799">c_n*Z_n</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">M</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (c_1*M_1) + ... + (</span><span class="sk-6f42c1-ffc799">c_n*M_n</span><span class="sk-24292e-fff">), Z = (</span><span class="sk-6f42c1-ffc799">c_1*Z_1</span><span class="sk-24292e-fff">) + ... + (</span><span class="sk-6f42c1-ffc799">c_n*Z_n</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>S calculates <code>(c,s) ← DLEQ(M:Z == G:Y)</code> and sends <code>(c,s)</code> to C, where <code>DLEQ(Z/M == Y/G)</code> refers to the proof protocol used in the non-batching case.</li>
@@ -140,7 +166,11 @@
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">c_1*Z_1</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> c_1</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x*M_1</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">c_1*M_1</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">c_2*Z_2</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> c_2</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">x*M_2</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">c_2*M_2</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">c_1*Z_1</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">+</span><span class="sk-24292e-fff"> (c_2*Z_2) = x[(c_1</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">M_1) + (c_2</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">M_2)]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Therefore, all the elliptic curve points will have the same discrete log relation as each other, and hence equal to the secret key that is committed to by the edge.</p>
 <h4>Benefits of V-OPRF vs blind RSA</h4>

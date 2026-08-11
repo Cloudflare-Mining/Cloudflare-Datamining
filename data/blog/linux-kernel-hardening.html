@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-005cc5-99ffe4"> -a</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Linux</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> 6.1.0-18-cloud-amd64</span><span class="sk-6a737d-8b8b8b94"> #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> getenforce</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Enforcing</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Enforcing</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Now we need to do some research. First, we see that we’re running 6.1.76 Linux Kernel. If we explore the source code, we would see that <a href="https://elixir.bootlin.com/linux/v6.1.76/source/security/selinux/hooks.c#L107" target="_blank" rel="noopener noreferrer">inside the kernel, the SELinux configuration is stored in a singleton structure</a>, which <a href="https://elixir.bootlin.com/linux/v6.1.76/source/security/selinux/include/security.h#L92" target="_blank" rel="noopener noreferrer">is defined</a> as follows:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> selinux_state {</span></span>
@@ -45,17 +67,29 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	struct</span><span class="sk-24292e-fff"> selinux_avc </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">avc;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	struct</span><span class="sk-24292e-fff"> selinux_policy __rcu </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">policy;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	struct</span><span class="sk-24292e-fff"> mutex policy_mutex;</span></span>
-<span class="line"><span class="sk-24292e-fff">} __randomize_layout;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} __randomize_layout;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>From the above, we can see that if the kernel configuration has <code>CONFIG_SECURITY_SELINUX_DEVELOP</code> enabled, the structure would have a boolean variable <code>enforcing</code>, which controls the enforcement status of SELinux at runtime. This is exactly what the above <code>$ sudo getenforce</code> command returns. We can double check that the Debian kernel indeed has the configuration option enabled:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> CONFIG_SECURITY_SELINUX_DEVELOP</span><span class="sk-032f62-99ffe4"> /boot/config-`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span></span>
-<span class="line"><span class="sk-24292e-fff">CONFIG_SECURITY_SELINUX_DEVELOP</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">CONFIG_SECURITY_SELINUX_DEVELOP</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Good! Now that we have a variable in the kernel, which is responsible for some security enforcement, we can try to attack it. One problem though is the <code>__randomize_layout</code> attribute: since <code>CONFIG_SECURITY_SELINUX_DISABLE</code> is actually not set for our Debian kernel, normally <code>enforcing</code> would be the first member of the struct. Thus if we know where the struct is, we immediately know the position of the <code>enforcing</code> flag. With <code>__randomize_layout</code>, during kernel compilation the compiler might place members at arbitrary positions within the struct, so it is harder to create generic exploits. But arbitrary struct randomization within the kernel <a href="https://elixir.bootlin.com/linux/v6.1.76/source/security/Kconfig.hardening#L301" target="_blank" rel="noopener noreferrer">may introduce performance impact</a>, so is often disabled and it is disabled for the Debian kernel:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> RANDSTRUCT</span><span class="sk-032f62-99ffe4"> /boot/config-`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span></span>
-<span class="line"><span class="sk-24292e-fff">CONFIG_RANDSTRUCT_NONE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">CONFIG_RANDSTRUCT_NONE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can also confirm the compiled position of the <code>enforcing</code> flag using the <a href="https://git.kernel.org/pub/scm/devel/pahole/pahole.git" target="_blank" rel="noopener noreferrer">pahole tool</a> and either kernel debug symbols, if available, or (on modern kernels, if enabled) in-kernel <a href="https://www.kernel.org/doc/html/next/bpf/btf.html" target="_blank" rel="noopener noreferrer">BTF</a> information. We will use the latter:</p>
 <div class="emdash-code">
@@ -78,13 +112,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	/*</span><span class="sk-032f62-99ffe4"> size:</span><span class="sk-032f62-99ffe4"> 104,</span><span class="sk-032f62-99ffe4"> cachelines:</span><span class="sk-032f62-99ffe4"> 2,</span><span class="sk-032f62-99ffe4"> members:</span><span class="sk-005cc5-ffc799"> 9</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	/*</span><span class="sk-032f62-99ffe4"> sum</span><span class="sk-032f62-99ffe4"> members:</span><span class="sk-032f62-99ffe4"> 99,</span><span class="sk-032f62-99ffe4"> holes:</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> sum</span><span class="sk-032f62-99ffe4"> holes:</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	/*</span><span class="sk-032f62-99ffe4"> last</span><span class="sk-032f62-99ffe4"> cacheline:</span><span class="sk-005cc5-ffc799"> 40</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So <code>enforcing</code> is indeed located at the start of the structure and we don’t even have to be a privileged user to confirm this.</p>
 <p>Great! All we need is the runtime address of the <code>selinux_state</code> variable inside the kernel:(shell/bash)</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> selinux_state</span><span class="sk-032f62-99ffe4"> /proc/kallsyms</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ffffffffbc3bcae0</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ffffffffbc3bcae0</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With all the information, we can write an almost textbook simple kernel module to manipulate the SELinux state:</p>
 <p>Mymod.c:</p>
@@ -107,11 +149,19 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">MODULE_DESCRIPTION</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"A somewhat malicious module"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">MODULE_AUTHOR</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Ignat Korchagin &lt;ignat@cloudflare.com&gt;"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">MODULE_LICENSE</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"GPL"</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">MODULE_LICENSE</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"GPL"</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And the respective <code>Kbuild</code> file:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">obj-m</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> mymod.o</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">obj-m</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> mymod.o</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With these two files we can build a full fledged kernel module according to <a href="https://docs.kernel.org/kbuild/modules.html" target="_blank" rel="noopener noreferrer">the official kernel docs</a>:</p>
 <div class="emdash-code">
@@ -126,16 +176,28 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  LD</span><span class="sk-24292e-fff"> [M]  /home/ignat/mymod/mymod.ko</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  BTF</span><span class="sk-24292e-fff"> [M] /home/ignat/mymod/mymod.ko</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Skipping</span><span class="sk-032f62-99ffe4"> BTF</span><span class="sk-032f62-99ffe4"> generation</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> /home/ignat/mymod/mymod.ko</span><span class="sk-032f62-99ffe4"> due</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> unavailability</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> vmlinux</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">make:</span><span class="sk-032f62-99ffe4"> Leaving</span><span class="sk-032f62-99ffe4"> directory</span><span class="sk-032f62-99ffe4"> '/usr/src/linux-headers-6.1.0-18-cloud-amd64'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">make:</span><span class="sk-032f62-99ffe4"> Leaving</span><span class="sk-032f62-99ffe4"> directory</span><span class="sk-032f62-99ffe4"> '/usr/src/linux-headers-6.1.0-18-cloud-amd64'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we try to load this module now, the system may not allow it due to the SELinux policy:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> insmod</span><span class="sk-032f62-99ffe4"> mymod.ko</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">insmod:</span><span class="sk-032f62-99ffe4"> ERROR:</span><span class="sk-032f62-99ffe4"> could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> load</span><span class="sk-032f62-99ffe4"> module</span><span class="sk-032f62-99ffe4"> mymod.ko:</span><span class="sk-032f62-99ffe4"> Permission</span><span class="sk-032f62-99ffe4"> denied</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">insmod:</span><span class="sk-032f62-99ffe4"> ERROR:</span><span class="sk-032f62-99ffe4"> could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> load</span><span class="sk-032f62-99ffe4"> module</span><span class="sk-032f62-99ffe4"> mymod.ko:</span><span class="sk-032f62-99ffe4"> Permission</span><span class="sk-032f62-99ffe4"> denied</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can workaround it by copying the module into the standard module path somewhere:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-032f62-99ffe4"> mymod.ko</span><span class="sk-032f62-99ffe4"> /lib/modules/`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">/kernel/crypto/</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-032f62-99ffe4"> mymod.ko</span><span class="sk-032f62-99ffe4"> /lib/modules/`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">/kernel/crypto/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now let’s try it out:</p>
 <div class="emdash-code">
@@ -143,7 +205,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Enforcing</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> insmod</span><span class="sk-032f62-99ffe4"> /lib/modules/`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">/kernel/crypto/mymod.ko</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> getenforce</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Permissive</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Permissive</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Not only did we disable the SELinux protection via a malicious kernel module, we did it quietly. Normal <code>sudo setenforce 0</code>, even if allowed, would go through the official <a href="https://elixir.bootlin.com/linux/v6.1.76/source/security/selinux/selinuxfs.c#L173" target="_blank" rel="noopener noreferrer">selinuxfs interface and would emit an audit message</a>. Our code manipulated the kernel memory directly, so no one was alerted. This illustrates why uncontrolled kernel module loading is very dangerous and that is why most security standards and commercial security monitoring products advocate for close monitoring of kernel module loading.</p>
 <p>But we don’t need to monitor kernel modules at Cloudflare. Let’s repeat the exercise on a Cloudflare production kernel (module recompilation skipped for brevity):</p>
@@ -151,17 +217,29 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-005cc5-99ffe4"> -a</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Linux</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> 6.6.17-cloudflare-2024.2.9</span><span class="sk-6a737d-8b8b8b94"> #1 SMP PREEMPT_DYNAMIC Mon Sep 27 00:00:00 UTC 2010 x86_64 GNU/Linux</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> insmod</span><span class="sk-032f62-99ffe4"> /lib/modules/`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">/kernel/crypto/mymod.ko</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">insmod:</span><span class="sk-032f62-99ffe4"> ERROR:</span><span class="sk-032f62-99ffe4"> could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> insert</span><span class="sk-032f62-99ffe4"> module</span><span class="sk-032f62-99ffe4"> /lib/modules/6.6.17-cloudflare-2024.2.9/kernel/crypto/mymod.ko:</span><span class="sk-032f62-99ffe4"> Key</span><span class="sk-032f62-99ffe4"> was</span><span class="sk-032f62-99ffe4"> rejected</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> service</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">insmod:</span><span class="sk-032f62-99ffe4"> ERROR:</span><span class="sk-032f62-99ffe4"> could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> insert</span><span class="sk-032f62-99ffe4"> module</span><span class="sk-032f62-99ffe4"> /lib/modules/6.6.17-cloudflare-2024.2.9/kernel/crypto/mymod.ko:</span><span class="sk-032f62-99ffe4"> Key</span><span class="sk-032f62-99ffe4"> was</span><span class="sk-032f62-99ffe4"> rejected</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> service</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We get a <code>Key was rejected by service</code> error when trying to load a module, and the kernel log will have the following message:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~/mymod$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> dmesg</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-24292e-fff">[41515.037031] Loading of unsigned module is rejected</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[41515.037031] Loading of unsigned module is rejected</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is because the Cloudflare kernel <a href="https://elixir.bootlin.com/linux/v6.6.17/source/kernel/module/Kconfig#L211" target="_blank" rel="noopener noreferrer">requires all the kernel modules to have a valid signature</a>, so we don’t even have to worry about a malicious module being loaded at some point:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> MODULE_SIG_FORCE</span><span class="sk-032f62-99ffe4"> /boot/config-`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span></span>
-<span class="line"><span class="sk-24292e-fff">CONFIG_MODULE_SIG_FORCE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">CONFIG_MODULE_SIG_FORCE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For completeness it is worth noting that the Debian stock kernel also supports module signatures, but does not enforce it:</p>
 <div class="emdash-code">
@@ -169,7 +247,11 @@
 <span class="line"><span class="sk-24292e-fff">CONFIG_MODULE_SIG_FORMAT</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
 <span class="line"><span class="sk-24292e-fff">CONFIG_MODULE_SIG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># CONFIG_MODULE_SIG_FORCE is not set</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The above configuration means that the kernel will validate a module signature, if available. But if not - the module will be loaded anyway with a warning message emitted and the <a href="https://docs.kernel.org/admin-guide/tainted-kernels.html" target="_blank" rel="noopener noreferrer">kernel will be tainted</a>.</p>
 <h3>Key management for kernel module signing</h3>
@@ -197,7 +279,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	size_t</span><span class="sk-24292e-fff"> memsz;</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"><span class="sk-24292e-fff">...</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">long</span><span class="sk-6f42c1-ffc799"> kexec_load</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> long</span><span class="sk-e36209-fff"> entry</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> long</span><span class="sk-e36209-fff"> nr_segments</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> kexec_segment </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">segments</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> long</span><span class="sk-e36209-fff"> flags</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">long</span><span class="sk-6f42c1-ffc799"> kexec_load</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> long</span><span class="sk-e36209-fff"> entry</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> long</span><span class="sk-e36209-fff"> nr_segments</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> kexec_segment </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">segments</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> long</span><span class="sk-e36209-fff"> flags</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So the kernel expects just a collection of buffers with code to execute. Back in those days there was not much desire to do a lot of data parsing inside the kernel, so the idea was to parse the to-be-executed kernel image in user space and provide the kernel with only the data it needs. Also, to switch kernels live, we need an intermediate program which would take over while the old kernel is shutting down and the new kernel has not yet been executed. In the kexec world this program is called <a href="https://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git/tree/purgatory" target="_blank" rel="noopener noreferrer">purgatory</a>. Thus the problem is evident: we give the kernel a bunch of code and it will happily execute it at the highest privilege level. But instead of the original kernel or purgatory code, we can easily provide code similar to the one demonstrated earlier in this post, which disables SELinux (or does something else to the kernel).</p>
 <p>At Cloudflare we have had <code>kexec_load()</code> disabled for some time now just because of this. The advantage of faster reboots with kexec comes with <a href="https://elixir.bootlin.com/linux/v6.6.17/source/kernel/Kconfig.kexec#L30" target="_blank" rel="noopener noreferrer">a (small) risk of improperly initialized hardware</a>, so it was not worth using it even without the security concerns. However, kexec does provide one useful feature — it is the foundation of the Linux kernel <a href="https://docs.kernel.org/admin-guide/kdump/kdump.html" target="_blank" rel="noopener noreferrer">crashdumping solution</a>. In a nutshell, if a kernel crashes in production (due to a bug or some other error), a backup kernel (previously loaded with kexec) can take over, collect and save the memory dump for further investigation. This allows to more effectively investigate kernel and other issues in production, so it is a powerful tool to have.</p>
@@ -211,7 +297,11 @@
 <span class="line"><span class="sk-24292e-fff">CONFIG_KEXEC_SIG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
 <span class="line"><span class="sk-24292e-fff">CONFIG_KEXEC_SIG_FORCE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
 <span class="line"><span class="sk-24292e-fff">CONFIG_KEXEC_BZIMAGE_VERIFY_SIG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Above we ensure that the legacy <code>kexec_load()</code> system call is disabled by disabling <code>CONFIG_KEXEC</code>, but still can configure Linux Kernel crashdumping via the new <code>kexec_file_load()</code> system call via <code>CONFIG_KEXEC_FILE=y</code> with enforced signature checks (<code>CONFIG_KEXEC_SIG=y</code> and <code>CONFIG_KEXEC_SIG_FORCE=y</code>).</p>
 <p>Note that stock Debian kernel has the legacy <code>kexec_load()</code> system call enabled and does not enforce signature checks for <code>kexec_file_load()</code> (similar to module signature checks):</p>
@@ -223,13 +313,21 @@
 <span class="line"><span class="sk-24292e-fff">CONFIG_KEXEC_SIG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># CONFIG_KEXEC_SIG_FORCE is not set</span></span>
 <span class="line"><span class="sk-24292e-fff">CONFIG_KEXEC_BZIMAGE_VERIFY_SIG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Kernel Address Space Layout Randomization (KASLR)</h2>
 <p>Even on the stock Debian kernel if you try to repeat the exercise we described in the “Secure boot” section of this post after a system reboot, you will likely see it would fail to disable SELinux now. This is because we hardcoded the kernel address of the <code>selinux_state</code> structure in our malicious kernel module, but the address changed now:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> selinux_state</span><span class="sk-032f62-99ffe4"> /proc/kallsyms</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ffffffffb41bcae0</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ffffffffb41bcae0</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://docs.kernel.org/security/self-protection.html#kernel-address-space-layout-randomization-kaslr" target="_blank" rel="noopener noreferrer">Kernel Address Space Layout Randomization (or KASLR)</a> is a simple concept: it slightly and randomly shifts the kernel code and data on each boot:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -239,7 +337,11 @@
 <p>Both the Cloudflare kernel and the Debian one have this feature enabled:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> RANDOMIZE_BASE</span><span class="sk-032f62-99ffe4"> /boot/config-`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span></span>
-<span class="line"><span class="sk-24292e-fff">CONFIG_RANDOMIZE_BASE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">CONFIG_RANDOMIZE_BASE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Restricted kernel pointers</h3>
 <p>While KASLR helps with targeted exploits, it is quite easy to bypass since everything is shifted by a single random offset as shown on the diagram above. Thus if the attacker knows at least one runtime kernel address, they can recover this offset by subtracting the runtime address from the compile time address of the same symbol (function or data structure) from the kernel’s System.map file. Once they know the offset, they can recover the addresses of all other symbols by adjusting them by this offset.</p>
@@ -248,17 +350,29 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> kernel.kptr_restrict=</span><span class="sk-005cc5-ffc799">1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">kernel.kptr_restrict</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> selinux_state</span><span class="sk-032f62-99ffe4"> /proc/kallsyms</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">0000000000000000</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000000</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Privileged users can still see the pointers:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> selinux_state</span><span class="sk-032f62-99ffe4"> /proc/kallsyms</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ffffffffb41bcae0</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ffffffffb41bcae0</span><span class="sk-032f62-99ffe4"> B</span><span class="sk-032f62-99ffe4"> selinux_state</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Similar to <a href="https://www.kernel.org/doc/html/latest/admin-guide/sysctl/kernel.html#kptr-restrict" target="_blank" rel="noopener noreferrer">kptr_restrict sysctl</a> there is also <a href="https://www.kernel.org/doc/html/latest/admin-guide/sysctl/kernel.html#dmesg-restrict" target="_blank" rel="noopener noreferrer">dmesg_restrict</a>, which if set, would prevent regular users from reading the kernel log (which may also leak kernel pointers via its messages). While you need to explicitly set <a href="https://www.kernel.org/doc/html/latest/admin-guide/sysctl/kernel.html#kptr-restrict" target="_blank" rel="noopener noreferrer">kptr_restrict sysctl</a> to a non-zero value on each boot (or use some system sysctl configuration utility, like <a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-sysctl.service.html" target="_blank" rel="noopener noreferrer">this one</a>), you can configure <a href="https://www.kernel.org/doc/html/latest/admin-guide/sysctl/kernel.html#dmesg-restrict" target="_blank" rel="noopener noreferrer">dmesg_restrict</a> initial value via the <code>CONFIG_SECURITY_DMESG_RESTRICT</code> kernel configuration option. Both the Cloudflare kernel and the Debian one enforce <a href="https://www.kernel.org/doc/html/latest/admin-guide/sysctl/kernel.html#dmesg-restrict" target="_blank" rel="noopener noreferrer">dmesg_restrict</a> this way:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> CONFIG_SECURITY_DMESG_RESTRICT</span><span class="sk-032f62-99ffe4"> /boot/config-`</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4">`</span></span>
-<span class="line"><span class="sk-24292e-fff">CONFIG_SECURITY_DMESG_RESTRICT</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">CONFIG_SECURITY_DMESG_RESTRICT</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Worth noting that <code>/proc/kallsyms</code> and the kernel log are not the only sources of potential kernel pointer leaks. There is a lot of legacy in the Linux kernel and [new sources are continuously being found and patched]. That’s why it is very important to stay up to date with the latest kernel bugfix releases.</p>
 <h2>Lockdown LSM</h2>
@@ -266,7 +380,11 @@
 <p>BPF-LSM is a useful foundational piece for our kernel security, but in this post we want to mention another useful LSM module we use — <a href="https://man7.org/linux/man-pages/man7/kernel_lockdown.7.html" target="_blank" rel="noopener noreferrer">the Lockdown LSM</a>. Lockdown can be in three states (controlled by the <code>/sys/kernel/security/lockdown</code> special file):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /sys/kernel/security/lockdown</span></span>
-<span class="line"><span class="sk-24292e-fff">[none] integrity confidentiality</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[none] integrity confidentiality</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>none</code> is the state where nothing is enforced and the module is effectively disabled. When Lockdown is in the <code>integrity</code> state, the kernel tries to prevent any operation, which may compromise its integrity. We already covered some examples of these in this post: loading unsigned modules and executing unsigned code via KEXEC. But there are other potential ways (which are mentioned in <a href="https://man7.org/linux/man-pages/man7/kernel_lockdown.7.html" target="_blank" rel="noopener noreferrer">the LSM’s man page</a>), all of which this LSM tries to block. <code>confidentiality</code> is the most restrictive mode, where Lockdown will also try to prevent any information leakage from the kernel. In practice this may be too restrictive for server workloads as it blocks all runtime debugging capabilities, like <code>perf</code> or eBPF.</p>
 <p>Let’s see the Lockdown LSM in action. On a barebones Debian system the initial state is <code>none</code> meaning nothing is locked down:</p>
@@ -274,30 +392,50 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-005cc5-99ffe4"> -a</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Linux</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> 6.1.0-18-cloud-amd64</span><span class="sk-6a737d-8b8b8b94"> #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /sys/kernel/security/lockdown</span></span>
-<span class="line"><span class="sk-24292e-fff">[none] integrity confidentiality</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[none] integrity confidentiality</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can switch the system into the <code>integrity</code> mode:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> integrity</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /sys/kernel/security/lockdown</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">integrity</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /sys/kernel/security/lockdown</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">none</span><span class="sk-24292e-fff"> [integrity] confidentiality</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">none</span><span class="sk-24292e-fff"> [integrity] confidentiality</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It is worth noting that we can only put the system into a more restrictive state, but not back. That is, once in <code>integrity</code> mode we can only switch to <code>confidentiality</code> mode, but not back to <code>none</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> none</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /sys/kernel/security/lockdown</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">none</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tee:</span><span class="sk-032f62-99ffe4"> /sys/kernel/security/lockdown:</span><span class="sk-032f62-99ffe4"> Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tee:</span><span class="sk-032f62-99ffe4"> /sys/kernel/security/lockdown:</span><span class="sk-032f62-99ffe4"> Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we can see that even on a stock Debian kernel, which as we discovered above, does not enforce module signatures by default, we cannot load a potentially malicious unsigned kernel module anymore:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> insmod</span><span class="sk-032f62-99ffe4"> mymod/mymod.ko</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">insmod:</span><span class="sk-032f62-99ffe4"> ERROR:</span><span class="sk-032f62-99ffe4"> could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> insert</span><span class="sk-032f62-99ffe4"> module</span><span class="sk-032f62-99ffe4"> mymod/mymod.ko:</span><span class="sk-032f62-99ffe4"> Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">insmod:</span><span class="sk-032f62-99ffe4"> ERROR:</span><span class="sk-032f62-99ffe4"> could</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> insert</span><span class="sk-032f62-99ffe4"> module</span><span class="sk-032f62-99ffe4"> mymod/mymod.ko:</span><span class="sk-032f62-99ffe4"> Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And the kernel log will helpfully point out that this is due to Lockdown LSM:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> dmesg</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-24292e-fff">[21728.820129] Lockdown: insmod: unsigned module loading is restricted; </span><span class="sk-6f42c1-ffc799">see</span><span class="sk-032f62-99ffe4"> man</span><span class="sk-032f62-99ffe4"> kernel_lockdown.7</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[21728.820129] Lockdown: insmod: unsigned module loading is restricted; </span><span class="sk-6f42c1-ffc799">see</span><span class="sk-032f62-99ffe4"> man</span><span class="sk-032f62-99ffe4"> kernel_lockdown.7</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As we can see, Lockdown LSM helps to tighten the security of a kernel, which otherwise may not have other enforcing bits enabled, like the stock Debian one.</p>
 <p>If you compile your own kernel, you can go one step further and set <a href="https://elixir.bootlin.com/linux/v6.6.17/source/security/lockdown/Kconfig#L33" target="_blank" rel="noopener noreferrer">the initial state of the Lockdown LSM to be more restrictive than none from the start</a>. This is exactly what we did for the Cloudflare production kernel:</p>
@@ -305,7 +443,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ignat@dev:~$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-032f62-99ffe4"> LOCK_DOWN</span><span class="sk-032f62-99ffe4"> /boot/config-6.6.17-cloudflare-2024.2.9</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># CONFIG_LOCK_DOWN_KERNEL_FORCE_NONE is not set</span></span>
 <span class="line"><span class="sk-24292e-fff">CONFIG_LOCK_DOWN_KERNEL_FORCE_INTEGRITY</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">y</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY is not set</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY is not set</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Conclusion</h2>
 <p>In this post we reviewed some useful Linux kernel security configuration options we use at Cloudflare. This is only a small subset, and there are many more available and even more are being constantly developed, reviewed, and improved by the Linux kernel community. We hope that this post will shed some light on these security features and that, if you haven’t already, you may consider enabling them in your Linux systems.</p>

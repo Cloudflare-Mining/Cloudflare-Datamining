@@ -46,8 +46,30 @@
 <p>除了網站地圖外，智慧體還可直接從 HTTP 回應標頭中探索重要資源，具體來說就是使用 Link 回應標頭 (<a href="https://www.rfc-editor.org/rfc/rfc8288" target="_blank" rel="noopener noreferrer"><u>RFC 8288</u></a>)。與深埋在 HTML 內部的連結不同，Link 標頭本身就是 HTTP 回應的一部分；這表示智慧體無須解析任何標記，即可找到指向資源的連結：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-005cc5-fff"> OK</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>內容可存取性</h3>
 <p>將智慧體安裝到您的網站是一回事。確保其能實際讀取您的內容是另一回事。</p>
 <p>早在 2024 年 9 月，鑑於 AI 領域的發展速度之快，彷彿已是「上輩子的事」了，就曾提議 <a href="http://llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> 作為一種提供大型語言模型 (LLM) 友好的網站呈現方式，並能納入模型的上下文視窗。<a href="https://llmstxt.org" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> 是您站點根目錄下的純文字檔案，為智慧體提供了結構化的文字讀取清單：網站是什麼、網站上的內容和重要內容所在。可以將其想像成為供 LLM 讀取，而非供網路爬蟲索引的網站地圖：</p>
@@ -58,7 +80,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Getting</span><span class="sk-6f42c1-ffc799"> Started</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/start.md)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">API</span><span class="sk-6f42c1-ffc799"> Reference</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/api.md)</span></span>
 <span class="line"><span class="sk-24292e-fff">## </span><span class="sk-6f42c1-ffc799">Changelog</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>Markdown 內容協商</u></a>更進一步。當智慧體擷取任何頁面並傳送 <code>Accept: text/markdown</code> 標頭時，伺服器會用乾淨的 Markdown 版本回應，而不是 HTML。Markdown 版本所需的權杖數量要少得多，我們在某些案例中測得的權杖減少幅度高達 80%，這使得回應速度更快、成本更低；鑑於大多數智慧體工具預設存在的上下文視窗限制，這也使得回應內容更有可能被完整地取用。</p>
 <p>依預設，我們只會檢查網站是否正確處理 Markdown 內容協商，而不會檢查 llms.txt。您可自訂掃描，以選擇性地包含 llms.txt 。</p>
@@ -68,7 +94,11 @@
 <p><a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>內容訊號</u></a>讓您的操作更加具體。您可精確宣告 AI 能夠對您的內容執行哪些操作，而不僅限於允許或封鎖。在您的 <code>robots.txt</code> 中使用<code>內容訊號</code>指令，您可獨立進行三項控制：您的內容是否可用於 AI 訓練 (<code>ai-train</code>)，是否可用作 AI 推斷與事實依據構建 (<code>ai-input</code>)，以及是否該出現在搜尋結果中 (<code>search</code>)：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>相反，<a href="https://blog.cloudflare.com/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a> IETF 草案標準允許友好機器人進行身分驗證，並允許接收機器人請求的網站識別這些機器人。機器人會簽署其 HTTP 請求，而接收網站會使用機器人發布的公開金鑰來驗證這些簽名。</p>
 <p>這些公開金鑰位於知名端點，<code>/.well-known/http-message-signatures-directory</code>，我們會在掃描過程中檢查此端點。</p>
@@ -110,7 +140,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>當智慧體具備有助於執行特定任務的<a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u>智慧體技能</u></a>時，才能處於最佳效能狀態，但智慧體要如何探索網站提供哪些技能呢？我們提議這些網站可透過 <a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><code><u>.well-known/agent-skills/index.json</u></code></a> 提供此資訊，這是一個端點，能夠告知智慧體可用的技能及所在位置。您可能會注意到 <code>.well-known</code>標準 (<a href="https://datatracker.ietf.org/doc/html/rfc8615" target="_blank" rel="noopener noreferrer"><u>RFC 8615</u></a>) 已被眾多其他智慧體和授權標準採用 — 感謝 Cloudflare 的 Mark Nottingham 撰寫的標準，以及其他 IETF 貢獻者！</p>
 <p>許多網站需要您先登入才能存取。這使得人類難以讓智慧體代表其存取這些網站；正因如此，有些人採取了一種儘管可能存在安全隱患的變通做法：允許智慧體直接存取使用者的 Web 瀏覽器及其目前已登入的工作階段。</p>
@@ -136,7 +170,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "url": "https://www.example.com",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "options": {"agentReadiness": true}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>以身作則：升級 Cloudflare 文件</h2>
 <p>在我們建置用於衡量 Web 就緒程度的工具時，我們深知必須確保內部井然有序。我們的文件必須讓客戶使用的智慧體能夠輕鬆處理。</p>

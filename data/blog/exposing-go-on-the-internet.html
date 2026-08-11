@@ -15,8 +15,30 @@
 <span class="line"><span class="sk-24292e-fff">		tls.CurveP256,</span></span>
 <span class="line"><span class="sk-24292e-fff">		tls.X25519, </span><span class="sk-6a737d-8b8b8b94">// Go 1.8 only</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>If you can take the compatibility loss of the <em>Modern</em> configuration, you should then also set <code>MinVersion</code> and <code>CipherSuites</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">	MinVersion: tls.VersionTLS12,</span></span>
@@ -32,7 +54,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">		// but might be necessary for some clients</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">		// tls.TLS_RSA_WITH_AES_256_GCM_SHA384,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">		// tls.TLS_RSA_WITH_AES_128_GCM_SHA256,</span></span>
-<span class="line"><span class="sk-24292e-fff">	},</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	},</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Be aware that the Go implementation of the CBC cipher suites (the ones we disabled in <em>Modern</em> mode above) is vulnerable to the <a href="https://www.imperialviolet.org/2013/02/04/luckythirteen.html" target="_blank" rel="noopener noreferrer">Lucky13 attack</a>, even if <a href="https://github.com/golang/go/commit/f28cf8346c4ce7cb74bf97c7c69da21c43a78034" target="_blank" rel="noopener noreferrer">partial countermeasures were merged in 1.8</a>.</p>
 <p>Final caveat, all these recommendations apply only to the amd64 architecture, for which <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">fast, constant time implementations</a> of the crypto primitives (AES-GCM, ChaCha20-Poly1305, P256) are available. Other architectures are probably not fit for production use.</p>
@@ -48,7 +74,11 @@
 <span class="line"><span class="sk-24292e-fff">		http.</span><span class="sk-6f42c1-ffc799">Redirect</span><span class="sk-24292e-fff">(w, req, url, http.StatusMovedPermanently)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}),</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">go</span><span class="sk-d73a49-a0a0a0"> func</span><span class="sk-24292e-fff">() { log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(srv.</span><span class="sk-6f42c1-ffc799">ListenAndServe</span><span class="sk-24292e-fff">()) }()</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">go</span><span class="sk-d73a49-a0a0a0"> func</span><span class="sk-24292e-fff">() { log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(srv.</span><span class="sk-6f42c1-ffc799">ListenAndServe</span><span class="sk-24292e-fff">()) }()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can use the <a href="https://www.ssllabs.com/ssltest" target="_blank" rel="noopener noreferrer">SSL Labs test</a> to check that everything is configured correctly.</p>
 <h3><code>net/http</code></h3>
@@ -58,7 +88,11 @@
 <p>Applying timeouts is a matter of resource control. Even if goroutines are cheap, file descriptors are always limited. A connection that is stuck, not making progress or is maliciously stalling should not be allowed to consume them.</p>
 <p>A server that ran out of file descriptors will fail to accept new connections with errors like</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http:</span><span class="sk-032f62-99ffe4"> Accept</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> accept</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-24292e-fff"> [::]:80: accept: too many open files; </span><span class="sk-6f42c1-ffc799">retrying</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> 1s</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http:</span><span class="sk-032f62-99ffe4"> Accept</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> accept</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-24292e-fff"> [::]:80: accept: too many open files; </span><span class="sk-6f42c1-ffc799">retrying</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> 1s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A zero/default <code>http.Server</code>, like the one used by the package-level helpers <code>http.ListenAndServe</code> and <code>http.ListenAndServeTLS</code>, comes with no timeouts. You don't want that.</p>
 <p>There are three main timeouts exposed in <code>http.Server</code>: <code>ReadTimeout</code>, <code>WriteTimeout</code> and <code>IdleTimeout</code>. You set them by explicitly using a Server:</p>
@@ -70,7 +104,11 @@
 <span class="line"><span class="sk-24292e-fff">    TLSConfig:    tlsConfig,</span></span>
 <span class="line"><span class="sk-24292e-fff">    Handler:      serveMux,</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">log.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(srv.</span><span class="sk-6f42c1-ffc799">ListenAndServeTLS</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">))</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">log.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(srv.</span><span class="sk-6f42c1-ffc799">ListenAndServeTLS</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>ReadTimeout</code> covers the time from when the connection is accepted to when the request body is fully read (if you do read the body, otherwise to the end of the headers). It's implemented in <code>net/http</code> by calling <code>SetReadDeadline</code> <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L750" target="_blank" rel="noopener noreferrer">immediately after Accept</a>.</p>
 <p>The problem with a <code>ReadTimeout</code> is that it doesn't allow a server to give the client more time to stream the body of a request based on the path or the content. Go 1.8 introduces <code>ReadHeaderTimeout</code>, which only covers up to the request headers. However, there's still no clear way to do reads with timeouts from a Handler. Different designs are being discussed in issue <a href="https://golang.org/issue/16100" target="_blank" rel="noopener noreferrer">#16100</a>.</p>

@@ -30,8 +30,30 @@
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>각 인스턴스를 트리거하고 로직을 실행하며 메타데이터를 저장하기 위해 SQLite가 지원하는 <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>를 활용합니다. 이는 분산 시스템 내에서 조정과 저장을 위한 간단하지만 강력한 기본 요소입니다.&nbsp;</p>
 <p>제어 영역에서는 실제 워크플로우 인스턴스를 실행하는 <em>Engine</em> 등의 일부 Durable Objects(단계, 재시도, 절전 모드)는 인스턴스당 1:1의 비율로 스핀업됩니다. 반면에 <em>계정</em> 은 해당 계정의 모든 워크플로와 워크플로 인스턴스를 관리하는 계정 수준 Durable Object입니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -107,7 +129,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // this method can only be run if </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // this.currentVersion === ControlPlaneVersions.V1</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>SQL 테이블이 <em>SousChefs</em> 및 <em>AccountOld</em> DO 모두에서 <em>인스턴스</em> 메타데이터를 추적하므로, AccountOld 내에서 SousChef 클래스를 인스턴스화할 <em>수 있습니다.</em> 따라서 우리는 사용할 코드 버전을 결정할 수 있었습니다. 그렇지 않았다면 수백만 개의 인스턴스 메타데이터를 마이그레이션해야 했을 것이었으므로 마이그레이션이 더 어렵고 각 계정에서 실행되는 데 시간이 오래 걸렸습니다. 그렇다면 마이그레이션은 어떻게 이루어졌을까요?</p>
 <p>먼저, <em>AccountOld</em> DO가 <em>SousChefs</em> 역할을 하도록 전환되도록 준비했습니다(이는 위의 스니펫 버전으로 릴리스를 만드는 것을 의미했습니다). 그런 다음 계정별로 V2 제어창을 활성화했고, 거의 동시에 다음 세 단계가 트리거되었습니다.</p>

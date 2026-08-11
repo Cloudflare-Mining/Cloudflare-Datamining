@@ -20,14 +20,40 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">class </span><span class="sk-6f42c1-ffc799">Default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">WorkerEntrypoint</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">   async</span><span class="sk-24292e-fff"> def </span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">, request)</span><span class="sk-d73a49-a0a0a0">:</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> asgi</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(app, request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js_object, </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">env)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> asgi</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(app, request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js_object, </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">env)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>要部署类似内容，只需确保已安装 <code>uv</code> 和 <code>npm</code>，然后运行以下命令：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> uv</span><span class="sk-032f62-99ffe4"> tool</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> workers-py</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    https://github.com/cloudflare/python-workers-examples/03-fastapi</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>只需使用少量代码和 <code>pywrangler deploy</code>，您就能在 Cloudflare 的边缘网络部署您的应用，并且可扩展到 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>125 个国家/地区的 330 个位置</u></a>。无需担心基础设施或扩展。</p>
 <p>而且，在许多使用案例中，Python Workers 完全免费。我们的免费计划每天提供 100,000 次请求，每次调用 10 毫秒的 CPU 时间。如需更多信息，请查看<a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>文档中的定价页面</u></a>。</p>
@@ -153,7 +179,11 @@
 <p>所有这些确保在我们恢复快照后，每个函数指针都具有与拍摄快照时相同的含义。</p>
 <p>为了处理 JavaScript 引用，我们实施了一个相当有限的系统。如果一个 JavaScript 对象可以通过一系列属性访问项，从 globalThis 进行访问，我们会记录这些属性访问项，并在恢复快照时回放。如果存在任何无法通过此方式访问的 JavaScript 物件参考，我们将无法部署 Worker。这已经足以处理所有支持 Pyodide 的现有 Python 软件包，这些软件包会执行顶级导入，例如：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fetch</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fetch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>使用分片来降低冷启动频率</h3>
 <p>Python Workers 性能策略的另一项重要特征是分片。<a href="https://blog.cloudflare.com/eliminating-cold-starts-2-shard-and-conquer" target="_blank" rel="noopener noreferrer"><u>此外</u></a>非常详细地介绍了其实施。简而言之，我们现在将请求路由到现有的 Worker 实例，而以前我们可能会选择启动一个新实例。</p>

@@ -44,8 +44,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> tenantId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'x-tenant-id'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> loadTenant</span><span class="sk-24292e-fff">(env, tenantId).</span><span class="sk-6f42c1-ffc799">getEntrypoint</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Add to your <code>wrangler.jsonc</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"workflows"</span><span class="sk-24292e-fff">: [</span></span>
@@ -54,7 +76,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">			"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"WORKFLOW"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">			"class_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"DynamicWorkflow"</span></span>
 <span class="line"><span class="sk-24292e-fff">		}</span></span>
-<span class="line"><span class="sk-24292e-fff">	]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The tenant writes plain, idiomatic Workflows code. They have no idea they're being dispatched:</p>
 <div class="emdash-code">
@@ -71,7 +97,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">WORKFLOWS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({ params: </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">() });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({ id: </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> instance.id });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That's it. The tenant calls <code>env.WORKFLOWS.create(...)</code> against what looks like a perfectly normal Workflow binding. Workflow IDs, <code>.status()</code>, <code>.pause()</code>, retries, hibernation, durable steps, <code>step.sleep('24 hours')</code>, <code>step.waitForEvent()</code> — everything works the way it always has.</p>
 <p>The library handles one thing: making sure that when the Workflows engine eventually wakes up and calls <code>run(event, step)</code>, it ends up inside the <em>right tenant's</em> code.</p>
@@ -94,7 +124,11 @@
 <span class="line"><span class="sk-24292e-fff">                  __workerLoaderMetadata</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> { tenantId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> '</span><span class="sk-6f42c1-ffc799">t</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">42</span><span class="sk-032f62-99ffe4">' },</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">                  params: { name: '</span><span class="sk-6f42c1-ffc799">Alice</span><span class="sk-032f62-99ffe4">' }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">               }})</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>④ Up to the engine.</strong> The Worker Loader then calls <code>.create()</code> on the <em>real</em> <code>WORKFLOWS</code> binding with the envelope as the params. From here the Workflows engine takes over. It persists <code>event.payload</code> — which now includes the envelope — and schedules the run. Every time the engine later wakes up the workflow (whether that’s after a 24-hour sleep, a crash, or a deploy), the metadata rides along with the payload, waiting to route the run.</p>
 <p>One implication: treat the metadata as a routing hint, not as authorization. The tenant can read it back via <code>instance.status()</code>. Don't put secrets in there.</p>
@@ -102,7 +136,11 @@
 <p>The callback is where everything interesting happens, and it's entirely yours. Fetch the tenant's latest source from R2. Check their plan tier and pick a region. Attach a tail Worker for per-tenant logging. Bundle TypeScript on the fly with <a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a>. In the common case, you just hand off to the Worker Loader:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stub</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(tenantId, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> loadTenantCode</span><span class="sk-24292e-fff">(tenantId));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">getEntrypoint</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'TenantWorkflow'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> stub.</span><span class="sk-6f42c1-ffc799">getEntrypoint</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'TenantWorkflow'</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><br>The Worker Loader caches by ID, so a workflow that runs many steps over many hours reuses the same dynamic Worker across them. When the isolate eventually gets evicted, the next <code>step.do()</code> pulls the code again and keeps going — the tenant's workflow has no idea anything happened. A Dynamic Worker boots in single-digit milliseconds using a few megabytes of memory, so the dispatch overhead is essentially free. You can have a million tenants, each with their own distinct workflow code, each spun up lazily on the step boundary where it's needed, and none of them cost anything while idle.</p>
 <h3>The escape hatch</h3>
@@ -120,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Everything else — IDs, pause/resume, <code>sendEvent</code>, retries — falls through to the real Workflows engine untouched.</p>
 <h2>Dynamic Workers are the primitive</h2>
@@ -173,7 +215,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'deploy'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> runInSandbox</span><span class="sk-24292e-fff">(workspace, [</span><span class="sk-032f62-99ffe4">'pnpm'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'deploy'</span><span class="sk-24292e-fff">]));</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The platform owns the dispatcher. It ingests a webhook, figures out which repo it came from, loads <em>that repo's</em> <code>CIPipeline</code> class as a Dynamic Worker, and hands the run-off to Dynamic Workflows. The platform doesn't know what's in the pipeline. It doesn't need to. It's running a durable function that happens to live in the customer's repo.</p>
 <p>Now line up what each step actually does:</p>
@@ -189,7 +235,11 @@
 <h2>Try it</h2>
 <p><code>@cloudflare/dynamic-workflows</code> is MIT-licensed and on npm today:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/dynamic-workflows</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/dynamic-workflows</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It runs on top of Dynamic Workers, which is in open beta on the Workers Paid plan. The <a href="https://github.com/cloudflare/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u>repo</u></a> includes a working example — an interactive browser playground where you write a <code>TenantWorkflow</code> class, hit <strong>Run</strong>, and watch the steps execute with live-streaming logs and a per-step checklist that lights up as each <code>step.do()</code> commits. Clone it, deploy it, show it to a coworker.</p>
 <p>If you're a platform, an SDK, a framework, or a CI/CD product, and you want to give your customers their own workflows without running their code in your own process: this is the primitive we built for you. If you're building agents that write durable plans, this is the primitive that makes those plans <em>real</em> Workflows. If you're just watching all of this, and it looks fun to build on top of: we'd love to see what you make.</p>

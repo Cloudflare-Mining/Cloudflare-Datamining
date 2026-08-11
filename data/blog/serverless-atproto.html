@@ -37,8 +37,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "createdAt"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> { </span><span class="sk-032f62-99ffe4">"type"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "string"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"format"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "datetime"</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Lexicons are strongly typed, which allows for easy interoperability between apps.&nbsp;</p>
 <h2>How it's built</h2>
 <p>In this section, we’ll follow the flow of data inside Statusphere: from authentication, to repo reads and writes, to real-time updates, and look at how we handle live event streams on serverless infrastructure.</p>
@@ -64,12 +86,20 @@
 <h3>4. Fetching status and profile data</h3>
 <p>Using the DID stored in the session cookie, we restore the user’s OAuth session and <a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L111-L118" target="_blank" rel="noopener noreferrer"><u>spin up an authenticated agent</u></a>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> agent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">oauth</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">restore_session</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">did)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> agent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">oauth</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">restore_session</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">did)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the agent ready, we <a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L120-L140" target="_blank" rel="noopener noreferrer"><u>fetch the user’s latest Statusphere post and their Bluesky profile</u></a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> current_status </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">current_status</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> profile </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">bsky_profile</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> profile </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">bsky_profile</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With their status and profile info in hand, we can <a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L142-L150" target="_blank" rel="noopener noreferrer"><u>render the homepage</u></a>:</p>
 <div class="emdash-code">
@@ -80,25 +110,41 @@
 <span class="line"><span class="sk-24292e-fff">        display_name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Some</span><span class="sk-24292e-fff">(username),</span></span>
 <span class="line"><span class="sk-24292e-fff">    }),</span></span>
 <span class="line"><span class="sk-24292e-fff">    my_status</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> current_status,</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>5. Publishing updates</h3>
 <p>When a user posts a new emoji status, we create a new record in their personal repo — using the same authenticated agent we used to fetch their data. This time, instead of reading, we <a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L183" target="_blank" rel="noopener noreferrer"><u>perform a <strong>create record</strong> operation</u></a>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> uri </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">create_status</span><span class="sk-24292e-fff">(form</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">status</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">clone</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">.await?.</span><span class="sk-24292e-fff">uri;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> uri </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">create_status</span><span class="sk-24292e-fff">(form</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">status</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">clone</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">.await?.</span><span class="sk-24292e-fff">uri;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The operation returns a URI — the canonical identifier for the new record.</p>
 <p>We then write the status update into D1, so it can immediately be reflected in the UI.</p>
 <h3>6. Using Durable Objects to broadcast updates</h3>
 <p>Every active homepage maintains a WebSocket connection to a Durable Object, which acts as a lightweight real-time message broker. When idle, the Durable Object <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>hibernates</u></a>, saving resources while keeping the WebSocket connections alive. We send a message to the Durable Object to <a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L192" target="_blank" rel="noopener noreferrer"><u>wake it up and broadcast the new update</u></a>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">durable_object</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">broadcast</span><span class="sk-24292e-fff">(status)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">durable_object</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">broadcast</span><span class="sk-24292e-fff">(status)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Durable Object then <a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/durable_object/server.rs#L88-L92" target="_blank" rel="noopener noreferrer"><u>broadcasts the new update to every connected homepage</u></a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> ws </span><span class="sk-d73a49-ffc799">in</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">get_websockets</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-24292e-fff">    ws</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">status);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It then iterates over every live WebSocket and sends the update.</p>
 <p>One practical note: Durable Objects perform better when <strong>sharded across instances</strong>. For simplicity, I’ve described the case where everything runs everything through <strong>one single Durable Object.</strong></p>
@@ -112,7 +158,11 @@
 <p>To solve this, we moved the listening logic into a <a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank" rel="noopener noreferrer"><strong><u>Cron Trigger</u></strong></a> — instead of keeping a live socket open, we used this feature to read updates in small batches using a recurring scheduled job.</p>
 <p>When the scheduled worker invocation fires, it loads the last seen cursor from its persistent storage. Then it <a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/services/jetstream.rs#L98-L101" target="_blank" rel="noopener noreferrer"><u>connects</u></a> to <a href="https://github.com/bluesky-social/jetstream" target="_blank" rel="noopener noreferrer"><u>Jetstream</u></a> — a streaming service for ATProto repo events — filtered by the xyz.statusphere.status collection and starting at the last seen cursor.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> ws </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WebSocket</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"wss://jetstream1.us-east.bsky.network/subscribe?wantedCollections=xyz.statusphere.status&amp;cursor={cursor}"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> ws </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WebSocket</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"wss://jetstream1.us-east.bsky.network/subscribe?wantedCollections=xyz.statusphere.status&amp;cursor={cursor}"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We store a <strong>cursor</strong> — a microsecond timestamp marking the last message we received — in the Durable Object's persistent storage, so even if the object restarts, it knows exactly where to resume. As soon as we process an event newer than our start time, we close the WebSocket connection and let the Durable Object go back to sleep.</p>
 <p>The tradeoff: updates can lag by up to a minute, but the system stays fully serverless. This is a great fit for early-stage apps and prototypes, where minimizing infrastructure complexity matters more than achieving perfect real-time delivery.</p>

@@ -16,12 +16,38 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> mark</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">write:</span><span class="sk-032f62-99ffe4"> mark</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> logged</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> than</span><span class="sk-032f62-99ffe4"> once</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">writing</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> ttys002</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hi,</span><span class="sk-032f62-99ffe4"> wanna</span><span class="sk-032f62-99ffe4"> grab</span><span class="sk-032f62-99ffe4"> lunch?</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hi,</span><span class="sk-032f62-99ffe4"> wanna</span><span class="sk-032f62-99ffe4"> grab</span><span class="sk-032f62-99ffe4"> lunch?</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>He will see:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Message</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> zack@Awesome-Mainframe.local</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> ttys003</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 10:36</span><span class="sk-032f62-99ffe4"> ...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hi,</span><span class="sk-032f62-99ffe4"> wanna</span><span class="sk-032f62-99ffe4"> grab</span><span class="sk-032f62-99ffe4"> lunch?</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hi,</span><span class="sk-032f62-99ffe4"> wanna</span><span class="sk-032f62-99ffe4"> grab</span><span class="sk-032f62-99ffe4"> lunch?</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is absolutely hilarious if your coworker happens to be using a graphical tool like vim which will not take kindly to random output on the screen.</p>
 <h3>Persistant Messages</h3>
@@ -32,18 +58,30 @@
 <p>An early alternative to Unix called <a href="https://en.wikipedia.org/wiki/TOPS-20" target="_blank" rel="noopener noreferrer">Tenex</a> took this capability one step further. Tenex included the ability to send a message to another user by writing onto the end of a file which only they could read. This is conceptually very simple, you could implement it yourself by creating a file in everyones home directory which only they can read:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> ~/messages</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">chmod</span><span class="sk-005cc5-ffc799"> 0442</span><span class="sk-032f62-99ffe4"> ~/messages</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">chmod</span><span class="sk-005cc5-ffc799"> 0442</span><span class="sk-032f62-99ffe4"> ~/messages</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Anyone who wants to send a message just has to append to the file:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "??\n"</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> /Users/zack/messages</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "??\n"</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> /Users/zack/messages</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is, of course, not a great system because anyone could delete your messages! I trust the Tenex implementation (called <code>SNDMSG</code>) was a bit more secure.</p>
 <h3>ARPANET</h3>
 <p>In 1971, the Tenex team had just gotten access to the ARPANET, the network of computers which was a main precursor to the Internet. The team quickly created a program called CPYNET which could be used to send files to remote computers, similar to FTP today.</p>
 <p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310" target="_blank" rel="noopener noreferrer">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SNDMSG</span><span class="sk-032f62-99ffe4"> zack@cloudflare</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SNDMSG</span><span class="sk-032f62-99ffe4"> zack@cloudflare</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
 <h3>FTP</h3>
@@ -62,7 +100,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> Sup</span><span class="sk-d73a49-a0a0a0">?</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> .</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 250 Mail stored</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 250 Mail stored</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>These commands were ultimately <a href="https://tools.ietf.org/html/rfc772" target="_blank" rel="noopener noreferrer">borrowed from</a> FTP and formed the basis for the SMTP (Simple Mail Transfer Protocol) protocol in <a href="https://tools.ietf.org/html/rfc821" target="_blank" rel="noopener noreferrer">1982</a>.</p>
 <h3>Mailboxes</h3>
@@ -74,7 +116,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">To</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4">  George</span><span class="sk-032f62-99ffe4"> Jones</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">Group</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> Hos</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">              Al</span><span class="sk-032f62-99ffe4"> Neuman</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> Mad-Host</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">There’s</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> way</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> ever</span><span class="sk-032f62-99ffe4"> going</span><span class="sk-032f62-99ffe4"> anywhere...</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">There’s</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> way</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> ever</span><span class="sk-032f62-99ffe4"> going</span><span class="sk-032f62-99ffe4"> anywhere...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that at this time the ‘at’ word could be used rather than the ‘@’ symbol. Also note that this use of headers before the message predates HTTP by almost fifteen years. This format remains nearly identical today.</p>
 <p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox" target="_blank" rel="noopener noreferrer">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
@@ -94,7 +140,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">You’ve</span><span class="sk-032f62-99ffe4"> never</span><span class="sk-032f62-99ffe4"> heard</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> it,</span><span class="sk-032f62-99ffe4"> you’ve</span><span class="sk-032f62-99ffe4"> never</span><span class="sk-032f62-99ffe4"> heard</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> me,</span><span class="sk-032f62-99ffe4"> but</span><span class="sk-032f62-99ffe4"> when</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> see</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">that</span><span class="sk-032f62-99ffe4"> stock</span><span class="sk-032f62-99ffe4"> symbol</span><span class="sk-032f62-99ffe4"> appear.</span><span class="sk-032f62-99ffe4">  Buy</span><span class="sk-032f62-99ffe4"> it.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> Future</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> Future</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Each message began with the word ‘From’, meaning if a message happened to contain From at the beginning of a line it needed to be escaped lest the system think that’s the start of a new message:</p>
 <div class="emdash-code">
@@ -105,7 +155,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">This</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> body.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">From (</span><span class="sk-6f42c1-ffc799">should</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> escaped</span><span class="sk-24292e-fff">).</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> lines.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> lines.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="http://www.rfc-editor.org/rfc/rfc808.txt" target="_blank" rel="noopener noreferrer">diversity</a> of clients available, but a few are of historical note.</p>
 <p>RD was an editor which was created by <a href="http://www.livinginternet.com/i/ii_roberts.htm" target="_blank" rel="noopener noreferrer">Lawrence Roberts</a> who was actually the program manager for the ARPANET itself at the time. It was a set of macros on top of the Tenex text editor (TECO), which itself would later become Emacs.</p>
@@ -134,7 +188,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> hope</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> okay</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> figure</span><span class="sk-032f62-99ffe4"> out</span><span class="sk-032f62-99ffe4"> how</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> use</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">that</span><span class="sk-032f62-99ffe4"> mail</span><span class="sk-032f62-99ffe4"> system.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Joe</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Joe</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You could reply to the message easily:</p>
 <div class="emdash-code">
@@ -147,7 +205,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        &lt;</span><span class="sk-6f42c1-ffc799">9501092156.AA08581@mysun.xyz.edu</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">-------</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> edit</span><span class="sk-032f62-99ffe4"> vi</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> edit</span><span class="sk-032f62-99ffe4"> vi</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You could then edit your reply in vim which is actually pretty cool.</p>
 <p>Interestingly enough, in June of 1996 the guide “<a href="http://rand-mh.sourceforge.net/book" target="_blank" rel="noopener noreferrer">MH &amp; xmh: Email for Users &amp; Programmers</a>” was actually the first book in history to be published on the Internet.</p>

@@ -63,8 +63,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">encapsulatedKey,</span><span class="sk-032f62-99ffe4"> senderContext</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> SetupBaseS</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">receiverPublicKey,</span><span class="sk-032f62-99ffe4"> ”shared</span><span class="sk-032f62-99ffe4"> application</span><span class="sk-032f62-99ffe4"> info”</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> AEAD</span><span class="sk-032f62-99ffe4"> encrypt</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-032f62-99ffe4"> using</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> context</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ciphertext</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> senderContext.Seal</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">aad,</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ciphertext</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> senderContext.Seal</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">aad,</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In fact, many implementations are likely to offer a simplified <a href="https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hpke-12#section-6" target="_blank" rel="noopener noreferrer">“single-shot” interface</a> that does context creation and message encryption with one function call.</p>
 <p>Notice that this interface does not expose anything like nonce ("number used once") or sequence numbers to the callers. The HPKE context manages nonce and sequence numbers internally, which means the application is responsible for message ordering and delivery. This was an important design decision done to hedge against key and nonce reuse, <a href="https://fahrplan.events.ccc.de/congress/2010/Fahrplan/events/4087.en.html" target="_blank" rel="noopener noreferrer">which</a> <a href="https://link.springer.com/chapter/10.1007/978-3-662-45611-8_14" target="_blank" rel="noopener noreferrer">can</a> <a href="https://eprint.iacr.org/2014/161" target="_blank" rel="noopener noreferrer">be</a> <a href="https://eprint.iacr.org/2019/023.pdf" target="_blank" rel="noopener noreferrer">catastrophic</a> for <a href="https://eprint.iacr.org/2020/615" target="_blank" rel="noopener noreferrer">security</a>.</p>
 <p>Consider what would be necessary if HPKE delegated nonce management to the application. The sending application using HPKE would need to communicate the nonce along with each ciphertext value for the receiver to successfully decrypt the message. If this nonce was ever reused, then security of the <a href="https://eprint.iacr.org/2016/475" target="_blank" rel="noopener noreferrer">AEAD may fall apart</a>. Thus, a sending application would necessarily need some way to ensure that nonces were never reused. Moreover, by sending the nonce to the receiver, the application is effectively implementing a message sequencer. The application could just as easily implement and use this sequencer to ensure in-order message delivery and processing. Thus, at the end of the day, exposing the nonce seemed both harmful and, ultimately, redundant.</p>

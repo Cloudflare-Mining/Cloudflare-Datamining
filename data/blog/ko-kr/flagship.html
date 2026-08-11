@@ -8,8 +8,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> OpenFeature.</span><span class="sk-6f42c1-ffc799">setProviderAndWait</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    new</span><span class="sk-6f42c1-ffc799"> FlagshipServerProvider</span><span class="sk-24292e-fff">({ binding: env.</span><span class="sk-005cc5-fff">FLAGS</span><span class="sk-24292e-fff"> })</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>이제 플래그십을 클로즈드 베타로 이용할 수 있습니다.</p>
 <h3>Workers의 기능 플래그 관련 문제</h3>
 <p>많은 Cloudflare 개발자는 플래그를 Workers에 직접 하드코딩하는 실용적인 해결 방법에 의존했습니다. 그리고 솔직히 처음에는 충분히 잘 작동합니다. Workers는 몇 초 만에 배포되므로 코드에서 부울 값을 리버싱하고 프로덕션에 푸시하는 것은 대부분의 상황에서 충분히 빠릅니다.</p>
@@ -30,7 +52,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (value </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> handleNewCheckout</span><span class="sk-24292e-fff">(request);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> handleLegacyCheckout</span><span class="sk-24292e-fff">(request);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> handleLegacyCheckout</span><span class="sk-24292e-fff">(request);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이러한 아웃바운드 요청은 모든 사용자 요청의 핵심 경로에 위치합니다. 사용자가 플래그 서비스의 지역에서 얼마나 멀리 떨어져 있는지에 따라 대기 시간이 상당히 늘어날 수 있습니다.</p>
 <p>상황이 이상합니다. 응용 프로그램은 사용자로부터 밀리초 떨어진 에지에서 실행됩니다. 그러나 기능 플래그 검사로 인해 기능은 렌더링할 대상을 결정하기 전에 인터넷을 통해 다른 API로 강제로 도달합니다.</p>
@@ -57,7 +83,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "app_id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;APP_ID&gt;"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>다 됐습니다. 계정 ID는 Cloudflare 계정에서 추론되며 <code>app_id</code> 는 바인딩을 특정 플래그십 앱과 연결합니다. In your Worker, you just ask for a flag value:</p>
 <div class="emdash-code">
@@ -74,7 +104,11 @@
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // details.value = "v2", details.variant = "new", details.reason = "TARGETING_MATCH"</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 바인딩은 모든 변형 유형( <code>getBooleanValue()</code>, <code>getStringValue()</code>, <code>getNumberValue()</code>, <code>getObjectValue()</code> )에 대해 유형이 지정된 접근자를 지원하며, <code>*Details()</code> 변형은 일치하는 변형 및 해당 변형을 선택한 이유와 함께 확인된 값을 반환합니다. 평가 오류가 발생하면 기본값이 정상적으로 반환됩니다. 유형이 일치하지 않는 경우 바인딩에서 예외가 발생합니다. 이는 일시적인 오류가 아닌 코드의 버그입니다.</p>
 <h3>SDK: OpenFeature 네이티브</h3>
@@ -99,7 +133,11 @@
 <span class="line"><span class="sk-24292e-fff">    plan: </span><span class="sk-032f62-99ffe4">'enterprise'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    country: </span><span class="sk-032f62-99ffe4">'US'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Workers에서 플래그십 바인딩으로 실행하는 경우, 이를 OpenFeature 공급자에게 직접 전달할 수 있습니다. 바인딩은 이미 계정 컨텍스트를 전달하고 있으므로 구성할 필요가 없습니다. 인증이 암묵적으로 이루어지며,</p>
 <div class="emdash-code">
@@ -120,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">      plan: </span><span class="sk-032f62-99ffe4">'enterprise'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>평가 코드는 변경되지 않으며 OpenFeature 인터페이스는 동일합니다. 그러나 내부적으로는 Flagship은 HTTP가 아닌 바인딩을 통해 플래그를 평가합니다. 바인딩의 성능을 통해 표준의 휴대성을 확인할 수 있습니다.</p>
 <p>브라우저용 클라이언트 측 공급자를 사용할 수도 있습니다. 사용자가 지정한 플래그를 프리페치하고, 구성 가능한 TTL로 캐시하여 해당 캐시에서 동기적으로 평가를 제공합니다.</p>
@@ -140,7 +182,11 @@
 <p>AND/OR 로직을 사용하여 조건을 구성할 수 있으며, 최대 5개 레벨까지 중첩될 수 있습니다. 단일 규칙으로 다음과 같은 것을 표현할 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(plan </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> “enterprise” </span><span class="sk-005cc5-fff">AND</span><span class="sk-24292e-fff"> region </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> “us” ) </span><span class="sk-005cc5-fff">OR</span><span class="sk-24292e-fff"> (user</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">email</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">endsWith</span><span class="sk-24292e-fff">(“</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com”))</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> serve (“premium”)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> serve (“premium”)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>규칙의 최상위 수준에서는 여러 조건이 암시적 AND와 결합되어 규칙이 일치하기 위해 모든 조건을 통과해야 합니다. 각 조건 내에서 AND/OR 그룹을 중첩하여 더 복잡한 로직을 사용할 수 있습니다.</p>
 <h4>비율별 롤아웃 플래그 지정</h4>

@@ -38,8 +38,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	&amp;</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">mls_provider,</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">	self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">my_signing_keys</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">as_ref</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	frame,</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>Postprocess outgoing audio/video.</strong> We take our normal stream and, using some newer features of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API" target="_blank" rel="noopener noreferrer"><u>WebRTC API</u></a>, add a transform step to it. This transform step simply sends the stream to the worker:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> senderStreams</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> sender.</span><span class="sk-6f42c1-ffc799">createEncodedStreams</span><span class="sk-24292e-fff">()</span></span>
@@ -51,7 +73,11 @@
 <span class="line"><span class="sk-24292e-fff">    	    out: writable,</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
 <span class="line"><span class="sk-24292e-fff">	[readable, writable]</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And the same for decryption:</p>
 <div class="emdash-code">
@@ -64,7 +90,11 @@
 <span class="line"><span class="sk-24292e-fff">    	    out: writable,</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
 <span class="line"><span class="sk-24292e-fff">	[readable, writable]</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once we do this for both audio and video streams, we’re done.</p>
 <h2>Handling different codec behaviors</h2>
@@ -79,7 +109,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> is_keyframe </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> frame[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> unencrypted_prefix_size </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> is_keyframe { </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> };</span></span>
 <span class="line"><span class="sk-24292e-fff">    frame</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">split_at_checked</span><span class="sk-24292e-fff">(unencrypted_prefix_size)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>These bytes are not particularly important to encrypt, since they only contain versioning info, whether or not this frame is a keyframe, some constants, and the width and height of the video.</p>
 <p>And that’s truly it for the stream encryption part! The only thing remaining is to figure out how we will let new users join a room.</p>

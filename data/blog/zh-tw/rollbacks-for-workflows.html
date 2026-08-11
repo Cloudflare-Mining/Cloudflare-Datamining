@@ -39,8 +39,30 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  throw</span><span class="sk-24292e-fff"> error;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><sup><em>沒有復原功能時</em></sup></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// each step ships with its own undo. add a step,</span></span>
@@ -52,7 +74,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"credit-bank-b"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">(to, amount), {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  rollback</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">output</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">debit</span><span class="sk-24292e-fff">(to, amount, output.id),</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"notify"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> notifyBoth</span><span class="sk-24292e-fff">(from, to, amount));</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"notify"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> notifyBoth</span><span class="sk-24292e-fff">(from, to, amount));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><sup><em>使用復原功能時</em></sup></p>
 <h2>試用</h2>
@@ -109,7 +135,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"send-confirmation"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> sendTransferConfirmation</span><span class="sk-24292e-fff">({ </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>復原函式應具備冪等性 (idempotent)，就像一般的 Workflow 步驟一樣。如果您要退還一筆費用，請使用付款服務商的冪等金鑰。如果您要釋放庫存，請確保釋放操作可以安全地被呼叫多次。</p>
 <p>如果任何步驟失敗，復原處理器將以<code>步驟開始</code>的相反順序執行。聽起來很簡單：當有問題發生時執行復原步驟。在實務上，有一些細節使得 API 和執行模型變得很重要。</p>
@@ -140,7 +170,11 @@
 <p>Promise 管線化讓程式碼可以在一個未來值完全回傳給呼叫者之前，就先呼叫該值上的方法。例如：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> api.</span><span class="sk-6f42c1-ffc799">authenticate</span><span class="sk-24292e-fff">(apiKey);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> name</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">whoami</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> name</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">whoami</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在這裡，<code>session</code> 還不是真正的 session 物件。它比較像是一個即將存在之 session 的控制代碼 (handle)。當您呼叫 <code>session.whoami()</code> 時，Workers 可以提早將該呼叫傳送到遠端，並表示：「一旦驗證建立了 session，就在它上面呼叫 <code>whoami()</code>。」</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -149,7 +183,11 @@
 <p>這樣可以省去一次往返。呼叫者不需要等到 <code>authenticate()</code> 完全完成，就可以要求 <code>whoami()</code>。</p>
 <p>我們考慮過流暢式 API：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"charge-card"</span><span class="sk-24292e-fff">, chargeCard).</span><span class="sk-6f42c1-ffc799">rollback</span><span class="sk-24292e-fff">(refundCharge);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"charge-card"</span><span class="sk-24292e-fff">, chargeCard).</span><span class="sk-6f42c1-ffc799">rollback</span><span class="sk-24292e-fff">(refundCharge);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><br>對讀者來說，這看起來像是「在 <code>charge-card</code> 的結果上呼叫 <code>.rollback()</code>」。但復原並不是步驟輸出的一部分。它是 <code>step.do()</code> 選項的一部分，且必須在步驟啟動前就完成註冊，這樣 Workflows 才知道若後續步驟失敗時該如何補償。</p>
 <p>流暢式 API 也讓步驟的時序更難推理。目前，<code>step.do()</code> 在被呼叫時就會啟動步驟，所以開發人員可以啟動一個步驟、做其他工作，稍後再等待第一個步驟完成：</p>
@@ -158,7 +196,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"second"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> serviceB.</span><span class="sk-6f42c1-ffc799">call</span><span class="sk-24292e-fff">());</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> first;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> first;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在目前的執行模型中，<code>first</code> 會在 <code>second</code> 之前立即啟動。流暢式 API 會使情況變得複雜。Workflows 需要等待並觀察是否附加了 <code>.rollback()</code>，才能知道完整的步驟定義。這可能會延遲步驟被傳送到引擎的時間。</p>
 <p>在前面的例子中，<code>first</code> 可能會在 <code>await first</code> 時（即 <code>second</code> 步驟完成後）才啟動，而非在 <code>step.do("first", ...)</code> 處啟動。</p>
@@ -169,13 +211,21 @@
 <span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">saga</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"charge"</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> chargeCard</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">rollback</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> refundCharge</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>建造者 API 避免了 <code>Promise</code> 的模糊性。它也為未來的步驟層級選項提供了一個明確的位置，並清楚表明正向動作和復原動作屬於同一個 saga 步驟。</p>
 <p>但它的儀式感太重了。每個步驟都需要一個最終的 <code>.run()</code>，但很容易忘記寫 <code>.run()</code>，且若無工具輔助難以察覺；簡單的單一步驟案例也會變得像冗長的設定鏈。它也引入了一個新的 <code>step.saga() </code>建造者，偏離了現有的 <code>step.&lt;action&gt;</code> 模式。最重要的是，它讓 <code>step.do()</code> 感覺像是一個較舊的 API，而不是 Workflows 的主要基本元件。復原功能的目標是擴展 <code>step.do()</code>，而不是取代它。</p>
 <h3>將復原作為步驟的中繼資料</h3>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">, { rollback })</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">, { rollback })</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最終，我們選擇了明確的形式，將復原作為步驟的中繼資料。</p>
 <p>這樣一來，每個復原都在正向步驟本身內部定義。每個處理器都會收到觸發復原的錯誤、<a href="https://developers.cloudflare.com/workflows/build/step-context" target="_blank" rel="noopener noreferrer"><u>步驟上下文</u></a>，以及輸出。輸出可能是正向步驟回傳的持久化值（這可能是 undefined）；若步驟在持久化數值之前就失敗，則直接為 undefined。</p>
@@ -191,7 +241,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    retries</span><span class="sk-24292e-fff">: { </span><span class="sk-6f42c1-ffc799">limit</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">delay</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'30 seconds'</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">backoff</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'exponential'</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    timeout</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'2 minutes'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>這符合我們想要的生命週期事件心智模型。<code>step.do()</code> 本來就是在描述一個持久化的工作單元，Workflows 會記錄、重試該單元，並稍後在記錄中顯示。復原是針對同一個工作單元的另一個生命週期行為。它應該伴隨著步驟定義，而不是存在於單獨的包裝器 (wrapper) 或建造者中。</p>
 <ul>

@@ -56,8 +56,30 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// The request failed/doesn't exist</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> response;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> response;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Tracking Subrequests</h3>
 <p>The Cloudflare Workers dashboard contains a few analytics for subrequests, but there is no way to see what responses came from B2 vs. GCS. Fortunately, it’s easy to send request stats to a 3rd party service like StatHat with a few lines of JavaScript.</p>
 <div class="emdash-code">
@@ -70,7 +92,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (response.ok) {</span></span>
 <span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">logResponse</span><span class="sk-24292e-fff">(event, response, (Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> reqStartTime)));</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> response;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js" target="_blank" rel="noopener noreferrer"><strong>here</strong></a>. &nbsp;</p>
 <h3>Making B2 Faster with Argo</h3>
@@ -84,7 +110,11 @@
 <span class="line"><span class="sk-24292e-fff">        b2BackendUrl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'https://f001.backblazeb2.com/file'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> b2BackendUrl;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Conclusion</h3>
 <p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com" target="_blank" rel="noopener noreferrer">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit" target="_blank" rel="noopener noreferrer">submit</a> your <a href="https://www.factorio.com" target="_blank" rel="noopener noreferrer">Factorio</a> world to share with others!</p>

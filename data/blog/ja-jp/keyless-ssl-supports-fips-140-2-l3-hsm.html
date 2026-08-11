@@ -24,8 +24,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LOCATION=southcentralus</span><span class="sk-24292e-fff">; GROUPNAME</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">”HSMgroup”</span><span class="sk-24292e-fff">; HSMNAME</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">”KeylessHSM”</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> login</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-24292e-fff"> $GROUPNAME </span><span class="sk-005cc5-99ffe4">--location</span><span class="sk-24292e-fff"> $LOCATION</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-24292e-fff"> $GROUPNAME </span><span class="sk-005cc5-99ffe4">--location</span><span class="sk-24292e-fff"> $LOCATION</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>上記のコマンドから返される<strong>hsmUri</strong>プロパティを記録しておきます。これは、仮想マシンでKeyless SSLを設定するときにすぐに必要になります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> MYOID=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">az</span><span class="sk-032f62-99ffe4"> ad</span><span class="sk-032f62-99ffe4"> signed-in-user</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-005cc5-99ffe4"> --query</span><span class="sk-032f62-99ffe4"> objectId</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> tsv</span><span class="sk-24292e-fff">)</span></span>
@@ -61,11 +83,19 @@
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "tags"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {},</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Microsoft.KeyVault/managedHSMs"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>HSMがプロビジョニングされたので、少なくとも3つのRSAパブリックキーを指定する必要があります。HSMは、これらのキーを使用してセキュリティードメインを暗号化し、ユーザーに返します。その後、HSMが使用できるようになります。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> HSMURI="https://keylesshsm.managedhsm.azure.net/"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> HSMURI="https://keylesshsm.managedhsm.azure.net/"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>「MSIへの接続に失敗しました」というエラーが表示され、Azureポータルからクラウドシェルを使用している場合は、既知の問題であるため、azログインを再試行します。</p>
 <div class="emdash-code">
@@ -73,12 +103,20 @@
 <span class="line"><span class="sk-24292e-fff">$ openssl req -newkey rsa:</span><span class="sk-005cc5-ffc799">2048</span><span class="sk-24292e-fff"> -nodes -keyout cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.key -x</span><span class="sk-005cc5-ffc799">509</span><span class="sk-24292e-fff"> -days </span><span class="sk-005cc5-ffc799">365</span><span class="sk-24292e-fff"> -out cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer</span></span>
 <span class="line"><span class="sk-24292e-fff">$ openssl req -newkey rsa:</span><span class="sk-005cc5-ffc799">2048</span><span class="sk-24292e-fff"> -nodes -keyout cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.key -x</span><span class="sk-005cc5-ffc799">509</span><span class="sk-24292e-fff"> -days </span><span class="sk-005cc5-ffc799">365</span><span class="sk-24292e-fff"> -out cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer --sd-quorum </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> --security-domain-file $HSMNAME-SD.json</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer --sd-quorum </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> --security-domain-file $HSMNAME-SD.json</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>HSMをプロビジョニングしたら、keyvaultに<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank" rel="noopener noreferrer">プライベートキーを追加</a>します。</p>
 <p>これにより、後でKeyless YAMLファイルに追加するURIが返され、プライベートキーが保存されている場所が示されます。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> keyvault</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --KeylessHSM</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> keyvault</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --KeylessHSM</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>HSMのプロビジョニングとアクティブ化が完了したら、Keylessデーモンをデプロイする仮想マシン（VM）を作成する必要があります。この例では、AzureでUbuntu Xenial仮想マシンを作成します。ポータルで、「仮想マシン」ページに移動し、VMを追加します。そこでは、HSM用に以前に作成したリソースグループを使用できます。最適な結果を得るには、HSM用のリージョンと同じリージョンを選択します。仮想マシンのパブリック IPを書き留めます。これを使用してサーバーにリモート接続します。</p>
 <p>次に、仮想マシンをキーサーバーに設定します。最初に、<a href="https://pkg.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflareパッケージリポジトリ</a>を追加する必要があります。次に、OSのパッケージリストを更新し、gokeylessサーバーをインストールします。</p>
@@ -89,15 +127,27 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /etc/apt/sources.list.d/cloudflare-main.list</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> https://pkg.cloudflare.com/pubkey.gpg</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> apt-key</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> update</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> gokeyless</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> gokeyless</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最後に、keylessサーバーを起動します。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> vim</span><span class="sk-032f62-99ffe4"> /etc/keyless/gokeyless.yaml</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> vim</span><span class="sk-032f62-99ffe4"> /etc/keyless/gokeyless.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Azureポータルに戻り、Azure VMに必要なTCPポートを開きます。VM → ネットワーキング → に移動し、インバウンドポートルールを追加します。どの送信元ポートから来るトラフィックも許可するように設定し、宛先ポートにポート2407 を指定します。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> gokeyless</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> gokeyless</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>変更を保存し、Cloudflareダッシュボードに移動し、SSL証明書をアップロードします。「SSL/TLS」タブの「エッジ証明書」セクションに「Keyless SSL証明書のアップロード」が表示されます。そこで、フィールドにキーサーバーラベル、YAMLファイルのホスト名、キーサーバーポート（2407 がデフォルトポート）を入力し、SSL証明書を貼り付けます。</p>
 <p>これでテストする準備ができました！ <code>curl-v https://zone.com</code> を実行し、TLSハンドシェイクが正常に完了することを確認します。</p>

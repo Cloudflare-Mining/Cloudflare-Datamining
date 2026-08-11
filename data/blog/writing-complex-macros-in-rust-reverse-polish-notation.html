@@ -9,8 +9,30 @@
 <p>I'll take a <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank" rel="noopener noreferrer">Reverse Polish Notation</a> as an example for this tutorial. It's interesting because it's simple enough, you might be already familiar with it from school, and yet to implement it statically at compile time, you already need to use a recursive macros approach.</p>
 <p>Reverse Polish Notation (also called postfix notation) uses a stack for all its operations, so that any operand is pushed onto the stack, and any <em>[binary]</em> operator takes two operands from the stack, evaluates the result and puts it back. So an expression like following:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>translates into:</p>
 <ol>
 	<li>Put <code>2</code> onto the stack.</li>
@@ -27,7 +49,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // TODO</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's start with pushing numbers onto the stack.</p>
 <p>Macros currently don't allow matching literals, and <code>expr</code> won't work for us because it can accidentally match sequence like <code>2 + 3 ...</code> instead of taking just a single number, so we'll resort to <code>tt</code> - a generic token matcher that matches only one token tree (whether it's a primitive token like literal/identifier/lifetime/etc. or a <code>()</code>/<code>[]</code>/<code>{}</code>-parenthesized expression containing more tokens):</p>
@@ -36,7 +62,11 @@
 <span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // TODO</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, we'll need a variable for the stack.</p>
 <p>Macros can't use real variables, because we want this stack to exist only at compile time. So, instead, the trick is to have a separate token sequence that can be passed around, and so used as kind of an accumulator.</p>
@@ -46,7 +76,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // TODO</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, a token sequence is not really a variable - you can't modify it in-place and do something afterwards. Instead, you can create a new copy of this token sequence with necessary modifications, and recursively call same macro again.</p>
 <p>If you are coming from functional language background or worked with any library providing immutable data before, both of these approaches - mutating data by creating a modified copy and processing lists with a recursion - are likely already familiar to you:</p>
@@ -55,7 +89,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ])</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, obviously, the case with just a single number is rather unlikely and not very interesting to us, so we'll need to match anything else after that number as a sequence of zero or more <code>tt</code> tokens, which can be passed to next invocation of our macro for further matching and processing:</p>
 <div class="emdash-code">
@@ -63,7 +101,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At this point we're still missing operator support. How do we match operators?</p>
 <p>If our RPN would be a sequence of tokens that we would want to process in an exactly same way, we could simply use a list like <code>$($token:tt)*</code>. Unfortunately, that wouldn't give us an ability to go through list and either push an operand or apply an operator depending on each token.</p>
@@ -90,7 +132,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As I said earlier, operators are applied to the last two numbers on the stack, so we'll need to match them separately, "evaluate" the result (construct a regular infix expression) and put it back:</p>
 <div class="emdash-code">
@@ -114,7 +160,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I'm not really fan of such obvious repetitions, but, just like with literals, there is no special token type to match operators.</p>
 <p>What we can do, however, is add a helper that would be responsible for the evaluation, and delegate any explicit operator branch to it.</p>
@@ -146,7 +196,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now any tokens are processed by corresponding branches, and we need to just handle final case when stack contains a single item, and no more tokens are left:</p>
 <div class="emdash-code">
@@ -156,12 +210,20 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">result</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr ]) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    $</span><span class="sk-24292e-fff">result</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At this point, if you invoke this macro with an empty stack and RPN expression, it will already produce a correct result:</p>
 <p><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable" target="_blank" rel="noopener noreferrer">Playground</a></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">([] </span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">([] </span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>However, our stack is an implementation detail and we really wouldn't want every consumer to pass an empty stack in, so let's add another catch-all branch in the end that would serve as an entry point and add <code>[]</code> automatically:</p>
 <p><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable" target="_blank" rel="noopener noreferrer">Playground</a></p>
@@ -174,17 +236,29 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our macro even works for more complex expressions, like the one <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation#Example" target="_blank" rel="noopener noreferrer">from Wikipedia page about RPN</a>!</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 5</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Error handling</h3>
 <p>Now everything seems to work smoothly for correct RPN expressions, but for a macros to be production-ready we need to be sure that it can handle invalid input as well, with a reasonable error message.</p>
 <p>First, let's try to insert another number in the middle and see what happens:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Output:</p>
 <div class="emdash-code">
@@ -195,7 +269,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    ^^^^^^^^^^^^^^^^^</span><span class="sk-032f62-99ffe4"> `[{integer}; 2]`</span><span class="sk-6f42c1-ffc799"> cannot</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> formatted</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> default</span><span class="sk-032f62-99ffe4"> formatter</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> using</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4">?`</span><span class="sk-6f42c1-ffc799"> instead</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> using</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-032f62-99ffe4"> string</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> help:</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> trait</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">std::fmt::Display</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> is</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> implemented</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> `[{integer}; 2]`</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">std::fmt::Display::fmt</span><span class="sk-032f62-99ffe4">`</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">std::fmt::Display::fmt</span><span class="sk-032f62-99ffe4">`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Okay, that definitely doesn't look helpful as it doesn't provide any information relevant to the actual mistake in the expression.</p>
 <p>In order to figure out what happened, we will need to debug our macros. For that, we'll use a <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html" target="_blank" rel="noopener noreferrer"><code>trace_macros</code></a> feature (and, like for any other optional compiler feature, you'll need a nightly version of Rust). We don't want to trace <code>println!</code> call, so we'll separate our RPN calculation to a variable:</p>
@@ -210,7 +288,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  trace_macros!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">false</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, e);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the output we'll now see how our macro is being recursively evaluated step by step:</p>
 <div class="emdash-code">
@@ -243,12 +325,20 @@
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> expanding</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-032f62-99ffe4"> { [  ] [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] }`</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn</span><span class="sk-032f62-99ffe4"> ! ( [ [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] ] )`</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> expanding</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-032f62-99ffe4"> { [ [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] ] }`</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `[(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-99ffe4"> 4, 2]`</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `[(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-99ffe4"> 4, 2]`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we carefully look through the trace, we'll notice that the problem originates in these steps:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> expanding</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-032f62-99ffe4"> { [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] }`</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn</span><span class="sk-032f62-99ffe4"> ! ( [  ] [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] )`</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn</span><span class="sk-032f62-99ffe4"> ! ( [  ] [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] )`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Since <code>[ 3 + 7 * 4 , 2 ]</code> was not matched by <code>([$result:expr]) =&gt; ...</code> branch as a final expression, it was caught by our final catch-all <code>($($tokens:tt)*) =&gt; ...</code> branch instead, prepended with an empty stack <code>[]</code> and then the original <code>[ 3 + 7 * 4 , 2 ]</code> was matched by generic <code>$num:tt</code> and pushed onto the stack as a single final value.</p>
 <p>In order to prevent this from happening, let's insert another branch between these last two that would match any stack.</p>
@@ -273,7 +363,11 @@
 <span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">tokens</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">tokens)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The error message is now more meaningful and contains at least some details about current state of evaluation:</p>
 <div class="emdash-code">
@@ -284,12 +378,20 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">40</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     println!(</span><span class="sk-6f42c1-ffc799">"{}"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -----------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -----------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But what if, instead, we miss some number?</p>
 <p><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable" target="_blank" rel="noopener noreferrer">Playground</a></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Unfortunately, this one is still not too helpful:</p>
 <div class="emdash-code">
@@ -300,7 +402,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">              ^</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">40</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     println!(</span><span class="sk-6f42c1-ffc799">"{}"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you try to use <code>trace_macros</code>, even it won't expand the stack here for some reason, but, luckily, it's relatively clear what's going on - <code>@op</code> has very specific conditions as to what should be matched (it expects at least two values on the stack), and, when it can't, <code>@</code> gets matched by the same way-too-greedy <code>$num:tt</code> and pushed onto the stack.</p>
 <p>To avoid this, again, we'll add another branch to match anything starting with <code>@op</code> that wasn't matched already, and produce a compile error:</p>
@@ -321,7 +427,11 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's try again:</p>
 <div class="emdash-code">
@@ -332,7 +442,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">46</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     println!(</span><span class="sk-6f42c1-ffc799">"{}"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Much better! Now our macro can evaluate any RPN expression at compile-time, and gracefully handles most common mistakes, so let's call it a day and say it's production-ready :)</p>
 <p>There are many more small improvements we could add, but I'd like to leave them outside this demonstration tutorial.</p>

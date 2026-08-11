@@ -8,8 +8,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x7ff5f69e55a9</span><span class="sk-24292e-fff">  (unknown)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x5564b27912da</span><span class="sk-24292e-fff">  (unknown)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x7ff5f650ecca</span><span class="sk-24292e-fff">  (unknown)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x5564b27910fa</span><span class="sk-24292e-fff">  (unknown)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x5564b27910fa</span><span class="sk-24292e-fff">  (unknown)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Obviously, this wasn't very useful. I eagerly volunteered to fix this stack unwinding code - how hard could it be?</p>
 <p>After some debugging, we found that the logging library used in the project opened <code>/proc/self/mem</code> to look for ELF headers at the start of each memory-mapped region. This was necessary to calculate an offset to find the correct addresses for debug symbols.</p>
 <p>It turns out this mechanism is rather common. The stack unwinding code is often run in weird contexts - like a SIGSEGV handler - so it would not be appropriate to dig over real memory addresses back and forth to read the ELF. This could trigger another SIGSEGV. And SIGSEGV inside a SIGSEGV handler means either termination via the default handler for a segfault or recursing into the same handler again and again (if one sets <code>SA_NODEFER</code>) leading to a stack overflow.</p>
@@ -28,7 +50,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"> * Grab a reference to a task's mm, if it is not already going away</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> * and ptrace_may_access with the mode parameter passed to it</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> * succeeds.</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Seems relatively straightforward, right? The special thing about <code>mm_access</code> is that it verifies the permissions the current task has regarding the task to which the memory belongs. If the current task and target task do not share the same memory manager, the kernel <a href="https://elixir.bootlin.com/linux/v5.9/source/kernel/ptrace.c#L293" target="_blank" rel="noopener noreferrer">invokes a method named <code>__ptrace_may_access</code></a>.</p>
 <div class="emdash-code">
@@ -41,7 +67,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"> * because setting up the necessary parent/child relationship</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> * or halting the specified task is impossible.</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> *</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://man7.org/linux/man-pages/man5/proc.5.html" target="_blank" rel="noopener noreferrer">According to the manpages</a>, a process which would like to read from an unrelated <code>/proc/[pid]/mem</code> file should have access mode <a href="https://man7.org/linux/man-pages/man2/ptrace.2.html" target="_blank" rel="noopener noreferrer"><code>PTRACE_MODE_ATTACH_FSCREDS</code></a>. This check does not verify that a process is attached via <code>PTRACE_ATTACH</code>, but rather if it has the permission to attach with the specified credentials mode.</p>
 <h2>Access checks</h2>
@@ -85,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x7f190c9e75a9</span><span class="sk-032f62-99ffe4">  google::LogMessageFatal::~LogMessageFatal</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x55d6f718c2da</span><span class="sk-032f62-99ffe4">  main</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x7f190c510cca</span><span class="sk-032f62-99ffe4">  __libc_start_main</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x55d6f718c0fa</span><span class="sk-032f62-99ffe4">  _start</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    @</span><span class="sk-005cc5-ffc799">     0x55d6f718c0fa</span><span class="sk-032f62-99ffe4">  _start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Conclusion</h2>
 <p>A comprehensive victory! The <code>/proc/&lt;pid&gt;/mem</code> file is an important mechanism that gives insight into contents of process memory. It is essential to stack unwinders to do their work in case of complicated and unforeseeable failures. Because the process memory contains highly-sensitive information, data access to the file is determined by a complex set of poorly documented rules. With a bit of effort, you can emulate <code>/proc/[PID]/mem</code> inside gVisor’s sandbox, where the process only has access to the subset of procfs that has been implemented by the gVisor authors and, as a result, you can have access to an easily readable stack trace in case of a crash.</p>

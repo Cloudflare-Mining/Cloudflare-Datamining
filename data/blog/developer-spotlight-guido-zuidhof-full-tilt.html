@@ -24,8 +24,30 @@
 <p>After the browser on the computer starts the game, it asks our Cloudflare Worker API to create a room for the current game session. This API request is a simple POST request, the server responds with a four character room code that uniquely identifies the room that was created. The reason we want the room code to be short is because the user may need to copy this code and type it into their smartphone if they are unable to scan a QR code.</p>
 <p>Humans are notoriously bad at copying random character strings as different characters look alike, so we use a limited character set that excludes the most commonly confused characters:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> DICTIONARY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "2345679ADEFGHJKLMNPQRSTUVWXYZ"</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// 29 chars (no 0, O, I, 1, B, 8)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> DICTIONARY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "2345679ADEFGHJKLMNPQRSTUVWXYZ"</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// 29 chars (no 0, O, I, 1, B, 8)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>A four character code will allow us to uniquely point to ~700,000 different rooms, that seems like it would be enough even if our game got quite popular! What's more: these game sessions don't last forever. After some period of time (say 24 hours) we can be certain enough that the game session has ended, and we can re-use that room code.</p>
 <h3>Room code coordination</h3>
 <p>In your Cloudflare Worker script, there are two ways to create a Durable Object: either we ask for one to be created with an ID generated from a name, or we ask for one to be created with a random unique ID. The naive solution would be to create a Durable Object with an ID generated from the room code. However, that is not a good idea here because a Durable Object gets created in a data center that is geographically close to the end user.</p>
@@ -72,7 +94,11 @@
 <span class="line"><span class="sk-24292e-fff">        room: roomData</span></span>
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
 <span class="line"><span class="sk-24292e-fff">    ctx.response.status </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> HttpStatus.Created;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In a nutshell, we generate a few room codes until we find one that has never been used or hasn't been used in a long enough time.</p>
 <p>There is a subtle but important nuance in this code: the Durable Object gets created in the Cloudflare Worker that talks to our Room Hub, not in the Room Hub itself. Our Room Hub will run in a single data center somewhere on Cloudflare's network. If we create the game room from there it may still be far away from our end user!</p>
@@ -99,7 +125,11 @@
 <span class="line"><span class="sk-24292e-fff">    ctx.response.body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">        room: roomData</span></span>
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The smartphone browser needs to connect to that same room. To make things easy for the user we generate a four character room code which points at that specific "Game Room" Durable Object. This way the user can take their smartphone, navigate to the website address <code>https://ld49.pages.dev</code>, and enter the code "ABCD" (or more commonly, they scan a QR code with the link <code>https://ld49.pages.dev?room=ABCD</code>).</p>
 <h3>Game Room Durable Object</h3>

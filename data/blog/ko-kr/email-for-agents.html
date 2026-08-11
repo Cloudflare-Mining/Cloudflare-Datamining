@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Email sent"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>또는 REST API와 TypeScript, Python, Go SDK를 사용하여 모든 플랫폼, 모든 언어에서 전송할 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/{account_id}/email-service/send"</span><span class="sk-24292e-fff"> \</span></span>
@@ -37,7 +59,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">     "subject"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Your order has shipped"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">     "text"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Your order #1234 has shipped and is on its way."</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span><span class="sk-032f62-99ffe4">'</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>실제로 수신함에 도달하는 이메일을 전송하려면 SPF, DKIM, DMARC 레코드와 씨름해야 합니다. 도메인을 이메일 서비스에 추가하면 모두 자동으로 구성됩니다. 이메일은 인증되어 전달되며, 스팸으로 분류되지는 않습니다. 또한, 이메일 서비스는 Cloudflare 네트워크에 구축된 글로벌 서비스이므로 이메일이 짧은 대기 시간으로 전 세계 어디에 있든 전달됩니다.</p>
 <p>수년간 무료로 제공되었던 <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing을</u></a> 결합하면 이제 단일 플랫폼 내에서 완전한 양방향 이메일이 제공됩니다. Cloudflare 내에서 이메일 수신, Worker에서 처리, 회신 등 모든 작업이 가능합니다.</p>
@@ -90,7 +116,11 @@
 <span class="line"><span class="sk-24292e-fff">      resolver: </span><span class="sk-6f42c1-ffc799">createAddressBasedEmailResolver</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"SupportAgent"</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Agents SDK의 이메일 기능을 처음 접하는 경우를 위한 내부 상황은 다음과 같습니다.</p>
 <p><strong>각 에이전트는 단일 도메인에서 고유한 ID를 가져옵니다.</strong> 주소 기반 확인자는 support@yourdomain.com을 "지원" 에이전트 인스턴스로, sales@yourdomain.com을 "sales" 인스턴스로 라우팅하는 식으로 이어집니다. 라우팅이 주소에 내장되어 있으므로 별도의 수신함을 프로비저닝할 필요가 없습니다. 하위 주소 지정(NotificationAgent+user123@yourdomain.com)을 사용해 다른 에이전트 네임스페이스 및 인스턴스로 라우팅할 수도 있습니다.</p>
@@ -101,7 +131,11 @@
 <p>이메일 서비스는 Cloudflare에서 실행되는 에이전트만을 위한 것이 아닙니다. 로컬 또는 원격 환경에서 실행되는 Claude Code, Cursor, Copilot 등의 코딩 에이전트, 컨테이너 또는 외부 클라우드에서 실행되는 프로덕션 에이전트까지, 에이전트는 모든 곳에서 실행됩니다. 이들은 모두 이러한 환경에서 이메일을 보내야 합니다. Cloudflare는 이메일 서비스의 실행 위치와 관계없이 모든 에이전트에 이메일 서비스를 제공하는 세 가지 통합을 제공할 예정입니다.</p>
 <p>이메일은 이제 상담원에게 전체 Cloudflare API에 대한 액세스 권한을 제공하는 동일한 <a href="https://blog.cloudflare.com/code-mode" target="_blank" rel="noopener noreferrer"><u>코드 모드</u></a> 기반 서버인 <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP 서버를</u></a>통해 사용할 수 있습니다. 이 MCP 서버를 통해 에이전트는 이메일 엔드포인트를 찾고 호출을 통해 이메일을 전송하고 구성할 수 있습니다. 간단한 프롬프트가 포함된 이메일을 보낼 수 있습니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>"Send me a notification email at hello@example.com from my staging domain when the build completes"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>"Send me a notification email at hello@example.com from my staging domain when the build completes"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>컴퓨터나 bash 액세스 샌드박스에서 실행되는 에이전트의 경우 Wrangler CLI는 <a href="https://blog.cloudflare.com/code-mode" target="_blank" rel="noopener noreferrer"><u>코드 모드</u></a> 블로그 게시물에서 다룬 MCP 컨텍스트 창 문제를 해결합니다. 즉, 에이전트가 단일 메시지 처리를 시작하기도 전에 도구 정의가 수만 개의 토큰을 소비할 수 있습니다. Wrangler를 사용하면 에이전트가 거의 제로에 가까운 컨텍스트 오버헤드를 가진 상태에서 시작하여 `--help` 명령을 통해 온디맨드 방식으로 기능을 탐색할 수 있습니다. 에이전트가 Wrangler를 통해 이메일을 보내는 방법은 다음과 같습니다.</p>
 <div class="emdash-code">
@@ -110,7 +144,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">from </span><span class="sk-032f62-99ffe4">"agent@your-domain.com"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">subject </span><span class="sk-032f62-99ffe4">"Build completed"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">text </span><span class="sk-032f62-99ffe4">"The build passed. Deployed to staging."</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>에이전트에 Cloudflare MCP를 제공하든 Wrangler CLI를 제공하든 관계없이, 프롬프트만 표시되면 에이전트가 사용자를 대신해 이메일을 전송할 수 있습니다.</p>
 <h3>기술</h3>

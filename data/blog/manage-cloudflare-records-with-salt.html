@@ -16,8 +16,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">example.com:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  cloudflare.manage_zone_records:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    -</span><span class="sk-032f62-99ffe4"> zone:</span><span class="sk-032f62-99ffe4"> {{</span><span class="sk-032f62-99ffe4"> pillar["cloudflare_zones"]["example.com"]</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">yaml</span><span class="sk-032f62-99ffe4"> }}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    -</span><span class="sk-032f62-99ffe4"> zone:</span><span class="sk-032f62-99ffe4"> {{</span><span class="sk-032f62-99ffe4"> pillar["cloudflare_zones"]["example.com"]</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">yaml</span><span class="sk-032f62-99ffe4"> }}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Add a pillar to configure your zone:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflare_zones:</span></span>
@@ -28,16 +50,28 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    records:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      -</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> blog.example.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        content:</span><span class="sk-005cc5-ffc799"> 93.184.216.34</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        proxied:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        proxied:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here we configure zone <code>example.com</code> to only have one record <code>blog.example.com</code> pointing to <code>93.184.216.34</code> behind Cloudflare.</p>
 <p>You can test your changes before you deploy:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">salt-call</span><span class="sk-032f62-99ffe4"> state.apply</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> test=</span><span class="sk-005cc5-99ffe4">true</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">salt-call</span><span class="sk-032f62-99ffe4"> state.apply</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> test=</span><span class="sk-005cc5-99ffe4">true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And then deploy if you are happy with the dry run:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">salt-call</span><span class="sk-032f62-99ffe4"> state.apply</span><span class="sk-032f62-99ffe4"> cloudflare</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">salt-call</span><span class="sk-032f62-99ffe4"> state.apply</span><span class="sk-032f62-99ffe4"> cloudflare</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After the initial setup, all you need is to change the <code>records</code> array in pillar and re-deploy the state. See the <a href="https://github.com/cloudflare/salt-cloudflare" target="_blank" rel="noopener noreferrer">README</a> for more details.</p>
 <p>DNS records are only one part of configuration you may want to change for your Cloudflare domain. We have plans to "saltify" other settings like WAF, caching, page rules and others too.</p>

@@ -18,8 +18,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ git clone --depth=1 https://github.com/nginx/nginx.git</span></span>
 <span class="line"><span>$ cd nginx</span></span>
-<span class="line"><span>$ ./auto/configure --without-http_rewrite_module --without-http_gzip_module</span></span></code></pre>
+<span class="line"><span>$ ./auto/configure --without-http_rewrite_module --without-http_gzip_module</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>With NGINX in the right state, we need to create a <code>build.rs</code> file in our Rust project to auto-generate the bindings at build-time of the module. We’ll now add the necessary arguments to the build, and use Bindgen to generate us the <code>bindings.rs</code> file. For the arguments, we just need to include all the directories that may contain header files for clang to do its thing. We can then feed them into Bindgen, along with some allowlist arguments, so it knows for what things it should generate the bindings, and which things it can ignore. Adding a little boilerplate code to the top, the whole file should look something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>use std::env;</span></span>
@@ -53,20 +75,32 @@
 <span class="line"><span></span></span>
 <span class="line"><span>    bindings.write_to_file(out_path.join("bindings.rs"))</span></span>
 <span class="line"><span>        .expect("Unable to write bindings.");</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hopefully this is all fairly self-explanatory. Bindgen traverses the NGINX source and generates equivalent constructs in Rust in a file called <code>bindings.rs</code>, which we can import into our project. There’s just one more thing to add- Bindgen has trouble with a couple of symbols in NGINX, which we’ll need to fix in a file called <code>wrapper.h</code>. It should have the following contents:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>#include &lt;ngx_http.h&gt;</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>const char* NGX_RS_MODULE_SIGNATURE = NGX_MODULE_SIGNATURE;</span></span>
-<span class="line"><span>const size_t NGX_RS_HTTP_LOC_CONF_OFFSET = NGX_HTTP_LOC_CONF_OFFSET;</span></span></code></pre>
+<span class="line"><span>const size_t NGX_RS_HTTP_LOC_CONF_OFFSET = NGX_HTTP_LOC_CONF_OFFSET;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With this in place and <a href="https://crates.io/crates/bindgen" target="_blank" rel="noopener noreferrer">Bindgen</a> set in the <code>[build-dependencies]</code> section of the Cargo.toml file, we should be ready to build.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ cargo build</span></span>
 <span class="line"><span>   Compiling rust-nginx-module v0.1.0 (/Users/sam/cf-repos/rust-nginx-module)</span></span>
-<span class="line"><span>    Finished dev [unoptimized + debuginfo] target(s) in 4.70s</span></span></code></pre>
+<span class="line"><span>    Finished dev [unoptimized + debuginfo] target(s) in 4.70s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With any luck, we should see a file called bindings.rs in the target/debug/build directory, which contains Rust definitions of all the NGINX symbols.</p>
 <div class="emdash-code">
@@ -75,12 +109,20 @@
 <span class="line"><span></span></span>
 <span class="line"><span>$ head target/debug/build/rust-nginx-module-c5504dc14560ecc1/out/bindings.rs</span></span>
 <span class="line"><span>/* automatically generated by rust-bindgen 0.61.0 */</span></span>
-<span class="line"><span>[...]</span></span></code></pre>
+<span class="line"><span>[...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To be able to use them in the project, we can include them in a new file under the <code>src</code> directory which we’ll call <code>bindings.rs</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ cat &gt; src/bindings.rs</span></span>
-<span class="line"><span>include!(concat!(env!("OUT_DIR"), "/bindings.rs"));</span></span></code></pre>
+<span class="line"><span>include!(concat!(env!("OUT_DIR"), "/bindings.rs"));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With that set, we just need to add the usual imports to the top of the <code>lib.rs</code> file, and we can access NGINX constructs from Rust. Not only does this make bugs in the interface between NGINX and our Rust module much less likely than if these values were hand-coded, but it’s also a fantastic reference we can use to check the structure of things in NGINX when building modules in Rust, and it takes a lot of the leg-work out of setting everything up. It’s really a testament to the quality of a lot of Rust libraries such as Bindgen that something like this can be done with so little effort, in a robust way.</p>
 <p>Once the Rust library has been built, the next step is to hook it into NGINX. Most NGINX modules are compiled statically. That is, the module is compiled as part of the compilation of NGINX as a whole. However, since NGINX 1.9.11, it has supported dynamic modules, which are compiled separately and then loaded using the <code>load_module</code> directive in the <code>nginx.conf</code> file. This is what we needed to use to build ROFL, so that the library could be compiled separately and loaded-in at the time NGINX starts up. Finding the right format so that the necessary symbols could be found from the documentation was tricky, though, and although it is possible to use a separate config file to set some of this metadata, it’s better if we can load it as part of the module, to keep things neat. Luckily, it doesn’t take much spelunking through the NGINX codebase to find where <code>dlopen</code> is called.</p>
@@ -108,7 +150,11 @@
 <span class="line"><span>pub static mut ngx_module_names: [*const c_char; 2] = [</span></span>
 <span class="line"><span>    "rust_nginx_module\0".as_ptr() as *const c_char,</span></span>
 <span class="line"><span>    ptr::null()</span></span>
-<span class="line"><span>];</span></span></code></pre>
+<span class="line"><span>];</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When writing an NGINX module, it’s crucial to get its order relative to the other modules correct. Dynamic modules get loaded as NGINX starts, which means they are (perhaps counterintuitively) the first to run on a response. Ensuring your module runs after gzip decompression by specifying its order relative to the gunzip module is essential, otherwise you can spend lots of time staring at streams of unprintable characters, wondering why you aren’t seeing the response you expected. Not fun. Fortunately this is also something that can be solved by looking at the NGINX source, and making sure the relevant entities exist in your module. Here’s an example of what you might set-</p>
 <div class="emdash-code">
@@ -116,7 +162,11 @@
 <span class="line"><span>    "rust_nginx_module\0".as_ptr() as *const c_char,</span></span>
 <span class="line"><span>    "ngx_http_headers_more_filter_module\0".as_ptr() as *const c_char,</span></span>
 <span class="line"><span>    ptr::null()</span></span>
-<span class="line"><span>];</span></span></code></pre>
+<span class="line"><span>];</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We’re essentially saying we want our module <code>rust_nginx_module</code> to run just before the <code>ngx_http_headers_more_filter_module</code> module, which should allow it to run in the place we expect.</p>
 <p>One of the quirks of NGINX and OpenResty is how it is really hostile to making calls to external services at the point that you’re dealing with the HTTP response. It’s something that isn’t provided as part of the OpenResty Lua framework, even though it would make working with the response phase of a request much easier. While we could do this anyway, that would mean having to fork NGINX and OpenResty, which would bring its own challenges. As a result, we’ve spent a lot of time over the years thinking about ways to pass state from the time when NGINX’s dealing with an HTTP request, over to the time when it’s streaming through the response, and much of our logic is built around this style of work.</p>
@@ -142,7 +192,11 @@
 <span class="line"><span>    pub headers_out: ngx_http_headers_out_t,</span></span>
 <span class="line"><span>    pub request_body: *mut ngx_http_request_body_t,</span></span>
 <span class="line"><span>[...]</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As we can see, there’s a member called <code>ctx</code>. As the <a href="http://nginx.org/en/docs/dev/development_guide.html#http_request" target="_blank" rel="noopener noreferrer">NGINX Development Guide mentions</a>, it’s a place where you’re able to store any value associated with a request, which should live for as long as the request does. In OpenResty this is used heavily for the storing of state to do with a request over its lifetime in a Lua context. We can do the same thing for our module, so that settings initialised during the request phase are there when our HTML parsing and rewriting is run in the response phase. Here’s an example function which can be used to get the request <code>ctx</code>:</p>
 <div class="emdash-code">
@@ -153,7 +207,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">            p</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Some</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">p</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">mut</span><span class="sk-032f62-99ffe4"> Ctx</span><span class="sk-24292e-fff">))</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice that <code>ctx</code> is at the offset of the <code>ctx_index</code> member of <code>ngx_http_rofl_module</code> - this is the structure of type <code>ngx_module_t</code> that’s part of the module definition needed to make an NGINX module. Once we have this, we can point it to a structure containing any setting we want. For example, here’s the actual function we use to enable the Email Obfuscation feature from Lua, via FFI to the Rust module using LuaJIT’s FFI tools:</p>
 <div class="emdash-code">
@@ -171,7 +229,11 @@
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ctx.register_module(EmailObfuscation::new(decode_script_url.to_owned(</span><span class="sk-24292e-fff">)), dry_run);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The function is called <code>get_or_init_ctx</code> here- it performs the same job as <code>get_ctx</code>, but also initialises the structure if it doesn’t exist yet. Once we’ve set whatever data we need in <code>ctx</code> during the request, we can then check what features need to be run in the response, without having to make any calls to external databases, which might slow us down.</p>
 <p>One of the nice things about storing state on <code>ctx</code> in this way, and working with NGINX in general, is that it relies heavily on memory pools to store request content. This largely removes any need for the programmer to have to think about freeing memory after use- the pool is automatically allocated at the start of a request, and is automatically freed when the request is done. All that’s needed is to allocate the memory using NGINX’s built-in functions for <a href="https://www.nginx.com/resources/wiki/extending/api/alloc/#c.ngx_palloc" target="_blank" rel="noopener noreferrer">allocating memory to the pool</a> and then <a href="http://www.nginx.com/resources/wiki/extending/api/alloc/#c.ngx_pool_cleanup_add" target="_blank" rel="noopener noreferrer">registering a callback</a> that will be called to free everything. In Rust, that would look something like the following:</p>
@@ -208,7 +270,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">unsafe extern "C" fn cleanup_handler&lt;T&gt;(data: *mut c_void) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ptr::drop_in_place(data as *mut T);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This should allow us to allocate memory for whatever we want, safe in the knowledge that NGINX will handle it for us.</p>
 <p>It is regrettable that we have to write a lot of <code>unsafe</code> blocks when dealing with NGINX’s interface in Rust. Although we’ve done a lot of work to minimise them where possible, unfortunately this is often the case with writing Rust code which has to manipulate C constructs through FFI. We have plans to do more work on this in the future, and remove as many lines as possible from <code>unsafe</code>.</p>
@@ -233,7 +299,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> link_buf.write_data</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.unwrap_or</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">b</span><span class="sk-6f42c1-ffc799">""</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        out_chain.append(free_link</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What this code was supposed to do is take the output of lol-html’s HTMLRewriter, and write it to the output chain of buffers. Importantly, the output can be larger than a single buffer, so you need to take new buffers off the chain in a loop until you’ve written all the output to buffers. Within this logic, NGINX is supposed to take care of popping the buffer off the free chain and appending the new chunk to the output chain, which it does. However, if you’re only thinking in terms of the way NGINX handles its view of the linked list, you may not notice that Rust never changes which buffer its <code>free_chain.head</code> points to, causing the logic to loop forever and the NGINX worker process to lock-up completely. This sort of issue can take a long time to track down, especially since we couldn’t reproduce it on our personal machines until we understood it was related to the response body size.</p>
 <p>Getting a coredump to perform some analysis with gdb was also hard because once we noticed it happening, it was already too late and the process memory had grown to the point the server was in danger of falling over, and the memory consumed was too large to be written to disk. Fortunately, this code never made it to production. As ever, while Rust’s compiler can help you to catch a lot of common mistakes, it can’t help as much if the data is being shared via FFI from another environment, even without much direct use of <code>unsafe</code>, so extra care must be taken in these cases, especially when NGINX allows the kind of flexibility that might lead to a whole machine being taken out of service.</p>
@@ -248,7 +318,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    pub</span><span class="sk-032f62-99ffe4"> busy:</span><span class="sk-032f62-99ffe4"> RefCell</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Chai</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    pub</span><span class="sk-032f62-99ffe4"> out:</span><span class="sk-032f62-99ffe4"> RefCell</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Chai</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    [...]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Effectively we’re ‘queueing’ the data for a short period of time so that we don’t overwhelm the other modules by feeding them data faster than they can handle it. The <a href="https://nginx.org/en/docs/dev/development_guide.html" target="_blank" rel="noopener noreferrer">NGINX Developer Guide</a> has a lot of great information, but many of its examples are trivial to the point where issues like this don’t come up. Things such as this are the result of working in a complex NGINX-based environment, and need to be discovered independently.</p>
 <h3>A future without NGINX</h3>

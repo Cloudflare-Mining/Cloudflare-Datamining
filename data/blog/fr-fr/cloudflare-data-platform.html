@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-24292e-fff">  user_agent</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> events_json</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-ffc799"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'page_view'</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Les transformations SQL sont très puissantes, et offrent un contrôle total sur la manière dont les données sont structurées et écrites dans la table. Vous pouvez, par exemple&nbsp;:</p>
 <ul>
 	<li>Schématiser et normaliser vos données, en utilisant même des <a href="https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json" target="_blank" rel="noopener noreferrer"><u>fonctions JSON</u></a> pour extraire des champs de code JSON arbitraire</li>
@@ -59,7 +81,11 @@
 <p>Cela facilite la prise en main d'Iceberg. Il n'est pas nécessaire de configurer un cluster de base de données, d'établir une connexion à un stockage d'objets ou de gérer une quelconque infrastructure. Vous pouvez créer un catalogue avec quelques commandes <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>&nbsp;:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler bucket create mycatalog </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cela fournit un lac de données pouvant évoluer jusqu'à plusieurs pétaoctets de stockage, interrogeable par le moteur de votre choix, sans aucun frais de trafic sortant.</p>
 <p>Toutefois, il ne suffit pas de stocker les données. Au fil du temps, à mesure que les données sont ingérées, le nombre de fichiers de données sous-jacents composant une table augmente, entraînant un ralentissement des requêtes.</p>
@@ -67,7 +93,11 @@
 <p>La solution est la <em>compression</em>, une opération de maintenance périodique exécutée automatiquement par le catalogue. La compression réécrit les petits fichiers dans des fichiers plus volumineux, réduisant ainsi la surcharge de traitement liée aux métadonnées et améliorant les performances des requêtes.&nbsp;</p>
 <p>Nous lançons aujourd'hui la prise en charge de la compression dans R2&nbsp;Data&nbsp;Catalog. L'activation de cette fonction pour votre catalogue s'effectue très facilement&nbsp;:<br></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dans un premier temps, nous assurerons la prise en charge de la compression des petits fichiers, puis nous étendrons cette fonctionnalité à d'autres stratégies de compression à l'avenir. Consultez la <a href="https://developers.cloudflare.com/r2/data-catalog/about-compaction" target="_blank" rel="noopener noreferrer"><u>documentation relative à la compression</u></a> pour en savoir plus sur son fonctionnement et son activation.</p>
 <p>À l'heure actuelle, pendant la phase de bêta ouverte, R2 Data Catalog ne fait l'objet d'aucune facturation. Vous trouverez ci-dessous notre réflexion actuelle sur la tarification à l'avenir&nbsp;:</p>
@@ -144,7 +174,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 sql query </span><span class="sk-032f62-99ffe4">"{WAREHOUSE}"</span><span class="sk-032f62-99ffe4"> "\</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  SELECT user_id, url FROM events \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>La capacité de Cloudflare à planifier le traitement dans n'importe quel emplacement de son réseau mondial est la fondation de la conception de R2&nbsp;SQL. Cela nous permet d'effectuer le traitement des données directement là où elles résident, au lieu de vous contraindre à gérer des clusters centralisés pour vos charges de travail d'analyse de données.</p>
 <p>R2&nbsp;SQL est étroitement intégré à R2&nbsp;Data&nbsp;Catalog et à R2, permettant au planificateur de requêtes d'aller au-delà de la simple analyse du stockage et d'utiliser en profondeur les statistiques riches stockées dans les métadonnées de R2&nbsp;Data&nbsp;Catalog. Cette intégration constitue une fondation solide pour une nouvelle catégorie d'optimisations de requêtes, telles que les index auxiliaires ou l'activation de fonctions analytiques plus complexes à l'avenir.</p>

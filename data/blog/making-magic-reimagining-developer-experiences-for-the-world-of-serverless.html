@@ -37,8 +37,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> hello</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> hello</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> publish</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> publish</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Again, in seconds your code is up and running, and easily accessible all over the world.</p>
 <p>“Hello, World!”, of course, doesn’t have to be quite so literal. We provide a <a href="https://developers.cloudflare.com/workers/tutorials" target="_blank" rel="noopener noreferrer">range of tutorials</a> to help get you started and get familiar with developing with Workers.</p>
 <p>To save you that last bit of time in getting started, our <a href="https://developers.cloudflare.com/workers/templates" target="_blank" rel="noopener noreferrer">template gallery</a> provides starter templates so you can dive straight into building the products you’re excited about -- whether it’s a new <a href="https://developers.cloudflare.com/workers/templates/pages/graphql_server" target="_blank" rel="noopener noreferrer">GraphQL server</a> or a brand new <a href="https://developers.cloudflare.com/workers/templates/pages/sites" target="_blank" rel="noopener noreferrer">static site</a>, we’ve got you covered.</p>
@@ -61,7 +83,11 @@
 <p><code>wrangler dev</code> &nbsp;has the look and feel of a local development environment: it runs on localhost but tunnels to the edge, and provides output directly to your favorite IDE of choice. Since <code>wrangler dev</code> now runs on the edge, it works on your machine and ours exactly the same!</p>
 <p>Our <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.11.0-rc.0" target="_blank" rel="noopener noreferrer">release candidate</a> for <code>wrangler dev</code> is live and waiting for you to take it for a test drive, as easily as:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-032f62-99ffe4"> @cloudflare/wrangler@beta</span><span class="sk-005cc5-99ffe4"> -g</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-032f62-99ffe4"> @cloudflare/wrangler@beta</span><span class="sk-005cc5-99ffe4"> -g</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let us know what you think.</p>
 <h2>Release</h2>

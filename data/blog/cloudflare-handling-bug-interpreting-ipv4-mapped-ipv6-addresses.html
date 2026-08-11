@@ -4,8 +4,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                80</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">               |</span><span class="sk-6f42c1-ffc799"> 16</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">      32</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">        |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   +--------------------------------------+--------------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">0000..............................0000</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">FFFF</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">    IPv4</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-d73a49-a0a0a0">     |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   +--------------------------------------+----+---------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   +--------------------------------------+----+---------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In IPv6 notation, the corresponding mapping for <code>127.0.0.1</code> is <code>::ffff:127.0.0.1</code> (<a href="https://datatracker.ietf.org/doc/html/rfc4038" target="_blank" rel="noopener noreferrer">RFC 4038</a>)</p>
 <p>The researcher was able to use DNS entries based on mapped addresses to bypass some of our controls and access ports on the loopback address or non-routable IPs.</p>
 <p>This vulnerability was reported on November 27 to our bug bounty program. Our Security Incident Response Team (SIRT) was contacted, and incident response activities began shortly after the report was filed. A hotpatch was deployed three hours later to prevent exploitation of the bug.</p>
@@ -132,17 +154,29 @@
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        const</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> requestJson</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> =</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> await</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> request.json()</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        return</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> fetch(requestJson.url,</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> requestJson)</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Worker was given a custom URL such as <code>proxy.example.com</code>.</p>
 <p>With that setup, it was possible to make the worker attempt connections on the loopback interface of the server where it was running. The call would look like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://proxy.example.com/json</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"url":"http://exploit.example.com:80/url_path"}'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://proxy.example.com/json</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"url":"http://exploit.example.com:80/url_path"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The attack could then be scripted to attempt to connect to multiple ports on the server.</p>
 <p>It was also found that a similar setup could be used with other IPv4 addresses to attempt connections into internal services. In this case, the DNS entry would look like:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">exploit.example.com</span><span class="sk-032f62-99ffe4"> AAAA</span><span class="sk-032f62-99ffe4"> ::ffff:10.0.0.1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">exploit.example.com</span><span class="sk-032f62-99ffe4"> AAAA</span><span class="sk-032f62-99ffe4"> ::ffff:10.0.0.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This exploit would allow an attacker to connect to services running on the loopback interface of the server. If the attacker was able to bypass the security and authentication mechanisms of a service, it could impact the confidentiality and integrity of data. For services running on other servers, the attacker could also use the worker to attempt connections and map services available over the network. As in most networks, Cloudflare's network policies and ACLs must allow a few ports to be accessible. These ports would be accessible by an attacker using this exploit.</p>
 <h3>Investigation</h3>

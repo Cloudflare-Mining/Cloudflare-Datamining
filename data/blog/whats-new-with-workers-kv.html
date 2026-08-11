@@ -16,15 +16,41 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "key"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/old/post/2"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/new-post-slug-2"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>And then POST this JSON to the new bulk endpoint, <code>/storage/kv/namespaces/:namespace_id/bulk</code>. This will add both key/value pairs to our namespace.</p>
 <p>Likewise, if we wanted to drop support for these redirects, we could issue a DELETE that has this body:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "/old/post/1"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "/old/post/2"</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>to <code>/storage/kv/namespaces/:namespace_id/bulk</code>, and we’d delete both key/value pairs in a single call to the API.</p>
 <p>The bulk upload API has one more trick up its sleeve: not all data is a string. For example, you may have an image as a value, which is just a bag of bytes. if you need to write some binary data, you’ll have to base64 the value’s contents so that it’s valid JSON. You’ll also need to set one more key:</p>
@@ -35,12 +61,20 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "value"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"aGVsbG8gd29ybGQ="</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "base64"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Workers KV will decode the value from base64, and then store the resulting bytes.</p>
 <p>Beyond bulk upload and delete, we’ve also given you the ability to list all of the keys you’ve stored in any of your namespaces, from both the API and within a Worker. For example, if you wrote a blog powered by Workers + Workers KV, you might have each blog post stored as a key/value pair in a namespace called “contents”. Most blogs have some sort of “index” page that lists all of the posts that you can read. To create this page, we need to get a listing of all of the keys, since each key corresponds to a given post. We could do this from within a Worker by calling <code>list()</code> on our namespace binding:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">()</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But what we get back isn’t only a list of keys. The object looks like this:</p>
 <div class="emdash-code">
@@ -51,22 +85,38 @@
 <span class="line"><span class="sk-24292e-fff">  ],</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  list_complete</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">false</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  cursor</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"6Ck1la0VxJ0djhidm1MdX2FyD"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We’ll talk about this “cursor” stuff in a second, but if we wanted to get the list of titles, we’d have to iterate over the keys property, and pull out the names:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> keyNames</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> value.keys.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">e</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> e.name)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> keyNames</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> value.keys.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">e</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> e.name)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>keyNames</code> would be an array of strings:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“Title</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We could take <code>keyNames</code> and those titles to build our page.</p>
 <p>So what’s up with the <code>list_complete</code> and <code>cursor</code> properties? Well, imagine that we’ve been a <em>very</em> prolific blogger, and we’ve now written thousands of posts. The list API is paginated, meaning that it will only return the first thousand keys. To see if there are more pages available, you can check the <code>list_complete</code> property. If it is false, you can use the cursor to fetch another page of results. The value of <code>cursor</code> is an opaque token that you pass to another call to list:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> cursor</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> value.cursor</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> next_value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">"cursor"</span><span class="sk-24292e-fff">: cursor})</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> next_value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">"cursor"</span><span class="sk-24292e-fff">: cursor})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This will give us another page of results, and we can repeat this process until <code>list_complete</code> is true.</p>
 <p>Listing keys has one more trick up its sleeve: you can also return only keys that have a certain prefix. Imagine we want to have a list of posts, but only the posts that were made in October of 2019. While Workers KV is only a key/value store, we can use the prefix functionality to do interesting things by filtering the list. In our original implementation, we had stored the titles of keys only:</p>
@@ -81,11 +131,19 @@
 </ul>
 <p>We can now ask for a list of all posts made in 2019:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">"prefix"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">"prefix"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Or a list of all posts made in October of 2019:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">"prefix"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019-10"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">"prefix"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019-10"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>These calls will only return keys with the given prefix, which in our case, corresponds to a date. This technique can let you group keys together in interesting ways. We’re looking forward to seeing what you all do with this new functionality!</p>
 <h2>Relaxing limits</h2>
@@ -129,17 +187,29 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">kv-namespaces</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span></span>
 <span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "new_namespace",</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;id&gt;"</span><span class="sk-032f62-99ffe4"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I’ve redacted the namespace IDs here, but Wrangler let me know that the creation was successful, and provided me with the configuration I need to put in my <code>wrangler.toml</code>. Once I’ve done that, I can add new key/value pairs:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> kv:key</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-032f62-99ffe4"> "hello"</span><span class="sk-032f62-99ffe4"> "world"</span><span class="sk-005cc5-99ffe4"> --binding</span><span class="sk-032f62-99ffe4"> new_namespace</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And read it back out again:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> wrangler kv:key get </span><span class="sk-032f62-99ffe4">"hello"</span><span class="sk-24292e-fff"> --binding new_namespace</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">world</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">world</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you’d like to learn more about the design of these features, <a href="https://blog.cloudflare.com/how-we-design-features-for-wrangler">“How we design features for Wrangler, the Cloudflare Workers CLI”</a> discusses them in depth.</p>
 <h2>More to come</h2>

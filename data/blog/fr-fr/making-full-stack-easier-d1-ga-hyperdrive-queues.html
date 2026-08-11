@@ -117,8 +117,30 @@
 <span class="line"><span class="sk-24292e-fff">    resp.headers.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x-d1-token"</span><span class="sk-24292e-fff">, session.latestCommitToken);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> resp;</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Workers : offre payante</p>
 <p>Premiers 25 milliards/mois inclus</p>
 <p>+ 0,0001 USD/million de lignes</p>
@@ -138,7 +160,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// https://orm.drizzle.team/docs/get-started-postgresql#node-postgres</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Client</span><span class="sk-24292e-fff">({ connectionString: env.</span><span class="sk-005cc5-fff">HYPERDRIVE</span><span class="sk-24292e-fff">.connectionString });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> db</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> drizzle</span><span class="sk-24292e-fff">(client);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> db</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> drizzle</span><span class="sk-24292e-fff">(client);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>+ 0,75 USD/Go/mois</p>
 <p>Workers : offre gratuite</p>
@@ -189,7 +215,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Ack the messages you processed successfully; mark others to be retried.</span></span>
 <span class="line"><span class="sk-24292e-fff">$ curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> POST</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">data </span><span class="sk-032f62-99ffe4">'{"acks":["lease-id-1", "lease-id-2"],"retries":["lease-id-100"]}'</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">     -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${QUEUES_TOKEN}"</span><span class="sk-24292e-fff"> \</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">     -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Content-Type:application/json"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">     -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Content-Type:application/json"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>La fonctionnalité de réplication de lecture de D1 déploiera automatiquement les répliques comme nécessaire pour rapprocher les données de vos utilisateurs, le tout sans avoir à mettre en place/gérer la mise à l'échelle, ou rencontrer de problèmes de cohérence (décalage de réplication). Vous trouverez ci-dessous un aperçu de ce à quoi ressemblera l'API Replication à venir pour D1 :</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -203,7 +233,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Delay a message (or a batch of messages) when marking it for retry</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> msg</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> batch.messages) {</span></span>
 <span class="line"><span class="sk-24292e-fff">	msg.</span><span class="sk-6f42c1-ffc799">retry</span><span class="sk-24292e-fff">({delaySeconds: </span><span class="sk-005cc5-ffc799">300</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vous en apprendrez davantage sur le fonctionnement de la fonctionnalité de réplication de lecture de D1 <a href="https://blog.cloudflare.com/building-d1-a-global-database">dans notre article approfondi</a>. De même, si vous souhaitez commencer à développer dès aujourd'hui sur D1, nous vous invitons à <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">consulter nos documents destinés aux développeurs</a> afin de créer votre première base de données.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

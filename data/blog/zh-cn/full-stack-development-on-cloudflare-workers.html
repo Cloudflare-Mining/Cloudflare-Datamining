@@ -41,8 +41,30 @@
 <p>上传应用前，您需要将所有客户端代码打包到 <strong>静态资产</strong>目录中。当您运行 <code>Wrangler dev</code> 时， Wrangler 会捆绑并构建您的代码，但我们现在也通过<a href="https://www.npmjs.com/package/@cloudflare/vite-plugin" target="_blank" rel="noopener noreferrer"><u>全新的 Vite 插件</u></a> 来支持 Vite。对于已在使用 Vite 构建工具和开发服务器的用户来说，这是一个不错的选择——您可以使用 Vite 开发服务器继续开发（并使用 <a href="https://developers.cloudflare.com/workers/testing/vitest-integration" target="_blank" rel="noopener noreferrer"><u>Vitest</u></a> 测试），全部使用 Workers 运行时。</p>
 <p>要开始使用 Cloudflare Vite 插件，您可以通过运行以下命令，使用 Vite 和我们的插件搭建一个 React 应用：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">react</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">react</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>当您打开项目时，应该会看到如下的目录结构：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
@@ -56,7 +78,11 @@
 <span class="line"><span class="sk-24292e-fff">├── index</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">html</span></span>
 <span class="line"><span class="sk-24292e-fff">├── package</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">json</span></span>
 <span class="line"><span class="sk-24292e-fff">├── vite</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">config</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">ts</span></span>
-<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果运行 <code>npm run build</code> ，您将看到一个新的文件夹出现，名为 <code>/dist</code> 。</p>
 <div class="emdash-code">
@@ -73,7 +99,11 @@
 <span class="line"><span class="sk-24292e-fff">├── index</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">html</span></span>
 <span class="line"><span class="sk-24292e-fff">├── package</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">json</span></span>
 <span class="line"><span class="sk-24292e-fff">├── vite</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">config</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">ts</span></span>
-<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vite 插件通知 Wrangler 该 <code>/dist</code> 目录包含项目的内置静态资产——在本例中，包括客户端代码、一些 CSS 文件和图像。</p>
 <p>部署后，这个单页应用（SPA）架构将如下所示：</p>
@@ -92,7 +122,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "assets"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "directory"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "./dist"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>添加此配置后，您只需构建项目并运行 wrangler deploy 命令。您的整个站点将被上传，并准备好通过 Workers 处理流量。一旦部署并开始接收请求，您的静态站点将被<a href="https://developers.cloudflare.com/workers/static-assets/#caching-behavior" target="_blank" rel="noopener noreferrer"><u>缓存到 Cloudflare 网络中</u></a>。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -100,7 +134,11 @@
 </figure>
 <p>您可以立即通过执行以下命令，在 Workers 上尝试启动一个全新的 Astro 项目：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">astro</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">astro</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">astro</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">astro</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您可以在我们的<a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>框架指南</u></a>中查看我们其他支持的框架并了解如何开始使用。</p>
 <h3>单页应用（SPA）</h3>
@@ -127,7 +165,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "placement"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   "mode"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "smart"</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>通过启用此模式，平台会假定任何导航请求（包含 <code>Sec-Fetch-Mode: navigate</code> 标头的请求）都针对静态资源，并在未找到匹配的静态资源时提供 <code>index.html</code>。对于未匹配静态资源的非导航请求（如数据请求），Cloudflare 将调用 Worker 脚本。通过这种配置，您可以使用 React 渲染前端，利用 Worker 处理后端操作，并使用 Vite 将两者无缝集成。对于移植使用 <code>create-react-app</code> 构建的旧版 SPA（<a href="https://react.dev/blog/2025/02/14/sunsetting-create-react-app" target="_blank" rel="noopener noreferrer"><u>最近已经停用</u></a>），这是一个很好的选项。</p>
 <p>在此 Wrangler 配置文件中，还需注意的是：我们已定义了 Hyperdrive 绑定并启用了 <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>。Hyperdrive 让我们可以使用现有的数据库<em>，并</em>处理连接池化。这解决了将 Workers（其在高度分布式的无服务器环境中运行）直接连接到传统数据库的长期挑战。Workers 被设计为在轻量级 V8 隔离中运行，没有持久的 TCP 套接字，并且对 CPU 和内存具有严格的使用限制。这种隔离机制虽然对安全性和性能极为有利，但同时也使得维持数据库连接变得困难。Hyperdrive 通过充当 Cloudflare 的网络和您的数据库之间的“桥梁”来解决这些限制，处理维护稳定连接或池的繁重工作，以便 Workers 可以重用它们。通过开启 Smart Placement，我们还可以确保，如果对 Worker 的请求源自远离数据库的位置（导致延迟）， Cloudflare 可以选择将 Worker（处理数据库连接）和 Hyperdrive “桥梁”同时重新部署到距离数据库更近的位置，从而减少往返时间。</p>
@@ -164,7 +206,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">export default {</span></span>
 <span class="line"><span class="sk-24292e-fff"> fetch</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> app</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">fetch,</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>部署后，我们应用的架构如下所示：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -189,14 +235,22 @@
 <p>我们还继续在支持 Node.js API 方面取得进展，最近增加了对 <code>crypto</code>、<code>tls</code>、<code>net</code> 和 <code>dns</code> 模块的支持。这使得依赖这些 Node.js 模块的现有应用和库能够在 Workers 上运行。我们来看一个例子：</p>
 <p>以前，如果您尝试使用 <code>mongodb</code> 包，会遇到以下错误：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [unenv] dns</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resolveTxt is not implemented </span><span class="sk-6f42c1-ffc799">yet!</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [unenv] dns</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resolveTxt is not implemented </span><span class="sk-6f42c1-ffc799">yet!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>当 <code>mongodb</code> 使用 <code>node:dns</code> 模块对一个主机名进行 DNS 查询时，会发生这种情况。即便您避免了之前的问题，在 <code>MongoDB </code>尝试使用 <code>node:tls</code> 模块安全连接数据库时，您将会遇到另一个错误。</p>
 <p>现在，由于 <code>node:dns</code> 和 <code>node:tls</code> 得到支持，您可以按预期使用 <code>MongoDB</code>。对于依赖 <code>node:crypto</code> 和 <code>node:net</code> 的库，也是如此。</p>
 <p><code>此外，现在，当 nodejs_compat</code> 兼容性标志为 on 且兼容性日期设置为<code> 2025 年</code> 4 月 1 日或之后， Workers 会暴露<a href="https://developers.cloudflare.com/changelog/2025-03-11-process-env-support" target="_blank" rel="noopener noreferrer"><u> process.env 对象的环境变量和机密</u></a> 。一些类库（及开发人员）假定 process.env 对象将被填充变量，并依赖该对象进行顶层配置。若没有这一调整，类库可能会意外崩溃，开发人员不得不编写额外的逻辑来处理 Cloudflare Workers 上的变量。</p>
 <p>现在，您可以像在 Node.js 中一样访问变量。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> "info"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> "info"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>额外的 Worker CPU 时间</h3>
 <p>我们还将每个 <a href="https://developers.cloudflare.com/changelog/2025-03-25-higher-cpu-limits" target="_blank" rel="noopener noreferrer"><u>Worker 请求的最大 CPU 时间</u></a> 从 30 秒提高到 5 分钟。这允许计算密集型操作运行更长时间而不会超时。假设您想使用新支持的 <code>node:crypto</code> 模块来哈希一个非常大的文件，您现在可以在 Workers 上执行此操作，而不必依赖外部计算来进行 CPU 密集型操作。</p>

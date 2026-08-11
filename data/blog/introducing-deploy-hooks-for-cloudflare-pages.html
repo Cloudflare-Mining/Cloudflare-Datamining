@@ -24,8 +24,30 @@
 <h2>What else can I do with a Deploy Hook?</h2>
 <p>After creating your Deploy Hook, Pages also provides you with the HTTP POST request snippet with your URL that looks something like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/ 66c5dd3a-989f-4ba7-a6e2-6d2695524d7”</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/ 66c5dd3a-989f-4ba7-a6e2-6d2695524d7”</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Every time you execute the snippet, you will trigger a new build to your Pages site. In addition to utilizing this snippet for a forced deployment within your command line, you can also customize your <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipeline</a> and trigger deployments only under certain conditions. For example, you only want to deploy if there were changes within specific directories and only after an extensive test suite passes. Additionally, this snippet is useful for scheduling a CRON trigger to initiate builds on a specific timeline or cadence. Read more about how to use Pages deploy hooks in our <a href="https://developers.cloudflare.com/pages/platform/deploy-hooks" target="_blank" rel="noopener noreferrer">docs</a>.</p>
 <h2>Try it for yourself!</h2>
 <p>Sound like fun? Try it for yourself using our tutorial, <a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity" target="_blank" rel="noopener noreferrer">How to Build a Blog Using Nuxt.js and Sanity.io on Cloudflare Pages</a> or create your own. We can’t wait to see what you build on Pages with Deploy Hooks!</p>

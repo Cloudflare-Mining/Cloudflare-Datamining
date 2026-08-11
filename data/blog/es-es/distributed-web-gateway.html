@@ -40,8 +40,30 @@
 <p>Para acceder a ese contenido, todo lo que necesitas hacer es abrir un navegador y teclear</p>
 <p><code>https://example-gateway.com/ipfs/QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://example-gateway.com/ipfs/QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://example-gateway.com/ipfs/QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>y recibirás los datos almacenados en ese hash. La combinación del prefijo /ipfs/ y el hash se conocen como la ruta de acceso del archivo. Siempre hay que proporcionar una ruta de acceso del archivo completa para acceder al contenido almacenado en IPFS.</p>
 <h3><strong>¿Qué puedes hacer con la puerta de enlace de Cloudflare?</strong></h3>
 <p>En el nivel más básico, puedes acceder a cualquiera de los miles de millones de archivos almacenados en IPFS desde tu navegador. Pero no es la única cosa estupenda que puedes hacer. Usando la puerta de enlace de Cloudflare, también puedes crear un sitio web completamente alojado en IPFS, que aun así está disponible para los usuarios con un nombre de dominio personalizado. Además, emitiremos un certificado SSL gratis a los sitios web conectados a nuestra puerta de enlace, garantizando que los sitios web conectados a la puerta de enlace de Cloudflare sean seguros frente al espionaje y la manipulación. Para más información sobre ello, revisa los <a href="https://developers.cloudflare.com/distributed-web" target="_blank" rel="noopener noreferrer">Documentos de desarrollador de puerta de enlace de web distribuida</a>.</p>

@@ -8,12 +8,38 @@
 <p><strong>Respuesta de Early Hints</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>GET /</span></span>
-<span class="line"><span>Host: example.com</span></span></code></pre>
+<span class="line"><span>Host: example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>Respuesta</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>103 Early Hints</span></span>
-<span class="line"><span>Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre>
+<span class="line"><span>Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Early Hints en Cloudflare Pages</h2>
 <div class="emdash-code">
@@ -23,7 +49,11 @@
 <span class="line"><span></span></span>
 <span class="line"><span>&lt;html&gt;</span></span>
 <span class="line"><span>&lt;!-- ... --&gt;</span></span>
-<span class="line"><span>&lt;/html&gt;</span></span></code></pre>
+<span class="line"><span>&lt;/html&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Los sitios web alojados en Cloudflare Pages pueden beneficiarse especialmente de Early Hints. Si utilizas <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Pages Functions</a> para generar páginas dinámicas representadas en el lado del servidor (SSR), es muy probable que Early Hints mejore considerablemente tu sitio web.</p>
 <h3>Prueba de rendimiento</h3>
@@ -53,7 +83,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># _headers</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>/*.png</span></span>
-<span class="line"><span>  Cache-Control: max-age=60</span></span></code></pre>
+<span class="line"><span>  Cache-Control: max-age=60</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ya servimos Cloudflare Pages desde <a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast">una de las redes más rápidas del mundo.</a> Early Hints simplemente permite que los desarrolladores se beneficien aún más de nuestra red global.</p>
 <h2>Utilización de Early Hints y Cloudflare Pages</h2>
@@ -70,19 +104,31 @@
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    &lt;!-- ... --&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Como hemos mencionado anteriormente, los encabezados <code>Link</code> también se pueden establecer con un archivo <a href="https://blog.cloudflare.com/custom-headers-for-pages"><code>_headers</code></a> si lo prefieres:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>103 Early Hints</span></span>
-<span class="line"><span>Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre>
+<span class="line"><span>Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Early Hints (y el análisis HTML automático de <code>&lt;link&gt;</code>) ya está activado automáticamente para todos los dominios <code>pages.dev</code>. Si tienes dominios personalizados configurados en tu proyecto Pages, asegúrate de activar Early Hints en ese dominio en la pestaña "Velocidad" del panel de control de Cloudflare. Puedes encontrar más información en nuestra <a href="https://developers.cloudflare.com/pages/platform/early-hints" target="_blank" rel="noopener noreferrer">documentación</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># _headers</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>/</span></span>
-<span class="line"><span>  Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre>
+<span class="line"><span>  Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Además, en el futuro, esperamos ofrecer compatibilidad con las funciones Smart Early Hints. Smart Early Hints permitirá que Cloudflare genere automáticamente Early Hints, incluso cuando no existan encabezados <code>Link</code> o elementos <code>&lt;link&gt;</code>, analizando el tráfico del sitio web e infiriendo los recursos que son más importantes para una página determinada. Pronto proporcionaremos más información sobre Smart Early Hints.</p>
 <p>Entretanto, prueba <a href="https://developers.cloudflare.com/pages/platform/early-hints" target="_blank" rel="noopener noreferrer">Early Hints en Pages</a> hoy mismo. Haznos saber qué mejora ves en la carga en <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">nuestro servidor Discord</a>.</p>

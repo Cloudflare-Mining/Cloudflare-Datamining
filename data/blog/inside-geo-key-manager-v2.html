@@ -135,8 +135,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">plaintext := secretKeyParisDC.Decrypt(ciphertext)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">assertEquals(plaintext, "</span><span class="sk-6f42c1-ffc799">secret</span><span class="sk-032f62-99ffe4"> message")</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">assertEquals(plaintext, "</span><span class="sk-6f42c1-ffc799">secret</span><span class="sk-032f62-99ffe4"> message")</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We now come back to our original example. This time, the central authority holds the master secret key. Each machine in every data center presents its set of attributes to the central authority, which, after some validation, generates a unique attribute-based secret key for that particular machine. Key issuance happens when a machine is first brought up, if keys must be rotated, or if an attribute has changed, but never in the critical path of a TLS handshake. This solution is also collusion resistant, which means two machines without the appropriate attributes cannot combine their keys to decrypt a secret that they individually could not decrypt. For example, a machine with the attribute &nbsp;“<code>country: US</code>” and another with “<code>security: high</code>”. These machines cannot collude together to decrypt a resource with the policy “<code>country: US and security: high</code>”.</p>
 <p>Crucially, this solution can seamlessly scale and respond to changes to machines. If a new machine is added, the central authority can simply issue it a secret key since the participants of the scheme don’t have to be predetermined at setup, unlike our previous identity-broadcast scheme.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

@@ -25,8 +25,30 @@
 <span class="line"><span class="sk-24292e-fff">    url: </span><span class="sk-032f62-99ffe4">'https://mcp-server.example.com'</span></span>
 <span class="line"><span class="sk-24292e-fff">  })</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-6f42c1-ffc799">div</span><span class="sk-24292e-fff">&gt;Your actual </span><span class="sk-005cc5-fff">UI</span><span class="sk-24292e-fff"> code</span><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>只需指定 URL，即可立即连接。</p>
 <p>在幕后，<code>use-mcp</code> 处理传输协议(Streamable HTTP 和 Server-Sent Events)、身份验证流和会话管理。它还包括许多功能，以帮助您构建可靠、可扩展且可生产生产的 MCP 客户端。</p>
 <h3>连接管理</h3>
@@ -42,7 +64,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (state </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'failed'</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-6f42c1-ffc799">div</span><span class="sk-24292e-fff">&gt;Connection failed</span><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>身份验证与授权</h3>
 <p>许多 MCP 服务器要求某种形式的身份验证才能进行工具调用。<code>use-mcp</code> 支持 <a href="https://oauth.net/2.1" target="_blank" rel="noopener noreferrer"><u>OAuth 2.1</u></a> 并处理整个 OAuth 流程。它将用户重定向到登录页面，允许他们授予访问权限，安全地存储 OAuth 提供商返回的访问令牌，并将其用于所有后续对服务器的请求。该库还为用户提供了<a href="https://github.com/modelcontextprotocol/use-mcp/tree/main?tab=readme-ov-file#api-reference" target="_blank" rel="noopener noreferrer"><u>撤销访问权限和清除存储凭据的方法</u></a>。这为您提供了一个完整的身份验证系统，使您无需编写任何逻辑即可安全地连接到远程 MCP 服务器。</p>
@@ -52,7 +78,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Revoke access and clear stored credentials</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> handleLogout</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  clearStorage</span><span class="sk-24292e-fff">() </span><span class="sk-6a737d-8b8b8b94">// Removes all stored tokens, client info, and auth state</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>动态工具发现</h3>
 <p>当您连接到 MCP 服务器时，<code>use-mcp</code> 会获取其公开的工具。如果服务器添加了新功能，您的应用无需更改任何代码即可看到它们。每个工具都提供有关其所需输入和功能的类型安全的元数据，以便您的客户端可以自动验证用户输入并进行正确的工具调用。</p>
@@ -93,7 +123,11 @@
 <span class="line"><span class="sk-24292e-fff">    max_tokens: params.max_tokens,</span></span>
 <span class="line"><span class="sk-24292e-fff">    system_message: params.system_message,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>调试与监控</h3>
 <p>为了监控和调试 MCP 服务器连接，我们在操练场添加了一个“调试日志”接口。这会显示有关 MCP 服务器连接的实时信息，包括连接状态、身份验证状态和任何连接错误。</p>

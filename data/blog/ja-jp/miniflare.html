@@ -59,8 +59,30 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // Return the new incremented count</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`count for ${</span><span class="sk-24292e-fff">key</span><span class="sk-032f62-99ffe4">} is now ${</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># wrangler.toml</span></span>
 <span class="line"><span>kv_namespaces = [</span></span>
@@ -70,7 +92,11 @@
 <span class="line"><span>[build.upload]</span></span>
 <span class="line"><span>format = "modules"</span></span>
 <span class="line"><span>dist = "src"</span></span>
-<span class="line"><span>main = "./index.mjs"</span></span></code></pre>
+<span class="line"><span>main = "./index.mjs"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>...実行には以下を使用しています。</p>
 <div class="emdash-code">
@@ -105,7 +131,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // are *undone* automatically. This means at the start of this test, "a"</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // wasn't in COUNTER_NAMESPACE, so it defaulted to 0, and the count is now 1.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">toBe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"count for /a is now 1"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// jest.config.js</span></span>
@@ -119,14 +149,22 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "**/?(*.)+(spec|test).?(m)[tj]s?(x)"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  ],</span></span>
 <span class="line"><span class="sk-24292e-fff">  moduleFileExtensions: [</span><span class="sk-032f62-99ffe4">"mjs"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">defaults.moduleFileExtensions],</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>カスタムテスト環境と分離ストレージの詳細については<a href="https://miniflare.dev/testing/jest" target="_blank" rel="noopener noreferrer">Miniflare docs</a>、またはTypeScriptとDurableObjectsを使用した<a href="https://github.com/mrbbot/miniflare-typescript-esbuild-jest" target="_blank" rel="noopener noreferrer">こちらのサンプルプロジェクト</a>を参照してください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Install dependencies</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -D</span><span class="sk-032f62-99ffe4"> jest</span><span class="sk-032f62-99ffe4"> jest-environment-miniflare</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Run tests with experimental ES modules support</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> NODE_OPTIONS=--experimental-vm-modules</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> jest</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> NODE_OPTIONS=--experimental-vm-modules</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> jest</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Jestをお使いではありませんか？Miniflareでは、vanilla Node.jsやその他のテストフレームワークを使って独自の統合テストを書くことができます。AVAを使用した例については、<a href="https://miniflare.dev/testing/ava" target="_blank" rel="noopener noreferrer">Miniflareのドキュメント</a>または<a href="https://github.com/mrbbot/miniflare-esbuild-ava" target="_blank" rel="noopener noreferrer">こちらのリポジトリ</a>を参照してください。</p>
 <h2>Miniflareの仕組み</h2>
@@ -190,7 +228,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Dispatch the event and log the response</span></span>
 <span class="line"><span class="sk-24292e-fff">globalScope.</span><span class="sk-6f42c1-ffc799">dispatchEvent</span><span class="sk-24292e-fff">(event);</span></span>
-<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> event.response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()); </span><span class="sk-6a737d-8b8b8b94">// Hello mini-miniflare!</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> event.response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()); </span><span class="sk-6a737d-8b8b8b94">// Hello mini-miniflare!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Miniflare monorepoの依存関係グラフ。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -211,7 +253,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Where to find this option in wrangler.toml</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  fromWrangler</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">config</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> config.kv_namespaces?.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(({ </span><span class="sk-e36209-fff">binding</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> binding),</span></span>
 <span class="line"><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-24292e-fff">kvNamespaces</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-24292e-fff"> string[];</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">kvNamespaces</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-24292e-fff"> string[];</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>入出力ゲートが追加される以前は、通常<code>transaction()</code>メソッドを使用して一貫性を確保する必要がありました。</p>
 <p>Miniflareではこれを<a href="https://dl.acm.org/doi/10.1145/319566.319567" target="_blank" rel="noopener noreferrer">optimistic-concurrency control (OCC)</a>を使って実装しています。しかし、入出力ゲートが利用できるようになったため、新しく書かれたDurable Objectのコードをシミュレーションする際の競合状態を回避するために、Miniflare 2ではそれらを実装する必要がありました。</p>
@@ -223,7 +269,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> txn.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"count"</span><span class="sk-24292e-fff">, value </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> value;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/#part1inputgates">ゲート発表時のブログ記事</a>の説明より：</p>
 <blockquote><strong>入力ゲート：</strong> ストレージ操作の実行中は、ストレージ完了イベント以外のイベントをオブジェクトに配信してはなりません。その他のイベントは、オブジェクトがJavaScriptコードを実行しなくなり、ストレージ操作の待ちがなくなるまで待機状態にされます。私たちはこれらのイベントが「入力ゲート」が開くのを待っている状態と表現します。</blockquote>
@@ -243,7 +293,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // 2. If it is, return</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // 3. Otherwise, wait until it is</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>...次に、別のイベントを配信する準備ができたら、<code>waitForOpen</code>を呼び出します：</p>
 <div class="emdash-code">
@@ -253,7 +307,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">      // Get key from storage</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここで問題に気づいたかもしれません。<code>inputGate</code>は<code>fetch</code>内のどこから来るのでしょうか？Worker全体とそのすべてのDurable Objectに対して1つのグローバルスコープしかないため、Durable Objectの<code>InputGate</code>ごとに<code>fetch</code>を行うことはできません。また、それを必要とするすべての関数に別のパラメーターとして渡すようにユーザーに求めることはできません。潜在的に_<code>async</code>_ 関数間で自動的に渡されるコンテキストの中にそれを格納する何らかの方法が必要です。このために、我々は、 <a href="https://nodejs.org/api/async_context.html#class-asynclocalstorage" target="_blank" rel="noopener noreferrer"><code>AsyncLocalStorage</code> クラス</a>を含む、もう一つのあまり知られてNodeモジュール<a href="https://nodejs.org/api/async_context.html" target="_blank" rel="noopener noreferrer"><code>async_hooks</code></a>を使用することができます ：</p>
 <div class="emdash-code">
@@ -263,7 +321,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> baseFetch</span><span class="sk-24292e-fff">(input, init);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> inputGate.</span><span class="sk-6f42c1-ffc799">waitForOpen</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>また、Durable Objectsには、<code>blockConcurrencyWhile(closure)</code>メソッドも含まれており、<code>closure</code>が完了するまでイベントを待機させます。これはまさに<code>runWithClosed()</code>のメソッドです。</p>
 <div class="emdash-code">
@@ -283,7 +345,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> inputGate</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> inputGateStorage.</span><span class="sk-6f42c1-ffc799">getStore</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> inputGate.</span><span class="sk-6f42c1-ffc799">waitForOpen</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>しかし、今あるものには問題があります。次のようなコードを考えてみましょう。</p>
 <div class="emdash-code">
@@ -293,7 +359,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  blockConcurrencyWhile</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-6f42c1-ffc799">closure</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt; {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.inputGate.</span><span class="sk-6f42c1-ffc799">runWithClosed</span><span class="sk-24292e-fff">(closure);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>blockConcurrencyWhile</code>は入力ゲートを閉じますが、<code>fetch</code>は入力ゲートが開くまで戻らないためデッドロック状態です！この問題を解決するには<code>InputGate</code>を入れ子にする必要があります。</p>
 <div class="emdash-code">
@@ -304,7 +374,11 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>現在、<code>blockConcurrencyWhile</code>の外側の入力ゲートが閉じられるので、Durable Objectへのフェッチは待機状態にされますが、closureの内側の入力ゲートは開かれるので、<code>fetch</code>は戻ることができます。</p>
 <div class="emdash-code">
@@ -319,7 +393,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // 4. Open the input gate, *and any parents*</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // 5. Return the result</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここではいくつかの詳細を説明していますが、<a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts" target="_blank" rel="noopener noreferrer">ゲートの実装</a>で追加の構文やコメントをチェックすることができます。?</p>
 <h3>HTMLRewriter</h3>
@@ -332,7 +410,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/user"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここで重要なのは、Rustの<code>move |...| { ... }</code>クロージャは同期的ですが、ハンドラは非同期的にできることです。これは非<code>async</code>関数で<code>Promise</code>を<code>await</code>しようとするようなものです。</p>
 <div class="emdash-code">
@@ -354,7 +436,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これを解決するために、 WebAssemblyモジュールを扱うためのツールのセットである <a href="https://github.com/WebAssembly/binaryen" target="_blank" rel="noopener noreferrer">Binaryen</a>の<a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp" target="_blank" rel="noopener noreferrer">Asyncify</a>機能を使用します。<code>await_promise</code>を呼び出すたびに、Asyncify は現在の WebAssembly スタックを一時的なストレージに展開します。そして、JavaScriptで、<code>Promise</code>を<code>await</code>します。最後に、一時ストレージからスタックを前の状態に巻き戻し、中断したところから書き換えを続けます。</p>
 <p>完全な実装は、 <a href="https://github.com/mrbbot/html-rewriter-wasm" target="_blank" rel="noopener noreferrer"><code>html-rewriter-wasm</code> パッケージ</a>にあります。</p>

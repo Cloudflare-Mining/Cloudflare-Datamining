@@ -11,8 +11,30 @@
 <p>When looking to add more power to your Linux networking needs, Extended Berkeley Packet Filter (<a href="https://ebpf.io" target="_blank" rel="noopener noreferrer">eBPF</a>) is a natural choice. With eBPF, you can insert packet processing programs that execute <em>in the kernel</em>, giving you the flexibility of familiar programming paradigms with the speed of in-kernel execution. Cloudflare <a href="https://blog.cloudflare.com/tag/ebpf">loves eBPF</a> and this technology has been transformative in enabling many of our products. Naturally, we wanted to find a way to use eBPF to extend our use of nftables in Magic Firewall. This means being able to match, using an eBPF program within a table and chain as a rule. By doing this we can have our cake and eat it too, by keeping our existing infrastructure and code, and extending it further.</p>
 <p>If nftables could leverage eBPF natively, this story would be much shorter; alas, we had to continue our quest. To get us started in our search, we know that iptables integrates with eBPF. For example, one can use iptables and a pinned eBPF program for dropping packets with the following command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This clue helped to put us on the right path. Iptables uses the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank" rel="noopener noreferrer">xt_bpf</a> extension to match on an eBPF program. This extension uses the BPF_PROG_TYPE_SOCKET_FILTER eBPF program type, which allows us to load the packet information from the socket buffer and return a value based on our code.</p>
 <p>Since we know iptables can use eBPF, why not just use that? Magic Firewall currently leverages nftables, which is a great choice for our use case due to its flexibility in syntax and programmable interface. Thus, we need to find a way to use the xt_bpf extension with nftables.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -29,7 +51,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		NLA_F_NESTED</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> NFTA_EXPR_DATA</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_NAME</span><span class="sk-032f62-99ffe4"> "bpf"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_REV</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The structure of the netlink/netfilter message to add an eBPF match should look like the above example. Of course, this message needs to be properly embedded and include a conditional step, such as a verdict, when there is a match. The next step was decoding the format of <code>ebpf_bytes</code> as shown in the example below.</p>
 <div class="emdash-code">
@@ -41,7 +67,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		struct</span><span class="sk-032f62-99ffe4"> sock_filter</span><span class="sk-032f62-99ffe4"> bpf_program[XT_BPF_MAX_NUM_INSTR]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		char</span><span class="sk-032f62-99ffe4"> path[XT_BPF_PATH_MAX]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">	};</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The bytes format can be found in the kernel header definition of <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank" rel="noopener noreferrer">struct xt_bpf_info_v1</a>. The code example above shows the relevant parts of the structure.</p>
 <p>The xt_bpf module supports both raw bytecodes, as well as a path to a pinned ebpf program. The later mode is the technique we used to combine the ebpf program with nftables.</p>
@@ -74,7 +104,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> BPF_OK</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The excerpt mentioned is an example of an eBPF program that only accepts packets that have a magic string at the end of the payload. This requires checking the total length of the packet to find where to start the search. For clarity, this example omits error checking and headers.</p>
 <p>Once we had a program, the next step was integrating it into our tooling. We tried a few technologies to load the program, like BCC, libbpf, and we even created a custom loader. Ultimately, we ended up using <a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">cilium’s ebpf library</a>, since we are using Golang for our control-plane program and the library makes it easy to generate, embed and load eBPF programs.</p>
@@ -84,7 +118,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	chain</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">		#match bpf pinned /sys/fs/bpf/mfw/match drop</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once the program is compiled and pinned, we can add matches into nftables using netlink commands. Listing the ruleset shows the match is present. This is incredible! We are now able to deploy custom C programs to provide advanced matching inside a Magic Firewall ruleset!</p>
 <h3>More Magic</h3>

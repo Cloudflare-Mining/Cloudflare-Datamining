@@ -62,8 +62,30 @@
 <span class="line"><span class="sk-24292e-fff">     })</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
 <span class="line"><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Stream 團隊希望確保此功能在大規模執行時能夠快速且高效能，這需要工程工作來處理大量影片，無論時長如何。</p>
 <p>首先，我們的團隊需要在執行 <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer">AI 推斷</a>之前對音訊進行預處理，以確保輸入與 Whisper 的輸入格式和要求相容。</p>
 <p>影片內容千差萬別，從用手機拍攝的短小粗糙的影片，到長達數小時的高品質好萊塢電影，應有盡有。影片可能無聲，也可能包含動作產生的雜音。此外，Stream 的隨選影片包括直播錄製，這些錄製的封裝方式與作為完整檔案上傳的影片不同。由於存在這種多樣性，音訊輸入儲存在一系列不同的容器格式中，具有不同的持續時間和不同的檔案大小。我們確保我們的音訊檔案格式正確，符合 Whisper 的要求。</p>

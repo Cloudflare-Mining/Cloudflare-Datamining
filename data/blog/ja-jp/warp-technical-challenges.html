@@ -16,8 +16,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">workers.dev.</span><span class="sk-005cc5-ffc799">    161</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  A</span><span class="sk-005cc5-ffc799">  198.41.215.162</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">workers.dev.</span><span class="sk-005cc5-ffc799">    161</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  A</span><span class="sk-005cc5-ffc799">  198.41.214.162</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> 1.1.1.1#53</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1.1.1.1</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> 1.1.1.1#53</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1.1.1.1</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>workers.devは、198.41.215.162、198.41.214.162の 2 つのアドレスで使用できます（その他にAAAA DNSクエリを通して使用可能な2つのIPv6アドレスがあります）。この 2 つのアドレスは、当社の世界各地のすべてのデータセンターから広告されます。誰かがCloudflare上のインターネットプロパティに接続すると、パケットが通過する各ネットワークデバイスは、コンピューターまたは携帯電話から最も近いCloudflareデータセンターへの最短パスを選択します。</p>
 <p>パケットが当社のデータセンターに到着すると、稼働している多数のサーバーのうちの1台に送信します。従来、この種の複数マシン間へのトラフィックの分散には、ロードバランサーを使用していました。残念ながら、当社の規模のトラフィックを処理するデータセンターすべてに、相応の対応能力を備えたロードバランサーとなると、極めて高額になり、サーバーのように容易には拡張でません。当社ではロードバランサーの代わりに、極めて大容量のトラフィックを処理するよう作られたデバイスを使用しています。ネットワークルーターです。</p>
 <p>パケットが当社データセンターに到着すると、ルーターがこれを処理します。ルーターは、ECMP（等コストマルチパス）と呼ばれるルーティングストラテジーを用いて、トラフィックを、このアドレスの処理を担当するサーバーのうちの 1 台に送信します。ECMPは、ルーターにおいて複数の経路に明確な「勝者」がなく、良好なネクストホップを複数持っていてそのすべての最終的宛先が同一である状況を指します。この例では、ECMPで複数の仲介的なリンクのバランスを取る代わりに、このコンセプトを流用して、この中間的なリンクのアドレスをトラフィックの最終的な宛先、つまり当社サーバーとします。</p>
@@ -33,7 +55,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">forwarding-table {</span></span>
 <span class="line"><span class="sk-24292e-fff">  export load-balancing-policy</span><span class="sk-6a737d-8b8b8b94">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>「next-hop」は当社のサーバーですから、トラフィックは複数のマシン間に極めて効率的に分散されます。</p>
 <h2><strong>TCP、IP、およびECMP</strong></h2>
@@ -48,7 +74,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Transmission</span><span class="sk-032f62-99ffe4"> Control</span><span class="sk-032f62-99ffe4"> Protocol,</span><span class="sk-032f62-99ffe4"> Src</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-032f62-99ffe4"> 51602,</span><span class="sk-032f62-99ffe4"> Dst</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-032f62-99ffe4"> 443,</span><span class="sk-032f62-99ffe4"> Seq:</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> Len:</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Source</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-005cc5-ffc799"> 51602</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Destination</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-005cc5-ffc799"> 443</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare側から同じ要求を見ると、反転した鏡像になり、私の送信元IPアドレスからのポート443宛ての要求になっています（ここではNATを無視していますが、後で詳しく説明します）。</p>
 <div class="emdash-code">
@@ -58,7 +88,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    Destination</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">19.5</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">7.21</span></span>
 <span class="line"><span class="sk-24292e-fff">Transmission Control Protocol, Src </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">443</span><span class="sk-24292e-fff">, Dst </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Seq</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Len</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    Source </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">443</span></span>
-<span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>では、ECMPのお話に戻りましょう。理論上は、ECMPを使用してパケットをランダムにサーバー間でバランシングすることは可能ですが、それはしたくないですよね。インターネット上のメッセージは、通常、複数のTCPパケットで構成されます。各パケットが別のサーバーに送信された場合、元のメッセージを1か所で再構築して実行させることは不可能です。それだけでなく、パフォーマンスにとってもかなりの悪影響があります。Cloudflareは、単一のサーバーへの固定接続を必要とする、長く利用されてきたTCPおよびTLSセッションに依存してきました。この固定した接続を維持するために、当社のルーターはランダムなトラフィックのバランシング（負荷分散）は行わず、4つの値、つまり送信元アドレス、送信元ポート、宛先アドレス、および宛先ポートの組み合わせを使用しています。これら 4 つの値の組み合わせが同じトラフィックは、必ず同じサーバーに向けられます。上記の私の例では、私のすべてのcloudflare.com宛てのメッセージは単一のサーバーに到達し、ここでTCPパケットが私の要求に再構築されて、応答でパケットが返されます。</p>
 <h2><strong>WARPへの参加</strong></h2>
@@ -120,7 +154,11 @@
 <p>NWUDPSessionの作成に必要なコードを前述の例と比較すると、IPv4 または IPv6 のどちらのプロトコルを使っているのかが大きな問題になることがお分かりいただけると思います。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>let v4Session = NWUDPSession(upgradeFor: self.ipv4Session)</span></span>
-<span class="line"><span>v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</span></span></code></pre>
+<span class="line"><span>v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>実際、NWUDPSession では、インターネット経由で接続を作成する際の複雑な要素の多くが処理されません。たとえば、Networkのフレームワークでは、IPv4 と IPv6 のどちらで接続を確立するかを自動的に決定します。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -144,7 +182,11 @@
 <span class="line"><span class="sk-24292e-fff">User Datagram Protocol, Src Port: 49946, Dst Port: 53</span></span>
 <span class="line"><span class="sk-24292e-fff">Domain Name System (query)</span></span>
 <span class="line"><span class="sk-24292e-fff">    Queries</span></span>
-<span class="line"><span class="sk-24292e-fff">        zack.is: type AAAA, class IN</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        zack.is: type AAAA, class IN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この場合、Aクエリへの応答がより迅速に返され、そのプロトコルを使用して接続が開始されます。</p>
 <div class="emdash-code">
@@ -160,7 +202,11 @@
 <span class="line"><span class="sk-24292e-fff">Transmission Control Protocol, Src </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">55244</span><span class="sk-24292e-fff">, Dst </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Seq</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Len</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    Source </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">55244</span></span>
 <span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Flags</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0x002</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">SYN</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Flags</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0x002</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">SYN</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>WARP接続を行うためにDNSクエリを実行する必要はありません。データセンターのIPアドレスはすでにわかっていますが、IPv4アドレスとIPv6アドレスのどちらがインターネット上でより速いルーティングが可能なのかを知りたいのです。これを実現するために、ネットワークレベルで同じ手法を実行します。各プロトコルにパケットを送信し、先に応答するプロトコルを後続のメッセージに使用します。エラー処理とログ記録を省略すると、次のように表示されます。</p>
 <div class="emdash-code">
@@ -194,7 +240,11 @@
 <span class="line"><span>        // Send a handshake message</span></span>
 <span class="line"><span>        session.writeDatagram(onViable())</span></span>
 <span class="line"><span>    }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この手法により、IPv6 アドレス指定を正常にサポートできます。実際、WARPを使用するデバイスはすべて、IPv6をサポートしないネットワークでも IPv6 アドレス指定に即座に対応できます。WARPを使用すると、ComcastのネットワークのうちIPv6 をサポートしていない34%、同じくチャーターのネットワークでは69%（2018年時点）において、ユーザーはIPv6サーバーと正常に通信できます。</p>
 <p>このテストでは、WARPを有効にする前後に携帯電話のIPv6 サポートを示します。</p>
@@ -230,7 +280,11 @@
 <span class="line"><span>Unlike `happyEyeballs`, this function will use viability as its only success criteria.</span></span>
 <span class="line"><span>*/</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)</span></span></code></pre>
+<span class="line"><span>func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>再接続を使用すると、コード55エラーによって中断されたセッションを再作成できますが、それでもレイテンシーの影響が生じるため理想的ではありません。ただし、クローズドソースプラットフォーム上のすべてのクライアントソフトウェア開発のように、プラットフォームレベルのバグを特定して修正するのに、プラットフォームに依存しています。</p>
 <p>正直なところ、これは、WARPの構築において遭遇したプラットフォーム固有のバグの<a href="https://forums.developer.apple.com/thread/121648" target="_blank" rel="noopener noreferrer">長い</a><a href="https://forums.developer.apple.com/thread/95387" target="_blank" rel="noopener noreferrer">リスト</a><a href="https://openradar.appspot.com/39743361" target="_blank" rel="noopener noreferrer">の</a>一つに過ぎません。デバイスベンダーと協力して修正をしていきたいと考えています。デバイスと接続の組み合わせには想像を絶する数があり、それぞれの接続はある瞬間に存在するのではなく、追跡可能な速度を上回るスピードで、接続の中断状態になったり回復したりと常に変化を続けています。今でも、地球上にある全てのデバイスと接続でWARPを動作させるには課題が残っており、当社はトリアージと解決に取り組まなければならないバグ報告を日々受け取っています。</p>
@@ -250,7 +304,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    Connection</span><span class="sk-24292e-fff">: keep</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">alive\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">    Accept</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Encoding</span><span class="sk-24292e-fff">: gzip, deflate\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">    Accept</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Language</span><span class="sk-24292e-fff">: en</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">US</span><span class="sk-24292e-fff">,en;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0.9</span><span class="sk-24292e-fff">\r\n</span></span>
-<span class="line"><span class="sk-24292e-fff">    \r\n</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    \r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>しかし、最新の、セキュアなWebも当社の課題になっています。HTTP（<a href="http://zack.is" target="_blank" rel="noopener noreferrer">http://zack.is</a>）ではなく、HTTPS（<a href="https://zack.is" target="_blank" rel="noopener noreferrer">https://zack.is</a>）経由で同じ要求を行うと、ネットワーク上で全く違う結果が表示されます。</p>
 <div class="emdash-code">
@@ -262,7 +320,11 @@
 <span class="line"><span class="sk-005cc5-fff">    TCP</span><span class="sk-6f42c1-ffc799"> payload</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">54</span><span class="sk-24292e-fff"> bytes)</span></span>
 <span class="line"><span class="sk-24292e-fff">Transport Layer Security</span></span>
 <span class="line"><span class="sk-24292e-fff">    TLSv1.</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> Record </span><span class="sk-6f42c1-ffc799">Layer</span><span class="sk-24292e-fff">: Application Data </span><span class="sk-6f42c1-ffc799">Protocol</span><span class="sk-24292e-fff">: http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">over</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tls</span></span>
-<span class="line"><span class="sk-24292e-fff">        Encrypted Application </span><span class="sk-6f42c1-ffc799">Data</span><span class="sk-24292e-fff">: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        Encrypted Application </span><span class="sk-6f42c1-ffc799">Data</span><span class="sk-24292e-fff">: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>私の要求が暗号化されました！WARP（または宛先以外のユーザー）がペイロードの内容を知ることは、もはや不可能です。HTTPの場合もありますが、他のプロトコルのこともあります。私のサイトが、Cloudflareの既存の2000万のユーザーサイトの1つなら、トラフィックを復号して加速することができます（他の多数の最適化も適用します）。しかし、別のソースに向かう暗号化トラフィックに関しては、既存のHTTPのみのArgoテクノロジーは上手くいきませんでした。</p>
 <p>幸いなことに、今、当社の<a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a>と<a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>製品を通して、非HTTPトラフィックの利用に関して豊富な経験があります。この問題を解決するために、ArgoチームはCONNECTプロトコルに目を向けました。</p>
@@ -273,7 +335,11 @@
 <span class="line"><span class="sk-22863a-ffc799">Exit-Tcp-Keepalive-Duration</span><span class="sk-d73a49-ffc799">:</span><span class="sk-032f62-99ffe4"> 15\r\n</span></span>
 <span class="line"><span class="sk-22863a-ffc799">Application</span><span class="sk-d73a49-ffc799">:</span><span class="sk-032f62-99ffe4"> warp\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">\r\n</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">data</span><span class="sk-24292e-fff"> to send to origin</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">data</span><span class="sk-24292e-fff"> to send to origin</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>メッセージが送信先データセンターに到着すると、別のデータセンターに転送されるか（パフォーマンスに最適な場合）、トラフィックを待機している配信元に直接転送されます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

@@ -45,8 +45,30 @@
 <span class="line"><span class="sk-24292e-fff">      },</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h5>2. The Client's Signed Commitment</h5>
 <p>Next, the client re-sends the request with a signed payload containing their payment commitment. The <strong>deferred </strong>scheme uses HTTP Message Signatures where a <a href="https://datatracker.ietf.org/doc/html/rfc7517?cf_target_id=D4770F028006FD3F2FEE26B65F35A502" target="_blank" rel="noopener noreferrer"><u>JWK-formatted public key</u></a> is available in a hosted directory. The <code>Signature-Input</code> header clearly explains which parts of the request are included in the <code>Signature</code> to serve as cryptographic proof of the client's intent, verifiable by the service provider without an on-chain transaction.&nbsp;</p>
 <div class="emdash-code">
@@ -64,7 +86,11 @@
 <span class="line"><span class="sk-24292e-fff">    expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1700011111</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    keyid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ba3e64=="</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    tag</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"web-bot-auth"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>3. Successful Response</h5>
 <p>The resource server validates the signature and returns the content with a confirmation header. The server is responsible for attributing the payment to the account associated with the <strong>HTTP message signature</strong>, verifying the client's identity and then delivering the content. In this scenario, there is no blockchain associated with the payments.&nbsp;</p>
@@ -75,7 +101,11 @@
 <span class="line"><span class="sk-24292e-fff">    scheme</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"deferred"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    network</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"abc123"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">    timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1730872968</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1730872968</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>4. Payment Settlement</h5>
 <p>The server can now handle the settlement flexibly. The validated id from the handshake acts as a reference for the transaction. This approach enables a flexible use model without per-request overhead, allowing the server to roll up payments on a subscription, daily, or even batch basis. This creates a flexible framework where the cryptographic trust is established immediately, while the financial settlement can use traditional payment rails or stablecoins.&nbsp;</p>
@@ -125,7 +155,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When the agent attempts to use a paid tool, the MCP server responds with a 402 Payment Required. The agent is able to interpret the payment instructions and prompt the human whether they want to proceed with the transaction. Building an x402-compatible client requires a basic wrapper on the tool call:</p>
 <div class="emdash-code">
@@ -152,7 +186,11 @@
 <span class="line"><span class="sk-24292e-fff">        arguments: toolArgs</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This test agent draws down the funds from the wallet and sends the payment payload to the MCP server, which settles the transaction. The transactions can be specified to execute with or without human confirmation, allowing you to design the interface best suited for your application.</p>
 <h3>What’s next?&nbsp;</h3>

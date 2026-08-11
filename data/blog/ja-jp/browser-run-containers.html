@@ -30,8 +30,30 @@
 <span class="line"><span class="sk-d73a49-ffc799">    ORDER BY</span><span class="sk-24292e-fff"> RANDOM()</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">    LIMIT</span><span class="sk-24292e-fff"> ?</span><span class="sk-005cc5-ffc799">5</span></span>
 <span class="line"><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">RETURNING </span><span class="sk-d73a49-ffc799">data</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">RETURNING </span><span class="sk-d73a49-ffc799">data</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>D1シャードを<a href="https://developers.cloudflare.com/d1/configuration/data-location/#available-location-hints" target="_blank" rel="noopener noreferrer"><u>1か所ごとに</u></a>維持していますが、数千のコンテナが実行されている可能性があり、各コンテナが5秒ごとに状態を更新する必要があるため、<a href="https://developers.cloudflare.com/d1/platform/limits/#concurrency-and-throughput" target="_blank" rel="noopener noreferrer"><u>データベースを過負荷にしてしまう</u></a>という問題に直面しました。例えば、各書き込みに1ミリ秒かかる場合、最大1,000回しか書き込みできません。つまり、1回の書き込みにつき1行ということは、データベースをオーバーロードする前に私たちができるコンテナは5,000個までということになります。</p>
 <p>しかし、これらの書き込みをバッチ処理すると、バッチ処理は個々の書き込みよりも大幅に長くならないため、スループットを桁違いに増加させることができます。当社の場合、100行のバッチを使用しています。つまり、1つの場所あたり最大500,000個のコンテナを更新できることになります。このヘッドルームは、容量計画がボトルネックではないことを意味します。</p>
 <p>現在、バッチ書き込みのP95は0.1ミリ秒です！</p>
@@ -51,7 +73,11 @@
 <span class="line"><span class="sk-24292e-fff">        ]</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        ...</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この構成では、許容可能な遅延時間は2秒を大幅に下回ります。とはいえ、キューのバックログが古い状態を引き起こす可能性はまだあります。この場合、各リージョンは、プライマリキューが追いつくまで、指定されたバックアップリージョンに戻ります。</p>
 <h3>迅速な対応に対する追加の特典</h3>

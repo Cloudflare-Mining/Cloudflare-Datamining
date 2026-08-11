@@ -52,8 +52,30 @@
 <p><em>自动插入upgrade-insecure-requests CSP指令</em></p>
 <p>该<a href="https://www.w3.org/TR/upgrade-insecure-requests" target="_blank" rel="noopener noreferrer">upgrade-insecure-requests</a> 指令可以在添加<a href="https://www.w3.org/TR/CSP" target="_blank" rel="noopener noreferrer">内容安全政策</a>的题头，如下：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content-Security-Policy:</span><span class="sk-032f62-99ffe4"> upgrade-insecure-requests</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content-Security-Policy:</span><span class="sk-032f62-99ffe4"> upgrade-insecure-requests</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>它指示浏览器自动将任何HTTP请求升级到HTTPS。如果网站所有者确定每个子资源都可通过HTTPS获得，则此功能非常有用。该网站不必实际将网站中嵌入的http：// URI更改为https：//，浏览器将自动处理该问题。</p>
 <p>不幸的是，upgrade-insecure-requests存在很大的缺点。由于浏览器会盲目地将每个URI升级到https：//，不管生成的URI是否真正起作用，因此页面会被<a href="https://www.w3.org/TR/upgrade-insecure-requests/#example-failed" target="_blank" rel="noopener noreferrer">破坏</a>。</p>
 <p><em>将所有链接改为使用https：//</em></p>
@@ -68,7 +90,11 @@
 <p>HTTPS Everywhere规则集不仅仅是将<a href="http://xn--https-5h6hrjj82j//:%E5%AE%83%E8%BF%98%E5%8C%85%E6%8B%AC%E4%B8%80%E4%BA%9B%E5%85%81%E8%AE%B8%E5%AE%83(%E5%92%8C%E6%88%91%E4%BB%AC)%E5%B0%86%E4%B8%80%E4%BA%9B%E7%89%B9%E5%AE%9Auri%E8%A7%86%E4%B8%BA%E7%9B%AE%E6%A0%87%E5%9C%B0%E5%9D%80%E7%9A%84%E8%A7%84%E5%88%99(%E5%92%8C%E6%8E%92%E9%99%A4%E8%A7%84%E5%88%99)%E3%80%82" target="_blank" rel="noopener noreferrer">http://切换到https://:它还包括一些允许它(和我们)将一些特定uri视为目标地址的规则(和排除规则)。</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">rule from</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">gstatic\.com/"</span><span class="sk-24292e-fff"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">.gstatic.com/"/</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">gstatic\.com/"</span><span class="sk-24292e-fff"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">.gstatic.com/"/</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>以下是一个真实的gstatic.com的HTTP Everywhere规则：</p>
 <p>它使用正则表达式来标识gstatic.com的特定子域，可以安全地升级为使用HTTPS。点击<a href="https://www.eff.org/https-everywhere/atlas" target="_blank" rel="noopener noreferrer">此处</a>可浏览完整的规则集。</p>

@@ -9,8 +9,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> openai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OpenAI</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">&nbsp; apiKey: env.</span><span class="sk-005cc5-fff">OPENAI_API_KEY</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">&nbsp; baseURL: </span><span class="sk-032f62-99ffe4">"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>我们还有一个通用端点，如果您希望对请求有更多的灵活性，您可以使用该端点。通过通用端点，您可以定义备用模型并处理请求重试。例如，假设发送了一个请求到 OpenAI GPT-3，但是该 API 无法使用 —— 通过通用端点，您可以将 Hugging Face GPT-2 定义为备用模型，网关可以自动重新发送该请求到 Hugging Face。这在改善应用的韧性方面非常有帮助，例如：在您注意到异常错误、受到速率限制或者某个账单变得昂贵时，您会希望转移到其他模型。通过通用端点，您只需要调整有效负载以指定提供商和端点，这样我们就可以为您正确地路由请求。请查看下面的示例请求和<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">文档</a>以获取有关通用端点模式的更多详细信息。</p>
 <h3>获得对应用使用情况的可见性</h3>
 <div class="emdash-code">
@@ -48,7 +70,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">&nbsp; &nbsp; &nbsp; "inputs": "What is Cloudflare?"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">&nbsp; &nbsp; }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">&nbsp; },</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">]'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>一旦您的应用连接到 Cloudflare，我们可以帮助您收集分析数据，并就通过您的应用传递的流量提供洞察和控制。无论您在后端使用哪种模型或基础设施，我们都可以帮助您记录请求并分析数据，例如请求数量、用户数量、运行应用的成本、请求持续时间等。尽管这些似乎是模型提供者应该暴露的基本分析，但是令人意外的是，使用典型的模型提供者时，要获得对这些指标的可见性并非易事。AI Gateway 更进一步，让您也可以跨多个提供商聚合分析。</p>
 <h3>控制您的应用如何扩展</h3>

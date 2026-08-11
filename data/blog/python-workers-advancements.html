@@ -20,14 +20,40 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">class </span><span class="sk-6f42c1-ffc799">Default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">WorkerEntrypoint</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">   async</span><span class="sk-24292e-fff"> def </span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">, request)</span><span class="sk-d73a49-a0a0a0">:</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> asgi</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(app, request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js_object, </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">env)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> asgi</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(app, request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js_object, </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">env)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>To deploy something similar, just make sure you have <code>uv</code> and <code>npm</code> installed, then run the following:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> uv</span><span class="sk-032f62-99ffe4"> tool</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> workers-py</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    https://github.com/cloudflare/python-workers-examples/03-fastapi</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With just a little code and a <code>pywrangler deploy</code>, you’ve now deployed your application across Cloudflare’s edge network that extends to <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>330 locations across 125 countries</u></a>. No worrying about infrastructure or scaling.</p>
 <p>And for many use cases, Python Workers are completely free. Our free tier offers 100,000 requests per day and 10ms CPU time per invocation. For more information, check out the <a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>pricing page in our documentation</u></a>.</p>
@@ -153,7 +179,11 @@
 <p>All of this ensures that each function pointer has the same meaning after we’ve restored the snapshot as it had when we took the snapshot.</p>
 <p>To handle the JavaScript references, we implemented a fairly limited system. If a JavaScript object is accessible from globalThis by a series of property accesses, we record those property accesses and replay them when restoring the snapshot. If any reference exists to a JavaScript object that is not accessible in this way, we fail deployment of the Worker. This is good enough to deal with all the existing Python packages with Pyodide support, which do top level imports like:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fetch</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fetch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Reducing cold start frequency using sharding</h3>
 <p>Another important characteristic of our performance strategy for Python Workers is sharding. There is a very detailed description of what went into its implementation <a href="https://blog.cloudflare.com/eliminating-cold-starts-2-shard-and-conquer" target="_blank" rel="noopener noreferrer"><u>here</u></a>. In short, we now route requests to existing Worker instances, whereas before we might have chosen to start a new instance.</p>

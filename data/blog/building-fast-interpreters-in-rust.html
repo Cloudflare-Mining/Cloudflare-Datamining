@@ -55,8 +55,30 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-a0a0a0"> trait</span><span class="sk-6f42c1-ffc799"> LexWith</span><span class="sk-24292e-fff">&lt;'</span><span class="sk-6f42c1-ffc799">i</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">E</span><span class="sk-24292e-fff">&gt;</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Sized</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">   fn</span><span class="sk-6f42c1-ffc799"> lex_with</span><span class="sk-24292e-fff">(input</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">'</span><span class="sk-6f42c1-ffc799">i</span><span class="sk-6f42c1-ffc799"> str</span><span class="sk-24292e-fff">, extra</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> E</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> LexResult</span><span class="sk-24292e-fff">&lt;'</span><span class="sk-6f42c1-ffc799">i</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-a0a0a0">Self</span><span class="sk-24292e-fff">&gt;;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The <code>lex</code> method or its contextual variant <code>lex_with</code> can either return a successful pair of <code>(instance of the type, rest of input)</code> or a pair of <code>(error kind, relevant input span)</code>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="349" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=640&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=750&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=828&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=1080&amp;h=527&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=1280&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=1430&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Building fast interpreters in Rust Embedded Image - cwQ8lK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CJMV5N12PYBPMDFDFC2G.png&amp;w=996&amp;h=486&amp;f=webp" data-lightbox-width="996" data-lightbox-height="486" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="349" class="pt-portable-image-media"></div>
@@ -67,7 +89,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> input </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> skip_space</span><span class="sk-24292e-fff">(input);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> (op, input) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> CombinedExpr</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">lex_with</span><span class="sk-24292e-fff">(input, scheme)</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> input </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> skip_space</span><span class="sk-24292e-fff">(input);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> input </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> expect</span><span class="sk-24292e-fff">(input, </span><span class="sk-032f62-99ffe4">")"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> input </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> expect</span><span class="sk-24292e-fff">(input, </span><span class="sk-032f62-99ffe4">")"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And, when we want to try different alternatives, we can use native pattern matching and ignore the errors:</p>
 <div class="emdash-code">
@@ -78,7 +104,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   ...</span></span>
 <span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, when we want to automate parsing of some more complicated common cases - say, enums - Rust provides a powerful macro syntax:</p>
 <div class="emdash-code">
@@ -89,7 +119,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">   "le"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-032f62-99ffe4"> "&lt;="</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-6f42c1-ffc799"> LessThanEqual</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> LESS</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-fff"> EQUAL</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   "gt"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-032f62-99ffe4"> "&gt;"</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-6f42c1-ffc799"> GreaterThan</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> GREATER</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   "lt"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-032f62-99ffe4"> "&lt;"</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-6f42c1-ffc799"> LessThan</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> LESS</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This gives an experience similar to parser generators, while still using native language syntax and keeping us in control of all the implementation details.</p>
 <h3>Execution engine</h3>
@@ -97,7 +131,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">trait</span><span class="sk-6f42c1-ffc799"> Expr</span><span class="sk-24292e-fff">&lt;'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">&gt; {</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">    fn</span><span class="sk-6f42c1-ffc799"> execute</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">, ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">ExecutionContext</span><span class="sk-24292e-fff">&lt;'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">&gt;) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> bool</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>ExecutionContext</code> is pretty similar to a <code>Scheme</code>, but instead of mapping arbitrary field names to their types, it maps them to the runtime input values provided by the caller.</p>
 <p>As with <code>Scheme</code>, initially <code>ExecutionContext</code> used an internal <code>HashMap</code> for registering these arbitrary <code>String</code> -&gt; <code>RhsValue</code> mappings. During the <code>execute</code> call, the AST implementation would evaluate itself recursively, and look up each field reference in this map, either returning a value or raising an error on missing slots and type mismatches.</p>
@@ -113,7 +151,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">&lt;'</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">&gt; {</span></span>
 <span class="line"><span class="sk-24292e-fff">    scheme</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">'</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-6f42c1-ffc799"> Scheme</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    values</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Box</span><span class="sk-24292e-fff">&lt;[</span><span class="sk-6f42c1-ffc799">Option</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">LhsValue</span><span class="sk-24292e-fff">&lt;'</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-24292e-fff">&gt;&gt;]&gt;,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The only missing piece is an index that could map both structures to each other. As you might remember, <code>Scheme</code> still uses a <code>HashMap</code> for field registration, and a <code>HashMap</code> is normally expected to be randomised and indexed only by the predefined key.</p>
 <p>While we could wrap a value and an auto-incrementing index together into a custom struct, there is already a better solution: <code>[IndexMap](https://github.com/bluss/indexmap)</code>. <code>IndexMap</code> is a drop-in replacement for a <code>HashMap</code> that preserves ordering and provides a way to get an index of any element and vice versa - exactly what we needed.</p>
@@ -127,7 +169,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">           .</span><span class="sk-6f42c1-ffc799">map_err</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">err</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">LexErrorKind</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">UnknownField</span><span class="sk-24292e-fff">(err), name))</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       Ok</span><span class="sk-24292e-fff">((field, input))</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After that, in the <code>ExecutionContext</code> we allocate a fixed-size array and use these indices for resolving values during runtime:</p>
 <div class="emdash-code">
@@ -142,18 +188,30 @@
 <span class="line"><span class="sk-24292e-fff">       }</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This gave significant (~2x) speed ups on our standard benchmarks:</p>
 <p><em>Before:</em></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> matching</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> bench:</span><span class="sk-032f62-99ffe4">       2,548</span><span class="sk-032f62-99ffe4"> ns/iter</span><span class="sk-24292e-fff"> (+/- </span><span class="sk-005cc5-ffc799">98</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> parsing</span><span class="sk-032f62-99ffe4">  ...</span><span class="sk-032f62-99ffe4"> bench:</span><span class="sk-032f62-99ffe4">     192,037</span><span class="sk-032f62-99ffe4"> ns/iter</span><span class="sk-24292e-fff"> (+/- </span><span class="sk-032f62-99ffe4">21,538</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> parsing</span><span class="sk-032f62-99ffe4">  ...</span><span class="sk-032f62-99ffe4"> bench:</span><span class="sk-032f62-99ffe4">     192,037</span><span class="sk-032f62-99ffe4"> ns/iter</span><span class="sk-24292e-fff"> (+/- </span><span class="sk-032f62-99ffe4">21,538</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>After**:**</em></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> matching</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> bench:</span><span class="sk-032f62-99ffe4">       1,227</span><span class="sk-032f62-99ffe4"> ns/iter</span><span class="sk-24292e-fff"> (+/- </span><span class="sk-005cc5-ffc799">29</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> parsing</span><span class="sk-032f62-99ffe4">  ...</span><span class="sk-032f62-99ffe4"> bench:</span><span class="sk-032f62-99ffe4">     197,574</span><span class="sk-032f62-99ffe4"> ns/iter</span><span class="sk-24292e-fff"> (+/- </span><span class="sk-032f62-99ffe4">16,568</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> parsing</span><span class="sk-032f62-99ffe4">  ...</span><span class="sk-032f62-99ffe4"> bench:</span><span class="sk-032f62-99ffe4">     197,574</span><span class="sk-032f62-99ffe4"> ns/iter</span><span class="sk-24292e-fff"> (+/- </span><span class="sk-032f62-99ffe4">16,568</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This change also improved the usability of our API, as any type errors are now detected and reported much earlier, when the values are just being set on the context, and not delayed until filter execution.</p>
 <h4>[not] JIT compilation</h4>
@@ -183,7 +241,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> maybe {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    me</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Such behaviour (called static dispatch) is the default in Rust and is preferable for performance reasons.</p>
 <p>However, if we don’t know all the possible types at compile-time, Rust allows us to opt-in for a dynamic dispatch instead:</p>
@@ -192,7 +254,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> maybe {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    me</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dynamically dispatched objects don't have a statically known size, because it depends on the implementation details of particular type being passed. They need to be passed as a reference or stored in a heap-allocated <code>Box</code>, and then used just like in a generic implementation.</p>
 <p>In our case, this allows to create, return and store arbitrary closures, and later call them as regular functions:</p>
@@ -213,7 +279,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">   pub</span><span class="sk-d73a49-ffc799"> fn</span><span class="sk-6f42c1-ffc799"> execute</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">, ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">ExecutionContext</span><span class="sk-24292e-fff">&lt;'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">&gt;) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> bool</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">       self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">(ctx)</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The closure (an <code>Fn</code> box) will also automatically include the environment data it needs for the execution.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -238,7 +308,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">           IpAddr</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">V6</span><span class="sk-24292e-fff">(addr) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> v6</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">contains</span><span class="sk-24292e-fff">(addr),</span></span>
 <span class="line"><span class="sk-24292e-fff">       }</span></span>
 <span class="line"><span class="sk-24292e-fff">   })</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Moreover, boxed closures can be part of that captured environment, too. This means that we can convert each simple comparison into a closure, and then combine it with other closures, and keep going until we end up with a single top-level closure that can be invoked as a regular function to evaluate the entire filter expression.</p>
 <p>It’s turtles closures all the way down:</p>
@@ -261,7 +335,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">           .</span><span class="sk-6f42c1-ffc799">iter</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">           .</span><span class="sk-6f42c1-ffc799">fold</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">false</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">acc, item</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> acc </span><span class="sk-d73a49-a0a0a0">^</span><span class="sk-24292e-fff"> item</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-24292e-fff">(ctx))</span></span>
 <span class="line"><span class="sk-24292e-fff">   }),</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What’s nice about this approach is:</p>
 <ul>
@@ -299,7 +377,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">       let</span><span class="sk-24292e-fff"> filter </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(s)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">map_err</span><span class="sk-24292e-fff">(into_js_error)</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       JsValue</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">from_serde</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">filter)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">map_err</span><span class="sk-24292e-fff">(into_js_error)</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And by using a higher-level tool called <a href="https://github.com/rustwasm/wasm-pack" target="_blank" rel="noopener noreferrer">wasm-pack</a>, we also got automated npm package generation and publishing, for free.</p>
 <p>This is not used in the production UI yet because we still need to figure out some details for unsupported browsers, but it’s great to have all the tooling and packages ready with minimal efforts. Extending and reusing the same package, it should be even possible to run filters in Cloudflare Workers too (which <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">also support WebAssembly</a>).</p>

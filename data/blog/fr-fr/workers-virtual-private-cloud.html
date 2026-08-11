@@ -36,11 +36,37 @@
 </figure>
 <p>Ainsi, pour vous connecter de Cloudflare Workers à une API privée au sein d'un VPC externe, il vous suffira d'effectuer un appel fetch() sur une liaison vers une ressource VPC Workers nommée&nbsp;:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">WORKERS_VPC_RESOURCE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/api/users/342"</span><span class="sk-24292e-fff">);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">WORKERS_VPC_RESOURCE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/api/users/342"</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>De même, les ressources Cloudflare sont accessibles via une URL normalisée et configurée au sein d'une ressource DNS privée sur votre cloud externe par Workers VPC Private Link. Si vous cherchiez à accéder à des objets R2 depuis une API située au sein de votre VPC, vous pourriez adresser la requête à l'URL attendue&nbsp;:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://&lt;account_id&gt;.r2.cloudflarestorage.com.cloudflare-workers-vpc.com"</span><span class="sk-24292e-fff">);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://&lt;account_id&gt;.r2.cloudflarestorage.com.cloudflare-workers-vpc.com"</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cerise sur le gâteau, puisque le service Workers VPC est bâti sur notre plateforme existante, il tire pleinement parti de nos capacités de connectivité réseau et de routage pour réduire les frais de trafic sortant et vous permettre de développer des applications à l'échelle mondiale.</p>
 <p>Tout d'abord, en prenant en charge <a href="https://developers.cloudflare.com/network-interconnect" target="_blank" rel="noopener noreferrer"><u>Cloudflare Network Interconnect</u></a> comme méthode de connexion sous-jacente, la solution Workers VPC Private Links peut vous aider à réduire vos coûts de bande passante en tirant avantage des réductions sur les frais de trafic sortant de votre cloud externe. Deuxièmement, le service VPC Workers étant mondial par nature, vos Workers et vos ressources peuvent être placés là où c'est nécessaire afin de garantir des performances optimales. La fonctionnalité <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a> (Placement intelligent) de Workers, par exemple, vous permet de faire en sorte que vos Workers soient automatiquement placés dans la région la plus proche de votre VPC régional externe, afin d'optimiser les performances des applications.&nbsp;</p>

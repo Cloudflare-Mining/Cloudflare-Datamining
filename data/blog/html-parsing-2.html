@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">   b'&gt;'</span><span class="sk-d73a49-a0a0a0">       =&gt;</span><span class="sk-24292e-fff"> ( finish_tag_name</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">; emit_tag</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">--&gt;</span><span class="sk-24292e-fff"> data_state )</span></span>
 <span class="line"><span class="sk-24292e-fff">   eof        </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ( emit_raw_without_token_and_eof</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">; )</span></span>
 <span class="line"><span class="sk-24292e-fff">   _          </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ( update_tag_name_hash; )</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The DSL program gets expanded by the Rust compiler into not quite as beautiful, but extremely efficient Rust code.</p>
 <p>We no longer need to reimplement the code that drives the parsing process for each of our parsers. All we need to do is to define different action implementations for each. In the case of the tag scanner, the majority of these actions are a no-op, so the Rust compiler does the NFA optimization job for us: it optimizes away state branches with no-op actions and even whole states if all of the branches have no-op actions. Now that’s cool.</p>
 <h4>Byte slice processing optimisations</h4>
@@ -54,7 +76,11 @@
 <span class="line"><span class="sk-24292e-fff">   name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">'</span><span class="sk-6f42c1-ffc799">i</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">u8</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">   attributes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">'</span><span class="sk-6f42c1-ffc799">i</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">u8</span><span class="sk-24292e-fff">], </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">'</span><span class="sk-6f42c1-ffc799">i</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">u8</span><span class="sk-24292e-fff">])&gt;,</span></span>
 <span class="line"><span class="sk-24292e-fff">   self_closing</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> bool</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As Rust uses bound checks on memory access, construction of a token might be a relatively expensive operation. We need to be capable of constructing thousands of them in a fraction of second, so every CPU instruction counts.</p>
 <p>Following the principle of doing as little as possible to improve performance we use a “token outline” representation of tokens: instead of having memory slices for token parts we use numeric ranges which are lazily transformed into a byte slice when required.</p>
@@ -63,7 +89,11 @@
 <span class="line"><span class="sk-24292e-fff">   name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Range</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">usize</span><span class="sk-24292e-fff">&gt;,</span></span>
 <span class="line"><span class="sk-24292e-fff">   attributes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;(</span><span class="sk-6f42c1-ffc799">Range</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">usize</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-6f42c1-ffc799">Range</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">usize</span><span class="sk-24292e-fff">&gt;)&gt;,</span></span>
 <span class="line"><span class="sk-24292e-fff">   self_closing</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> bool</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you might have noticed, with this approach we are no longer bound to the lifetime of the input chunk which turns out to be very useful. If a start tag is spread across multiple input chunks we can easily update the token that is currently in construction, as new chunks of input arrive by just adjusting integer indices. This allows us to avoid constructing a new token with slices from the new input memory region (it could be the input chunk itself or the internal parser’s buffer).</p>
 <p>This time we can’t get away with avoiding the conversion of input character encoding; we expose a user-facing API that operates on JavaScript strings and input HTML can be of any encoding. Luckily, as we can still parse without decoding and only encode and decode within token bounds by a request (though we still can’t do that for UTF-16 encoding).</p>
@@ -82,12 +112,20 @@
 <p>The main problem encountered was the need to backtrack all the open elements for matching. Browsers match selectors from right to left and traverse all ancestors of an element. This <a href="https://stackoverflow.com/a/5813672" target="_blank" rel="noopener noreferrer">StackOverflow</a> has a good explanation of why they do it this way. We would need to store information about all open elements and their attributes - something that we can’t do while operating with tight memory constraints. This matching approach would be inefficient for our case - unlike browsers, we expect to have just a few selectors and a lot of elements. In this case it is much more efficient to match selectors from left to right.</p>
 <p>And this is when we had a revelation. Consider the following CSS selector:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">body</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> div</span><span class="sk-6f42c1-ffc799">.foo</span><span class="sk-22863a-ffc799">  img</span><span class="sk-24292e-a0a0a0">[</span><span class="sk-6f42c1-a0a0a0">alt</span><span class="sk-24292e-a0a0a0">] </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-22863a-ffc799"> div</span><span class="sk-6f42c1-ffc799">.foo</span><span class="sk-22863a-ffc799"> ul</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">body</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> div</span><span class="sk-6f42c1-ffc799">.foo</span><span class="sk-22863a-ffc799">  img</span><span class="sk-24292e-a0a0a0">[</span><span class="sk-6f42c1-a0a0a0">alt</span><span class="sk-24292e-a0a0a0">] </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-22863a-ffc799"> div</span><span class="sk-6f42c1-ffc799">.foo</span><span class="sk-22863a-ffc799"> ul</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It can be split into individual components attributed to a particular element with hierarchical combinators in between:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">body</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> div</span><span class="sk-6f42c1-ffc799">.foo</span><span class="sk-22863a-ffc799"> img</span><span class="sk-24292e-a0a0a0">[</span><span class="sk-6f42c1-a0a0a0">alt</span><span class="sk-24292e-a0a0a0">] </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-22863a-ffc799"> div</span><span class="sk-6f42c1-ffc799">.foo</span><span class="sk-22863a-ffc799">  ul</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">---    ------- --------   -------  --</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">---    ------- --------   -------  --</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Each component is easy to match having a start tag token - it’s just a matter of comparison of token fields with values in the component. Let’s dive into abstract thinking and imagine that each such component is a character in the infinite alphabet of all possible components:</p>
 <div id="html-block-k3q" class="html-block">
@@ -118,14 +156,22 @@
 </div>
 <p>Let’s rewrite our selector with selector components replaced by our imaginary characters:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">a</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> b</span><span class="sk-24292e-a0a0a0"> c </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-22863a-ffc799"> b</span><span class="sk-24292e-a0a0a0"> d</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">a</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> b</span><span class="sk-24292e-a0a0a0"> c </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-22863a-ffc799"> b</span><span class="sk-24292e-a0a0a0"> d</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Does this remind you of something?</p>
 <p>A &nbsp; `&gt;` combinator can be considered a child element, or “immediately followed by”.</p>
 <p>The ` ` (space) is a descendant element can be thought of as there might be zero or more elements in between.</p>
 <p>There is a very well known abstraction to express these relations - regular expressions. The selector replacing combinators can be replaced with a regular expression syntax:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>ab.*cb.*d</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>ab.*cb.*d</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We transformed our CSS selector into a regular expression that can be executed on the sequence of start tag tokens. Note that not all CSS selectors can be converted to such a regular grammar and the input on which we match has some specifics, which we’ll discuss later. However, it was a good starting point: it allowed us to express a significant subset of selectors.</p>
 <h5>Implementing a Virtual Machine</h5>
@@ -146,7 +192,11 @@
 <span class="line"><span>L2: expect b</span></span>
 <span class="line"><span>    jmp L1</span></span>
 <span class="line"><span>L3: expect c</span></span>
-<span class="line"><span>    match</span></span></code></pre>
+<span class="line"><span>    match</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let’s try to translate the regular expression ab.*cb.*d from the selector we saw earlier:</p>
 <div class="emdash-code">
@@ -161,7 +211,11 @@
 <span class="line"><span>L5: expect [any]</span></span>
 <span class="line"><span>    jmp L4</span></span>
 <span class="line"><span>L6: expect d</span></span>
-<span class="line"><span>    match</span></span></code></pre>
+<span class="line"><span>    match</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That looks complex! Though this assembly language is designed for regular expressions in general, and regular expressions can be much more complex than our case. For us the only kind of repetition that matters is “<em>.*”</em>. So, instead of expressing it with multiple instructions we can use just one called <em>hereditary_jmp</em>:</p>
 <div class="emdash-code">
@@ -172,7 +226,11 @@
 <span class="line"><span>    expect b</span></span>
 <span class="line"><span>    hereditary_jmp L2</span></span>
 <span class="line"><span>L2: expect d</span></span>
-<span class="line"><span>    match</span></span></code></pre>
+<span class="line"><span>    match</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The instruction tells VM to memoize instruction’s label operand and unconditionally spawn a thread with a jump to this label on each input character.</p>
 <p>There is one significant distinction between the string input of regular expressions and the input provided to our VM. The input can shrink!</p>
@@ -185,7 +243,11 @@
 <span class="line"><span>1| expect &lt;div&gt;</span></span>
 <span class="line"><span>2| hereditary_jmp 3</span></span>
 <span class="line"><span>3| expect &lt;span&gt;</span></span>
-<span class="line"><span>4| match</span></span></code></pre>
+<span class="line"><span>4| match</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Having an input “” we’ll have the following stack:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -203,7 +265,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">body</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> div</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> link</span><span class="sk-24292e-a0a0a0">[</span><span class="sk-6f42c1-a0a0a0">rel</span><span class="sk-24292e-a0a0a0">]</span></span>
 <span class="line"><span class="sk-22863a-ffc799">body</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> span</span></span>
-<span class="line"><span class="sk-22863a-ffc799">body</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> span</span><span class="sk-22863a-ffc799"> a</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">body</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-22863a-ffc799"> span</span><span class="sk-22863a-ffc799"> a</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>we’ll get the following AST:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

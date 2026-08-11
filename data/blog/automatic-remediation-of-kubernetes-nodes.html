@@ -14,12 +14,38 @@
 <h2>Unhappy Nodes</h2>
 <p>We have plenty of examples of failures in the aforementioned categories, but one example has been particularly tedious to deal with. It starts with the following log line from the kernel:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">unregister_netdevice:</span><span class="sk-032f62-99ffe4"> waiting</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> become</span><span class="sk-032f62-99ffe4"> free.</span><span class="sk-032f62-99ffe4"> Usage</span><span class="sk-032f62-99ffe4"> count</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">unregister_netdevice:</span><span class="sk-032f62-99ffe4"> waiting</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> become</span><span class="sk-032f62-99ffe4"> free.</span><span class="sk-032f62-99ffe4"> Usage</span><span class="sk-032f62-99ffe4"> count</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The issue is further observed with the number of network interfaces on the node owned by the Container Network Interface (CNI) plugin getting out of proportion with the number of running pods:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> cali</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">1088</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">1088</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is unexpected as it shouldn't exceed the maximum number of pods allowed on a node (we use the default limit of 110). While this issue is interesting and perhaps worthy of a whole separate blog, the short of it is that the Linux network interfaces owned by the CNI are not getting cleaned up after a pod terminates.</p>
 <p>Some history on this can be read in a <a href="https://github.com/moby/moby/issues/5618" target="_blank" rel="noopener noreferrer">Docker GitHub issue</a>. We found this seems to plague nodes with a longer uptime, and after rebooting the node it would be fine for about a month. However, with a significant number of nodes, this was happening multiple times per day. Each instance would need rebooting, which means going through our worker reboot procedure which looked like this:</p>
@@ -99,7 +125,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">          "timeout"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "3s"</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">      ]</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Testing showed that when the condition became true, a condition would be updated on the associated Kubernetes node like so:</p>
 <div class="emdash-code">
@@ -111,7 +141,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "reason"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "TooManyCalicoInterfaces",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "True",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "NPDCalicoUnhealthy"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With that in place, the actual remediation needed to happen. Kured seemed to do most everything we needed, except that it was looking at a file instead of Kubernetes node conditions. We hacked together a patch to change that and tested it successfully end to end — we had a working proof of concept!</p>
 <h2>Revisiting Problem Detection</h2>
@@ -123,7 +157,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff">: 1h</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    priority:</span><span class="sk-032f62-99ffe4"> "5"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> chat-sre-core</span><span class="sk-032f62-99ffe4"> chat-k8s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> chat-sre-core</span><span class="sk-032f62-99ffe4"> chat-k8s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that we use a “notify” label to drive the routing logic in Alertmanager. However, that got us asking, could we just route this to a Kubernetes node condition instead?</p>
 <h2>Introducing Sciuro</h2>
@@ -141,14 +179,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  expr:</span><span class="sk-032f62-99ffe4"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">node_network_info</span><span class="sk-032f62-99ffe4">{device=~</span><span class="sk-6f42c1-ffc799">"cali.*"</span><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">by</span><span class="sk-24292e-fff"> (node) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">= 150</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    priority:</span><span class="sk-032f62-99ffe4"> "6"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note the two differences from the previous alert. First, we use a new name with a more sensitive trigger. The idea is that we want automatic node remediation to try fixing the node first as soon as possible, but if the problem worsens or automatic remediation is failing, humans will still get notified to act. The second difference is that instead of notifying chat rooms, we route to a target called “node-condition-k8s”.</p>
 <p>Sciuro then comes into play, polling the Altertmanager API for alerts matching the “node-condition-k8s” receiver. The following shows the equivalent using <a href="https://github.com/prometheus/alertmanager/tree/master/cmd/amtool" target="_blank" rel="noopener noreferrer">amtool</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> amtool</span><span class="sk-032f62-99ffe4"> alert</span><span class="sk-032f62-99ffe4"> query</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Alertname</span><span class="sk-032f62-99ffe4">                 	Starts</span><span class="sk-032f62-99ffe4"> At</span><span class="sk-032f62-99ffe4">            	Summary</span><span class="sk-24292e-fff">                                                               	 </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">CalicoTooManyInterfacesEarly</span><span class="sk-032f62-99ffe4">  2021-05-11</span><span class="sk-032f62-99ffe4"> 03:25:21</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-032f62-99ffe4">  Kubernetes</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-032f62-99ffe4"> worker1a</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> too</span><span class="sk-032f62-99ffe4"> many</span><span class="sk-032f62-99ffe4"> Calico</span><span class="sk-032f62-99ffe4"> interfaces</span><span class="sk-24292e-fff">  </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">CalicoTooManyInterfacesEarly</span><span class="sk-032f62-99ffe4">  2021-05-11</span><span class="sk-032f62-99ffe4"> 03:25:21</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-032f62-99ffe4">  Kubernetes</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-032f62-99ffe4"> worker1a</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> too</span><span class="sk-032f62-99ffe4"> many</span><span class="sk-032f62-99ffe4"> Calico</span><span class="sk-032f62-99ffe4"> interfaces</span><span class="sk-24292e-fff">  </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can also check the labels for this alert:</p>
 <div class="emdash-code">
@@ -161,7 +207,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "notify"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "node-condition-k8s",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "priority"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "6",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "prometheus"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "k8s-a"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note the node and instance labels which Sciuro will use for matching with the corresponding Kubernetes node. Sciuro uses the excellent <a href="https://github.com/kubernetes-sigs/controller-runtime" target="_blank" rel="noopener noreferrer">controller-runtime</a> to keep track of and update node sources in the Kubernetes API. We can observe the updated node condition on the status field via kubectl:</p>
 <div class="emdash-code">
@@ -173,7 +223,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "reason"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "AlertIsFiring",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "True",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "AlertManager_CalicoTooManyInterfacesEarly"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>One important note is Sciuro added the AlertManager_ prefix to the node condition type to prevent conflicts with other node condition types. For example, DiskPressure, a kubelet managed condition, could also be an alert name. Sciuro will also properly update heartbeat and transition times to reflect when it first saw the alert and its last update. With node conditions synchronized by Sciuro, remediation can take place via one of the existing tools. As mentioned previously we are using a modified version of Kured for now.</p>
 <p>We’re happy to announce that we’ve open sourced Sciuro, and it can be found on <a href="https://github.com/cloudflare/sciuro" target="_blank" rel="noopener noreferrer">GitHub</a> where you can read the code, find the deployment instructions, or open a Pull Request for changes.</p>
@@ -199,7 +253,11 @@
 <span class="line"><span class="sk-24292e-fff">    )</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    priority:</span><span class="sk-032f62-99ffe4"> "9"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    notify:</span><span class="sk-032f62-99ffe4"> node-condition-k8s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There is a bit of juggling with the kube_node_roles metric in the above to isolate the alert to generic worker nodes, but at a high level it looks at node_boot_time_seconds, a metric from <a href="https://github.com/prometheus/node_exporter" target="_blank" rel="noopener noreferrer">prometheus node_exporter</a>. Again the notify label is configured to send to node conditions which kicks off the automatic node remediation. One further detail is the priority here is set to “9” which is of lower precedence than our other alerts. Note that the message field of the node condition is prefixed with the alert priority in brackets. This allows the remediation process to take priority into account when choosing which node to remediate first, which is important because Kured uses a lock to act on a single node at a time.</p>
 <h2>Wrapping Up</h2>

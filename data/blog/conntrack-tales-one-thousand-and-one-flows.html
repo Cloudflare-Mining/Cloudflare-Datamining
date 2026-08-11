@@ -11,8 +11,30 @@
 <p>The obvious question is how large this state tracking table can be. This setting is under "/proc/sys/net/nf_conntrack_max":</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ cat /proc/sys/net/nf_conntrack_max</span></span>
-<span class="line"><span>262144</span></span></code></pre>
+<span class="line"><span>262144</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This is a global setting, but the limit is per container. On my system each container, or "network namespace", can have up to 256K conntrack entries.</p>
 <p>What exactly happens when the number of concurrent connections exceeds the conntrack limit?</p>
 <h2>Testing conntrack is hard</h2>
@@ -39,7 +61,11 @@
 <span class="line"><span>conntrack -L</span></span>
 <span class="line"><span># Show iptables counters</span></span>
 <span class="line"><span>iptables -nvx -t raw -L PREROUTING</span></span>
-<span class="line"><span>iptables -nvx -t mangle -L PREROUTING</span></span></code></pre>
+<span class="line"><span>iptables -nvx -t mangle -L PREROUTING</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This bash script is shortened for readability. See the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-04-conntrack-syn/test-1.bash" target="_blank" rel="noopener noreferrer">full version here</a>. The accompanying "send_syn.py" is just sending 10 SYN packets over "tun0" interface. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-04-conntrack-syn/send_syn.py" target="_blank" rel="noopener noreferrer">Here is the source</a> but allow me to paste it here - showing off "scapy" is always fun:</p>
 <div class="emdash-code">
@@ -49,7 +75,11 @@
 <span class="line"><span>for i in range(10000,10000+10):</span></span>
 <span class="line"><span>    ip=IP(src="198.18.0.2", dst="192.0.2.1")</span></span>
 <span class="line"><span>    tcp=TCP(sport=i, dport=80, flags="S")</span></span>
-<span class="line"><span>    send(ip/tcp, verbose=False, inter=0.01, socket=tun)</span></span></code></pre>
+<span class="line"><span>    send(ip/tcp, verbose=False, inter=0.01, socket=tun)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The bash script above contains a couple of gems. Let's walk through them.</p>
 <p>First, please note that we can't just inject packets into the loopback interface using <a href="http://man7.org/linux/man-pages/man7/raw.7.html" target="_blank" rel="noopener noreferrer">SOCK_RAW sockets</a>. The Linux networking stack is a complex beast. The semantics of sending packets over a SOCK_RAW are different then delivering a packet over a real interface. We'll discuss this later, but for now, to avoid triggering unexpected behaviour, we will deliver packets over a tun/tap device which better emulates a real interface.</p>
@@ -85,7 +115,11 @@
 <p>Conntrack supports a "strict" and "loose" mode, as configured by "nf_conntrack_tcp_loose" toggle.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /proc/sys/net/netfilter/nf_conntrack_tcp_loose</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>By default, it's set to "loose" which means that stray ACK packets for unseen TCP flows will create new flow entries in the table. We can generalize: "conntrack" will implicitly drop all the packets that create new flow, whether that's SYN or just stray ACK.</p>
 <p>What happens when we clear the "nf_conntrack_tcp_loose=0" setting? This is a subject for another blog post, but suffice to say - it's a mess. First, this setting is not settable in the network namespace scope - although it should be. To test it you need to be in the root network namespace. Then, due to twisted logic the ACK will be dropped on a full conntrack table, even though in this case it doesn't create a flow. If the table is not full, the ACK packet will pass through it, having "-ctstate INVALID" from "mangle" table forward.</p>
@@ -93,12 +127,20 @@
 <p>There are important situations when conntrack entry is not created. For example, we could replace these line in our script:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Make sure reverse traffic doesn't affect conntrack state</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> OUTPUT</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-005cc5-99ffe4"> --sport</span><span class="sk-005cc5-ffc799"> 80</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> OUTPUT</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-005cc5-99ffe4"> --sport</span><span class="sk-005cc5-ffc799"> 80</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With those:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Make sure inbound SYN packets don't go to networking stack</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Naively we could think dropping SYN packets past the conntrack layer would not interfere with the created flows. This is not correct. In spite of these SYN packets having been seen by conntrack, no flow state is created for them. Packets hitting "-j DROP" will not create new conntrack flows. Pretty magical, isn't it?</p>
 <h2>Full Conntrack causes with EPERM</h2>
@@ -111,14 +153,22 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">marek:~$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> OUTPUT</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-005cc5-99ffe4"> --dst</span><span class="sk-005cc5-ffc799"> 192.0.2.8</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">marek:~$</span><span class="sk-032f62-99ffe4"> strace</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> trace=write</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-005cc5-99ffe4"> -vu</span><span class="sk-005cc5-ffc799"> 192.0.2.8</span><span class="sk-005cc5-ffc799"> 53</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">write(3,</span><span class="sk-032f62-99ffe4"> "X",</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)                        = -1 EPERM (</span><span class="sk-6f42c1-ffc799">Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+++</span><span class="sk-032f62-99ffe4"> exited</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> +++</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+++</span><span class="sk-032f62-99ffe4"> exited</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> +++</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you ever receive EPERM from "sendto()", you might want to treat it as a transient error, if you suspect a filled conntrack problem, or permanent error if you blame iptables configuration.</p>
 <p>This is also why we can't send our SYN packets directly using SOCK_RAW sockets in our test. Let's see what happens on conntrack overfill with standard "hping3" tool:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> hping3</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> u10000</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-99ffe4"> --spoof</span><span class="sk-005cc5-ffc799"> 192.18.0.2</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 80</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> lo</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">HPING</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-24292e-fff"> (lo </span><span class="sk-005cc5-ffc799">192.0.2.1</span><span class="sk-24292e-fff">): S set, 40 headers + 0 data bytes</span></span>
-<span class="line"><span class="sk-24292e-fff">[send_ip] sendto: Operation not permitted</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[send_ip] sendto: Operation not permitted</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>"send()" even on a SOCK_RAW socket fails with EPERM when conntrack table is full.</p>
 <h2>Full conntrack can happen on a SYN flood</h2>

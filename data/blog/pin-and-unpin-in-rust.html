@@ -19,8 +19,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">// Call the async function, which will send a HTTP request and time it.</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">let (resp, time) = timed_async_fn.await;</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">println!("Got a HTTP {} in {}ms", resp.unwrap().status(), time.as_millis())</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">println!("Got a HTTP {} in {}ms", resp.unwrap().status(), time.as_millis())</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>I like this interface, it's simple and should be easy for the other programmers on my team to use. OK, let's implement it! I know that, under the hood, Rust's async functions are just regular functions that return a <a href="https://doc.rust-lang.org/stable/std/future/trait.Future.html" target="_blank" rel="noopener noreferrer"><code>Future</code></a>. The Future trait is pretty simple. It just means a type which:</p>
 <ul>
 	<li>Can be polled</li>
@@ -45,7 +67,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">fn</span><span class="sk-032f62-99ffe4"> poll</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">self:</span><span class="sk-032f62-99ffe4"> Pin</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">lt</span><span class="sk-24292e-fff">;&amp;</span><span class="sk-6f42c1-ffc799">amp</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Self</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">gt</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> _cx:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">amp</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Context</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">-</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">gt</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Poll</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">lt</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">Self::Output</span><span class="sk-032f62-99ffe4">  {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		Poll::ready(rand::random(</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Not too hard! I think we're ready to implement <code>TimedWrapper</code>.</p>
 <h3>Trying and failing to use nested Futures</h3>
@@ -54,7 +80,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> TimedWrapper</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Fut:</span><span class="sk-032f62-99ffe4"> Futur</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	start:</span><span class="sk-032f62-99ffe4"> Option</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Instan</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	future:</span><span class="sk-032f62-99ffe4"> Fut,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>OK, so a <code>TimedWrapper</code> is generic over a type <code>Fut</code>, which must be a <code>Future</code>. And it will store a future of that type as a field. It'll also have a <code>start</code> field which will record when it was first polled. Let's write a constructor:</p>
 <div class="emdash-code">
@@ -62,7 +92,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	pub</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">future:</span><span class="sk-032f62-99ffe4"> Fut</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Self</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		Self</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> future,</span><span class="sk-032f62-99ffe4"> start:</span><span class="sk-032f62-99ffe4"> None</span><span class="sk-032f62-99ffe4"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nothing too complicated here. The <code>new</code> function takes a future and wraps it in the <code>TimedWrapper</code>. Of course, we have to set start to None, because it hasn't been polled yet. So, let's implement the <code>poll</code> method, which is the only thing we need to implement <code>Future</code> and make it <code>.await</code>able.</p>
 <div class="emdash-code">
@@ -85,7 +119,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">			Poll::Ready(output</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Poll::Ready((output</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> elapsed)),</span></span>
 <span class="line"><span class="sk-24292e-fff">		}</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>OK, that wasn't too hard. There's just one problem: this doesn't work.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -134,7 +172,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Getting</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> Pin</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4">        fn</span><span class="sk-032f62-99ffe4"> into_inner</span><span class="sk-d73a49-a0a0a0">          &lt;</span><span class="sk-032f62-99ffe4">P:</span><span class="sk-032f62-99ffe4"> Deref</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Target:</span><span class="sk-032f62-99ffe4"> Unpi</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pin:</span><span class="sk-032f62-99ffe4"> Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> P</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> unsafe</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> into_inner_unchecked</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">                      (pin: </span><span class="sk-032f62-99ffe4">Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> P;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> unsafe</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> into_inner_unchecked</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">                      (pin: </span><span class="sk-032f62-99ffe4">Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> P;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I know <code>unsafe</code> can be a bit scary, but it's OK to write unsafe code! I think of unsafe as the compiler saying "hey, I can't tell if this code follows the rules here, so I'm going to rely on you to check for me." The Rust compiler does so much work for us, it's only fair that we do some of the work every now and then. If you want to learn how to write your own projection methods, I can highly recommend <a href="https://fasterthanli.me/articles/pin-and-suffering" target="_blank" rel="noopener noreferrer">this fasterthanli.me blog post</a> on the topic. But we're going to take a little shortcut.</p>
 <h3>Using pin-project instead</h3>
@@ -150,7 +192,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">	// Opt into pinned references with this attribute:</span></span>
 <span class="line"><span class="sk-24292e-fff">	#[pin]</span></span>
 <span class="line"><span class="sk-24292e-fff">	future</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Fut</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For each field, you have to choose whether its projection should be pinned or not. By default, you should use a normal reference, just because they're easier and simpler. But if you know you need a pinned reference -- for example, because you want to call <code>.poll()</code>, whose receiver is <code>Pin&lt;&amp;mut Self&gt;</code> -- then you can do that with <code>#[pin]</code>.</p>
 <p>Now we can finally poll the inner future!</p>
@@ -171,7 +217,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Success!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		Poll::Ready(output</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Poll::Ready((output</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> elapsed)),</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, our goal is complete -- and we did it all without any unsafe code.</p>
 <h3>Summary</h3>

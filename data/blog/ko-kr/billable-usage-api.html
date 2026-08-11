@@ -1,0 +1,229 @@
+<p>Agents Week는 이미 진행 중인 변화를 다룹니다. 이제 에이전트는 코드를 작성하고, Workers를 배포하며, 사용자를 대신해 인프라를 프로비저닝합니다. 이러한 변화는 필요한 가시성도 바꾸고 있습니다. 프로그램이 Cloudflare 계정에서 비용을 사용하고 있다면, 무엇에 비용을 사용하고 있는지 제품별로, 하루 동안 어떻게 사용되고 있는지, 그리고 다른 프로그램이 활용할 수 있는 형식으로 확인할 수 있어야 합니다. 대시보드는 사람에게는 적합한 도구이지만, 자동화에는 적합하지 않습니다.</p>
+<p>그래서 셀프서비스 계정을 위한 새로운 <strong>Billable Usage API</strong>를 출시합니다. 이 API는 단일 엔드포인트를 통해 계정의 사용량과 비용을 제품별, 서비스 기간별로 구분해 반환합니다. 계정에서 사용하는 모든 사용량 기반 Cloudflare 제품을 지원하며, Workers, R2, D1, Workers AI, Vectorize, Images, Stream의 사용량과 비용을 단 한 번의 호출로 확인할 수 있습니다. 또한 이미 FinOps 도구 체인을 사용하고 있다면, API의 컬럼 이름도 익숙한 형태로 구성되어 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage?from=2026-02-01&amp;to=2026-02-15"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p><code>HTTP 200 OK</code>와 <code>Content-Type: application/json</code>이 반환되며, 응답 본문에는 사용량 데이터가 포함됩니다. 현재 사용량 및 비용 데이터는 매일 업데이트되며, Cloudflare는 앞으로 더욱 실시간에 가까운 데이터를 제공하기 위해 개선을 진행하고 있습니다.</p>
+<h2><strong>반환되는 정보</strong></h2>
+<p>응답의 각 행은 계정에서 특정 제품에 대해 하나의 과금 기간 동안 발생한 사용량 정보를 나타냅니다.</p>
+<ul>
+	<li><code>ServiceName</code> 및 <code>ServiceFamilyName</code> — 어떤 제품에 대한 정보인지 나타냅니다(예: "Workers" 제품군의 Workers Standard, "R2" 제품군의 R2 Storage).</li>
+	<li><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code> — 해당 행이 나타내는 과금 기간입니다.</li>
+	<li><code>PricingQuantity</code> 및 <code>ConsumedUnit</code> — 사용량과 과금 단위를 나타냅니다(예: GB-월, GB-초, 요청 수 등).</li>
+	<li><code>ContractedCost</code> — 해당 과금 기간에 발생한 비용으로, <code>BillingCurrency</code> 기준으로 표시됩니다.</li>
+	<li><code>CumulatedPricingQuantity</code> 및 <code>CumulatedContractedCost</code> — 해당 청구 기간 동안의 누적 사용량과 누적 비용입니다.</li>
+	<li><code>ZoneId</code> / <code>ZoneName</code> — 사용량이 특정 Zone에 귀속되는 경우 해당 Zone의 ID와 이름을 나타냅니다.</li>
+</ul>
+<p>이들 대부분의 필드는 <a href="https://focus.finops.org" target="_blank" rel="noopener noreferrer">​<u>FinOps Open Cost and Usage Specification(FOCUS)</u></a>의 컬럼과 직접 매핑됩니다. 따라서 이미 다른 클라우드 제공업체의 FOCUS 데이터를 수집하고 있다면, 컬럼 이름과 의미도 익숙할 것입니다.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Cloudflare 필드</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>FOCUS 컬럼</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>설명</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>완전히 동일합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>완전히 동일합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>완전히 동일합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>완전히 동일합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>완전히 동일합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>완전히 동일합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>완전히 동일합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceFamilyName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(<code>ServiceCategory</code>와 유사)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare에서 사용하는 제품군 구분입니다. FOCUS는 표준화된 제어 어휘를 사용합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>CumulatedContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(계산 가능한 값)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>편의를 위해 제공되는 필드입니다. FOCUS에서는 누적 값 계산을 쿼리에서 처리합니다.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ZoneId</code> / <code>ZoneName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(<code>ResourceId</code> / <code>ResourceName</code>과 유사)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>해당되는 경우 특정 Zone을 식별하는 정보입니다.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>응답은 Cloudflare API의 표준 응답 형식을 사용합니다. <code>result</code>에는 제품별·과금 기간별 데이터 행이 배열 형태로 포함되며, 이와 함께 <code>success</code>, <code>errors</code>, <code>messages</code> 필드도 함께 반환됩니다.</p>
+<p></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingCurrency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingPeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodEnd"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-28T23:59:59Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers Standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceFamilyName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedQuantity"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">150000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedUnit"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GB-months"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.75</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "CumulatedContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2.25</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>FOCUS 지원 현황</strong></h2>
+<p>FOCUS 명명 규칙을 따른 것은 의도적인 선택이었습니다. AWS, Azure, Google Cloud, Oracle을 비롯해 점점 더 많은 SaaS 제공업체가 이미 FOCUS 형식의 데이터를 제공하고 있으며, 주요 비용 관리 도구들도 모두 이를 지원합니다. 다만 현재 Cloudflare가 FOCUS를 완전히 준수한다고 주장하는 것은 아닙니다. FOCUS 사양에서 요구하는 일부 컬럼은 아직 응답에 포함되어 있지 않습니다. 이를 지원하는 것은 로드맵에 포함되어 있습니다. 이번 출시는 첫 단계라고 생각하시면 됩니다. 지금은 익숙한 형식을 제공하고, 다음 단계에서는 FOCUS 완전 준수를 목표로 합니다.</p>
+<h2><strong>다른 클라우드 비용과 함께 Cloudflare 비용도 한눈에: Vantage와의 파트너십</strong></h2>
+<p>Cloudflare는<a href="https://www.vantage.sh" target="_blank" rel="noopener noreferrer">​</a> <a href="https://www.vantage.sh" target="_blank" rel="noopener noreferrer"><u>Vantage</u></a>와 기본 통합을 위한 파트너십을 체결했습니다. Vantage는 AI, 클라우드, SaaS를 포함해 30개 이상의 제공업체에서 비용 및 사용량 데이터를 수집하고, 이를 하나의 화면에서 보고, 비용 할당 및 최적화할 수 있도록 지원하는 인프라 비용 관리 플랫폼입니다. 이번 통합을 통해 Cloudflare 사용량은 기존 인프라에서 사용하던 Cost Reports, Budgets, Cost Alerts에 함께 표시됩니다.</p>
+<p>Vantage는 Billing Read 권한을 가진 읽기 전용 API 토큰을 사용해 Cloudflare에 연결합니다. 연결이 완료되면 Vantage는 매일 Billable Usage 데이터를 가져와 Workers, R2와 같은 제품, Zone, 계정별로 분석합니다. 이를 통해 어떤 제품이 비용의 대부분을 차지하는지 확인하고, 해당 비용을 이를 사용하는 팀이나 서비스에 할당할 수 있습니다.</p>
+<p>이 통합을 통해 다음과 같은 작업을 수행할 수 있습니다.</p>
+<ul>
+	<li><strong>여러 클라우드 제공업체에 걸친 비용 할당.</strong> Cloudflare 비용을 제품, Zone, 계정별로 그룹화한 뒤, Virtual Tags를 사용해 팀이나 제품 라인별로 할당할 수 있습니다. 또한 AWS, Azure 등 다른 클라우드 제공업체의 비용과 함께 하나의 보고서에서 확인할 수 있습니다.</li>
+	<li><strong>이상 비용 탐지.</strong> Vantage Cost Alerts는 연결된 모든 제공업체의 비용을 모니터링하고, 비용이 기준선에서 벗어나면 Slack 또는 이메일로 알려줍니다. 따라서 Workers나 R2 비용의 이상 증가도 다른 클라우드 제공업체와 동일한 방식으로 탐지할 수 있습니다.</li>
+	<li><strong>FinOps 에이전트 및 MCP 지원.</strong> Vantage 콘솔의 FinOps 에이전트에 "지난주 모든 클라우드 제공업체를 통틀어 가장 큰 비용 요인은 무엇이었나요?"와 같은 질문을 할 수 있습니다. 또한 Vantage가 호스팅하는 MCP 서버를 통해 Claude나 ChatGPT에서도 동일한 데이터를 조회할 수 있습니다. 이때 Cloudflare 비용도 다른 연결된 제공업체의 비용과 함께 포함됩니다.</li>
+</ul>
+<p><a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer"><u>Vantage 콘솔</u></a>에서 Cloudflare 계정을 연결하면 Cloudflare 비용이 다른 모든 인프라 비용과 함께 표시됩니다. 별도의 데이터 내보내기나 청구서 업로드가 필요 없으며, 별도의 대시보드를 유지 관리할 필요도 없습니다.&nbsp;</p>
+<p>이 FOCUS 표준 API는 다른 FinOps 도구와도 함께 사용할 수 있습니다.</p>
+<h2><strong>이 API를 만든 이유</strong></h2>
+<p>에이전트는 단순히 코드를 작성하는 데 그치지 않습니다. Workers를 배포하고, R2 버킷을 프로비저닝하며, D1 데이터베이스를 관리합니다. 프로그램에 Cloudflare 계정에 대한 액세스 권한을 부여했다면, 그 프로그램이 얼마의 비용을 발생시키고 있는지도 프로그래밍 방식으로 확인할 수 있어야 합니다. 월말에 한 번 확인하는 것이 아니라, 하루 동안의 사용량을 제품별로, 그리고 프로그램이 바로 활용할 수 있는 형식으로 확인할 수 있어야 합니다.</p>
+<p>Billable Usage API는 바로 이러한 요구를 충족하기 위해 만들어졌습니다. 또한 고객들은 수년 동안 사용량 데이터를 프로그래밍 방식으로 조회할 수 있는 기능을 요청해 왔습니다. 재무팀은 비용 데이터를 자체 시스템으로 가져와 내부 프로젝트, 팀, 나아가 최종 고객별로 비용을 배분하기를 원합니다. 개발자는 스크립트에 바로 사용할 수 있는 curl 명령 하나를 원합니다. 이전에는 이러한 모든 작업을 수행하려면 대시보드 화면을 캡처하거나 데이터를 수동으로 내보내야 했습니다. 이제는 HTTP 호출 한 번 또는 Vantage 설정만으로 가능합니다.</p>
+<h2><strong>다음 단계</strong></h2>
+<ul>
+	<li><strong>더 세분화된 시간 단위 지원.</strong> 현재 API는 과금 기간 단위의 데이터를 반환하며, 대부분의 제품은 일 단위입니다. 앞으로는 적합한 제품을 대상으로 더욱 실시간에 가까운 시간 단위 데이터를 제공할 계획입니다.</li>
+	<li><strong>비용 예측 기능.</strong> <code>CumulatedContractedCost</code>를 통해 현재 청구 기간의 누적 비용을 확인할 수 있습니다. 앞으로는 최종 비용이 얼마나 될지 예측할 수 있도록 지원할 예정입니다. 또한 계정 전체뿐 아니라 제품별 예측도 제공하는 것을 목표로 하고 있습니다.</li>
+	<li><strong>Enterprise 지원.</strong> 이번 첫 번째 릴리스는 셀프서비스 계정만 지원합니다. Enterprise 계약 고객을 위한 동일한 기능도 현재 개발 중입니다.</li>
+</ul>
+<h2><strong>지금 바로 사용해 보세요</strong></h2>
+<p>이 엔드포인트는 오늘부터 모든 셀프서비스 계정에서 사용할 수 있습니다. <em>Billing Read</em> 권한이 포함된 API 토큰을 생성한 뒤 curl로 API를 호출하면 현재 청구 기간의 비용을 제품별로 확인할 수 있습니다. 자세한 내용은 Cloudflare API 문서에서 확인할 수 있습니다. 또한 다른 클라우드 비용과 함께 확인하려면 <a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer">​<u>Vantage 콘솔</u></a>에서 Cloudflare 계정을 연결하면 됩니다.</p>
+<p>Cloudflare는 수년간 고객이 더 많은 워크로드를 Cloudflare 네트워크에서 쉽게 실행할 수 있도록 지원해 왔습니다. 이제는 Cloudflare는 물론 다른 모든 환경까지 포함해 그에 따른 비용도 손쉽게 확인할 수 있도록 지원하고자 합니다.</p>

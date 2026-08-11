@@ -21,8 +21,30 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Otherwise, send request to the original hostname.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Los clientes acudieron rápidamente a nosotros con casos prácticos que requerían una manera de almacenar datos permanentes. Siguiendo nuestro ejemplo anterior, es fácil manejar una redirección única, pero ¿qué sucede si quieren manejar miles de millones? Tendría que incrustar los datos directamente en el código fuente de su secuencia de comandos de Workers, adaptar todo a menos de un 1 MB y volver a implementarlo cada vez que quiera hacer un cambio: ¡de locos! Por eso creamos Workers KV.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that can handle billions of redirects,</span></span>
@@ -47,7 +69,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Otherwise, send request to the original path.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Con unos pocos cambios de nuestro ejemplo anterior, escalamos de una redirección a miles de millones, y eso es solo una muestra de lo que se puede hacer con Workers KV.</p>
 <h3><strong>¿Cómo funciona?</strong></h3>
@@ -108,7 +134,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    {"key": "built_by",    value: "kyle, alex, charlie, andrew, and brett"},</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    {"key": "reviewed_by", value: "joaquin"},</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    {"key": "approved_by", value: "steve"}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  ]'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  ]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Analicemos un caso práctico de ejemplo: usted desea descargar la traducción de su sitio web a Workers. Como usted lee las claves de traducción con más frecuencia que cuando las actualiza, esta aplicación funciona bien con el modelo de coherencia eventual de Workers KV.</p>
 <p>En este ejemplo, usamos <a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>, una famosa plataforma para administrar datos de traducción. Worker responde a un punto de conexión /translate, descarga todas sus claves de traducción y las escribe de forma masiva en Worker KV para que usted pueda leerlas más tarde en nuestro centro perimetral:</p>
@@ -157,14 +187,22 @@
 <span class="line"><span class="sk-24292e-fff">    {key: </span><span class="sk-032f62-99ffe4">"hello.EN"</span><span class="sk-24292e-fff">, value: </span><span class="sk-032f62-99ffe4">"Hello World"</span><span class="sk-24292e-fff">},</span></span>
 <span class="line"><span class="sk-24292e-fff">    {key: </span><span class="sk-032f62-99ffe4">"hello.ES"</span><span class="sk-24292e-fff">, value: </span><span class="sk-032f62-99ffe4">"Hola Mundo"</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ahora, cuando quiere traducir una página, todo lo que tiene que hacer es leer en Workers KV:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> translate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">keys</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lang</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // You bind your translations namespace to the TRANSLATIONS variable.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">(keys.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">key</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-005cc5-fff"> TRANSLATIONS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(key </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "."</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> lang)))</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4><strong>2. Claves con vencimiento</strong></h4>
 <p>De forma predeterminada, los pares clave-valor almacenados en Workers KV duran para siempre. Sin embargo, puede que a veces quiera que los datos se eliminen automáticamente después de un cierto período de tiempo. Es por eso que añadimos las opcionesexpiration y expirationTtl para las operaciones de escritura.</p>
@@ -173,7 +211,11 @@
 <span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expirationTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">})</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Key expires if the UNIX epoch is in the past.</span></span>
-<span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expiration: </span><span class="sk-005cc5-ffc799">1247788800</span><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expiration: </span><span class="sk-005cc5-ffc799">1247788800</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># You can also set keys to expire from the Cloudflare API.</span></span>
@@ -183,7 +225,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  -X</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_KEY</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_EMAIL</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$VALUE</span><span class="sk-032f62-99ffe4">"</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$VALUE</span><span class="sk-032f62-99ffe4">"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Supongamos que desea bloquear a los usuarios que se marcaron como inapropiados en su sitio web, pero solo quiere hacerlo por una semana. Con una clave con vencimiento, puede configurar el tiempo de vencimiento y no tener que preocuparse por eliminar el bloqueo más adelante.</p>
 <p>En este ejemplo, asumimos que los usuarios y las direcciones IP son lo mismo. Si su aplicación tiene autenticación, puede usar <em>tokens</em> de acceso como identificador de clave.</p>
@@ -219,7 +265,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Otherwise, passthrough the original request.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4><strong>3. Valores más grandes</strong></h4>
 <p>Aumentamos nuestro límite de tamaño en valores que van desde 64 kB a 2 MB. Resulta bastante útil si necesita almacenar datos basados en memoria temporal o archivos en Workers KV.</p>
@@ -261,7 +311,11 @@
 <span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">({status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff">, statusText: </span><span class="sk-032f62-99ffe4">"User has no GIF!"</span><span class="sk-24292e-fff">})</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Por último, queremos agradecer a todos nuestros clientes de la beta. Sus valiosos comentarios nos permitieron generar estos cambios en Workers KV. Manténgase en contacto con nosotros. Siempre estamos adelantándonos a lo que viene y nos encanta recibir noticias suyas.</p>
 <h3><strong>Precios</strong></h3>

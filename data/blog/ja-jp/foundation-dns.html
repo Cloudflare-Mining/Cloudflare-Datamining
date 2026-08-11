@@ -41,15 +41,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-2028.awsdns-61.co.uk.</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">205.251.199.236</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-917.awsdns-50.net.</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Cloudflareがすべてのルートに署名を付し、<a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">ルートリークの影響を最小限に抑えるためにインターネットの他の部分に働きかけていることは言うまでもありません。</a>しかし、RPKIがユビキタスに展開されるのを待つ間に、ルートリークがあっても耐障害性が保たれるようにするために、他にできることは何でしょうか？</p>
 <p>現在、Free、Pro、Business、またはEnterpriseプランでCloudflare DNSを使用している場合、ドメインには<code>&lt;name&gt; .ns.cloudflare.com</code>の構造を持つ2つのネームサーバーが割り当てられます。 はランダムな名前です。</p>
 <p>さて、前に学んだように、ドメインが利用可能であるためには、そのネームサーバーが利用可能でなければなりません。そのため、これらのネームサーバーはそれぞれ3つのエニーキャストIPv4アドレスと3つのエニーキャストIPv6アドレスに解決します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> isbgpsafeyet.com</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tom.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここで注目すべき重要な点は、3つのIPv4アドレスと3つのIPv6アドレスのそれぞれが、異なる/8 IPv4（IPv6では/45）ブロックからのものであるということです。したがって、ネームサーバーがIPv4経由で利用できなくなるには、3つの/8 IPv4ブロックすべてについて各々対応するサブネットにルートリークが正確に影響を与える必要があります。このようなイベントは理論的には可能ですが、現実的にはほぼ不可能です。</p>
 <div class="emdash-code">
@@ -61,7 +87,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> tom.ns.cloudflare.com</span><span class="sk-032f62-99ffe4"> aaaa</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2606:4700:58::adf5:3b93</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2803:f800:50::6ca2:c193</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>これをさらに改善するにはどうすればよいか？</h3>
 <p>Foundation DNSをご利用のお客様には、foundationdns.comおよびfoundationdns.netでホストされる高度なネームサーバーが新たに割り当てられます。これらのネームサーバーは、Cloudflareのデフォルトのネームサーバーよりもさらに耐障害性の高いものになります。この実現方法については、来年初頭に詳細を発表する予定ですので、ご期待ください。Cloudflareの外部ドメイン（cloudflare.comなど）は、年明けにこれらのネームサーバーに移行します。</p>

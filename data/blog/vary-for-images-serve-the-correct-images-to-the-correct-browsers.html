@@ -17,14 +17,40 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Accept:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">text/html,application/xhtml+xml,application/xml</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.9,image/avif,image/webp,image/apng,*/*</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.8,application/signed-exchange</span><span class="sk-24292e-fff">;v</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">b3</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.9</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">User-Agent:</span><span class="sk-032f62-99ffe4"> Mozilla/5.0</span><span class="sk-24292e-fff"> (Macintosh; </span><span class="sk-6f42c1-ffc799">Intel</span><span class="sk-032f62-99ffe4"> Mac</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> X</span><span class="sk-032f62-99ffe4"> 10_15_7</span><span class="sk-24292e-fff">) AppleWebKit/537.36 (</span><span class="sk-6f42c1-ffc799">KHTML,</span><span class="sk-032f62-99ffe4"> like</span><span class="sk-032f62-99ffe4"> Gecko</span><span class="sk-24292e-fff">) Chrome/91.0.4472.164 Safari/537.36</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Accept-Encoding:</span><span class="sk-032f62-99ffe4"> gzip,</span><span class="sk-032f62-99ffe4"> deflate,</span><span class="sk-032f62-99ffe4"> br</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Accept-Encoding:</span><span class="sk-032f62-99ffe4"> gzip,</span><span class="sk-032f62-99ffe4"> deflate,</span><span class="sk-032f62-99ffe4"> br</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As we can see above, the browser sends a lot of information in these headers along with the GET request for the URL. What’s important for Vary for Images is the <em>Accept</em> header. The <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept" target="_blank" rel="noopener noreferrer"><em>Accept</em> header</a> tells the origin what sort of content the browser is capable of handling (file types, etc.) and provides a list of content preferences.</p>
 <p>When the origin gets the request, it sees the <em>Accept</em> header which details the content preference for the browser’s request. In the origin’s response, Vary tells the browser that content returned was different depending on the value of the <em>Accept</em> header in the request. Thus if a different browser comes along and sends a request with different <em>Accept</em> header values, this new browser can get a different response from the origin. An example origin response may look something like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">HTTP/1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Content-Length:</span><span class="sk-005cc5-ffc799"> 123456</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Vary:</span><span class="sk-032f62-99ffe4"> Accept</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Vary:</span><span class="sk-032f62-99ffe4"> Accept</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>How Vary works with Cloudflare’s cache</h3>
 <p>Now, let’s add Cloudflare to the mix. Cloudflare sits in between the browser and the origin in the above example. When Cloudflare receives the origin’s response, we cache the specific image variant so that subsequent requests from browsers with the same image preferences can be served from cache. This also means that serving multiple image variants for the same asset will create distinct cache entries.</p>
@@ -54,7 +80,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: 3xamp1ek3y1234"</span><span class="sk-005cc5-a0a0a0"> \ </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \ </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	--data</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">'{"value":{"jpeg":["image/webp","image/avif"],"jpg":["image/webp","image/avif"]}}'</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">'{"value":{"jpeg":["image/webp","image/avif"],"jpg":["image/webp","image/avif"]}}'</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>Modify to only allow WebP variants:</strong></p>
 <div class="emdash-code">
@@ -64,21 +94,33 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: 3xamp1ek3y1234"</span><span class="sk-005cc5-a0a0a0"> \ </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \ </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	--data</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">'{"value":{"jpeg":["image/webp"],"jpg":["image/webp"]}}'</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">'{"value":{"jpeg":["image/webp"],"jpg":["image/webp"]}}'</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>Delete the rule:</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> DELETE</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/cache/variants"</span><span class="sk-005cc5-a0a0a0"> \ </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \ </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: 3xamp1ek3y1234"</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: 3xamp1ek3y1234"</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>Get the rule:</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c3533/cache/variants"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \ </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: 3xamp1ek3y1234"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	-H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: 3xamp1ek3y1234"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Purging variants</h3>
 <p>Any purge of varied images will purge <strong>all</strong> content variants for that URL. That way, if the image changes, you can easily update the cache with a single purge versus chasing down how many potential out-of-date variants may exist. This behavior is true regardless of purge type (single file, tag, or hostname) used.</p>

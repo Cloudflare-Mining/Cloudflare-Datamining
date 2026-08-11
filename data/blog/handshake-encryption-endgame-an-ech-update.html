@@ -52,8 +52,30 @@
 <p>This hopefully avoids network bugs that would otherwise trigger upon real or fake ECH. Or, in other words, it helps ensure that all ECH-capable client connections are treated similarly in the presence of benign network bugs or otherwise passive attackers. Interestingly, active attackers can easily distinguish -- with some probability -- between real or fake ECH. Using GREASE, the ClientHello carries an ECH extension, though its contents are effectively randomized, whereas a real ClientHello using ECH has information that will match what is contained in DNS. This means an active attacker can simply compare the ClientHello against what’s in the DNS. Indeed, anyone can query DNS and use it to determine if a ClientHello is real or fake:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-032f62-99ffe4"> crypto.cloudflare.com</span><span class="sk-032f62-99ffe4"> TYPE65</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">\#</span><span class="sk-005cc5-ffc799"> 134</span><span class="sk-032f62-99ffe4"> 0001000001000302683200040008A29F874FA29F884F000500480046</span><span class="sk-032f62-99ffe4"> FE0D0042D500200020E3541EC94A36DCBF823454BA591D815C240815</span><span class="sk-032f62-99ffe4"> 77FD00CAC9DC16C884DF80565F0004000100010013636C6F7564666C</span><span class="sk-032f62-99ffe4"> 6172652D65736E692E636F6D00000006002026064700000700000000</span><span class="sk-032f62-99ffe4"> 0000A29F874F260647000007000000000000A29F884F</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">\#</span><span class="sk-005cc5-ffc799"> 134</span><span class="sk-032f62-99ffe4"> 0001000001000302683200040008A29F874FA29F884F000500480046</span><span class="sk-032f62-99ffe4"> FE0D0042D500200020E3541EC94A36DCBF823454BA591D815C240815</span><span class="sk-032f62-99ffe4"> 77FD00CAC9DC16C884DF80565F0004000100010013636C6F7564666C</span><span class="sk-032f62-99ffe4"> 6172652D65736E692E636F6D00000006002026064700000700000000</span><span class="sk-032f62-99ffe4"> 0000A29F874F260647000007000000000000A29F884F</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Despite this obvious distinguisher, the end result isn’t that interesting. If a server is capable of ECH and a client is capable of ECH, then the connection most likely used ECH, and whether clients and servers are capable of ECH is assumed public information. Thus, GREASE is primarily intended to ease deployment against benign network bugs and otherwise passive attackers.</p>
 <p>Note, importantly, that GREASE (or fake) ECH ClientHello messages are semantically different from real ECH ClientHello messages. This presents a real problem for networks such as enterprise settings or school environments that otherwise use plaintext TLS information for the purposes of implementing various features like filtering or parental controls. (Encrypted DNS protocols like DoH also encountered similar obstacles in their deployment.) Fundamentally, this problem reduces to the following: How can networks securely disable features like DoH and ECH? Fortunately, there are a number of approaches that might work, with the more promising one centered around DNS discovery. In particular, if clients could securely discover encrypted recursive resolvers that can perform filtering in lieu of it being done at the TLS layer, then TLS-layer filtering might be wholly unnecessary. (Other approaches, such as the use of <a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https" target="_blank" rel="noopener noreferrer">canary domains</a> to give networks an opportunity to signal that certain features are not permitted, may work, though it’s not clear if these could or would be abused to disable ECH.)</p>
 <p>We are eager to collaborate with browser vendors, network operators, and other stakeholders to find a feasible deployment model that works well for users without ultimately stifling connection privacy for everyone else.</p>

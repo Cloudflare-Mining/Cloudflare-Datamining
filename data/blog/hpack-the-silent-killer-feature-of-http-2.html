@@ -71,18 +71,48 @@
 <p>For example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">h2load</span><span class="sk-032f62-99ffe4"> https://blog.cloudflare.com</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span><span class="sk-005cc5-99ffe4"> -6</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-005cc5-99ffe4"> -1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">traffic:</span><span class="sk-032f62-99ffe4"> 18.27KB</span><span class="sk-24292e-fff"> (18708) total, 538B (</span><span class="sk-6f42c1-ffc799">538</span><span class="sk-24292e-fff">) headers (</span><span class="sk-6f42c1-ffc799">space</span><span class="sk-032f62-99ffe4"> savings</span><span class="sk-032f62-99ffe4"> 27.98%</span><span class="sk-24292e-fff">), 17.65KB (</span><span class="sk-6f42c1-ffc799">18076</span><span class="sk-24292e-fff">) data</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">traffic:</span><span class="sk-032f62-99ffe4"> 18.27KB</span><span class="sk-24292e-fff"> (18708) total, 538B (</span><span class="sk-6f42c1-ffc799">538</span><span class="sk-24292e-fff">) headers (</span><span class="sk-6f42c1-ffc799">space</span><span class="sk-032f62-99ffe4"> savings</span><span class="sk-032f62-99ffe4"> 27.98%</span><span class="sk-24292e-fff">), 17.65KB (</span><span class="sk-6f42c1-ffc799">18076</span><span class="sk-24292e-fff">) data</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We see 27.98% space savings in the headers. That is for a single request, and the gains are mostly due to the Huffman encoding. To test if the website utilizes the full power of HPACK, we need to issue two requests, for example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">h2load</span><span class="sk-032f62-99ffe4"> https://blog.cloudflare.com</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span><span class="sk-005cc5-99ffe4"> -6</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-005cc5-99ffe4"> -1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">traffic:</span><span class="sk-032f62-99ffe4"> 36.01KB</span><span class="sk-24292e-fff"> (36873) total, 582B (</span><span class="sk-6f42c1-ffc799">582</span><span class="sk-24292e-fff">) headers (</span><span class="sk-6f42c1-ffc799">space</span><span class="sk-032f62-99ffe4"> savings</span><span class="sk-032f62-99ffe4"> 61.15%</span><span class="sk-24292e-fff">), 35.30KB (</span><span class="sk-6f42c1-ffc799">36152</span><span class="sk-24292e-fff">) data</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">traffic:</span><span class="sk-032f62-99ffe4"> 36.01KB</span><span class="sk-24292e-fff"> (36873) total, 582B (</span><span class="sk-6f42c1-ffc799">582</span><span class="sk-24292e-fff">) headers (</span><span class="sk-6f42c1-ffc799">space</span><span class="sk-032f62-99ffe4"> savings</span><span class="sk-032f62-99ffe4"> 61.15%</span><span class="sk-24292e-fff">), 35.30KB (</span><span class="sk-6f42c1-ffc799">36152</span><span class="sk-24292e-fff">) data</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If for two similar requests the savings are 50% or more then it is very likely full HPACK compression is utilized.</p>
 <p>Note that compression ratio improves with additional requests:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">h2load</span><span class="sk-032f62-99ffe4"> https://blog.cloudflare.com</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span><span class="sk-005cc5-99ffe4"> -6</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-005cc5-99ffe4"> -1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">traffic:</span><span class="sk-032f62-99ffe4"> 71.46KB</span><span class="sk-24292e-fff"> (73170) total, 637B (</span><span class="sk-6f42c1-ffc799">637</span><span class="sk-24292e-fff">) headers (</span><span class="sk-6f42c1-ffc799">space</span><span class="sk-032f62-99ffe4"> savings</span><span class="sk-032f62-99ffe4"> 78.68%</span><span class="sk-24292e-fff">), 70.61KB (</span><span class="sk-6f42c1-ffc799">72304</span><span class="sk-24292e-fff">) data</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">traffic:</span><span class="sk-032f62-99ffe4"> 71.46KB</span><span class="sk-24292e-fff"> (73170) total, 637B (</span><span class="sk-6f42c1-ffc799">637</span><span class="sk-24292e-fff">) headers (</span><span class="sk-6f42c1-ffc799">space</span><span class="sk-032f62-99ffe4"> savings</span><span class="sk-032f62-99ffe4"> 78.68%</span><span class="sk-24292e-fff">), 70.61KB (</span><span class="sk-6f42c1-ffc799">72304</span><span class="sk-24292e-fff">) data</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Conclusion</h3>
 <p>By implementing HPACK compression for HTTP response headers we've seen a significant drop in egress bandwidth. HPACK has been enabled for all Cloudflare customers using HTTP/2, all of whom benefit from faster, smaller HTTP responses.</p>

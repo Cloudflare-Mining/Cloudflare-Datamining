@@ -5,8 +5,30 @@
 <span class="line"><span>x 260 work days </span></span>
 <span class="line"><span>= 1300 mins </span></span>
 <span class="line"><span>/ 60 mins </span></span>
-<span class="line"><span>= 20 person hours per year</span></span></code></pre>
+<span class="line"><span>= 20 person hours per year</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>So a 20-hour investment in that tool would pay itself back in a year valuing everyone's time the same. While we've made great strides in improving the efficiency of building tools at Cloudflare, 20 hours is a stretch for an end-to-end build, deploy and operation of a new tool.</p>
 <h3>Enter Cloudflare Workers + Workers KV</h3>
 <p>The more I use Serverless and Workers, the more I'm struck with the benefits of:</p>
@@ -125,14 +147,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    "message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      "argumentText"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Kibana"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To respond, we need to respond with <code>200 OK</code> and JSON body like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">content-length:</span><span class="sk-005cc5-ffc799"> 27</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">content-type:</span><span class="sk-032f62-99ffe4"> application/json</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"text"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"Hello chat world"</span><span class="sk-6f42c1-ffc799">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"text"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"Hello chat world"</span><span class="sk-6f42c1-ffc799">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So, the minimum Chatbot Worker looks something like this:</p>
 <div class="emdash-code">
@@ -149,7 +179,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">        "Cache-Control"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"no-cache"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Save and deploy that, and we should be able to message our bot:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -181,7 +215,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> QueryCommand</span><span class="sk-24292e-fff">(argumentText, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.serviceDirectory, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.kv);</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>OK, so if we receive a message like <code>@ownerbot add</code>, we'll interpret it as an <code>AddCommand</code>, but if it's not something we recognize, we'll assume it's a <code>QueryCommand</code> like <code>@ownerbot Kibana</code> which makes it easy to parse commands.</p>
 <p>OK, our commands need a service directory, which will look something like this:</p>
@@ -192,7 +230,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> delete</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">serviceName</span><span class="sk-24292e-fff">) {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    find</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">serviceName</span><span class="sk-24292e-fff">) {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    getNames</span><span class="sk-24292e-fff">() {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's build some commands. Oh, and my chatbot is going to be Ultima IV themed, because... reasons.</p>
 <div class="emdash-code">
@@ -219,7 +261,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.serviceDirectory.</span><span class="sk-6f42c1-ffc799">add</span><span class="sk-24292e-fff">(service);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OwnerbotResponse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`My codex of knowledge has expanded to contain knowledge of ${</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}. Congratulations virtuous Paladin.`</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The nice thing about the <a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank" rel="noopener noreferrer">Command</a> pattern for chatbots, is you can encapsulate the logic of each command for testing, as well as compose series of commands together to test out conversations. Later, we could extend it to support undo. Let's test the <code>AddCommand</code></p>
 <div class="emdash-code">
@@ -235,7 +281,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">            let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> addCmd.</span><span class="sk-6f42c1-ffc799">respond</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">            console.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(res.text);</span></span>
 <span class="line"><span class="sk-24292e-fff">            assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(res.success, </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Should have succeeded with all args"</span><span class="sk-24292e-fff">);            </span></span>
-<span class="line"><span class="sk-24292e-fff">        });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mocha</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> "AddCommand"</span></span>
@@ -243,7 +293,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    add</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      ✓</span><span class="sk-032f62-99ffe4"> requires</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> args</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      ✓</span><span class="sk-032f62-99ffe4"> returns</span><span class="sk-032f62-99ffe4"> success</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> args</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  2</span><span class="sk-032f62-99ffe4"> passing</span><span class="sk-24292e-fff"> (19ms)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  2</span><span class="sk-032f62-99ffe4"> passing</span><span class="sk-24292e-fff"> (19ms)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So far so good. But adding commands to our ownerbot isn't going to be so useful unless we can query them.</p>
 <div class="emdash-code">
@@ -256,7 +310,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> serviceNames </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.serviceDirectory.</span><span class="sk-6f42c1-ffc799">getNames</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">", "</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OwnerbotResponse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`I knoweth not of that service. Thou mightst asketh me of: ${</span><span class="sk-24292e-fff">serviceNames</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's write a test that runs an <code>AddCommand</code> followed by a <code>QueryCommand</code></p>
 <div class="emdash-code">
@@ -274,7 +332,11 @@
 <span class="line"><span class="sk-24292e-fff">        assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(res.success, </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Should have succeeded"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        assert</span><span class="sk-24292e-fff">(res.text.</span><span class="sk-6f42c1-ffc799">indexOf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Internal Tools'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Should have returned the team name in the query response"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    })</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Demo</h3>
 <p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot" target="_blank" rel="noopener noreferrer">full source on GitHub</a>. Let's take it for a spin!</p>

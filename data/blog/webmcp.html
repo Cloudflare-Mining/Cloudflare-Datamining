@@ -1,0 +1,116 @@
+<p>Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on and browser agents can start working with your site, with no code and nothing changed at your origin. Cloudflare adds a small bridge to your pages, which registers a set of tools for a visitor’s agent to use.</p>
+<p>The web was built on the assumption that there is a person on the other end: someone to read the page, click buttons, and fill in the forms. But now more and more visits come from AI agents instead, to an Internet made for humans. The usual approach has been crawlers, which copy content back to a server and, too often, give the original site none of the traffic and little of the credit. There is a better way, and it does not involve scraping.</p>
+<p>WebMCP is a new browser standard, shipping experimentally in Chrome 146, that shows up in the page as <code>document.modelContext</code>. A site can choose to expose a set of tools for agents running in the browser, meaning agents no longer have to guess their way through a page built for humans. This enables agents to have a different browsing experience from the user and use tokens on tasks, not navigation. The catch: the site has to implement it.&nbsp;</p>
+<p>Cloudflare has been building both ends of this. <a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>BrowserRun</u></a>, our remote browser, already added WebMCP support, so an agent can discover and call the tools a site exposes. <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> will soon offer WebMCP tools of its own. This preview is about the other side: a way to give any site on Cloudflare those tools with a single switch, and no code.&nbsp;</p>
+<h2>A developer preview of WebMCP on Cloudflare</h2>
+<p>Implementing WebMCP by hand is a small project: design the tools to expose, wire them into your interface, and keep them working as the standard evolves. We wanted it to be simpler than that: just toggle a setting to enable tools.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/Pfz9/Tx7e3t6evt7vDx8/Pz8O/v5ubn//v2+vbz8O/v7O3v8/P0+fj49fT06urs///6//r38/Hx7/Dx+Pf4//7+/Pr68O/x///+//769vX08/P1/Pv8////////9fP2///////9+fj49vf4////////////9/f5///////++/v7+fr8////////////+Pj6/////////P39+vz+////////////+Pn6/////////f3++v3/////////////+Pn6" alt="" width="715" height="399" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=715&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=640&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=715&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=750&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=828&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=1080&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=1280&amp;h=714&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=1430&amp;h=798&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3460 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RNNWJYGQX5J64W5GW04E3.png&amp;w=1920&amp;h=1072&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1072" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="399" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>These tools come in packs — groups of related tools that can be turned on together. These are built to grow: as we add packs, a site can opt in to more just by turning them on, no redeploy needed. We are including two tool packs in this developer preview, which both run entirely in the browser.</p>
+<h2>What this does and how it works</h2>
+<p>Our implementation comprises two parts, both in front of your origin. Neither touches your site’s code and both work the same way whether your site is static or a single-page app.</p>
+<p>First, an injection at the edge. When your site has WebMCP switched on in your Cloudflare Dashboard, we use HTMLRewriter to add one line to each HTML response: a small reference to a bridge script that we also serve. Both the tag and script it loads come from the edge, same origin, so nothing else about the page changes:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">&lt;!-- Cloudflare injects this at the edge. Same origin, and your HTML is otherwise untouched. --&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"module"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"/.webmcp/bridge.js"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        data-packs</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"c2pa,mcp-server-client"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        data-mcp-url</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"/mcp"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>The <code>data-packs</code> attribute is the list of packs to activate. If you have an existing Model Context Protocol (MCP) server, the <code>data-mcp-url</code> points at your own MCP server (defaulting to the same origin <code>/mcp</code>).</p>
+<p>Second, the bridge. This runs in the page and finds the WebMCP surface. If the browser does not have one, it returns and does nothing, so the page behaves exactly as before.</p>
+<p>From there, the bridge composes the packs named in <code>data-packs</code> into one tool list and registers each with <code>.registerTool</code>. A pack is just a set of MCP tool descriptors and their handlers. Static packs, such as Content Credentials, declare their tools up front. A dynamic pack, such as the Site MCP Server pack, discovers its tools at boot before registering anything.</p>
+<p>In this preview, every tool runs entirely in the visitor’s browser. There is no round trip to a server of ours. The Content Credentials pack fetches an image and parses its first few kilobytes of content provenance metadata locally. The Site MCP Server pack talks straight to your MCP server endpoint from the page, on the visitor's origin and with their existing session.</p>
+<p>The bridge code is served by a worker running at the edge. This leaves us room to grow the offering — future packs will be able to call this worker for tasks the page cannot do alone, like summarizing a sitemap with Workers AI or querying an AI Search index.&nbsp;</p>
+<p>To an agent, all of these are ordinary MCP tools. We use Model Context Protocol’s own <code>Tool</code> and <code>CallToolResult</code> types, so an agent that already talks to MCP servers can drive a page with nothing special added. The browser is just another place MCP runs. The example below shows how the bridge turns one of your own MCP tools into a tool the visitor’s agent can call.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// For each tool the site's own MCP server advertises (via tools/list),</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// registering a proxy whose execute() calls the site back on the</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// visitor's origin, with their session.</span></span>
+<span class="line"><span class="sk-24292e-fff">document.modelContext.</span><span class="sk-6f42c1-ffc799">registerTool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  name: tool.name,                 </span><span class="sk-6a737d-8b8b8b94">// e.g. "search_products"</span></span>
+<span class="line"><span class="sk-24292e-fff">  description: tool.description,</span></span>
+<span class="line"><span class="sk-24292e-fff">  inputSchema: tool.inputSchema,   </span><span class="sk-6a737d-8b8b8b94">// taken straight from tools/list</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">args</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(mcpUrl, {   </span><span class="sk-6a737d-8b8b8b94">// same-origin /mcp</span></span>
+<span class="line"><span class="sk-24292e-fff">      method: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      credentials: </span><span class="sk-032f62-99ffe4">"same-origin"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: { </span><span class="sk-032f62-99ffe4">"content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">      body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        jsonrpc: </span><span class="sk-032f62-99ffe4">"2.0"</span><span class="sk-24292e-fff">, id: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, method: </span><span class="sk-032f62-99ffe4">"tools/call"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        params: { name: tool.name, arguments: args },</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">result</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> result;   </span><span class="sk-6a737d-8b8b8b94">// an MCP CallToolResult, passed straight through</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Checking out content metadata</h2>
+<p>We are also developing packs to read different types of metadata. For example, credentials for participants of the <a href="https://c2pa.org" target="_blank" rel="noopener noreferrer"><u>C2PA</u></a> program can be retrieved using the Content Credentials pack.&nbsp;<code>scan_images_c2pa</code> sweeps every image and returns a short summary of each:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "imageCount"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">12</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "scanned"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">12</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "withC2pa"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">8</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "results"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "src"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://example.com/hero.jpg"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "hasC2pa"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "format"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"image/jpeg"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "manifestCount"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "claimGenerator"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Adobe Firefly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sunrise over the bay"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "signedBy"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Adobe Inc."</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-032f62-99ffe4">"src"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://example.com/logo.png"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"hasC2pa"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"format"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"image/png"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>For a closer look, <code>inspect_image_c2pa</code> decodes one image’s full manifest: its edit history, the stated author, and the signing certificate. It is a plain TypeScript reader that touches only a few kilobytes of the metadata at the front of the image, not the image itself. For now, it reads and reports the credential, rather than cryptographically verifying it: every result carries <code>signatureVerified: false</code>, so an agent won’t mistake a decoded claim for a checked one.</p>
+<h2>Try it out</h2>
+<p>Get started with WebMCP by going to <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fagent-readiness%2Fwebmcp" target="_blank" rel="noopener noreferrer">Agent Readiness &gt; WebMCP</a> in the Cloudflare Dashboard. Here you can toggle on WebMCP for a domain, and pick which packs to add: both Content Credentials and Site MCP Server are on by default, and more packs will show up here as we ship them. That's the whole setup. There's nothing to deploy and nothing to change at your origin, and the next HTML your site sends will include the bridge.</p>
+<p>To confirm it’s live, ask your site for any HTML page and look for the line Cloudflare injected:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">s https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//your-site.example | grep webmcp</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>You do not need your own agent to see the tools work. Point <a href="https://developers.cloudflare.com/browser-run/features/webmcp" target="_blank" rel="noopener noreferrer">BrowserRun</a>, Cloudflare’s remote browser, at your URL, and it will discover and call the tools your packs registered, exactly as a visitor’s agent would. That is the whole loop: BrowserRun gives agents a browser to act on, this preview gives your site the tools to be acted on, and they meet using the open standard. The tools behave in the same way whether the browser is on someone’s laptop or running headless in the cloud.&nbsp;</p>
+<h2>Why we built this</h2>
+<p>Our job is to help make the Internet better, and as the Internet changes we need to provide domain owners with tools that allow new visitors, AI agents, to interact without a full rebuild. It is one step towards a web that can still thrive when visitors are not always human.</p>
+<p>This is a developer preview, and we want your feedback. Turn it on, try it against your own site, and tell us how it goes in the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers Discord</u></a> or on the <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Community forum</u></a>.</p>

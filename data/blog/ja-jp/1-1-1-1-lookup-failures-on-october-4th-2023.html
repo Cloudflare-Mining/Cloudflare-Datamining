@@ -44,15 +44,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--</span><span class="sk-d73a49-a0a0a0">|</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                     RDATA</span><span class="sk-032f62-99ffe4">                     /</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                                               /</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>static_zoneが新しいZONEMDレコードをサポートしなかった理由は、これまで私たちがルートゾーンをバイナリ形式ではなく、プレゼンテーション形式で内部配布することを選んできたためです。リソースレコードのテキスト表現をいくつか見てみると、異なるレコードの表示形式には、さらに多くのバリエーションがあることがわかります。</p>
 <p>レコードの例（右記URLより抜粋）：<a href="https://www.internic.net/domain/root.zone" target="_blank" rel="noopener noreferrer">https://www.internic.net/domain/root.zone</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span><span class="sk-032f62-99ffe4"> nstld.verisign-grs.com.</span><span class="sk-005cc5-ffc799"> 2023100400</span><span class="sk-005cc5-ffc799"> 1800</span><span class="sk-005cc5-ffc799"> 900</span><span class="sk-005cc5-ffc799"> 604800</span><span class="sk-005cc5-ffc799"> 86400</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	RRSIG</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799"> 86400</span><span class="sk-005cc5-ffc799"> 20231017050000</span><span class="sk-005cc5-ffc799"> 20231004040000</span><span class="sk-005cc5-ffc799"> 46780</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-032f62-99ffe4"> J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			518400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>未知のリソースレコードに遭遇した際の処理方法の判断は必ずしも単純なものではありません。このため、私たちがエッジで使用するルートゾーン解析用のライブラリは、解析を行わずに代わりに解析エラーを返します。</p>
 <h3>ルートゾーンの古いバージョンが使用された理由</h3>
@@ -64,7 +90,11 @@
 <p>当初、1.1.1.1の動作をプログラム的に変更可能な仕組みであるオーバーライドルールによってstatic_zoneアプリの無効化が試行されました。私たちが展開したルールは以下のとおりです：</p>
 <p>このルールは、受信したリクエストに「rec_disable_static」タグを付加します。static_zoneアプリの内部でこのタグをチェックし、設定されている場合、キャッシュされた静的ルートゾーンから応答を返しません。ただし、現在のノードが自身のキャッシュから応答を見つけられない場合、<a href="https://blog.cloudflare.com/big-pineapple-intro">キャッシュパフォーマンス向上</a>のために、問い合わせが別のノードに転送されることがあります。残念ながら、他のノードに転送される問い合わせにはrec_disable_staticタグが含まれないため、最終的にアプリを完全に無効にするまで、static_zoneアプリは古い情報を返し続けることとなりました。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>影響が部分的だった理由</h3>
 <p>Cloudflareでは、カーネルアップデートなどのシステムを完全に再起動することで有効になるタスクのため、当社のサービスをホストするサーバーを定期的に順次の再起動を実施しています。今回の障害発生時、ZONEMDの変更とDNSSECの無効化の間に再起動されたリゾルバサーバインスタンスは、影響に寄与していません。もしこの2週間の間に再起動されていた場合、起動時にルートゾーンのロードに失敗し、代わりにルートサーバーにDNSクエリを送信して解決を試みることになったでしょう。加えて、リゾルバはserve-stale（<a href="https://datatracker.ietf.org/doc/html/rfc8767" target="_blank" rel="noopener noreferrer">RFC 8767</a>）と呼ばれる技法を用い、影響を抑制する目的で、アクセス数の多いレコードを、最新ではない可能性のあるキャッシュから提供し続けることになります。レコードが上流から取得されてからTTL秒数が経過すると、そのレコードは最新ではないとみなされます。これにより、完全な停止を防ぎました。影響は主に、その時間枠内に1.1.1.1サービスを再起動しなかった多数サーバーを抱える最大規模のデータセンターで発生しました。</p>

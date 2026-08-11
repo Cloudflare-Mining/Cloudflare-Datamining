@@ -11,8 +11,30 @@
 <span class="line"><span class="sk-24292e-fff">}                             </span><span class="sk-6a737d-8b8b8b94">// 'name' goes out of scope</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">greet</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// JavaScript automatically frees allocated memory at some point in future</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// JavaScript automatically frees allocated memory at some point in future</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>WebAssembly</h3>
 <p>WebAssembly (Wasm) is an assembly-like instruction format designed to run high-performance applications on the web. While it initially gained prominence in web browsers, Wasm is also highly effective on the server side. At Cloudflare, we leverage Wasm to enable users to run code written in a variety of programming languages, such as <a href="https://developers.cloudflare.com/workers/languages/rust" target="_blank" rel="noopener noreferrer"><u>Rust</u></a> and <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>Python</u></a>, directly within our <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-chrome-v8" target="_blank" rel="noopener noreferrer"><u>V8 isolates</u></a>, offering both performance and versatility.</p>
 <p>Wasm runtimes are designed to be simple stack machines, and lack built-in garbage collectors. This necessitates manual memory management (allocation and deallocation of memory used by Wasm code), making it an ideal compilation target for languages like Rust and C++ that handle their own memory.</p>
@@ -51,7 +73,11 @@
 <span class="line"><span class="sk-24292e-fff">#[no_mangle]</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-ffc799"> unsafe</span><span class="sk-d73a49-a0a0a0"> extern</span><span class="sk-032f62-99ffe4"> "C"</span><span class="sk-d73a49-ffc799"> fn</span><span class="sk-6f42c1-ffc799"> free_buffer</span><span class="sk-24292e-fff">(ptr</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *mut</span><span class="sk-6f42c1-ffc799"> u8</span><span class="sk-24292e-fff">, len</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">from_raw_parts</span><span class="sk-24292e-fff">(ptr, len, len);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>JavaScript</h3>
 <p>Back in JavaScript land, we’ll call these Wasm functions and output them using console.log. This is a common pattern in Wasm-based applications since WebAssembly doesn’t have direct access to Web APIs, and rely on a JavaScript “glue” to interface with the outer world in order to do anything useful.</p>
@@ -69,7 +95,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> TextDecoder</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">(data)); </span><span class="sk-6a737d-8b8b8b94">// “Hello from Rust”</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">free_buffer</span><span class="sk-24292e-fff">(ptr, len); </span><span class="sk-6a737d-8b8b8b94">// free_buffer must be called to prevent memory leaks</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">free_buffer</span><span class="sk-24292e-fff">(ptr, len); </span><span class="sk-6a737d-8b8b8b94">// free_buffer must be called to prevent memory leaks</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can find all code samples along with setup instructions <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2025-06-finalization-registry" target="_blank" rel="noopener noreferrer"><u>here</u></a>.</p>
 <p>As you can see, working with Wasm memory from JavaScript requires care, as it introduces the risk of memory leaks if allocated memory isn’t properly released. JavaScript developers are often unfamiliar with manual memory management, and it’s easy to forget returning memory to WebAssembly after use. This can become especially tricky when Wasm-allocated data is passed into JavaScript libraries, making ownership and lifetime harder to track.</p>
@@ -86,7 +116,11 @@
 <span class="line"><span class="sk-24292e-fff">  my_registry.</span><span class="sk-6f42c1-ffc799">register</span><span class="sk-24292e-fff">(temporary, </span><span class="sk-032f62-99ffe4">"temporary"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// At some point in the future when temporary object gets garbage collected, we'll see "Cleaned up: temporary" in our logs.</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// At some point in the future when temporary object gets garbage collected, we'll see "Cleaned up: temporary" in our logs.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let’s see how we can use this API in our Wasm-based application:</p>
 <div class="emdash-code">
@@ -111,7 +145,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> TextDecoder</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">(data));   </span><span class="sk-6a737d-8b8b8b94">// → “Hello from Rust”</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// No need to manually call free_buffer, FinalizationRegistry will do this for us</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// No need to manually call free_buffer, FinalizationRegistry will do this for us</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can use a <code>FinalizationRegistry</code> to manage any object borrowed from WebAssembly by registering it with a finalizer that calls the appropriate free function. This is the same approach used by <a href="https://rustwasm.github.io/docs/wasm-bindgen/reference/weak-references.html" target="_blank" rel="noopener noreferrer"><u>wasm-bindgen</u></a>. It shifts the burden of manual cleanup away from the JavaScript developer and delegates it to the JavaScript garbage collector. However, in practice, things aren’t quite that simple.</p>
 <h2>Inherent issues with FinalizationRegistry</h2>
@@ -155,7 +193,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  using</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MyResource</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">  res.</span><span class="sk-6f42c1-ffc799">use</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6a737d-8b8b8b94">// When this block ends, Symbol.dispose is called automatically (and deterministically).</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6a737d-8b8b8b94">// When this block ends, Symbol.dispose is called automatically (and deterministically).</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The proposal also includes additional features that offer finer control over when dispose methods are called. But at a high level, it provides a much-needed, deterministic way to manage resource cleanup. Let’s now update our earlier WebAssembly-based example to take advantage of this new mechanism instead of relying on <code>FinalizationRegistry</code>:</p>
 <div class="emdash-code">
@@ -182,7 +224,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(memory.buffer, ptr, len);</span></span>
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> TextDecoder</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">(data));  </span><span class="sk-6a737d-8b8b8b94">// → “Hello from Rust”</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6a737d-8b8b8b94">// Symbol.dispose or free_buffer gets called deterministically here</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6a737d-8b8b8b94">// Symbol.dispose or free_buffer gets called deterministically here</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Explicit Resource Management provides a more dependable way to clean up resources than <code>FinalizationRegistry</code>, as it runs cleanup logic — such as calling <code>free_buffer</code> in WasmBuffer via <code>[Symbol.dispose]()</code> and the <code>using</code> syntax — deterministically, rather than relying on the garbage collector’s unpredictable timing. This makes it a more reliable choice for managing critical resources, especially memory.</p>
 <h2>Future</h2>

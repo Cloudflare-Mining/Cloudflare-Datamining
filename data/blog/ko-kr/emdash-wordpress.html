@@ -46,8 +46,30 @@
 <span class="line"><span class="sk-24292e-fff">        ctx.log.</span><span class="sk-6f42c1-ffc799">info</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Notified editors about ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">content</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">id</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">      },</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>이 플러그인은 명시적으로 두 가지 기능을 요청합니다. 콘텐츠 수명 주기에 후크하기 위한 <code>content:afterSave</code> 와 <code>email:send</code> 를 통해 <code>ctx.email</code> 기능에 액세스합니다. 플러그인은 이러한 기능을 사용하는 것 이외의 다른 작업을 수행할 수 없습니다. 외부 네트워크에 액세스할 수 없습니다. 네트워크 액세스가 필요한 경우, 정의의 일부로 통신해야 하는 정확한 호스트 이름을 지정하고, 특정 호스트 이름과 통신할 수 있는 기능만 부여할 수 있습니다.</p>
 <p>그리고 모든 경우에 플러그인의 요구 사항이 정적으로 선언되기 때문에, 설치 시 플러그인이 수행할 수 있는 권한에 대해 요청하는 내용을 항상 명확하게 파악할 수 있습니다. 플랫폼이나 관리자는 승인되거나 안전한 플러그인의 허용 목록이 아니라, 요청하는 권한에 따라 특정 사용자 그룹에게 설치를 허용하거나 허용하지 않는 플러그인을 결정하는 규칙을 정의할 수 있습니다.</p>
 <h3>플러그인 보안 문제를 해결하면 마켓플레이스 종속 문제도 해결됩니다</h3>

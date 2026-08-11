@@ -34,8 +34,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/m2m100-1.2b</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"Authorization: Bearer {API_TOKEN}"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">	-d</span><span class="sk-032f62-99ffe4"> '{ "text": "I'll</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> order</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> moule</span><span class="sk-032f62-99ffe4"> frites", "target_lang": "french" }'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">	-d</span><span class="sk-032f62-99ffe4"> '{ "text": "I'll</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> order</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> moule</span><span class="sk-032f62-99ffe4"> frites", "target_lang": "french" }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Utilízalo con cualquier pila, en cualquier lugar: tu marco Jamstack favorito, Python + Django/Flask, Node.js, Ruby on Rails, las posibilidades son infinitas. ¡Implementa!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -45,7 +67,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "errors"</span><span class="sk-24292e-fff">:[],</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "messages"</span><span class="sk-24292e-fff">:[]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Una solución diseñada para desarrolladores</h2>
 <p>La experiencia de los desarrolladores es muy importante para nosotros. De hecho, la mayor parte de este artículo trata precisamente de eso, de asegurarnos de que funciona sin configuración, con modelos conocidos que funcionan sin más, y de que sea accesible para todos los desarrolladores, tanto si crean e implementan con Cloudflare como si lo hacen en otro lugar. Pero no solo eso. La experiencia no debe dar problemas, el paso a producción debe ser rápido y fácil.</p>
@@ -55,7 +81,11 @@
 <p>Crea un nuevo proyecto llamado workers-ai ejecutando:</p>
 <p>Cuando configures tu worker 'workers-ai', responde a las preguntas de configuración como se indica a continuación:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>Escribe <strong>workers-ai</strong> como nombre de la aplicación</li>
@@ -67,19 +97,31 @@
 <p>Por último, ve al directorio de tu nueva aplicación:</p>
 <h3>2. Conecta Workers AI a tu worker</h3>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> workers-ai</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> workers-ai</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Crea un enlace Workers AI, que permita a tu worker acceder al servicio Workers AI sin que tengas que gestionar una clave API.</p>
 <p>Para enlazar Workers AI a tu worker, añade lo siguiente al final de tu archivo <strong>wrangler.toml</strong>:</p>
 <p>También puedes enlazar Workers AI a una función de Pages. Para más información, consulta <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank" rel="noopener noreferrer">Functions Bindings</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[ai]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "AI"</span><span class="sk-6a737d-8b8b8b94"> #available in your worker via env.AI</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "AI"</span><span class="sk-6a737d-8b8b8b94"> #available in your worker via env.AI</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>3. Instala la biblioteca cliente Workers AI</h3>
 <h3>4. Ejecuta una tarea de inferencia en tu worker</h3>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/ai</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/ai</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Actualiza el archivo <strong>source/index.ts</strong> con el siguiente código:</p>
 <h3>5. Desarrolla localmente con Wrangler</h3>
@@ -92,25 +134,41 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/meta/llama-2-7b-chat-int8'</span><span class="sk-24292e-fff">, input );</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(output));</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>En el directorio de tu proyecto, prueba localmente Workers AI ejecutando:</p>
 <p><strong>Nota:</strong> actualmente, estos modelos solo se ejecutan en la red de GPU de Cloudflare (y no localmente), por lo que es imprescindible configurar <code>--remote</code> arriba, y te solicitaremos que inicies sesión en este punto.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-005cc5-99ffe4"> --remote</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-005cc5-99ffe4"> --remote</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wrangler te dará una URL (probablemente localhost:8787). Visita esa URL y se te mostrará una respuesta como esta:</p>
 <h3>6. Implementa tu worker</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "response"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Hello, World is a common phrase used to test the output of a computer program, particularly in the early stages of programming. The phrase "Hello,</span><span class="sk-032f62-99ffe4"> World!" is often the first program that a beginner learns to write, and it is included in many programming language tutorials and textbooks as a way to introduce basic programming concepts. The origin of the phrase "Hello,</span><span class="sk-032f62-99ffe4"> World!" as a programming test is unclear, but it is believed to have originated in the 1970s. One of the earliest known references to the phrase is in a 1976 book called "The</span><span class="sk-032f62-99ffe4"> C</span><span class="sk-032f62-99ffe4"> Programming</span><span class="sk-032f62-99ffe4"> Language" by Brian Kernighan and Dennis Ritchie, which is considered one of the most influential books on the development of the C programming language.</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Por último, implementa tu worker para que tu proyecto sea accesible en Internet:</p>
 <p>Y esto es todo. Puedes implementar IA de la nada en cuestión de minutos. Obviamente, se trata de un ejemplo sencillo, pero muestra lo fácil que es ejecutar Workers AI desde cualquier proyecto.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># Outputs: https://workers-ai.&lt;YOUR_SUBDOMAIN&gt;.workers.dev</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Outputs: https://workers-ai.&lt;YOUR_SUBDOMAIN&gt;.workers.dev</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Privacidad por defecto</h2>
 <p>Cuando se fundó Cloudflare, nuestra propuesta de valor tenía tres pilares: más seguridad, más fiabilidad y más rendimiento. Con el tiempo, nos hemos dado cuenta de que para mejorar Internet, necesitamos mejorar también la privacidad, y queremos contribuir a ello.</p>

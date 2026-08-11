@@ -4,25 +4,59 @@
 <p><a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener noreferrer">CC BY 4.0</a> <a href="https://commons.wikimedia.org/wiki/File:White_tailed_eagle_raftsund_square_crop.jpg" target="_blank" rel="noopener noreferrer">image</a> by <a href="http://www.christophmueller.org" target="_blank" rel="noopener noreferrer">Christoph Müller</a></p>
 <p>Tcpdump provides an easy way to dump specific packets of interest. For example, to capture all IPv4 DNS packets, one could:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 53</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 53</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>xdpcap reuses the same syntax! xdpcap can write packets to a pcap file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ xdpcap </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">path</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">to</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">hook capture.pcap </span><span class="sk-032f62-99ffe4">"ip and udp port 53"</span></span>
 <span class="line"><span class="sk-24292e-fff">XDPAborted: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   XDPDrop: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   XDPPass: </span><span class="sk-005cc5-ffc799">254</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   XDPTx: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   (received</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">matched packets)</span></span>
-<span class="line"><span class="sk-24292e-fff">XDPAborted: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   XDPDrop: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   XDPPass: </span><span class="sk-005cc5-ffc799">995</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">   XDPTx: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   (received</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">matched packets)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">XDPAborted: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   XDPDrop: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   XDPPass: </span><span class="sk-005cc5-ffc799">995</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">   XDPTx: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">   (received</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">matched packets)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Or write the pcap to stdout, and decode the packets with tcpdump:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ xdpcap </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">path</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">to</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">hook </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-032f62-99ffe4"> "ip and udp port 53"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> sudo tcpdump </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">r </span><span class="sk-d73a49-a0a0a0">-</span></span>
 <span class="line"><span class="sk-24292e-fff">reading from file </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">, link</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">type </span><span class="sk-6f42c1-ffc799">EN10MB</span><span class="sk-24292e-fff"> (Ethernet)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">16</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">18</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">37.911670</span><span class="sk-24292e-fff"> IP </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">1.1.1.1</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> 1.2.3.4.21563</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">26445</span><span class="sk-24292e-fff">$ </span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> A </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">93.184.216.34</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">56</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">16</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">18</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">37.911670</span><span class="sk-24292e-fff"> IP </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">1.1.1.1</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> 1.2.3.4.21563</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">26445</span><span class="sk-24292e-fff">$ </span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> A </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">93.184.216.34</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">56</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The remainder of this post explains how we built xdpcap, including how <code>/path/to/hook/</code> is used to attach to XDP programs.</p>
 <h2>tcpdump</h2>
 <p>To replicate tcpdump, we first need to understand its inner workings. <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">Marek Majkowski has previously written a detailed post on the subject</a>. Tcpdump exposes a high level filter language, <a href="https://www.tcpdump.org/manpages/pcap-filter.7.html" target="_blank" rel="noopener noreferrer">pcap-filter</a>, to specify which packets are of interest. Reusing our earlier example, the following filter expression captures all IPv4 UDP packets to or from port 53, likely DNS traffic:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">ip and udp port </span><span class="sk-005cc5-ffc799">53</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">ip and udp port </span><span class="sk-005cc5-ffc799">53</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Internally, tcpdump uses libpcap to compile the filter to classic BPF (cBPF). cBPF is a simple bytecode language to represent programs that inspect the contents of a packet. A program returns non-zero to indicate that a packet matched the filter, and zero otherwise. The virtual machine that executes cBPF programs is very simple, featuring only two registers, <code>a</code> and <code>x</code>. There is no way of checking the length of the input packet<a href="https://blog.cloudflare.com/xdpcap/#fn1"><sup>[1]</sup></a>; instead any out of bounds packet access will terminate the cBPF program, returning 0 (no match). The full set of opcodes are listed in <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">the Linux documentation</a>. Returning to our example filter, <code>ip and udp port 53</code> compiles to the following cBPF program, expressed as an annotated flowchart:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -112,7 +146,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // tail-call failed, pass the packet</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> XDP_PASS;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To leverage this as a hook point, the instrumented programs are modified to always tail-call, using a map that is exposed to xdpcap by <a href="https://facebookmicrosites.github.io/bpf/blog/2018/08/31/object-lifetime.html#bpffs" target="_blank" rel="noopener noreferrer">pinning it to a bpffs</a>. To attach a filter, xdpcap can set it in the map. If no filter is attached, the instrumented program returns the correct action itself.</p>
 <p>With a filter attached to program foo, we have:</p>
@@ -182,13 +220,21 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // tail-call failed, return the action</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> action;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This allows an XDP program to simply:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> foo</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> xdp_md </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> xdpcap_exit</span><span class="sk-24292e-fff">(ctx, XDP_PASS);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Expose</h3>
 <p>Matching packets, as well as the original action taken for them, need to be exposed to userspace. Once again, such a mechanism is already part of our <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/#packet-sampling">XDP based DoS mitigation pipeline</a>!</p>

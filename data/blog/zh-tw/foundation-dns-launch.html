@@ -27,14 +27,40 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	kelly.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	christian.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	christian.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>進階名稱伺服器透過幾種不同的方式提高可靠性。第一個改進來自分佈在多個 TLD 上的 Foundation DNS 權威伺服器。這可以防止更大規模的 DNS 中斷和 DDoS 攻擊，這些攻擊可能會影響 DNS 基礎架構，包括 TLD 名稱伺服器。Foundation DNS 權威名稱伺服器現在位於全球 DNS 樹狀結構的多個分支中，進一步使我們的客戶免受這些潛在的中斷和攻擊的影響。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.com.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.net.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.org.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.org.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您可能還注意到 Foundation DNS 中列出了一個額外的名稱伺服器。雖然這是一項改進，但原因並非您想像的那樣。如果我們將這些名稱伺服器中的每一個解析為其各自的 IP 位址，我們就可以讓這一點更容易理解。讓我們從標準名稱伺服器開始：</p>
 <p>兩個名稱伺服器總共有六個 IP 位址。事實證明，這就是 DNS 解析程式在查詢權威名稱伺服器時真正關心的所有內容。DNS 解析程式通常不會追蹤權威伺服器的實際網域名稱；它們只是維護一個無序的 IP 位址清單，可用於解析給定域的查詢。因此，透過我們的標準權威名稱伺服器，我們為解析程式提供了六個 IP 位址，用於解析 DNS 查詢。現在，讓我們來看看 Foundation DNS 進階名稱伺服器的 IP 位址：</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> christian.ns.cloudflare.com.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       108.162.195.247</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       162.159.44.247</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       172.64.35.247</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       172.64.35.247</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>看到了嗎？Foundation DNS 為我們提供給區域的每個權威名稱伺服器提供相同的 IP 位址。因此，在這種情況下，我們只提供了三個 IP 位址來供解析程式用於解析 DNS 查詢。您可能會想，「六個不是比三個好嗎？這不是降級了嗎？」事實證明，並非總是越多越好。我們來談談原因。</p>
 <div class="emdash-code">
@@ -64,7 +94,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> blue.foundationdns.org.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       108.162.198.1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       162.159.60.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您可能知道 Cloudflare 對 <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a> 的使用，並且正如您可能假設的那樣，我們的 DNS 服務利用 Anycast 來確保我們的權威 DNS 伺服器在全球範圍內可用，並儘可能靠近網際網路上的使用者和解析程式。我們的標準名稱伺服器均由單一 Anycast 群組從每個 Cloudflare 資料中心進行宣告。如果我們放大歐洲，您可以看到在標準名稱伺服器部署中，兩個名稱伺服器都從每個資料中心進行宣告。</p>
 <p>我們可以從上面的標準名稱伺服器中取得這六個 IP 位址，並尋找它們的「hostname.bind」TXT 記錄，該記錄將向我們顯示機場代碼或解析 DNS 查詢的最近資料中心的實體位置。此輸出有助於解釋為什麼並非總是越多越好。</p>
@@ -89,7 +123,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.35.247</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您可能會問：「那又怎樣？這對我來說意味著什麼？」讓我們來看一個範例。如果您想使用倫敦的 Cloudflare 標準名稱伺服器解析網域，而我使用的公用解析程式也位於倫敦，則解析程式將始終連接到 Cloudflare LHR 資料中心，無論它嘗試存取哪個名稱伺服器。由於 Anycast，它沒有任何其他選擇。</p>
 <p>由於 Anycast，如果 LHR 資料中心完全離線，所有前往 LHR 的流量將被路由到附近的其他資料中心，並且解析程式將繼續正常運作。但是，在某些極端的情況下，LHR 資料中心在線，但我們的 DNS 服務無法回應 DNS 查詢，這時解析程式將無法解析這些 DNS 查詢，因為它們無法連線任何其他資料中心。我們可能有 100 個 IP 位址，但在這種情況下這對我們沒有幫助。最終，快取的回應將過期，並且網域最終將停止解析。</p>
@@ -113,12 +151,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.40.1</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"MAN"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"MAN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在粗體文字中，「<strong>m</strong>」前面的數字代表回答查詢的資料中心。只要在全部三個回應中，有一個的數字是不同的，您就知道您的某個 Foundation DNS 權威名稱伺服器正在從不同的實體位置進行宣告。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @108.162.198.1</span><span class="sk-032f62-99ffe4"> +nsid</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> NSID:</span></span>
-<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">NSID:</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-005cc5-ffc799"> 34</span><span class="sk-032f62-99ffe4"> 6d</span><span class="sk-005cc5-ffc799"> 33</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"94m39"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">NSID:</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-005cc5-ffc799"> 34</span><span class="sk-032f62-99ffe4"> 6d</span><span class="sk-005cc5-ffc799"> 33</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"94m39"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>由於 Foundation DNS 利用兩個 Anycast 群組，因此能夠無縫處理先前的服務中斷情況。DNS 解析程式監控針對給定網域傳回的前往所有權威名稱伺服器的請求，但主要使用提供最快回應的名稱伺服器。</p>
 <p>透過此設定，DNS 解析程式能夠將請求傳送到兩個不同的 Cloudflare 資料中心，因此，如果一個實體位置發生故障，查詢將自動傳送到第二個資料中心，在那裡可以正確進行解析。</p>
@@ -270,7 +316,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "datetime_leq"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2024-06-01T00:00:00Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>主要和次要區域</p>
 <p>允許您在使用 Cloudflare 作為主要名稱伺服器時擁有多個權威 DNS 提供者。</p>

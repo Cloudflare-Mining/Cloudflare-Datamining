@@ -13,8 +13,30 @@
 <p>Here's what that looks like with AI Search and the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>. 프로젝트 스캐폴딩으로 시작:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare/agents-starter</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>먼저 AI Search 네임스페이스를 Worker에 바인딩합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
@@ -29,7 +51,11 @@
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>공유 제품 문서가 <code>product-doc</code>이라는 R2 버킷에 있다고 가정해 보겠습니다. Cloudflare 대시보드에서 <code>support</code> 네임스페이스 내의 버킷으로 지원되는 일회용 AI Search 인스턴스(<code>product-knowledge 라는 이름)를</code> 만들 수 있습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -44,7 +70,11 @@
 <span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">`customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  index_method:{ keyword: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, vector: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>각 인스턴스는 <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 및 <a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>로 구동되는 자체 내장 스토리지와 벡터 인덱스를 확보합니다. 인스턴스가 비어 있는 상태로 시작되다가 시간이 지남에 따라 컨텍스트가 누적됩니다. 고객이 다음에 다시 돌아올 때 모든 정보를 검색할 수 있습니다.</p>
 <p>고객이 소수인 경우의 네임스페이스는 다음과 같습니다.</p>
@@ -55,7 +85,11 @@
 <span class="line"><span>├── customer-def456       (managed storage, per-customer)</span></span>
 <span class="line"><span>└── customer-ghi789       (managed storage, per-customer)</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제 에이전트입니다. 이는 Agents SDK에서 <code>AIChatAgent</code> 를 확장하고 두 가지 도구를 정의합니다. 현재 <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI를</u></a> <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>통해 Kimi K2.5를</u></a> LLM으로 사용하고 있습니다. 모델은 대화를 기반으로 도구를 호출할 시기를 결정합니다.</p>
 <div class="emdash-code">
@@ -171,7 +205,11 @@
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이를 통해 모델은 검색 시간과 저장 시간을 결정합니다. 검색할 때 <code>제품 지식</code> 및 이 고객의 과거 해결 방법을 함께 쿼리합니다. 문제가 해결되면 향후 대화에서 즉시 검색할 수 있는 요약이 저장소에 저장됩니다.&nbsp;</p>
 <h2>How AI Search finds what you're looking for</h2>
@@ -205,7 +243,11 @@
 <span class="line"><span class="sk-24292e-fff">  reranking: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  reranking_model: </span><span class="sk-032f62-99ffe4">"@cf/baai/bge-reranker-base"</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>관련성 향상: 중요한 사항 파악</h3>
 <p>검색으로는 관련성 있는 결과를 얻을 수 있지만, 관련성만으로는 항상 충분하지 않습니다. 예를 들어, 뉴스 검색에서 지난주의 기사와 3년 전의 기사가 모두 "선거 결과"와 의미론적으로 관련이 있을 수 있지만, 대부분의 사용자는 가장 최근의 결과를 원할 것입니다. 부스팅을 이용하면 문서 메타데이터를 기반으로 순위를 이동시켜 검색 외에도 비즈니스 로직을 계층화할 수 있습니다.</p>
@@ -220,7 +262,11 @@
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>인스턴스 간 검색: 경계를 넘는 쿼리</h3>
 <p>지원 에이전트의 예에서 제품 문서와 고객 해결 이력은 설계상 별도의 인스턴스에 있습니다. 하지만 에이전트가 질문에 답변할 때는 한 번에 두 곳의 컨텍스트가 모두 필요합니다. 교차 인스턴스 검색이 없다면 두 번의 별도 호출을 수행하고 결과를 직접 병합하게 됩니다.</p>
@@ -232,7 +278,11 @@
 <span class="line"><span class="sk-24292e-fff">    instance_ids: [</span><span class="sk-032f62-99ffe4">"product-knowledge"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"customer-abc123"</span><span class="sk-24292e-fff">]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>결과는 인스턴스 간에 병합되고 순위가 매겨집니다. 상담원은 공유 문서와 고객 해결 기록이 별도의 장소에 있다는 것을 알거나 신경 쓸 필요가 없습니다.&nbsp;</p>
 <h2>How AI Search instances work</h2>
@@ -253,7 +303,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // alternative way to pass in users' query other than using parameter query </span></span>
 <span class="line"><span class="sk-24292e-fff">  messages: [{ role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">"onboarding guide"</span><span class="sk-24292e-fff"> }],</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>또한 각 인스턴스는 하나의 외부 데이터 소스(R2 버킷 또는 웹 사이트)에 연결하고 동기화 일정에 따라 실행할 수 있습니다. 이는 제공된 내장 스토리지와 함께 존재할 수 있습니다. 지원 에이전트의 예에서 <code>제품 지식</code> 은 공유 문서용으로 R2 버킷으로 지원되는 반면, 각 고객의 인스턴스는 컨텍스트를 즉시 업로드하기 위해 내장 스토리지를 사용합니다.</p>
 <h3>네임스페이스: 런타임 시 검색 인스턴스 생성</h3>
@@ -265,7 +319,11 @@
 <span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI_SEARCH"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"namespace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"example"</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>네임스페이스 바인딩은 네임스페이스 수준에서 <code>create()</code>, <code>delete()</code>, <code>list()</code>, <code>search()</code> 와 같은 API를 제공합니다. 인스턴스를 동적으로(예: 에이전트별, 고객별, 테넌트별) 생성하는 경우, 이 바인딩을 사용해야 합니다.</p>
 <div class="emdash-code">
@@ -276,7 +334,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// delete an instance and all its indexed data</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">delete</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"old-instance"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>새 인스턴스의 가격</h3>
 <p>오늘을 기준으로 생성된 새로운 인스턴스에는 내장 스토리지와 벡터 인덱스가 자동으로 주어집니다.&nbsp;</p>
@@ -363,7 +425,11 @@
 <p>이 명령으로 첫 번째 인스턴스를 생성하는 것으로 오늘 시작하세요.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> ai-search</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> my-search</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>문서</u></a>를 확인하고 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare 개발자 Discord</u></a>에서 무엇을 구축하고 있는지 알려주세요.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

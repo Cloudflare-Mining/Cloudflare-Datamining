@@ -25,8 +25,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">"Hostname":{“example.com”},</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">"Ssl":{wildcard: true}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>接下来，在自定义主机名（客户的域）与您想连接的防火墙规则集之间创建关联。</p>
 <p>方法为将 JSON blob 关联到自定义主机名。我们的产品<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata" target="_blank" rel="noopener noreferrer">自定义元数据</a>允许客户通过 API 轻松执行此操作。</p>
 <p>在下面的示例中，具有两个字段（“customer_id” 和 “security_level”）的 JSON blob 将关联到 <code>*.example.com</code> 和 <code>example.com</code> 的每个请求。</p>
@@ -41,7 +63,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">"customer_id":"12345",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">“security_level”: “low”</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最后，您可以根据自定义主机名触发规则。自定义元数据字段，例如 “security_level”，在 WAF 运行所在的规则集引擎中可用。在此示例中，“security_level” 可用于触发产品的不同配置，例如 WAF、防火墙规则、高级速率限制和转换规则。</p>
 <p>可以通过仪表板或 API 构建规则，如下所示。当 “security_level” 设置为 <em>low</em> 时，将触发速率限制规则。</p>
@@ -67,7 +93,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">                "expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">              }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            ]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">          }}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">          }}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>总结</h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

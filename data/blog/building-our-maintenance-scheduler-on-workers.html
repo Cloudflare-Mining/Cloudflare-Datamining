@@ -32,8 +32,30 @@
 <span class="line"><span class="sk-24292e-fff">      ],</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      "modified_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2023-10-22T13:32:47.213767Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In this scenario, data center 21 and data center 45 relate to each other because we need at least one data center online for the Aegis customer 9876 to receive egress traffic from Cloudflare. If we tried to take data centers 21 and 45 down simultaneously, our coordinator would alert us that there would be unintended consequences for that customer workload.</p>
 <p>We initially had a naive solution to load all data into a single Worker. This included all server relationships, product configurations, and metrics for product and infrastructure health to compute constraints. Even in our proof of concept phase, we ran into problems with “out of memory” errors.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -49,7 +71,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  object_get</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ObjectID</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">TObject</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> undefined</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  assoc_get</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">id1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ObjectID</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">atype</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> TAssocType</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AsyncIterable</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">TAssoc</span><span class="sk-24292e-fff">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The core insight is that associations are typed. For example, a constraint would call the graph interface to retrieve Aegis product data.</p>
 <div class="emdash-code">
@@ -90,7 +116,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> poolAnalysis</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We use two association types in the code above:</p>
 <ol>
@@ -124,7 +154,11 @@
 <span class="line"><span class="sk-24292e-fff">    baseMs: </span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    jitter: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }))</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">handler</span><span class="sk-24292e-fff">(terminalFetch);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">handler</span><span class="sk-24292e-fff">(terminalFetch);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you’re familiar with Go, you may have seen the <a href="https://pkg.go.dev/golang.org/x/sync/singleflight" target="_blank" rel="noopener noreferrer"><u>singleflight</u></a> package before. We took inspiration from this idea and the first middleware component in the fetch pipeline deduplicates inflight HTTP requests, so they all wait on the same Promise for data instead of producing duplicate requests in the same Worker. Next, we use a lightweight Least Recently Used (LRU) cache to internally cache requests that we have already seen before.</p>
 <p>Once both of those are complete, we use Cloudflare’s <code>caches.default.match</code> function to cache all GET requests in the region that the Worker is running. Since we have multiple data sources with different performance characteristics, we choose time to live (TTL) values carefully. For example, real-time data is only cached for 1 minute. Relatively static infrastructure data could be cached for 1–24 hours depending on the type of data. Power management data might be changed manually and infrequently, so we can cache it for longer at the edge.</p>
@@ -137,12 +171,20 @@
 <h2>Thanos in real-time</h2>
 <p>To explain how our choice in using the graph processing interface affected our real-time queries, let’s walk through an example. In order to analyze the health of edge routers, we could send the following query:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge.*"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge.*"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Originally, we asked our Thanos service, which stores Prometheus metrics, for a list of each edge router’s current health status and would manually filter for routers relevant to the maintenance inside the Worker. This is suboptimal for many reasons. For example, Thanos returned multi-MB responses which it needed to decode and encode. The Worker also needed to cache and decode these large HTTP responses only to filter out the majority of the data while processing a specific maintenance request. Since TypeScript is single-threaded and parsing JSON data is CPU-bound, sending two large HTTP requests means that one is blocked waiting for the other to finish parsing.</p>
 <p>Instead, we simply use the graph to find targeted relationships such as the interface links between edge and spine routers, denoted as <code>EDGE_ROUTER_NETWORK_CONNECTS_TO_SPINE</code>.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (lldp_name) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge01.fra03"</span><span class="sk-24292e-fff">, lldp_name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"spine.*"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (lldp_name) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge01.fra03"</span><span class="sk-24292e-fff">, lldp_name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"spine.*"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The result is 1 Kb on average instead of multiple MBs, or approximately 1000x smaller. This also massively reduces the amount of CPU required inside the Worker because we offload most of the deserialization to Thanos. As we explained before, this means we need to make a higher number of these smaller fetch requests, but load balancers in front of Thanos can spread the requests evenly to increase throughput for this use case.&nbsp;</p>
 <p>Our graph implementation and fetch pipeline successfully tamed the 'thundering herd' of thousands of tiny real-time requests. However, historical analysis presents a different I/O challenge. Instead of fetching small, specific relationships, we need to scan months of data to find conflicting maintenance windows. In the past, Thanos would issue a massive amount of random reads to our object store, <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2</a>. To solve this massive bandwidth penalty without losing performance, we adopted a new approach the Observability team developed internally this year.</p>
@@ -151,7 +193,11 @@
 <p>Thanos primarily fans out to Prometheus, but when Prometheus' retention is not enough to answer the query it has to download data from object storage — R2 in our case. Prometheus TSDB blocks were originally designed for local SSDs, relying on random access patterns that become a bottleneck when moved to object storage. When our scheduler needs to analyze months of historical maintenance data to identify conflicting constraints, random reads from object storage incur a massive I/O penalty. To solve this, we implemented a conversion layer that transforms these blocks into <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> files. Parquet is a columnar format native to big data analytics that organizes data by column rather than row, which — together with rich statistics — allows us to only fetch what we need.</p>
 <p>Furthermore, since we are rewriting TSDB blocks into Parquet files, we can also store the data in a way that allows us to read the data in just a few big sequential chunks.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (hmd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">release_scopes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">enabled{dc_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"45"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (hmd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">release_scopes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">enabled{dc_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"45"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the example above we would choose the tuple “(__name__, dc_id)” as a primary sorting key so that metrics with the name “hmd:release_scopes:enabled” and the same value for “dc_id” get sorted close together.</p>
 <p>Our Parquet gateway now issues precise R2 range requests to fetch only the specific columns relevant to the query. This reduces the payload from megabytes to kilobytes. Furthermore, because these file segments are immutable, we can aggressively cache them on the Cloudflare CDN.</p>

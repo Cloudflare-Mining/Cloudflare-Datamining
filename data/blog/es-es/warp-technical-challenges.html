@@ -16,8 +16,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">workers.dev.</span><span class="sk-005cc5-ffc799">    161</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  A</span><span class="sk-005cc5-ffc799">  198.41.215.162</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">workers.dev.</span><span class="sk-005cc5-ffc799">    161</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  A</span><span class="sk-005cc5-ffc799">  198.41.214.162</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> 1.1.1.1#53</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1.1.1.1</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> 1.1.1.1#53</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1.1.1.1</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>workers.dev está disponible en dos direcciones: 198.41.215.162 y 198.41.214.162 (junto con dos direcciones IPv6 disponibles a través de la consulta DNS AAAA). Esas dos direcciones se anuncian en todos nuestros centros de datos en todo el mundo. Cuando alguien se conecta a una propiedad de Internet en Cloudflare, cada dispositivo de red por el que pasan sus paquetes elegirá la ruta más corta al centro de datos de Cloudflare más cercano desde su computadora o teléfono.</p>
 <p>Una vez que los paquetes llegan al centro de datos, los enviamos a uno de los tantos servidores que operan allí. Usualmente, uno podría utilizar un equilibrador de carga para realizar ese tipo de distribución de tráfico entre varias máquinas. Desafortunadamente, poner un conjunto de equilibradores de carga capaces de manejar nuestro volumen de tráfico en cada centro de datos sería demasiado costoso y no se escalaría tan fácilmente como lo hacen nuestros servidores. En cambio, usamos dispositivos creados para operar en volúmenes excepcionales de tráfico: enrutadores de red.</p>
 <p>Una vez que un paquete llega a nuestro centro de datos, este se procesa en un enrutador. Ese enrutador envía el tráfico a uno de un conjunto de servidores responsables de manejar esa dirección usando una estrategia de enrutamiento llamada Equal-Cost Multi-Path (ECMP, siglas para “múltiples rutas y un mismo costo”). ECMP se refiere a la situación en la que el enrutador no tiene un claro "ganador" entre las diferentes rutas; tiene múltiples próximos saltos buenos, todos al mismo destino final. En nuestro caso, cambiamos un poco ese concepto. En lugar de utilizar ECMP para equilibrar varios enlaces intermediarios, hacemos que el enlace intermediario se dirija al destino final de nuestro tráfico: nuestros servidores.</p>
@@ -33,7 +55,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">forwarding-table {</span></span>
 <span class="line"><span class="sk-24292e-fff">  export load-balancing-policy</span><span class="sk-6a737d-8b8b8b94">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dado que el "próximo salto" es nuestro servidor, el tráfico se dividirá en varias máquinas de forma altamente eficiente.</p>
 <h2><strong>TCP, IP y ECMP</strong></h2>
@@ -48,7 +74,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Transmission</span><span class="sk-032f62-99ffe4"> Control</span><span class="sk-032f62-99ffe4"> Protocol,</span><span class="sk-032f62-99ffe4"> Src</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-032f62-99ffe4"> 51602,</span><span class="sk-032f62-99ffe4"> Dst</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-032f62-99ffe4"> 443,</span><span class="sk-032f62-99ffe4"> Seq:</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> Len:</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Source</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-005cc5-ffc799"> 51602</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Destination</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-005cc5-ffc799"> 443</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Mirando la misma solicitud desde el lado de Cloudflare habrá una imagen espejo, una solicitud de mi dirección IP pública que se origina en mi puerto de origen, destinada al puerto 443 (estoy dejando de lado NAT por el momento y lo abordaré más adelante):</p>
 <div class="emdash-code">
@@ -58,7 +88,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    Destination</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">19.5</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">7.21</span></span>
 <span class="line"><span class="sk-24292e-fff">Transmission Control Protocol, Src </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">443</span><span class="sk-24292e-fff">, Dst </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Seq</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Len</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    Source </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">443</span></span>
-<span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ahora podemos volver a ECMP. Teóricamente, podría ser posible utilizar ECMP para equilibrar los paquetes entre servidores al azar, pero casi nunca será algo conveniente. Un mensaje a través de Internet generalmente se compone de múltiples paquetes de TCP. Si cada paquete se enviara a un servidor diferente, sería imposible reconstruir el mensaje original en cualquier lugar y actuar según corresponda. Incluso más allá de eso, sería terrible para el rendimiento: confiamos en poder mantener sesiones de TCP y TLS de larga duración que requieran una conexión constante a un solo servidor. Para lograr esa persistencia, nuestros enrutadores no equilibran el tráfico al azar, sino que utilizan una combinación de cuatro valores: la dirección de origen, el puerto de origen, la dirección de destino y el puerto de destino. El tráfico, con la misma combinación de esos cuatro valores, siempre llegará al mismo servidor. En el caso de mi ejemplo anterior, todos mis mensajes destinados a cloudflare.com llegarán a un único servidor que puede reconstruir los paquetes de TCP en mi solicitud y devolver los paquetes en una respuesta.</p>
 <h2><strong>Entrar en WARP</strong></h2>
@@ -120,7 +154,11 @@
 <p>Si comparamos el código requerido para crear una NWUDPSession con el ejemplo anterior, podrá observar que de repente nos interesa saber qué protocolo, IPv4 o IPv6, estamos usando:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>let v4Session = NWUDPSession(upgradeFor: self.ipv4Session)</span></span>
-<span class="line"><span>v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</span></span></code></pre>
+<span class="line"><span>v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>De hecho, NWUDPSession no maneja muchos de los elementos más difíciles en la creación de conexiones a través de Internet. Por ejemplo, el marco de red determinará automáticamente si se debe hacer una conexión a través de IPv4 o 6:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -144,7 +182,11 @@
 <span class="line"><span class="sk-24292e-fff">User Datagram Protocol, Src Port: 49946, Dst Port: 53</span></span>
 <span class="line"><span class="sk-24292e-fff">Domain Name System (query)</span></span>
 <span class="line"><span class="sk-24292e-fff">    Queries</span></span>
-<span class="line"><span class="sk-24292e-fff">        zack.is: type AAAA, class IN</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        zack.is: type AAAA, class IN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>En este caso, la respuesta a la consulta A regresó más rápidamente y la conexión se inicia usando ese protocolo:</p>
 <div class="emdash-code">
@@ -160,7 +202,11 @@
 <span class="line"><span class="sk-24292e-fff">Transmission Control Protocol, Src </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">55244</span><span class="sk-24292e-fff">, Dst </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Seq</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Len</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    Source </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">55244</span></span>
 <span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Flags</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0x002</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">SYN</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Flags</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0x002</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">SYN</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>No necesitamos hacer consultas DNS para hacer conexiones de WARP, ya conocemos las direcciones IP de nuestros centros de datos, pero queremos saber cuál de las direcciones IPv4 e IPv6 conducirá a una ruta más rápida a través de Internet. Para lograrlo, realizamos la misma técnica, pero a nivel de red: enviamos un paquete sobre cada protocolo y usamos el protocolo que regresa primero para los mensajes subsiguientes. Con algunos errores de manejo y el registro eliminado por razones de brevedad, aparece como:</p>
 <div class="emdash-code">
@@ -194,7 +240,11 @@
 <span class="line"><span>        // Send a handshake message</span></span>
 <span class="line"><span>        session.writeDatagram(onViable())</span></span>
 <span class="line"><span>    }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Esta técnica nos permite admitir con éxito el direccionamiento de IPv6. De hecho, todos los dispositivos que usan WARP admiten instantáneamente el direccionamiento de IPv6, incluso en redes que no tienen soporte. El uso de WARP toma el 34 % de la red de Comcast que no admite IPv6 o el 69 % de la red de Charter que no lo hace (a partir de 2018) y permite a esos usuarios comunicarse con éxito a los servidores de IPv6.</p>
 <p>Esta prueba muestra la compatibilidad con IPv6 de mi teléfono, antes y después de habilitar WARP:</p>
@@ -230,7 +280,11 @@
 <span class="line"><span>Unlike `happyEyeballs`, this function will use viability as its only success criteria.</span></span>
 <span class="line"><span>*/</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)</span></span></code></pre>
+<span class="line"><span>func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Al usar la reconexión podemos recrear sesiones interrumpidas por errores del código 55, pero aún agrega un golpe de latencia que no es ideal. Sin embargo, al igual que con todo el desarrollo de software del cliente en una plataforma de código cerrado, dependemos de la plataforma para identificar y corregir errores a nivel de plataforma.</p>
 <p>A decir verdad, esta es solo una de una <a href="https://forums.developer.apple.com/thread/121648" target="_blank" rel="noopener noreferrer">larga</a> <a href="https://forums.developer.apple.com/thread/95387" target="_blank" rel="noopener noreferrer">lista</a> <a href="https://openradar.appspot.com/39743361" target="_blank" rel="noopener noreferrer">de</a> errores específicos de plataforma que encontramos en la construcción de WARP. Esperamos seguir trabajando con los proveedores de dispositivos para repararlos. Hay una cantidad inimaginable de combinaciones de dispositivos y conexiones, y cada conexión no solo existe en un momento dado, siempre están cambiando, entrando y saliendo de estados de interrumpción casi más rápido de lo que podemos rastrear. Incluso ahora, hacer que WARP funcione en todos los dispositivos y conexiones en la tierra no es un problema resuelto, todavía recibimos informes diarios de errores en los que trabajamos para evaluar y resolver.</p>
@@ -250,7 +304,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    Connection</span><span class="sk-24292e-fff">: keep</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">alive\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">    Accept</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Encoding</span><span class="sk-24292e-fff">: gzip, deflate\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">    Accept</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Language</span><span class="sk-24292e-fff">: en</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">US</span><span class="sk-24292e-fff">,en;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0.9</span><span class="sk-24292e-fff">\r\n</span></span>
-<span class="line"><span class="sk-24292e-fff">    \r\n</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    \r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The modern and secure web presents a problem for us however: When I make the same request over HTTPS (<a href="https://zack.is" target="_blank" rel="noopener noreferrer">https://zack.is</a>) rather than just HTTP (<a href="http://zack.is" target="_blank" rel="noopener noreferrer">http://zack.is</a>), I see a very different result over the wire:</p>
 <div class="emdash-code">
@@ -262,7 +320,11 @@
 <span class="line"><span class="sk-005cc5-fff">    TCP</span><span class="sk-6f42c1-ffc799"> payload</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">54</span><span class="sk-24292e-fff"> bytes)</span></span>
 <span class="line"><span class="sk-24292e-fff">Transport Layer Security</span></span>
 <span class="line"><span class="sk-24292e-fff">    TLSv1.</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> Record </span><span class="sk-6f42c1-ffc799">Layer</span><span class="sk-24292e-fff">: Application Data </span><span class="sk-6f42c1-ffc799">Protocol</span><span class="sk-24292e-fff">: http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">over</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tls</span></span>
-<span class="line"><span class="sk-24292e-fff">        Encrypted Application </span><span class="sk-6f42c1-ffc799">Data</span><span class="sk-24292e-fff">: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        Encrypted Application </span><span class="sk-6f42c1-ffc799">Data</span><span class="sk-24292e-fff">: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>¡Mi solicitud se ha encriptado! Ya no es posible que WARP (ni nadie más que el destino) indique qué hay en la carga útil. Puede ser HTTP, pero también puede ser cualquier otro protocolo. Si mi sitio es uno de los veinte millones que ya utilizan Cloudflare, podemos descifrar el tráfico y acelerarlo (junto con una larga lista de otras optimizaciones). Pero para el tráfico cifrado destinado a otra fuente, la tecnología Argo solo HTTP existente no iba a funcionar.</p>
 <p>Afortunadamente, ahora tenemos una buena cantidad de experiencia trabajando con tráfico no HTTP a través de nuestros productos <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a> y <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>. Para resolver este problema, el equipo de Argo recurrió al protocolo CONNECT.</p>
@@ -273,7 +335,11 @@
 <span class="line"><span class="sk-22863a-ffc799">Exit-Tcp-Keepalive-Duration</span><span class="sk-d73a49-ffc799">:</span><span class="sk-032f62-99ffe4"> 15\r\n</span></span>
 <span class="line"><span class="sk-22863a-ffc799">Application</span><span class="sk-d73a49-ffc799">:</span><span class="sk-032f62-99ffe4"> warp\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">\r\n</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">data</span><span class="sk-24292e-fff"> to send to origin</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">data</span><span class="sk-24292e-fff"> to send to origin</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Una vez que el mensaje llega al centro de datos de destino, se reenvía a otro centro de datos (si eso es mejor para el rendimiento) o se dirige directamente al origen que está esperando el tráfico.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

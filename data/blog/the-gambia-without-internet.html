@@ -12,8 +12,30 @@
 <p>It is important to know that BGP is a mechanism to exchange routing information between autonomous systems (networks) on the Internet. The routers that make the Internet work have huge, constantly updated lists of the possible routes that can be used to deliver every network packet to their final destinations. Without BGP, the Internet routers wouldn't know what to do, and the Internet wouldn't work. As we saw in our blog post in 2021 about <a href="https://blog.cloudflare.com/october-2021-facebook-outage">how Facebook disappeared from the Internet</a>, the Internet is literally a network of networks, and it’s bound together by BGP.</p>
 <p>The Gambia’s Internet access is solely dependent on a single provider, Gamtel. Because The Gambia’s international Internet connectivity via the ACE submarine cable was unavailable, it was reliant on the “backup links” referenced above - terrestrial connectivity via Senegal and the provider Sonatel. This is visible in BGP data. If we look at the ASNs that are allocated to networks in The Gambia (AS25250, AS37309, AS37503, AS37552, AS37524, AS37323, AS328488, AS328140), and put those into a regular expression on BGP routing tools like <a href="http://www.routeviews.org/routeviews" target="_blank" rel="noopener noreferrer">route-views</a> as so:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">route-views</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">show</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> bgp</span><span class="sk-032f62-99ffe4"> regexp</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">_</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">25250</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37309</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37503</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37552</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37524</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37323</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">328488</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">328140</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">route-views</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">show</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> bgp</span><span class="sk-032f62-99ffe4"> regexp</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">_</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">25250</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37309</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37503</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37552</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37524</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">37323</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">328488</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">328140</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We are able to see all the possible upstream ASN paths from these networks to the rest of the Internet.</p>
 <p>Looking at the “Path” results, we see that AS8346 (Sonatel) and AS25250 (Gamtel) are in the path for all the Gambian networks.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

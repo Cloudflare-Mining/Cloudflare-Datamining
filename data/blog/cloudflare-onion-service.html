@@ -48,8 +48,30 @@
 </figure>
 <p>In the same sense that Cloudflare owns the IP addresses that serve our customers’ websites, we run 10 .onion addresses. Think of them as 10 Cloudflare points of presence (or PoPs) within the Tor network. The exact header looks something like this, except with all 10 .onion addresses included, each starting with the prefix “cflare”:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This simply indicates that the “cloudflare.com” can be authoritatively accessed using HTTP/2 (“h2”) via the onion service “cflare2n[...].onion”, over virtual port 443. The field “ma” (max-age) indicates how long in seconds the client should remember the existence of the alternative service and “persist” indicates whether alternative service cache should be cleared when the network is interrupted.</p>
 <p>Once the browser receives this header, it attempts to make a new Tor circuit to the onion service advertised in the alt-svc header and confirm that the server listening on virtual port 443 can present a valid certificate for “cloudflare.com” — that is, the original hostname, not the .onion address.</p>
 <p>The onion service then relays the Client Hello packet to a local server which can serve a certificate for “cloudflare.com.” This way the Tor daemon itself can be very minimal. Here is a sample configuration file:</p>
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServiceVersion</span><span class="sk-005cc5-ffc799"> 3</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServicePort</span><span class="sk-005cc5-ffc799"> 443</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SafeLogging</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Be careful with using the configuration above, as it enables a non-anonymous setting for onion services that do not require anonymity for themselves. To clarify, this does not sacrifice privacy or anonymity of Tor users, just the server. Plus, it improves latency of the circuits.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -83,7 +109,11 @@
 <p>Remember that Tor circuits to onion services carry a circuit number which we can use to rate-limit the circuit. Now, the question is how to inform a server such as nginx of this number with minimal effort. As it turns out, with only a <a href="https://github.com/torproject/tor/pull/343" target="_blank" rel="noopener noreferrer">small tweak</a> in the Tor binary, we can insert a <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank" rel="noopener noreferrer">Proxy Protocol</a> header in the beginning of each packet that is forwarded to the server. This protocol is designed to help TCP proxies pass on parameters that can be lost in translation, such as source and destination IP addresses, and is already supported by nginx, Apache, Caddy, etc.</p>
 <p>Luckily for us, the IPv6 space is so vast that we can encode the Tor circuit number as an IP address in an unused range and use the Proxy Protocol to send it to the server. Here is an example of the header that our Tor daemon would insert in the connection:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this case, 0x1234ABCD encodes the circuit number in the last 32 bits of the source IP address. The local Cloudflare server can then transparently use that IP to assign reputation, show CAPTCHAs, or block requests when needed.</p>
 <p>Note that even though requests relayed by an onion service don’t carry an IP address, you will see an IP address like the one above with country code “T1” in your logs. This IP only specifies the circuit number seen by the onion service, not the actual user IP address. In fact, 2405:8100:8000::/48 is an unused subnet allocated to Cloudflare that we are not routing globally for this purpose.</p>
@@ -128,7 +158,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cflaresuje2rb7w2u3w43pn4luxdi6o7oatv6r2zrfb5xvsugj35d2qd.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareer7qekzp3zeyqvcfktxfrmncse4ilc7trbf6bp6yzdabxuload.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareub6dtu7nvs3kqmoigcjdwap2azrkx5zohb2yk7gqjkwoyotwqd.onion</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em><a href="https://blog.cloudflare.com/subscribe">Subscribe to the blog</a> for daily updates on our announcements.</em></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

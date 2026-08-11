@@ -19,8 +19,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">"(#cmd='touch /tmp/hacked')."</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">"(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win')))."</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">"(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd}))."</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"(#p=new java.lang.ProcessBuilder(#cmds))."</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"(#p=new java.lang.ProcessBuilder(#cmds))."</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>More critically however, further to this CVE, Apache Struts also announced another vulnerability earlier this year (<a href="https://nvd.nist.gov/vuln/detail/CVE-2017-9805" target="_blank" rel="noopener noreferrer">CVE-2017-9805</a>), which works by delivering a payload against the REST plugin combined with the Xstream handler, which provides an XML ingest capability. By delivering an specially crafted XML payload, a shell command can be embedded, and will be executed.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">next class</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"java.lang.ProcessBuilder"</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
@@ -28,13 +50,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      "touch /tmp/hacked"</span><span class="sk-005cc5-ffc799">.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   &lt;</span><span class="sk-6f42c1-ffc799">/command</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   &lt;</span><span class="sk-6f42c1-ffc799">redirectErrorStream</span><span class="sk-24292e-fff">&gt;</span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">&lt;/redirectErrorStream&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/next</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/next</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And the result from the test:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">root@struts-demo:~$</span><span class="sk-032f62-99ffe4"> ls</span><span class="sk-032f62-99ffe4"> /tmp</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">hacked</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">root@struts-demo:~$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">root@struts-demo:~$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the last week, we have seen over 180,000 hits on our WAF rules protecting against Apache Struts across the Cloudflare network.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -44,7 +74,11 @@
 <p>SQL Injection (SQLi) is an attempt to inject nefarious queries into a GET or POST dynamic variable, which is used to query a database. Cloudflare, on a day to day basis will see over 2.3m SQLi attempts on our network. Most commonly, we see SQLi attacks against Wordpress sites, as it is one of the biggest web applications used on Cloudflare today. Wordpress is used by some of the world's giants, like Sony Music, all the way down to "mom &amp; pop" businesses. The challenge with being the leader in the space, is you then become a hot target. Looking at the CVE list as we near the close of 2017, there have been 41 vulnerabilities found in multiple versions of Wordpress which would force people to upgrade to the latest versions. To protect our customers, and buy them time to upgrade, Cloudflare works with a number of vendors to address vulnerabilities and then virtual-patching using our WAF to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank" rel="noopener noreferrer">prevent these vulnerabilities being exploited</a>.</p>
 <p>The way a SQL injection works is by "breaking out" or malforming a query when a web application is needing data from a database. As an example, a Forgotten Password page has a single email input field, which will be used to validate whether the username exists, and if so, sends the user a “Forgotten Password” link. Below is a straightforward SQL query example, which could be used in a web application:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span><span class="sk-032f62-99ffe4"> user,</span><span class="sk-032f62-99ffe4"> password</span><span class="sk-032f62-99ffe4"> FROM</span><span class="sk-032f62-99ffe4"> users</span><span class="sk-032f62-99ffe4"> WHERE</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 'john@smith'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span><span class="sk-032f62-99ffe4"> user,</span><span class="sk-032f62-99ffe4"> password</span><span class="sk-032f62-99ffe4"> FROM</span><span class="sk-032f62-99ffe4"> users</span><span class="sk-032f62-99ffe4"> WHERE</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 'john@smith'</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Which results in:</p>
 <div class="emdash-code">
@@ -52,18 +86,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">    user</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">           password</span><span class="sk-d73a49-a0a0a0">           |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+------------+------------------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> john@smith</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> $2y$10$h9XJRX</span><span class="sk-032f62-99ffe4">.EBnGFrWQlnt.</span><span class="sk-005cc5-ffc799">..</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+------------+------------------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+------------+------------------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Without the right query validation, an attacker could escape out of this query, and carry out some extremely malicious queries. For example, if an attacker was looking to <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention" target="_blank" rel="noopener noreferrer">takeover another user’s account</a>, and an attacker found that the query validation was inadequate, he could escape the query, and UPDATE the username, which is an email address in this instance, to his own. This can simply be done by entering the query string below into the email input field, instead of an email address.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dontcare@bla.com’</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">UPDATE</span><span class="sk-032f62-99ffe4"> users</span><span class="sk-032f62-99ffe4"> SET</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ‘mr@robot’</span><span class="sk-032f62-99ffe4"> WHERE</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ‘john@smith’</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dontcare@bla.com’</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">UPDATE</span><span class="sk-032f62-99ffe4"> users</span><span class="sk-032f62-99ffe4"> SET</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ‘mr@robot’</span><span class="sk-032f62-99ffe4"> WHERE</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ‘john@smith’</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="64" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=715&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=640&amp;h=57&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=715&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=750&amp;h=67&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=828&amp;h=74&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=1080&amp;h=97&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=1280&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=1430&amp;h=128&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Thwarting the Tactics of the Equifax Attackers Embedded Image - xoha1A" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GK84HNVNXBE0AYYMBVCB.png&amp;w=1458&amp;h=130&amp;f=webp" data-lightbox-width="1458" data-lightbox-height="130" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="64" class="pt-portable-image-media"></div>
 </figure>
 <p>Due to the lack of validation, the query which the web application sends to the database will be:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span><span class="sk-032f62-99ffe4"> user,</span><span class="sk-032f62-99ffe4"> password</span><span class="sk-032f62-99ffe4"> FROM</span><span class="sk-032f62-99ffe4"> users</span><span class="sk-032f62-99ffe4"> WHERE</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 'dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span><span class="sk-032f62-99ffe4"> user,</span><span class="sk-032f62-99ffe4"> password</span><span class="sk-032f62-99ffe4"> FROM</span><span class="sk-032f62-99ffe4"> users</span><span class="sk-032f62-99ffe4"> WHERE</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 'dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now this has been updated, the attacker can now request a password reset using his own email address, gaining him access to the victim’s account.</p>
 <div class="emdash-code">
@@ -71,7 +117,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  user</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">           password</span><span class="sk-d73a49-a0a0a0">           |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+----------+------------------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> mr@robot</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> $2y$10$h9XJRX</span><span class="sk-032f62-99ffe4">.EBnGFrWQlnt.</span><span class="sk-005cc5-ffc799">..</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+----------+------------------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+----------+------------------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Many SQLi attacks are often on fields which are not often considered high risk, like an authentication form for example. To put the seriousness of SQLi attacks in perspective, in the last week, we have seen over 2.4 million matches.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

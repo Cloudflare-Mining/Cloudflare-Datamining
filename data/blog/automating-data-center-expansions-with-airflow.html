@@ -22,8 +22,30 @@
 <span class="line"><span class="sk-24292e-fff">             fun_kwargs</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">'cmd'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 'salt {{ get_router(params.colo_name) }} '</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                         'anycast.enable --out=json --out-indent=-1'</span><span class="sk-6f42c1-ffc799">},</span></span>
 <span class="line"><span class="sk-24292e-fff">             salt_conn_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'salt_api',</span></span>
-<span class="line"><span class="sk-24292e-fff">             trigger_rule</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'one_success'</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">             trigger_rule</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'one_success'</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As you can see, automation eliminates the need for a human operator to login to a remote system, and to figure out the router that will be used to replace the placeholder in the command to be executed.</p>
 <p>In Airflow, a task is an implementation of an Operator. The Operator in the automated step is the “AsyncSaltAPIOperator”, a custom operator built in-house. This extensibility is one of the many reasons that made us decide to use Apache Airflow. It allowed us to extend its functionality by writing custom operators that suit our needs.</p>
 <p>SREs from various teams have written quite a lot of custom Airflow Operators that integrate with Salt, Prometheus, Bitbucket, Google Chat, JIRA, PagerDuty, among others.</p>
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-24292e-fff">            nodes_from</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'{{ to_json(run_ctx.globals.import_nodes_via_mpl) }}',</span></span>
 <span class="line"><span class="sk-24292e-fff">            timeout</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">60</span><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> 30,</span></span>
 <span class="line"><span class="sk-24292e-fff">            poke_interval</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">60</span><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> 10,</span></span>
-<span class="line"><span class="sk-24292e-fff">	mode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'reschedule'</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	mode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'reschedule'</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In addition, some of our tasks still require input from a &nbsp;human operator. In these circumstances, we use sensors as blocking tasks that prevent work from starting until certain preconditions are met. We use these to set dependencies between tasks and even DAGs so that one does not run until the dependency has finished successfully.</p>
 <p>The code below is a simple example of a task that will send notifications to get the attention of a human operator, and waits until a Change Request ticket has been provided and verified:</p>
@@ -56,7 +82,11 @@
 <span class="line"><span class="sk-24292e-fff">            var_key</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'jira',</span></span>
 <span class="line"><span class="sk-24292e-fff">            prompt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'Please provide the Change Request ticket.',</span></span>
 <span class="line"><span class="sk-24292e-fff">            notify</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">True,</span></span>
-<span class="line"><span class="sk-24292e-fff">            require_human</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">True</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">            require_human</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">True</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Another sensor task example is waiting until a zone has been deployed by a Cloudflare engineer as described in <a href="https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone">https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone/</a>.</p>
 <p>In order for PraaS to be able to accept human inputs, we’ve written a separate DAG we call our DAG Manager. Whenever we need to submit input back to a running expansion DAG, we simply trigger the DAG Manager and pass in our input as a JSON configuration, which will then be processed accordingly and submit the input back to the expansion DAG.</p>
@@ -70,12 +100,20 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">verify_cr</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> parse_cr</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-24292e-fff"> [execute_offline, </span><span class="sk-032f62-99ffe4">execute_online]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        execute_online</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> silence_highstate_runner</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> silence_metals</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">            disable_highstate_runner</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">            disable_highstate_runner</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The code simply uses bit shift operators to chain the operations. A list of tasks can also be set as dependencies:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">change_metal_status</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-24292e-fff">  [wait_for_change_metal_status, </span><span class="sk-032f62-99ffe4">verify_zone_update]</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-24292e-fff">evaluate_ecmp_management</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">evaluate_ecmp_management</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the bit shift operator, chaining multiple dependencies becomes concise.</p>
 <p>By default, a downstream task will only run if its upstream has succeeded. For a more complex dependency setup, we set a trigger_rule which defines the rule by which the generated task gets triggered.</p>

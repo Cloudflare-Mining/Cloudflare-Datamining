@@ -25,8 +25,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">virtualenv</span><span class="sk-032f62-99ffe4"> env</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4"> env/bin/activate</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">pip</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> transcrypt</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> publish</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> publish</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The main requirement for compiling to JavaScript on Workers is the ability to produce a single js file that fits in our <a href="https://developers.cloudflare.com/workers/about/limits/#script-size" target="_blank" rel="noopener noreferrer">bundle size limit</a> of 1MB. Transcrypt adds about 70k for its Python runtime in this case, which is well within that limit. But by default running Transcrypt on a Python file will produce multiple JS and source map files in a <code>__target__</code> directory. Thankfully Wrangler has <a href="https://developers.cloudflare.com/workers/tooling/wrangler/webpack" target="_blank" rel="noopener noreferrer">built in support for webpack</a>. There's a <a href="https://www.npmjs.com/package/transcrypt-loader" target="_blank" rel="noopener noreferrer">webpack loader</a> for Transcrypt, making it easy to produce a single file. See the <a href="https://github.com/cloudflare/python-worker-hello-world/blob/master/webpack.config.js" target="_blank" rel="noopener noreferrer">webpack.config.js</a> file for the setup.</p>
 <p>The point of all this is to run some Python code, so let's take a look at <a href="https://github.com/cloudflare/python-worker-hello-world/blob/master/index.py" target="_blank" rel="noopener noreferrer">index.py</a>:</p>
 <div class="emdash-code">
@@ -35,7 +57,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       'headers'</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 'content-type'</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> 'text/plain'</span><span class="sk-032f62-99ffe4"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">   }))</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> (lambda </span><span class="sk-032f62-99ffe4">event:</span><span class="sk-032f62-99ffe4"> event.respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest(event.request</span><span class="sk-24292e-fff">))))</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> (lambda </span><span class="sk-032f62-99ffe4">event:</span><span class="sk-032f62-99ffe4"> event.respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest(event.request</span><span class="sk-24292e-fff">))))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In most respects this is very similar to any other <a href="https://developers.cloudflare.com/workers/quickstart#writing-code" target="_blank" rel="noopener noreferrer">Worker hello world</a>, just in Python syntax. Dictionary literals take the place of JavaScript objects, <code>lambda</code> is used instead of an anonymous arrow function, and so on. If using <code>__new__</code> to create instances of JavaScript classes seems awkward, the <a href="http://www.transcrypt.org/docs/html/special_facilities.html#creating-javascript-objects-with-new-constructor-call" target="_blank" rel="noopener noreferrer">Transcrypt docs</a> discuss an alternative.</p>
 <p>Clearly, <code>addEventListener</code> is not a built-in Python function, it's part of the Workers runtime. Because Python is dynamically typed, you don't have to worry about providing type signatures for JavaScript APIs. The downside is that mistakes will result in failures when your Worker runs, rather than when Transcrypt compiles your code. Transcrypt does have experimental support for some degree of static checking using <a href="http://www.transcrypt.org/docs/html/installation_use.html#static-type-validation" target="_blank" rel="noopener noreferrer">mypy</a>.</p>
@@ -49,7 +75,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> org.scalajs.dom.experimental.serviceworkers.{FetchEvent}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> org.scalajs.dom.experimental.{Request,</span><span class="sk-032f62-99ffe4"> Response,</span><span class="sk-032f62-99ffe4"> ResponseInit}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> scala.scalajs.js</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> scala.scalajs.js</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The import of scala.scalajs.js allows easy access to <a href="https://www.scala-js.org/doc/interoperability/types.html" target="_blank" rel="noopener noreferrer">Scala equivalents of JavaScript types</a>, such as <code>js.Array</code> or <code>js.Dictionary</code>. The remainder of Main looks fairly similar to a <a href="https://github.com/EverlastingBugstopper/worker-typescript-template/blob/master/src/handler.ts" target="_blank" rel="noopener noreferrer">Typescript Worker hello world</a>, with syntactic differences such as Unit instead of Void and square brackets instead of angle brackets for type parameters:</p>
 <div class="emdash-code">
@@ -64,7 +94,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Scala Worker hello world"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> ResponseInit</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        _headers</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> js.Dictionary</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"content-type"</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "text/plain"</span><span class="sk-24292e-fff">)))</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}  </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}  </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Request, Response and FetchEvent are defined by the previously mentioned imports. But what's this Globals object? There are some Worker-specific extensions to JavaScript APIs. You can handle these in a statically typed language by either <a href="https://github.com/sjrd/scala-js-ts-importer" target="_blank" rel="noopener noreferrer">automatically converting</a> existing Typescript <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer">type definitions for Workers</a> or by writing type signatures for the features you want to use. Writing the type signatures isn't hard, and it's good to know how to do it, so I included an example in <a href="https://github.com/cloudflare/scala-worker-hello-world/blob/master/src/main/scala/Globals.scala" target="_blank" rel="noopener noreferrer">Globals.scala</a>:</p>
 <div class="emdash-code">
@@ -75,7 +109,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">@JSGlobalScope</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">object</span><span class="sk-032f62-99ffe4"> Globals</span><span class="sk-032f62-99ffe4"> extends</span><span class="sk-032f62-99ffe4"> js.Object</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  def</span><span class="sk-032f62-99ffe4"> addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4">`</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> String,</span><span class="sk-032f62-99ffe4"> f:</span><span class="sk-032f62-99ffe4"> js.Function</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> Unit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> js.native</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The annotation <code>@js.native</code> indicates that the implementation is in existing JavaScript code, not in Scala. That's why the body of the <code>addEventListener</code> definition is just <code>js.native</code>. In a JavaScript Worker you'd call <code>addEventListener</code> as a top-level function in global scope. Here, the <code>@JSGlobalScope</code> annotation indicates that the function signatures we're defining are available in the JavaScript global scope.</p>
 <p>You may notice that the type of the function passed to <code>addEventListener</code> is just <code>js.Function</code>, rather than specifying the argument and return types. If you want more type safety, this could be done as <code>js.Function1[FetchEvent, Unit]</code>. &nbsp;If you're trying to work quickly at the expense of safety, you could use <code>def addEventListener(any: Any*): Any</code> to allow anything.</p>
@@ -88,13 +126,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  def</span><span class="sk-032f62-99ffe4"> addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4">`</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> String,</span><span class="sk-032f62-99ffe4"> f:</span><span class="sk-032f62-99ffe4"> js.Function</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> Unit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> js.native</span></span>
 <span class="line"><span class="sk-24292e-fff">  </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  val</span><span class="sk-032f62-99ffe4"> KV:</span><span class="sk-032f62-99ffe4"> KVNamespace</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> js.native</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">bash$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> "\n"</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-032f62-99ffe4"> 'https://scala-kv-example.cody.workers.dev/meaning of life/42'</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">bash$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> "\n"</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> 'https://scala-kv-example.cody.workers.dev/meaning of life/'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">42</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">42</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So what's the definition of the KVNamespace type? It's an interface, so it becomes a Scala trait with a <code>@js.native</code> annotation. The only methods I need to add right now are the simple versions of KV.get and KV.put that take and return strings. The return values are asynchronous, so they're wrapped in a <a href="https://www.scala-js.org/api/scalajs-library/1.1.0/scala/scalajs/js/Promise.html" target="_blank" rel="noopener noreferrer">js.Promise</a>. I'll make that wrapped string a type alias, KVValue, just in case we want to deal with the array or stream return types in the future:</p>
 <div class="emdash-code">
@@ -109,7 +155,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  def</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">key:</span><span class="sk-032f62-99ffe4"> String</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> KVValue</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> js.native</span></span>
 <span class="line"><span class="sk-24292e-fff">  </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  def</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">key:</span><span class="sk-032f62-99ffe4"> String,</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> String</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> js.Promise[Unit]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> js.native</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With type signatures complete, I'll move on to Main.scala and how to handle interaction with JavaScript Promises. It's possible to use <code>js.Promise</code> directly, but I'd prefer to use Scala semantics for asynchronous Futures. The methods <code>toJSPromise</code> and <code>toFuture</code> from <code>js.JSConverters</code> can be used to convert back and forth:</p>
 <div class="emdash-code">
@@ -120,7 +170,11 @@
 <span class="line"><span class="sk-24292e-fff">      c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-6f42c1-ffc799">"error getting a value for '</span><span class="sk-24292e-fff">$key</span><span class="sk-6f42c1-ffc799">': </span><span class="sk-24292e-fff">$err</span><span class="sk-6f42c1-ffc799">"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> errInit</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The function for putting values makes similar use of <code>toFuture</code> to convert the return value from KV into a Future. I use <code>map</code> to transform the value into a Response, and <code>recover</code> to handle failures. If you prefer async / await syntax instead of using combinators, you can use <a href="https://github.com/scala/scala-async" target="_blank" rel="noopener noreferrer">scala-async</a>.</p>
 <p>Finally, the new definition for <code>handleRequest</code> is a good example of how pattern matching makes code more concise and less error-prone at the same time. We match on exactly the combinations of HTTP method and path components that we want, and default to an informative error for any other case:</p>
@@ -135,11 +189,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        Future.successful(</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">          new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"expected GET /key or PUT /key/value"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> errInit</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can get the complete code for this example by running</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> projectname</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/scala-worker-kv</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> projectname</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/scala-worker-kv</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>How to contribute</h2>
 <p>I'm a fan of programming languages, and will continue to add more <a href="https://developers.cloudflare.com/workers/templates" target="_blank" rel="noopener noreferrer">Workers templates</a>. You probably know your favorite language better than I do, so <a href="https://github.com/cloudflare/template-registry/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">pull requests are welcome</a> for a simple hello world or more complex example.</p>

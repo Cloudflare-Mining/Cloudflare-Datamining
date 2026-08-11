@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "sample": 1,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "filter": "",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "kind": "instant-logs"</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Response</h3>
 <p>The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p>
 <div class="emdash-code">
@@ -41,14 +63,22 @@
 <span class="line"><span class="sk-005cc5-ffc799">        "kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"instant-logs"</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Connect to WebSocket</h2>
 <p>Using a CLI utility like <a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">websocat</span><span class="sk-032f62-99ffe4"> wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"ClientRequestHost"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"example.com"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestMethod"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"GET"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestPath"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"/"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeEndTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:05Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeResponseBytes"</span><span class="sk-6f42c1-ffc799">:363,</span><span class="sk-6f42c1-ffc799">"EdgeResponseStatus"</span><span class="sk-6f42c1-ffc799">:200,</span><span class="sk-6f42c1-ffc799">"EdgeStartTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:05Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"RayID"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"6d332ff74fa45fbe"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"sampleInterval"</span><span class="sk-6f42c1-ffc799">:1}</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"ClientRequestHost"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"example.com"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestMethod"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"GET"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestPath"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"/"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeEndTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:06Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeResponseBytes"</span><span class="sk-6f42c1-ffc799">:363,</span><span class="sk-6f42c1-ffc799">"EdgeResponseStatus"</span><span class="sk-6f42c1-ffc799">:200,</span><span class="sk-6f42c1-ffc799">"EdgeStartTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:06Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"RayID"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"6d332fffe9c4fc81"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"sampleInterval"</span><span class="sk-6f42c1-ffc799">:1}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"ClientRequestHost"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"example.com"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestMethod"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"GET"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestPath"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"/"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeEndTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:06Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeResponseBytes"</span><span class="sk-6f42c1-ffc799">:363,</span><span class="sk-6f42c1-ffc799">"EdgeResponseStatus"</span><span class="sk-6f42c1-ffc799">:200,</span><span class="sk-6f42c1-ffc799">"EdgeStartTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:06Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"RayID"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"6d332fffe9c4fc81"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"sampleInterval"</span><span class="sk-6f42c1-ffc799">:1}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>The Scenario</h2>
 <p>Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
@@ -65,7 +95,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "filter"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">where</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">and</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:[{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">key</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">ClientRequestPath</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">operator</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">eq</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">value</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">/canadians-only</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">}]}}"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Creating an Instant Logs Session: Canadians Only</h2>
 <p>Using the information above, we can now craft the request for our custom Instant Logs session.</p>
@@ -79,7 +113,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "sample": 1,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "kind": "instant-logs",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Angle Grinder</h3>
 <p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
@@ -89,7 +127,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">---------------------------------</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">pt</span><span class="sk-005cc5-ffc799">               	4</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">fr</span><span class="sk-005cc5-ffc799">               	3</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">us</span><span class="sk-005cc5-ffc799">               	3</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">us</span><span class="sk-005cc5-ffc799">               	3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Using Angle Grinder, we can create a query to count the firewall actions by each country.</p>
 <div class="emdash-code">
@@ -97,7 +139,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ClientCountry</span><span class="sk-032f62-99ffe4">        FirewallMatchesActions</span><span class="sk-032f62-99ffe4">        _sum</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">---------------------------------------------------------------</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ca</span><span class="sk-24292e-fff">                   []                            5</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">us</span><span class="sk-24292e-fff">                   [block]                       1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">us</span><span class="sk-24292e-fff">                   [block]                       1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Looks like our newly deployed firewall rule is working :)</p>
 <p>Happy Logging!</p>

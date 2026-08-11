@@ -29,8 +29,30 @@
 <h3>Initial benchmarks</h3>
 <p>To establish performance baselines, we've set up four benchmark cases representing example inputs of various lengths, ranging from 44 to 9482 bytes. Each case exemplifies typical input sizes, including those for a request body, user agent, and URI. We run benchmarks using the <a href="https://bheisler.github.io/criterion.rs/book/getting_started.html" target="_blank" rel="noopener noreferrer">Criterion.rs</a> statistics-driven micro-benchmarking tool:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">RUSTFLAGS</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"-C opt-level=3 -C target-cpu=native"</span><span class="sk-24292e-fff"> cargo criterion</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">RUSTFLAGS</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"-C opt-level=3 -C target-cpu=native"</span><span class="sk-24292e-fff"> cargo criterion</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here are initial numbers for these benchmarks executed on a Linux laptop with a 13th Gen Intel® Core™ i7-13800H processor:</p>
 <div id="html-block-k2d" class="html-block">
 	<style>
@@ -120,7 +142,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">RUSTFLAGS</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"-C opt-level=3 -C target-cpu=native"</span><span class="sk-24292e-fff"> cargo criterion </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">time </span><span class="sk-005cc5-ffc799">100</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-24292e-fff">go tool pprof </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">=:</span><span class="sk-24292e-fff"> target</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">criterion</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">preprocessing</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">avg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">body</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1000</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">pb</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">go tool pprof </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">=:</span><span class="sk-24292e-fff"> target</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">criterion</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">preprocessing</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">avg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">body</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1000</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">pb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="326" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=640&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=750&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=828&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1080&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1280&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1430&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - yKX2fM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1600&amp;h=729&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="729" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="326" class="pt-portable-image-media"></div>
@@ -232,7 +258,11 @@
 <span class="line"><span class="sk-24292e-fff">           }</span></span>
 <span class="line"><span class="sk-24292e-fff">       }</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So essentially the pre-processing function performs a ton of hash map lookups, the volume of which depends on the size of the input string, e.g. 1469 lookups for the given benchmark case <em>avg-body-1000</em>.</p>
 <h3>Optimization attempt #1: HashMap → Aho-Corasick</h3>
@@ -254,13 +284,21 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "od "</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "pro"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-fff">    ...</span></span>
-<span class="line"><span class="sk-24292e-fff">]).unwrap()</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]).unwrap()</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then we use the constructed AhoCorasick dictionary to lookup ngrams using its <a href="https://docs.rs/aho-corasick/latest/aho_corasick/struct.AhoCorasick.html#method.find_overlapping_iter" target="_blank" rel="noopener noreferrer">find_overlapping_iter</a> method:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> mat </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-fff"> NORM_VOCAB_AC</span><span class="sk-24292e-fff">.find_overlapping_iter(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">    tensor_input_data[mat.pattern().as_usize() </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We ran benchmarks and compared them against the baseline times shown above:</p>
 <div id="html-block-k3y" class="html-block">
@@ -379,7 +417,11 @@
 <span class="line"><span class="sk-005cc5-fff">        ...</span></span>
 <span class="line"><span class="sk-24292e-fff">        _ =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">```</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">```</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here's how it performs in practice, based on the assembly generated by the <a href="https://godbolt.org/z/dqTq5n5Y3" target="_blank" rel="noopener noreferrer">Godbolt compiler explorer</a>. The corresponding assembly code efficiently implements this lookup by employing a jump table and byte-wise comparisons to determine the return value based on input sequences, optimizing for quick decisions and minimal branching. Although the example only includes ten ngrams, it's important to note that in applications like our WAF Attack Score ML models, we deal with thousands of ngrams. This simple match-based approach outshines both HashMap lookups and the Aho-Corasick method.</p>
 <div id="html-block-k4b" class="html-block">
@@ -488,7 +530,11 @@
 <span class="line"><span class="sk-032f62-fff">    let res = SIG_REGEX</span><span class="sk-005cc5-fff">.</span><span class="sk-032f62-fff">replace_all</span><span class="sk-005cc5-fff">(</span><span class="sk-032f62-fff">&amp;input, b"#"</span><span class="sk-005cc5-fff">)</span><span class="sk-032f62-fff">;</span></span>
 <span class="line"><span class="sk-032f62-fff">    for s in res</span><span class="sk-005cc5-fff">.</span><span class="sk-032f62-fff">windows</span><span class="sk-005cc5-fff">(</span><span class="sk-032f62-fff">3</span><span class="sk-005cc5-fff">)</span><span class="sk-032f62-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-fff">        tensor</span><span class="sk-005cc5-fff">[</span><span class="sk-005cc5-ffc799">sig_vocab_lookup(s.try_into().unwrap())</span><span class="sk-005cc5-fff">]</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-032f62-fff">= 1</span><span class="sk-005cc5-fff">.</span><span class="sk-032f62-fff">0;</span></span>
-<span class="line"><span class="sk-032f62-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Essentially, all we need is to:</p>
 <ol>
@@ -548,7 +594,11 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">        self</span><span class="sk-24292e-fff">.window[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">] = byte;</span></span>
 <span class="line"><span class="sk-24292e-fff">        Some(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">.window)</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>By utilizing the <em>WindowedReplacer</em>, we simplify the replacement logic:</p>
 <div class="emdash-code">
@@ -556,7 +606,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> ngram </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> replacer.windows(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">        tensor[sig_vocab_lookup(ngram.try_into().unwrap())] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.0</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This new approach not only eliminates the need for allocating additional buffers to store replaced content, but also leverages Rust's iterator optimizations, which the compiler can more effectively optimize. You can view an example of the assembly output for this new iterator at the provided <a href="https://godbolt.org/z/fjaoP7z6Y" target="_blank" rel="noopener noreferrer">Godbolt link</a>.</p>
 <p>Now let's benchmark this and compare against the original implementation:</p>
@@ -760,7 +814,11 @@
 <span class="line"><span class="sk-24292e-fff">    [</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        //</span><span class="sk-24292e-fff"> offsets of third byte </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> ngram</span></span>
 <span class="line"><span class="sk-24292e-fff">    ],</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>2. Then to obtain the ngram index, we can use this simple const function:</p>
 <div class="emdash-code">
@@ -769,7 +827,11 @@
 <span class="line"><span class="sk-24292e-fff">    (</span><span class="sk-005cc5-fff">NGRAM_OFFSETS</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">][ngram[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize]</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        +</span><span class="sk-005cc5-fff"> NGRAM_OFFSETS</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">][ngram[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize]</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        +</span><span class="sk-005cc5-fff"> NGRAM_OFFSETS</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">][ngram[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize]) </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>3. To look up the tensor index based on the ngram index, we construct another const array at compile time using a list of all ngrams, where N is the number of unique ngram bytes:</p>
 <div class="emdash-code">
@@ -786,7 +848,11 @@
 <span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"od "</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">9</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-005cc5-fff">    ...</span></span>
 <span class="line"><span class="sk-24292e-fff">    arr</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>4. Finally, to update the tensor based on given ngram, we lookup the ngram index, then the tensor index, and then increment it with help of <a href="https://doc.rust-lang.org/std/primitive.slice.html#method.get_unchecked_mut" target="_blank" rel="noopener noreferrer">get_unchecked_mut</a>, which avoids unnecessary (in this case) boundary checks and eliminates another source of branching:</p>
 <div class="emdash-code">
@@ -799,7 +865,11 @@
 <span class="line"><span class="sk-24292e-fff">        debug_assert!(tensor_idx </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> tensor.len());</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        *</span><span class="sk-24292e-fff">tensor.get_unchecked_mut(tensor_idx) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.0</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This logic works effectively, passes correctness tests, and most importantly, it's completely branchless! Moreover, the memory footprint of used lookup arrays is tiny – just ~500 KiB of memory – which easily fits into modern CPU L2/L3 caches, ensuring that expensive cache misses are rare and performance is optimal.</p>
 <p>The last trick we will employ is loop unrolling for ngrams processing. By taking 6 ngrams (corresponding to 8 bytes of the input array) at a time, the compiler can unroll the second loop and auto-vectorize it, leveraging parallel execution to improve performance:</p>
@@ -812,7 +882,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> ngram </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> input</span><span class="sk-24292e-fff">[i..i </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-fff"> CHUNK_SIZE</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">].windows(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">        update_tensor_with_ngram(tensor, ngram.try_into().unwrap());</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Tying up everything together, our final pre-processing benchmarks show the following:</p>
 <div id="html-block-k6f" class="html-block">
@@ -1103,7 +1177,11 @@
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">     ++</span><span class="sk-24292e-fff">result_in_batch;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This doesn’t look very efficient and many <a href="https://en.algorithmica.org/hpc/algorithms/matmul" target="_blank" rel="noopener noreferrer">blogs</a> and <a href="https://www.cs.utexas.edu/~flame/pubs/GotoTOMS_revision.pdf" target="_blank" rel="noopener noreferrer">research papers</a> have been written on how matrix multiplication can be optimized, which basically boils down to:</p>
 <ul>
@@ -1121,7 +1199,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> [[ </span><span class="sk-032f62-99ffe4">"$(uname -m)"</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-24292e-fff"> x86_64</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ]]; then</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    # On x86_64 target x86-64-v3 CPU to enable AVX2 and FMA.</span></span>
 <span class="line"><span class="sk-24292e-fff">    arguments</span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"--copt=-march=x86-64-v3"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">fi</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">fi</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After running profiler again using the SIMD-optimized TensorFlow Lite library:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -1296,7 +1378,11 @@
 <p>Tensorflow Lite comes with a useful benchmarking tool called <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/benchmark" target="_blank" rel="noopener noreferrer">benchmark_model</a>, which also has a built-in profiler.</p>
 <p>The tool can be built locally using the command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">bazel</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-99ffe4"> --copt=-march=native</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> opt</span><span class="sk-032f62-99ffe4"> tensorflow/lite/tools/benchmark:benchmark_model</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">bazel</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-99ffe4"> --copt=-march=native</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> opt</span><span class="sk-032f62-99ffe4"> tensorflow/lite/tools/benchmark:benchmark_model</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After building, benchmarks were run with different settings:</p>
 <div id="html-block-k8u" class="html-block">

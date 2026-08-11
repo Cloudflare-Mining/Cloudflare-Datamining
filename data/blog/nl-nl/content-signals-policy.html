@@ -6,8 +6,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopiëren" data-copy-label="Code kopiëren" data-copied-label="Code gekopieerd!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Een user-agent is de manier waarop jouw browser of een bot zichzelf identificeert bij de contentbron die wordt benaderd. In dit geval vertelt het sterretje aan de bezoekers dat iedere user-agent, op ieder apparaat en in iedere browser, toegang heeft tot de content. Via het veld <code>Toestaan</code> weet de bezoeker ook dat toegang mogelijk is tot elk onderdeel van de website.</p>
 <p>Je kunt het <code>robots.txt</code>-bestand ook van opmerkingen voorzien door tekens toe te voegen na het #-symbool. Bots en machines zullen deze opmerkingen negeren, maar het is een manier om door mensen leesbare notities achter te laten voor iemand die het bestand bekijkt. Hier <a href="https://www.cloudflare.com/robots.txt" target="_blank" rel="noopener noreferrer"><u>een voorbeeld</u></a>:</p>
 <div class="emdash-code">
@@ -28,19 +50,31 @@
 <span class="line"><span class="sk-24292e-fff">#(  [][][][][____________][][][][]  )</span></span>
 <span class="line"><span class="sk-24292e-fff"># \ </span><span class="sk-d73a49-a0a0a0">------------------------------</span><span class="sk-d73a49-a0a0a0"> /</span></span>
 <span class="line"><span class="sk-24292e-fff">#  \______________________________</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopiëren" data-copy-label="Code kopiëren" data-copied-label="Code gekopieerd!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Website-eigenaren kunnen <code>robots.txt</code> specifieker maken door bepaalde user-agents te vermelden (bijvoorbeeld door alleen bepaalde bot-user-agents of browser-user-agents toe te staan) en door aan te geven welke delen van de website ze wel of niet mogen crawlen. Het onderstaande voorbeeld vertelt bots dat ze de archiefmap niet mogen crawlen.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Disallow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">archives</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopiëren" data-copy-label="Code kopiëren" data-copied-label="Code gekopieerd!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dit voorbeeld is nog specifieker: het vertelt de bot van Google dat de archiefmap niet langer gecrawld mag worden.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Googlebot</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Disallow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">archives</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopiëren" data-copy-label="Code kopiëren" data-copied-label="Code gekopieerd!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hiermee kun je opgeven welke crawlers zijn toegestaan en tot welke delen van jouw website ze toegang hebben. Het vertelt hen echter niet wat ze met jouw content mogen doen nadat ze die hebben geopend. Het is voor veel mensen <a href="https://datatracker.ietf.org/wg/aipref/about" target="_blank" rel="noopener noreferrer"><u>duidelijk geworden</u></a> dat er een standaard, machinaal leesbare manier moet worden ontwikkeld om de verkeersregels door te geven voor hoe de content gebruikt mag worden, zelfs nadat er toegang toe is verkregen.&nbsp;</p>
 <p>Dat is wat er met de Content Signals-beleidsbepaling uitgedrukt kan worden: jouw voorkeuren voor wat een crawler wel en niet met jouw content mag doen.&nbsp;</p>
@@ -64,7 +98,11 @@
 <span class="line"><span class="sk-24292e-fff"># ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> inputting content into one or more </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> models (e</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">, retrieval augmented generation, grounding, or other real</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">time taking of content </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> generative </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> search answers)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff"># ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> training or fine</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tuning </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> models</span><span class="sk-d73a49-a0a0a0">.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">ANY</span><span class="sk-005cc5-fff"> RESTRICTIONS</span><span class="sk-005cc5-fff"> EXPRESSED</span><span class="sk-005cc5-fff"> VIA</span><span class="sk-005cc5-fff"> CONTENT</span><span class="sk-005cc5-fff"> SIGNALS</span><span class="sk-005cc5-fff"> ARE</span><span class="sk-005cc5-fff"> EXPRESS</span><span class="sk-005cc5-fff"> RESERVATIONS</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> UNDER</span><span class="sk-005cc5-fff"> ARTICLE</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> EUROPEAN</span><span class="sk-005cc5-fff"> UNION</span><span class="sk-005cc5-fff"> DIRECTIVE</span><span class="sk-005cc5-ffc799"> 2019</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">790</span><span class="sk-005cc5-fff"> ON</span><span class="sk-005cc5-fff"> COPYRIGHT</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-fff"> RELATED</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> IN</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> DIGITAL</span><span class="sk-005cc5-fff"> SINGLE</span><span class="sk-005cc5-fff"> MARKET</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">ANY</span><span class="sk-005cc5-fff"> RESTRICTIONS</span><span class="sk-005cc5-fff"> EXPRESSED</span><span class="sk-005cc5-fff"> VIA</span><span class="sk-005cc5-fff"> CONTENT</span><span class="sk-005cc5-fff"> SIGNALS</span><span class="sk-005cc5-fff"> ARE</span><span class="sk-005cc5-fff"> EXPRESS</span><span class="sk-005cc5-fff"> RESERVATIONS</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> UNDER</span><span class="sk-005cc5-fff"> ARTICLE</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> EUROPEAN</span><span class="sk-005cc5-fff"> UNION</span><span class="sk-005cc5-fff"> DIRECTIVE</span><span class="sk-005cc5-ffc799"> 2019</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">790</span><span class="sk-005cc5-fff"> ON</span><span class="sk-005cc5-fff"> COPYRIGHT</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-fff"> RELATED</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> IN</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> DIGITAL</span><span class="sk-005cc5-fff"> SINGLE</span><span class="sk-005cc5-fff"> MARKET</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopiëren" data-copy-label="Code kopiëren" data-copied-label="Code gekopieerd!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Deze tekst bestaat uit drie delen:&nbsp;</p>
 <ul>
@@ -77,14 +115,22 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopiëren" data-copy-label="Code kopiëren" data-copied-label="Code gekopieerd!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Als een websitebeheerder het contentsignaal voor AI-input leeg laat, zoals in het bovenstaande voorbeeld, betekent dit niet dat hij geen voorkeur heeft met betrekking tot dat gebruik. Het betekent alleen dat hij dit deel van het robots.txt-bestand niet heeft gebruikt om het uit te drukken.</p>
 <h2>Contentsignalen aan een website toevoegen</h2>
 <p>Als je al weet hoe je een robots.txt-bestand moet configureren, hoef je alleen de hierboven vermelde beleidsbepaling toe te voegen en vervolgens jouw voorkeur via een contentsignaal aan te geven.&nbsp;&nbsp;</p>
 <p>Wij willen het gebruik van contentsignalen eenvoudig maken. Cloudflare-klanten gebruiken onze beheerde robots.txt-functie al voor meer dan 3,8 miljoen domeinen. Daarmee geven ze aan bedrijven door dat ze de content op die domeinen niet willen laten gebruiken voor AI-training. Voor deze klanten zullen we het bestaande robots.txt-bestand bijwerken met de beleidsbepaling en de volgende contentsignalen:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopiëren" data-copy-label="Code kopiëren" data-copied-label="Code gekopieerd!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We zullen geen 'AI-input'-signaal aan onze beheerde robots.txt-klanten aanbieden. Wij weten niet wat hun voorkeur voor dat signaal is en we willen daar ook niet naar raden.&nbsp;&nbsp;</p>
 <p>Vanaf vandaag zullen we ook de becommentarieerde, voor mensen leesbare Content Signals-beleidsbepaling toepassen op elke gratis klantzone die geen bestaand robots.txt-bestand heeft. In de praktijk betekent dit dat een verzoek aan robots.txt op dat domein de opmerkingen retourneert die definiëren wat contentsignalen zijn. Crawlers zullen deze opmerkingen negeren. Belangrijk is dat het geen Allow- of Disallow-richtlijnen bevat en ook geen daadwerkelijke contentsignalen weergeeft. De gebruikers zijn degenen die hun daadwerkelijke voorkeuren kiezen en duidelijk maken wanneer zij dat willen. Klanten met een bestaand robots.txt-bestand zullen geen verandering zien.</p>

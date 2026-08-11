@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-22863a-ffc799">metadata</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  annotations</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">    prometheus.io/path</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">/metrics</span></span>
-<span class="line"><span class="sk-22863a-ffc799">    prometheus.io/scrape</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"true"</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">    prometheus.io/scrape</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"true"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We plan on adding a Prometheus ServiceMonitor to the Helm chart to make scraping the exporter even easier for those who use the Prometheus operator in Kubernetes.</p>
 <p>The configuration is quite easy, you just provide your API email and key. Optionally you can limit the scraping to selected zones only. Refer to our docs in the <a href="https://github.com/lablabs/cloudflare-exporter" target="_blank" rel="noopener noreferrer">GitHub repo</a> or see the example below.</p>
 <div class="emdash-code">
@@ -37,7 +59,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  # Optionally, you can filter zones by adding IDs following the example below.</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  # - name: ZONE_XYZ</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">  #   value: &lt;zone_id&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  #   value: &lt;zone_id&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To deploy the exporter with Helm you simply need to run:</p>
 <div class="emdash-code">
@@ -46,7 +72,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">--set env[0].CF_API_EMAIL=&lt;API_EMAIL&gt; \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">--set env[1].CF_API_KEY=&lt;API_KEY&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">--set env[1].CF_API_KEY=&lt;API_KEY&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We also provide a <a href="https://github.com/lablabs/cloudflare-exporter/blob/master/examples/helmfile/cloudflare-exporter.yaml" target="_blank" rel="noopener noreferrer">Helmfile</a> in our repo to make deployments easier, you just need to add your credentials to make it work.</p>
 <h3>Visualizing the data</h3>

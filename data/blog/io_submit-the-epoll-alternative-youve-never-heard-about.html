@@ -28,8 +28,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_POLL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 5,</span><span class="sk-032f62-99ffe4">   /</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-005cc5-ffc799"> 4.18</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_NOOP</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 6,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_PREADV</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 7,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_PWRITEV</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 8,</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_PWRITEV</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 8,</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The <a href="https://github.com/torvalds/linux/blob/f346b0becb1bc62e45495f9cdbae3eef35d0b635/include/uapi/linux/aio_abi.h#L73-L107" target="_blank" rel="noopener noreferrer"><code>struct iocb</code></a> passed to <code>io_submit</code> is large, and tuned for disk IO. Here's a simplified version:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>struct iocb {</span></span>
@@ -41,7 +63,11 @@
 <span class="line"><span>  __u64 aio_buf;        /* pointer to buffer */</span></span>
 <span class="line"><span>  __u64 aio_nbytes;     /* buffer size */</span></span>
 <span class="line"><span>...</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The completion notification retrieved from <code>io_getevents</code>:</p>
 <div class="emdash-code">
@@ -51,7 +77,11 @@
 <span class="line"><span>  __s64  res;   /* result code for this event */</span></span>
 <span class="line"><span>  __s64  res2;  /* secondary result */</span></span>
 <span class="line"><span>};</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's try an example. Here's the simplest program reading /etc/passwd file with Linux AIO API:</p>
 <div class="emdash-code">
@@ -73,14 +103,22 @@
 <span class="line"><span>r = io_getevents(ctx, 1, 1, events, NULL);</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>bytes_read = events[0].res;</span></span>
-<span class="line"><span>printf("read %lld bytes from /etc/passwd\n", bytes_read);</span></span></code></pre>
+<span class="line"><span>printf("read %lld bytes from /etc/passwd\n", bytes_read);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Full source is, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c" target="_blank" rel="noopener noreferrer">as usual, on GitHub</a>. Here's a strace of this program:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>openat(AT_FDCWD, "/etc/passwd", O_RDONLY)</span></span>
 <span class="line"><span>io_setup(128, [0x7f4fd60ea000])</span></span>
 <span class="line"><span>io_submit(0x7f4fd60ea000, 1, [{aio_lio_opcode=IOCB_CMD_PREAD, aio_fildes=3, aio_buf=0x7ffc5ff703d0, aio_nbytes=4096, aio_offset=0}])</span></span>
-<span class="line"><span>io_getevents(0x7f4fd60ea000, 1, 1, [{data=0, obj=0x7ffc5ff70390, res=2494, res2=0}], NULL)</span></span></code></pre>
+<span class="line"><span>io_getevents(0x7f4fd60ea000, 1, 1, [{data=0, obj=0x7ffc5ff70390, res=2494, res2=0}], NULL)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This all worked fine! But the disk read was not asynchronous: the <code>io_submit</code> syscall blocked and did all the work! The <code>io_getevents</code> call finished instantly. We could try to make the disk read async, but this requires O_DIRECT flag which skips the caches.</p>
 <p>Let's try to better illustrate the blocking nature of <code>io_submit</code> on normal files. Here's similar example, showing strace when reading large 1GiB block from <code>/dev/zero</code>:</p>
@@ -88,7 +126,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">io_submit(0x7fe1e800a000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{aio_lio_opcode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">IOCB_CMD_PREAD,</span><span class="sk-24292e-fff"> aio_fildes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">3,</span><span class="sk-24292e-fff"> aio_buf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x7fe1a79f4000,</span><span class="sk-24292e-fff"> aio_nbytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1073741824,</span><span class="sk-24292e-fff"> aio_offset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">}]) </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">0.73838</span><span class="sk-d73a49-a0a0a0">0&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">io_getevents(0x7fe1e800a000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{data</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0,</span><span class="sk-24292e-fff"> obj</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x7fffb9588910,</span><span class="sk-24292e-fff"> res</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1073741824,</span><span class="sk-24292e-fff"> res2</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">}], NULL) </span><span class="sk-005cc5-a0a0a0">\</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">0.00001</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">0.00001</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The kernel spent 738ms in <code>io_submit</code> and only 15us in <code>io_getevents</code>. The kernel behaves the same way with network sockets - all the work is done in <code>io_submit</code>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -151,7 +193,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>while True:</span></span>
 <span class="line"><span>  d = sd1.read(4096)</span></span>
-<span class="line"><span>  sd2.write(d)</span></span></code></pre>
+<span class="line"><span>  sd2.write(d)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can express the same logic with Linux AIO. The code will look like this:</p>
 <div class="emdash-code">
@@ -170,7 +216,11 @@
 <span class="line"><span>  struct io_event events[2] = {};</span></span>
 <span class="line"><span>  r = io_getevents(ctx, 2, 2, events, NULL);</span></span>
 <span class="line"><span>  cb[0].aio_nbytes = events[1].res;</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code submits two jobs to <code>io_submit</code>. First, request to write data to <code>sd2</code> then to read data from <code>sd1</code>. After the read is done, the code fixes up the write buffer size and loops again. The code does a cool trick - the first write is of size 0. We are doing so since we can fuse write+read in one io_submit (but not read+write). After a read is done we have to fix the write buffer size.</p>
 <p>Is this code faster than the simple read/write version? Not yet. Both versions have two syscalls: read+write and io_submit+io_getevents. Fortunately, we can improve it.</p>
@@ -180,7 +230,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">marek:~$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /proc/`</span><span class="sk-6f42c1-ffc799">pidof</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> aio_passwd`</span><span class="sk-6f42c1-ffc799">/maps</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">7f7db8f60000-7f7db8f63000</span><span class="sk-032f62-99ffe4"> rw-s</span><span class="sk-005cc5-ffc799"> 00000000</span><span class="sk-032f62-99ffe4"> 00:12</span><span class="sk-005cc5-ffc799"> 2314562</span><span class="sk-032f62-99ffe4">     /[aio]</span><span class="sk-24292e-fff"> (deleted)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The [aio] memory region (12KiB in my case) was allocated by the <code>io_setup</code>. This memory range is used a ring buffer storing the completion events. In most cases, there isn't any reason to call the real <code>io_getevents</code> syscall. The completion data can be easily retrieved from the ring buffer without the need of consulting the kernel. Here is a fixed version of the code:</p>
 <div class="emdash-code">
@@ -220,7 +274,11 @@
 <span class="line"><span>do_syscall:</span></span>
 <span class="line"><span>    return syscall(__NR_io_getevents, ctx, min_nr-i, max_nr-i, &amp;events[i], timeout);</span></span>
 <span class="line"><span>}</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_poll.c#L63" target="_blank" rel="noopener noreferrer">Here's full code</a>. This ring buffer interface is poorly documented. I adapted this code from <a href="https://github.com/axboe/fio/blob/702906e9e3e03e9836421d5e5b5eaae3cd99d398/engines/libaio.c#L149-L172" target="_blank" rel="noopener noreferrer">the axboe/fio project</a>.</p>
 <p>With this code fixing the <code>io_getevents</code> function, our Linux AIO version of the TCP proxy needs only one syscall per loop, and indeed is a tiny bit faster than the read+write code.</p>
@@ -237,14 +295,22 @@
 <span class="line"><span>struct iocb *list_of_iocb[1] = {&amp;cb};</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>r = io_submit(ctx, 1, list_of_iocb);</span></span>
-<span class="line"><span>r = io_getevents(ctx, 1, 1, events, NULL);</span></span></code></pre>
+<span class="line"><span>r = io_getevents(ctx, 1, 1, events, NULL);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_poll.c" target="_blank" rel="noopener noreferrer">Full code</a>. Here's the strace view:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">io_submit(0x7fe44bddd000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{aio_lio_opcode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">IOCB_CMD_POLL,</span><span class="sk-24292e-fff"> aio_fildes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">3</span><span class="sk-24292e-fff">}]) </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">0.00001</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">io_getevents(0x7fe44bddd000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{data</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0,</span><span class="sk-24292e-fff"> obj</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x7ffef65c11a8,</span><span class="sk-24292e-fff"> res</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1,</span><span class="sk-24292e-fff"> res2</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">}], NULL) </span><span class="sk-005cc5-a0a0a0">\</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">1.00037</span><span class="sk-d73a49-a0a0a0">7&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">1.00037</span><span class="sk-d73a49-a0a0a0">7&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you can see this time the "async" part worked fine, the <code>io_submit</code> finished instantly and the <code>io_getevents</code> successfully blocked for 1s while awaiting data. This is pretty powerful and can be used instead of the <code>epoll_wait()</code> syscall.</p>
 <p>Furthermore, normally dealing with <code>epoll</code> requires juggling <code>epoll_ctl</code> syscalls. Application developers go to great lengths to avoid calling this syscall too often. <a href="http://man7.org/linux/man-pages/man7/epoll.7.html" target="_blank" rel="noopener noreferrer">Just read the man page</a> on EPOLLONESHOT and EPOLLET flags. Using <code>io_submit</code> for polling works around this whole complexity, and doesn't require any spurious syscalls. Just push your sockets to the iocb request vector, call <code>io_submit</code> exactly once and wait for completions. The API can't be simpler than this.</p>

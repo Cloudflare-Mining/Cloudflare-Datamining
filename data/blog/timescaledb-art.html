@@ -57,8 +57,30 @@
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  “mode”</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“warp+doh”</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  “clientVersion”</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“</span><span class="sk-005cc5-ffc799">2024.3</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span><span class="sk-005cc5-ffc799">409.0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">”</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  “clientPlatform”</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">“windows”</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>To store these logs, we created a simple PostgreSQL table:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-6f42c1-ffc799"> device_state</span><span class="sk-24292e-fff"> (</span></span>
@@ -70,19 +92,31 @@
 <span class="line"><span class="sk-24292e-fff">	mode </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	client_version </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	client_platform </span><span class="sk-d73a49-a0a0a0">TEXT</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You might notice that this table doesn’t have a primary key. That’s intentional, because time-series data is almost never queried by a unique ID. Instead, we query by time ranges and filter by various attributes (e.g. account ID or device ID). Still, we needed a way to deduplicate logs in case of client retries.&nbsp;</p>
 <p>We created two indexes to optimize for our most common queries:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> UNIQUE INDEX</span><span class="sk-6f42c1-ffc799"> device_state_device_account_time</span><span class="sk-d73a49-ffc799"> ON</span><span class="sk-24292e-fff"> device_state </span><span class="sk-d73a49-ffc799">USING</span><span class="sk-24292e-fff"> btree (device_id, account_id, “</span><span class="sk-d73a49-a0a0a0">timestamp</span><span class="sk-24292e-fff">”);</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> INDEX</span><span class="sk-6f42c1-ffc799"> device_state_account_time</span><span class="sk-d73a49-ffc799"> ON</span><span class="sk-24292e-fff"> device_state </span><span class="sk-d73a49-ffc799">USING</span><span class="sk-24292e-fff"> btree (account_id, “</span><span class="sk-d73a49-a0a0a0">timestamp</span><span class="sk-24292e-fff">”);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> INDEX</span><span class="sk-6f42c1-ffc799"> device_state_account_time</span><span class="sk-d73a49-ffc799"> ON</span><span class="sk-24292e-fff"> device_state </span><span class="sk-d73a49-ffc799">USING</span><span class="sk-24292e-fff"> btree (account_id, “</span><span class="sk-d73a49-a0a0a0">timestamp</span><span class="sk-24292e-fff">”);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The unique index ensures deduplication: each (device, account, timestamp) tuple represents a single, unique log. The second index supports typical time-window queries at the account level. Since we always query by account_id (represents individual customers) and timestamp, they are always a part of the index.&nbsp;</p>
 <p>We inserted data from our API using UPSERT query:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">INSERT INTO</span><span class="sk-24292e-fff"> device_state (…) </span><span class="sk-d73a49-ffc799">VALUES</span><span class="sk-24292e-fff"> (…) </span><span class="sk-d73a49-ffc799">ON</span><span class="sk-24292e-fff"> CONFLICT DO NOTHING;</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>About order of columns in multicolumn indexes</h2>
 <p>PostgreSQL's B-tree indexes support multiple columns, but column order has a major impact on query performance.</p>
@@ -102,7 +136,11 @@
 <span class="line"><span class="sk-24292e-fff">  account_id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ‘a’ </span><span class="sk-d73a49-ffc799">AND</span></span>
 <span class="line"><span class="sk-24292e-fff">  device_id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ‘b’ </span><span class="sk-d73a49-ffc799">AND</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  timestamp</span><span class="sk-d73a49-ffc799"> BETWEEN</span><span class="sk-24292e-fff"> ‘</span><span class="sk-005cc5-ffc799">2025</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">07</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">01</span><span class="sk-24292e-fff">’ </span><span class="sk-d73a49-ffc799">AND</span><span class="sk-24292e-fff"> ‘</span><span class="sk-005cc5-ffc799">2025</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">07</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">02</span><span class="sk-24292e-fff">’</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-d73a49-ffc799"> hour</span><span class="sk-24292e-fff">, account_id, device_id, </span><span class="sk-d73a49-ffc799">status</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-d73a49-ffc799"> hour</span><span class="sk-24292e-fff">, account_id, device_id, </span><span class="sk-d73a49-ffc799">status</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice our WHERE clause — it has equality constraints on account_id and device_id, and two inequality constraints on timestamp. If we had built our index in the order of (timestamp, account_id, device_id), only the “timestamp” section of the index could’ve been used to reduce the index section to be scanned, and account_id and device_id would have to be fully scanned, with values that are not ‘a’ or ‘b’ filtered out after scanning.&nbsp;</p>
 <p>Additionally, the runtime complexity of search in btree is O(log n) — the search will get slower as the size of your table (and all indexes) grows, so another optimization is to reduce the portion of the index that needs to be scanned. Even for columns with equality constraints, you can greatly reduce query times by ordering columns by cardinality. We’ve seen up to 100% improvement in SELECT query performance when we simply changed the order of account_id and device_id in our multicolumn index.</p>
@@ -152,7 +190,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-6f42c1-ffc799"> device_state_20250601</span><span class="sk-d73a49-ffc799"> PARTITION</span><span class="sk-24292e-fff"> OF device_state</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">    FOR</span><span class="sk-d73a49-ffc799"> VALUES</span><span class="sk-d73a49-ffc799"> FROM</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'2025-06-02'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">TO</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'2025-06-03'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-6f42c1-ffc799"> device_state_20250601</span><span class="sk-d73a49-ffc799"> PARTITION</span><span class="sk-24292e-fff"> OF device_state</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">    FOR</span><span class="sk-d73a49-ffc799"> VALUES</span><span class="sk-d73a49-ffc799"> FROM</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'2025-06-03'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">TO</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'2025-06-04'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">    FOR</span><span class="sk-d73a49-ffc799"> VALUES</span><span class="sk-d73a49-ffc799"> FROM</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'2025-06-03'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">TO</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'2025-06-04'</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Unfortunately, PostgreSQL doesn’t automatically manage partitions — you must manually create each one as shown above, so we would have needed to build a full partition management system to automate this.</p>
 <p>We ended up not adopting it because in the end, partitioning didn’t solve our core problem: speeding up frequent dashboard queries on recent raw data up to past 7 days.</p>
@@ -172,7 +214,11 @@
 <p>We deployed a self-hosted TimescaleDB instance on our canary PostgreSQL cluster to run an apples-to-apples comparison against vanilla Postgres. Our production backend was dual-writing to both systems.</p>
 <p>As expected, installing TimescaleDB was trivial. Simply load the library and run the following SQL query:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-24292e-fff"> EXTENSION </span><span class="sk-d73a49-ffc799">IF</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-d73a49-ffc799"> EXISTS</span><span class="sk-24292e-fff"> timescaledb;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-24292e-fff"> EXTENSION </span><span class="sk-d73a49-ffc799">IF</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-d73a49-ffc799"> EXISTS</span><span class="sk-24292e-fff"> timescaledb;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then we:</p>
 <ul>
@@ -227,7 +273,11 @@
 <span class="line"><span class="sk-24292e-fff">  end_offset</span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff">INTERVAL </span><span class="sk-032f62-99ffe4">'1 minute'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  schedule_interval</span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff">INTERVAL </span><span class="sk-032f62-99ffe4">'10 minutes'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  buckets_per_batch </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After a two-week backfill period, we ran side-by-side benchmarks using real production queries from our dashboard. We tested:</p>
 <ul>
@@ -254,7 +304,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-ffc799">before</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1616</span><span class="sk-24292e-fff"> GB</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">after</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">49</span><span class="sk-24292e-fff"> GB</span></span>
-<span class="line"><span class="sk-24292e-fff">compression_ratio: </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">83</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">compression_ratio: </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">83</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That meant we could retain 33x more data for the same cost.</p>
 <h2>What makes columnstore so fast?</h2>
@@ -269,7 +323,11 @@
 <span class="line"><span class="sk-005cc5-fff">    timescaledb</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">enable_columnstore</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-fff">    timescaledb</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">segmentby</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ‘account_id’,</span></span>
 <span class="line"><span class="sk-005cc5-fff">    timescaledb</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">orderby</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ‘</span><span class="sk-d73a49-a0a0a0">timestamp</span><span class="sk-24292e-fff">,device_id,colo,mode,</span><span class="sk-d73a49-ffc799">status</span><span class="sk-24292e-fff">,client_version,client_platform</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>TimescaleDB at Cloudflare</h2>
 <p>Following the success with DEX, other teams started exploring TimescaleDB for its simplicity and performance. One notable example is the Zero Trust Analytics &amp; Reporting (ART) team.</p>

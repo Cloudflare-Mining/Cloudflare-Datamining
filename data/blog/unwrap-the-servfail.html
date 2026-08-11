@@ -23,8 +23,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    lookup(domain</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">} catch {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> SERVFAIL</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Although the context hasn't changed much, protocol extensions such as DNSSEC have been added, which makes the RCODE run out of space to express the server's internal status. To keep backward compatibility, DNS servers have to squeeze various statuses into existing ones. This behavior could confuse the client, especially with the "catch-all" SERVFAIL: something went wrong but what exactly?</p>
 <p>Most often, end users don't talk to authoritative name servers directly, but use a <a href="https://tools.ietf.org/html/rfc8499#section-6" target="_blank" rel="noopener noreferrer">stub</a> and/or a recursive resolver as an agent to acquire the information it needs. When a user receives &nbsp;SERVFAIL, the failure can be one of the following:</p>
 <ul>
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">EDE:</span><span class="sk-005cc5-ffc799"> 14</span><span class="sk-24292e-fff"> (Not </span><span class="sk-032f62-99ffe4">Ready</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">EDE:</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-24292e-fff"> (Network </span><span class="sk-032f62-99ffe4">Error</span><span class="sk-24292e-fff">): (</span><span class="sk-6f42c1-ffc799">cannot</span><span class="sk-032f62-99ffe4"> reach</span><span class="sk-032f62-99ffe4"> upstream</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Google has something similar in their <a href="https://developers.google.com/speed/public-dns/docs/doh/json" target="_blank" rel="noopener noreferrer">DoH JSON API</a>, which provides diagnostic information in the "Comment" field.</p>
 <h3>Let's dig into it</h3>
@@ -71,6 +97,10 @@
 <span class="line"><span class="sk-032f62-99ffe4">;; Query time: 111 msec</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; SERVER: 1.1.1.1#53(1.1.1.1)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Wed Sep 01 00:00:00 PDT 2020</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 52</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 52</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that Extended DNS Error relies on EDNS. So to be able to get one, the client needs to support EDNS, and needs to enable it in the request. At the time of writing this blog post, we see about 17% of queries that 1.1.1.1 received had EDNS enabled within a short time range. We hope this information will help you uncover the root cause of a SERVFAIL in the future.</p>

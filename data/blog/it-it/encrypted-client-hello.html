@@ -33,8 +33,30 @@
 <p>Per la distribuzione delle chiavi, ESNI faceva affidamento su un altro protocollo fondamentale: <em>Domain Name Service</em> (DNS). Al fine di utilizzare ESNI per connettersi a un sito Web, il client agganciava alle sue query standard A/AAAA una richiesta di record TXT con la chiave pubblica ESNI. Ad esempio, per ottenere la chiave di crypto.dance il client richiederebbe il record TXT di _esni.crypto.dance:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ dig _esni.crypto.dance TXT +short</span></span>
-<span class="line"><span>"/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="</span></span></code></pre>
+<span class="line"><span>"/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Il blob codificato base64-encoded contiene una chiave pubblica ESNI e parametri correlati come l'algoritmo di crittografia.</p>
 <p>Ma perché crittografare SNI se vogliamo solo far trapelare il nome del server agli osservatori di rete tramite una query DNS in chiaro? L'implementazione di ESNI in questo modo è diventata fattibile con l'introduzione di <a href="https://blog.cloudflare.com/dns-encryption-explained"><em>DNS-over-HTTPS</em></a> (DoH), che consente la crittografia delle query DNS ai resolver che forniscono il servizio DoH (1.1.1.1 è un esempio di tale servizio). Un'altra funzionalità importantissima di DoH è che fornisce un canale autenticato per la trasmissione della chiave pubblica ESNI dal server DoH al client. Questo impedisce <a href="https://blog.cloudflare.com/sad-dns-explained">attacchi di cache-poisoning</a> provenienti dalla rete locale del client: in assenza di DoH, un aggressore locale potrebbe impedire al client di offrire l'estensione ESNI, restituendo un record TXT vuoto, oppure obbligare il client a utilizzare ESNI con una chiave che controlla.</p>
 <p>Anche se ESNI ha fatto un discreto passo avanti, non è all'altezza del nostro obiettivo di ottenere una crittografia di full handshake. Oltre a essere incompleto — protegge solo l'estensione SNI — &nbsp;è vulnerabile a <a href="https://tools.ietf.org/html/draft-ietf-tls-esni-08#section-10.10" target="_blank" rel="noopener noreferrer">diversi attacchi sofisticati</a> che, sebbene difficili da realizzare, puntano a debolezze teoriche nella progettazione del protocollo che devono essere affrontate.</p>

@@ -32,8 +32,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author:</span><span class="sk-032f62-99ffe4"> Me</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4">   Sun</span><span class="sk-032f62-99ffe4"> Apr</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-032f62-99ffe4"> 19:52:13</span><span class="sk-005cc5-ffc799"> 2018</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Step</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Initial</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> webserver</span><span class="sk-032f62-99ffe4"> definition.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Step</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Initial</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> webserver</span><span class="sk-032f62-99ffe4"> definition.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We'll get into more detail about reviewing and rolling back to prior versions of configuration <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">later in this post</a>, but for now let's review the current version.</p>
 <p>In lines 1-4 below, we configured the Cloudflare Terraform provider. Initially we stored our email address and API key in the <code>cloudflare.tf</code> file, but for security reasons we removed them before committing to a git repository.</p>
 <p>In lines 6-8, we define a <code>variable</code> that can be interpolated into <code>resources</code> definitions. Terraform can be used to mass configure multiple zones through the use of variables, as we'll explore in a future post.</p>
@@ -94,7 +116,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    51</span><span class="sk-032f62-99ffe4">	  }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    52</span><span class="sk-032f62-99ffe4">	  disabled</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    53</span><span class="sk-032f62-99ffe4">	  description</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Block failed login attempts (5 in 1 min) for 5 minutes."</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    54</span><span class="sk-032f62-99ffe4">	}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    54</span><span class="sk-032f62-99ffe4">	}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Adding load balancing</h3>
 <p>Thanks to the <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">rate limiting set up in part 1</a>, our login page is protected against credential brute force attacks. Now it's time to focus on performance and reliability. Imagine organic traffic has grown for your web server, and this traffic is increasingly global. It’s time to spread these requests to your origin over multiple data centers.</p>
@@ -113,7 +139,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  type    = "A"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  proxied = true</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that while the name of the resource is different as Terraform resources of the same type must be uniquely named, the DNS name, i.e., what your customers will type in their browser, is the same: "www".</p>
 <h4>2. Preview and merge the changes</h4>
@@ -131,7 +161,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      value:</span><span class="sk-032f62-99ffe4">       "198.51.100.15"</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
@@ -146,7 +180,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Updating</span><span class="sk-032f62-99ffe4"> e1c38cf..6761a4f</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Fast-forward</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> cloudflare.tf</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 7</span><span class="sk-032f62-99ffe4"> +++++++</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4"> insertions</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">+</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4"> insertions</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">+</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>3. Apply and verify the changes</h4>
 <p>Let's add the second DNS record for <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>:</p>
@@ -168,7 +206,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  zone_id:</span><span class="sk-032f62-99ffe4">     ""</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "&lt;computed&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_record.www-asia:</span><span class="sk-032f62-99ffe4"> Creation</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 1s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">fda39d8c9bf909132e82a36bab992864</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the second DNS record in place, let's try making some requests to see where the traffic is served from:</p>
 <div class="emdash-code">
@@ -182,7 +224,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 198.51.100.15!</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://www.example.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 203.0.113.10!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 203.0.113.10!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you can see above, there is no discernible pattern for which origin receives the request. When Cloudflare connects to an origin with multiple DNS records, one of the IP addresses is selected at random. If both of these IPs are in the same data center and sessions can be shared (i.e., it doesn't matter if the same user hops between origin servers), this may work fine. However, for anything more complicated such as origins in different geographies or active health checks, you're going to want to use Cloudflare's Load Balancing product.</p>
 <h4>4. Switch to using Cloudflare Load Balancing</h4>
@@ -207,7 +253,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  check_regions = ["WNAM", "ENAM", "WEU", "EEU", "SEAS", "NEAS"]</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  description = "GET / over HTTPS - expect 200"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>ii. Define and create the pool of origins</h5>
 <p>We will call our pool "www-servers” and add two origins to it: <code>www-us</code> (<code>203.0.113.10</code>) and www-asia (<code>198.51.100.15</code>). For now, we'll skip any sort of <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions" target="_blank" rel="noopener noreferrer">geo routing</a>.</p>
@@ -230,7 +280,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  minimum_origins = 1</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  notification_email = "you@example.com"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>iii. Define and create the load balancer</h5>
 <p>Note that when you create a load balancer (LB), it will <a href="https://support.cloudflare.com/hc/en-us/articles/115004954407-How-Does-a-Load-Balancer-Interact-with-Existing-DNS-Records-" target="_blank" rel="noopener noreferrer">replace any existing DNS records with the same name</a>. For example, when we create the "<a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a>" LB below, it will supersede the two www DNS records that you have previously defined. One benefit of leaving these DNS records in place is that if you temporarily disable load balancing, connections to this hostname will still be possible as shown above.</p>
@@ -244,7 +298,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  description = "example load balancer"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  proxied = true</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>iv. Preview and merge the changes</h5>
 <p>As usual, we take a look at the proposed plan before we apply any changes:</p>
@@ -308,7 +366,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      origins.4241861547.name:</span><span class="sk-032f62-99ffe4">    "www-us"</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The plan looks good so let's go ahead, merge it in, and apply it.</p>
 <div class="emdash-code">
@@ -372,7 +434,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  zone_id:</span><span class="sk-032f62-99ffe4">            ""</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "&lt;computed&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_load_balancer.www-lb:</span><span class="sk-032f62-99ffe4"> Creation</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 1s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">cb94f53f150e5c1a65a07e43c5d4cac4</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>iv. Test the changes</h5>
 <p>With load balancing in place, let's run those curl requests again to see where the traffic is served from:</p>
@@ -384,7 +450,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 198.51.100.15!</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 203.0.113.10!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 203.0.113.10!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Great, we're now seeing each request load balanced evenly across the two origins we defined.</p>
 <h3>Using page rules</h3>
@@ -419,7 +489,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>2. Preview and merge the changes</h4>
 <p>You know the drill: preview the changes Terraform is going to make and then merge them into the master branch.</p>
@@ -459,7 +533,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      zone_id:</span><span class="sk-d73a49-a0a0a0">                                &lt;</span><span class="sk-032f62-99ffe4">compute</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
@@ -477,11 +555,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> cloudflare.tf</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 23</span><span class="sk-032f62-99ffe4"> +++++++++++++++++++++++</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-032f62-99ffe4"> insertions</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">+</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">3.</span><span class="sk-032f62-99ffe4"> Apply</span><span class="sk-032f62-99ffe4"> And</span><span class="sk-032f62-99ffe4"> Verify</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> Changes</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">First</span><span class="sk-032f62-99ffe4"> we'll test requesting the (now missing) old location of the expensive-to-render page.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">First</span><span class="sk-032f62-99ffe4"> we'll test requesting the (now missing) old location of the expensive-to-render page.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -vso</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-032f62-99ffe4"> https://www.example.com/old-location.php</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "&lt; HTTP\|Location"</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 404 Not Found</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 404 Not Found</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As expected, it can't be found. Let's apply the Page Rules, including the redirect that should fix this error.</p>
 <div class="emdash-code">
@@ -516,7 +602,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_page_rule.redirect-to-new-db-page:</span><span class="sk-032f62-99ffe4"> Creation</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 3s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">c5c40ff2dc12416b5fe4d0541980c591</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_page_rule.increase-security-on-expensive-page:</span><span class="sk-032f62-99ffe4"> Creation</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 6s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">1c13fdb84710c4cc8b11daf7ffcca449</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the Page Rules in place, let's try that call again, along with the <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode">I'm Under Attack Mode</a> test:</p>
 <div class="emdash-code">
@@ -525,7 +615,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> Location: https://www.upinatoms.com/expensive-db-call</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -vso</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-032f62-99ffe4"> https://www.upinatoms.com/expensive-db-call</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "&lt; HTTP"</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 503 Service Temporarily Unavailable</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 503 Service Temporarily Unavailable</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Great, they work as expected! In the first case, the Cloudflare edge responds with a <code>301</code> redirecting the browser to the new location. In the second case it initially responds with a <code>503</code> (as it is consistent with the "I Am Under Attack” mode).</p>
 <h3>Reviewing and rolling back changes</h3>
@@ -584,7 +678,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Step</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Initial</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> webserver</span><span class="sk-032f62-99ffe4"> definition.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Another</span><span class="sk-032f62-99ffe4"> nice</span><span class="sk-032f62-99ffe4"> benefit</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> storing</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-032f62-99ffe4"> configuration</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> see</span><span class="sk-032f62-99ffe4"> who</span><span class="sk-032f62-99ffe4"> made</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> well</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> who</span><span class="sk-032f62-99ffe4"> reviewed</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> approved</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-24292e-fff"> (assuming </span><span class="sk-032f62-99ffe4">you're peer reviewing pull requests).</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Another</span><span class="sk-032f62-99ffe4"> nice</span><span class="sk-032f62-99ffe4"> benefit</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> storing</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-032f62-99ffe4"> configuration</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> see</span><span class="sk-032f62-99ffe4"> who</span><span class="sk-032f62-99ffe4"> made</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> well</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> who</span><span class="sk-032f62-99ffe4"> reviewed</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> approved</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-24292e-fff"> (assuming </span><span class="sk-032f62-99ffe4">you're peer reviewing pull requests).</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>2. Examining specific historical changes</h4>
 <p>To begin with, let's see what the last change we made was.</p>
@@ -626,7 +724,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      status_code</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 301</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">    }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">  }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now let's look at the past few changes:</p>
 <div class="emdash-code">
@@ -706,7 +808,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">  value</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "198.51.100.15"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">  type</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "A"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">  proxied</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>3. Redeploying the previous configuration</h4>
 <p>Imagine that shortly after we <a href="https://blog.cloudflare.com/#usingpagerules">deployed the Page Rules</a>, we got a call from the Product team that manages this page: "The URL was only being used by one customer and is no longer needed, let's drop the security setting and redirect.”</p>
@@ -730,7 +836,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author:</span><span class="sk-032f62-99ffe4"> Me</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4">   Wed</span><span class="sk-032f62-99ffe4"> Apr</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> 22:04:52</span><span class="sk-005cc5-ffc799"> 2018</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Step</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Add</span><span class="sk-032f62-99ffe4"> two</span><span class="sk-032f62-99ffe4"> Page</span><span class="sk-032f62-99ffe4"> Rules.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Step</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Add</span><span class="sk-032f62-99ffe4"> two</span><span class="sk-032f62-99ffe4"> Page</span><span class="sk-032f62-99ffe4"> Rules.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>ii. Preview the changes</h5>
 <p>As expected, Terraform is indicating it will remove the two Page Rules we just created.</p>
@@ -748,7 +858,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  -</span><span class="sk-032f62-99ffe4"> cloudflare_page_rule.redirect-to-new-db-page</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>iv. Apply the changes</h5>
 <p>The changes look good, so let's ask Terraform to roll our Cloudflare configuration back.</p>
@@ -760,7 +874,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_page_rule.increase-security-on-expensive-page:</span><span class="sk-032f62-99ffe4"> Destruction</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 0s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_page_rule.redirect-to-new-db-page:</span><span class="sk-032f62-99ffe4"> Destruction</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 1s</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Two resources destroyed, as expected. We've rolled back to the previous version.</p>
 <h3>Importing existing state and configuration</h3>
@@ -802,11 +920,19 @@
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "deposed"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "provider"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "provider.cloudflare"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As shown in the above JSON, the <code>cloudflare_record</code> resource named "www" has a unique ID of <code>c38d3103767284e7cd14d5dad3ab8669</code>. This ID is what gets interpolated into the API call that Terraform makes to Cloudflare to pull the latest configuration during the plan stage, e.g.,</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/:zone_id/dns_records/c38d3103767284e7cd14d5dad3ab8669</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/:zone_id/dns_records/c38d3103767284e7cd14d5dad3ab8669</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>2. Importing existing Cloudflare resources</h4>
 <p>To import an existing record, e.g., another DNS record, you need two things:</p>
@@ -921,7 +1047,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-005cc5-ffc799">    ...</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>ii. Create Terraform configuration for existing records</h5>
 <p>In the previous step, we found 5 MX records that we wish to add.</p>
@@ -1037,13 +1167,21 @@
 <span class="line"><span class="sk-032f62-99ffe4">  type    = "MX"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  priority = "20"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>iii. Import resources into Terraform state</h5>
 <p>Before we import the records, let's look at what would happen if we ran a <code>terraform apply</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> Plan</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Terraform does not know that these records already exist on Cloudflare, so until the import completes it will attempt to create them as new records. Below we import them one-by-one, specifying the name of the resource and the <code>zoneName/resourceID</code> returned by api.cloudflare.com.</p>
 <div class="emdash-code">
@@ -1100,12 +1238,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Import</span><span class="sk-032f62-99ffe4"> successful!</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> resources</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> were</span><span class="sk-032f62-99ffe4"> imported</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> shown</span><span class="sk-032f62-99ffe4"> above.</span><span class="sk-032f62-99ffe4"> These</span><span class="sk-032f62-99ffe4"> resources</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> now</span><span class="sk-032f62-99ffe4"> in</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">your</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> henceforth</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> managed</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> Terraform.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">your</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> henceforth</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> managed</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> Terraform.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now when we run <code>terraform plan</code> it no longer wants to (re-)create the above records.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> changes</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> changes.</span><span class="sk-032f62-99ffe4"> Infrastructure</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> up-to-date.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> changes.</span><span class="sk-032f62-99ffe4"> Infrastructure</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> up-to-date.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Wrapping up</h3>
 <p>That's it for today! We covered the <a href="https://blog.cloudflare.com/#addingloadbalancing">Load Balancing</a> and <a href="https://blog.cloudflare.com/#usingpagerules">Page Rules</a> resources, as well as demonstrated how to <a href="https://blog.cloudflare.com/#reviewingandrollingbackchanges">review and roll back configuration changes</a>, and <a href="https://blog.cloudflare.com/#importingexistingstateandconfiguration">import state</a>.</p>

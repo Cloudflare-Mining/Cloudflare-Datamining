@@ -1,0 +1,229 @@
+<p>Agents Week 关注正在发生的变革——AI 智能体编写代码、部署 Workers 并预配基础设施。这一转变改变了您需要掌握的信息。如果某个程序正在您的 Cloudflare 账户中产生费用，您需要了解其支出详情——全天各时段、按产品细分，并以另一个程序可直接处理的格式提供。仪表板是适合人类的方式，但不适用于自动化程序。</p>
+<p>因此，我们面向自助服务账户推出了新的 <strong>Billable Usage API</strong>。该 API 通过单一端点返回您账户的使用量与成本明细，并按产品和服务周期进行细分。它涵盖账户中所有按量计费的 Cloudflare 产品，包括 Workers、R2、D1、Workers AI、Vectorize、Images 和 Stream，一个调用即可获取。如果您已在使用 FinOps 工具链，这些列名应该并不陌生。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage?from=2026-02-01&amp;to=2026-02-15"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>您将收到 <code>HTTP 200 OK</code> 响应，以及 <code>Content-Type: application/json</code>，响应体中包含使用量记录。目前，使用量和成本数据每日更新，而我们正致力于提供更实时的数据。</p>
+<h2><strong>返回内容</strong></h2>
+<p>响应中的每一行对应您账户中一个产品的一个计费周期。</p>
+<ul>
+	<li><code>ServiceName</code> 和 <code>ServiceFamilyName</code>——产品（“Workers”系列下的“Workers Standard”，以及“R2”下的“R2 Storage”等）。</li>
+	<li><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code>——该行所涵盖的时间段。</li>
+	<li><code>PricingQuantity</code> 和 <code>ConsumedUnit</code>——您的使用量，以我们的计费计量单位表示（GB-月、GB-秒、请求数等）。</li>
+	<li><code>ContractedCost</code>——该期间的费用，以 <code>BillingCurrency </code>为货币单位。</li>
+	<li><code>CumulatedPricingQuantity</code> 和 <code>CumulatedContractedCost</code>——当前计费周期内的累计金额。</li>
+	<li><code>ZoneId</code> / <code>ZoneName</code>&nbsp;—— 当使用量归属于特定区域时返回。</li>
+</ul>
+<p>这些字段中的大多数与<a href="https://focus.finops.org" target="_blank" rel="noopener noreferrer">​</a> <a href="https://focus.finops.org" target="_blank" rel="noopener noreferrer"><u>FinOps 开放成本和使用量规范（FOCUS）</u></a>中定义的列直接对应，因此如果您的团队已在接入其他服务商的 FOCUS 数据，对这些名称和语义应该并不陌生：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Cloudflare 字段</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>FOCUS 列名</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>备注</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>完全匹配。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>完全匹配。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>完全匹配。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>完全匹配。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>完全匹配。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>完全匹配。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>完全匹配。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceFamilyName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>（接近 <code>ServiceCategory</code>）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 原生分组；FOCUS 使用受控词汇表。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>CumulatedContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>（派生值）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>便捷字段 —— FOCUS 认为累计值由查询层负责。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ZoneId</code> / <code>ZoneName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>（接近 <code>ResourceId</code> / <code>ResourceName</code>）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>适用时的区域范围标识符。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>响应使用标准的 Cloudflare API 信封格式——<code>result</code> 为行数组，每行对应一个产品在一个计费周期内的记录，以及 <code>success</code>、<code>errors</code> 和 <code>messages</code>。</p>
+<p></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingCurrency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingPeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodEnd"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-28T23:59:59Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers Standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceFamilyName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedQuantity"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">150000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedUnit"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GB-months"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.75</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "CumulatedContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2.25</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>我们在匹配 FOCUS 规范方面的进展</strong></h2>
+<p>匹配 FOCUS 命名规范是经过深思熟虑做出的选择。AWS、Azure、Google Cloud、Oracle 以及越来越多的 SaaS 提供商已提供以 FOCUS 格式导出数据，所有主流成本管理工具均已支持该规范。不过，我们目前尚未宣称完全符合规范：响应体中仍缺少规范要求的几个列。完全符合规范已列入我们的路线图。请将此视为第一步：当前是熟悉的形态，下一步是完全符合规范。</p>
+<h2><strong>Cloudflare 支出与其他云服务支出并列呈现：我们与 Vantage 的合作</strong></h2>
+<p>我们与<a href="https://www.vantage.sh" target="_blank" rel="noopener noreferrer"> <u>Vantage</u></a>合作，实现了原生 Cloudflare 集成。Vantage 是一个基础设施成本管理平台，可从超过 30 个服务提供商（涵盖 AI、云和 SaaS 提供商）获取成本和使用数据，并将其整合为统一视图，以便进行报告、归集和优化。通过此集成，您的用量数据将汇入您已用于管理其他基础设施的同一套成本报告、预算和成本告警系统中。</p>
+<p>Vantage 使用具有计费读取权限的只读 API 令牌连接到 Cloudflare。连接后，Vantage 每日提取您的计费使用数据，按产品（例如 Workers 和 R2）、区域和账户进行分类，以便您了解哪些产品驱动了支出增长，并将费用归集到相应的团队和服务。</p>
+<p>本集成支持的工作流示例：</p>
+<ul>
+	<li><strong>跨服务商分配。</strong>按产品、区域和账户对 Cloudflare 费用进行分组，然后使用虚拟标签（Virtual Tags）按团队或产品线进行归集，将 Cloudflare 费用与 AWS、Azure 及其他服务商费用纳入同一份报告。</li>
+	<li><strong>异常检测。</strong>Vantage 成本告警（Cost Alerts）监控每个已连接的服务商，当支出偏离基线时通过 Slack 或电子邮件通知您，Workers 或 R2 的支出异动也会像其他服务商一样被及时捕获。</li>
+	<li><strong>FinOps 智能体与 MCP。</strong>在控制台中向 Vantage FinOps 智能体提问，例如“上周所有服务商中最大的成本驱动因素是什么？”，或者通过 Vantage 托管的 MCP 服务器从 Claude 或 ChatGPT 查询相同的数据。Cloudflare 支出将与其他已接入服务商的数据一并呈现。</li>
+</ul>
+<p>在<a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer"> <u>Vantage 控制台</u></a>中连接您的 Cloudflare 帐户，您的开支会与您运行的其他服务或产品一同显示。无需手动导出、上传发票，也无需维护额外的仪表板。&nbsp;</p>
+<p>该 FOCUS 标准化 API 也可与其他金融科技工具配合使用。</p>
+<h2><strong>我们为何构建此 API</strong></h2>
+<p>智能体所做的不只是编写代码。它们还会部署 Workers、预置 R2 存储桶，并管理 D1 数据库。一旦您允许程序以编程方式访问 Cloudflare 账户，就必须能够通过同样的方式监控由此产生的成本。无需等到月底，而是贯穿全天、按产品细分、以程序可直接处理的结构化格式提供。</p>
+<p>Billable Usage API 就是这种形态。客户多年来一直在要求我们提供编程方式的用量查询能力。财务团队希望将支出拉取到自己的系统中，并将成本归因于内部项目、团队，甚至最终客户。开发人员希望有一个可以嵌入脚本的 curl 命令。这些工作流中的每一个，过去都需要依赖截图或手动导出。如今只需一次 HTTP 调用，或在 Vantage 中进行配置。</p>
+<h2><strong>下一步</strong></h2>
+<ul>
+	<li><strong>更细粒度的时间窗口。</strong>目前，API 返回收费周期行，对于大多数产品而言是以天为单位。我们正在探索为适用产品提供更实时的费用明细。</li>
+	<li><strong>预测。 </strong><code>CumulatedContractedCost </code>告诉您当前账单周期的消费情况。我们希望帮助您预测最终将达到的总费用水平。而且不仅在账户级别，还包括产品级别。</li>
+	<li><strong>Enterprise 客户覆盖。</strong>首个版本仅支持自助服务。Enterprise 合同的等效体验正在开发中。</li>
+</ul>
+<h2><strong>立即试用</strong></h2>
+<p>该端点今天起向所有自助账户开放。获取具有<em>Billing Read</em>权限的 API 令牌，用 curl 命令发起调用，即可获得按产品划分的当前计费周期信息。完整参考信息可在 Cloudflare API 文档中查阅。如需与您的其他云支出费用一同查看，请在<a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer"> <u>Vantage 控制台</u></a>中连接您的 Cloudflare 账户。</p>
+<p>Cloudflare 多年来一直致力于让您在我们的网络上更轻松地运行更多技术栈。现在是时候让您能够轻松了解这在 Cloudflare 以及其他地方带来的成本。</p>

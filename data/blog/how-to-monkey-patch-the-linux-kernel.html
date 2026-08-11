@@ -28,8 +28,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">probe</span><span class="sk-032f62-99ffe4"> end</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  printf</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"\nDONE\n"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Oh my. What is this? What do you mean, "this is not useful"? This is almost exactly what I want!</p>
 <h3>SystemTap: Not just for debugging?</h3>
 <p>SystemTap is a tool designed to allow you to probe the Linux kernel for debugging purposes. It lets you hook any kernel function (yes, any C function defined anywhere in the kernel) and log the argument values, or other system state. Scripts are written in a special language designed to prevent you from doing anything that could break your system.</p>
@@ -50,13 +72,21 @@
 <h3>Setting Up</h3>
 <p>To use SystemTap, you must have the kernel headers and debug symbols installed. I found the documentation was not quite right on my Debian system. I managed to get everything installed by running:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> apt</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> systemtap</span><span class="sk-032f62-99ffe4"> linux-headers-amd64</span><span class="sk-032f62-99ffe4"> linux-image-amd64-dbg</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> apt</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> systemtap</span><span class="sk-032f62-99ffe4"> linux-headers-amd64</span><span class="sk-032f62-99ffe4"> linux-image-amd64-dbg</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that the debug symbols are a HUGE package (~500MB). Such is the price you pay, it seems.</p>
 <h3>False Starts</h3>
 <p>Starting from the sample script that remaps 'm' to 'b', it seemed obvious how to proceed. I saved the script to a file and did:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> stap</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> keyhack.stp</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> stap</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> keyhack.stp</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But… nothing happened. My 'm' key still typed 'm'.</p>
 <p>To debug, I added some <code>printf()</code> statements (which conveniently print to the terminal where <code>stap</code> runs). But, it appeared the keyboard events were indeed being captured. So why did 'm' still type 'm'?</p>
@@ -68,11 +98,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">probe</span><span class="sk-032f62-99ffe4"> module</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"evdev"</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.function</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"__pass_event"</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  # Changes 'm' to 'b'.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> ($event-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">code == 50) $event</span><span class="sk-032f62-99ffe4">-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">code</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 48</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Alas, this didn't quite work. When running <code>stap</code>, I got:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">semantic</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> retrieve</span><span class="sk-032f62-99ffe4"> location</span><span class="sk-032f62-99ffe4"> attribute</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> 'event'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">semantic</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> retrieve</span><span class="sk-032f62-99ffe4"> location</span><span class="sk-032f62-99ffe4"> attribute</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> 'event'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This error seems strange. The function definitely has a parameter called <code>event</code>!</p>
 <p>The problem is, <code>__pass_event()</code> is a <code>static</code> function that is called from only one place. As a result, the compiler inlines it. When a function is inlined, its parameters often cease to have a well-defined location in memory, so reading and modifying them becomes infeasible. SystemTap relies on debug info tables that specify where to find parameters, but in this case the tables don't have an answer.</p>
@@ -84,7 +122,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    # Changes 'm' to 'b'.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> ($vals[i]-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">code == 50) $vals</span><span class="sk-032f62-99ffe4">[i]-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">code</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 48</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Success! This script works. I no longer have any way to type 'm'.</p>
 <p>From here, implementing the Dvorak-Qwerty key-remapping behavior I wanted was a simple matter of writing some code to track modifier key state and remap keys. <a href="https://github.com/kentonv/dvorak-qwerty/blob/master/unix/dvorak-qwerty.stp" target="_blank" rel="noopener noreferrer">You can find my full script on GitHub.</a></p>

@@ -32,8 +32,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        cf_password.setAttribute(</span><span class="sk-6f42c1-ffc799">"autocomplete"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> "current-password"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        cf_password.setAttribute(</span><span class="sk-6f42c1-ffc799">"id"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> "_password_"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        cf_password.style.display</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "none"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        cf_form.appendChild(cf_password</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        cf_form.appendChild(cf_password</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>簡単に言うと、サードパーティのJavaScriptは、Webにとってセキュリティ上の悪夢なのです。一見単純な1行の変更（「このJavaScriptを追加するだけで、無料でページビューを追跡できます！」）のように見えますが、単にあなたが制御できない悪意のあるコードへの扉を開いてしまうことになるのです。</p>
 <p>さらに悪いことに、サードパーティ製のJavaScriptは、他の知らないサードパーティ製のJavaScriptを読み込むことができ、また読み込んでしまいます。あなたがコードを埋め込むことを選択した会社を信頼していたとしても、おそらく彼らが何を含むことを選択したのか（あるいはそれについてさえ！）信頼していないでしょう。</p>
 <p>さらに悪いことに、これらのスクリプトはいつでも変更することができます。セキュリティの脅威は移り変わるものです。Cloudflareを狙った攻撃者は、サードパーティを侵害し、Cloudflareのみを攻撃するようにサービスを修正し、アンチデバッグ機能を搭載して、開発者にハッキングを見破られないようにしようとしました。仮にあなたがCIOで、これでもまだ怖いと思わない場合は、Web開発チームに、あなたのWebサイトにどれだけのサードパーティのスクリプトがあるか質問してみてください。そのスクリプトはすべて信頼できるでしょうか？</p>

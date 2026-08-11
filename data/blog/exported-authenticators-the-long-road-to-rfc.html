@@ -16,8 +16,30 @@
 <p>The seven-layered OSI model</p>
 <p>Now let’s jump back a bit, and discuss what we mean when we say that EAs give us authentication that’s as strong as TLS authentication. TLS, as we know, is used to create a secure connection between two endpoints, but lots of us are hazy when we try and pin down exactly what we mean by “secure”. The TLS standard makes <a href="https://datatracker.ietf.org/doc/html/rfc8446#appendix-E.1" target="_blank" rel="noopener noreferrer">eight specific promises</a>, but rather than get buried in that particular ocean of weeds, let’s just pick out the one guarantee that we care about most: Peer Authentication.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Peer</span><span class="sk-032f62-99ffe4"> authentication:</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> client's view of the peer identity should reflect the server's</span><span class="sk-032f62-99ffe4"> identity.</span><span class="sk-24292e-fff"> [...]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Peer</span><span class="sk-032f62-99ffe4"> authentication:</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> client's view of the peer identity should reflect the server's</span><span class="sk-032f62-99ffe4"> identity.</span><span class="sk-24292e-fff"> [...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In other words, if the client thinks that it’s talking to <code>example.com</code> then it should, in fact, be talking to <code>example.com</code>.</p>
 <p>What we want from EAs is that if I receive an EA then I have cryptographic proof that the person I’m talking to is the person I think I’m talking to. Now at this point you might be wondering what an EA actually looks like, and what it has to do with certificates. Well, an EA is actually a trio of messages, the first of which is a <code>Certificate</code>. The second is a <code>CertificateVerify</code>, a cryptographic proof that the sender knows the private key for the certificate. Finally there is a <code>Finished</code> message, which acts as a MAC, and proves the first two parts of the message haven’t been tampered with. If this structure sounds familiar to you, it’s because it’s the same structure as used by the server in the TLS handshake to prove it is the owner of the certificate.</p>
 <p>The final piece of unpacking we need to do is explaining what we mean by tying the authentication to the TLS channel. Because EAs are an application layer construct they don’t provide any transport mechanism. So, whilst I know that the EA was created by the server I want to talk to, without binding the EA to a TLS connection I can’t be sure that I’m talking <em>directly</em> to the server I want.</p>

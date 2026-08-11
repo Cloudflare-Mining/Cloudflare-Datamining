@@ -8,11 +8,37 @@
 <p>One of the simplest ways to reduce memory allocations is to work with fixed-size buffers. Fixed-sized buffers can be placed on the stack, which eliminates the need to invoke heap allocation logic; the compiler simply reserves space in the current stack frame to hold local variables. Alternatively, the buffers can be heap-allocated outside the hot path (for example, at application startup), incurring a one-time cost.</p>
 <p>Arrays can be stack allocated:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> buf </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">0</span><span class="sk-6f42c1-ffc799">u8</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-fff">BUFFER_SIZE</span><span class="sk-24292e-fff">];</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> buf </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">0</span><span class="sk-6f42c1-ffc799">u8</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-fff">BUFFER_SIZE</span><span class="sk-24292e-fff">];</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Vectors can be created outside the hot path:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> buf </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">with_capacity</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">BUFFER_SIZE</span><span class="sk-24292e-fff">);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> buf </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">with_capacity</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">BUFFER_SIZE</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To demonstrate the performance difference, let's compare two implementations of a case-insensitive string equality check. The first will allocate a buffer for each invocation to store the lower-case version of the string. The second will use a buffer that has already been allocated for this purpose.</p>
 <p>Allocate a new buffer for each iteration:</p>
@@ -21,7 +47,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> buf </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> String</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">with_capacity</span><span class="sk-24292e-fff">(s</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">len</span><span class="sk-24292e-fff">());</span></span>
 <span class="line"><span class="sk-24292e-fff">	buf</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">extend</span><span class="sk-24292e-fff">(s</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">chars</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">c</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> c</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">to_ascii_lowercase</span><span class="sk-24292e-fff">()));</span></span>
 <span class="line"><span class="sk-24292e-fff">	buf </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> pat</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Re-use a buffer for each iteration, avoiding allocations:</p>
 <div class="emdash-code">
@@ -29,7 +59,11 @@
 <span class="line"><span class="sk-24292e-fff">	buf</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">clear</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">	buf</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">extend</span><span class="sk-24292e-fff">(s</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">chars</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">c</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> c</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">to_ascii_lowercase</span><span class="sk-24292e-fff">()));</span></span>
 <span class="line"><span class="sk-24292e-fff">	buf </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> pat</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Benchmarking the two code snippets, the first executes in ~40ns per iteration, the second in ~25ns. Changing only the memory allocation behavior, the second implementation is ~38% faster.</p>
 <h3>Choice of algorithms</h3>
@@ -38,7 +72,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> case_insensitive_equality_buffer_iter</span><span class="sk-24292e-fff">(s</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">str</span><span class="sk-24292e-fff">, pat</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">str</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> bool</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">	s</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">chars</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">c</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> c</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">to_ascii_lowercase</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">eq</span><span class="sk-24292e-fff">(pat</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">chars</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In addition to being the shortest, this function is also the fastest. This function benchmarks at ~13ns/iter, which is just slightly slower than the 11ns used to execute <code>eq_ignore_ascii_case</code> from the standard library. And the standard library implementation similarly avoids buffer allocation through use of iterators.</p>
 <h3>Testing allocations</h3>
@@ -54,7 +92,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">	// Assert that no allocations occurred.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	dhat</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">assert_eq!</span><span class="sk-24292e-fff">(stats</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">total_blocks, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	dhat</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">assert_eq!</span><span class="sk-24292e-fff">(stats</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">total_bytes, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It is important to note, <code>dhat</code> does have the limitation that it only detects allocations in Rust code. External libraries can still allocate memory without using the Rust allocator. FFI calls, such as those made to C, are one such place where memory allocations may slip past <code>dhat</code>'s measurements.</p>
 <h2>Zero allocation decision trees</h2>
@@ -73,24 +115,40 @@
 <span class="line"><span class="sk-24292e-fff">        catFeaturesVec[i] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> TConstArrayRef</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">&gt;(catFeatures[i], catFeaturesSize);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">FULL_MODEL_PTR</span><span class="sk-24292e-fff">(modelHandle)-&gt;</span><span class="sk-6f42c1-ffc799">Calc</span><span class="sk-24292e-fff">(floatFeaturesVec, catFeaturesVec, </span><span class="sk-6f42c1-ffc799">TArrayRef</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">double</span><span class="sk-24292e-fff">&gt;(result, resultSize));</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">FULL_MODEL_PTR</span><span class="sk-24292e-fff">(modelHandle)-&gt;</span><span class="sk-6f42c1-ffc799">Calc</span><span class="sk-24292e-fff">(floatFeaturesVec, catFeaturesVec, </span><span class="sk-6f42c1-ffc799">TArrayRef</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">double</span><span class="sk-24292e-fff">&gt;(result, resultSize));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To evaluate a single document, however, CatBoost only needs access to a reference to contiguous memory holding feature values. The above code can be replaced with the following:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">TConstArrayRef</span><span class="sk-d73a49-a0a0a0">&lt;float&gt;</span><span class="sk-24292e-fff"> floatFeaturesArray </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> TConstArrayRef</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">float</span><span class="sk-24292e-fff">&gt;(floatFeatures, floatFeaturesSize);</span></span>
 <span class="line"><span class="sk-24292e-fff">TConstArrayRef</span><span class="sk-d73a49-a0a0a0">&lt;int&gt;</span><span class="sk-24292e-fff"> catFeaturesArray </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> TConstArrayRef</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">&gt;(catFeatures, catFeaturesSize);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">FULL_MODEL_PTR</span><span class="sk-24292e-fff">(modelHandle)-&gt;</span><span class="sk-6f42c1-ffc799">Calc</span><span class="sk-24292e-fff">(floatFeaturesArray, catFeaturesArray, </span><span class="sk-6f42c1-ffc799">TArrayRef</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">double</span><span class="sk-24292e-fff">&gt;(result, resultSize));</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">FULL_MODEL_PTR</span><span class="sk-24292e-fff">(modelHandle)-&gt;</span><span class="sk-6f42c1-ffc799">Calc</span><span class="sk-24292e-fff">(floatFeaturesArray, catFeaturesArray, </span><span class="sk-6f42c1-ffc799">TArrayRef</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">double</span><span class="sk-24292e-fff">&gt;(result, resultSize));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Similar to the C++ implementation, the CatBoost Rust bindings also allocate vectors to support multi-document evaluation. For example, the bindings iterate over a vector of vectors, mapping it to a newly allocated vector of pointers:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> float_features_ptr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> float_features</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   .</span><span class="sk-6f42c1-ffc799">iter</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   .</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">as_ptr</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   .</span><span class="sk-6f42c1-ffc799">collect</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">&lt;_&gt;&gt;();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">   .</span><span class="sk-6f42c1-ffc799">collect</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">&lt;_&gt;&gt;();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But in the single-document case, we don't need the outer vector at all. We can simply pass the inner pointer value directly:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> float_features_ptr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> float_features</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">as_ptr</span><span class="sk-24292e-fff">();</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> float_features_ptr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> float_features</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">as_ptr</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Reusing buffers</h3>
 <p>The previous API in the Rust bindings accepted owned <code>Vec</code>s as input. By taking ownership of a heap-allocated data structure, the function also takes responsibility for freeing the memory at the conclusion of its execution. This is undesirable as it forecloses the possibility of buffer reuse. Additionally, categorical features are passed as owned <code>String</code>s, which prevents us from passing references to bytes in the original request. Instead, we must allocate a temporary <code>String</code> on the heap and copy bytes into it.</p>
@@ -99,7 +157,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	&amp;</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	float_features</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">f32</span><span class="sk-24292e-fff">&gt;&gt;,</span></span>
 <span class="line"><span class="sk-24292e-fff">	cat_features</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">&gt;&gt;,</span></span>
-<span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> CatBoostResult</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">f64</span><span class="sk-24292e-fff">&gt;&gt; { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> CatBoostResult</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">f64</span><span class="sk-24292e-fff">&gt;&gt; { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's rewrite this function to take <code>&amp;[f32]</code> and <code>&amp;[&amp;str]</code>:</p>
 <div class="emdash-code">
@@ -107,7 +169,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	&amp;</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	float_features</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">f32</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">	cat_features</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">[</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">str</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> CatBoostResult</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">f64</span><span class="sk-24292e-fff">&gt; { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> CatBoostResult</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">f64</span><span class="sk-24292e-fff">&gt; { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But, we also execute several models per request, and those models may use the same categorical features. Instead of calculating the hash for each separate model we execute, let's compute the hashes first and then pass them to each model that requires them:</p>
 <div class="emdash-code">
@@ -115,7 +181,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	&amp;</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	float_features</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">f32</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">	hashed_cat_features</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">i32</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> CatBoostResult</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">f64</span><span class="sk-24292e-fff">&gt; { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> CatBoostResult</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">f64</span><span class="sk-24292e-fff">&gt; { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Summary</h2>
 <p>By optimizing away unnecessary memory allocations in the bot management module, we reduced P50 latency from 388us to 309us (20%), and reduced P99 latency from 940us to 813us (14%). And, in many cases, the optimized code is shorter and easier to read than the unoptimized implementation.</p>

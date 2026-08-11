@@ -19,8 +19,30 @@
 <p>La file d'attente SYN stocke les paquets SYN entrants <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/#fn1">[1]</a> (spécifiquement : <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L73" target="_blank" rel="noopener noreferrer">struct inet_request_sock</a>). Elle est responsable de l'envoi des paquets SYN + ACK et de réessayer après l'expiration du délai. Sur Linux, le nombre de tentatives est configuré avec :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_synack_retries</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Les <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank" rel="noopener noreferrer">documents décrivent cette bascule</a> :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcp_synack_retries</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> INTEGER</span></span>
@@ -31,7 +53,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	retransmission</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> current</span><span class="sk-032f62-99ffe4"> initial</span><span class="sk-032f62-99ffe4"> RTO</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> 1second.</span><span class="sk-032f62-99ffe4"> With</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	this</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> final</span><span class="sk-032f62-99ffe4"> timeout</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> passive</span><span class="sk-032f62-99ffe4"> TCP</span><span class="sk-032f62-99ffe4"> connection</span><span class="sk-032f62-99ffe4"> will</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	happen</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-005cc5-ffc799"> 63</span><span class="sk-032f62-99ffe4"> seconds.</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Après la transmission du SYN + ACK, la file d’attente SYN attend un paquet ACK du client, le dernier paquet de l’établissement de liaison en 3 phases. Tous les paquets ACK reçus doivent d'abord être mis en correspondance avec la table de connexion entièrement établie, puis seulement avec les données de la file d'attente SYN appropriée. En cas de correspondance avec la file d'attente SYN, le noyau supprime l'élément de la file d'attente SYN, crée allégrement une connexion à part entière (en particulier : <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L183" target="_blank" rel="noopener noreferrer">struct inet_sock</a>) et l'ajoute à la file d'attente Accepter.</p>
 <h3><strong>File d'attente Accepter</strong></h3>
@@ -40,13 +66,21 @@
 <h3><strong>Limites de taille de la file d'attente</strong></h3>
 <p>La longueur maximale autorisée des files d'attente Accepter et SYN est tirée du paramètre d’accumulation transmis à l'appel système listen (2) par l'application. Par exemple, cela définit les tailles de la file d'attente Accepter et SYN à 1 024 :</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>listen(sfd, 1024)</code></p>
 <p>Remarque : Dans les noyaux antérieurs à 4.3, la <a href="https://github.com/torvalds/linux/commit/ef547f2ac16bd9d77a780a0e7c70857e69e8f23f#diff-56ecfd3cd70d57cde321f395f0d8d743L43" target="_blank" rel="noopener noreferrer">longueur de la file d'attente SYN était comptée différemment</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.core.somaxconn</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Par le passé, cette limite de file d'attente SYN était configurée par la bascule net.ipv4.tcp_max_syn_backlog, mais ce n'est plus le cas. De nos jours, net.core.somaxconn limite les deux tailles de file d'attente. Sur nos serveurs, nous l'avons réglé à 16k :</p>
 <h3>Valeur parfaite d’accumulation</h3>
@@ -65,7 +99,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :80</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">119</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :443</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Pour jeter un coup d'œil dans la file d'attente <code>SYN</code> sous Linux, nous pouvons utiliser la commande ss et rechercher les sockets <code>SYN-RECV</code>. Par exemple, sur l'un des serveurs de Cloudflare, nous pouvons voir 119 créneaux utilisés dans la file d’attente tcp/80 <code>SYN</code> et 78 sur tcp/443.</p>
 <p>Des données similaires peuvent être affichées avec notre <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/resq.stp" target="_blank" rel="noopener noreferrer">script sur-stratifié SystemTap : resq.stp</a>.</p>
@@ -86,13 +124,21 @@
 <p>Si votre serveur a besoin de gérer un grand nombre de connexions entrantes et a du mal à obtenir le débit Accepter (), lisez plutôt notre article sur la <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">distribution de travail Nginx tuning / Epoll</a> et un <a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts">suivi présentant des scripts SystemTap utiles</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nstat</span><span class="sk-005cc5-99ffe4"> -az</span><span class="sk-032f62-99ffe4"> TcpExtListenDrops</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vous pouvez suivre les statistiques de débordement de la file d’attente Accepter en consultant les compteurs nstat :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -plnt</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :6443</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cat</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">   Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">  Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Il s'agit d'un compteur global. Ce n'est pas l'idéal. Nous avons parfois constaté une augmentation, alors que toutes les applications semblaient en bon état ! La première étape doit toujours être d’imprimer les tailles de la file d’attente Accepter avec ss :</p>
 <p>La colonne Recv-Q indique le nombre de sockets dans la file d'attente Accepter et Send-Q indique le paramètre d’accumulation. Dans ce cas, nous voyons qu'il n'y a pas de sockets en attente à Accepter (), mais nous avons tout de même vu le compteur ListenDrops augmenter.</p>
@@ -102,7 +148,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449075</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:28585</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449253</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:50500</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198450062</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:65434</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Il s'avère que notre application est restée bloquée pendant une fraction de seconde. Cela était suffisant pour laisser la file d'attente Accepter déborder pendant une très brève période. Il s’est remis quelques instants plus tard. Les cas comme celui-ci sont difficiles à déboguer avec ss. Nous avons donc écrit <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/acceptq.stp" target="_blank" rel="noopener noreferrer">un script acceptq.stp SystemTap</a> pour nous aider. Il s'accroche au noyau et imprime les paquets <code>SYN</code> en cours de suppression :</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -134,7 +184,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  6</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 2</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     24</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">       |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> t</span><span class="sk-032f62-99ffe4"> mod</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  MSS</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-005cc5-ffc799"> hash</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">ip,</span><span class="sk-032f62-99ffe4"> port,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">|</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>La magie Cookies <code>SYN</code> fonctionne, mais n’est pas sans inconvénients. Le principal problème est qu’il existe très peu de données pouvant être sauvegardées dans un cookie <code>SYN</code>. Plus précisément, seuls 32 bits du numéro de séquence sont renvoyés dans l’ACK. Ces bits sont utilisés comme suit :</p>
 <p>Avec le paramètre MSS <a href="https://github.com/torvalds/linux/blob/5bbcc0f595fadb4cac0eddc4401035ec0bd95b09/net/ipv4/syncookies.c#L142" target="_blank" rel="noopener noreferrer">tronqué à seulement 4 valeurs distinctes</a>, Linux ne connaît aucun paramètre TCP optionnel de l'autre partie. Les informations relatives à l'horodatage, l’ECN, l’ACK sélectif ou à l'échelonnage des fenêtres sont perdues et peuvent entraîner une dégradation des performances de la session TCP.</p>
@@ -142,12 +196,20 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  26</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 4</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> Timestamp</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  ECN</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> SACK</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> WScale</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Heureusement, Linux a un moyen de contourner le problème. Si les horodatages TCP sont activés, le noyau peut réutiliser un autre créneau de 32 bits dans le champ Horodatage. Il contient :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_timestamps</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Les horodatages TCP doivent être activés par défaut pour vérifier Voir le sysctl :</p>
 <p>Historiquement, l’utilité des horodatages TCP a fait l’objet de nombreuses discussions.</p>

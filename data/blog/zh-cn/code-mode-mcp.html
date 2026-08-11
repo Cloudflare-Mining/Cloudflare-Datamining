@@ -44,8 +44,30 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>为了了解代码模式的功能，智能体会调用 <code>search()</code>。它根据 OpenAPI 规范的类型化表示编写 JavaScript。智能体可以按产品、路径、标记或任何其他元数据筛选端点，并将数千个端点缩减到所需的少数几个。完整的 OpenAPI 规范永远不会进入模型上下文。智能体仅通过代码与之交互。</p>
 <p>当智能体准备好执行操作时，它会调用 <code>execute()</code>。智能体编写的代码可以发出 Cloudflare API 请求、处理分页、检查响应，并将多项操作串联起来，一次性执行。</p>
 <p>这两个工具在 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker</u></a> 隔离环境内运行生成的代码。这是一个轻量级 V8 沙盒，没有文件系统，不会通过提示词注入泄露环境变量，并且默认情况下禁用外部获取。必要时，可以使用出站提取处理程序，明确控制出站请求。</p>
@@ -65,7 +87,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> results;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>服务器在 Workers 隔离环境中运行此代码并返回：</p>
 <div class="emdash-code">
@@ -81,7 +107,11 @@
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,   </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/{ruleset_id}/rules"</span><span class="sk-24292e-fff">,        </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Create a zone ruleset rule"</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PATCH"</span><span class="sk-24292e-fff">,  </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a zone ruleset rule"</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>完整的 Cloudflare API 规范包含超过 2,500 个端点。模型将范围缩减至其需要的 WAF 和规则集端点，而无需将任何规范信息输入上下文窗口。</p>
 <p>模型还可以在调用特定端点之前深入查看其架构。在这里，它会检查区域规则集中可用的阶段：</p>
@@ -103,7 +133,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "magic_transit"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"magic_transit_managed"</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>智能体现在知道它需要的确切阶段：<code>ddos_l7</code> 用于 DDoS 防护，<code>http_request_firewall_managed</code> 用于 WAF。</p>
 <p><strong>第 2 步：执行 API 操作<br></strong>智能体切换到使用 <code>execute</code>。沙盒获取一个 <code>cloudflare.request()</code> 客户端，该客户端可以对 Cloudflare API 进行经过身份验证的调用。首先，智能体检查区域中已经存在哪些规则集：</p>
@@ -123,7 +157,11 @@
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cloudflare Managed"</span><span class="sk-24292e-fff">,</span><span class="sk-032f62-99ffe4">"phase"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"http_request_firewall_managed"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"managed"</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Custom rules"</span><span class="sk-24292e-fff">,     </span><span class="sk-032f62-99ffe4">"phase"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"http_request_firewall_custom"</span><span class="sk-24292e-fff">,   </span><span class="sk-032f62-99ffe4">"kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"zone"</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>智能体发现已存在托管的 DDoS 和 WAF 规则集。现在，它可以进行链式调用，在一次执行中检查这些规则并更新敏感度级别：</p>
 <div class="emdash-code">
@@ -140,7 +178,11 @@
 <span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/zones/${</span><span class="sk-24292e-fff">zoneId</span><span class="sk-032f62-99ffe4">}/rulesets/phases/http_request_firewall_managed/entrypoint`</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>从搜索规范、检查模式到列出规则集、获取 DDoS 和 WAF 配置，整个操作需要调用四次工具。</p>
 <h3>Cloudflare MCP 服务器</h3>
@@ -170,7 +212,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>对于 CI/CD、自动化，或者如果您更喜欢自行管理令牌，请创建一个具有所需权限的 Cloudflare API 令牌。用户令牌和帐户令牌均受支持，并且可以作为持有者令牌在 <code>Authorization</code> 标头中传递。</p>
 <p>如需获取不同 MCP 设置配置的更多信息，请访问 <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP 存储库</u></a>。</p>

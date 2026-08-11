@@ -45,8 +45,30 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>何ができるかを探るために、エージェントは<code>search()</code>を呼び出します。OpenAPI仕様の型付け表現に対してJavaScriptを記述しています。エージェントは、製品、パス、タグ、またはその他のメタデータでエンドポイントをフィルタリングし、何千ものエンドポイントを必要なものに絞り込むことができます。OpenAPIの完全仕様がモデルコンテキストに入ることは決してありません。エージェントはコードを通じてのみ対話します。</p>
 <p>エージェントが行動する準備ができると、<code>execute()</code> を呼び出します。エージェントは、Cloudflare APIリクエストを実行し、ページ指定の処理、応答の確認、および単一の実行で操作を連鎖させることができるコードを記述します。</p>
 <p>どちらのツールも、<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker</u></a> Isolate（ファイルシステムなし、プロンプトインジェクションによって漏えいする環境変数がデフォルトで無効化されている）機能を備えた軽量なV8サンドボックス内で生成されたコードを実行します。アウトバウンドリクエストは、必要に応じてアウトバウンドフェッチハンドラーを使用して明示的に制御することができます。</p>
@@ -66,7 +88,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> results;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>サーバーはWorkers分離でこのコードを実行し、以下を返します。</p>
 <div class="emdash-code">
@@ -82,7 +108,11 @@
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,   </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/{ruleset_id}/rules"</span><span class="sk-24292e-fff">,        </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Create a zone ruleset rule"</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PATCH"</span><span class="sk-24292e-fff">,  </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a zone ruleset rule"</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare APIの全仕様には、2,500を超えるエンドポイントがあります。このモデルは、必要なWAFとルールセットのエンドポイントに絞り込み、Specをコンテキストウィンドウに入力することはありませんでした。</p>
 <p>モデルは、特定のエンドポイントを呼び出す前に、そのスキーマに掘り下げることもできます。ここでは、ゾーンルールセットで利用可能なフェーズを検査します：</p>
@@ -104,7 +134,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "magic_transit"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"magic_transit_managed"</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これで、エージェントは必要なフェーズ（DDoS攻撃対策には<code>ddos_l7</code>、WAFには<code>http_request_firewall_managed</code>）を把握することができます。</p>
 <p><strong>ステップ2：API上で実行<br></strong>エージェントは<code>実行</code>の使用に切り替えます。サンドボックスは <code>cloudflare.request()</code> を取得します。Cloudflare APIに対して認証された呼び出しを行うことができるクライアントです。まず、エージェントはゾーンに既に存在するルールセットをチェックします。</p>
@@ -124,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cloudflare Managed"</span><span class="sk-24292e-fff">,</span><span class="sk-032f62-99ffe4">"phase"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"http_request_firewall_managed"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"managed"</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Custom rules"</span><span class="sk-24292e-fff">,     </span><span class="sk-032f62-99ffe4">"phase"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"http_request_firewall_custom"</span><span class="sk-24292e-fff">,   </span><span class="sk-032f62-99ffe4">"kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"zone"</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">]</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>エージェントは、管理されたDDoSおよびWAFルールセットがすでに存在することを認識します。呼び出しを連鎖してルールを検査し、一度の実行で感度レベルを更新できるようになりました。</p>
 <div class="emdash-code">
@@ -141,7 +179,11 @@
 <span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/zones/${</span><span class="sk-24292e-fff">zoneId</span><span class="sk-032f62-99ffe4">}/rulesets/phases/http_request_firewall_managed/entrypoint`</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>仕様の検索とスキーマの検査から、ルールセットのリスト作成、DDoSとWAFの設定の取得に至るまで、この操作全体で4回のツール呼び出しが必要でした。</p>
 <h3>Cloudflare MCPサーバー</h3>
@@ -171,7 +213,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>CI/CD、自動化、またはトークンをご自身で管理したい場合は、必要な権限を持つCloudflare APIトークンを作成してください。ユーザートークンとアカウントトークンの両方がサポートされており、<code>Authorization</code> ヘッダーのベアラートークンとして渡すことができます。</p>
 <p>さまざまなMCPのセットアップ設定の詳細については、<a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCPリポジトリ</u></a>をご覧ください。</p>

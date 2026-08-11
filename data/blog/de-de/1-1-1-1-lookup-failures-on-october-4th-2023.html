@@ -44,15 +44,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--</span><span class="sk-d73a49-a0a0a0">|</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                     RDATA</span><span class="sk-032f62-99ffe4">                     /</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                                               /</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Warum static_zone den neuen ZONEMD-Eintrag noch nicht unterstützte? Weil wir uns bisher dafür entschieden hatten, die Root-Zone intern in ihrem Darstellungsformat und nicht im Binärformat zu verteilen. Ein Blick auf die Textdarstellung einiger Ressourceneinträge zeigt, dass es bei der Darstellung der verschiedenen Datensätze sehr viel mehr Unterschiede gibt.</p>
 <p>Beispieldatensätze entnommen von <a href="https://www.internic.net/domain/root.zone" target="_blank" rel="noopener noreferrer">https://www.internic.net/domain/root.zone</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span><span class="sk-032f62-99ffe4"> nstld.verisign-grs.com.</span><span class="sk-005cc5-ffc799"> 2023100400</span><span class="sk-005cc5-ffc799"> 1800</span><span class="sk-005cc5-ffc799"> 900</span><span class="sk-005cc5-ffc799"> 604800</span><span class="sk-005cc5-ffc799"> 86400</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	RRSIG</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799"> 86400</span><span class="sk-005cc5-ffc799"> 20231017050000</span><span class="sk-005cc5-ffc799"> 20231004040000</span><span class="sk-005cc5-ffc799"> 46780</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-032f62-99ffe4"> J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			518400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wenn wir auf einen unbekannten Ressourceneintrag stoßen, ist es nicht immer einfach zu wissen, wie wir damit umgehen sollen. Aus diesem Grund unternimmt die Bibliothek, die wir zum Parsen der Root-Zone an der Edge verwenden, keinen entsprechenden Versuch und gibt stattdessen einen Parser-Fehler aus.</p>
 <h3>Warum eine veraltete Version der Root-Zone verwendet wurde</h3>
@@ -64,7 +90,11 @@
 <p>Zunächst versuchten wir, die static_zone-App durch Überschreibungsregeln zu deaktivieren, ein Mechanismus, mit dem wir einige Verhaltensweisen von 1.1.1.1 programmatisch ändern können. Die von uns angewandte Regel lautete:</p>
 <p>Bei jeder eingehenden Anfrage fügt diese Regel das Tag rec_disable_static zur Anfrage hinzu. In der static_zone-App wird auf dieses Tag geprüft, und wenn es gesetzt ist, wird keine Antwort aus der gecachten, statischen Root-Zone ausgegeben. <a href="https://blog.cloudflare.com/big-pineapple-intro">Zur Verbesserung der Cache-Performance</a> werden Abfragen jedoch manchmal an einen anderen Knoten weitergeleitet, wenn der aktuelle Knoten die Antwort nicht in seinem eigenen Cache finden kann. Leider ist das rec_disable_static-Tag nicht in den Abfragen enthalten, die an andere Knoten weitergeleitet werden, was dazu führte, dass die static_zone-App weiterhin mit veralteten Informationen antwortete, bis wir die App schließlich ganz deaktivierten.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Warum die Auswirkungen nur teilweise eintraten</h3>
 <p>Cloudflare führt regelmäßig fortlaufende Neustarts der Server durch, auf denen unsere Dienste gehostet werden, um Aufgaben wie Kernel-Updates durchzuführen, die nur nach einem vollständigen Neustart des Systems wirksam werden können. Zum Zeitpunkt dieses Ausfalls trugen Resolver-Server-Instanzen, die zwischen der ZONEMD-Änderung und der DNSSEC-Ungültigmachung neu gestartet wurden, nicht zu den Auswirkungen bei. Hätten sie während dieses zweiwöchigen Zeitraums neu gestartet, hätten sie die Root-Zone beim Start nicht geladen und stattdessen DNS-Abfragen an Root-Server gesendet. Darüber hinaus verwendet der Resolver eine Technik namens „serve stale“ (<a href="https://datatracker.ietf.org/doc/html/rfc8767" target="_blank" rel="noopener noreferrer">RFC 8767</a>) mit dem Ziel, beliebte Einträge aus einem möglicherweise veralteten Cache weiter zu übermitteln, um die Auswirkungen zu begrenzen. Ein Eintrag gilt als veraltet, wenn die TTL-Sekundenzahl seit dem Abruf des Eintrags aus dem vorgelagerten Bereich verstrichen ist. &nbsp;Dadurch konnte ein Totalausfall verhindert werden; die Auswirkungen waren vor allem in unseren größten Rechenzentren zu spüren, in denen viele Server standen, die den 1.1.1.1-Dienst in diesem Zeitraum nicht neu gestartet hatten.</p>

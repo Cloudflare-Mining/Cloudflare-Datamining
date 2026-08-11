@@ -12,8 +12,30 @@
 <p>หาก nftables สามารถใช้ประโยชน์จาก eBPF ได้จริง เรื่องนี้จะสั้นกว่านี้มาก เพราะงั้น เราต้องทำภารกิจกันต่อไป การที่เรารู้ว่า iptables ทำงานร่วมกับ eBPF คือจุดเริ่มต้นของภารกิจดังกล่าว ตัวอย่างเช่น เราสามารถใช้ iptables และโปรแกรม eBPF ที่ปักหมุดไว้เพื่อวางแพ็กเก็ตด้วยคำสั่งต่อไปนี้:</p>
 <p>เงื่อนงำนี้ช่วยให้เราอยู่บนเส้นทางที่ถูกต้อง Iptables ใช้ส่วนขยาย <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank" rel="noopener noreferrer">xt_bpf</a> เพื่อจับคู่ในโปรแกรม eBPF ส่วนขยายนี้ใช้ประเภทโปรแกรม BPF_PROG_TYPE_SOCKET_FILTER eBPF ซึ่งช่วยให้เราโหลดข้อมูลแพ็กเก็ตจากซ็อกเก็ตบัฟเฟอร์และส่งคืนค่าตามรหัสของเรา</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>เรารู้ว่า iptables สามารถใช้ eBPF ได้ แล้วทำไมไม่ลองใช้ดูล่ะ ปัจจุบัน Magic Firewall ใช้ประโยชน์จาก nftables ซึ่งเป็นตัวเลือกที่ยอดเยี่ยมกับเคสการใช้งานของเราเพราะซินแท็กซ์มีความยืดหยุ่นและอินเทอร์เฟซก็เป็นแบบตั้งโปรแกรมได้ ดังนั้น เราจำเป็นต้องหาวิธีใช้ส่วนขยาย xt_bpf กับ nftables</p>
 <p><a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank" rel="noopener noreferrer">แผนผัง</a>นี้ช่วยอธิบายความสัมพันธ์ระหว่าง iptables, nftables และเคอร์เนล ทั้งนี้ nftables API สามารถใช้ได้กับทั้งโปรแกรม iptables และ nft userspace และสามารถกำหนดค่าการจับคู่ xtables ทั้งสอง (รวมถึง xt_bpf) และการจับคู่ nftables ปกติ</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -30,7 +52,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		NLA_F_NESTED</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> NFTA_EXPR_DATA</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_NAME</span><span class="sk-032f62-99ffe4"> "bpf"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_REV</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ดูรูปแบบไบต์ได้จากคำจำกัดความของส่วนหัวเคอร์เนลของ <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank" rel="noopener noreferrer">struct xt_bpf_info_v1</a> ตัวอย่างโค้ดด้านบนแสดงส่วนที่เกี่ยวข้องของโครงสร้าง</p>
 <div class="emdash-code">
@@ -42,7 +68,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		struct</span><span class="sk-032f62-99ffe4"> sock_filter</span><span class="sk-032f62-99ffe4"> bpf_program[XT_BPF_MAX_NUM_INSTR]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		char</span><span class="sk-032f62-99ffe4"> path[XT_BPF_PATH_MAX]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">	};</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>โมดูล xt_bpf รองรับทั้ง bytecodes ดิบและเส้นทางไปยังโปรแกรม ebpf ที่ปักหมุดไว้ โหมดต่อมาคือเทคนิคที่เราใช้ในการรวมโปรแกรม ebpf กับ nftables</p>
 <p>เราสามารถใช้ข้อมูลนี้เพื่อเขียนโค้ดที่สามารถสร้างข้อความ netlink และจัดลำดับช่องข้อมูลที่เกี่ยวข้องได้อย่างถูกต้อง แนวทางนี้เป็นเพียงขั้นตอนแรก เรากำลังพิจารณาที่จะรวมสิ่งนี้เข้ากับเครื่องมือที่เหมาะสม แทนที่จะส่งข้อความ netfilter ที่กำหนดเอง</p>
@@ -75,7 +105,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> BPF_OK</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>เมื่อเรามีโปรแกรมแล้ว ขั้นตอนต่อไปคือการผสานโปรแกรมเข้ากับเครื่องมือของเรา เราลองใช้เทคโนโลยีสองสามอย่างเพื่อโหลดโปรแกรม เช่น BCC, libbpf และเรายังสร้างตัวโหลดแบบกำหนดเองอีกด้วย ท้ายที่สุด เราจะได้ใช้<a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">ไลบรารี ebpf ของ cilium</a> เนื่องจากเราใช้ Golang สำหรับโปรแกรมควบคุมระนาบของเรา และไลบรารีทำให้ง่ายต่อการสร้าง ฝัง และโหลดโปรแกรม eBPF</p>
 <p>เมื่อคอมไพล์และปักหมุดโปรแกรมแล้ว เราก็ใช้คำสั่ง netlink เพื่อเพิ่มรายการที่ตรงกันลงใน nftables การแสดงรายการชุดกฎแสดงว่ามีรายการที่ตรงกัน ซึ่งเหลือเชื่อมาก! ขณะนี้ เราสามารถปรับใช้โปรแกรม C แบบกำหนดเองเพื่อให้การจับคู่ขั้นสูงภายในชุดกฎของ Magic Firewall!</p>
@@ -85,7 +119,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	chain</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">		#match bpf pinned /sys/fs/bpf/mfw/match drop</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>Magic เพิ่มเติม</strong></h3>
 <p>เมื่อเพิ่ม eBPF ในชุดเครื่องมือของเรา ทำให้ Magic Firewall เป็นวิธีที่ยืดหยุ่นและมีประสิทธิภาพยิ่งขึ้นไปอีก ในการปกป้องเครือข่ายของคุณจากผู้ไม่หวังดี ตอนนี้เราสามารถพิจารณารายละเอียดของแพ็กเก็ตและใช้ตรรกะการจับคู่ที่ซับซ้อนกว่าที่ nftables เท่านั้นที่ทำได้ และเนื่องจากไฟร์วอลล์ของเราทำงานเป็นซอฟต์แวร์บนเซิร์ฟเวอร์ Cloudflare ทั้งหมด เราจึงสามารถทำซ้ำและอัปเดตคุณสมบัติต่าง ๆ ได้อย่างรวดเร็ว</p>

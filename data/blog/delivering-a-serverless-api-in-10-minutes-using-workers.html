@@ -10,8 +10,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-6f42c1-ffc799"> http://example.com</span><span class="sk-032f62-99ffe4"> redirects</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> https://example.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	Return</span><span class="sk-032f62-99ffe4"> “secure”</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Else</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	Return</span><span class="sk-032f62-99ffe4"> “not</span><span class="sk-032f62-99ffe4"> secure”</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	Return</span><span class="sk-032f62-99ffe4"> “not</span><span class="sk-032f62-99ffe4"> secure”</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>One additional requirement here was that we needed to follow redirects all the way; sites often redirect to <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">http://www.example.com</a> first, and only then redirect to https. That is an additional line of code I was prepared to handle.</p>
 <p>I’ve done some software engineering in previous jobs, and am now a Solutions Engineer at Cloudflare, but I have no DevOps experience. I’ve set up my fair share of origin servers, installed a few LAMP stacks, and NGINX (thanks to some very detailed guides on the interwebs), but the task of setting up a server to run 10 lines of code on it is daunting. Even with PaaS services such as Heroku, some prerequisite knowledge (and a Github account) is required to get your "Hello, World" app off the ground.</p>
 <p>Using Cloudflare Workers, I was able to get an endpoint on the web, soup to nuts, within a few minutes. I spent no time on research, and 99% of the time converting the very simple pseudo code above into real code. The other 1% was spent adding a DNS record. In 10 minutes, I had a demo-ready cURL for the PM to test domains against.</p>
@@ -53,7 +75,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  catch</span><span class="sk-24292e-fff"> (e) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Something went wrong ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff">})</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Worker itself is fairly simple, but let us walk through what it is doing, as there are a few noteworthy things in here.</p>
 <h3>Parsing the input</h3>
@@ -63,7 +89,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> domain </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url).searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'domain'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff">(domain </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Please pass in domain via query string'</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff">})</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>URL.searchParams</code> property returns a <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank" rel="noopener noreferrer">URLSearchParams</a> object, which allows us to <code>get</code> the value of the query string parameter we are looking for directly. In a situation when a parameter is not passed, we return an error response.</p>
 <h3>Making the subrequest</h3>
@@ -79,7 +109,11 @@
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   else</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-005cc5-fff"> INSECURE_RESPONSE</span></span>
-<span class="line"><span class="sk-24292e-fff">   }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Following Redirects</h3>
 <p>When I initially wrote this Worker, I did more work than I really needed to. In order to cover the use-case of some websites redirecting to their canonical site first (<a href="http://example.com" target="_blank" rel="noopener noreferrer">http://example.com</a> -&gt; <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">http://www.example.com</a>), and only then redirecting to https, I was inspecting the redirect URL, and making an additional subrequest to then inspect the outcome. As one of our engineers pointed out, I was doing all that extra work for nothing.</p>
@@ -91,7 +125,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> headers </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   'Access-Control-Allow-Origin'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'*'</span></span>
-<span class="line"><span class="sk-24292e-fff"> })</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> })</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you may have noticed, in the static response, we are always adding a response header called <code>Access-Control-Allow-Origin</code>. <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing" target="_blank" rel="noopener noreferrer">CORS headers</a> are meant to help protect origins from being accessed by other sites. If we tried to run our app directly on the client (from the browser side), the browser would enforce the CORS policies of the domains you were trying to test against, and block those requests. Setting <code>Access-Control-Allow-Origin</code> to <code>*</code> will allow this endpoint to be accessed from this blog, or any other sites trying to use it (if you are looking to embed it into your site, you can!). Otherwise, if the javascript on the blog post itself was making browser side calls to various domains, many requests would be blocked by the browser.</p>
 <h3>Testing our Worker</h3>
@@ -102,7 +140,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://secure.ritakozlov.com/?domain=cloudflare.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">secure</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://secure.ritakozlov.com/?domain=maxisacutecat.club</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">not</span><span class="sk-032f62-99ffe4"> secure</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">not</span><span class="sk-032f62-99ffe4"> secure</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And it works! You may now test your site by running the same cURL from your machine and adjusting the domain parameter, or you can deploy the Worker above on your zone, and have your own testing endpoint.</p>
 <p>To sum, Workers are great for building simple, stateless serverless apps (to add flare to your blog posts, and wayyyy beyond!). We are always curious to hear what you are building!</p>

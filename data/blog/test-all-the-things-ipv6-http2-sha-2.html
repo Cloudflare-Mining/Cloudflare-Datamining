@@ -6,8 +6,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-032f62-99ffe4"> http2.cloudflare.com</span><span class="sk-032f62-99ffe4"> A</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">45.55.83.207</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-032f62-99ffe4"> http2.cloudflare.com</span><span class="sk-032f62-99ffe4"> AAAA</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2604:a880:800:10:5ca1:ab1e:f4:e001</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2604:a880:800:10:5ca1:ab1e:f4:e001</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The certificate is based on SHA-2 (in this case SHA-256). This is important because SHA-1 is being deprecated by some browsers <a href="https://blog.filippo.io/the-unofficial-chrome-sha1-faq" target="_blank" rel="noopener noreferrer">very soon</a>. On a recent browser the connection will also be secured using ECDHE (for <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">forward secrecy</a>).</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="616" height="762" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=616&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=616&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 616w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=640&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=750&amp;h=928&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=828&amp;h=1024&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=1080&amp;h=1336&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=1232&amp;h=1524&amp;f=webp&amp;fit=cover&amp;position=center 1232w" alt="Test all the things: IPv6, HTTP/2, SHA-2 Embedded Image - Vk5a0J" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZD7B1JVBHYD1YSB0AQ3H.png&amp;w=616&amp;h=762&amp;f=webp" data-lightbox-width="616" data-lightbox-height="762" data-astro-cid-7nvefuv6="true" sizes="(min-width: 616px) 616px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="616" height="762" class="pt-portable-image-media"></div>

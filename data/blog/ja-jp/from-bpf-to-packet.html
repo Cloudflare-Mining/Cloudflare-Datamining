@@ -29,8 +29,30 @@
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">012</span><span class="sk-24292e-fff">) ldh [x </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-24292e-fff">]                ; </span><span class="sk-6f42c1-ffc799">Read</span><span class="sk-24292e-fff"> halfword at offset x</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799">16</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">Dst</span><span class="sk-6f42c1-ffc799"> Port</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">013</span><span class="sk-24292e-fff">) jeq #</span><span class="sk-005cc5-ffc799">0x35</span><span class="sk-24292e-fff">, jt </span><span class="sk-005cc5-ffc799">14</span><span class="sk-24292e-fff">, jf </span><span class="sk-005cc5-ffc799">15</span><span class="sk-24292e-fff">     ; </span><span class="sk-005cc5-ffc799">0x35</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">DNS</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-005cc5-fff"> ACCEPT</span><span class="sk-d73a49-a0a0a0"> else</span><span class="sk-005cc5-fff"> DROP</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">014</span><span class="sk-24292e-fff">) ret #</span><span class="sk-005cc5-ffc799">0x40000</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">ACCEPT</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">015</span><span class="sk-24292e-fff">) ret #</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">DROP</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">015</span><span class="sk-24292e-fff">) ret #</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">DROP</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>上記の例では、ACCEPTの結果につながる2つの経路（ステップ5とステップ13）が確立されています。また、そのオフセットや値を含め、特定のバイトがチェックされていることがはっきりとわかります。</p>
 <p>これらの検証を行い、ACCEPTパスに一致するものを追跡すれば、パケットを自動的に作成できるはずです。</p>
 <h3>最短パスを計算する</h3>
@@ -72,7 +94,11 @@
 <span class="line"><span class="sk-24292e-fff">		queue.append((pc_true, path </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> [pc_true]))</span></span>
 <span class="line"><span class="sk-24292e-fff">		queue.append((pc_false, path </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> [pc_false]))</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">	# else: same as above but reverse order of appending</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># else: sequential instruction, append to the queue</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># else: sequential instruction, append to the queue</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>先ほどのBPFDoorの例に対してこのロジックを実行すると、受け入れられたパケットへの最短パスが表示されます。</p>
 <div class="emdash-code">
@@ -82,7 +108,11 @@
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">003</span><span class="sk-24292e-fff">) code</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x15</span><span class="sk-24292e-fff"> jt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> jf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">11</span><span class="sk-24292e-fff"> k</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x11</span><span class="sk-24292e-fff">    ; </span><span class="sk-6f42c1-ffc799">Protocol</span><span class="sk-24292e-fff"> number </span><span class="sk-005cc5-ffc799">17</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">UDP</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">004</span><span class="sk-24292e-fff">) code</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x28</span><span class="sk-24292e-fff"> jt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> jf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">  k</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x38</span><span class="sk-24292e-fff">    ; </span><span class="sk-6f42c1-ffc799">Read</span><span class="sk-24292e-fff"> word at offset </span><span class="sk-005cc5-ffc799">56</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">Destination</span><span class="sk-6f42c1-ffc799"> Port</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">005</span><span class="sk-24292e-fff">) code</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x15</span><span class="sk-24292e-fff"> jt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">8</span><span class="sk-24292e-fff"> jf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">9</span><span class="sk-24292e-fff">  k</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x35</span><span class="sk-24292e-fff">    ; </span><span class="sk-6f42c1-ffc799">Destination</span><span class="sk-24292e-fff"> port </span><span class="sk-005cc5-ffc799">53</span></span>
-<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">014</span><span class="sk-24292e-fff">) code</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x06</span><span class="sk-24292e-fff"> jt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> jf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">  k</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x40000</span><span class="sk-24292e-fff"> ; </span><span class="sk-6f42c1-ffc799">Accept</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">014</span><span class="sk-24292e-fff">) code</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x06</span><span class="sk-24292e-fff"> jt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> jf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">  k</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x40000</span><span class="sk-24292e-fff"> ; </span><span class="sk-6f42c1-ffc799">Accept</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これは、BPF指示を分析し、バックドアのために受け入れられたパケットがどのように見えるかを理解する際に、BPF制約を自動的に解決するのに役立つ自動化機能です。しかし、さらに一歩踏み込むことができるとしたらどうでしょう。</p>
 <p>もし、期待されたパケットを自動化された方法で返してくれる小さなツールを作成できたらどうなるでしょうか？</p>
@@ -113,7 +143,11 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">        self</span><span class="sk-24292e-fff">.X </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> BitVecVal(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">)  </span><span class="sk-6a737d-8b8b8b94"># Index register</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">        # Scratch memory M[0-15] (32-bit words)</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">        self</span><span class="sk-24292e-fff">.M </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [BitVecVal(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> range</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">MEM_SLOTS</span><span class="sk-24292e-fff">)]</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-a0a0a0">        self</span><span class="sk-24292e-fff">.M </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [BitVecVal(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> range</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-fff">MEM_SLOTS</span><span class="sk-24292e-fff">)]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>上記のコードで、シンボリックな実行中に状態を維持するためのマシンの大部分をカバーすることができました。もちろん、記録しておく必要のある条件はもっとありますが、これらは解決の過程で処理されます。ADD命令を処理するために、マシンはBPF操作をZ3追加にマッピングします。</p>
 <div class="emdash-code">
@@ -123,7 +157,11 @@
 <span class="line"><span class="sk-24292e-fff">        op </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> insn.op</span></span>
 <span class="line"><span class="sk-24292e-fff">        src_val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> BitVecVal(insn.k, </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> insn.src </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> BPFSrc.K </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.X</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> op </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> BPFOp.</span><span class="sk-005cc5-fff">ADD</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">            self</span><span class="sk-24292e-fff">.A </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.A </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> src_val</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-a0a0a0">            self</span><span class="sk-24292e-fff">.A </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.A </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> src_val</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>幸いなことに、BPF命令セットは実装が比較的簡単な小さな命令セットしかなく、2つのレジスタだけを追跡するのは、間違いなく歓迎すべき制約です！</p>
 <p>このシンボリックな実行の全体的な仕組みは、以下のように抽象化された概要で説明することができます：</p>
@@ -150,7 +188,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    True</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-005cc5-ffc799"> 0x86DD</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-6f42c1-ffc799"> ZeroExt</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">16</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Concat</span><span class="sk-24292e-fff">(pkt_12, pkt_13)),</span></span>
 <span class="line"><span class="sk-005cc5-ffc799"> 0x11</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-6f42c1-ffc799"> ZeroExt</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff">, pkt_20),</span></span>
-<span class="line"><span class="sk-005cc5-ffc799"> 0x35</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-6f42c1-ffc799"> ZeroExt</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">16</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Concat</span><span class="sk-24292e-fff">(pkt_56, pkt_57))]</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799"> 0x35</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-6f42c1-ffc799"> ZeroExt</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">16</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Concat</span><span class="sk-24292e-fff">(pkt_56, pkt_57))]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Z3表示の制約の最初の部分は、リンク層のBPF指示を処理する際に、有効なイーサネットIPを構築するために追加された制約です。「If」文は、検出されるプロトコルに基づいて特定の制約を適用します。</p>
 <ul>
@@ -191,7 +233,11 @@
 <span class="line"><span class="sk-24292e-fff">        sport     </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-24292e-fff">        dport     </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> domain         </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff"> Port </span><span class="sk-005cc5-ffc799">53</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">        len</span><span class="sk-d73a49-a0a0a0">       =</span><span class="sk-005cc5-ffc799"> 0</span></span>
-<span class="line"><span class="sk-24292e-fff">        chksum    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> 0x</span><span class="sk-005cc5-ffc799">0</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        chksum    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> 0x</span><span class="sk-005cc5-ffc799">0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これらの新しく作成されたパケットは、ネットワーク上でこれらをスキャンすることで、これらのインプラントの存在を特定するために、さらなる調査や特定に使用することができます。</p>
 <h2>ご自身で試してみてください</h2>

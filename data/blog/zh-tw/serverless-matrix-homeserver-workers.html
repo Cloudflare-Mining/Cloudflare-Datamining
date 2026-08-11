@@ -60,8 +60,30 @@
 <span class="line"><span class="sk-24292e-fff">	origin_server_ts </span><span class="sk-005cc5-fff">INTEGER</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	depth </span><span class="sk-005cc5-fff">INTEGER</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>D1 基於 SQLite，意味著我們只需極少改動就能移植 Tuwunel 的查詢。JOIN、索引與彙總操作都能正常運作。</p>
 <p>我們吸取了一個慘痛的教訓：D1 的最終一致性打破了外鍵限制。當後續對事件的寫入檢查外鍵時，對聊天室的寫入可能不可見。我們移除了所有外鍵，並在應用程式碼中強制執行參照完整性。</p>
 <h3>KV 用於暫時性狀態</h3>
@@ -71,7 +93,11 @@
 <span class="line"><span class="sk-24292e-fff">kv.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">format</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"oauth_code:{}"</span><span class="sk-24292e-fff">, code), </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">token_data)</span><span class="sk-d73a49-a0a0a0">?</span></span>
 <span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">expiration_ttl</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">600</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">	.await</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	.await</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>KV 的全球分佈特性，意味著無論使用者身在何處，OAuth 流程都能快速運作。</p>
 <h3>R2 用於媒體檔案</h3>
@@ -103,7 +129,11 @@
 <span class="line"><span class="sk-24292e-fff">    	}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    	Ok</span><span class="sk-24292e-fff">(None)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我們將 UserKeysObject 用於端對端加密的金鑰管理，將 RoomObject 用於即時聊天室事件（如正在輸入指示和已讀回條），將 UserSyncObject 用於裝置對裝置的訊息佇列。其餘的流程則透過 D1 處理。</p>
 <h3>完整的端對端加密與 OAuth 支援</h3>
@@ -117,7 +147,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "token_endpoint"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://matrix.example.com/oauth/token"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "jwks_uri"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://matrix.example.com/.well-known/jwks.json"</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>將 Element 或任何 Matrix 用戶端指向您的網域，它就能自動探索所有設定。</p>
 <h2>適用於行動裝置的 Sliding Sync</h2>

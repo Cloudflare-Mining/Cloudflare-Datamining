@@ -28,8 +28,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> upstream_peer</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">...</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Box</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">HttpPee</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        todo!</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>次に、ラウンドロビン方式の選択を実装しましょう。Pingoraフレームワークでは、すでに<code>LoadBalancer</code>にラウンドロビンやハッシュなどの一般的な選択アルゴリズムが提供されているので、それを使用してみましょう。ユースケースにより、より高度なサーバー選択ロジックやサーバー選択ロジックのカスタマイズが必要とされる場合は、この関数でユーザーが簡単に実装できます。</p>
 <p>HTTPSサーバーに接続するので、SNIも設定する必要があります。必要に応じて、証明書、タイムアウト、その他の接続オプションも、HttpPeerオブジェクトで設定することができます。</p>
 <div class="emdash-code">
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">        let peer = Box::new(HttpPeer::new(upstream, true, "one.one.one.one".to_string()));</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        Ok(peer)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最後に、サービスを実行してみましょう。この例では、オリジンサーバーのIPをハードコードします。実際のワークロードでは、オリジンサーバーのIPは、 <code>upstream_peer()</code>が呼び出される際、あるいはバックグラウンドで動的に検出することもできます。サービスが作成されたら、LBサービスに127.0.0.1:6188をリッスンするように指示します。これでPingoraサーバーが完成です。このサーバーは、負荷分散サービスを実行するプロセスとなります。</p>
 <p>試してみましょう。</p>
@@ -60,7 +86,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> my_server</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Server::new</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">None</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.unwrap</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    my_server.add_service(lb</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    my_server.run_forever</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>プロキシが機能しているのに、オリジンサーバーが403で拒否していることがわかります。これは、curlによって設定されたHostヘッダー（127.0.0.1:6188）を単純にプロキシしていることが原因で、これがオリジンサーバーに不都合を引き起こしています。この問題を修正するために、<code>upstream_request_filter</code>と呼ばれるフィルタを追加します。このフィルタは、オリジンサーバーに接続された後、HTTPリクエストが送信される前に各リクエストで実行されます。このフィルタ内でHTTPリクエストヘッダーを追加、削除、変更できます。</p>
 <div class="emdash-code">
@@ -70,18 +100,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> User-Agent: curl/7.88.1</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Accept: </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">/</span><span class="sk-d73a49-a0a0a0">*</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 403 Forbidden</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 403 Forbidden</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>もう一度試してみます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> upstream_request_filter</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">…,</span><span class="sk-032f62-99ffe4"> upstream_request:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> RequestHeader,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result&lt;()</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    upstream_request.insert_header(</span><span class="sk-6f42c1-ffc799">"Host"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> "one.one.one.one"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>今回はうまくいきました。コードの全体は<a href="https://github.com/cloudflare/pingora/blob/main/pingora-proxy/examples/load_balancer.rs" target="_blank" rel="noopener noreferrer">こちら</a>でご確認ください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> 127.0.0.1:6188</span><span class="sk-005cc5-99ffe4"> -svo</span><span class="sk-032f62-99ffe4"> /dev/null</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 200 OK</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 200 OK</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>以下は、この例で使用したコールバックとフィルタを通過するリクエストの流れを非常に簡単に示した図です。現在、Pingoraプロキシフレームワークでは、リクエストのさまざまな段階で<a href="https://github.com/cloudflare/pingora/blob/main/docs/user_guide/phase.md" target="_blank" rel="noopener noreferrer">より多くのフィルタ</a>とコールバックが提供され、リクエストおよびレスポンスの変更、拒否、ルーティング、記録が可能です。</p>
 <p>Pingoraプロキシフレームワークが裏で接続プーリング、 TLSハンドシェイク、リクエストの読み取り、書き込み、解析、およびその他の一般的なプロキシタスクを処理するので、ユーザーは重要なロジックに集中できるようになります。</p>

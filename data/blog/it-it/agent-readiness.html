@@ -46,8 +46,30 @@
 <p>Oltre alle sitemap, gli agenti possono anche rilevare risorse importanti direttamente dalle intestazioni delle risposte HTTP, in particolare utilizzando l'intestazione Link delle risposte (<a href="https://www.rfc-editor.org/rfc/rfc8288" target="_blank" rel="noopener noreferrer"><u>RFC 8288</u></a>). A differenza dei link nascosti nell'HTML, l'intestazione Link fa parte della risposta HTTP stessa, il che significa che un agente può trovare link alle risorse senza dover analizzare alcun markup:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-005cc5-fff"> OK</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Accessibilità dei contenuti</h3>
 <p>Ottenere un agente sul tuo sito è un conto. Assicurarsi che sia effettivamente in grado di leggere il tuo contenuto è un altro.</p>
 <p>Nel settembre 2024, che sembrano secoli fa data la velocità con cui si muove l'IA, è stato proposto <a href="http://llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> come un modo per fornire una rappresentazione di un sito web compatibile con LLM e per adattarsi alla finestra di contesto del modello. <a href="https://llmstxt.org" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> è un file di testo semplice alla radice del tuo sito che offre agli agenti un elenco di lettura strutturato: cos'è il sito, cosa contiene e dove si trova il contenuto importante. È come se fosse una sitemap scritta per essere letta da un LLM invece che da un crawler per l'indicizzazione:</p>
@@ -58,7 +80,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Getting</span><span class="sk-6f42c1-ffc799"> Started</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/start.md)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">API</span><span class="sk-6f42c1-ffc799"> Reference</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/api.md)</span></span>
 <span class="line"><span class="sk-24292e-fff">## </span><span class="sk-6f42c1-ffc799">Changelog</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>La <a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>negoziazione dei contenuti markdown</u></a> va anche oltre. Quando un agente richiama una qualsiasi pagina e invia un'intestazione <code>Accept: text/markdown</code>, il server restituisce una versione di markdown pulita, anziché in html. La versione markdown richiede molti meno token (abbiamo misurato fino all'80% di riduzione dei token in alcuni casi) il che rende le risposte più veloci, più economiche e più probabilmente fruite nella loro interezza, dati i limiti delle finestre di contesto che la maggior parte degli strumenti degli agenti presenta per impostazione predefinita.</p>
 <p>Per impostazione predefinita, controlliamo solo se il sito gestisce correttamente la negoziazione dei contenuti markdown e non cerchiamo il file llms.txt. Puoi personalizzare la scansione per includere il file llms.txt, se lo desideri.</p>
@@ -68,7 +94,11 @@
 <p>I <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>segnali di contenuti</u></a> consentono di essere più specifici. Invece di limitarsi a consentire o bloccare, puoi dichiarare esattamente cosa può fare l'IA con i tuoi contenuti. Usando una direttiva <code>Content-Signal</code> nel tuo file <code>robots.txt</code>, puoi controllare in modo indipendente tre aspetti: se i contenuti possono essere utilizzati per l'addestramento dell'IA (<code>ai-train</code>), se possono essere utilizzati come input IA per l'inferenza e il grounding (<code>ai-input</code>), e se devono essere mostrati nei risultati di ricerca (<code>search</code>):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Inversamente, lo standard di bozza IETF <a href="https://blog.cloudflare.com/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a> consente ai bot di autenticarsi e ai siti web che ricevono richieste da bot di identificarli. Un bot firma le sue richieste HTTP e il sito ricevente verifica tali firme utilizzando le chiavi pubbliche pubblicate dal bot.</p>
 <p>Tali chiavi pubbliche si trovano in un endpoint ben noto, <code>/.well-known/http-message-signatures-directory</code>, che controlliamo come parte della scansione.</p>
@@ -110,7 +140,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Gli agenti operano al meglio quando dispongono di <a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u>Agent Skill</u></a>, ovvero competenze che li aiutano a svolgere attività specifiche: ma come possono gli agenti scoprire quali abilità offre un sito? Abbiamo proposto che i siti possano rendere queste informazioni disponibili in <a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><code><u>.well-known/agent-skills/index.json</u></code></a>, un endpoint che indica all'agente quali competenze sono disponibili e dove trovarle. Potresti notare che lo standard <code>.well-known</code> (<a href="https://datatracker.ietf.org/doc/html/rfc8615" target="_blank" rel="noopener noreferrer"><u>RFC 8615</u></a>) viene utilizzato da molti altri standard di agenti e autorizzazioni: dobbiamo ringraziare Mark Nottingham di Cloudflare, autore dello standard, e altri collaboratori dello IETF.</p>
 <p>Molti siti richiedono l'accesso. Questo rende difficile per gli umani concedere agli agenti la possibilità di accedere a questi siti per loro conto, ed è per questo motivo che alcuni hanno adottato l'approccio, discutibilmente insicuro, di concedere agli agenti l'accesso al browser web dell'utente, con la sua sessione attiva.</p>
@@ -136,7 +170,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "url": "https://www.example.com",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "options": {"agentReadiness": true}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Guidare con l'esempio: upgrade di Cloudflare Docs</h2>
 <p>Poiché stavamo creando gli strumenti per misurare la predisposizione del web, sapevamo di dover prima di tutto assicurarci che la nostra infrastruttura fosse impeccabile. La nostra documentazione deve essere facilmente comprensibile per gli agenti utilizzati dai nostri clienti.</p>

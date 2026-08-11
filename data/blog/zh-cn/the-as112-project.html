@@ -55,8 +55,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Or use the shortcut “-x” for reverse lookups</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-005cc5-99ffe4"> -x</span><span class="sk-032f62-99ffe4"> 2606:4700:58::a29f:2c2e</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-24292e-fff">  </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>16,777,216</p>
 <p>172.16.0.0/12</p>
 <p>172.16.0.0 – 172.31.255.255</p>
@@ -80,7 +102,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">;1.1.168.192.in-addr.arpa.	IN	PTR</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; AUTHORITY SECTION:</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">168.192.in-addr.arpa.	10800	IN	SOA	168.192.in-addr.arpa. nobody.localhost. 42 86400 43200 604800 10800</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">168.192.in-addr.arpa.	10800	IN	SOA	168.192.in-addr.arpa. nobody.localhost. 42 86400 43200 604800 10800</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>反向 DNS 查找是与更常用的 DNS 查找相反的过程(后者每天被用于将 <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> 这样的地址转换为对应的 IP 地址)。这种查询用于查找与给定 IP 地址相关联的域名，特别是与路由器和交换机相关联的那些地址。例如，网络管理员和研究人员使用反向查找来帮助理解数据包在网络中经过的路径，而理解有意义的名称比理解无意义的数字要容易得多。</p>
 <p>反向查找是通过向 DNS 服务器查询指针记录 (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record" target="_blank" rel="noopener noreferrer">PTR</a>)来完成的。PTR 记录中，IP 地址的各段被反向存储 ，并在末尾加上“.in-addr.arpa”。例如，IP 地址 192.0.2.1 会有一个以 1.2.0.192.in-addr.arpa 形式存储的 PTR 记录。在 IPv6 中，PTR 记录存储在 “.ip6.arpa”域内，而不是“.in-addr. Arpa”。下面是使用 dig 命令行工具进行的一些查询示例。</p>
@@ -102,7 +128,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff"> )    ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
 <span class="line"><span class="sk-24292e-fff">   ;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-1.iana.org.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-2.iana.org.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-2.iana.org.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>AS112 应运而生</h3>
 <div id="html-block-k25" class="html-block">
@@ -138,7 +168,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># zone: example.net</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">example.net.</span><span class="sk-032f62-99ffe4">		A</span><span class="sk-005cc5-ffc799">		203.0.113.2</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">bar.example.net.</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">		203.0.113.3</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">bar.example.net.</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">		203.0.113.3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>选定的 AS 编号(由美国互联网编号注册机构提供)与项目同名，即 112。它最初是由少数几家根服务器运营商发起的，随后扩大为一组志愿名称服务器运营商，其中包括很多其他组织。他们运行以上黑洞服务器任播实例，共同组成一个分布式的接收器，用于处理发送到公共互联网的私有网络和链接本地地址反向 DNS 查找。</p>
 <div id="html-block-k2f" class="html-block">
@@ -191,7 +225,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">expire</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff"> )    ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
 <span class="line"><span class="sk-24292e-fff">   ;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole.as112.arpa.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole.as112.arpa.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank" rel="noopener noreferrer">RFC 7534</a> 定义了反向查找区域的静态集合，AS112 名称服务器应该权威地应答这些反向查找区域。如下：</p>
 <div id="html-block-k31" class="html-block">
@@ -269,7 +307,11 @@
 <span class="line"><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "Cloudflare DNS, &lt;DATA_CENTER_AIRPORT_CODE&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "See http://www.as112.net/ for more information."</span></span>
-<span class="line"><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>域名服务器</p>
 <p>IPv4 地址</p>
@@ -303,7 +345,11 @@
 <span class="line"><span class="sk-24292e-fff">]</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># If the app fails to handle the query, servfail should be returned.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">fallback_action</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "fail"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">fallback_action</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "fail"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(无 DNAME，不适用)</p>
 <p>203.0.113.1</p>
@@ -326,7 +372,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @blackhole-1.iana.org</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> hostname.as112.arpa</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">"Cloudflare DNS, SFO"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"See http://www.as112.net/ for more information."</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"See http://www.as112.net/ for more information."</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>IPv6 地址</p>
 <p>blackhole.as112.arpa</p>

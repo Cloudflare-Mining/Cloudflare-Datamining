@@ -17,8 +17,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">5000-9999</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Trusted</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> addresses</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">10000-19999</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Blocking</span><span class="sk-032f62-99ffe4"> Rules</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> Bad</span><span class="sk-032f62-99ffe4"> Crawlers</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">20000-29999</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Blocking</span><span class="sk-032f62-99ffe4"> Rules</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> Abusive/Spam</span><span class="sk-032f62-99ffe4"> Users</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">20000-29999</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Blocking</span><span class="sk-032f62-99ffe4"> Rules</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> Abusive/Spam</span><span class="sk-032f62-99ffe4"> Users</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Priority is an optional field on Rules and is available as an additional control to override the default precedence mentioned above. As this is the case, Cloudflare do not apply any default priority numbers on rules, and will be left blank.</p>
 <h3>Drag and Drop Ordering</h3>
 <p>Ordering is intuitive, being literally a drag and drop placement of rules in order of execution. See below for a quick demo of how straightforward the controls are:</p>

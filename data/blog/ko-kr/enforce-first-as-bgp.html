@@ -21,8 +21,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "prefix"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "90.98.0.0/15"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "timestamp"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 1776039612.0</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "type"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "ANNOUNCE"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>저희는 AS1299 (<a href="https://www.arelion.com" target="_blank" rel="noopener noreferrer"><u>Arelion</u></a>)가 <a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank" rel="noopener noreferrer"><u>계층 1 네트워크</u></a>라는 것을 알고 있습니다. 즉, 경로 오른쪽에 있는 모든 AS가 업스트림(고객-공급자) 관계를 설명하고 있습니다. 이는 AS17072가 AS41128의 전송 공급자, AS270118의 AS17072, AS199524가 AS270118의 전송 공급자임을 의미합니다. 이러한 네트워크를 자세히 살펴보면 다음과 같습니다.</p>
 <ul>
 	<li>AS41128은 Orange France 소유의 미사용 ASN입니다</li>
@@ -107,7 +129,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">bryton</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">edge01</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">gva01&gt; show route advertising</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">protocol bgp &lt;redacted_1299_ip&gt; </span><span class="sk-005cc5-ffc799">162.159</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">82.0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff"> detail </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> grep </span><span class="sk-032f62-99ffe4">"AS path: "</span></span>
-<span class="line"><span class="sk-005cc5-fff">     AS</span><span class="sk-24292e-fff"> path</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 402542</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">13335</span><span class="sk-24292e-fff">] </span><span class="sk-6f42c1-ffc799">I</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">     AS</span><span class="sk-24292e-fff"> path</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 402542</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">13335</span><span class="sk-24292e-fff">] </span><span class="sk-6f42c1-ffc799">I</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 구성을 통한 우리의 기대 효과는 다음과 같습니다.&nbsp;</p>
 <ol>

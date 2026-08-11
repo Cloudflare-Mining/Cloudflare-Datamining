@@ -48,8 +48,30 @@
 </figure>
 <p>In dem gleichen Sinne, wie Cloudflare die IP-Adressen besitzt, auf denen die Websites unserer Kunden bereitgestellt werden, betreiben wir zehn .onion-Adressen. Stellen Sie sich diese als zehn Cloudflare Points of Presence (oder PoPs) im Tor-Netzwerk vor. Der genaue Header sieht ungefähr so aus, nur, dass alle zehn .onion-Adressen enthalten sind, von denen jede mit dem Präfix „cflare“ beginnt:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Dies gibt einfach nur an, dass der maßgebliche Zugriff auf „cloudflare.com“ mit HTTP/2 („h2“) über den Onion Service „cflare2n[....].onion“ über den virtuellen Port 443 möglich ist. Das Feld „ma“ (max-age) gibt an, wie viele Sekunden lang sich der Client an die Existenz des alternativen Dienstes erinnern soll, und „persist“ gibt an, ob der Alternative-Dienst-Cache gelöscht werden soll, wenn das Netzwerk unterbrochen wird.</p>
 <p>Sobald der Browser diesen Header erhält, versucht er, eine neue Tor-Verbindung zum im Alt-Svc-Header angebotenen Onion Service herzustellen und zu bestätigen, dass der Server, der auf dem virtuellen Port 443 lauscht, ein gültiges Zertifikat für „cloudflare.com“ vorlegen kann – d. h. für den ursprünglichen Hostnamen und nicht für die .onion-Adresse.</p>
 <p>Der Onion Service leitet dann das Client-Hello-Paket an einen lokalen Server weiter, der ein Zertifikat für „cloudflare.com“ bereitstellen kann. Auf diese Weise kann der Tor-Daemon minimalisiert werden. Hier ist eine Beispiel-Konfigurationsdatei:</p>
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServiceVersion</span><span class="sk-005cc5-ffc799"> 3</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServicePort</span><span class="sk-005cc5-ffc799"> 443</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SafeLogging</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Seien Sie vorsichtig bei der Verwendung der obigen Konfiguration, da sie eine nicht-anonyme Einstellung für Onion Services ermöglicht, die für sich selbst keine Anonymität erfordern. Zur Klarstellung: Dies beeinträchtigt nicht die Privatsphäre oder Anonymität der Tor-Benutzer, sondern nur den Server. Außerdem verbessert es die Latenzzeiten der Verbindungen.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -83,7 +109,11 @@
 <p>Denken Sie daran, dass Tor-Verbindungen zu Onion Services eine Verbindungsnummer haben, mit der wir Rate Limiting für die Verbindung betreiben können. Nun stellt sich die Frage, wie man einen Server wie nginx mit minimalem Aufwand über diese Nummer informiert. Wie sich herausgestellt hat, können wir mit nur einer <a href="https://github.com/torproject/tor/pull/343" target="_blank" rel="noopener noreferrer">kleinen Änderung</a> in der Tor-Binärdatei einen <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank" rel="noopener noreferrer">Proxy-Protokoll</a>-Header am Anfang jedes Pakets einfügen, das an den Server weitergeleitet wird. Dieses Protokoll wurde entwickelt, um TCP-Proxys zu helfen, Parameter weiterzugeben, die bei der Übersetzung verloren gehen können, zum Beispiel Quell- und Ziel-IP-Adressen. Es wird bereits von nginx, Apache, Caddy usw. unterstützt.</p>
 <p>Glücklicherweise ist der IPv6-Raum so groß, dass wir die Tor-Verbindungsnummer als IP-Adresse in einem ungenutzten Bereich kodieren und über das Proxy-Protokoll an den Server senden können. Hier ein Beispiel für den Header, den unser Tor-Daemon in die Verbindung einfügen würde:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In diesem Fall kodiert 0x1234ABCD die Verbindungsnummer in den letzten 32 Bit der Quell-IP-Adresse. Der lokale Cloudflare-Server kann diese IP dann transparent nutzen, um bei Bedarf Reputation zuzuweisen, CAPTCHAs anzuzeigen oder Anfragen zu blockieren.</p>
 <p>Obwohl Anfragen, die von einem Onion Service weitergeleitet werden, keine IP-Adresse enthalten, werden Sie in Ihren Protokollen eine IP-Adresse wie die oben angeführte mit dem Ländercode „T1“ sehen. Diese IP gibt nur die vom Onion Service gesehene Verbindungsnummer an, nicht die tatsächliche Benutzer-IP-Adresse. Tatsächlich ist 2405:8100:8000::/48 ein ungenutztes Subnetz, das Cloudflare zugewiesen ist und das wir zu diesem Zweck nicht global routen.</p>
@@ -128,7 +158,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cflaresuje2rb7w2u3w43pn4luxdi6o7oatv6r2zrfb5xvsugj35d2qd.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareer7qekzp3zeyqvcfktxfrmncse4ilc7trbf6bp6yzdabxuload.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareub6dtu7nvs3kqmoigcjdwap2azrkx5zohb2yk7gqjkwoyotwqd.onion</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Unser Dank gilt Patrick McManus von Mozilla für die Unterstützung von .onion Alternative Services in Firefox; Arthur Edelstein vom Tor-Projekt für die Überprüfung und Aktivierung von HTTP/2 und HTTP Alternative Services in Tor Browser 8.0; Alexander Færøy und George Kadianakis vom Tor-Projekt für die Unterstützung des Proxy-Protokolls in Onion Services; dem gesamten Tor-Projekt-Team für unbezahlbare Unterstützung und Diskussionen; und zu guter Letzt den vielen Leuten bei Cloudflare, die bei diesem Projekt geholfen haben.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

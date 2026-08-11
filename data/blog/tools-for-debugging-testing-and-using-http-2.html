@@ -30,8 +30,30 @@
 <h3>Command-line Tools</h3>
 <p>There's a handy command-line tool called <a href="https://github.com/stefanjudis/is-http2-cli" target="_blank" rel="noopener noreferrer">is-http</a> which is installed using npm as follows:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> is-http2-cli</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> is-http2-cli</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Once installed you can check the HTTP/2 status of a web on the command-line:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> is-http2</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
@@ -40,7 +62,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> is-http2</span><span class="sk-032f62-99ffe4"> www.amazon.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">×</span><span class="sk-032f62-99ffe4"> HTTP/2</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> supported</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> www.amazon.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Supported</span><span class="sk-032f62-99ffe4"> protocols:</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Supported</span><span class="sk-032f62-99ffe4"> protocols:</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>
 <h4>curl</h4>
@@ -80,7 +106,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./configure</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">make</span><span class="sk-032f62-99ffe4"> test</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> install</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ldconfig</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ldconfig</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once installed <code>curl</code> has a new <code>--http2</code> option that causes it to use HTTP/2 (if it can). The <code>-v</code> verbose option will show information about the use of HTTP/2:</p>
 <div class="emdash-code">
@@ -91,7 +121,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> TCP_NODELAY set</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Using Stream ID: 1 (</span><span class="sk-6f42c1-ffc799">easy</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-005cc5-ffc799"> 0xc3dba0</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>nghttp2</h4>
 <p>If you built <code>curl</code> using my instructions above you will have built and installed some tools that come with the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library. One of those is a command-line client called <code>nghttp</code>. It can be used like <code>curl</code> to download from the web using HTTP/2 but it also has a handy verbose option that shows that actual HTTP/2 frames sent and received.</p>
@@ -104,17 +138,29 @@
 <p>If you have <a href="https://golang.org/dl" target="_blank" rel="noopener noreferrer">Go 1.5.1</a> installed then you can download it as follows:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> GO15VENDOREXPERIMENT=</span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/fstab/h2c</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/fstab/h2c</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You start <code>h2c</code> running by doing <code>h2c start &amp;</code> which sets it running in the background. You can then communicate with a web server like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> /</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> disconnect</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> disconnect</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And it will perform the HTTP request. To see detailed output at the HTTP/2 you start h2c with the <code>--dump</code> parameter:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> start</span><span class="sk-005cc5-99ffe4"> --dump</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> start</span><span class="sk-005cc5-99ffe4"> --dump</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You will then get detailed output dumped by that process, in color, of the HTTP/2 frames being used.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -126,13 +172,21 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com:443</span><span class="sk-005cc5-99ffe4"> -nextprotoneg</span><span class="sk-032f62-99ffe4"> ''</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">CONNECTED(00000003</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Protocols</span><span class="sk-032f62-99ffe4"> advertised</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> server:</span><span class="sk-032f62-99ffe4"> h2,</span><span class="sk-032f62-99ffe4"> spdy/3.1,</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Protocols</span><span class="sk-032f62-99ffe4"> advertised</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> server:</span><span class="sk-032f62-99ffe4"> h2,</span><span class="sk-032f62-99ffe4"> spdy/3.1,</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There you can see that <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> support HTTP/2 (the h2), SPDY/3.1 and HTTP/1.1.</p>
 <h4>h2i</h4>
 <p>If you want to do low level HTTP/2 debugging there's an interactive client call <a href="https://github.com/golang/net/tree/master/http2/h2i" target="_blank" rel="noopener noreferrer">h2i</a>. Once again it requires that you have Go installed. To get it, run</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/golang/net/http2/h2i</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/golang/net/http2/h2i</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can then use <code>h2i</code> to connect to a site that uses HTTP/2 and send it individual HTTP/2 frames. For example, here's the start of session connecting to <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> and requesting the home page using the <code>headers</code> command which allows you to type in a standard HTTP/1.1 request.</p>
 <div class="emdash-code">
@@ -169,7 +223,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   expires</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Fri, 04 Dec 2015 14:36:15 GMT"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   cache-control</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "public, max-age=14400"</span></span>
 <span class="line"><span class="sk-24292e-fff"> [FrameHeader DATA stream</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">7261]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Load Testing</h3>
 <p>The <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library also includes a load testing tool called <a href="https://nghttp2.org/documentation/h2load.1.html" target="_blank" rel="noopener noreferrer">h2load</a> which can be used a little like <a href="https://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank" rel="noopener noreferrer">ab</a>. There's a useful <a href="https://nghttp2.org/documentation/h2load-howto.html" target="_blank" rel="noopener noreferrer">HOWTO</a> on using the tool.</p>
@@ -180,12 +238,20 @@
 <h3>Conformance</h3>
 <p>If you are testing an HTTP/2 implementation there's a useful tool called h2spec which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl" target="_blank" rel="noopener noreferrer">Go 1.5.1</a> and then do</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/summerwind/h2spec/cmd/h2spec</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/summerwind/h2spec/cmd/h2spec</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I only recommend it for testing locally running HTTP/2 servers. If you built <code>nghttp2</code> above while building <code>curl</code> you will also have the <code>nghttpd</code> HTTP/2 server available. You can run <code>h2spec</code> against it like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nghttpd</span><span class="sk-005cc5-99ffe4"> --no-tls</span><span class="sk-005cc5-99ffe4"> -D</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> /tmp</span><span class="sk-005cc5-ffc799"> 8888</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> h2spec</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 8888</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> h2spec</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 8888</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>h2spec</code> will run a battery of tests against the server and output conformance information with a reference to the relevant part of <a href="https://tools.ietf.org/html/rfc7540" target="_blank" rel="noopener noreferrer">RFC7540</a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -201,7 +267,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">name,resolves,port443Open,tlsWorks,httpsWorks,cloudflare,spdyAnnounced,http2Announced,spdyWorks,http2Works,npn</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">www.cloudflare.com,t,t,t,t,t,t,t,t,t,h2</span><span class="sk-032f62-99ffe4"> spdy/3.1</span><span class="sk-032f62-99ffe4"> http/1.1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">www.amazon.com,t,t,t,t,f,f,f,-,-,http/1.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1</span><span class="sk-032f62-99ffe4"> spdy/3</span><span class="sk-032f62-99ffe4"> http/1.1</span><span class="sk-032f62-99ffe4"> http/1.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1</span><span class="sk-032f62-99ffe4"> spdy/3</span><span class="sk-032f62-99ffe4"> http/1.1</span><span class="sk-032f62-99ffe4"> http/1.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Useful Libraries</h3>
 <p>If you are working in C and need to add HTTP/2 support to a program there's the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library that is full implementation of HTTP/2 with a simple interface. Their <a href="https://nghttp2.org/documentation/tutorial-client.html#libevent-client-c" target="_blank" rel="noopener noreferrer">HTTP/2 client tutorial</a> explains how to use the library to add HTTP/2 client capabilities. nghttp2 can also be used for <a href="https://nghttp2.org/documentation/tutorial-server.html#libevent-server-c" target="_blank" rel="noopener noreferrer">servers</a>.</p>
@@ -214,7 +284,11 @@
 <p>This is done by setting the <code>SSLKEYLOGFILE</code> environment variable before running Chrome. I'm running on Mac OS X and use Google Chrome Canary for testing so I run:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> SSLKEYLOGFILE=`</span><span class="sk-005cc5-ffc799">pwd</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">/sslkey.log</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> /Applications/Google</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Chrome</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Canary.app/Contents/MacOS/Google</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Chrome</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Canary</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> /Applications/Google</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Chrome</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Canary.app/Contents/MacOS/Google</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Chrome</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Canary</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Google Chrome will then write session keys to that file. In Wireshark I configure it to read the file by going to Preferences, expanding the Protocols list.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

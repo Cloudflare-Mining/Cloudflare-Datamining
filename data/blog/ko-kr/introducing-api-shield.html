@@ -96,8 +96,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(handleRequest(event.request</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>다음은 제출된 이전 4개와, 해당 온도에 대한 후속 판독값입니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> TEMPERATURE=</span><span class="sk-24292e-fff">$(</span><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $((</span><span class="sk-6f42c1-ffc799">361</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> RANDOM</span><span class="sk-032f62-99ffe4"> %11</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{printf("%.2f",$1/10.0)}'</span><span class="sk-24292e-fff">)</span></span>
@@ -108,7 +130,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2020-09-28T02:57:49Z</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"temperature":'''</span><span class="sk-24292e-fff">$TEMPERATURE</span><span class="sk-032f62-99ffe4">''', "time": "'''</span><span class="sk-24292e-fff">$TIMESTAMP</span><span class="sk-032f62-99ffe4">'''"}'</span><span class="sk-032f62-99ffe4"> https://shield.upinatoms.com/temps</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "&lt; HTTP/2"</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/2 201 </span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/2 201 </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>2. 클라이언트 인증서 발급</h3>
 <div class="emdash-code">
@@ -134,7 +160,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "temperature"</span><span class="sk-24292e-fff">: 36.9,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-09-28T02:27:19Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">  } </span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare API가 있으면 유효한 클라이언트 인증서를 요청하기 위해 API를 잠글 수 있습니다. 하지만 그 전에 해당 인증서를 생성해야 합니다. 인증서를 생성하려면, SSL/TLS → Cloudflare Dashboard의 클라이언트 인증서 탭에서 “인증서 생성”을 클릭하거나, API 호출로 해당 프로세스를 자동화할 수 있습니다.</p>
 <p>대부분의 개발자가 각자 자신의 개인 키와 CSR을 생성하고 API를 통해 이에 대한 서명을 요청할 것이므로, 여기에 그 프로세스를 작성해 놓았습니다. Cloudflare의 PKI 툴킷 <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a>을 사용해 먼저 iOS 응용 프로그램에 대한 부트스트랩 인증서를 생성하고 나서, IoT 장치에 대한 인증서를 생성합니다.</p>
@@ -174,7 +204,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cfssl</span><span class="sk-032f62-99ffe4"> genkey</span><span class="sk-032f62-99ffe4"> csr.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cfssljson</span><span class="sk-005cc5-99ffe4"> -bare</span><span class="sk-032f62-99ffe4"> certificate</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate-key.pem</span><span class="sk-032f62-99ffe4"> sensor-key.pem</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate.csr</span><span class="sk-032f62-99ffe4"> sensor.csr</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate.csr</span><span class="sk-032f62-99ffe4"> sensor.csr</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare에 사용자의 영역에 발행된 개인 CA로 CSR에 서명 요청하기</p>
 <div class="emdash-code">
@@ -232,7 +266,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">EOF</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">)</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: YOUR_EMAIL'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key: YOUR_API_KEY'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$request_body</span><span class="sk-032f62-99ffe4">"</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -npe</span><span class="sk-032f62-99ffe4"> 's/\\n/\n/g; s/"//g'</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> sensor.pem</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: YOUR_EMAIL'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key: YOUR_API_KEY'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$request_body</span><span class="sk-032f62-99ffe4">"</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -npe</span><span class="sk-032f62-99ffe4"> 's/\\n/\n/g; s/"//g'</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> sensor.pem</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>3. API Shield 규칙 생성</h3>
 <p>인증서가 있으면 API 엔드포인트가 인증서의 사용을 요청하도록 구성할 수 있습니다. 아래는 규칙을 생성하는 방법에 대한 적용 예시입니다.</p>
@@ -273,20 +311,32 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    r</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> requests.post</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">url,</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> json_headers,</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> payload,</span><span class="sk-032f62-99ffe4"> cert</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cert_file</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Request body: "</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> r.request.body</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Response status code: %d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> r.status_code</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Response status code: %d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> r.status_code</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>클라이언트 인증서를 전송하지 못하거나, API 요청에서 불필요한 필드를 포함하려는 시도를 한다면, 스키마 유효성 검사가 실패하고(구성이 표시되지 않음) 요청이 거절됩니다.</p>
 <p>그 대신 유효한 인증서가 제시되고 페이로드가 이전에 업로드된 스키마를 따른다면, 스크립트가 API에 최신 온도 판독값을 POST합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:52:19Z"}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 403</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 403</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>5. 모바일 응용 프로그램(iOS) 통신</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:56:45Z"}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 201</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 201</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>API 엔드포인트로 온도 요청이 전송되었으므로, 이제 클라이언트 인증서 중 하나를 사용해 모바일 응용 프로그램에서 이를 안전하게 읽을 수 있습니다.</p>
 <p>간략함을 위해 PKCS#12 파일로써 "부트스트랩" 인증서와 키를 응용 프로그램 번들 내에 포함할 것입니다. 실제 배포에서 이 부트스트랩 인증서는 사용자의 자격 증명과 더불어 고유한 사용자 인증서를 반환할 수 있는 API 엔드포인트를 인증하기 위해서만 사용해야 합니다. 기업 사용자는 추가 제어 및 지속적인 옵션을 위한 MDM을 사용하여 인증서를 배포하기를 바랄 것입니다.</p>
@@ -296,7 +346,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> pkcs12</span><span class="sk-005cc5-99ffe4"> -export</span><span class="sk-005cc5-99ffe4"> -out</span><span class="sk-032f62-99ffe4"> bootstrap-cert.pfx</span><span class="sk-005cc5-99ffe4"> -inkey</span><span class="sk-032f62-99ffe4"> ios-key.pem</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> ios.pem</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Verifying</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Verifying</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>XCode에서 File(파일) → Add Files To "[Project Name]"("[프로젝트명]"에 파일 추가)를 클릭하고 .pfx 파일을 선택합니다. "Add to target(대상에 추가)"에 체크하고 확인합니다.</p>
 <h4><strong>URLSession 코드가 클라이언트 인증서를 사용하도록 수정하기</strong></h4>

@@ -9,8 +9,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> (</span></span>
 <span class="line"><span class="sk-24292e-fff">	Version   </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "2015.6.2-6-gfd7e2d1-dev"</span></span>
 <span class="line"><span class="sk-24292e-fff">	BuildTime </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "2015-06-16-0431 UTC"</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>and was used to embed version information in RRDNS. It was built inside the Makefile using <code>sed</code> and <code>git describe</code> from a template file. It worked, but was pretty ugly.</p>
 <p>Today we noticed that another Go team at CloudFlare, the <a href="https://blog.cloudflare.com/tag/data">Data</a> team, had <strong>a much smarter way to bake version numbers into binaries using the <code>-X</code> linker option</strong>.</p>
 <p>The <code>-X</code> <a href="https://golang.org/cmd/ld" target="_blank" rel="noopener noreferrer">Go linker option</a>, which you can set with <code>-ldflags</code>, sets the value of a string variable in the Go program being linked. You use it like this: <code>-X main.version 1.0.0</code>.</p>
@@ -24,14 +46,22 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-24292e-fff">    fmt.</span><span class="sk-6f42c1-ffc799">Printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, who)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then you can use <code>go run</code> (or other build commands like <code>go build</code> or <code>go install</code>) with the <code>-ldflags</code> option to modify the value of the <code>who</code> variable:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> hello.go</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> World.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> -ldflags=</span><span class="sk-032f62-99ffe4">"-X main.who CloudFlare"</span><span class="sk-032f62-99ffe4"> hello.go</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> CloudFlare.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> CloudFlare.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The format is <code>importpath.name string</code>, so it's possible to set the value of any string anywhere in the Go program, not just in main. Note that from Go 1.5 the syntax has <a href="https://tip.golang.org/cmd/link" target="_blank" rel="noopener noreferrer">changed</a> to <code>importpath.name=string</code>. The old style is still supported but the linker will complain.</p>
 <p>I was worried this would not work with external linking (<a href="https://docs.google.com/document/d/1nr-TQHw_er6GOQRsF6T43GGhFDelrAP0NqSS_00RgZQ/view" target="_blank" rel="noopener noreferrer">for example when using cgo</a>) but as we can see with <code>-ldflags="-linkmode=external -v"</code> the Go linker runs first anyway and takes care of our <code>-X</code>.</p>
@@ -65,6 +95,10 @@
 <span class="line"><span class="sk-6f42c1-ffc799">33619</span><span class="sk-032f62-99ffe4"> symbols</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">64</span><span class="sk-032f62-99ffe4"> sizeof</span><span class="sk-032f62-99ffe4"> adr</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">216</span><span class="sk-032f62-99ffe4"> sizeof</span><span class="sk-032f62-99ffe4"> prog</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">23412</span><span class="sk-032f62-99ffe4"> liveness</span><span class="sk-032f62-99ffe4"> data</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">23412</span><span class="sk-032f62-99ffe4"> liveness</span><span class="sk-032f62-99ffe4"> data</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Do you want to work next to Go developers that can always make you learn a new trick? <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">We are hiring in London, San Francisco and Singapore</a>.</em></p>

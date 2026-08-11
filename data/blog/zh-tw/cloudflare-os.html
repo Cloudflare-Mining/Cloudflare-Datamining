@@ -1,0 +1,169 @@
+<p>每個組織都有其使命，都有其存在的理由。組織將其使命，及其術語、程序、系統、標準和工作方式，傳達給他們的員工。人們則可結合這些關聯內容與自己的經驗，朝著使命努力。</p>
+<p>工作可以有多種形式，從程式碼、文件和投影片，到人際關係，再到實體世界的成果。</p>
+<p>其中一些工作很簡單：程式碼要麼執行，要麼不執行。智慧體在過去幾年中一直使用這個回饋循環，來產生對開發人員「有效」的程式碼。那其他人呢？</p>
+<p>將同樣的優勢推廣到組織的其他部門則是更難的問題。智慧體需要瞭解公司的關聯內容，並且能夠進入人們用於完成其任務的系統。他們需要將該關聯內容與存取權，轉化為推動組織朝使命邁進的工作。</p>
+<p>為此我們打造了 Cloudflare OS：該平台為每個人提供了一個圍繞其公司運作建置的智慧體和工作區：運作方式、知識體系，及其依賴的系統。</p>
+<p>今年五月，我們賦予 Cloudflare 每一位員工第一版 Cloudflare OS 的存取權。成千上萬來自各個職能部門的人員，其中許多人並非工程人員，每天都在使用該平台來建立文件和投影片、自動化重複性任務，以及建置小型應用程式來視覺化資料並協作他們完成工作。</p>
+<p>此外，Cloudflare OS 還為所有人提供了一個由 Cloudflare 團隊建置的共用內容庫和技能庫。該平台可擷取我們的術語、程序，以及完成重複性工作的最佳方法，來作為智慧體可遵循的指示。當一個人找到更好的做事方法時，其他人都可以使用這種方法。</p>
+<p><strong>今天，我們將推出新版開放原始碼<a href="https://os.cloudflare.app" target="_blank" rel="noopener noreferrer"> <u>Cloudflare OS</u></a>。</strong>任何組織皆能部署該平台、連線至內部系統，並進行定製。</p>
+<h2><strong>從第一版中學到的經驗</strong></h2>
+<p>今天推出的開放原始碼 Cloudflare OS 基於我們從內部執行第一版平台所學到的經驗，我們的 CIO Sam Rhea 在他的<a href="https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os" target="_blank" rel="noopener noreferrer">​<u>部落格文章</u></a>中詳細介紹了這段旅程。</p>
+<p>第一版專注於個人透過私人工作區與智慧體互動。應用程式是靜態的，而非與內部系統連線的即時軟體，大多數確定性任務仍需再次執行智慧體技能，並且消耗更多的模型權杖。</p>
+<p>協作暴露出一個更根本的挑戰。存取<a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"> <u>MCP 伺服器</u></a>告訴我們智慧體可以調用哪些工具，但無法確定智慧體觀察到了哪些底層資源。當人們開始共用工作區、應用程式和輸出時，我們需要確保協作不會洩露未經授權可見的資訊。</p>
+<p>為了解決這些問題，我們基於全新的基礎架構重建了 Cloudflare OS。安全性必須是平台的組成部分，而非每個開發應用程式或使用智慧體的人都必須正確實作的內容。</p>
+<p>最終打造出專為執行該平台的公司量身設計的專屬平台。您可自訂介面、連線您的工具，以及新增技能和關聯內容，進而擷取組織的運作方式。</p>
+<h2><strong>隆重推出 Cloudflare OS</strong></h2>
+<p>與許多其他 AI 工具一樣，Cloudflare OS 從瀏覽器中的對話開始。其不同之處在於每個對話都以您組織精選的關聯內容和技能為基礎。給您的工作區設定一個目標，這樣就能利用這些知識，並與您的組織已經使用的工具和資料協同工作來實現這個目標。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAApqrhqa3asrTNu73MwcTZv8TjuLzfrrDQq7PmsbjiwMTaz9Lc19ro1NjvyMvpubvZsLvtucLqzdTo4OXt6u/35ur81trzw8Xjsr/zvMjy0tvx5+748ff/7fP/2+H7x8vrsL73ucb2zdf14en66vL/5u7/1t/+w8vuq7n6sr73wcvz0Nn21+L/1OD/x9X9ucfuprP7qrb2s73vvcfwws/5wND/t8r6rsHspLD7prL2rbfttL/tuMb3tsj+sMX5qb/r" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1536&amp;h=1024&amp;f=webp" data-lightbox-width="1536" data-lightbox-height="1024" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare OS 由三個部分組成：</p>
+<ul>
+	<li><strong>智慧體工作區</strong>，基於您的公司精心挑選的關聯內容和技能，以及一個獨立的執行階段，智慧體可在其中編寫和執行程式碼。</li>
+	<li><strong>全新的安全和治理架構</strong>，用於安全存取內部資料和服務。</li>
+	<li><strong>適用於個人化和可修改應用程式的平台</strong>，讓人們可以建置、共用和不斷做出變更。</li>
+</ul>
+<p>對話可以發展成文件、應用程式或工作流程，並持續完成工作。</p>
+<h2><strong>為公司全體員工打造的智慧體工作區</strong></h2>
+<p>智慧體工作區的設計旨在供組織內的所有成員使用。您可在瀏覽器中與之互動，因此不需要成為開發者或知道如何使用終端。&nbsp;</p>
+<p>工作區結合了智慧體工作階段、持久性狀態、輸出和檔案、資源存取，以及智慧體可編寫和執行程式碼的隔離式執行階段。</p>
+<p>其中搭載了您的團隊或公司所收集的精選內容和技能。不必再為每項任務重新發明輪子，如果團隊中有人找到了完成某項任務的最佳方法，每個人都能受益。人們不再需要在每次開始一項任務時，都向模型解釋相同的程序、術語和最佳做法。</p>
+<p>您可以進行的一些事項：</p>
+<h3><strong>研究並提問</strong></h3>
+<p>請工作區利用公司關聯內容和您提供的資源，對某個主題進行研究。智慧體可以編寫程式碼來搜尋、篩選、聯結和分析資訊，而非將整個資料集導入模型的關聯內容視窗。</p>
+<div id="html-block-pha9fwt1p" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/14e59c9739c9a30ebf84533ffe89bce1/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F14e59c9739c9a30ebf84533ffe89bce1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h3><strong>建立文件、投影片和試算表</strong></h3>
+<p>工作區可將其研究轉化為您可繼續編輯的文件、簡報或試算表。這些輸出不必是靜態檔案。它們可以與即時資料保持連線，隨著資料來源的變更而更新，並且仍可匯出為熟悉的格式或服務，例如 Google Drive。</p>
+<div id="html-block-1pt1e4txj" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/fe42a895850f5a3e09ea315cc967b9c2/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Ffe42a895850f5a3e09ea315cc967b9c2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h3><strong>為您的團隊建立協作、互聯式應用程式</strong></h3>
+<p>若文件或試算表不足以滿足需求，智慧體可建置具有自身介面、邏輯和狀態的應用程式。該應用程式可利用公司內部資源，並支援多人協同工作。</p>
+<div id="html-block-aawssba3o" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/590a675011b831acca6e39a3808a547d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F590a675011b831acca6e39a3808a547d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h3><strong>執行確定性工作流程&nbsp;</strong></h3>
+<p>並非每項任務都需要完整的智慧體工作階段。許多任務都是一連串已知的步驟，其中只有一、兩個地方需要做出判斷。工作區可將這些任務轉化為基本確定性的工作流程，對可預測的步驟使用程式碼，而僅在模型能夠增加價值的地方使用模型。工作流程可隨需執行、依排程執行，或在連線系統中發生事件時執行。</p>
+<div id="html-block-n7nnyzqws" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3422a15e3cb34c8817b0741e0e025054/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F3422a15e3cb34c8817b0741e0e025054%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>Cloudflare OS 透過 Gatekeepers 提供智慧體和應用程式對記錄系統的受控存取（請參閱以下安全性部分瞭解更多資訊）。此外還支援您的組織透過<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"> <u>MCP 伺服器入口網站</u></a>使用的現有<a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro" target="_blank" rel="noopener noreferrer">​<u>模型上下文通訊協定 (MCP)</u></a>伺服器。</p>
+<h2><strong>新的安全性與治理框架可讓內部資料和服務的存取更安全</strong></h2>
+<p>當人們開始在工作中試驗 AI 時，他們的第一個請求通常是獲取公司系統的 API 金鑰。這是合理的：若 AI 無法存取人們日常工作中使用的系統，那麼它在工作中幾乎沒有用處。</p>
+<p>但將 API 金鑰交給他人和智慧體是危險的，且無法擴展。金鑰通常提供廣泛且持久的存取權，難以限制、安全共用，以及稽核。</p>
+<p>MCP 為智慧體帶來了使用系統更好的方法。MCP 伺服器可保存憑證並公開一組定義的工具，而不是直接將金鑰交給智慧體。但控制智慧體可調用哪些工具只是第一步。僅依賴 MCP 無法得知智慧體觀察到哪些基礎資源。智慧體可整合不同系統的資訊，將其傳送至限制較少之處，或者透過應用程式和輸出，展示給可能無權查看原始資源的人。授權必須考慮到資料接下來可能流向何處。</p>
+<h3><strong>智慧體一開始沒有任何存取權</strong></h3>
+<p><a href="https://developers.cloudflare.com/cloudflare-one/access-controls" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> 可控制誰能夠進入 Cloudflare OS。在內部，每個智慧體和應用程式一開始都沒有任何存取權。智慧體可以要求存取特定資源，您可授予或拒絕該存取權。生成的程式碼將該資源作為類型化繫結來接收：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> issues</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">PROJECT</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">listIssues</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  teamId: </span><span class="sk-032f62-99ffe4">"ENG"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  state: </span><span class="sk-032f62-99ffe4">"open"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p><code>env.PROJECT</code> 是一項功能，表示依據特定原則使用特定資源的權限。憑證保持完全與智慧體和任何生成的程式碼隔離。</p>
+<p>伺服器程式碼在 Dynamic Worker 中執行，且已停用全球傳出聯網功能。用戶端程式碼在瀏覽器中的沙盒框架中執行。除非透過您明確提供的功能，否則無法連線至網際網路。</p>
+<h3><strong>Gatekeeper 管理資源與動作</strong></h3>
+<p>Gatekeeper 是一種服務特定<a href="https://developers.cloudflare.com/workers/?_gl=1*1pzndf6*_gcl_au*MzM2MDkxNTQzLjE3ODQ4NDczOTM.*_ga*MWVkZWU3OTctMzJjNC00YWE1LWI2ZDUtZTJkNTY1NzYxYWQ0*_ga_SQCRB0TXZW*czE3ODUyMTk3NjMkbzckZzAkdDE3ODUyMTk3NjMkajYwJGwwJGgwJGRQeHAyTUEtdzgtVUFETUEzOGwtVFVhajVDd2laRWYxSC1R" target="_blank" rel="noopener noreferrer"> <u>Worker</u></a>，位於 Cloudflare OS 與外部服務之間。它瞭解服務的 API、其資源以及可執行的操作。</p>
+<p>授予智慧體對您整個 GitHub 帳戶的存取權可能過於寬泛。Gatekeeper 可授予其單一儲存庫的存取權，允許其閱讀問題而非原始程式碼，遮蔽特定欄位，施加速率限制，並要求在合併提取請求之前獲得核准。</p>
+<p>智慧體及其應用程式會看到一個小型 TypeScript API。Gatekeeper 可處理<a href="https://www.cloudflare.com/learning/access-management/what-is-oauth" target="_blank" rel="noopener noreferrer"> <u>OAuth</u></a>，保存憑證，強制執行原則，記錄已讀內容，以及調解任何具有外部可見副作用的操作。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/z99vf57O3v6Ons7e7x8vP17+/w5ubm9/v/8PX55Onv3+Xs5evx7vL27fDz5efo9Pv/7PX83efx1+Lt4Orz6/P67fL25ens9v//7vj/3ur11+Xx4e347vf+8Pf76e3x////+P//6fP84+747PX+9v7/9/3/8PT2////////+f7/9Pr/+v//////////+fr7////////////////////////////////////////////////////////////////" alt="" width="715" height="413" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=640&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=750&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=828&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1080&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1280&amp;h=739&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1430&amp;h=826&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1920&amp;h=1109&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1109" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="413" class="pt-portable-image-media"></div>
+</figure>
+<h3><strong>原則遵循智慧體已見過的內容</strong></h3>
+<p>控制最初的讀取是不夠的。例如，在某種情況下，智慧體讀取資料倉儲中的敏感資料表，並用其製作即時儀表板。共用儀表板不得成為與無法直接存取者共用資料表的一種方式。</p>
+<p>Cloudflare OS 可記錄每個資源智慧體觀察到的情況。這些觀察結果保持附加於智慧體及其工作。若其他人試圖開啟工作區、與智慧體互動或檢視其產生的內容，Gatekeeper 會驗證該人對所觀察資源的存取權。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////+vv77/Hy6e3u7fHy8vX37/Lz5+jp/////f798fPz6u3v7vHz8/X38fP06uvq////////9PX27O/x7vH09Pb48/X27e7t////////9vj57vH08PP39vj79vj58PLx////////+Pv98PT48vb79/v/+Pv88vT0////////+f3/8vf89Pr/+f7/+f3/8/b4////////+f//8/n+9vz/+///+v//8/f6////////+f//8/r/9v3/+///+v//8/f7" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1920&amp;h=1244&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1244" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<p>相同的觀察記錄用於指導原則，確定智慧體何時可提出外部請求。讀取敏感資料可能會阻止智慧體將資料寫入特定來源，邀請新的協作者，將工作交給其他智慧體，或者發出外部請求。</p>
+<p>使用智慧體或建置應用程式的人員不必擔心犯下這些錯誤。平台現在可用於處理此問題。</p>
+<h2><strong>建置並共用個人可修改應用程式的平台</strong></h2>
+<p>大多數生產力套件為您提供一套固定的應用程式：文件、試算表和簡報。在 Cloudflare OS 中，每個「檔案」都可以是自己的應用程式，由智慧體為某個人、一個專案或一個團隊撰寫。</p>
+<p>這些並非需要匯出並部署到其他地方的原型。每個檔案都是完整堆疊應用程式，包含用戶端程式碼、伺服器程式碼、API 和持久性狀態。應用程式預設為私有，但可像文件一樣共用。</p>
+<h3><strong>每一個應用程式都是 Worker</strong></h3>
+<p>當您要求工作區建置應用程式時，智慧體會撰寫兩個部分：</p>
+<ul>
+	<li>客戶端程式碼，用於在瀏覽器中渲染應用程式的 UI</li>
+	<li>伺服器程式碼，用於儲存狀態並實作應用程式的行為</li>
+</ul>
+<p>伺服器隨需載入為<a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"> <u>Dynamic Worker</u></a>，並具現化為<a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"> <u>Durable Object Facet</u></a>（兩者都是我們針對此專案開發的功能）。Facet 為應用程式提供了一個獨立的 SQLite 資料庫，與管理它的 Cloudflare OS 執行階段分開。動態 Workers 使用輕量級 V8 隔離，以便每一個應用程式都能擁有自己的獨立執行階段，而無需專用伺服器或容器。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//////778/Lx7Ozr7+/u9PTz8/Lw7Ovo////+vv77e/x5ejr6Ovv7fDz7e7w5+jo/P7/9vj86Ozy3+Xt4efw5+z05+vx4uXp/P//9fn/5+323ubx4Oj05u345+z14ubt////+v7/7PL74+v35e366/L+7PH75+vy////////9fn/7PL87/X/9fv/9fn/7/L4/////////P//9Pn/+Pz//v///f//9vj9////////////+Pv/+///////////+fv/" alt="" width="715" height="421" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=715&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=640&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=715&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=750&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=828&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1080&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1280&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1430&amp;h=842&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 5.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1920&amp;h=1131&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1131" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="421" class="pt-portable-image-media"></div>
+</figure>
+<p>瀏覽器用戶端使用<a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"> <u>Cap’n Web</u></a> 與伺服器進行通訊，這是 Cloudflare 的開放原始碼物件功能遠端程序調用 (RPC) 系統。可以像調用普通的 JavaScript 函數一樣從用戶端調用伺服器方法：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> issues</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> app.</span><span class="sk-6f42c1-ffc799">listIssues</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff"> status: </span><span class="sk-032f62-99ffe4">"done"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>特別之處在於智慧體也可以調用相同的方法。</p>
+<p><strong>因此，如果您能自己建置一個工具來完成某項任務，那麼當您不在場時，智慧體就可以使用您的工具來完成這項任務。</strong></p>
+<h3><strong>共用應用程式，或共用其建置方式</strong></h3>
+<p>當您在 Cloudflare OS 中建置應用程式時，有兩種方式可與他人共用：</p>
+<ul>
+	<li>共用您的應用程式本身，可讓其他人在相同狀態下即時協作。</li>
+	<li>共用應用程式的藍圖，可讓其他人建立其自己的應用程式副本。</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9Pb57/Hz5efn4eLi5ebo6ert5efp3N3d+fv+9Pb56u3t5efo5+rt6+3y6Oru4OLj////+/3/8fT06+7v7O/z7/H47O/05unq////////+fz88/b38/b79fj/8/b87fDy////////////+v3++v3//P//+v3/9fj4/////////////////////////////P7+////////////////////////////////////////////////////////////////" alt="" width="715" height="284" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=640&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=750&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=828&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1080&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1280&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1430&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 6.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1920&amp;h=764&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="764" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="284" class="pt-portable-image-media"></div>
+</figure>
+<p>從藍圖具現化的應用程式包含原始應用程式的程式碼。但其中不含其 SQLite 資料、對話歷程記錄、憑證或連線的資源。每個新的應用程式都從獨立的狀態和資源開始。</p>
+<p>這意味著當您與團隊共用應用程式時，他們可使用 AI 自行修改，而不是提交功能請求並指派給您。</p>
+<h2><strong>使用任何模型並控制其成本</strong></h2>
+<p>Cloudflare OS 可用於任何模型。每次推斷調用都會透過<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"> <u>Cloudflare AI Gateway</u></a> 執行，讓您的組織能夠在一處決定哪些模型可用，以及哪個模型應處理每項任務。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+fv79Pb26evu4+bp5uns6+7v6uzs5OXk/f7/9/n66+7x4+js5erv6+/y6+7v5efn/////P7/7/L15evw5u3z6/L37PH06Ovr////////9Pj76/H26/L47/b88PX57O/w////////+///8vj88vn+9vz/9vr98fP1////////////+///+////v///P//9vj5////////////////////////////+fr8////////////////////////////+vv8" alt="" width="715" height="332" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=640&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=750&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=828&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1080&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1280&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1430&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 7.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1920&amp;h=891&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="891" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="332" class="pt-portable-image-media"></div>
+</figure>
+<p>並非所有任務都需要最昂貴的模型。您可能不希望每天早晨執行最昂貴的前沿模型，來總結未讀郵件。AI Gateway 授予您所需的控制權，以確保昂貴的模型僅用於最困難的工作。</p>
+<p>每項請求都歸因於提出請求的人、團隊或工作區。管理員可查看推斷支出去向，設定預算和速率限制，以及決定達到限制時的處理方式。</p>
+<h2><strong>開放原始碼，讓您擁有控制權</strong></h2>
+<p>Cloudflare OS 目前已發布，並且採用開放原始碼。請查看<a href="https://github.com/cloudflare/cloudflare-os" target="_blank" rel="noopener noreferrer"> <u>cloudflare-os GitHub 儲存庫</u></a>。您可將其部署至自己的 Cloudflare 帳戶中，並使用您自己的 Access 原則、AI Gateway 設定、資料和整合項。</p>
+<p>我們的內部部署反映了 Cloudflare 的系統、術語、政策及運作方式。您的則應反映您的組織。</p>
+<p>Cloudflare OS 的設計讓您能夠自訂介面、新增內部 Gatekeeper，以及建置符合組織特定需求的功能，同時不變更核心產品。</p>
+<p>我們將發布兩個儲存庫：<a href="https://github.com/cloudflare/cloudflare-os" target="_blank" rel="noopener noreferrer"> <u>Cloudflare OS 核心</u></a>和基於 Cloudflare 內部執行方式的<a href="https://github.com/cloudflare/cloudflare-os-starter" target="_blank" rel="noopener noreferrer">​<u>範例部署</u></a>。部署儲存庫會取用核心而不進行修補，提供一個設定、自訂 UI、內部整合項、分析和部署管道的空間。</p>
+<h2><strong>與我們的合作夥伴共同交付</strong></h2>
+<p>原始程式碼只是起點。關聯內容、技能、工作流程、內部系統和原則讓 Cloudflare OS 對您的組織更加有用。</p>
+<p>Cloudflare 的策略合作夥伴 Presidio 和 Happy Cog 將與您合作，依據您的組織的運作方式來自訂 Cloudflare OS，並在全體員工中推行。</p>
+<p>合作夥伴可協助您策管共用技能和機構關聯內容、建立自訂介面、透過 Gatekeepers 和 MCP 伺服器入口網站連線內部系統，以及設定安全性、模型和成本控制。</p>
+<p>您將獲得自己的品牌化 Cloudflare OS，該平台不但能連線至您的系統，還能在 Cloudflare 上執行，並依據您的員工的工作方式量身定製。</p>
+<h2><strong>開始使用</strong></h2>
+<p>Cloudflare OS 目前已在<a href="https://github.com/cloudflare/cloudflare-os" target="_blank" rel="noopener noreferrer"> <u>GitHub</u></a> 上推出。您可探索原始程式碼、試用示範，或將其部署至您自己的 Cloudflare 帳戶，只需幾分鐘即可使用我們的<a href="https://github.com/cloudflare/cloudflare-os-starter" target="_blank" rel="noopener noreferrer">​<u>入門儲存庫</u></a>。</p>
+<p>我們才剛剛開始。我們正在努力將 Cloudflare OS 作為全受管產品引入 Cloudflare 儀表板，新增用於開發工作流程的容器，並將工作區引入 Slack 和其他聊天工具。</p>
+<p>如果您有興趣與我們的團隊交流，我們非常樂意與您溝通。請使用<a href="https://www.cloudflare.com/resource/cloudflare-os-interest-landing-page" target="_blank" rel="noopener noreferrer">​<u>此表單</u></a>與我們聯繫！</p>

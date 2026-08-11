@@ -140,8 +140,30 @@
 <span class="line"><span class="sk-22863a-ffc799">        key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb</span></span>
 <span class="line"><span class="sk-22863a-ffc799">        objects</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">        - </span><span class="sk-22863a-ffc799">key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"*"</span></span>
-<span class="line"><span class="sk-22863a-ffc799">    access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">    access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>ドメインスコープ指定ポリシーのあるBach DNSユーザーロール</h3>
 <p>(読みやすいように若干の修正を加えています）</p>
 <p>ユーザーの権限を1つの明示的なゾーンのみに限定すると、主に2つの違いが見られます。まず、権限が大幅に削減されます。これは、従来のアカウントをスコープしたロールが付与する、多くのアカウントレベルのリソースの読み取りや一覧表示へのアクセスをユーザーに与えないためです。付与されるアカウントレベルの権限は、<em>account.read</em>、_subscriptions.read_および_subscriptions.list_だけです。これらの権限は、ユーザーがダッシュボードを使用できるようにするために必要です。ダッシュボードでアカウントを表示する場合、表示されるアカウントレベルの製品はドメインのみです。Cloudflare WorkersやZero Trustなど、その他の製品は非表示になります。</p>
@@ -176,7 +198,11 @@
 <span class="line"><span class="sk-22863a-ffc799">      key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb</span></span>
 <span class="line"><span class="sk-22863a-ffc799">      objects</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">      - </span><span class="sk-22863a-ffc799">key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f</span></span>
-<span class="line"><span class="sk-22863a-ffc799">  access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">  access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>次に、リソースグループのスコープセクションで、ゾーンについて明示的に言及されているのが見受けられます（行X： &nbsp;<code>com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f</code>）。これは、ポリシーに記載されたゾーン権限が、その特定のゾーンにのみ適用されることを意味します。そのゾーンの他の機能にアクセスしようとしたり、他のゾーンのDNSを変更しようとしたりすると、Cloudflareによって拒否されます。</p>
 <h2>次は何を？</h2>

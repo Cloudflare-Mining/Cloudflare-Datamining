@@ -60,28 +60,62 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com:443</span><span class="sk-005cc5-99ffe4"> -servername</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span><span class="sk-005cc5-99ffe4"> -tls1_2</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> 2&gt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -noout</span><span class="sk-005cc5-99ffe4"> -text</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> egrep</span><span class="sk-032f62-99ffe4"> "DNS:|Signature Algorithm:"</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-005cc5-99ffe4"> -n2</span></span>
 <span class="line"><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-032f62-99ffe4"> Algorithm:</span><span class="sk-032f62-99ffe4"> ecdsa-with-SHA256</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h4>Emulating a browser that supports TLS 1.2 and SHA-2 but only RSA (not ECDSA)</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com:443</span><span class="sk-005cc5-99ffe4"> -servername</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span><span class="sk-005cc5-99ffe4"> -tls1_2</span><span class="sk-005cc5-99ffe4"> -sigalgs</span><span class="sk-032f62-99ffe4"> RSA+SHA256</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> 2&gt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -noout</span><span class="sk-005cc5-99ffe4"> -text</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> egrep</span><span class="sk-032f62-99ffe4"> "DNS:|Signature Algorithm:"</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-005cc5-99ffe4"> -n2</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-032f62-99ffe4"> Algorithm:</span><span class="sk-032f62-99ffe4"> sha256WithRSAEncryption</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com`</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Emulating a legacy browser that supports TLS 1.1, SHA-2, and SNI</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com:443</span><span class="sk-005cc5-99ffe4"> -servername</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span><span class="sk-005cc5-99ffe4"> -tls1_1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> 2&gt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -noout</span><span class="sk-005cc5-99ffe4"> -text</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> egrep</span><span class="sk-032f62-99ffe4"> "DNS:|Signature Algorithm:"</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-005cc5-99ffe4"> -n2</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-032f62-99ffe4"> Algorithm:</span><span class="sk-032f62-99ffe4"> sha256WithRSAEncryption</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Emulating a legacy browser that supports only TLS 1.0 and SHA-1 (no SNI)</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com:443</span><span class="sk-005cc5-99ffe4"> -tls1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> 2&gt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -noout</span><span class="sk-005cc5-99ffe4"> -text</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> egrep</span><span class="sk-032f62-99ffe4"> "DNS:|Signature Algorithm:"</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-005cc5-99ffe4"> -n2</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-032f62-99ffe4"> Algorithm:</span><span class="sk-032f62-99ffe4"> sha1WithRSAEncryption</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">DNS:cloudflare.com,</span><span class="sk-032f62-99ffe4"> DNS:www.cloudflare.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Special Thanks</h3>
 <p>Thank you to Zi Lin and Nick Sullivan for their assistance in designing, implementing, deploying, and testing our certificate optimization logic.</p>

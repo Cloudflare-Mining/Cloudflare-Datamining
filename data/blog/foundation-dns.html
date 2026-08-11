@@ -40,15 +40,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-2028.awsdns-61.co.uk.</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">205.251.199.236</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-917.awsdns-50.net.</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>All nameserver IPs are part of <code>205.251.192.0/21</code>. Thankfully, <a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing" target="_blank" rel="noopener noreferrer">AWS is now signing their ranges</a> through <a href="https://isbgpsafeyet.com/#what-is-rpki" target="_blank" rel="noopener noreferrer">RPKI</a> and this makes it less likely to leak… provided that the resolver ISP is validating RPKI. But if the resolver ISP does not validate RPKI and should this subnet be leaked or hijacked, resolvers wouldn’t be able to reach any of the nameservers and aws.com would become unresolvable.</p>
 <p>It goes without saying that Cloudflare signs all of our routes and are <a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">pushing the rest of the Internet</a> to minimize the impact of route leaks, but what else can we do to ensure that our DNS systems remain resilient through route leaks while we wait for RPKI to be ubiquitously deployed?</p>
 <p>Today, when you’re using Cloudflare DNS on the Free, Pro, Business or Enterprise plan, your domain gets two nameservers of the structure <code>&lt;name&gt;.ns.cloudflare.com</code> where <code>&lt;name&gt;</code> is a random first name.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> isbgpsafeyet.com</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tom.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, as we learned before, in order for a domain to be available, its nameservers have to be available. This is why each of these nameservers resolves to 3 anycast IPv4 and 3 anycast IPv6 addresses.</p>
 <div class="emdash-code">
@@ -60,7 +86,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> tom.ns.cloudflare.com</span><span class="sk-032f62-99ffe4"> aaaa</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2606:4700:58::adf5:3b93</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2803:f800:50::6ca2:c193</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The essential detail to notice here is that each of the 3 IPv4 and 3 IPv6 addresses is from a different /8 IPv4 (/45 for IPv6) block. So in order for your nameservers to become unavailable via IPv4, the route leak would have to affect exactly the corresponding subnets across all three /8 IPv4 blocks. This type of event, while theoretically is possible, is virtually impossible in practical terms.</p>
 <h3>How can this be further improved?</h3>

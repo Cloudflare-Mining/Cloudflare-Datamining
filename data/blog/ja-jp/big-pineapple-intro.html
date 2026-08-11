@@ -55,8 +55,30 @@
 <p>再帰ライブラリは、クエリーで答えを見つける方法を知っているので、BigPineappleのDNSの頭脳と言えます。ルートから始まり、クライアントのクエリーをサブクエリーに分解し、それを使ってインターネット上の様々な権威あるネームサーバーから再帰的に知識を収集します。その成果物が「答え」です。async/awaitのおかげで、以下のような関数として抽象化できます：</p>
 <p>この関数には、与えられたリクエストに対するレスポンスを生成するために必要なロジックがすべて含まれていますが、それ自体ではI/Oを行いません。その代わりに、上流の権威あるネームサーバと非同期にDNSメッセージを交換する方法を知っているExchangerトレイト（Rustインターフェイス）を渡します。Exchangerは通常、さまざまなawaitポイントで呼び出されます。たとえば、再帰が始まるとき、最初に行うことの1つは、そのドメインに最も近いキャッシュされたデリゲートを検索することです。最終的なデリゲートがキャッシュにない場合は、このドメインに責任を持つネームサーバーを尋ね、それ以上の処理を行う前に応答を待つ必要があります。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>この設計のおかげで、「いくつかの応答を待つ」部分を再帰的なDNSロジックから切り離すことができ、Exchangerのモック実装を提供することでテストがより簡単になります。さらに、再帰的反復コード（特にDNSSECの検証ロジック）は、多くのコールバックに散らばっているのではなく、順次書かれているため、より読みやすくなっています。</p>
 <p>楽しい事実：DNS再帰性リゾルバーをゼロから書くのは、まったく楽しくありません！</p>
 <p>これは、DNSSEC検証の複雑さだけでなく、様々なRFC非互換のサーバー、フォワーダー、ファイアウォールなどに必要な「回避策」のためです。そこで、私たちは<a href="https://github.com/CZ-NIC/deckard" target="_blank" rel="noopener noreferrer">deckard</a>をRustに移植し、テストに役立てました。さらに、この新しい非同期再帰ライブラリへの移行を開始したとき、まず「シャドウ」モードで実行し、本番サービスから実際のクエリーのサンプルを処理し、違いを比較しました。これはCloudflareの権威あるDNSサービスでも過去に実施したことがあります。再帰的なサービスでは、インターネット上のすべてのデータを検索する必要があるため、再帰的なサービスの方が若干難しく、権威あるネームサーバーでは、ローカライズや負荷分散などの理由で同じクエリーに対して異なる答えを出すことが多く、多くの偽陽性をしばしば引き起こします。</p>
@@ -93,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostOk</span><span class="sk-24292e-fff">  =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Ready,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostEof</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Pending,</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これらの複雑なものはすべて、使いやすいAPIを備えたゲスト非同期ランタイムにカプセル化されているため、ゲストアプリは根本的な詳細を気にすることなく、通常のasync関数にアクセスすることができます。</p>
 <h2>終わりに（でも進化は続きます）</h2>

@@ -73,8 +73,30 @@
 <span class="line"><span class="sk-24292e-fff">            },</span></span>
 <span class="line"><span class="sk-24292e-fff">        });</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>또한 수학 문제 풀이(<code>deepseek-math-7b-instruct</code>), SQL 코드 생성(<code>sqlcoder-7b-2</code>), 텍스트 요약(<code>bart-large-cnn</code>), 이미지 자막 달기(<code>uform-gen2-qwen-500m</code>) 등 다양한 전문 작업과 사용 사례를 지원하는 새로운 모델을 Workers AI에 추가했습니다.</p>
 <p>개발을 시작할 수 있도록 이러한 기능을 일반에 공개하고 싶었지만, 앞으로 몇 주에 걸쳐 더 많은 데모와 튜토리얼 콘텐츠를 공개할 예정입니다. Cloudflare <a href="https://twitter.com/CloudflareDev" target="_blank" rel="noopener noreferrer">X 계정</a> 및 <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">개발자 문서</a>를 통해 새로운 모델 사용 방법을 자세히 알아보시기 바랍니다.</p>
 <h3>모델 카탈로그 최적화</h3>

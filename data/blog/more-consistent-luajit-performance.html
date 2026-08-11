@@ -7,8 +7,30 @@
 <span class="line"><span>Running luacheck: ..............................</span></span>
 <span class="line"><span>  Mean: 1.120762 +/- 0.030216, min 1.004843, max 1.088270</span></span>
 <span class="line"><span>Running fannkuch_redux: ..............................</span></span>
-<span class="line"><span>  Mean: 0.128499 +/- 0.003281, min 0.119500, max 0.119847</span></span></code></pre>
+<span class="line"><span>  Mean: 0.128499 +/- 0.003281, min 0.119500, max 0.119847</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Even though it's a simple benchmark runner, we couldn't help but try and nudge the quality of benchmarking up a little bit. In essence, the runner runs each separate benchmark in a new sub-process; and within that sub-process it runs each benchmark in a loop a number of times (what we call <em>in-process iterations</em>). Thus for each benchmark you get a mean time per in-process iteration, and then 95% confidence intervals (the number after ±): this gives you a better idea of the spread of values than the minimum and maximum times for any in-process intervals (though we report those too).</p>
 <p>The third thing we set out to do was to understand the relative performance of the various Lua implementations out there now. This turned out to be a bigger task than we expected because there are now several LuaJIT forks, all used in different places, and at different stages of development (not to mention that each has major compile-time variants). We eventually narrowed things down to the <a href="https://github.com/LuaJIT/LuaJIT" target="_blank" rel="noopener noreferrer">original LuaJIT repository</a> and <a href="https://github.com/raptorjit/raptorjit" target="_blank" rel="noopener noreferrer">RaptorJIT</a>. We than ran an experiment (based on a slightly extended version of the methodology from our <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6" target="_blank" rel="noopener noreferrer">VM warmup paper</a>), with with 1500 “process executions” (i.e. separate, new VM processes) and 1500 “in-process iterations” (i.e. the benchmark in a for loop within one VM process). Here are the benchmark results for the original version of LuaJIT:</p>
 <h2>Results for luaJIT</h2>

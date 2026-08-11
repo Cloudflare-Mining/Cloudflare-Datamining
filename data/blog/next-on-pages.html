@@ -8,8 +8,30 @@
 <h2>Deploy your Next.js app to Cloudflare Pages</h2>
 <p>Let’s walk through an example, creating a new Next.js application that opts into this Edge Runtime and deploying it to Cloudflare Pages.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> create-next-app@latest</span><span class="sk-032f62-99ffe4"> my-app</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> create-next-app@latest</span><span class="sk-032f62-99ffe4"> my-app</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This will create a new Next.js app in the <code>my-app</code> folder. The default template comes with a traditional Node.js powered API route, so let's update that to instead use the Edge Runtime.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// pages/api/hello.js</span></span>
@@ -30,7 +52,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  )</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Thanks to the Edge Runtime adopting the Web API standards, if you've ever written a Cloudflare Worker before, this might look familiar.</p>
 <p>Next, we can update the global <code>next.config.js</code> configuration file to use the Edge Runtime. This will enable us to use <a href="https://nextjs.org/docs/api-reference/data-fetching/get-server-side-props" target="_blank" rel="noopener noreferrer">the <code>getServerSideProps()</code> API</a> and server-side render (SSR) our webpages.</p>
@@ -45,7 +71,11 @@
 <span class="line"><span class="sk-24292e-fff">  reactStrictMode: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  swcMinify: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> nextConfig</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> nextConfig</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we're ready to deploy the project. Publish it to a GitHub or GitLab repository, create a new Pages project, and select "Next.js" from the list of framework presets. This will configure your project to use <a href="https://github.com/cloudflare/next-on-pages" target="_blank" rel="noopener noreferrer">the <code>@cloudflare/next-on-pages</code> CLI</a> which builds and transforms your project into something we can deploy on Pages. Navigate to the project settings and add an environment variable, <code>NODE_VERSION</code> set to <code>14</code> or greater, as well as the following compatibility flags: <code>streams_enable_constructors</code> and <code>transformstream_enable_standard_constructor</code>. You should now be able to deploy your Next.js application. If you want to read more, you can find a detailed guide in <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site" target="_blank" rel="noopener noreferrer">our documentation</a>.</p>
 <h2>How it runs on Cloudflare Pages</h2>
@@ -93,7 +123,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> _ENTRIES[</span><span class="sk-032f62-99ffe4">'some_function'</span><span class="sk-24292e-fff">].default.</span><span class="sk-6f42c1-ffc799">call</span><span class="sk-24292e-fff">(request);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The script contains everything that's needed to deploy this function, and most of the logic exists in these webpack chunks, but that means that each function has a lot of code shared with its siblings. Quickly, you'll reach the 1MB limit, if you naively deployed all these functions together.</p>
 <p>Our <code>@cloudflare/next-on-pages --experimental-minify</code> CLI argument deals with this problem by analyzing webpack chunks which are re-used in multiple places in this <code>.vercel/output/functions</code> directory and extracts out that code to a common place. This allows our compiler (esbuild) to efficiently combine this code, without duplicating it in all of these places. This process is experimental for the time being, while we look to make this as efficient as possible, without introducing any bugs as a result. Please <a href="https://github.com/cloudflare/next-on-pages/issues" target="_blank" rel="noopener noreferrer">file an issue on GitHub</a> if you notice any difference in behavior when using <code>--experimental-minify</code>.</p>

@@ -8,8 +8,30 @@
 <p>The Cloudbleed bug was triggered when a page with two characteristics was requested through Cloudflare's network. The two characteristics were: 1) the HTML on the page needed to be broken in a specific way; and 2) a particular set of Cloudflare features needed to be turned on for the page in question.</p>
 <p>The specific HTML flaw was that the page had to end with an unterminated attribute. In other words, something like:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">IMG HEIGHT</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"50px"</span><span class="sk-24292e-fff"> WIDTH</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"200px"</span><span class="sk-24292e-fff"> SRC</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">IMG HEIGHT</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"50px"</span><span class="sk-24292e-fff"> WIDTH</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"200px"</span><span class="sk-24292e-fff"> SRC</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here's why that mattered. When a page for a particular customer is being parsed it is stored in memory on one of the servers that is a part of our infrastructure. Contents of the other customers' requests are also in adjacent portions of memory on Cloudflare's servers.</p>
 <p>The bug caused the parser, when it encountered unterminated attribute at the end of a page, to not stop when it reached the end of the portion of memory for the particular page being parsed. Instead, the parser continued to read from adjacent memory, which contained data from other customers' requests. The contents of that adjacent memory was then dumped onto the page with the flawed HTML.</p>
 <p>The screenshot above is an example of how data was dumped on pages. Most of the data was random binary data which the browser is trying to interpret as largely Asian characters. That is followed by a number of internal Cloudflare headers.</p>
@@ -71,7 +93,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      0</span><span class="sk-032f62-99ffe4"> Credit</span><span class="sk-032f62-99ffe4"> Cards</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-032f62-99ffe4"> Bitcoin</span><span class="sk-032f62-99ffe4"> Addresses</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      0</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Records</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      0</span><span class="sk-032f62-99ffe4"> Social</span><span class="sk-032f62-99ffe4"> Security</span><span class="sk-032f62-99ffe4"> Numbers</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      0</span><span class="sk-032f62-99ffe4"> Customer</span><span class="sk-032f62-99ffe4"> Encryption</span><span class="sk-032f62-99ffe4"> Keys</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">      0</span><span class="sk-032f62-99ffe4"> Customer</span><span class="sk-032f62-99ffe4"> Encryption</span><span class="sk-032f62-99ffe4"> Keys</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The above can be read to mean that in any given leak you would expect to find 67.54 Cloudflare internal headers. You’d expect to find a cookie in approximately half of all leaks (0.44 cookies per leak). We did not find any passwords, credit cards, health records, social security numbers, or customer encryption keys in the sample set.</p>
 <p>Since this is just a sample, it is <em>not correct</em> to conclude that no passwords, credit cards, health records, social security numbers, or customer encryption keys were ever exposed. However, if there was any exposure, based on the data we’ve reviewed, it does not appear to have been widespread. We have also not had any confirmed reports of third parties discovering any of these sensitive data types on any cached pages.</p>
@@ -93,7 +119,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        100M</span><span class="sk-032f62-99ffe4"> –</span><span class="sk-032f62-99ffe4"> 250M</span><span class="sk-005cc5-ffc799">                 11</span><span class="sk-032f62-99ffe4"> –</span><span class="sk-005cc5-ffc799"> 25</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         50M</span><span class="sk-032f62-99ffe4"> –</span><span class="sk-032f62-99ffe4"> 100M</span><span class="sk-005cc5-ffc799">                  6</span><span class="sk-032f62-99ffe4"> –</span><span class="sk-005cc5-ffc799"> 11</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">          10M</span><span class="sk-032f62-99ffe4"> –</span><span class="sk-032f62-99ffe4"> 50M</span><span class="sk-005cc5-ffc799">                   1</span><span class="sk-032f62-99ffe4"> –</span><span class="sk-005cc5-ffc799"> 6</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">              &lt;</span><span class="sk-6f42c1-ffc799"> 10M</span><span class="sk-d73a49-a0a0a0">                     &lt;</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">              &lt;</span><span class="sk-6f42c1-ffc799"> 10M</span><span class="sk-d73a49-a0a0a0">                     &lt;</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>More than 99% of Cloudflare’s customers send fewer than 10 million requests per month. At that level, probabilistically we would expect that they would have no data leaked during the period the bug was present. For further context, the 100th largest website in the world is estimated to handle fewer than 10 billion requests per month, so there are very few of Cloudflare’s 6 million customers that fall into the top bands of the chart above. Cloudflare customers can find their own RPM by logging into the Cloudflare Analytics Dashboard and looking at the number of requests per month for their sites.</p>
 <p>The statistics above assume that each leak contained only one customer’s data. That was true for nearly all of the leaks we reviewed from search engine caches. However, there were instances where more data may have been leaked. The probability table above should be considered just an estimate to help provide some general guidance on the likelihood a customer’s data would have leaked.</p>

@@ -8,11 +8,37 @@
 <p>The list of available ciphersuites varies from browser to browser and from version to version. The University of Hannover has a little web site that will show you which ciphersuites your web browser supports. To use it just visit <a href="https://cc.dcsec.uni-hannover.de" target="_blank" rel="noopener noreferrer">https://cc.dcsec.uni-hannover.de/</a>.</p>
 <p>For my browser, the latest version of Google Chrome, the list of suites is as follows. The order gives the web browser's preference for ciphersuites. For example, it would prefer to use</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ECDHE-ECDSA-AES256-SHA</span><span class="sk-24292e-fff"> </span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ECDHE-ECDSA-AES256-SHA</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>instead of</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ECDHE-RSA-AES256-SHA.</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ECDHE-RSA-AES256-SHA.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ECDHE-ECDSA-AES256-SHA<br>ECDHE-RSA-AES256-SHA<br>DHE-RSA-CAMELLIA256-SHA<br>DHE-DSS-CAMELLIA256-SHA<br>DHE-RSA-AES256-SHADHE-DSS-AES256-SHA<br>ECDH-RSA-AES256-SHAECDH-ECDSA-AES256-SHARSA-CAMELLIA256-SHA<br>RSA-AES256-SHAECDHE-ECDSA-RC4128-SHA<br>ECDHE-ECDSA-AES128-SHA<br>ECDHE-RSA-RC4128-SHA<br>ECDHE-RSA-AES128-SHA<br>DHE-RSA-CAMELLIA128-SHA<br>DHE-DSS-CAMELLIA128-SHA<br>DHE-DSS-RC4128-SHA<br>DHE-RSA-AES128-SHA<br>DHE-DSS-AES128-SHA<br>ECDH-RSA-RC4128-SHA<br>ECDH-RSA-AES128-SHA<br>ECDH-ECDSA-RC4128-SHA<br>ECDH-ECDSA-AES128-SHA<br>RSA-SEED-SHA<br>RSA-CAMELLIA128-SHA<br>RSA-RC4128-SHA<br>RSA-RC4128-MD5<br>RSA-AES128-SHA<br>ECDHE-ECDSA-3DES-EDE-SHA<br>ECDHE-RSA-3DES-EDE-SHA<br>DHE-RSA-3DES-EDE-SHA<br>DHE-DSS-3DES-EDE-SHA<br>ECDH-RSA-3DES-EDE-SHAECDH-ECDSA-3DES-EDE-SHA<br>RSA-FIPS-3DES-EDE-SHA<br>RSA-3DES-EDE-SHA</p>
 <p>Each web server will have a similar list of ciphersuites and during the TLS handshake (at the start of a TLS connection) the client and server will agree on a ciphersuite that they both understand taking into account the order of preference of the client and server.</p>
@@ -53,7 +79,11 @@
 <p>85 B8 D6 6B C7 51</p>
 <p>To encrypt SECRET the keystream is XORed with the word SECRET byte by byte and the result, 06 D1 B1 E9 AE D5, is transmitted.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">        S</span><span class="sk-032f62-99ffe4">  E</span><span class="sk-032f62-99ffe4">  C</span><span class="sk-032f62-99ffe4">  R</span><span class="sk-032f62-99ffe4">  E</span><span class="sk-032f62-99ffe4">  T</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">        S</span><span class="sk-032f62-99ffe4">  E</span><span class="sk-032f62-99ffe4">  C</span><span class="sk-032f62-99ffe4">  R</span><span class="sk-032f62-99ffe4">  E</span><span class="sk-032f62-99ffe4">  T</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Message: 83 69 67 82 69 84<br>Keystream: 85 B8 D6 6B C7 51<br>XOR -----------------<br>Ciphertext: 06 D1 B1 E9 AE D5</p>
 <p>(This XOR technique dates all the way back to 1919 with the <a href="https://en.wikipedia.org/wiki/Vernam_cipher" target="_blank" rel="noopener noreferrer">Vernam Cipher</a>; read the Wikipedia article for a basic introduction to the use of XOR in ciphers. RC4 itself, of course, is much more recent.)</p>

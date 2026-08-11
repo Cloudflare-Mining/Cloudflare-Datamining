@@ -5,8 +5,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    groups </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [g] </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (n</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">g)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> e </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> range</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, n </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff"> g):</span></span>
-<span class="line"><span class="sk-24292e-fff">        groups[e </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-005cc5-ffc799"> len</span><span class="sk-24292e-fff">(groups)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        groups[e </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-005cc5-ffc799"> len</span><span class="sk-24292e-fff">(groups)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>1行目は <code>n//g</code> （<code>//</code> は整数の除算）サイズ <code>g</code> の行列を算出します（たとえば、 <code>g == 4</code> 、 <code>n == 17</code> は、 <code>groups == [4, 4, 4, 4]</code>になります）。 「<code>for</code> ループ」は、「余り」でグループのサイズ gで割り切れなかったものを扱います。たとえば、<code>g == 4</code>、<code>n == 17</code> の場合は <code>[4、4、4、 4]</code> のどこかに「余り1」を加える必要があり、最終的にグループは [5, 4, 4, 4]になります。</p>
 <p>「 <code>e % len(groups)</code>」が必要なのは、等しい数でグループに分けた時に、余りの方が、算出されたgroupsエントリーよりも大きい場合があるからです。たとえば、 <code>g == 4</code>、 <code>n == 11</code> の場合は、groups は最初は <code>[4, 4]</code> になりますが、余りが「 <code>3</code>」になってしまい、それをたった2つの <code>groups</code>エントリーに分けなければなりません。</p>
 <p>それで、上記のコードが機能し、以下に示すのが様々なサイズの &nbsp;<code>n</code> (そして &nbsp;<code>g == 4</code>)のアウトプットです。</p>
@@ -24,14 +46,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    14</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">5,</span><span class="sk-032f62-99ffe4"> 4]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    15</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">5,</span><span class="sk-032f62-99ffe4"> 5]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    16</span><span class="sk-24292e-fff"> [4, </span><span class="sk-032f62-99ffe4">4,</span><span class="sk-032f62-99ffe4"> 4,</span><span class="sk-032f62-99ffe4"> 4]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    17</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">4,</span><span class="sk-032f62-99ffe4"> 4,</span><span class="sk-032f62-99ffe4"> 4]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    17</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">4,</span><span class="sk-032f62-99ffe4"> 4,</span><span class="sk-032f62-99ffe4"> 4]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>しかし、このコードには苛立ちを感じました。なぜなら、私は各グループにいくつの要素（elements）があるべきかを理解するための簡単な式が必要だと感じたからです。この問題についてしばらく頭を悩ませた後、よく役立つ解決方法をここでも使ってみることにしました。問題をシンプルで単純なものにする、もしくは、少なくともソリューションをシンプルで単純なものにすることです。そこで、以下のようなコードを書きました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    groups</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [0] </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> range</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        groups[i</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">groups</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">]</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        groups[i</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">groups</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">]</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これは本当に簡単な実装です。私はこれがn 回ループするため好きではないのですが、視覚化するのを助けてくれます。たとえば、 <code>g == 4</code>と <code>n == 17</code>を考えてみます。このループは、グループの各エントリーを次のように埋めていきます（四角はグループの中のエントリーを表し、四角の中にある数字は、ループによって増加するi値を表します）。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -41,7 +71,11 @@
 <p>そして、グループは最終的に <code>[5, 4, 4, 4]</code>になります。これで視覚化されたのは、 <code>groups[i]</code>が何回増加したかは、i番目の要素で何回forループが、「ループ」しなければならなかったかによるということです。これは、ループを使用しなくても簡単に計算することができます。</p>
 <p>というわけで、コードは以下のようなシンプルなものになりました。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    groups</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [1+max(0,n-(i+1))//(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> range</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">)]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    groups</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [1+max(0,n-(i+1))//(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> range</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">)]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>私にとっては、この方がもっと満足するものでした。 <code>n//g</code>はグループのサイズで、これがループがグループの各エントリーをアップデートする回数を決めます。各エントリーは1 <code>+ max(0, n-(i+1))//(n//g)</code>.のようにセットされます。これを次のように考えることができます：</p>
 <p>1. &nbsp; 1は、グループのエントリーに最初に置く要素です。</p>

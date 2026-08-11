@@ -18,8 +18,30 @@
 </ul>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">package</span><span class="sk-032f62-99ffe4"> main:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">helloscript.go:1:1:</span><span class="sk-032f62-99ffe4"> illegal</span><span class="sk-032f62-99ffe4"> character</span><span class="sk-032f62-99ffe4"> U+0023</span><span class="sk-032f62-99ffe4"> '#'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">helloscript.go:1:1:</span><span class="sk-032f62-99ffe4"> illegal</span><span class="sk-032f62-99ffe4"> character</span><span class="sk-032f62-99ffe4"> U+0023</span><span class="sk-032f62-99ffe4"> '#'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank" rel="noopener noreferrer">La publicación</a> describe varias posibles soluciones para los problemas planteados, incluso la utilización de un <a href="https://github.com/erning/gorun" target="_blank" rel="noopener noreferrer">gorun</a> de un programa wrapper personalizado como intérprete, pero ninguno de ellos no proporciona una solución ideal. Usted tienen que hacer alguna de estas dos cosas:</p>
 <ul>
 	<li>utilizar la línea de shebang no estándar, que comienza con //. Esto técnicamente ni siquiera es una línea de shebang, sino la forma en que una shell de bash procesa los archivos de texto ejecutables, de manera que esta solución es específica de bash. Además, debido al comportamiento específico de go run, esta línea es bastante compleja y no es obvia (ver la <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank" rel="noopener noreferrer">publicación original</a> para obtener ejemplos).</li>
@@ -33,13 +55,21 @@
 <p>Sigamos <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank" rel="noopener noreferrer">la documentación</a> e intentemos configurar una descripción de formato binario para archivos .go. En primer lugar, la guía le indica montar el sistema de archivos especialbinfmt_misc en /proc/sys/fs/binfmt_misc. Si utiliza una distribución de Linux basada en systemd relativamente reciente, es muy probable que el sistema de archivos ya esté montado, porque el systemd predeterminado instala unidades especiales <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.mount" target="_blank" rel="noopener noreferrer">montadas</a> y <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.automount" target="_blank" rel="noopener noreferrer">montadas automáticamente</a> con este propósito. Para hacer un comprobación minuciosa, simplemente ejecute:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mount</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> binfmt_misc</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">systemd-1</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> /proc/sys/fs/binfmt_misc</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> autofs</span><span class="sk-24292e-fff"> (rw,relatime,fd=27,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">systemd-1</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> /proc/sys/fs/binfmt_misc</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> autofs</span><span class="sk-24292e-fff"> (rw,relatime,fd=27,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Otra forma es comprobar si usted tiene algún archivo en &nbsp;<code>/proc/sys/fs/binfmt_misc</code>: el sistema de archivosbinfmt_misccorrectamente montado creará al menos dos archivos especiales conregistro de nombres &nbsp;y estadoen ese directorio.</p>
 <p>A continuación, como queremos que nuestros scripts <code>.go</code> puedan pasar de manera adecuada el código de salida al sistema operativo, necesitamos el wrapper personalizado <a href="https://github.com/erning/gorun" target="_blank" rel="noopener noreferrer">gorun</a> como nuestro “intérprete”.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/erning/gorun</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> ~/go/bin/gorun</span><span class="sk-032f62-99ffe4"> /usr/local/bin/</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> ~/go/bin/gorun</span><span class="sk-032f62-99ffe4"> /usr/local/bin/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Técnicamente, no necesitamos mover gorun a /usr/local/bin o a cualquier otra ruta del sistema como binfmt_misc que en todos los casos necesita una ruta completa al intérprete, pero el sistema puede hacer correr este ejecutable con privilegios arbitrarios, por lo que se sugiere limitar el acceso al archivo desde el punto de vista de la seguridad.</p>
 <p>En este punto, crearemos un simple toy script de Gohelloscript.go y verificaremos si podemos “interpretarlo” correctamente. El script:</p>
@@ -64,7 +94,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> s </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "fail"</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">		os.</span><span class="sk-6f42c1-ffc799">Exit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">30</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Verificar si el paso de parámetros y el control de errores funcionan según lo previsto:</p>
 <div class="emdash-code">
@@ -79,13 +113,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gorun</span><span class="sk-032f62-99ffe4"> helloscript.go</span><span class="sk-032f62-99ffe4"> fail</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> fail!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-005cc5-a0a0a0"> $?</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">30</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">30</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ahora tenemos que indicarle al módulobinfmt_misccómo ejecutar nuestros archivos .gocon gorun. Luego de <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank" rel="noopener noreferrer">la documentación</a> necesitamos esta cadena de configuración: :golang:E::go::/usr/local/bin/gorun:OC, que básicamente le indica al sistema: “si se encuentra un archivo ejecutable con extensión .go, se debe ejecutar con el intérprete /usr/local/bin/gorun”. Las marcasOCal final de la cadena se aseguran de que el script se ejecutará de acuerdo con la información del propietario y los bits de permiso establecidos en el propio script, y no los establecidos en el binario del intérprete. Esto hace que el comportamiento de ejecución de los scripts Go sea el mismo que el del resto de los archivos ejecutables y scripts de Linux.</p>
 <p>Registremos nuestro nuevo formato binario de script Go:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> ':golang:E::go::/usr/local/bin/gorun:OC'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /proc/sys/fs/binfmt_misc/register</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">:golang:E::go::/usr/local/bin/gorun:OC</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">:golang:E::go::/usr/local/bin/gorun:OC</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Si el sistema ha registrado correctamente el formato, debe aparecer un nuevo archivo <code>golang</code> en el directorio <code>/proc/sys/fs/binfmt_misc</code>. Por último, podemos ejecutar nuestros archivos <code>.go</code>:</p>
 <div class="emdash-code">
@@ -97,7 +139,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./helloscript.go</span><span class="sk-032f62-99ffe4"> fail</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> fail!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-005cc5-a0a0a0"> $?</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">30</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">30</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>¡Eso es todo! Ahora podemos editar helloscript.go según más nos agrade y ver que los cambios se harán visibles de inmediato la próxima vez que se ejecute el archivo. Además, a diferencia del enfoque shebang anterior, podemos compilar este archivo en cualquier momento, en un archivo ejecutable real con go build.</p>
 <hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">

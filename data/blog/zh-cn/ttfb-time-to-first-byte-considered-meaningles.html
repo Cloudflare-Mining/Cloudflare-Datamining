@@ -8,8 +8,30 @@
 <p>在CloudFlare，我们大量地使用着nginx，而在调查TTFB时，使用或不使用压缩的情况下来自nginx的TTFB存在显着差异。网页的Gzip压缩大大减少了网页下载所需的时间，但压缩本身需要付出代价。尽管网页的完整下载更快了，但压缩的成本也导致TTFB更大。</p>
 <p>为了说明此情况，我们采用了最大的维基百科页面（<a href="http://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank" rel="noopener noreferrer">高级龙与地下城第二版怪物列表</a>）并分别使用开启和不开启gzip压缩的nginx服务。下表显示了打开和关闭压缩情况下的TTFB和总下载时间。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">                      |</span><span class="sk-6f42c1-ffc799">  TTFB</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">  Page</span><span class="sk-032f62-99ffe4"> loaded</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">                      |</span><span class="sk-6f42c1-ffc799">  TTFB</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">  Page</span><span class="sk-032f62-99ffe4"> loaded</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>请注意，如果使用gzip压缩，页面下载速度会提高5倍，但TTFB却高出8倍。那是因为nginx在发送HTTP头之前需要等待压缩开始; 当压缩关闭时，它才会立即发送请求头。因此，如果只看TTFB，你就会觉得压缩页面并不好。但是如果看下载时间，你会得到相反的结论。</p>
 <p>从最终用户的角度来看，TTFB几乎没用。在这个（实际）示例中，实际上TTFB与下载时间负相关：TTFB越大，下载时间越快。我们发现，如果我们使用nginx源代码，我们可以作假，而且快速地发送请求头。这样做能够让我们的TTFB即使压缩了页面也不会显得太长，但我们不会这样做：使用nginx源代码使得TCP<a href="https://blog.cloudflare.com/why-mobile-performance-is-difficult">慢速启动</a>时会浪费掉一个有价值的数据包，这会影响终端用户体验。这个行为可能会让CloudFlare在某些测试中看起来很好，但实际上却影响了终端用户的体验。</p>
 <p>也许TTFB的唯一用处是用于观察趋势。并且=最好在服务器本身进行TTFB测量，这样就消除了网络延迟。通过研究其趋势，我们可以发现Web服务器上是否存在问题（例如当它变得过载）。</p>

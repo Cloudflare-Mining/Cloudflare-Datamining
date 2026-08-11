@@ -13,8 +13,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Transfer-Encoding:</span><span class="sk-032f62-99ffe4"> chunked</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Connection:</span><span class="sk-032f62-99ffe4"> keep-alive</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/images/drucken.jp</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">image</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/images/empire.jp</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">image</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/images/empire.jp</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">image</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>At the bottom are the two <code>Link</code> headers corresponding to the two images on the page with the <code>rel=preload</code> directive as specified in W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer">preload draft</a>.</p>
 <p>The complete code can be found in this <a href="https://gist.github.com/jgrahamc/df91229381366105c7ff0f88c8c38485" target="_blank" rel="noopener noreferrer">gist</a> but the core of the code looks like this:</p>
 <div class="emdash-code">
@@ -46,13 +68,21 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    ?&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    &lt;/</span><span class="sk-005cc5-fff">body</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;/</span><span class="sk-005cc5-fff">html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;/</span><span class="sk-005cc5-fff">html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Since you have to call the PHP <code>header</code> function before any output (such as HTML) has occurred the code makes two calls to a helper function called <code>pushImage</code> first. <code>pushImage</code> adds the appropriate <code>Link</code> header and returns the HTML needed to insert the actual image in the page.</p>
 <p>Later the variables <code>$image1</code> and <code>$image2</code> (which contain the HTML needed to display the images) is inserted use two other helper functions (<code>ccbysa</code> and <code>ccbynd</code>) that add captions. Those two helper functions don't play any part in the Server Push, they just ensure that the HTML is placed correctly on the page with a caption.</p>
 <p>Notice that the <code>Link</code> header is added as follows:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">header(</span><span class="sk-6f42c1-ffc799">"Link: &lt;{</span><span class="sk-24292e-fff">$uri</span><span class="sk-6f42c1-ffc799">}&gt;; rel=preload; as=image"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-99ffe4"> false</span><span class="sk-24292e-fff">);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">header(</span><span class="sk-6f42c1-ffc799">"Link: &lt;{</span><span class="sk-24292e-fff">$uri</span><span class="sk-6f42c1-ffc799">}&gt;; rel=preload; as=image"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-99ffe4"> false</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>false</code> second parameter tells <code>header</code> to <em>not</em> override an existing <code>Link</code> header. With that option specified multiple <code>Link</code> headers can be added. Without it the last call to <code>pushImage</code> would win.</p>
 <h2>Effect of Server Push</h2>
@@ -146,7 +176,11 @@
 <span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910410</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 199]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_DATA</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1369</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The web browser sends an <code>HTTP2_SESSION_SEND_HEADERS</code> request asking for the web page (that's the first item above) and subsequently receives the response headers and page followed immediately by two push promises for the two images. It then immediately starts receiving image data (see the <code>stream_id</code> 2).</p>
 <p>CloudFlare's web server is pushing the image contents before the browser asked for them. When CloudFlare pushes an item specified in a <code>Link</code> header the header itself is stripped (to prevent the browser from re-requesting the resource).</p>

@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "max_tokens": 2400,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "stream": true</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  }'</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>重新设计的异步 API</h3>
 <p>无服务器推理确实非常困难。采用按词元付费的商业模式，按单个请求计算的成本更便宜，因为无需为整个 GPU 付费来处理请求。但这也带来一些弊端：您必须应对其他用户的流量和容量限制，并且无法保证您的请求一定会得到处理。这不是 Workers AI 独有的问题，鉴于频繁报道的与服务商过载以及服务中断相关的事件，这显然是无服务器模型提供商普遍存在的问题。虽然 Cloudflare 始终致力于服务客户请求，并内置自动扩展和重新平衡功能，但某些硬性限制（例如硬件）使这成为一个挑战。</p>
 <p>对于超出同步速率限制的请求量，可以提交批量推理任务，以异步方式完成。Cloudflare 推出了经过改进的异步 API，这意味着对于异步用例，您不会遇到容量不足错误，并且推理任务将在某个时点持久执行。我们的异步 API 更像是灵活处理，而不是批处理 API。只要模型实例还有足够的容量空间，我们就会处理异步队列中的请求。内部测试表明，我们的异步请求通常在 5 分钟内执行，但实际执行时间取决于实际流量情况。随着我们在 Cloudflare 产品中正式推出 Kimi 模型，我们将相应地调整扩展能力，但异步 API 是确保您在持久工作流中不会遇到容量错误的最佳方式。这非常适合非实时用例，例如代码扫描智能体或研究智能体。</p>
@@ -85,7 +107,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(res); </span><span class="sk-6a737d-8b8b8b94">// This will contain the final completed response </span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>立即试用</h2>
 <p>立即在 Workers AI 上开始使用 Kimi K2.5。您可以阅读我们的开发人员文档，了解<a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>模型信息和定价</u></a>，以及如何通过<a href="https://developers.cloudflare.com/workers-ai/features/prompt-caching" target="_blank" rel="noopener noreferrer"><u>会话亲和性请求头</u></a>和<a href="https://developers.cloudflare.com/workers-ai/features/batch-api" target="_blank" rel="noopener noreferrer"><u>异步 API</u></a> 来充分利用提示词缓存。<a href="https://github.com/cloudflare/agents-starter" target="_blank" rel="noopener noreferrer"><u>Agents SDK starter</u></a> 现在也使用 Kimi K2.5 作为其默认模型。您还可以<a href="https://opencode.ai/docs/providers" target="_blank" rel="noopener noreferrer"><u>通过 Opencode 连接到 Workers AI 上的 Kimi K2.5</u></a>。如需体验实时演示，请在我们的 <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Playground</u></a> 中尝试。</p>

@@ -31,11 +31,37 @@
 <span class="line"><span class="sk-032f62-99ffe4">            'image'</span><span class="sk-24292e-fff">: Image.fromarray(np.random.randint(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">256</span><span class="sk-24292e-fff">, (</span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">), np.uint8)),</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            'class'</span><span class="sk-24292e-fff">: np.random.randint(</span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-24292e-fff">        out.write(sample)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        out.write(sample)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Schließlich können Sie die Daten auf jedem Gerät lesen, das Lesezugriff auf Ihren R2-Bucket hat. Sie können einzelne Stichproben abrufen, eine Schleife über den Datensatz laufen lassen und ihn in einen standardmäßigen PyTorch-Datenlader einspeisen.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> aws</span><span class="sk-032f62-99ffe4"> s3</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> path-to-dataset</span><span class="sk-032f62-99ffe4"> s3://my-bucket/folder</span><span class="sk-005cc5-99ffe4"> --endpoint-url</span><span class="sk-24292e-fff"> $S3_ENDPOINT_URL</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> aws</span><span class="sk-032f62-99ffe4"> s3</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> path-to-dataset</span><span class="sk-032f62-99ffe4"> s3://my-bucket/folder</span><span class="sk-005cc5-99ffe4"> --endpoint-url</span><span class="sk-24292e-fff"> $S3_ENDPOINT_URL</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>StreamingDataset bietet von Haus aus eine hohe Performance, elastischen Determinismus, schnelle Wiederaufnahme und Unterstützung für mehrere Mitarbeiter. Es verwendet außerdem intelligentes Shuffling und Verteilung, um sicherzustellen, dass die Download-Bandbreite minimiert wird. Bei einer Vielzahl von Workloads wie LLMs und Diffusionsmodellen haben wir festgestellt, dass es keine Auswirkungen auf den Durchsatz an Trainingsdaten gibt (kein Engpass im Datenlader), wenn das Training aus Objektspeichern wie R2 erfolgt. Weitere Informationen finden Sie im <a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset" target="_blank" rel="noopener noreferrer">Blog-Beitrag zur Ankündigung</a> von StreamingDataset!</p>
 <div class="emdash-code">
@@ -60,7 +86,11 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">cls</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> sample[</span><span class="sk-032f62-99ffe4">'class'</span><span class="sk-24292e-fff">]</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Create PyTorch DataLoader</span></span>
-<span class="line"><span class="sk-24292e-fff">dataloader </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> DataLoader(dataset)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">dataloader </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> DataLoader(dataset)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Lesen/Schreiben von Modell-Checkpoints in R2 mit Composer</h3>
 <p>Das Einspeisen von Daten in Ihre Trainingsschleife löst die Hälfte des Problems, aber wie laden/speichern Sie Ihre Modell-Checkpoints? Wenn Sie eine Trainingsbibliothek wie <a href="https://github.com/mosaicml/composer" target="_blank" rel="noopener noreferrer">Composer</a> verwenden, ist das zum Glück ein Kinderspiel: Sie müssen nur auf einen R2-Pfad verweisen!</p>
@@ -80,7 +110,11 @@
 <span class="line"><span class="sk-e36209-fff">        save_folder</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">s3:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">mpt</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">7b</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">checkpoints,</span></span>
 <span class="line"><span class="sk-e36209-fff">        save_interval</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'1000ba'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">        # load_path=s3://my-bucket/mpt-7b-prev/checkpoints/ep0-ba100-rank0.pt,</span></span>
-<span class="line"><span class="sk-24292e-fff">    )</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Mit MosaicML und R2 können Sie überall effizient trainieren</h3>
 <p>Die Verwendung der oben genannten Tools zusammen mit Cloudflare R2 ermöglicht es Nutzern, Trainings-Workloads auf jedem Compute-Provider auszuführen, und zwar völlig frei und ohne Wechselkosten.</p>
@@ -115,7 +149,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">✔</span><span class="sk-032f62-99ffe4">  Run</span><span class="sk-032f62-99ffe4"> mpt-125m-r2-X2k3Uq</span><span class="sk-032f62-99ffe4"> started</span><span class="sk-24292e-fff">                                                                                    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">i</span><span class="sk-032f62-99ffe4">  Following</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> logs.</span><span class="sk-032f62-99ffe4"> Press</span><span class="sk-032f62-99ffe4"> Ctrl+C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> quit.</span><span class="sk-24292e-fff">                                                                            </span></span>
 <span class="line"><span class="sk-24292e-fff">                                                                                                                        </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Cloning</span><span class="sk-032f62-99ffe4"> into</span><span class="sk-032f62-99ffe4"> 'llm-foundry'...</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Cloning</span><span class="sk-032f62-99ffe4"> into</span><span class="sk-032f62-99ffe4"> 'llm-foundry'...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Eine MCLI-Auftragsvorlage. Geben Sie einen Namen für den Trainingslauf, ein Docker-Image, eine Reihe von Befehlen und einen Compute-Cluster an, auf dem die Ausführung erfolgen soll.</em></p>
 <div class="emdash-code">
@@ -143,7 +181,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">gpu_num:</span><span class="sk-005cc5-ffc799"> 8</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">gpu_type:</span><span class="sk-032f62-99ffe4"> a100_40gb</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cluster:</span><span class="sk-032f62-99ffe4"> oci-1</span><span class="sk-6a737d-8b8b8b94">  # can be any compute cluster!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cluster:</span><span class="sk-032f62-99ffe4"> oci-1</span><span class="sk-6a737d-8b8b8b94">  # can be any compute cluster!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Steigen Sie noch heute ein!</h3>
 <p>Die MosaicML-Plattform ist ein unschätzbares Werkzeug, um Ihr Training einmal mehr zu verbessern. In diesem Beitrag haben wir uns angesehen, wie Sie mit Cloudflare R2 Modelle auf Ihren eigenen Daten trainieren können, und zwar mit jedem beliebigen Compute-Anbieter – oder mit allen. Durch das Wegfallen von Egress-Kosten ist der R2-Speicher eine außerordentlich kosteneffiziente Ergänzung zum MosaicML-Training und bietet ein Höchstmaß an Autonomie und Kontrolle. Mit dieser Kombination können Sie im Laufe der Zeit zwischen verschiedenen Cloud-Service-Anbietern wechseln, um den Anforderungen Ihres Unternehmens gerecht zu werden.</p>

@@ -54,8 +54,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Or use the shortcut “-x” for reverse lookups</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-005cc5-99ffe4"> -x</span><span class="sk-032f62-99ffe4"> 2606:4700:58::a29f:2c2e</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-24292e-fff">  </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>The problem that private use addresses cause for DNS</h3>
 <p>The private use addresses concerned have only local significance and cannot be resolved by the public DNS. In other words, there is no way for the public DNS to provide a useful answer to a question that has no global meaning. It is therefore a good practice for network administrators to ensure that queries for private use addresses are answered locally. However, it is not uncommon for such queries to follow the normal delegation path in the public DNS instead of being answered within the network. That creates unnecessary load.</p>
 <p>By definition of being private use, they have no ownership in the public sphere, so there are no authoritative DNS servers to answer the queries. At the very beginning, root servers respond to all these types of queries since they serve the IN-ADDR.ARPA zone.</p>
@@ -79,7 +101,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">;1.1.168.192.in-addr.arpa.	IN	PTR</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; AUTHORITY SECTION:</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">168.192.in-addr.arpa.	10800	IN	SOA	168.192.in-addr.arpa. nobody.localhost. 42 86400 43200 604800 10800</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">168.192.in-addr.arpa.	10800	IN	SOA	168.192.in-addr.arpa. nobody.localhost. 42 86400 43200 604800 10800</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At the beginning of the project, node operators set up the service in the direct delegation fashion (<a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank" rel="noopener noreferrer">RFC 7534</a>). However, adding delegations to this service requires all AS112 servers to be updated, which is difficult to ensure in a system that is only loosely-coordinated. An alternative approach using DNAME redirection was subsequently introduced by <a href="https://datatracker.ietf.org/doc/html/rfc7535" target="_blank" rel="noopener noreferrer">RFC 7535</a> to allow new zones to be added to the system without reconfiguring the blackhole servers.</p>
 <h4><strong>Direct delegation</strong></h4>
@@ -121,7 +147,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff"> )    ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
 <span class="line"><span class="sk-24292e-fff">   ;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-1.iana.org.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-2.iana.org.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-2.iana.org.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>IP addresses of the direct delegation name servers are covered by the single IPv4 prefix 192.175.48.0/24 and the IPv6 prefix 2620:4f:8000::/48.</p>
 <div id="html-block-k3k" class="html-block">
@@ -157,7 +187,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># zone: example.net</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">example.net.</span><span class="sk-032f62-99ffe4">		A</span><span class="sk-005cc5-ffc799">		203.0.113.2</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">bar.example.net.</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">		203.0.113.3</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">bar.example.net.</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">		203.0.113.3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The query resolution scenarios would look like this:</p>
 <div id="html-block-k3x" class="html-block">
@@ -210,7 +244,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">expire</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff"> )    ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
 <span class="line"><span class="sk-24292e-fff">   ;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole.as112.arpa.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole.as112.arpa.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The addresses of the new DNAME redirection name server are covered by the single IPv4 prefix 192.31.196.0/24 and the IPv6 prefix 2001:4:112::/48.</p>
 <div id="html-block-k4c" class="html-block">
@@ -268,7 +306,11 @@
 <span class="line"><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "Cloudflare DNS, &lt;DATA_CENTER_AIRPORT_CODE&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "See http://www.as112.net/ for more information."</span></span>
-<span class="line"><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Helping AS112 helps the Internet</h2>
 <p>As the AS112 project helps reduce the load on public DNS infrastructure, it plays a vital role in maintaining the stability and efficiency of the Internet. Being a part of this project aligns with Cloudflare’s mission to help build a better Internet.</p>
@@ -316,7 +358,11 @@
 <span class="line"><span class="sk-24292e-fff">]</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># If the app fails to handle the query, servfail should be returned.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">fallback_action</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "fail"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">fallback_action</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "fail"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The guest application, along with its manifest, is then compiled and deployed through a deployment pipeline that leverages <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> to store and replicate the assets worldwide.</p>
 <p>The guest application is now up and running, but how does the DNS query traffic destined to the new IP prefixes reach the DNS server? Do we have to restart the DNS server every time we add a new guest application? Of course there is no need. We use software we developed and deployed earlier, called <a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf">Tubular</a>. It allows us to change the addresses of a service on the fly. With the help of Tubular, incoming packets destined to the AS112 service IP prefixes are dispatched to the right DNS server process without the need to make any change or release of the DNS server itself.</p>
@@ -347,5 +393,9 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @blackhole-1.iana.org</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> hostname.as112.arpa</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">"Cloudflare DNS, SFO"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"See http://www.as112.net/ for more information."</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"See http://www.as112.net/ for more information."</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>

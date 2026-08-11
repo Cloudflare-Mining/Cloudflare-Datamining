@@ -113,8 +113,30 @@
 <span class="line"><span class="sk-24292e-fff">    stderr: </span><span class="sk-032f62-99ffe4">"pipe"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>검토 플러그인:</strong> OpenCode 프로세스 내에서 런타임 플러그인이 <code>spawn_reviewers</code> 도구를 제공합니다. 코디네이터 LLM이 코드를 검토할 시간이 되었다고 판단하면 이 도구를 호출하여 OpenCode의 SDK 클라이언트를 통해 하위 검토자 세션을 시작합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> createResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.client.session.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
@@ -131,7 +153,11 @@
 <span class="line"><span class="sk-24292e-fff">    model: { providerID, modelID },</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>각 하위 검토자는 자체 에이전트 프롬프트를 통해 자체 OpenCode 세션에서 실행됩니다. 코디네이터는 하위 검토자가 사용하는 도구를 보거나 제어하지 않습니다. 필요에 따라 자유롭게 소스 파일을 읽거나, grep을 실행하거나, 코드베이스를 검색할 수 있으며, 작업을 마치면 구조화된 XML로 결과를 반환하기만 하면 됩니다.</p>
 <h3>JSONL이란 무엇이고 무엇에 사용할까요?</h3>
@@ -142,7 +168,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Stripped:</span><span class="sk-032f62-99ffe4">   authorization,</span><span class="sk-032f62-99ffe4"> cf-access-token,</span><span class="sk-032f62-99ffe4"> host</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Added:</span><span class="sk-032f62-99ffe4">      cf-aig-authorization:</span><span class="sk-032f62-99ffe4"> Bearer</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">API_KE</span><span class="sk-24292e-fff">Y</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            cf-aig-metadata:</span><span class="sk-032f62-99ffe4"> {"userId":</span><span class="sk-032f62-99ffe4"> "&lt;anonymous-uuid&gt;"}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>장기간 실행되는 프로세스의 구조화된 출력을 구문 분석해야 하는 모든 CI 시스템은 결국 JSONL과 같은 것을 사용하게 됩니다. 하지만 우리는 이러한 시스템을 다시 개발하고 싶지 않았습니다. (그리고 OpenCode에서 이미 지원하고 있습니다!)</p>
 <h3>스트리밍 파이프라인</h3>
@@ -165,7 +195,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> Defense</span><span class="sk-d73a49-a0a0a0">-in-</span><span class="sk-24292e-fff">depth suggestions when primary defenses are adequate</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> Issues </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> unchanged code that </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-005cc5-fff"> MR</span><span class="sk-24292e-fff"> doesn</span><span class="sk-032f62-99ffe4">'t affec</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">t</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-032f62-99ffe4"> "Consider using library X"</span><span class="sk-24292e-fff"> style suggestions</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>LLM에게 <strong>하지 말아야 할</strong> 일을 알려주는 것이 실제 프롬프트 엔지니어링 가치가 있는 곳인 것으로 밝혀졌습니다. 이러한 경계가 없으면 개발자들은 추측에 의존하는 이론적인 경고만 늘어놓아 즉시 무시하게 될 것입니다.</p>
 <p>모든 검토자는 심각(중단을 <code>초래하거나</code> 악용 가능), <code></code> 경고(측정 가능한 회귀 또는 구체적인<code>위험),</code> 제안(고려할 만한 가치가 있는 제안)과 같은 심각도 분류에 따라 구조화된 XML 형식으로 결과를 생성합니다. 이를 통해 자문 텍스트를 구문 분석하는 대신 다운스트림 행동을 유도하는 구조화된 데이터를 처리할 수 있습니다.</p>
@@ -189,7 +223,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> BOUNDARY_TAG_PATTERN</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> RegExp</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  `&lt;/?(?:${</span><span class="sk-005cc5-fff">PROMPT_BOUNDARY_TAGS</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-032f62-99ffe4">(</span><span class="sk-032f62-99ffe4">"|"</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">})[^&gt;]*&gt;`</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"gi"</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>컨텍스트가 공유된 토큰 저장</h3>
 <p>시스템은 프롬프트에 전체 diff를 포함하지 않습니다. 대신 파일별 패치 파일을 <code>diff_directory</code> 에 작성하고 경로를 전달합니다. 각 하위 검토자는 해당 도메인과 관련된 패치 파일만 읽습니다.&nbsp;</p>
@@ -296,7 +334,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (totalLines </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> fileCount </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> "lite"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> "full"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>보안에 민감한 파일: <code>auth/</code>, <code>crypto/</code> 또는 보안과 조금이라도 관련이 있는 파일 경로와 관련된 모든 것은 항상 전체 검토를 거치게 됩니다. 이는 잠재적인 보안 취약점을 놓치는 것보다 검토에 약간의 추가 비용을 지출하는 것을 선호하기 때문입니다.</p>
 <p>등급마다 서로 다른 에이전트 집합이 제공됩니다.</p>
@@ -387,7 +429,11 @@
 <span class="line"><span class="sk-24292e-fff">];</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> NOISE_EXTENSIONS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">".min.js"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".min.css"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".bundle.js"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".map"</span><span class="sk-24292e-fff">];</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>또한 처음 몇 줄에서 <code>// @generated</code> 또는 <code>/* eslint-disable */</code>과 같은 표시를 찾아 생성된 파일을 필터링합니다. 그러나 데이터베이스 마이그레이션은 파일에 검토가 절대적으로 필요한 스키마 변경 사항이 포함되어 있는데도, 마이그레이션 도구가 생성된 것으로 스탬프를 찍는 경우가 많기 때문에 Cloudflare에서는 이 규칙에서 데이터베이스 마이그레이션을 명시적으로 제외합니다.</p>
 <h2>Spawn_reviewers 도구: 동시 오케스트레이션</h2>
@@ -415,7 +461,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "sonnet-4-6"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sonnet-4-5"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "sonnet-4-5"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>각 모델 패밀리는 격리되어 있으므로 한 모델에 과부하가 발생하면 흐름을 바꾸지 않고 이전 세대 모델로 폴백합니다. 회로가 열리면 2분의 대기 후에 정확히 하나의 프로브 요청을 통과시켜 공급자가 복구되었는지 확인하므로, 문제가 있는 API를 스탬핑할 수 없습니다.</p>
 <h3>오류 분류</h3>
@@ -435,7 +485,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // User/system abort (not a model problem)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> { shouldFailback: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>재시도 가능한 API 오류만 장애 복구를 트리거합니다. 인증 오류, 컨텍스트 오버플로, 중단, 구조화된 출력 오류 등은 그렇지 않습니다.</p>
 <h3>코디네이터 수준 장애 복구</h3>
@@ -453,7 +507,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> config.enabled;            </span><span class="sk-6a737d-8b8b8b94">// Disabled → filter out</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>즉, KV에서 스위치를 뒤집어 전체 공급자를 비활성화할 수 있으며, 실행 중인 모든 CI 작업이 5초 이내에 공급자를 중심으로 라우팅된다는 뜻입니다. 구성 형식은 또한 장애 복구 체인 재정의를 수행하므로 단일 Worker 업데이트로 전체 모델 라우팅 토폴로지를 재구성할 수 있습니다.</p>
 <p>당사는 또한 별도의 Cloudflare Worker와 통신하여 작업 시작, 완료, 조사 결과, 토큰 사용량, Prometheus 지표를 추적하는 fire-and-forget <code>TrackerClient</code>를 사용합니다. 클라이언트는 CI 파이프라인을 차단하지 않도록 설계되어 있으며, 2초 <code>AbortSignal.timeout</code>을 사용하고 보류 요청이 50개 항목을 초과하면 보류 요청을 프루닝합니다. Prometheus 메트릭은 다음 마이크로태스크에서 일괄 처리되고, 프로세스가 종료되기 직전에 플러시되어 Workers 로깅을 통해 내부 관찰 가능성 스택으로 전달되므로 우리는 실시간으로 얼마나 많은 토큰을 소각하고 있는지 정확히 알 수 있습니다.</p>
@@ -484,7 +542,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">include</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff"> component</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-6f42c1-ffc799">CI_SERVER_FQDN</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">ci</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">ai</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">opencode</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">~latest</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 구성 요소는 도커 이미지를 가져오고, 볼트 비밀을 설정하고, 검토를 실행하고, 댓글을 게시하는 작업을 처리합니다. 팀에서는 프로젝트별 검토 지침이 포함된 <code>AGENTS.md</code> 파일을 저장소 루트에 추가하여 동작을 사용자 지정할 수 있습니다. 또한, 모든 에이전트 프롬프트에 삽입될 AGENTS.md 템플릿의 URL을 제공하여 표준 규칙이 모든 저장소에 적용되도록 할 수 있으며, 이를 통해 여러 AGENTS.md 파일을 최신 상태로 유지할 필요가 없습니다.</p>
 <p>전체 시스템이 로컬에서 실행되기도 합니다. <code>@opencode-reviewer/local</code> 플러그인은 OpenCode의 TUI 내에서 <code>/fullreview</code> 명령을 제공하여 작업 트리로부터 diff를 생성하고, 동일한 위험 평가 및 에이전트 오케스트레이션을 실행하며, 결과를 인라인에 게시합니다. 정확히 동일한 에이전트와 프롬프트이며, CI가 아닌 노트북에서 실행됩니다.</p>

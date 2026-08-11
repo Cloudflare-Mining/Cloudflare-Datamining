@@ -26,14 +26,40 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Call inc() to increment our metric every time a mug was drank.</span></span>
 <span class="line"><span class="sk-24292e-fff">c.inc()</span></span>
-<span class="line"><span class="sk-24292e-fff">c.inc()</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">c.inc()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>With this simple code Prometheus client library will create a single metric. For Prometheus to collect this metric we need our application to run an HTTP server and expose our metrics there. The simplest way of doing this is by using functionality provided with client_python itself - see documentation <a href="https://github.com/prometheus/client_python#http" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p>When Prometheus sends an HTTP request to our application it will receive this response:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># HELP mugs_of_beverage_total The total number of mugs drank.</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># TYPE mugs_of_beverage_total counter</span></span>
-<span class="line"><span class="sk-24292e-fff">mugs_of_beverage_total </span><span class="sk-005cc5-ffc799">2</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">mugs_of_beverage_total </span><span class="sk-005cc5-ffc799">2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This format and underlying data model are both covered extensively in Prometheus' own documentation.</p>
 <p>Please see <a href="https://prometheus.io/docs/concepts/data_model" target="_blank" rel="noopener noreferrer">data model</a> and <a href="https://prometheus.io/docs/instrumenting/exposition_formats" target="_blank" rel="noopener noreferrer">exposition format</a> pages for more details.</p>
@@ -49,7 +75,11 @@
 <span class="line"><span class="sk-24292e-fff">c.labels(</span><span class="sk-032f62-99ffe4">'coffee'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'hot'</span><span class="sk-24292e-fff">).inc()</span></span>
 <span class="line"><span class="sk-24292e-fff">c.labels(</span><span class="sk-032f62-99ffe4">'coffee'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'hot'</span><span class="sk-24292e-fff">).inc()</span></span>
 <span class="line"><span class="sk-24292e-fff">c.labels(</span><span class="sk-032f62-99ffe4">'coffee'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'cold'</span><span class="sk-24292e-fff">).inc()</span></span>
-<span class="line"><span class="sk-24292e-fff">c.labels(</span><span class="sk-032f62-99ffe4">'tea'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'hot'</span><span class="sk-24292e-fff">).inc()</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">c.labels(</span><span class="sk-032f62-99ffe4">'tea'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'hot'</span><span class="sk-24292e-fff">).inc()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our HTTP response will now show more entries:</p>
 <div class="emdash-code">
@@ -57,7 +87,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># TYPE mugs_of_beverage_total counter</span></span>
 <span class="line"><span class="sk-24292e-fff">mugs_of_beverage_total{content=</span><span class="sk-032f62-99ffe4">"coffee"</span><span class="sk-24292e-fff">, temperature=</span><span class="sk-032f62-99ffe4">"hot"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">2</span></span>
 <span class="line"><span class="sk-24292e-fff">mugs_of_beverage_total{content=</span><span class="sk-032f62-99ffe4">"coffee"</span><span class="sk-24292e-fff">, temperature=</span><span class="sk-032f62-99ffe4">"cold"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-24292e-fff">mugs_of_beverage_total{content=</span><span class="sk-032f62-99ffe4">"tea"</span><span class="sk-24292e-fff">, temperature=</span><span class="sk-032f62-99ffe4">"hot"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">mugs_of_beverage_total{content=</span><span class="sk-032f62-99ffe4">"tea"</span><span class="sk-24292e-fff">, temperature=</span><span class="sk-032f62-99ffe4">"hot"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As we can see we have an entry for each unique combination of labels.</p>
 <p>And this brings us to the definition of cardinality in the context of metrics. Cardinality is the <strong>number of unique combinations of all labels</strong>. The more labels you have and the more values each label can take, the more unique combinations you can create and the higher the cardinality.</p>
@@ -103,7 +137,11 @@
 <p>This means that Prometheus must check if there’s already a time series with identical name and exact same set of labels present. Internally time series names are just another label called __name__, so there is no practical distinction between name and labels. Both of the representations below are different ways of exporting the same time series:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">mugs_of_beverage_total{content=</span><span class="sk-032f62-99ffe4">"tea"</span><span class="sk-24292e-fff">, temperature=</span><span class="sk-032f62-99ffe4">"hot"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-005cc5-fff">__name__</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"mugs_of_beverage_total"</span><span class="sk-24292e-fff">, content=</span><span class="sk-032f62-99ffe4">"tea"</span><span class="sk-24292e-fff">, temperature=</span><span class="sk-032f62-99ffe4">"hot"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-005cc5-fff">__name__</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"mugs_of_beverage_total"</span><span class="sk-24292e-fff">, content=</span><span class="sk-032f62-99ffe4">"tea"</span><span class="sk-24292e-fff">, temperature=</span><span class="sk-032f62-99ffe4">"hot"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Since everything is a label Prometheus can simply hash all labels using sha256 or any other algorithm to come up with a single ID that is unique for each time series.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -161,11 +199,19 @@
 <p>After a chunk was written into a block and removed from memSeries we might end up with an instance of memSeries that has no chunks. This would happen if any time series was no longer being exposed by any application and therefore there was no scrape that would try to append more samples to it.</p>
 <p>A common pattern is to export software versions as a build_info metric, Prometheus itself does this too:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.42.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.42.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When Prometheus 2.43.0 is released this metric would be exported as:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.43.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.43.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Which means that a time series with version=”2.42.0” label would no longer receive any new samples.</p>
 <p>Once the last chunk for this time series is written into a block and removed from the memSeries instance we have no chunks left. This means that our memSeries still consumes some memory (mostly labels) but doesn’t really do anything.</p>
@@ -194,11 +240,19 @@
 <p>To get a better understanding of the impact of a short lived time series on memory usage let’s take a look at another example.</p>
 <p>Let’s see what happens if we start our application at 00:25, allow Prometheus to scrape it once while it exports:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.42.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.42.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And then immediately after the first scrape we upgrade our application to a new version:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.43.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">prometheus_build_info{version=</span><span class="sk-032f62-99ffe4">"2.43.0"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At 00:25 Prometheus will create our memSeries, but we will have to wait until Prometheus writes a block that contains data for 00:00-01:59 and runs garbage collection before that memSeries is removed from memory, which will happen at 03:00.</p>
 <p>This single sample (data point) will create a time series instance that will stay in memory for over two and a half hours using resources, just so that we have a single timestamp &amp; value pair.</p>
@@ -230,24 +284,40 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># HTTP request handler our web server will call</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> handle_request</span><span class="sk-24292e-fff">(path):</span></span>
 <span class="line"><span class="sk-24292e-fff">  c.labels(path).inc()</span></span>
-<span class="line"><span class="sk-005cc5-fff">  ...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">  ...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we make a single request using the curl command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&gt; curl https://app.example.com/index.html</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&gt; curl https://app.example.com/index.html</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We should see these time series in our application:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># HELP http_requests_total The total number of HTTP requests.</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># TYPE http_requests_total counter</span></span>
-<span class="line"><span class="sk-24292e-fff">http_requests_total{path=</span><span class="sk-032f62-99ffe4">"/index.html"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">http_requests_total{path=</span><span class="sk-032f62-99ffe4">"/index.html"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But what happens if an evil hacker decides to send a bunch of random requests to our application?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&gt; curl https://app.example.com/jdfhd5343</span></span>
 <span class="line"><span>&gt; curl https://app.example.com/3434jf833</span></span>
 <span class="line"><span>&gt; curl https://app.example.com/1333ds5</span></span>
-<span class="line"><span>&gt; curl https://app.example.com/aaaa43321</span></span></code></pre>
+<span class="line"><span>&gt; curl https://app.example.com/aaaa43321</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Extra time series would be created:</p>
 <div class="emdash-code">
@@ -257,7 +327,11 @@
 <span class="line"><span class="sk-24292e-fff">http_requests_total{path=</span><span class="sk-032f62-99ffe4">"/jdfhd5343"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
 <span class="line"><span class="sk-24292e-fff">http_requests_total{path=</span><span class="sk-032f62-99ffe4">"/3434jf833"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
 <span class="line"><span class="sk-24292e-fff">http_requests_total{path=</span><span class="sk-032f62-99ffe4">"/1333ds5"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-24292e-fff">http_requests_total{path=</span><span class="sk-032f62-99ffe4">"/aaaa43321"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">http_requests_total{path=</span><span class="sk-032f62-99ffe4">"/aaaa43321"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With 1,000 random requests we would end up with 1,000 time series in Prometheus. If our metric had more labels and all of them were set based on the request payload (HTTP method name, IPs, headers, etc) we could easily end up with millions of time series.</p>
 <p>Often it doesn’t require any malicious actor to cause cardinality related problems. A common class of mistakes is to have an error label on your metrics and pass raw error objects as values.</p>
@@ -270,18 +344,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  try</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-005cc5-fff">    ...</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  except</span><span class="sk-005cc5-ffc799"> Exception</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> err:</span></span>
-<span class="line"><span class="sk-24292e-fff">    c.labels(err).inc()</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    c.labels(err).inc()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This works well if errors that need to be handled are generic, for example “Permission Denied”:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">errors_total{error=</span><span class="sk-032f62-99ffe4">"Permission Denied"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">errors_total{error=</span><span class="sk-032f62-99ffe4">"Permission Denied"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But if the error string contains some task specific information, for example the name of the file that our application didn’t have access to, or a TCP connection error, then we might easily end up with high cardinality metrics this way:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">errors_total{error=</span><span class="sk-032f62-99ffe4">"file not found: /myfile.txt"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
 <span class="line"><span class="sk-24292e-fff">errors_total{error=</span><span class="sk-032f62-99ffe4">"file not found: /other/file.txt"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
 <span class="line"><span class="sk-24292e-fff">errors_total{error=</span><span class="sk-032f62-99ffe4">"read udp 127.0.0.1:12421-&gt;127.0.0.2:443: i/o timeout"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-24292e-fff">errors_total{error=</span><span class="sk-032f62-99ffe4">"read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">errors_total{error=</span><span class="sk-032f62-99ffe4">"read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"</span><span class="sk-24292e-fff">} </span><span class="sk-005cc5-ffc799">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once scraped all those time series will stay in memory for a minimum of one hour. It’s very easy to keep accumulating time series in Prometheus until you run out of memory.</p>
 <p>Even Prometheus' own <a href="https://github.com/prometheus/client_golang/security/advisories/GHSA-cg3q-j54f-5p7p" target="_blank" rel="noopener noreferrer">client libraries had bugs</a> that could expose you to problems like this.</p>
@@ -297,7 +383,11 @@
 <p>Chunks will consume more memory as they slowly fill with more samples, after each scrape, and so the memory usage here will follow a cycle - we start with low memory usage when the first sample is appended, then memory usage slowly goes up until a new chunk is created and we start again.</p>
 <p>You can calculate how much memory is needed for your time series by running this query on your Prometheus server:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">go_memstats_alloc_bytes </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> prometheus_tsdb_head_series</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">go_memstats_alloc_bytes </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> prometheus_tsdb_head_series</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that your Prometheus server must be configured to scrape itself for this to work.</p>
 <p>Secondly this calculation is based on all memory used by Prometheus, not only time series data, so it’s just an approximation. Use it to get a rough idea of how much memory is used per time series and don’t assume it’s that exact number.</p>
@@ -335,7 +425,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># relabeling, Prometheus will mark the targets as failed without scraping them.</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># 0 means no limit. This is an experimental feature, this behaviour could</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># change in the future.</span></span>
-<span class="line"><span class="sk-24292e-fff">[ target_limit: </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">int</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> default = </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> ]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[ target_limit: </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">int</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> default = </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Setting all the label length related limits allows you to avoid a situation where extremely long label names or values end up taking too much memory.</p>
 <p>Going back to our metric with error labels we could imagine a scenario where some operation returns a huge error message, or even stack trace with hundreds of lines. If such a stack trace ended up as a label value it would take a lot more memory than other time series, potentially even megabytes. Since labels are copied around when Prometheus is handling queries this could cause significant memory usage increase.</p>

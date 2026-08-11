@@ -31,8 +31,30 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Open a listening socket at *:1234. We will connect to it.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ln</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ln.bind((</span><span class="sk-6f42c1-ffc799">""</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ln.listen(SOMAXCONN</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ln.listen(SOMAXCONN</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>With the formalities out of the way, let us begin. Ready. Set. Go!</p>
 <h3>Scenario #1: When the local IP is unique, but the local port is the same</h3>
 <p>In Scenario #1 we connect two sockets to the same remote address - 127.9.9.9:1234. The sockets will use different local IP addresses, but is it enough to share the local port?</p>
@@ -112,7 +134,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">s2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.bind((</span><span class="sk-6f42c1-ffc799">'127.2.2.2'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_1.py" target="_blank" rel="noopener noreferrer">Answer #1</a></p>
 <h3>Quiz #2</h3>
@@ -125,7 +151,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">s2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.bind((</span><span class="sk-6f42c1-ffc799">'127.2.2.2'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_2.py" target="_blank" rel="noopener noreferrer">Answer #2</a></p>
 <h3>Quiz #3</h3>
@@ -138,7 +168,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_3.py" target="_blank" rel="noopener noreferrer">Answer #3</a></p>
 <h3>Scenario #2: When the local IP and port are the same, but the remote IP differs</h3>
@@ -217,7 +251,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_4.py" target="_blank" rel="noopener noreferrer">Answer #4</a></p>
 <h3>Quiz #5</h3>
@@ -231,7 +269,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">s2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.bind((</span><span class="sk-6f42c1-ffc799">'127.0.0.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_5.py" target="_blank" rel="noopener noreferrer">Answer #5</a></p>
 <h3>Quiz #6</h3>
@@ -245,7 +287,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">s2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.bind((</span><span class="sk-6f42c1-ffc799">'127.0.0.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> 60_000</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_6.py" target="_blank" rel="noopener noreferrer">Answer #6</a></p>
 <h3>Quiz #7</h3>
@@ -261,7 +307,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">s2.setsockopt(SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.bind((</span><span class="sk-6f42c1-ffc799">'127.0.0.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> 60_000</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.9.9.9'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_7.py" target="_blank" rel="noopener noreferrer">Answer #7</a></p>
 <h3>Quiz #8</h3>
@@ -276,7 +326,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">s2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.setsockopt(SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s2.connect((</span><span class="sk-6f42c1-ffc799">'127.8.8.8'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">s2.getsockname</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">s2.getpeername</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_8.py" target="_blank" rel="noopener noreferrer">Answer #8</a></p>
 <h2>The secret tri-state life of a local TCP port</h2>
@@ -315,7 +369,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> As</span><span class="sk-032f62-99ffe4"> long</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> sockets</span><span class="sk-032f62-99ffe4"> added</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> bind</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> pass</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> test,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> flag</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> set.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-032f62-99ffe4"> ...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> */</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> */</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The comment above hints that the kernel tries to optimize for the happy case of no conflict. To this end the bind bucket holds additional state which aggregates the properties of the sockets it holds:</p>
 <div class="emdash-code">
@@ -331,7 +389,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        unsigned</span><span class="sk-032f62-99ffe4"> short</span><span class="sk-032f62-99ffe4">       fast_sk_family</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        bool</span><span class="sk-032f62-99ffe4">                 fast_ipv6_only</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        /*</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's focus our attention just on the first aggregate property - <code>fastreuse</code>. It has existed since, now prehistoric, Linux 2.1.90pre1. Initially in the form of a <a href="https://git.kernel.org/pub/scm/linux/kernel/git/history/history.git/tree/include/net/tcp.h?h=2.1.90pre1&amp;id=9d11a5176cc5b9609542b1bd5a827b8618efe681#n76" target="_blank" rel="noopener noreferrer">bit flag</a>, as the comment says, only to evolve to a byte-sized field over time.</p>
 <p>The other six fields came on much later with the introduction of <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da5e36308d9f7151845018369148201a5d28b46d" target="_blank" rel="noopener noreferrer"><code>SO_REUSEPORT</code> in Linux 3.9</a>. Because they play a role only when there are sockets with the <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEPORT" target="_blank" rel="noopener noreferrer"><code>SO_REUSEPORT</code></a> flag set. We are going to ignore them today.</p>
@@ -563,7 +625,11 @@
 <span class="line"><span class="sk-24292e-fff">        dump_bind_bucket(head, net)</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">main()</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">main()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's take <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/dump_bhash.py" target="_blank" rel="noopener noreferrer">this script</a> for a spin and try to confirm what <em>Table 1</em> claims to be true. Keep in mind that to produce the <code>ipython --classic</code> session snippets below I've used the same setup as for the quiz questions.</p>
 <p>Two connected sockets sharing ephemeral port 60,000:</p>
@@ -576,7 +642,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">TCP-PORT</span><span class="sk-032f62-99ffe4">  FASTREUSE</span><span class="sk-6a737d-8b8b8b94">  #OWNERS</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    1234</span><span class="sk-005cc5-ffc799">          0</span><span class="sk-005cc5-ffc799">        3</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   60000</span><span class="sk-005cc5-99ffe4">         -1</span><span class="sk-005cc5-ffc799">        2</span></span>
-<span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Two bound sockets reusing port 60,000:</p>
 <div class="emdash-code">
@@ -590,7 +660,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">TCP-PORT</span><span class="sk-032f62-99ffe4">  FASTREUSE</span><span class="sk-6a737d-8b8b8b94">  #OWNERS</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    1234</span><span class="sk-005cc5-ffc799">          0</span><span class="sk-005cc5-ffc799">        1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   60000</span><span class="sk-032f62-99ffe4">         +1</span><span class="sk-005cc5-ffc799">        2</span></span>
-<span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A mix of bound sockets with and without REUSEADDR sharing port 60,000:</p>
 <div class="emdash-code">
@@ -607,7 +681,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">TCP-PORT</span><span class="sk-032f62-99ffe4">  FASTREUSE</span><span class="sk-6a737d-8b8b8b94">  #OWNERS</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    1234</span><span class="sk-005cc5-ffc799">          0</span><span class="sk-005cc5-ffc799">        1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   60000</span><span class="sk-005cc5-ffc799">          0</span><span class="sk-005cc5-ffc799">        2</span></span>
-<span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With such tooling, proving that <em>Table 2</em> holds true is just a matter of writing a bunch of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse.py" target="_blank" rel="noopener noreferrer">exploratory tests</a>.</p>
 <p>But what has happened in that last snippet? The bind bucket has clearly transitioned from one fastreuse state to another. This is what <em>Table 1</em> fails to capture. And it means that we still don't have the full picture.</p>

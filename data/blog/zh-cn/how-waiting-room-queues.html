@@ -24,14 +24,40 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "bucketId"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:00 GMT",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "lastCheckInTime"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:54 GMT",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "acceptedAt"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:54 GMT"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>为了进一步理解这一点，让我们来看看Waiting Room 状态的内容。对于我们上面讨论的客户，在 "Mon, 11 Sep 2023 11:45:54 GMT" 时，状态可能如下所示。</p>
 <p>如上所述，客户配置的_每分钟新用户数_和_活跃用户总数_分别为 200 和 200。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{  </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "activeUsers"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 50,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>因此，该状态表明，还有空间留给新用户，因为只有 50 个活跃用户，而活跃用户可以达到 200 个。因此，还可以再容纳 150 个用户。假设这 50 个用户分别来自圣何塞（20 个用户）和伦敦（30 个用户）这两个数据中心。我们还跟踪全球范围内活跃的 Worker 数量以及计算状态的数据中心的活跃 Worker 数量。圣何塞可能计算得出下面的状态密钥。</p>
 <p>试想一下，在 "<code>Mon, 11 Sep 2023 11:45:54 GMT</code>" 这个时间，我们收到一个请求，前往圣何塞数据中心的 Waiting Room。</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>要查看到达圣何塞的用户是否能前往源站，我们首先要查看过去一分钟的流量历史记录，以了解当时的流量分布情况。这是因为很多网站在世界的某些地方很受欢迎。很多网站的流量往往来自相同的数据中心。</p>
 <p>查看 "<code>Mon, 11 Sep 2023 11:44:00 GMT</code>" 这一分钟的流量历史记录，我们可以看到当时圣何塞的 200 个用户中，有 20 个用户前往该网站 (10%)。对于当前时间 "<code>Mon, 11 Sep 2023 11:45:54 GMT</code>"，我们按照过去一分钟流量历史记录的相同比例分配网站可用的名额。因此，我们可以从圣何塞发送 150 个可用名额的 10%，即 15 个用户。我们还知道，有三个活跃的 Worker，因为 "<code>dataCenterWorkersActive</code>" 为 <code>3</code>。</p>
@@ -66,7 +96,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>状态密钥还跟踪在世界各地产生的 Worker 数量 (<code>globalWorkersActive</code>)。分配的 Anywhere 名额将分配给世界上所有活跃的 Worker（如果有）。当我们查看 Waiting Room 状态时，<code>globalWorkersActive</code> 为 10。因此，每个活跃 Worker 最多可以发送 113/10，即大约 11 个用户。因此，在 <code>Mon, 11 Sep 2023 11:45:00 GMT</code> 这一分钟内到达 Worker 的前 11 位用户将被允许进入源站。后面的用户需要排队。之前讨论过的圣何塞会在 <code>Mon, 11 Sep 2023 11:45:00 GMT</code> 这一分钟额外保留 5 个名额，确保我们可以允许来自圣何塞的 Worker 最多 16 (5 + 11) 个用户访问该网站。</p>
 <h2>在 Worker 级别排队可能会导致用户在数据中心可用名额用完之前排队</h2>
@@ -106,13 +140,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>为了在利用率较低时分配更多可用名额，我们添加了一个 <code>workerMultiplier</code>，它与利用率成比例地移动。利用率较低时，乘数较低，利用率较高时，乘数接近于 1。</p>
 <p><code>utilization</code> - 您距离限制有多远。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">workerMultiplier</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (utilization)^curveFactor</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">adaptedWorkerCount</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> actualWorkerCount</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> workerMultiplier</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">adaptedWorkerCount</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> actualWorkerCount</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> workerMultiplier</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>curveFactor</code> - <em>curveFactor</em> 是一个可以调整的指数，它决定了我们在 Worker 数量较少的情况下分配额外预算的积极程度。为了理解这一点，让我们看一下 y = x 和 y = x^2 在值 0 和 1 之间的关系图。</p>
 <p>y=x 的图形是一条经过 (0, 0) 和 (1, 1) 的直线。</p>
@@ -166,7 +208,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>每有一个新用户到达数据中心，圣何塞的 Durable Object 计数器就会不断返回当前的计数器值。返回 Worker 后，数值将递增 1。因此，前往 Worker 的前 15 个新用户会得到一个唯一的计数器值。如果针对一个用户收到的值小于 15，这个用户就可以使用数据中心的名额。</p>
 <p>一旦数据中心的可用名额用完，用户就可以使用分配给 Anywhere 数据中心的名额，因为这些名额没有为任何特定数据中心保留。当圣何塞的 Worker 收到显示为 15 的计数器值时，它就会意识到不能再使用圣何塞的名额访问网站。</p>

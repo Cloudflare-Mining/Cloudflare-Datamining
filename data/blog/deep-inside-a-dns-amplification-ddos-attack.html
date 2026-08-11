@@ -17,8 +17,30 @@
 <p>There are two criteria for a good amplification attack vector: 1) query can be set with a spoofed source address (e.g., via a protocol like ICMP or <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer">UDP</a> that does not require a handshake); and 2) the response to the query is significantly larger than the query itself. <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> is a core, ubiquitous Internet platform that meets these criteria and therefore has become the largest source of amplification attacks.</p>
 <p>DNS queries are typically transmitted over UDP, meaning that, like ICMP queries used in a SMURF attack, they are fire and forget. As a result, their source attribute can be spoofed and the receiver has no way of determining its veracity before responding. DNS also is capable of generating a much larger response than query. For example, you can send the following (tiny) query (where x.x.x.x is the IP of an open DNS resolver):</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">dig </span><span class="sk-005cc5-fff">ANY</span><span class="sk-24292e-fff"> isc</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">org </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">edns</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">dig </span><span class="sk-005cc5-fff">ANY</span><span class="sk-24292e-fff"> isc</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">org </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">edns</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>And get back the following (gigantic) response:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">&lt;&lt;&gt;&gt;</span><span class="sk-6f42c1-ffc799"> DiG</span><span class="sk-005cc5-ffc799"> 9.7</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">3</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;&gt;&gt;</span><span class="sk-005cc5-fff"> ANY</span><span class="sk-24292e-fff"> isc</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">org </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span></span>
@@ -75,7 +97,11 @@
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-24292e-fff"> time</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 176</span><span class="sk-24292e-fff"> msec</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">SERVER</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x#</span><span class="sk-005cc5-ffc799">53</span><span class="sk-24292e-fff">(x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">x)</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">WHEN</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Tue</span><span class="sk-6f42c1-ffc799"> Oct</span><span class="sk-005cc5-ffc799"> 30</span><span class="sk-005cc5-ffc799"> 01</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">14</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">32</span><span class="sk-005cc5-ffc799"> 2012</span></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">MSG</span><span class="sk-005cc5-fff"> SIZE</span><span class="sk-24292e-fff">  rcvd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 3223</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">MSG</span><span class="sk-005cc5-fff"> SIZE</span><span class="sk-24292e-fff">  rcvd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 3223</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That's a 64 byte query that resulted in a 3,223 byte response. In other words, an attacker is able to achieve a 50x amplification over whatever traffic they can initiate to an open DNS resolver. Note, ironically, how the effectiveness of the attack based on the size of the response is made worse by the inclusion of the huge <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a> keys -- a protocol designed to make the DNS system more secure.</p>
 <h3>Open DNS Resolvers: Bane of the Internet</h3>
@@ -218,7 +244,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">//</span></span>
 <span class="line"><span class="sk-24292e-fff">options {</span></span>
 <span class="line"><span class="sk-24292e-fff">    recursion no;</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Permit DNS queries for DNS messages with source addresses</span></span>
@@ -229,7 +259,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">//</span></span>
 <span class="line"><span class="sk-24292e-fff">options {</span></span>
 <span class="line"><span class="sk-24292e-fff">    allow</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">query {</span><span class="sk-005cc5-ffc799">192.168</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">1.0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff">;};</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>CloudFlare itself is designed to automatically learn from the traffic to our network, whether the traffic is good or bad. While this size of attack would be crippling for most networks, it has been relatively trivial for us to identify the sources of the attack, route them so they don't affect any of our customers, and study their behavior over the last three weeks. Now that we've enumerated the sources of the attack, we've begun to null route the traffic upstream to fully neuter the attack.</p>
 <p>We will continue to work with the networks listed above in order to get their networks cleaned up. And, as new threats emerge, we'll continue to share information on them in order to ensure the Internet can remain fast and safe.</p>

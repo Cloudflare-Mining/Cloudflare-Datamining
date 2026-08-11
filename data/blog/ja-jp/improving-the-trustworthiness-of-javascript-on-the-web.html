@@ -10,8 +10,30 @@
 <h3>サブリソース整合性</h3>
 <p>単一の一貫したアプリケーションを定義するための重要な構成要素は、<strong>サブリソースの完全性</strong> (SRI) です。SRIは、ほとんどのブラウザに組み込まれている機能で、Webサイトは外部リソースの暗号ハッシュを指定することができます。例：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-a0a0a0"> src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.7/underscore-min.js"</span><span class="sk-6f42c1-a0a0a0"> integrity</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"sha512-dvWGkLATSdw5qWb2qozZBRKJ80Omy2YN/aF3wTUVC5+D1eqbA+TjWpPpoj8vorK5xGLMa2ZqIeWCpDZP/+pQGQ=="</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-a0a0a0"> src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.7/underscore-min.js"</span><span class="sk-6f42c1-a0a0a0"> integrity</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"sha512-dvWGkLATSdw5qWb2qozZBRKJ80Omy2YN/aF3wTUVC5+D1eqbA+TjWpPpoj8vorK5xGLMa2ZqIeWCpDZP/+pQGQ=="</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>これにより、ブラウザは<code>underscore.js</code>を<code>cdnjs.cloudflare.com</code>から取得し、SHA-512ハッシュがタグで指定されたハッシュと一致することを検証します。一致する場合、スクリプトがロードされます。そうでない場合は、エラーがスローされ、何も実行されません。</p>
 <p>ページ上のすべての外部スクリプト、スタイルシートなどにSRIの整合性属性が付属する場合、ページ全体はHTMLだけで定義されます。これは当社が求めているものに近いものですが、Webアプリケーションは多くのページで構成される可能性があり、ページがリンク先ページのハッシュを強制する方法はありません。</p>
 <h3>整合性マニフェスト</h3>
@@ -24,7 +46,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">"684ad58287ff2d085927cb1544c7d685ace897b6b25d33e46d2ec46a355b1f0e"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">"f802517f1b2406e308599ca6f4c02d2ae28bb53ff2a5dbcddb538391cb6ad56a"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">""</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>マニフェストのもう1つの主な構成要素は、<strong>整合性ポリシー</strong>で、どのデータタイプがどの程度厳密に適用されているかをブラウザに伝えます。例えば、以下のマニフェストのポリシーは次のようになります。</p>
 <ol>
@@ -32,7 +58,11 @@
 	<li>SRIタグがなく、ハッシュに表示されない場合は、おそらく実行後のWASMを拒否します</li>
 </ol>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"integrity-policy"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"blocked-destinations=(script), checked-destinations=(wasm)"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"integrity-policy"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"blocked-destinations=(script), checked-destinations=(wasm)"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これらをまとめると、整合性のマニフェストが作成されます。</p>
 <div class="emdash-code">
@@ -41,7 +71,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">  "integrity-policy"</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">...</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "hashes"</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">...</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>したがって、SRIと整合性マニフェストの両方が使用される場合、サイト全体とブラウザによるその解釈は、整合性マニフェストのハッシュによって一意に決定されます。これこそが当社が望んでいたものです。Webアプリケーションに真正性、一貫性のある配布などを付与するという問題を、単一のハッシュに同じプロパティを付与するという問題を抽出しました。</p>
 <h2>透明性を実現する</h2>

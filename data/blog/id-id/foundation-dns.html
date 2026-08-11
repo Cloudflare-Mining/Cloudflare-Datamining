@@ -41,15 +41,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-2028.awsdns-61.co.uk.</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">205.251.199.236</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-917.awsdns-50.net.</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Tak perlu diragukan lagi bahwa Cloudflare menandatangani semua rute kami dan <a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">mendorong seluruh Internet</a> demi meminimalkan dampak kebocoran rute, tetapi apa lagi yang dapat kami lakukan untuk memastikan sistem DNS kami tetap tangguh saat mengatasi kebocoran rute selagi menunggu RPKI untuk diterapkan secara luas?</p>
 <p>Kini, ketika Anda menggunakan DNS Cloudflare pada paket Gratis, Pro, Bisnis, atau Perusahaan, domain Anda mendapatkan dua nameserver dari struktur .ns.cloudflare.com, dengan adalah nama depan acak.</p>
 <p>Sekarang, seperti yang kita pelajari sebelumnya, agar domain tersedia, nameserver harus tersedia. Inilah sebabnya masing-masing nameserver ini diperbarui ke 3 alamat IPv4 anycast dan 3 alamat IPv6 anycast.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> isbgpsafeyet.com</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tom.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Detail penting yang perlu diperhatikan di sini adalah masing-masing dari 3 alamat IPv4 dan 3 alamat IPv6 berasal dari blok /8 IPv4 (/45 untuk IPv6) yang berbeda. Jadi agar nameserver Anda tidak tersedia melalui IPv4, kebocoran rute harus tepat memengaruhi subnet yang sesuai di ketiga blok /8 IPv4. Meskipun teorinya ini mungkin terjadi, nyatanya ini hampir mustahil.</p>
 <div class="emdash-code">
@@ -61,7 +87,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> tom.ns.cloudflare.com</span><span class="sk-032f62-99ffe4"> aaaa</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2606:4700:58::adf5:3b93</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2803:f800:50::6ca2:c193</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>Bagaimana ini bisa lebih ditingkatkan?</strong></h3>
 <p>Pelanggan yang menggunakan Foundation DNS akan diberi satu set nameserver lanjutan baru yang dihosting di foundationdns.com dan foundationdns.net. Nameserver ini bahkan akan lebih tangguh daripada nameserver default Cloudflare. Kami akan mengumumkan detail lebih lanjut tentang cara kami mencapai hal ini awal tahun depan, jadi simaklah terus. Semua domain Cloudflare eksternal (seperti cloudflare.com) akan beralih ke nameserver ini pada tahun baru.</p>

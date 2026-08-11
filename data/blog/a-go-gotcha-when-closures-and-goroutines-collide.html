@@ -9,11 +9,37 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> i := </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">i</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">i++</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		fmt.Printf(</span><span class="sk-6f42c1-ffc799">"%d "</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>It's output is easy to predict:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">0</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-005cc5-ffc799"> 9</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">0</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-005cc5-ffc799"> 9</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you decided that it would be nice to run those <code>fmt.Printf</code>s concurrently using goroutines you might be surprised by the result. Here's a version of the code that runs each <code>fmt.Printf</code> in its own goroutine and uses a <code>sync.WaitGroup</code> to wait for the goroutines to terminate.</p>
 <div class="emdash-code">
@@ -38,12 +64,20 @@
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"><span class="sk-24292e-fff">	</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	wg.Wait</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(This code is in the Go Playground <a href="https://play.golang.org/p/VmW3H-xqsz" target="_blank" rel="noopener noreferrer">here</a>). If you're thinking concurrently then you'll likely predict that the output will be the numbers 0 to 9 in some random order depending on precisely when the 10 goroutines run.</p>
 <p>But the output is actually:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Why?</p>
 <p>Because each of those goroutines is sharing the single variable <code>i</code> across the ten closures generated by the <code>func()</code> used for each goroutine.</p>
@@ -72,7 +106,11 @@
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"><span class="sk-24292e-fff">	</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	wg.Wait</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(The code for that is <a href="https://play.golang.org/p/IeFgq5CNOk" target="_blank" rel="noopener noreferrer">here</a>). That works correctly.</p>
 <p>This is such a common gotcha that it's also in the <a href="https://golang.org/doc/faq#closures_and_goroutines" target="_blank" rel="noopener noreferrer">FAQ</a>.</p>

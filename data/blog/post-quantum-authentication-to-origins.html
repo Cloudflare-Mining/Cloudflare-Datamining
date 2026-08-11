@@ -58,8 +58,30 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  -CA</span><span class="sk-032f62-99ffe4"> origin-ca.crt</span><span class="sk-005cc5-99ffe4"> -CAkey</span><span class="sk-032f62-99ffe4"> origin-ca.key</span><span class="sk-005cc5-99ffe4"> -CAcreateserial</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -out</span><span class="sk-032f62-99ffe4"> origin-server.crt</span><span class="sk-005cc5-99ffe4"> -days</span><span class="sk-005cc5-ffc799"> 5475</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -copy_extensions</span><span class="sk-032f62-99ffe4"> copy</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>Cloudflare client certificate chain for AOP:</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Create a private ML-DSA-44 CA for Authenticated Origin Pulls</span></span>
@@ -87,7 +109,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  -CA</span><span class="sk-032f62-99ffe4"> aop-ca.crt</span><span class="sk-005cc5-99ffe4"> -CAkey</span><span class="sk-032f62-99ffe4"> aop-ca.key</span><span class="sk-005cc5-99ffe4"> -CAcreateserial</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -out</span><span class="sk-032f62-99ffe4"> aop-client.crt</span><span class="sk-005cc5-99ffe4"> -days</span><span class="sk-005cc5-ffc799"> 5475</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -copy_extensions</span><span class="sk-032f62-99ffe4"> copy</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>2. Upload the origin CA to Custom Origin Trust Store</p>
 <div class="emdash-code">
@@ -97,7 +123,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer </span><span class="sk-24292e-fff">$CLOUDFLARE_API_TOKEN</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --json</span><span class="sk-032f62-99ffe4"> "{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">certificate</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: </span><span class="sk-24292e-fff">$CA_CERT</span><span class="sk-032f62-99ffe4">}"</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Uploading a COTS CA replaces the default publicly-trusted CAs for the zone. Make sure you only upload post-quantum CAs if you want to avoid downgrade attacks.</em></p>
 <p>3. Upload the client certificate for Authenticated Origin Pulls</p>
@@ -117,7 +147,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer </span><span class="sk-24292e-fff">$CLOUDFLARE_API_TOKEN</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --json</span><span class="sk-032f62-99ffe4"> '{"enabled": true}'</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>4. Set your SSL/TLS mode to Full (strict)</p>
 <p>Custom Origin Trust Store is only active when your zone is using <strong>Full (strict)</strong> mode. If you are using AOP without COTS, <strong>Full</strong> or higher is sufficient.</p>
@@ -126,7 +160,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer </span><span class="sk-24292e-fff">$CLOUDFLARE_API_TOKEN</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --json</span><span class="sk-032f62-99ffe4"> '{"value": "strict"}'</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>5. Configure your origin server (on NGINX)</p>
 <p>If you are using COTS (your origin presents the ML-DSA server certificate):</p>
@@ -137,7 +175,11 @@
 <span class="line"><span>    ssl_certificate_key /etc/ssl/origin-server.key;</span></span>
 <span class="line"><span>    ssl_protocols       TLSv1.3;</span></span>
 <span class="line"><span>}</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you are using AOP (your origin verifies Cloudflare's client certificate):</p>
 <div class="emdash-code">
@@ -145,7 +187,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    listen</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-032f62-99ffe4"> ssl</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ssl_client_certificate</span><span class="sk-032f62-99ffe4"> /etc/ssl/aop-ca.crt</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ssl_verify_client</span><span class="sk-032f62-99ffe4">      on</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you are using both together (recommended for full post-quantum mutual TLS):</p>
 <div class="emdash-code">
@@ -156,7 +202,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    ssl_client_certificate</span><span class="sk-032f62-99ffe4"> /etc/ssl/aop-ca.crt</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ssl_verify_client</span><span class="sk-032f62-99ffe4">      on</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ssl_protocols</span><span class="sk-032f62-99ffe4">          TLSv1.3</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>6. Verify the post-quantum handshake</p>
 <p>The TLS handshake between Cloudflare and your origin happens behind the scenes, so you cannot observe it directly by connecting to your proxied hostname from the outside. Instead, verify each side separately.</p>
@@ -166,7 +216,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">ORIGIN_I</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">:443</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -servername</span><span class="sk-032f62-99ffe4"> origin.example.com</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -CAfile</span><span class="sk-032f62-99ffe4"> origin-ca.crt</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  -brief</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">  -brief</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Look for <code>Signature type: mldsa44</code> in the output.</p>
 <p>If your origin is firewalled to only accept Cloudflare IPs, check your origin server's TLS logs or use a packet capture tool such as <code>ssldump</code> or <code>tcpdump</code> on the origin to confirm that Cloudflare negotiated TLS 1.3 with the ML-DSA certificate.</p>
@@ -175,14 +229,22 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">ORIGIN_I</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">:443</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -servername</span><span class="sk-032f62-99ffe4"> origin.example.com</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  -brief</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">  -brief</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With <code>ssl_verify_client</code> on enforced, this should fail with an SSL alert.</p>
 <p><strong>Verify the full Cloudflare-to-origin path:</strong></p>
 <p>Because the mTLS handshake happens server-to-server, the most reliable way to confirm that Cloudflare is presenting the ML-DSA client certificate is to inspect your origin server logs. For example, in NGINX you can log the client certificate serial number or subject:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">log_format</span><span class="sk-032f62-99ffe4"> pq_verify</span><span class="sk-032f62-99ffe4"> '$remote_addr - $ssl_client_serial $ssl_client_s_dn'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">access_log</span><span class="sk-032f62-99ffe4"> /var/log/nginx/pq-verify.log</span><span class="sk-032f62-99ffe4"> pq_verify</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">access_log</span><span class="sk-032f62-99ffe4"> /var/log/nginx/pq-verify.log</span><span class="sk-032f62-99ffe4"> pq_verify</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After sending a request through Cloudflare, check the log. You should see the serial number of the <code>aop-client.crt</code> certificate you uploaded.</p>
 <p>For the key agreement, ensure that your origin's TLS library supports <code>X25519MLKEM768</code> and that it is preferred in your configuration. The post-quantum key agreement will be visible in origin server logs or packet captures as the negotiated group.</p>

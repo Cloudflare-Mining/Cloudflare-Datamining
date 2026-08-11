@@ -15,14 +15,40 @@
 <p>Let's use port 4321 for our UDP packets. Before we start we must ensure the traffic won't be interfered with by the <code>iptables</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>receiver$ iptables -I INPUT 1 -p udp --dport 4321 -j ACCEPT</span></span>
-<span class="line"><span>receiver$ iptables -t raw -I PREROUTING 1 -p udp --dport 4321 -j NOTRACK</span></span></code></pre>
+<span class="line"><span>receiver$ iptables -t raw -I PREROUTING 1 -p udp --dport 4321 -j NOTRACK</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>A couple of explicitly defined IP addresses will later become handy:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>receiver$ for i in `seq 1 20`; do \</span></span>
 <span class="line"><span>              ip addr add 192.168.254.$i/24 dev eth2; \</span></span>
 <span class="line"><span>          done</span></span>
-<span class="line"><span>sender$ ip addr add 192.168.254.30/24 dev eth3</span></span></code></pre>
+<span class="line"><span>sender$ ip addr add 192.168.254.30/24 dev eth3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>The naive approach</li>
@@ -35,7 +61,11 @@
 <span class="line"><span>fd.bind(("0.0.0.0", 65400)) # select source port to reduce nondeterminism</span></span>
 <span class="line"><span>fd.connect(("192.168.254.1", 4321))</span></span>
 <span class="line"><span>while True:</span></span>
-<span class="line"><span>    fd.sendmmsg(["\x00" * 32] * 1024)</span></span></code></pre>
+<span class="line"><span>    fd.sendmmsg(["\x00" * 32] * 1024)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>While we could have used the usual <code>send</code> syscall, it wouldn't be efficient. Context switches to the kernel have a cost and it is be better to avoid it. Fortunately a handy syscall was recently added to Linux: <a href="http://man7.org/linux/man-pages/man2/sendmmsg.2.html" target="_blank" rel="noopener noreferrer"><code>sendmmsg</code></a>. It allows us to send many packets in one go. Let's do 1,024 packets at once.</p>
 <p>The receiver pseudo code:</p>
@@ -44,7 +74,11 @@
 <span class="line"><span>fd.bind(("0.0.0.0", 4321))</span></span>
 <span class="line"><span>while True:</span></span>
 <span class="line"><span>    packets = [None] * 1024</span></span>
-<span class="line"><span>    fd.recvmmsg(packets, MSG_WAITFORONE)</span></span></code></pre>
+<span class="line"><span>    fd.recvmmsg(packets, MSG_WAITFORONE)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Similarly, <a href="http://man7.org/linux/man-pages/man2/recvmmsg.2.html" target="_blank" rel="noopener noreferrer"><code>recvmmsg</code></a> is a more efficient version of the common <code>recv</code> syscall.</p>
 <p>Let's try it out:</p>
@@ -58,7 +92,11 @@
 <span class="line"><span>  0.195M pps   5.956MiB /  49.966Mb</span></span>
 <span class="line"><span>  0.199M pps   6.060MiB /  50.836Mb</span></span>
 <span class="line"><span>  0.200M pps   6.097MiB /  51.147Mb</span></span>
-<span class="line"><span>  0.197M pps   6.021MiB /  50.509Mb</span></span></code></pre>
+<span class="line"><span>  0.197M pps   6.021MiB /  50.509Mb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the naive approach we can do between 197k and 350k pps. Not too bad. Unfortunately there is quite a bit of variability. It is caused by the kernel shuffling our programs between cores. Pinning the processes to CPUs will help:</p>
 <div class="emdash-code">
@@ -69,7 +107,11 @@
 <span class="line"><span>  0.369M pps  11.252MiB /  94.389Mb</span></span>
 <span class="line"><span>  0.370M pps  11.289MiB /  94.696Mb</span></span>
 <span class="line"><span>  0.365M pps  11.152MiB /  93.552Mb</span></span>
-<span class="line"><span>  0.360M pps  10.971MiB /  92.033Mb</span></span></code></pre>
+<span class="line"><span>  0.360M pps  10.971MiB /  92.033Mb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, the kernel scheduler keeps the processes on the defined CPUs. This improves processor cache locality and makes the numbers more consistent, just what we wanted.</p>
 <ol>
@@ -84,7 +126,11 @@
 <span class="line"><span>  0.349M pps  10.651MiB /  89.343Mb</span></span>
 <span class="line"><span>  0.354M pps  10.815MiB /  90.724Mb</span></span>
 <span class="line"><span>  0.354M pps  10.806MiB /  90.646Mb</span></span>
-<span class="line"><span>  0.354M pps  10.811MiB /  90.690Mb</span></span></code></pre>
+<span class="line"><span>  0.354M pps  10.811MiB /  90.690Mb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The numbers on the receiving side didn't increase. <code>ethtool -S</code> will reveal where the packets actually went:</p>
 <div class="emdash-code">
@@ -100,7 +146,11 @@
 <span class="line"><span>     rx-7.rx_packets:     0.5/s</span></span>
 <span class="line"><span>     rx-8.rx_packets:     0.0/s</span></span>
 <span class="line"><span>     rx-9.rx_packets:     0.0/s</span></span>
-<span class="line"><span>     rx-10.rx_packets:    0.0/s</span></span></code></pre>
+<span class="line"><span>     rx-10.rx_packets:    0.0/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Through these stats, the NIC reports that it had successfully delivered around 350kpps to RX queue number #4. The <code>rx_nodesc_drop_cnt</code> is a Solarflare specific counter saying the NIC failed to deliver 450kpps to the kernel.</p>
 <p>Sometimes it's not obvious why the packets weren't delivered. In our case though, it's very clear: the RX queue #4 delivers packets to CPU #4. And CPU #4 can't do any more work - it's totally busy just reading the 350kpps. Here's how that looks in <code>htop</code>:</p>
@@ -117,7 +167,11 @@
 <p><a href="https://www.cloudflare.com/learning/dns/glossary/round-robin-dns" target="_blank" rel="noopener noreferrer">Round-robin balancing</a> is not acceptable, as it might introduce reordering of packets within a single connection. An alternative is to use a hash from packet to decide the RX queue number. The hash is usually counted from a tuple (src IP, dst IP, src port, dst port). This guarantees that packets for a single flow will always end up on exactly the same RX queue, and reordering of packets within a single flow can't happen.</p>
 <p>In our case, the hash could have been used like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>RX_queue_number = hash('192.168.254.30', '192.168.254.1', 65400, 4321) % number_of_queues</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>RX_queue_number = hash('192.168.254.30', '192.168.254.1', 65400, 4321) % number_of_queues</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Multi-queue hashing algorithms</h3>
 <p>The hash algorithm is configurable with <code>ethtool</code>. On our setup it is:</p>
@@ -125,16 +179,28 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>receiver$ ethtool -n eth2 rx-flow-hash udp4</span></span>
 <span class="line"><span>UDP over IPV4 flows use these fields for computing Hash flow key:</span></span>
 <span class="line"><span>IP SA</span></span>
-<span class="line"><span>IP DA</span></span></code></pre>
+<span class="line"><span>IP DA</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This reads as: for IPv4 UDP packets, the NIC will hash (src IP, dst IP) addresses. i.e.:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>RX_queue_number = hash('192.168.254.30', '192.168.254.1') % number_of_queues</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>RX_queue_number = hash('192.168.254.30', '192.168.254.1') % number_of_queues</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is pretty limited, as it ignores the port numbers. Many NICs allow customization of the hash. Again, using <code>ethtool</code> we can select the tuple (src IP, dst IP, src port, dst port) for hashing:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>receiver$ ethtool -N eth2 rx-flow-hash udp4 sdfn</span></span>
-<span class="line"><span>Cannot change RX network flow hashing options: Operation not supported</span></span></code></pre>
+<span class="line"><span>Cannot change RX network flow hashing options: Operation not supported</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Unfortunately our NIC doesn't support it - we are constrained to (src IP, dst IP) hashing.</p>
 <h3>A note on NUMA performance</h3>
@@ -153,7 +219,11 @@
 <hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
 <p>Since the hashing algorithm on our NIC is pretty limited, the only way to distribute the packets across RX queues is to use many IP addresses. Here's how to send packets to different destination IPs:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>sender$ taskset -c 1,2 ./udpsender 192.168.254.1:4321 192.168.254.2:4321</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>sender$ taskset -c 1,2 ./udpsender 192.168.254.1:4321 192.168.254.2:4321</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>ethtool</code> confirms the packets go to distinct RX queues:</p>
 <div class="emdash-code">
@@ -168,14 +238,22 @@
 <span class="line"><span>     rx-7.rx_packets:     0.5/s</span></span>
 <span class="line"><span>     rx-8.rx_packets:     0.0/s</span></span>
 <span class="line"><span>     rx-9.rx_packets:     0.0/s</span></span>
-<span class="line"><span>     rx-10.rx_packets:    0.0/s</span></span></code></pre>
+<span class="line"><span>     rx-10.rx_packets:    0.0/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The receiving part:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>receiver$ taskset -c 1 ./udpreceiver1 0.0.0.0:4321</span></span>
 <span class="line"><span>  0.609M pps  18.599MiB / 156.019Mb</span></span>
 <span class="line"><span>  0.657M pps  20.039MiB / 168.102Mb</span></span>
-<span class="line"><span>  0.649M pps  19.803MiB / 166.120Mb</span></span></code></pre>
+<span class="line"><span>  0.649M pps  19.803MiB / 166.120Mb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hurray! With two cores busy with handling RX queues, and third running the application, it's possible to get ~650k pps!</p>
 <p>We can increase this number further by sending traffic to three or four RX queues, but soon the application will hit another limit. This time the <code>rx_nodesc_drop_cnt</code> is not growing, but the <code>netstat</code> "receiver errors" are:</p>
@@ -188,7 +266,11 @@
 <span class="line"><span>        0.0/s packets sent</span></span>
 <span class="line"><span>    RcvbufErrors:  123.8k/s</span></span>
 <span class="line"><span>    SndbufErrors: 0</span></span>
-<span class="line"><span>    InCsumErrors: 0</span></span></code></pre>
+<span class="line"><span>    InCsumErrors: 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This means that while the NIC is able to deliver the packets to the kernel, the kernel is not able to deliver the packets to the application. In our case it is able to deliver only 440kpps, the remaining 390kpps + 123kpps are dropped due to the application not receiving them fast enough.</p>
 <ol>
@@ -202,7 +284,11 @@
 <span class="line"><span>  0.495M pps  15.108MiB / 126.733Mb</span></span>
 <span class="line"><span>  0.480M pps  14.636MiB / 122.775Mb</span></span>
 <span class="line"><span>  0.461M pps  14.071MiB / 118.038Mb</span></span>
-<span class="line"><span>  0.486M pps  14.820MiB / 124.322Mb</span></span></code></pre>
+<span class="line"><span>  0.486M pps  14.820MiB / 124.322Mb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The receiving performance is down compared to a single threaded program. That's caused by a lock contention on the UDP receive buffer side. Since both threads are using the same socket descriptor, they spend a disproportionate amount of time fighting for a lock around the UDP receive buffer. <a href="http://www.jcc2014.ucm.cl/jornadas/WORKSHOP/WSDP%202014/WSDP-4.pdf" target="_blank" rel="noopener noreferrer">This paper</a> describes the problem in more detail.</p>
 <p>Using many threads to receive from a single descriptor is not optimal.</p>
@@ -216,7 +302,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>receiver$ taskset -c 1,2,3,4 ./udpreceiver1 0.0.0.0:4321 4 1</span></span>
 <span class="line"><span>  1.114M pps  34.007MiB / 285.271Mb</span></span>
 <span class="line"><span>  1.147M pps  34.990MiB / 293.518Mb</span></span>
-<span class="line"><span>  1.126M pps  34.374MiB / 288.354Mb</span></span></code></pre>
+<span class="line"><span>  1.126M pps  34.374MiB / 288.354Mb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is more like it! The throughput is decent now!</p>
 <p>More investigation will reveal further room for improvement. Even though we started four receiving threads, the load is not being spread evenly across them:</p>

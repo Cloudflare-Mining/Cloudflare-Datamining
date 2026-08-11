@@ -20,18 +20,48 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> p </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-d73a49-a0a0a0"> range</span><span class="sk-24292e-fff"> prog.AllPackages {</span></span>
 <span class="line"><span class="sk-24292e-fff">    fmt.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(p.</span><span class="sk-6f42c1-ffc799">Path</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>With these few lines we already replicated <code>go list -f {{ .Deps }}</code>!</p>
 <p>The only missing loading feature here is wildcard (<code>./...</code>) support. That code <a href="https://github.com/golang/go/blob/87bca88c703c1f14fe8473dc2f07dc521cf2b989/src/cmd/go/main.go#L365" target="_blank" rel="noopener noreferrer">is in the go tool source</a> and it's unexported. There's an <a href="https://github.com/golang/go/issues/8768" target="_blank" rel="noopener noreferrer">issue</a> about exposing it, but for now packages <a href="https://github.com/golang/lint/blob/58f662d2fc0598c6c36a92ae29af1caa6ec89d7a/golint/import.go" target="_blank" rel="noopener noreferrer">are just copy-pasting it</a>. We'll use a packaged version of that code, <a href="https://github.com/kisielk/gotool" target="_blank" rel="noopener noreferrer"><code>github.com/kisielk/gotool</code></a>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> _, p </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-d73a49-a0a0a0"> range</span><span class="sk-24292e-fff"> gotool.</span><span class="sk-6f42c1-ffc799">ImportPaths</span><span class="sk-24292e-fff">(flag.</span><span class="sk-6f42c1-ffc799">Args</span><span class="sk-24292e-fff">()) {</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> _, p </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-d73a49-a0a0a0"> range</span><span class="sk-24292e-fff"> gotool.</span><span class="sk-6f42c1-ffc799">ImportPaths</span><span class="sk-24292e-fff">(flag.</span><span class="sk-6f42c1-ffc799">Args</span><span class="sk-24292e-fff">()) {</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, since we are only interested in the dependency tree today we instruct the parser to only go as far as the imports statements and we ignore the resulting "not used" errors:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">conf.ParserMode </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> parser.ImportsOnly</span></span>
 <span class="line"><span class="sk-24292e-fff">conf.AllowErrors </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> true</span></span>
-<span class="line"><span class="sk-24292e-fff">conf.TypeChecker.Error </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> func</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">error</span><span class="sk-24292e-fff">) {}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">conf.TypeChecker.Error </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> func</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">error</span><span class="sk-24292e-fff">) {}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Then, the actual logic</h3>
 <p>We now have a <code>loader.Program</code> object, which holds references to various <code>loader.PackageInfo</code> objects, which in turn are a combination of package, AST and types information. All you need to perform any kind of complex analysis. Not that we are going to do that today :)</p>
@@ -55,7 +85,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        !</span><span class="sk-6f42c1-ffc799">isStandardImportPath</span><span class="sk-24292e-fff">(pi.Pkg.</span><span class="sk-6f42c1-ffc799">Path</span><span class="sk-24292e-fff">()) {</span></span>
 <span class="line"><span class="sk-24292e-fff">        packages </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> append</span><span class="sk-24292e-fff">(packages, pi)</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then we just have to print a warning if any remaining package is not in a <code>/vendor/</code> folder:</p>
 <div class="emdash-code">
@@ -63,7 +97,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> strings.</span><span class="sk-6f42c1-ffc799">Index</span><span class="sk-24292e-fff">(pi.Pkg.</span><span class="sk-6f42c1-ffc799">Path</span><span class="sk-24292e-fff">(), </span><span class="sk-032f62-99ffe4">"/vendor/"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">        fmt.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"[!] dependency not vendored:"</span><span class="sk-24292e-fff">, pi.Pkg.</span><span class="sk-6f42c1-ffc799">Path</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Done! You can find the tool here: <a href="https://github.com/FiloSottile/vendorcheck" target="_blank" rel="noopener noreferrer">https://github.com/FiloSottile/vendorcheck</a></p>
 <h3>Further reading</h3>

@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "autoAttachChildProcesses"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Once you’ve created this configuration in <code>launch.json</code>, open your project in VSCode. Open a new terminal window from VSCode, and run <code>npx wrangler dev</code> to start a local dev server.</p>
 <p>At the top of the <strong>Run &amp; Debug</strong> panel, you should see an option to select a configuration. Choose <strong>Wrangler</strong>, and select the play icon. You should see <strong>Wrangler: Remote Process [0]</strong> show up in the Call Stack panel on the left. Go back to a <strong>.js</strong> or <strong>.ts</strong> file in your project and add at least one breakpoint.</p>
 <p>Open your browser and go to the Worker’s local URL (default <a href="http://127.0.0.1:8787" target="_blank" rel="noopener noreferrer">http://127.0.0.1:8787</a>). The breakpoint should be hit, and you should see details about your code at the specified line.</p>
@@ -83,7 +105,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "sourcesContent"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"interface Env { ... }</span><span class="sk-005cc5-a0a0a0">\n\n</span><span class="sk-032f62-99ffe4">export default ..."</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "mappings"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">";AAIA,IAAO,mBAA8B;AAAA,EACjC,MAAM,MAAM,SAAS,KAAK,KAAK;..."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "names"</span><span class="sk-24292e-fff">: []</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Each of the relative paths in <code>sources</code> are resolved relative to the source map’s fully-qualified URL. When DevTools connects to V8 and enables the Debugger domain, V8 will send information on all parsed scripts including the source map’s fully-qualified URL. In our example, this would be <code>file:///absolute/path/to/generated.js.map</code>. DevTools needs to fetch this URL along with source URLs to perform source mapping. Unfortunately, our patched version of DevTools is hosted at <a href="https://devtools.devprod.cloudflare.dev" target="_blank" rel="noopener noreferrer">https://devtools.devprod.cloudflare.dev/</a>, and browsers prohibit fetching <code>file://</code> URLs from non-<code>file://</code> origins for security reasons. However, we need to use <code>file://</code> URLs so IDEs like Visual Studio Code can match up source files from source maps to files on disk. To get around this, we used Wrangler's inspector proxy to rewrite the CDP script parsed messages sent by V8 to use a different protocol if the <code>User-Agent</code> of the inspector WebSocket handshake is a browser.</p>
 <p>Now that we can set breakpoints and fetch source maps, DevTools works as normal. When a user tries to set a breakpoint in an original source file, DevTools will use the map’s <code>mappings</code> to find the location in the generated JavaScript file and set a breakpoint there. This is the opposite problem to source mapping error stack traces. When V8 hits this JavaScript breakpoint, DevTools will pause on the location in the original source file. Stepping through the source file requires mapping the stepped-over segment to generated code, sending the step-over command to V8, then mapping back the new paused location in generated code to the original source file.</p>

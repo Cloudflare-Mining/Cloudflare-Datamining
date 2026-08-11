@@ -279,15 +279,41 @@
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> http_requests</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> BotScore </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 100</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 100</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>2단계:</strong> <code>RayID</code>를 복사하고 <code>access_requests</code>를 검색하여 어떤 사용자 계정이 의심스러운 봇 활동과 연관되어 있는지 확인합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
 <span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> Email, IPAddress, Allowed</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> access_requests</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> RayID </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'INSERT_RAY_ID_HERE'</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> RayID </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'INSERT_RAY_ID_HERE'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>피싱 이후의 C2 비커닝</h3>
 <p><strong>시나리오:</strong> 한 직원이 피싱 이메일에 있는 링크를 클릭하여 워크스테이션을 손상시켰습니다. 이 워크스테이션은 알려진 악의적 도메인에 대한 DNS 쿼리를 전송한 후 즉시 IDS 경고를 트리거합니다.</p>
@@ -296,13 +322,21 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-d73a49-a0a0a0"> Timestamp</span><span class="sk-24292e-fff">, Threatcategories, </span><span class="sk-d73a49-ffc799">To</span><span class="sk-24292e-fff">, Alertreason</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> email_security_alerts</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> Threatcategories </span><span class="sk-d73a49-ffc799">LIKE</span><span class="sk-032f62-99ffe4"> 'phishing'</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> Threatcategories </span><span class="sk-d73a49-ffc799">LIKE</span><span class="sk-032f62-99ffe4"> 'phishing'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>2단계:</strong> Access 로그를 사용하여 사용자의 이메일(수신자)과 IP 주소의 상관 관계를 파악합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> Email, IPAddress</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> access_requests</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>3단계:</strong> <code>gateway_dns</code> 로그에서 특정 악성 도메인을 쿼리하는 내부 IP를 찾습니다.</p>
 <div class="emdash-code">
@@ -311,7 +345,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> gateway_dns</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> SrcIP </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'INSERT_IP_FROM_PREVIOUS_QUERY'</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> QueryName </span><span class="sk-d73a49-ffc799">LIKE</span><span class="sk-032f62-99ffe4"> '%malicious_domain_name%'</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> QueryName </span><span class="sk-d73a49-ffc799">LIKE</span><span class="sk-032f62-99ffe4"> '%malicious_domain_name%'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>내부망 이동(액세스 → 네트워크 탐색)</h3>
 <p><strong>시나리오:</strong> 사용자가 Zero Trust를 통해 로그인한 다음 내부 네트워크 검사를 시도합니다.</p>
@@ -321,14 +359,22 @@
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> access_requests</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> Allowed </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> true </span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> Country </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-032f62-99ffe4"> 'US'</span><span class="sk-6a737d-8b8b8b94"> -- Replace with your HQ country</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> Country </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-032f62-99ffe4"> 'US'</span><span class="sk-6a737d-8b8b8b94"> -- Replace with your HQ country</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>2단계:</strong> <code>Magic_ids_detections에서</code> <code>IPAddress가</code> 네트워크 수준 서명을 트리거하고 있는지 확인합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> SignatureMessage, DestinationIP, Protocol</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> magic_ids_detections</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-a0a0a0"> date</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '2026-02-22'</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> SourceIP </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'INSERT_IP_ADDRESS_HERE'</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-24292e-fff"> SourceIP </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'INSERT_IP_ADDRESS_HERE'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>더 많은 데이터를 위한 문 열기&nbsp;</h3>
 <p>Log Explorer는 처음부터 확장성을 염두에 두고 설계되었습니다. 모든 데이터세트 스키마는 JSON 데이터의 구조와 유형을 설명하기 위해 널리 채택되는 표준인 JSON 스키마를 사용하여 정의됩니다. 이러한 설계상의 결정으로 HTTP 요청 및 방화벽 이벤트를 넘어 Cloudflare의 원격 측정을 모든 범위로 쉽게 확장할 수 있었습니다. 초기 데이터 세트를 구동하는 것과 동일한 스키마 기반 접근 방식은 Zero Trust 로그, 네트워크 분석, 이메일 보안 경고 등 모든 것을 수용할 수 있도록 자연스럽게 확장되었습니다.</p>

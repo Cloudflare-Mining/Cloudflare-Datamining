@@ -29,15 +29,41 @@
 <p>Loading an embed with Cloudflare Zaraz is simple: instead of loading the Embed JavaScript provided by X or Instagram, you simply add a placeholder element to your HTML.</p>
 <p>For X:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">twitter-post tweet-id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1754336034228171055"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/twitter-post</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">twitter-post tweet-id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1754336034228171055"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/twitter-post</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>* Make sure to replace the tweet-id with the number shown in the embedded tweet’s URL.</p>
 <p>For Instagram:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">instagram-post</span></span>
 <span class="line"><span class="sk-24292e-fff">  post-url</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://www.instagram.com/p/Ct_qa1ZtmiW/"</span></span>
 <span class="line"><span class="sk-24292e-fff">  captions</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"true"</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/instagram-post</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/instagram-post</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>* Make sure to replace the post-url with the URL of the desired post. When `captions` is set to true, the embed will include the post’s captions.</p>
 <p>Once you've added the HTML to your page, activate the corresponding tools in your Cloudflare Zaraz dashboard. Click “Add new tools” to add X and Instagram. This is how your screen should look when you finish setting up your tools:</p>
@@ -50,7 +76,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">manager.</span><span class="sk-6f42c1-ffc799">registerEmbed</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"post"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">parameters</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">client</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // embed's logic goes here</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Zaraz detects the placeholder element , and picks up all the parameters included as HTML attributes of that element and sends them inside an object, together with the client, as the first argument of the <a href="https://managedcomponents.dev/specs/embed-and-widgets/embeds" target="_blank" rel="noopener noreferrer"><code>manager.registerEmbed()</code></a> function. The <code>manager.registerEmbed()</code> <code>callback</code> will return HTML. To generate the HTML, we use generic HTML and CSS templates we’ve written to construct the post. Those templates contain placeholder variables to be filled with the relevant tweet data later on.</p>
 <p>We use <a href="http://mustache.github.io" target="_blank" rel="noopener noreferrer">Mustache</a>, a library for rendering templates, to replace the placeholder variables spread across the HTML template. Wherever Mustache detects <code>{{text}}</code>, <code>{{name}}</code>, <code>{{username}}</code>, and the like in the HTML, it will replace their content with the relevant values we pass to it, like so:</p>
@@ -71,7 +101,11 @@
 <span class="line"><span class="sk-24292e-fff">      xIcon,</span></span>
 <span class="line"><span class="sk-24292e-fff">      tooltipIcon,</span></span>
 <span class="line"><span class="sk-24292e-fff">      retweetUrl,</span></span>
-<span class="line"><span class="sk-24292e-fff">    })</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    })</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Most of the values of the variables we pass to Mustache, which contain the specific post data, are being fetched from one of X’s endpoints. This is done with a server-side fetch request. The response, containing a JSON file with all the post’s data, is then populated into the corresponding variables as shown above.</p>
 <p>Zaraz is also caching the JSON for better performance. This is done with the Managed Components <a href="https://managedcomponents.dev/specs/cache/useCache" target="_blank" rel="noopener noreferrer"><code>manager.useCache()</code></a> method, which takes 3 arguments: name, function and expiry. Here, the function argument is using <a href="https://managedcomponents.dev/specs/server-functionality/fetch" target="_blank" rel="noopener noreferrer"><code>manager.fetch()</code></a> to send a fetch request from the server.</p>
@@ -100,7 +134,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">      },</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      600</span><span class="sk-6a737d-8b8b8b94"> // cache the Tweet for 10 minutes</span></span>
-<span class="line"><span class="sk-24292e-fff">    )</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It is important to mention that all images populated in the post template, like the profile picture, are fetched server-side and cached using <a href="https://managedcomponents.dev/specs/storage/set" target="_blank" rel="noopener noreferrer"><code>manager.set()</code></a>:</p>
 <div class="emdash-code">
@@ -123,7 +161,11 @@
 <span class="line"><span class="sk-24292e-fff">        profileImage </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> base64Encode</span><span class="sk-24292e-fff">(imageBuffer)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> manager.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'profileImage_'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> user.screen_name, profileImage)</span></span>
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once the post’s HTML is ready, with all the relevant content fetched and rendered, the Managed Component returns the HTML content to Zaraz. Zaraz will then use it to replace the &nbsp;<code>&lt;twitter-post&gt;</code> placeholder element. Because this all happens on Cloudflare, the response to the end-user's browser will already contain the embed code.</p>
 <h3>Walkthrough of the Instagram post embed</h3>
@@ -132,7 +174,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">manager.</span><span class="sk-6f42c1-ffc799">route</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/image/'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> request</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// logic to fetch and cache all images</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After setting up routes, we fetch the HTML content of the specific Instagram post, server-side, using the <code>manager.fetch()</code> method. We then manipulate the HTML to fit it to the specific website and cache it using <code>manager.useCache()</code>. Amongst other things, changes to the HTML include setting image <code>src</code> and <code>srcset</code> attributes to serve images from your own routes, to avoid requesting images from Instagram’s endpoint (and by so doing, potentially revealing sensitive user information). As mentioned above, we also remove all scripts and stylesheet links, as we prefetch and cache all CSS content from stylesheet links server-side, in order to serve CSS and spare the browser a few additional network requests, improving privacy and performance.</p>
 <p>The HTML manipulation is done using the <a href="https://cheerio.js.org" target="_blank" rel="noopener noreferrer">Cheerio</a> library. This is how, for example, we adjust the `src` attribute of images to redirect through our route:</p>
@@ -145,7 +191,11 @@
 <span class="line"><span class="sk-24292e-fff">          (</span><span class="sk-e36209-fff">_match</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">path</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            `${</span><span class="sk-6f42c1-ffc799">hostName</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">client</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">}${</span><span class="sk-24292e-fff">imgRoute</span><span class="sk-032f62-99ffe4">}?q=`</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-6f42c1-ffc799"> encodeURIComponent</span><span class="sk-24292e-fff">(path)</span></span>
 <span class="line"><span class="sk-24292e-fff">        )</span></span>
-<span class="line"><span class="sk-24292e-fff">        img.</span><span class="sk-6f42c1-ffc799">attr</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'src'</span><span class="sk-24292e-fff">, newSrc) </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        img.</span><span class="sk-6f42c1-ffc799">attr</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'src'</span><span class="sk-24292e-fff">, newSrc) </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This implementation effectively prevents any direct communication from the browser to Instagram servers, safeguarding sensitive user information such as IP addresses.</p>
 <h2>What is currently supported and what’s next for embeds</h2>

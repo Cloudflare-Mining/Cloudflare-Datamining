@@ -24,14 +24,40 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "bucket_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"my-r2-name"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"R2"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>鋭い方は、ローカル開発者からリモートリソースにアクセスして、すでにいくつかのバインディングが機能していることに気づいているかもしれません。最も顕著なのは、<a href="https://developers.cloudflare.com/workers-ai/configuration/bindings" target="_blank" rel="noopener noreferrer"><u>AIバインディング</u></a>が、一般的なリモートバインディングソリューションがどのようなものかを示す先駆者でした。Workers AIで使用できるすべての異なるモデルをサポートする真のローカル体験は現実的ではなく、AIモデルの膨大な事前ダウンロードが必要だからです。</p>
 <p>Workers内のさまざまな製品がリモートバインディングに似たものを必要としていることに気づくと（たとえば、ImagesとHyperdriveなど）、異なるソリューションの寄せ集めのようなものになりました。現在、すべてのバインディングタイプに対して機能する、単一のリモートバインディングソリューションに統合されています。</p>
 <h3>構築方法</h3>
 <p>私たちは、本番用のWorkersコードを変更することなく、開発者が本当に簡単にリモートリソースにアクセスできるようにしたかったのです。そこで、Workerで使用する時点でリモートリソースからデータを取得するというソリューションを使いました。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">KV</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"some-key"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">KV</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"some-key"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><sup><em>上記のコードスニペットは、env.KV <a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs" target="_blank" rel="noopener noreferrer"><u>KVネームスペース</u></a>の「some-key」値にアクセスすることを示しています。これは、ローカルでは利用できず、ネットワーク経由で取得する必要があります。</em></sup></p>
 <p>では、それが私たちの望む要件だとしたら、どのようにして関係を構築するのでしょうか？例えば、Workerで<code>env.KV.put(「key」、「value」</code>）を呼び出すユーザーから、実際にリモートKVストアに保存するにはどうすればいいでしょうか。明らかな解決策は、<a href="https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/update" target="_blank" rel="noopener noreferrer"><u>Cloudflare API</u></a>を使うことかもしれませんでした。ローカルにEnv全体をAPI呼び出しを行うスタブオブジェクトで置き換え、<code>env.KV.put()</code>をPUT <code>http:///accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}</code>に変換することもできました。</p>

@@ -18,11 +18,37 @@
 </ul>
 <p><strong>Do you want to deploy your application?</strong> _No_With our Worker created, we’ll need to set up the environment variable for our OpenAI API Key. You can <a href="https://platform.openai.com/account/api-keys" target="_blank" rel="noopener noreferrer">create an API key in your OpenAI dashboard</a>. Save your new API key someplace safe, then we’ll use wrangler to safely and securely store our API key in an environment variable that our Worker can access:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-032f62-99ffe4"> OPENAI_API_KEY</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-032f62-99ffe4"> OPENAI_API_KEY</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Then we’ll install LangChainjs using npm:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> langchain</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> langchain</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Before we start writing code we can make sure everything is working properly by running <code>wrangler dev</code>. With <code>wrangler dev</code> running you can press <code>b</code> to open a browser. When you do, you'll see “Hello World!” in your browser.</p>
 <h3>A sample application</h3>
@@ -31,7 +57,11 @@
 <p>Most often you’ll want to create documents from a source of pre-existing text. LangChain helpfully provides us with different <a href="https://js.langchain.com/docs/modules/indexes/document_loaders" target="_blank" rel="noopener noreferrer">document loaders</a> to make loading text from many different sources easy. There are document loaders for different types of text formats (for example: CSV, PDFs, HTML, unstructured text) and that content can be loaded locally or from the web. A document loader will both retrieve the text for you and load that text into a document object. For our application, we’ll be using the <a href="https://js.langchain.com/docs/modules/indexes/document_loaders/examples/web_loaders/web_cheerio" target="_blank" rel="noopener noreferrer">webpages with Cheerio</a> document loader. <a href="https://cheerio.js.org" target="_blank" rel="noopener noreferrer">Cheerio</a> is a lightweight library that will let us read the content of a webpage. We can install it using <code>npm install cheerio</code>.</p>
 <p>After we’ve installed cheerio we’ll import the CheerioWebBaseLoader at the top of our <code>src/index.js</code> file:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { CheerioWebBaseLoader } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "langchain/document_loaders/web/cheerio"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { CheerioWebBaseLoader } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "langchain/document_loaders/web/cheerio"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With CheerioWebBaseLoader imported, we can start using it within our fetch function:.</p>
 <div class="emdash-code">
@@ -43,13 +73,21 @@
 <span class="line"><span class="sk-24292e-fff">        console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(docs);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello World!"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">  },</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  },</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this code, we’re configuring our loader with the Wikipedia URL for the article about Brooklyn, run the <code>load()</code> function and log the result to the console. Like I mentioned earlier, if you want to try this with a different Wikipedia article or website, LangChain makes it very easy. All we have to do is change the URL we’re passing to our CheerioWebBaseLoader.</p>
 <p>Let’s run <code>npx wrangler dev</code>, load up our page locally and watch the output in our console. You should see:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Loaded</span><span class="sk-032f62-99ffe4"> page</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Array(1</span><span class="sk-24292e-fff">) [ Document ]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Array(1</span><span class="sk-24292e-fff">) [ Document ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our document loader retrieved the content of the webpage, put that content in a document object and loaded it into an array.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -61,12 +99,20 @@
 <p>Currently, we’ve loaded the entire content of the Wikipedia page about Brooklyn into one document object and would send the entirety of that text with every request to our language model. It would be more efficient if we could only send the relevant text to our language model when we have a question. The first step in doing this is to split our text into smaller chunks that are stored in multiple document objects. To assist with this LangChain gives us the very aptly named <a href="https://js.langchain.com/docs/modules/indexes/text_splitters" target="_blank" rel="noopener noreferrer">Text Splitters</a>.</p>
 <p>We can use a text splitter by updating our loader to use the <code>loadAndSplit()</code> function instead of <code>load()</code>. Update the line where we assign docs to this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> docs</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> loader.loadAndSplit</span><span class="sk-24292e-fff">();</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> docs</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> loader.loadAndSplit</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now start the application again with <code>npx wrangler dev</code> and load our page. This time in our console you’ll see something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Loaded</span><span class="sk-032f62-99ffe4"> page</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Array(227</span><span class="sk-24292e-fff">) [ Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document... ]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Array(227</span><span class="sk-24292e-fff">) [ Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document, Document... ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Instead of an array with one document object, our document loader has now split the text it retrieved into multiple document objects. It’s still a single Wikipedia article, LangChain just split that text into chunks that would be more appropriately sized for working with a language model.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -87,11 +133,19 @@
 <p>We’ll start by adding imports for OpenAIEmbeddings and MemoryVectorStore at the top of our file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> OpenAIEmbeddings</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "langchain/embeddings/openai"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> MemoryVectorStore</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "langchain/vectorstores/memory"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> MemoryVectorStore</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "langchain/vectorstores/memory"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then we can remove the <code>console.log()</code> function we had in place to show how our loader worked and replace them with the code to create our Embeddings and Vector store:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> store</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> MemoryVectorStore.fromDocuments</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">docs,</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> OpenAIEmbeddings</span><span class="sk-24292e-fff">({ openAIApiKey: env.OPENAI_API_KEY}));</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> store</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> MemoryVectorStore.fromDocuments</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">docs,</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> OpenAIEmbeddings</span><span class="sk-24292e-fff">({ openAIApiKey: env.OPENAI_API_KEY}));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With our text loaded into documents, our embeddings created and both stored in a vector store we can now query our text with our language model. To do that we’re going to introduce the last two concepts that are core to building this application – <a href="https://js.langchain.com/docs/modules/models" target="_blank" rel="noopener noreferrer">models</a> and <a href="https://js.langchain.com/docs/modules/chains" target="_blank" rel="noopener noreferrer">chains</a>.</p>
 <p>When you see models in LangChain, it’s not about generating or creating models. Instead, LangChain provides a standard interface that lets you access many different language models. In this app, we’ll be using the <a href="https://js.langchain.com/docs/modules/models/llms/integrations#openai" target="_blank" rel="noopener noreferrer">OpenAI model</a>.</p>
@@ -102,7 +156,11 @@
 <p>To start, we’ll add these two imports to the top of our file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> OpenAI</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "langchain/llms/openai"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> RetrievalQAChain</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "langchain/chains"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> RetrievalQAChain</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "langchain/chains"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then we can put this all into action by adding the following code after we create our vector store:</p>
 <div class="emdash-code">
@@ -115,7 +173,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">            query:</span><span class="sk-032f62-99ffe4"> question,</span></span>
 <span class="line"><span class="sk-24292e-fff">        });</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">res.text</span><span class="sk-24292e-fff">); </span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">res.text</span><span class="sk-24292e-fff">); </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this code the first line is where we instantiate our model interface and pass it our API key. Next we create a chain passing it our model and our vector store. As mentioned earlier, we’re using a RetrievalQAChain which will look in our vector store for documents related to our query and then use those documents to get an answer for our query from our model.</p>
 <p>With our chain created, we can call the chain by passing in the query we want to ask. Finally, we send the response text we got from our chain as the response to the request our Worker received. This will allow us to see the response in our browser.</p>
@@ -126,7 +188,11 @@
 <p>Right now, the question we’re asking is hard coded. Our goal was to be able to use LangChain to ask any question we want about this article. Let’s update our code to allow us to pass the question we want to ask in our request. In this case, we’ll pass a question as an argument in the query string (e.g. <em>?question=When was Brooklyn founded</em>). To do this we’ll replace the line we’re currently assigning our question with the code needed to pull a question from our query string:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">        const</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> searchParams</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request.url</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        const</span><span class="sk-032f62-99ffe4"> question</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> searchParams.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'question'</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">??</span><span class="sk-032f62-99ffe4"> "What is this article about? Can you give me 3 facts about it?"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        const</span><span class="sk-032f62-99ffe4"> question</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> searchParams.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'question'</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">??</span><span class="sk-032f62-99ffe4"> "What is this article about? Can you give me 3 facts about it?"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code pulls all the query parameters from our URL using a JavaScript URL’s native <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams" target="_blank" rel="noopener noreferrer">searchParams property</a>, and gets the value passed in for the “question” parameter. If a value isn’t present for the “question” parameter, we’ll use the default question text we were using previously thanks to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing" target="_blank" rel="noopener noreferrer">JavaScripts’s nullish coalescing operator</a>.</p>
 <p>With this update, run <code>npx wrangler dev</code> and this time visit your <a href="http://127.0.0.1:8787/?question=When+was+Brooklyn+founded%3F" target="_blank" rel="noopener noreferrer">local url with a question query string added</a>. Now instead of giving us a few fun facts about Brooklyn, we get the answer of when Brooklyn was founded. You can try this with any question you may have about Brooklyn. Or you can switch out the URL in our document loader and try asking similar questions about different Wikipedia articles.</p>

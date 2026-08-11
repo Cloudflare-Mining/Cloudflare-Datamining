@@ -9,19 +9,49 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> subdomain1.mycoolwebpage.xyz</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">192.0.2.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>I could specify the target of all subdomains like this, with one or multiple DNS records per subdomain. But what if I have hundreds or even thousands of subdomains that I all want to point to the same resource?</p>
 <p>This is where a wildcard DNS record comes in. By using the asterisk symbol <code>"*"</code> in the <em>Name</em> field, I can create one or multiple DNS records that are used as the response for all subdomains <strong>that are not specifically covered by another DNS record</strong> (more on this later). So the wildcard record you can see in the screenshot above is covering <code>*.mycoolwebpage.xyz</code>, meaning all subdomains of <code>mycoolwebpage.xyz</code>. This can also be done on deeper levels, like on <code>*.www.mycoolwebpage.xyz</code>.</p>
 <p>If I perform a lookup for <code>subdomain2.mycoolwebpage.xyz</code>, the target I specified in the wildcard record will be used as the response. Again, this is only happening because there is no DNS record specifically for this subdomain.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> subdomain2.mycoolwebpage.xyz</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.3</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And it is often overlooked that a wildcard record does not only cover the level it is set on directly, but deeper levels, as well:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> some.deep.label.subdomain2.mycoolwebpage.xyz</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.3</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Also, a wildcard DNS record does <strong>not</strong> cover the apex of the zone (in this example the apex is <code>mycoolwebpage.xyz</code>).</p>
 <h3>A few more things to know about wildcard records</h3>
@@ -31,13 +61,21 @@
 <p><strong>Wildcards will be applied for multiple levels</strong>. But a specific record on any equal or lower level will terminate anything on or below this specific record — independent of the type of that specific record. Here is an example. If you have <strong>only</strong> these two records on your domain</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">subdomain1.mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4">  TXT</span><span class="sk-032f62-99ffe4">  “some</span><span class="sk-032f62-99ffe4"> text”</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.mycoolwebpage.xyz  	A  192.0.2.3</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.mycoolwebpage.xyz  	A  192.0.2.3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>the wildcard record will be used for queries going to any subdomain of <code>mycoolwebpage.xyz</code> <strong>except</strong> <code>subdomain1.mycoolwebpage.xyz</code> or anything <strong>below</strong> that specific label, like <code>deeper.label.subdomain1.mycoolwebpage.xyz</code> — simply because there already exists a record on <code>subdomain1.mycoolwebpage.xyz</code>. However, the wildcard will be used for deeper labels that are <strong>not</strong> below the specific record on subdomain1 — for example, <code>deeper.label.subdomain2.mycoolwebpage.xyz</code>.</p>
 <p>To expand on this rule: if you think of DNS as a tree starting from the <a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank" rel="noopener noreferrer">root zone</a> (see the diagram below), simply the existence of a branch terminates the wildcard for <strong>all records</strong> on that branch. In the example above the wildcard was terminated for anything on the label subdomain1 <strong>and below</strong>, but even if there only exists a record on a deeper level, anything <strong>above</strong> will also be terminating the wildcard. This example should make it clear. If you <strong>only</strong> have the following two records on your domain, as shown in the diagram below</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">some.deep.label.subdomain1.mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4">  TXT</span><span class="sk-032f62-99ffe4">  “some</span><span class="sk-032f62-99ffe4"> other</span><span class="sk-032f62-99ffe4"> text”</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.mycoolwebpage.xyz  	A  192.0.2.3</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.mycoolwebpage.xyz  	A  192.0.2.3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>a query to <code>label.subdomain1.mycoolwebpage.xyz</code> for an A record is <strong>not</strong> covered by the wildcard because it is a node on the existing branch ending in the TXT record above.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -56,7 +94,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> subdomain2.mycoolwebpage.xyz</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">104.18.35.126</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">172.64.152.130</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">172.64.152.130</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the example above, this will ensure that all HTTP/S requests sent to <code>subdomain2.mycoolwebpage.xyz</code> or any other subdomain that is covered by the proxied wildcard DNS record are proxied by Cloudflare’s network, specifically the closest Cloudflare data center. Go see for yourself and pick a random subdomain of <code>mycoolwebpage.xyz</code>. You will see a simple page that is generated using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

@@ -32,18 +32,48 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>A = #cpu</span></span>
 <span class="line"><span>A = A % &lt;reuseport group size&gt;</span></span>
-<span class="line"><span>return A</span></span></code></pre>
+<span class="line"><span>return A</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The SystemTap script takes three parameters: pid, file descriptor and REUSEPORT group size. To figure out the pid of a process and a file descriptor number use the "ss" tool:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ ss -4nlp -t 'sport = :8181' | sort</span></span>
 <span class="line"><span>LISTEN  0   511    *:8181  *:*   users:(("nginx",pid=29333,fd=3),...</span></span>
 <span class="line"><span>LISTEN  0   511    *:8181  *:*   ...</span></span>
-<span class="line"><span>...</span></span></code></pre>
+<span class="line"><span>...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this listing we see that pid=29333 fd=3 points to REUSEPORT descriptor bound to port tcp/8181. On our test machine we have 24 logical CPUs (including HT) and we run 12 NGINX workers - the group size is 12. Example invocation of the script:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo stap -g setcbpf.stp 29333 3 12</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo stap -g setcbpf.stp 29333 3 12</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Measuring performance</h3>
 <p>Unfortunately on Linux it's pretty hard to verify if setting CBPF actually does anything. To understand what's going on we wrote another SystemTap script. It hooks into a process and prints all successful invocations of the accept() function, including the CPU on which the connection was delivered to kernel, and current CPU - on which the application is running. The idea is simple - if they match, we'll have good locality!</p>
@@ -60,7 +90,11 @@
 <span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=33 rxcpu=#22</span></span>
 <span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=34 rxcpu=#19</span></span>
 <span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=35 rxcpu=#21</span></span>
-<span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=37 rxcpu=#16</span></span></code></pre>
+<span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=37 rxcpu=#16</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can see accept()s done from a worker on CPU #12 returning client sockets received on some other CPUs like: #19, #21, #16 and so on.</p>
 <p>Now, let's run CBPF and see the results:</p>
@@ -75,7 +109,11 @@
 <span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=33 rxcpu=#12</span></span>
 <span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=34 rxcpu=#12</span></span>
 <span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=35 rxcpu=#12</span></span>
-<span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=36 rxcpu=#12</span></span></code></pre>
+<span class="line"><span>cpu=#12 pid=29333 accept(3) -&gt; fd=36 rxcpu=#12</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now the situation is perfect. All accept()s called from the NGINX worker pinned to CPU #12 got client sockets received on the same CPU.</p>
 <p>But does it actually help with the performance?</p>
@@ -99,7 +137,11 @@
 <span class="line"><span>rx= 11%  132kpps tx=  9% 127kpps</span></span>
 <span class="line"><span>rx= 11%  129kpps tx= 10% 128kpps</span></span>
 <span class="line"><span>rx= 10%  130kpps tx=  9% 127kpps</span></span>
-<span class="line"><span>rx= 12%   94kpps tx=  8%  90kpps</span></span></code></pre>
+<span class="line"><span>rx= 12%   94kpps tx=  8%  90kpps</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>During our test the HTTP server received about 130,000 packets per second and transmitted about as much. 10-11% of the received and 8-10% of the transmitted packets had good locality - were allocated and freed on the same CPU.</p>
 <p>Achieving good locality is not that easy. On the RX side, this means the packet must be received on the same CPU as the application that will read() it. On the transmission side it's even trickier. In case of TCP, a piece of data must all: be sent() by application, get transmitted, and receive back an ACK from the other party, all on the same CPU.</p>
@@ -123,7 +165,11 @@
 <span class="line"><span>rx= 99%  138kpps tx= 99% 135kpps</span></span>
 <span class="line"><span>rx= 99%  139kpps tx=100% 137kpps</span></span>
 <span class="line"><span>rx= 99%  139kpps tx=100% 135kpps</span></span>
-<span class="line"><span>rx= 99%   77kpps tx= 99%  74kpps</span></span></code></pre>
+<span class="line"><span>rx= 99%   77kpps tx= 99%  74kpps</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now the test runs at 138,000 packets per second received and transmitted. The packets have a whopping 99% packet locality.</p>
 <p>As for performance difference in practice - it's too small to measure. Even though we received about 7% more packets, the end-to-end tests didn't show a meaningful speed boost.</p>

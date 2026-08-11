@@ -1,0 +1,171 @@
+<p>Engineering-Manager haben in den vergangenen Jahrzehnten Methoden entwickelt, die es vielen Entwicklerinnen und Entwicklern ermöglichen, gemeinsam an einer geteilten Codebasis zu arbeiten. Diese Arbeit reicht bis zum „Systems Development Lifecycle“ (<a href="https://www.rand.org/pubs/reports/R1855.html" target="_blank" rel="noopener noreferrer"><u>RAND, 1975</u></a>) zurück, der heute allgemein als „Software Development Lifecycle“ (SDLC) bezeichnet wird, der die folgenden Phasen definiert:</p>
+<ul>
+	<li>Plan (Planen)</li>
+	<li>Design (Designen)</li>
+	<li>Implement (Implementieren)</li>
+	<li>Test (Testen)</li>
+	<li>Deploy (Bereitstellen)</li>
+	<li>Maintain (Warten)</li>
+	<li>Retire (Stilllegen)</li>
+</ul>
+<p>Durch KI ist aus dem zuvor zeitaufwendigsten und teuersten Schritt — der Implementierung — der schnellste und kostengünstigste geworden. Dadurch geraten die nachfolgenden Prozesse unter Druck, insbesondere die Personen, die die übrigen Phasen des SDLC verantworten. Betroffen sind sowohl Open-Source-Maintainer, die von Tausenden Pull Requests und Fehlermeldungen überrollt werden, als auch Production Engineers, die Produktionsumgebungen stabil halten müssen, während die Auslieferungsrate von Software um Größenordnungen steigt.</p>
+<p>Wir alle versuchen, unsere Systeme, unsere Kunden und uns selbst vor Nachlässigkeit zu bewahren.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/j89/T67Ov04uTy3+Pz4OT04OLw397p/fr69/X46ujz3dvv2Nfu29nt3tzq4N3l//76+ff46ebz2tXu1M3p2NHn39nl5N/j///8/v377ur23tjw2dDr3tTn5t7m6+bm////////9/T86+X36ODz7OXw8ezu9PDt////////////+vj/+vf+/fv9//37/vz3////////////////////////////////////////////////////////////////" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=640&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=750&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=828&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1080&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1280&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1430&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1920&amp;h=903&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="903" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="336" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Die Lösung besteht — so paradox es klingt — darin, Agenten mehr Verantwortung zu übertragen. Das ist nur fair! Kein Team würde einem Entwickler erlauben, ausschließlich Code zu schreiben, während andere ihn prüfen, zusammenführen, deployen, den Bereitschaftsdienst in der Produktion übernehmen und neue Bugs sichten. Genau das tun die meisten Unternehmen derzeit jedoch mit Agenten. Die Modelle haben sich enorm verbessert, und Agenten können über längere Zeiträume arbeiten und wesentlich umfangreichere Aufgaben bewältigen. Über die verschiedenen Phasen des SDLC hinweg werden sie bislang jedoch noch sehr ungleich eingesetzt.</p>
+<p>Bei Cloudflare behandeln wir Agenten als unsere Kundschaft. Sie können <a href="https://blog.cloudflare.com/agents-stripe-projects" target="_blank" rel="noopener noreferrer"><u>Domains kaufen</u></a>, <a href="https://blog.cloudflare.com/temporary-accounts" target="_blank" rel="noopener noreferrer"><u>temporäre Konten erstellen</u></a> und <a href="https://blog.cloudflare.com/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>die gesamte Cloudflare API nutzen</u></a>. Wir wissen, dass Agenten APIs und Tools benötigen, um den gesamten SDLC im Namen unserer Kunden verwalten zu können – und nicht lediglich die ersten Schritte.</p>
+<p>Aus diesem Grund führen wir heute die ersten Werkzeuge einer neuen Tool-Suite ein, die Agenten dabei unterstützt, nicht nur Code zu erzeugen, sondern größere Teile des SDLC zu übernehmen. Dabei geben wir Einblick in das, was wir beim Aufbau unserer eigenen Lösung entwickelt und gelernt haben:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><strong><u>@cloudflare/ci</u></strong></a> — eine neue Möglichkeit, CI/CD über Millionen von Repositories hinweg auszuführen. Das System kann sich selbst reparieren, Agenten für deutlich komplexere Aufgaben starten und basiert auf Cloudflare Workflows.</li>
+	<li><a href="https://blog.cloudflare.com/local-tracing" target="_blank" rel="noopener noreferrer"><strong><u>OpenTelemetry-Traces für die lokale Entwicklung</u></strong></a> — sie bieten Agenten dieselben Einblicke wie im Produktivbetrieb und sind in Wrangler sowie das Cloudflare-Vite-Plugin integriert.</li>
+	<li><a href="http://blog.cloudflare.com/agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><strong><u>Wir präsentieren: Cloudflare Agents und Agent Traces</u></strong></a> – eine zentrale Umgebung zum Beobachten, Warten und Verbessern von Agenten auf Basis ihrer OpenTelemetry-Traces.</li>
+	<li><a href="http://blog.cloudflare.com/engineering-standards-enforcement" target="_blank" rel="noopener noreferrer"><strong><u>Wie Cloudflare Engineering-Standards mit KI durchsetzt:</u></strong></a> unsere Erfahrung damit, Best Practices über die Repositories und Spezifikationen all unserer Produkte und Systeme hinweg durchzusetzen.</li>
+	<li><a href="https://blog.cloudflare.com/astro-issue-triage" target="_blank" rel="noopener noreferrer"><strong><u>Wie wir eine Softwarefabrik gebaut haben, um die Zahl der GitHub-Issues bei Astro auf null zu senken:</u></strong></a> unsere Erfahrung mit Systemen, die Issues für ein großes und wachsendes Open-Source-Projekt automatisch triagieren, reproduzieren, verifizieren und beheben.</li>
+</ul>
+<p>Aber es geht um mehr als einzelne Tools. Der SDLC wurde für eine andere Geschwindigkeit gebaut. Selbst mit starker Automatisierung skaliert er nicht mit der Code-Menge, die Agenten erzeugen können, und mit dem Tempo, in dem Softwareteams heute arbeiten müssen, um wettbewerbsfähig zu bleiben. Deshalb ist es aus unserer Sicht Zeit für den ADLC: den Agent Development Lifecycle.</p>
+<h2>Der SDLC passt zu Softwareteams. Der ADLC passt zu Softwarefabriken.</h2>
+<p>Derzeit <a href="https://x.com/zachlloydtweets/status/2069789929073262945" target="_blank" rel="noopener noreferrer"><u>sprechen</u></a> <a href="https://x.com/matanSF/status/2066578088184680920" target="_blank" rel="noopener noreferrer"><u>viele</u></a> <a href="https://x.com/dexhorthy/status/2081797628552270027" target="_blank" rel="noopener noreferrer"><u>über</u></a> <a href="https://x.com/bcherny/status/2077929390806073807" target="_blank" rel="noopener noreferrer"><u>den</u></a> <a href="https://x.com/gokulr/status/2032271386161684665" target="_blank" rel="noopener noreferrer"><u>Bau von</u></a> „Softwarefabriken“: Systeme, in denen Agenten aus einer Eingabe eigenständig Software bauen, verbessern, deployen und betreiben. Diese Eingabe kann ein Produktionsfehler sein, ein Bug-Report aus dem Support oder eine neue Feature-Idee. Im Idealfall übernimmt ein Agent den gesamten Ablauf.</p>
+<p>In der Praxis hängen die meisten Projekte aber weiterhin an Human-in-the-Loop-Schritten. Menschen prompten Agenten, schieben sie an, lassen sie Review-Feedback einarbeiten, beaufsichtigen mehrere Agenten parallel und geben immer neue Anweisungen. Damit bleibt der Mensch der Manager jedes SDLC-Schritts. Nur die einzelnen Aufgaben innerhalb dieser Schritte werden an Agenten ausgelagert.</p>
+<p>Softwarefabriken stellen deshalb eine größere Frage: Was passiert, wenn wir nicht einzelne Aufgaben, sondern den gesamten Prozess neu bauen? Wie schaffen wir mehr Raum für das, was Menschen wirklich beitragen: Inspiration, Geschmack und Urteilskraft? Dann bleibt mehr Zeit für Design, Kundengespräche und größere Ideen.</p>
+<p>Eine Softwarefabrik deckt weiterhin die bekannten SDLC-Schritte ab, aber sie braucht eine Plattform, die wesentlich mehr leisten kann. Sobald der Agent das Steuer übernimmt, müssen alle bisher manuellen Schritte so umgebaut werden, dass sie für Agenten funktionieren (und nicht mehr auf Menschen angewiesen sind):</p>
+<ul>
+	<li><strong>Programmatisch</strong> — ClickOps war für Menschen schon fragwürdig. Für Agenten funktioniert es gar nicht. Jede Operation braucht eine API, die Agenten verlässlich aufrufen, debuggen und nutzen können.</li>
+	<li><strong>Horizontal skalierbar</strong> — Preview-Deployments waren praktisch, solange Menschen auf Bildschirme schauten oder Staging-Server manuell übernahmen, um Probleme vor der Produktion zu finden. Damit Agenten steuern können, braucht jeder Agent eine eigene Preview, die der Produktion entspricht.</li>
+	<li><strong>Reproduzierbar</strong> — Manche Bugs treten nur unter bestimmten Bedingungen auf, etwa bei simuliertem 4G auf einem iPhone 15 oder aus einem bestimmten Land. Klassische Unit- und Integrationstests decken solche Fälle nicht ausreichend ab.</li>
+	<li><strong>Echtzeitfähig, push-basiert</strong> – Dashboards funktionieren nicht, wenn niemand aktiv hinschaut. Ein Ereignis (Event) muss den Agenten automatisch auslösen.</li>
+	<li><strong>Atomar</strong> – Jede Änderung muss separat testbar, auslieferbar, beobachtbar und rückgängig machbar sein (ohne anderes Verhalten zu beeinflussen).</li>
+	<li><strong>Berechtigungsbasiert</strong> — Menschen erhalten manchmal SSH-Zugriff auf Produktion, wenn es kritisch wird. Agenten dürfen diesen Zugriff nicht einfach bekommen. Trotzdem brauchen sie kontrollierte Eskalationswege.</li>
+	<li><strong>Selbstverbessernd</strong> – Menschen lernen aus Erfahrung. Beim ersten Ship oder der ersten On-Call-Schicht sind sie langsam und müssen anderen über die Schulter schauen. Danach werden sie besser und schneller. Auch Agenten brauchen Wege, aus Erfahrung zu lernen.</li>
+</ul>
+<p>Damit Softwarefabriken echte Produktionssoftware sicher betreiben können, brauchen wir ein neues Fundament. Die Herausforderung ähnelt der bei selbstfahrenden Autos: Sie müssen von „funktioniert in 80 Prozent der Fälle“ zu Zuverlässigkeitswerten weit über 99 Prozent kommen.</p>
+<h2>Wer Agenten den SDLC steuern lässt, darf ihnen kein Fahrzeug geben, das für Menschen entworfen wurde.</h2>
+<p>Ein autonomes Fahrzeug ist mit Sensoren und Technologien ausgestattet, die ein gewöhnliches Auto nicht hat. Lidar-Sensoren, Kameras, leistungsstarke Compute-Ressourcen für Inferenz und Konnektivität zu einem zentralen Kommandosystem, das bei Bedarf aus der Ferne übernehmen kann.</p>
+<p>Damit ein autonomes Fahrzeug 80 Prozent so gut fährt wie ein Mensch, bräuchte es vermutlich nicht all das. Selbstfahrende Systeme waren schon vor zehn Jahren ungefähr 80 Prozent so gut wie Menschen. Aber das ist nicht die Messlatte. Die Messlatte ist, deutlich besser und sicherer als ein menschlicher Fahrer zu sein. Genau das erwarten wir, wenn wir einer Maschine die Schlüssel übergeben und uns sicher genug fühlen wollen, auf dem Highway 101 bei 60 mph ein Nickerchen zu machen. Genau deshalb verfügen autonome Fahrzeuge über speziell für autonomes Fahren entwickelte Technologie: Sie schafft Vertrauen und bewältigt Edge Cases, die sich nicht vollständig im Voraus planen lassen.</p>
+<p>Bei selbstfahrender Software ist es genauso. Warum lassen Sie Ihren Agenten seine eigenen PRs für Produktionsservices <em>noch nicht</em> automatisch genehmigen und mergen? Wahrscheinlich fallen Ihnen sofort viele Gründe ein. Und je wichtiger das System ist, desto länger wird diese Liste.</p>
+<p>Denn es geht nicht nur darum, katastrophale Fehler zu verhindern. Es geht auch darum, wirklich das Richtige für Kundinnen und Kunden zu bauen. Das ist zu komplex für eine lineare Schrittfolge in einer GitHub Actions YAML-Datei. Auch klassische automatisierte Tests reichen nicht aus. Schon eine kleine Dashboard-Änderung kann Rollen, Spezialgebiete und Organisationsstrukturen berühren. Subjektive Änderungen sind besonders schwer zu testen und zu delegieren. Heute steckt vieles davon wahrscheinlich nicht in Ihrer CI/CD-Pipeline. Wenn Agenten die Softwarefabrik steuern sollen, muss genau das aber Teil des Systems werden.</p>
+<p>Wenn Agenten den ganzen Prozess übernehmen sollen, brauchen wir eine bessere Art, dynamische Schrittketten zu orchestrieren. Aus unserer Sicht ist das ein <a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><u>Workflow</u></a>, der Container, Agenten und Browser starten kann. Ein solcher Workflow kann Feature Flags setzen, sie für Testnutzer aktivieren, Logs und Traces auswerten, Produktionsmetriken beim schrittweisen Rollout beobachten und alles koordinieren, was für eine sichere Bereitstellung nötig ist.</p>
+<h2>Eine CI/CD-Pipeline ist im Grunde nur ein Workflow. Aber ein Workflow kann weit mehr leisten.</h2>
+<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> verketten Schritte, wiederholen fehlgeschlagene Aufgaben automatisch und speichern Zustand für Minuten, Stunden oder Wochen. So lassen sich komplexe, dynamische Geschäftsprozesse als logisches Programm beschreiben. <a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><u>Dieser Beitrag</u></a> zeigt, warum Workflows gemeinsam mit <a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a> CI/CD-Pipelines wesentlich einfacher definierbar und auslösbar machen. Ein Beispiel:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { CIWorkflow } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> `@cloudflare/ci`</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> deps</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> CiRunnerResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ci.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      name: </span><span class="sk-032f62-99ffe4">'install'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      command: </span><span class="sk-032f62-99ffe4">'bun install --frozen-lockfile'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      cache: { inputs: [</span><span class="sk-032f62-99ffe4">'package.json'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'bun.lock'</span><span class="sk-24292e-fff">] },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'lint'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run lint'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'test'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run test'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'typecheck'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run typecheck'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'build'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run build'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      name: </span><span class="sk-032f62-99ffe4">'deploy'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      command: </span><span class="sk-032f62-99ffe4">'bun wrangler deploy'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      cloudflareCredentials: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        accountId: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">CLOUDFLARE_DEPLOY_ACCOUNT_ID</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Workflows sind nicht auf lineare Schrittfolgen beschränkt. Sie lassen sich <a href="https://blog.cloudflare.com/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u>dynamisch definieren</u></a> und können Agenten oder weitere Workflows starten. <a href="https://flueframework.com/docs/guide/workflows/#example-cloudflare-workflows" target="_blank" rel="noopener noreferrer"><u>Das Beispiel</u></a> zeigt einen Workflow, der neue Daten der letzten 24 Stunden überprüft. Der Workflow steuert, wann und wie der Agent gepromptet wird, und gibt Kontext von Schritt zu Schritt weiter.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> WorkflowEvent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> WorkflowStep } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { init } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@flue/runtime'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Reviewer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './agents/reviewer.ts'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { collectFindings } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './shared/nightly.ts'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> Params</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> NightlyReview</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> findings</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'collect findings'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> collectFindings</span><span class="sk-24292e-fff">(event.payload.date));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> agent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">(Reviewer, { id: </span><span class="sk-032f62-99ffe4">`nightly-${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">date</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> receipt</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'dispatch review'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">      agent.</span><span class="sk-6f42c1-ffc799">dispatch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Review these findings:</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">${</span><span class="sk-24292e-fff">findings</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> review</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'read review'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> reply</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> agent.</span><span class="sk-6f42c1-ffc799">read</span><span class="sk-24292e-fff">(receipt);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> { text: reply.text, data: reply.data };</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Sobald man dieses Muster verstanden hat und so von Workflows überzeugt ist wie Cloudflare, stellt sich fast automatisch die Frage: Was könnte ein Workflow noch für mich erledigen? Welche menschlichen Engpässe lassen sich an Workflow plus <a href="https://flueframework.com" target="_blank" rel="noopener noreferrer"><u>Flue-Agenten</u></a> delegieren?</p>
+<h2>Der vollständige ADLC auf dem Cloudflare-Stack</h2>
+<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> orchestrieren komplexe Schritte, <a href="https://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a> speichern Code. Zusammen ergibt das auf Cloudflare die Grundlage, mit der Agenten den gesamten Weg vom Bauen über die Bereitstellung bis zur Wartung von Software übernehmen können.</p>
+<div id="html-block-v51e4kh0d" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>SDLC stage</th>
+				<th>Cloudflare</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Plan<br>
+					Design<br>
+					Implement</td>
+				<td><a href="https://developers.cloudflare.com/workers/vite-plugin">Vite</a>, <a href="https://rolldown.rs">Rolldown</a> und <a href="https://oxc.rs">Oxc</a> — die schnellste Toolchain für Ihren Agenten<br>
+					<a href="https://developers.cloudflare.com/workers/local-development">Lokale Entwicklung für alles</a> — Die lokale Sicht des Agenten entspricht der Runtime und Umgebung in Produktion<br>
+					<a href="https://developers.cloudflare.com/workers/local-development/local-explorer">Local Explorer</a>, <a href="https://blog.cloudflare.com/local-tracing">Local Traces</a> — Ihr Agent hat lokal dieselben APIs zur Fehlerbehebung wie in der Produktionsumgebung.<br><a href="https://developers.cloudflare.com/changelog/post/2025-09-16-remote-bindings-ga">Remote bindings</a> — lassen Sie Agenten Code lokal ausführen, während sie reale Produktionsressourcen bei Cloudflare nutzen<br><a href="https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls">Vorschau-URLs</a> — Geben Sie jedem Pull-Request eine Vorschau, damit der Agent sie validieren und verwenden kann
+				</td>
+			</tr>
+			<tr>
+				<td>Test</td>
+				<td><a href="https://developers.cloudflare.com/browser-run">Browser Run</a> — programmierbare Headless-Browser in der Cloud<br><a href="https://developers.cloudflare.com/workers/testing/vitest-integration">Vitest</a> — führen Sie Tests in der Workers-Laufzeitumgebung aus</td>
+			</tr>
+			<tr>
+				<td>Deploy</td>
+				<td><a href="https://blog.cloudflare.com/flagship">Flagship</a> — jede Änderung erhält ihr eigenes Feature-Flag<br><a href="https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments">Gradual Deployments</a> — Implementierung von Codeänderungen auf einen prozentualen Anteil des Datenverkehrs, die im Laufe der Zeit gesteigert wird</td>
+			</tr>
+			<tr>
+				<td>Maintain<br>Retire</td>
+				<td><a href="https://developers.cloudflare.com/workers/observability/logs">Workers Logs</a> — lassen Sie Agenten Live-Logs verfolgen oder Ad-hoc-Abfragen durchführen, um Probleme zu identifizieren, die automatisch behoben werden können.<br><a href="http://blog.cloudflare.com/agents-on-cloudflare">Agent Traces</a> — jede Agentensitzung aufnehmen und zur Verbesserung nutzen<br><a href="https://blog.cloudflare.com/code-mode-mcp">Cloudflare MCP Server</a> - unterstützt von Code Mode und <a href="https://blog.cloudflare.com/dynamic-workers">Dynamic Workers</a><br>
+					<a href="https://developers.cloudflare.com/analytics/analytics-engine">Analytics Engine</a> — High-Cardinality-Analytics auf Basis von ClickHouse, damit Agenten abfragen können, wer was nutzt
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Grundbausteine für den Aufbau Ihrer Softwarefabrik</h2>
+<p>Die Menschen an der vordersten Entwicklungsfront bauen heute die Softwarefabriken von morgen. Mit der Zeit werden Softwarefabriken so selbstverständlich werden wie Agenten und KI: eine normale Art, Software zu bauen. Aber für die meisten Menschen und Organisationen ist dieser Punkt noch nicht erreicht.</p>
+<p>Wir wollen das ändern.</p>
+<p>Unsere Leitfragen waren: Wie machen wir diesen Wandel einfach und zugänglich, damit alle im Internet davon profitieren können? Und welche Basis-Bausteine können wir öffnen, egal ob für ein kleines Startup oder eine der größten Plattformen der Welt?</p>
+<p>Wir glauben: Die Bausteine sind jetzt vorhanden. Es bleibt Arbeit, sie weiter zu verbinden, unsere eigene Softwarefabrik auszubauen und aus ihr zu lernen. Doch ab heute können Sie auf Cloudflare Ihre Maschine bauen, die die Maschine baut. Starten Sie mit <a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><u>@cloudflare/ci</u></a>, <a href="http://blog.cloudflare.com/agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>bauen Sie einen Agenten</u></a> und sehen Sie, wie viel des SDLC Sie automatisieren können.</p>

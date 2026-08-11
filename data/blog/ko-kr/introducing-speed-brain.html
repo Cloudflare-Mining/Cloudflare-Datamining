@@ -55,8 +55,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "eagerness"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"conservative"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h5><br>문서 규칙</h5>
 <p><a href="https://developer.chrome.com/blog/speculation-rules-improvements" target="_blank" rel="noopener noreferrer"><u>문서 규칙</u></a>은 구성에서 "source': "document" 및 "where" 키로 표시되며, 전체 웹 페이지에 동적으로 프리페칭을 적용할 수 있습니다. 이렇게 하면 프리페칭을 위한 미리 정의된 정적 URL 목록이 필요 없게 됩니다. 따라서 프리페칭 후보 링크가 활성 페이지 구조에 따라 결정되므로 <em>오래된 사전 페치 구성</em>의 문제를 제거합니다.</p>
 <p>where 절에서 "relative_to": "document"를 사용하면 브라우저가 프리페칭을 동일 사이트 링크로 제한하도록 지시할 수 있습니다. 이를 통해 구현 시 사용자의 개인정보 침해를 방지하기 위해 교차 출처 프리페치를 피할 수 있는 추가 이점이 있습니다. 웹에서 사용자를 따라가지 않기 때문입니다.&nbsp;</p>

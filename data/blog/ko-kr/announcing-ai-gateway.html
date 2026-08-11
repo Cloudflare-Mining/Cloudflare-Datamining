@@ -9,8 +9,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> openai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OpenAI</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">&nbsp; apiKey: env.</span><span class="sk-005cc5-fff">OPENAI_API_KEY</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">&nbsp; baseURL: </span><span class="sk-032f62-99ffe4">"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>요청을 보다 유연하게 처리하고 싶은 경우 사용할 수 있는 유니버설 엔드포인트도 있습니다. 유니버설 엔드포인트를 사용하면 폴백 모델을 정의하고 요청 재시도를 처리할 수 있습니다. 예를 들어 OpenAI GPT-3에 요청이 들어왔는데 API가 다운되었다고 가정할 때, 유니버설 엔드포인트를 사용하면 Hugging Face GPT-2를 폴백 모델로 정의하고 게이트웨이가 자동으로 해당 요청을 Hugging Face로 재전송할 수 있습니다. 이는 비정상적인 오류를 발견하거나, 요금이 제한되거나, 한 청구서로 인해 비용이 많이 발생하여 다른 모델로 다각화하려는 경우 앱의 복원력을 개선하는 데 매우 유용합니다. 유니버설 엔드포인트를 사용하면 악의적인 페이로드를 조정하여 제공업체와 엔드포인트를 지정하기만 하면 요청을 올바르게 라우팅할 수 있습니다. 유니버설 엔드포인트 스키마에 대한 자세한 내용은 아래 요청 예시와 &nbsp;<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer">문서를</a> 참조하세요.</p>
 <h3>앱 사용량에 대한 가시성 확보</h3>
 <div class="emdash-code">
@@ -48,7 +70,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">&nbsp; &nbsp; &nbsp; "inputs": "What is Cloudflare?"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">&nbsp; &nbsp; }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">&nbsp; },</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">]'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제 앱이 Cloudflare에 연결되었으므로 분석을 수집하고 앱을 통과하는 트래픽에 대한 인사이트와 제어를 제공할 수 있습니다. 백엔드에서 사용하는 모델이나 인프라에 관계없이 요청을 기록하고 요청 수, 사용자 수, 앱 실행 비용, 요청 기간 등의 데이터를 분석할 수 있도록 도와드립니다. 이러한 지표는 모델 제공업체가 노출해야 하는 기본적인 분석처럼 보이지만, 일반적인 모델 제공업체에서는 이러한 지표에 대한 가시성을 확보하기가 의외로 어렵습니다. AI Gateway 는 한 단계 더 나아가 여러 제공업체에 걸쳐 분석을 집계할 수 있도록 지원합니다.</p>
 <h3>앱 확장 방식 제어</h3>

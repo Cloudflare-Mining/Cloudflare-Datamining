@@ -12,8 +12,30 @@
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
 <p>ESI block example:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">esi:include</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"http://example.com/1.html"</span><span class="sk-6f42c1-ffc799"> alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"http://bak.example.com/2.html"</span><span class="sk-6f42c1-ffc799"> onerror</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"continue"</span><span class="sk-24292e-a0a0a0">/&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">esi:include</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"http://example.com/1.html"</span><span class="sk-6f42c1-ffc799"> alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"http://bak.example.com/2.html"</span><span class="sk-6f42c1-ffc799"> onerror</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"continue"</span><span class="sk-24292e-a0a0a0">/&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Implementing it in a Worker</h3>
 <p>We released months ago <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>, our serverless framework which helps to implement custom logics directly within the Edge. The Workers are triggering in the path of the requests and the responses and can manipulate almost everything and spin subrequests on-the-fly.This could dramatically improve the time to action for the implementation of new logics on your applications since you won’t have to modify them anymore as this can directly be done in the Edge, even if your applications are <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">hosted</a> on a bunch of different locations (Cloud and on-premise).</p>
 <p>This scenario sounds then quite compatible with what we can achieve with Cloudflare Workers. For memories, here are the actions the EDGE needs to do for implementing the ESIs:</p>
@@ -41,7 +63,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Dynamic portion coming from https://httpbin.org/headers:</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">esi:include</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://httpbin.org/headers"</span><span class="sk-6f42c1-ffc799"> onerror</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"continue"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So in this page we can see that most of the content will be static and we can find just before the end of the <code>&lt;body&gt;</code> an ESI pointing to <a href="https://httpbin.org/headers" target="_blank" rel="noopener noreferrer">https://httpbin.org/headers</a> that the Edge will need to combine with the static content, in place of the ESI block.</p>
 <h2>The worker explained</h2>
@@ -63,7 +89,11 @@
 <span class="line"><span class="sk-24292e-fff">  newResponse.headers.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'cache-control'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'max-age=0'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  streamTransformBody</span><span class="sk-24292e-fff">(response.body, writable)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> newResponse</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is the main portion of the script, testing first if the response is text-based and return the content directly to the visitor if not. Then instanciating a stream pipeline to send to the visitor using a specific function called <code>streamTransformBody()</code> in charge of the payload chunking.</p>
 <p>You'll notice that I'm setting a <code>max-age=0</code> cache-control header in the response as I don't want browsers to cache this response in case of a bad configuration on the Origin side.</p>
@@ -82,7 +112,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> encoder.</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    `${</span><span class="sk-24292e-fff">esi</span><span class="sk-032f62-99ffe4">}`</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this portion, we’re receiving the chunks and searching for ESI blocks and if found, getting the dynamic parts. You can see that when the regex is matching, we’re calling a <code>subRequest()</code> function. This function will fetch the content of the ESI destination and return + encode the received payload.</p>
 <div class="emdash-code">
@@ -97,7 +131,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> text </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> text</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This portion is quite simple as it defines the function that does the subrequest to the ESI destination, pay attention to what the Origin server is serving as cache-control response header for those dynamic parts as we want to keep them dynamic and not cached by Cloudflare. It’s also possible to override the TTL via Cloudflare directly if you don’t want to modify your application. The documentation about how to manipulate Cloudflare features is available <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features" target="_blank" rel="noopener noreferrer">on the developers HUB</a></p>
 <div class="emdash-code">
@@ -136,7 +174,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">close</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the <code>streamTransformBody()</code> function, I’m chunking the payload received in the readable object with specific boundaries in order to avoid chunks to terminate in the middle of a line or worse, in the middle of an ESI block.</p>
 <div class="emdash-code">
@@ -151,7 +193,11 @@
 <span class="line"><span class="sk-24292e-fff">  templateKey </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> decoder.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> handleTemplate</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">(), templateKey);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>translate()</code> function decode the chunks and send the stringified payload to the <code>handleTemplate()</code> function, which is for memories intended to properly replace the ESI by the dynamic pieces.</p>
 <p>The complete worker script</p>
@@ -251,13 +297,21 @@
 <span class="line"><span class="sk-24292e-fff">  templateKey </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> decoder.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> handleTemplate</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">(), templateKey);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Testing the script</h3>
 <p>Testing is easy, we’re going to cURL over the URL having my small HTML code presented earlier in the article, and see what looks like the answer.</p>
 <p>cURL command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://www.justalittlebyte.ovh/esi.html</span><span class="sk-005cc5-99ffe4"> -sv</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -E</span><span class="sk-032f62-99ffe4"> "Cf-Ray|cf-cache-status|cf-ray"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://www.justalittlebyte.ovh/esi.html</span><span class="sk-005cc5-99ffe4"> -sv</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -E</span><span class="sk-032f62-99ffe4"> "Cf-Ray|cf-cache-status|cf-ray"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The grep is trying to catch few things:</p>
 <ul>
@@ -269,13 +323,21 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> cf-cache-status: HIT </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> cf-ray: 447b3a379ce8bc3e-LHR</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    "Cf-Ray"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "447b3a37d217bc3e-IAD",</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    "Cf-Ray"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "447b3a37d217bc3e-IAD",</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Doing it again</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> cf-cache-status: HIT</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> cf-ray: 447b3a3c4b5fbc44-LHR</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    "Cf-Ray"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "447b3a3c61f5bc44-IAD",</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    "Cf-Ray"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "447b3a3c61f5bc44-IAD",</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>and the page looks like this</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

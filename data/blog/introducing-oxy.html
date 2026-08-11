@@ -61,8 +61,30 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    /// Path to the UNIX domain socket for the appropriate KV </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    /// server instance.</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">    pub</span><span class="sk-24292e-fff"> socket</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Option</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">&gt;,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Oxy can then generate a default YAML configuration file listing available options and their default values, including those extended by the application. The configuration options are automatically documented in the generated file from the Rust doc comments, following best Rust practices.</p>
 <p>Moreover, Oxy supports multi-tenancy, allowing a single application instance to expose multiple on-ramp endpoints, each with a unique configuration. But, sometimes even a YAML configuration file is not enough to build a desired application, this is where Oxy's comprehensive set of hooks comes in handy. These hooks can be used to extend the application with Rust code and cover almost all aspects of the traffic processing.</p>
 <p>To give you an idea of how easy it is to write an Oxy application, here is an example of basic Oxy code:</p>
@@ -127,7 +149,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// The entry point of the application</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> OxyResult</span><span class="sk-24292e-fff">&lt;()&gt; {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    oxy</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">bootstrap</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">MyApp</span><span class="sk-24292e-fff">&gt;()</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Technology choice</h2>
 <p>Oxy leverages the safety and performance benefits of Rust as its implementation language. At Cloudflare, Rust has emerged as a popular choice for new product development, and there are ongoing efforts to migrate some of the existing products to the language as well.</p>

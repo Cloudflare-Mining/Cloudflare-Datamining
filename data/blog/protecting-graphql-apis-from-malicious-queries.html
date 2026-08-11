@@ -31,8 +31,30 @@
 <span class="line"><span class="sk-24292e-fff">      ]</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># A query asking for just one subfield on the same "hero" object. This query has a depth level of 1.</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -48,7 +70,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-6a737d-8b8b8b94">"R2-D2"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>These custom queries give GraphQL endpoints <em>more flexibility than conventional REST endpoints</em>. But this flexibility also means GraphQL APIs can be subject to very different load or security risks based on the requests that they are receiving. For example, an attacker can request the exact same, valid data as a benevolent user would, but exploit the data’s self-referencing structure and ask that an origin return hundreds of thousands of rows replicated over and over again. Let’s consider an example, in which we operate a petitioning platform where our data model contains petitions and signers objects. With GraphQL, an attacker can, in a single request, query for a single petition, then for all people who signed that petition, then for all petitions each of those people have signed, then for all people that signed any of those petitions, then for all petitions that… you see where this is going!</p>
 <div class="emdash-code">
@@ -72,7 +98,11 @@
 <span class="line"><span class="sk-24292e-fff">     }</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A rate limit won’t protect against such an attack because the entire query fits into a single request.</p>
 <p>So how can we secure GraphQL APIs? There is little agreement in the industry around what makes a GraphQL endpoint secure. For some, this means rejecting invalid queries. Normally, an invalid query refers to a query that would fail to compile by a GraphQL server and not cause any substantial load on the origin, but would still add noise and error logs and reduce operational visibility. For others, this means creating complexity-based rate limits or perhaps flagging <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization" target="_blank" rel="noopener noreferrer">broken object-level authorization</a>. Still others want deeper visibility into query behavior and an ability to validate queries against a predefined schema.</p>
@@ -89,7 +119,11 @@
 <span class="line"><span class="sk-e36209-fff">    createMessage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">input</span><span class="sk-24292e-fff">: </span><span class="sk-e36209-fff">$input</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-e36209-fff">        id</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For example, the mutation operation above gets converted into the following list of tokens:</p>
 <div class="emdash-code">
@@ -112,7 +146,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">punctuator</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">name</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">punctuator</span><span class="sk-032f62-99ffe4"> }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">punctuator</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">punctuator</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With this list of tokens available to us, we built our validation engine and added the ability to calculate query depth and size. Again, everything is done one-the-fly in a single pass. A limitation of this approach is that we can’t parse 100% of the requests – there are some syntactic features of GraphQL that we have to fail open on; however, a major advantage of this approach is its performance – in our initial trial run against a stream of 10s of thousands of requests per second, we achieved a p95 parsing time of 25 microseconds. This is a good starting point to collect some data and to prototype our first GraphQL security features.</p>
 <h3>Getting started</h3>
@@ -132,14 +170,22 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">1.</span><span class="sk-032f62-99ffe4"> cf.api_gateway.graphql.query_size</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2.</span><span class="sk-032f62-99ffe4"> cf.api_gateway.graphql.query_depth</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">3.</span><span class="sk-032f62-99ffe4"> cf.api_gateway.graphql.parsed_successfully</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">3.</span><span class="sk-032f62-99ffe4"> cf.api_gateway.graphql.parsed_successfully</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For now, we recommend the use of <code>cf.api_gateway.graphql.parsed_successfully</code> in all rules. Rules created with the use of this field will be backwards compatible with future GraphQL protection releases.</p>
 <p>If a customer feels that there is nothing out of the ordinary with the traffic sample and that it represents a meaningful amount of normal usage, they can manually create and deploy the following custom rule to log all queries that were parsed by Cloudflare and that look like outliers:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cf.api_gateway.graphql.parsed_successfully and</span></span>
 <span class="line"><span>(cf.api_gateway.graphql.query_depth &gt; 7 or </span></span>
-<span class="line"><span>cf.api_gateway.graphql.query_size &gt; 60)</span></span></code></pre>
+<span class="line"><span>cf.api_gateway.graphql.query_size &gt; 60)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Learn more and run your own analysis with our <a href="https://developers.cloudflare.com/api-shield/security/graphql-protection/configure" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
 <h3>What’s next?</h3>

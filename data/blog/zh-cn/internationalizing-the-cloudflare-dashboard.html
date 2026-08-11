@@ -14,8 +14,30 @@
 <p>从工程角度来看，将应用程序代码与翻译分开，可以在不重新编译和/或重新部署代码的情况下对字符串进行更改。在基于 React 的应用程序中，将大多数字符串外部化归结为更改代码块，如下所示：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Cancel</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>变成：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;&lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-6f42c1-a0a0a0"> id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"signup.cancel"</span><span class="sk-24292e-a0a0a0"> /&gt;&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
@@ -26,13 +48,21 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.cancel"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cancel"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.next"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Next"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...many more keys</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>上方所示的 组件是我们应用程序中的基本 i18n 构建块。在此方案中，翻译后的字符串保存在以翻译 ID 为键的大型字典中。我们将这些字典称为“翻译目录”，而且我们支持的每种语言都有一套翻译目录。</p>
 <p>在运行时， 组件在正确的目录中为提供的键查找对应翻译，然后将翻译插入页面（通过 DOM）。应用程序的所有静态文本都可以通过像这样的简单转换来外部化。</p>
 <p>然而，当动态数据需要与静态文本混合在一起时，解决方案就会变得有些复杂。思考下面这个例子，它看似简单明了，却藏有 i18n 地雷：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在外部化这个句子时，我们轻易会把它切割为几个部分，比如：</p>
 <div class="emdash-code">
@@ -67,7 +97,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "pageRules"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Page Rules"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这便完成了工作，甚至看起来似乎颇为完美。毕竟，selected.prefix 和 pageRules.suffix 字符串似乎都注定要被重复使用。遗憾的是，在将字符串外部化以进行国际化时，最大的陷阱就在于将句子切碎然后串联翻译后的碎片。</p>
 <p>问题是翻译之后，组成句子的不同词语可能会根据上下文（单复数形式、词语性别、主语/动词一致等）<a href="https://en.wikipedia.org/wiki/Inflection" target="_blank" rel="noopener noreferrer">以不同的方式改变形态</a>。这在不同语言之间有很大差异，<a href="https://en.wikipedia.org/wiki/Word_order" target="_blank" rel="noopener noreferrer">词序</a>也是如此。例如，英语中的“We like them”采用主语-谓词-宾语顺序，而其他语言则可能使用主语-宾语-谓词（We them like）、谓词-主语-宾语（Like we them），甚至是其他顺序。由于语言之间的细微差别，将翻译的短语串联成句子几乎总会导致本地化错误。</p>
@@ -118,7 +152,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们遇到的另一个陷阱是翻译 ID 极容易受到拼写错误的影响，特别是冗长而重复的 ID。</p>
 <p>来个突击测验，以下哪个翻译键会破坏我们应用？是 traffic.load_balancing.analytics.filters.origin_health_title 还是 traffic.load_balancing.analytics.filters.origin_heath_title？</p>
@@ -145,14 +183,22 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Portuguese (Brazil) catalog.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ smart_count } Page Rule. |||| Você selecionou %{ smart_count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>由于隐匿在其他数百行更改中，很难在代码审查中发现这些更改。大多数应用都有退路，因此缺少翻译不会导致页面破坏错误。结果，如果这样的错误隐藏得足够好（例如，帮助文本弹窗），则可能完全不会引起注意。</p>
 <p>幸运的是，随着我们在 TypeScript 中使用代码库的比例不断增加，我们能够利用类型检查器在开发人员编写代码时提供反馈。下例中的代码编辑器正在帮助我们，通过显示红色下划线来指示 id 属性无效（由于缺少“l”）：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  Don't forget to </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verify your email address.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这不仅使问题更加显眼，而且还意味着违规会导致构建失败，从而防止不良代码进入代码库。</p>
 <div class="emdash-code">
@@ -164,7 +210,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "notification.email_verification"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Don't forget to &lt;0&gt;verify your email address.&lt;/0&gt;"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>扩展区域设置文件</h3>
 <div class="emdash-code">
@@ -176,7 +226,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// es-ES</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  No olvide </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-6f42c1-a0a0a0"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/profile"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verificar la dirección de correo electrónico.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>起初，您支持的每个区域设置可能先使用一个翻译文件。另外，您用于键的命名方案也可能在某种程度上保持简单。随着应用的扩展，翻译文件将变得过于巨大，需要分解成单独的文件。文件太大会让翻译管理应用程序不堪重负，或者如果不加以检查，会使代码编辑器无力承受。如果组合到一个文件中，我们的所有翻译字符串（不包括键）有将近 50,000 个单词。大小与《银河系漫游指南》或《第五屠宰场》的正文大致相当。</p>
 <p>我们将翻译分为数个“目录”文件，大致对应于功能垂直面（例如 Firewall 或Cloudflare Workers）。这对于我们的开发人员而言效果不错，因为它提供了可预测的字符串查找位置，而且也使翻译目录的行数保持在可管理的长度内。对于外部翻译团队同样有效，因为单个功能垂直面是适合译者（或小团队）工作的单元。</p>
@@ -216,7 +270,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Hmm... We couldn't find any matching websites.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>de-DE</p>
 <div class="emdash-code">
@@ -228,7 +286,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// locales/de_DE.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "Hmm... We couldn't find any matching websites."</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Hmm... Wir konnten keine übereinstimmenden Websites finden."</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>300.000,03</p>
 <p>英语（美国）</p>
@@ -239,7 +301,11 @@
 <p>300,000.03</p>
 <p>西班牙语（西班牙）</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>es-ES</p>
 <p>300.000,03</p>
@@ -386,7 +452,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> number </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 300000.03</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> formatted </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> number.</span><span class="sk-6f42c1-ffc799">toLocaleString</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hi-IN'</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">// 3,00,000.03</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>到这一步后，通过 UI 或对 API 的自动调用将翻译目录上传到翻译管理系统。在交给翻译人员之前，通过将每个新字符串与翻译记忆库（以前翻译的字符串和子字符串的缓存）进行比较，对文件进行预处理。如果找到匹配项，则使用现有翻译。这不仅能通过不重复翻译字符串来节省成本，而且能确保尽可能使用先前审阅和批准的译文来提高质量。</p>
 <p>假设您的区域设置文件最终看起来像这样：</p>
@@ -420,7 +490,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "other.verify.button"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "verify.proceed.link"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email to proceed"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>下一步是什么？</h3>
 <p>这是一段精彩纷呈的旅程，其过程带给我们很多收获。很难（也许不可能）说一个 i18n 项目真正宣告结束。扩展到新语言时会冒出狡猾的错误，暴露新的挑战。预算压力会迫使您寻找削减成本和提升效率的方法。此外，您还会发现可以为用户进一步增强本地化体验的方法。</p>

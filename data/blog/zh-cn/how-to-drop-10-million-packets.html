@@ -27,21 +27,55 @@
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 198.18.49.38.40566</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 198.18.0.12.1234:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 16</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 198.18.50.73.22989</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 198.18.0.12.1234:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 16</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 198.18.43.204.37895</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 198.18.0.12.1234:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 16</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 198.18.104.128.1543</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 198.18.0.12.1234:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 16</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 198.18.104.128.1543</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 198.18.0.12.1234:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 16</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>在目标端，所有数据包都将被转发到一个RX队列，即一个CPU。我们通过硬件流控制来实现这一点：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ethtool</span><span class="sk-005cc5-99ffe4"> -N</span><span class="sk-032f62-99ffe4"> ext0</span><span class="sk-032f62-99ffe4"> flow-type</span><span class="sk-032f62-99ffe4"> udp4</span><span class="sk-032f62-99ffe4"> dst-ip</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-032f62-99ffe4"> dst-port</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ethtool</span><span class="sk-005cc5-99ffe4"> -N</span><span class="sk-032f62-99ffe4"> ext0</span><span class="sk-032f62-99ffe4"> flow-type</span><span class="sk-032f62-99ffe4"> udp4</span><span class="sk-032f62-99ffe4"> dst-ip</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-032f62-99ffe4"> dst-port</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>基准测试总是很难的。在准备测试时，我们了解到任何活动的raw socket（原始套接字）都会破坏性能。在运行任何测试之前，请记住确保没有任何陈旧的tcpdump进程在运行。这是一个检查它的方法，表明活动的进程无效：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> raw,packet_raw</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cat</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Netid</span><span class="sk-032f62-99ffe4">  State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4"> Local</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">p_raw</span><span class="sk-032f62-99ffe4">  UNCONN</span><span class="sk-005cc5-ffc799">     525157</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-a0a0a0">      *</span><span class="sk-032f62-99ffe4">:vlan100</span><span class="sk-032f62-99ffe4">          users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"tcpdump"</span><span class="sk-6f42c1-ffc799">,pid</span><span class="sk-032f62-99ffe4">=23683,fd=3</span><span class="sk-24292e-fff">))</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">p_raw</span><span class="sk-032f62-99ffe4">  UNCONN</span><span class="sk-005cc5-ffc799">     525157</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-a0a0a0">      *</span><span class="sk-032f62-99ffe4">:vlan100</span><span class="sk-032f62-99ffe4">          users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"tcpdump"</span><span class="sk-6f42c1-ffc799">,pid</span><span class="sk-032f62-99ffe4">=23683,fd=3</span><span class="sk-24292e-fff">))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最后，我们将在计算机上禁用Intel Turbo Boost功能：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /sys/devices/system/cpu/intel_pstate/no_turbo</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /sys/devices/system/cpu/intel_pstate/no_turbo</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>尽管Turbo Boost很好并且可以将吞吐量提高至少20％，但它也大大恶化了我们测试中的标准偏差。启用turbo后，我们的数值偏差为±1.5％。如果关闭Turbo，这一数值则下降到可控的0.25％。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -52,24 +86,40 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> ACCEPT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> ACCEPT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> ACCEPT</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> ACCEPT</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>应用程序代码是一个简单的循环，接收数据并立即将其丢弃在用户空间中：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">s</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_DGRAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s.bind((</span><span class="sk-6f42c1-ffc799">"0.0.0.0"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-6f42c1-ffc799"> True:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    s.recvmmsg([...]</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    s.recvmmsg([...]</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank" rel="noopener noreferrer">我们准备了代码</a>，运行一下：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./dropping-packets/recvmmsg-loop</span></span>
-<span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">171261</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1940176</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">171261</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1940176</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这种设置允许内核从硬件接收队列中仅接收微不足道的175kpps，这是使用我们的简易<a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram"><code>mmwatch</code>工具</a>和通过<code>ethtool</code>来测量的：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'ethtool -S ext0|grep rx_2'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> rx2_packets:</span><span class="sk-032f62-99ffe4"> 174.0k/s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> rx2_packets:</span><span class="sk-032f62-99ffe4"> 174.0k/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>从技术上讲，硬件接收的速度是14Mpps（Mpacket/s，每秒百万包数），但是我们不可能将所有这些数据包都传递给一个RX队列，因为这个队列只由一个单核CPU处理内核工作。mpstat证实了这一点：</p>
 <div class="emdash-code">
@@ -78,7 +128,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">01:32:06</span><span class="sk-032f62-99ffe4"> PM</span><span class="sk-005cc5-ffc799">    0</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    2.94</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    3.92</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   93.14</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">01:32:06</span><span class="sk-032f62-99ffe4"> PM</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-005cc5-ffc799">    2.17</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   27.17</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   70.65</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">01:32:06</span><span class="sk-032f62-99ffe4"> PM</span><span class="sk-005cc5-ffc799">    2</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">  100.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">01:32:06</span><span class="sk-032f62-99ffe4"> PM</span><span class="sk-005cc5-ffc799">    3</span><span class="sk-005cc5-ffc799">    0.95</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    1.90</span><span class="sk-005cc5-ffc799">    0.95</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    3.81</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   92.38</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">01:32:06</span><span class="sk-032f62-99ffe4"> PM</span><span class="sk-005cc5-ffc799">    3</span><span class="sk-005cc5-ffc799">    0.95</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    1.90</span><span class="sk-005cc5-ffc799">    0.95</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    3.81</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   92.38</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>正如你所看到的，应用程序代码并不是瓶颈所在。在CPU #1上有27%系统空间和2%用户空间的占用，而在CPU #2上网络软中断（SOFTIRQ）占用了100%的资源。</p>
 <p>顺便说一句，使用recvmmsg(2)很重要。自Spectre漏洞被发现以来，系统调用的成本变得更加高了，我们使用了4.14版本的内核，并开启了KPTI和Retpoline：</p>
@@ -91,7 +145,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Mitigation:</span><span class="sk-032f62-99ffe4"> __user</span><span class="sk-032f62-99ffe4"> pointer</span><span class="sk-032f62-99ffe4"> sanitization</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">==</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">/sys/devices/system/cpu/vulnerabilities/spectre_v2</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">==</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Mitigation:</span><span class="sk-032f62-99ffe4"> Full</span><span class="sk-032f62-99ffe4"> generic</span><span class="sk-032f62-99ffe4"> retpoline,</span><span class="sk-032f62-99ffe4"> IBPB,</span><span class="sk-032f62-99ffe4"> IBRS_FW</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Mitigation:</span><span class="sk-032f62-99ffe4"> Full</span><span class="sk-032f62-99ffe4"> generic</span><span class="sk-032f62-99ffe4"> retpoline,</span><span class="sk-032f62-99ffe4"> IBPB,</span><span class="sk-032f62-99ffe4"> IBRS_FW</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>阶段2. 击垮conntrack</h4>
 <p>我们特别设计了测试——通过选择随机源IP和端口——来对conntrack层施加压力。这可以通过查看conntrack条目的数量得到验证，在测试期间这些条目数量达到了最大值：</p>
@@ -100,22 +158,38 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2095202</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.netfilter.nf_conntrack_max</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.netfilter.nf_conntrack_max</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2097152</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.netfilter.nf_conntrack_max</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2097152</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您也可以从dmesg中看到conntrack的反馈日志：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[4029612.456673] nf_conntrack: nf_conntrack: table full, dropping packet</span></span>
 <span class="line"><span class="sk-24292e-fff">[4029612.465787] nf_conntrack: nf_conntrack: table full, dropping packet</span></span>
-<span class="line"><span class="sk-24292e-fff">[4029617.175957] net_ratelimit: 5731 callbacks suppressed</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[4029617.175957] net_ratelimit: 5731 callbacks suppressed</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>为了加快测试速度，让我们禁用它：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> NOTRACK</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> NOTRACK</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>并重新运行测试：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./dropping-packets/recvmmsg-loop</span></span>
-<span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">331008</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">5296128</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">331008</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">5296128</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这立即将应用程序接收性能提升到了333kpps。太棒了！</p>
 <p>顺带一提。使用SO_BUSY_POLL可以让我们将数字提高到470k pps，但这是另一个话题了。</p>
@@ -124,13 +198,21 @@
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank" rel="noopener noreferrer">查看这里的代码</a>，运行一下：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./bpf-drop</span></span>
-<span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">packets</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>使用BPF进行丢包（经典cBPF和扩展的eBPF都有相似的性能），我们大概达到了512kpps的性能。当这些数据包仍处于软件中断模式时，它们就被全部被丢弃在了BPF过滤器中，这节省了我们唤醒用户空间应用程序所需的CPU资源。</p>
 <h4>阶段4. 在路由后使用iptables丢包</h4>
 <p>下一步，我们可以通过添加如下的规则来简单地删除iptables防火墙输入链中的数据包：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>需要注意的是我们之前已经通过-j NOTRACK禁用了conntrack，这两条规则使我们达到了608kpps的性能。</p>
 <p>iptables的统计数据如下：</p>
@@ -139,13 +221,21 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Chain</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-24292e-fff"> (policy </span><span class="sk-032f62-99ffe4">DROP</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> packets,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    pkts</span><span class="sk-032f62-99ffe4">      bytes</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-032f62-99ffe4">     prot</span><span class="sk-032f62-99ffe4"> opt</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4">     out</span><span class="sk-032f62-99ffe4">     source</span><span class="sk-032f62-99ffe4">               destination</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">605.9k/s</span><span class="sk-032f62-99ffe4">    26.7m/s</span><span class="sk-032f62-99ffe4"> DROP</span><span class="sk-032f62-99ffe4">       udp</span><span class="sk-005cc5-99ffe4">  --</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-005cc5-a0a0a0">      *</span><span class="sk-032f62-99ffe4">       0.0.0.0/0</span><span class="sk-005cc5-ffc799">            198.18.0.12</span><span class="sk-032f62-99ffe4">          udp</span><span class="sk-032f62-99ffe4"> dpt:1234</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">605.9k/s</span><span class="sk-032f62-99ffe4">    26.7m/s</span><span class="sk-032f62-99ffe4"> DROP</span><span class="sk-032f62-99ffe4">       udp</span><span class="sk-005cc5-99ffe4">  --</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-005cc5-a0a0a0">      *</span><span class="sk-032f62-99ffe4">       0.0.0.0/0</span><span class="sk-005cc5-ffc799">            198.18.0.12</span><span class="sk-032f62-99ffe4">          udp</span><span class="sk-032f62-99ffe4"> dpt:1234</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>600kpps不算差，但是我们可以做得更好！</p>
 <h4>阶段5. 在路由之前使用iptables丢包</h4>
 <p>我们甚至还有一种更快的技术，就是在数据包被路由之前丢弃它们。使用以下这个规则即可做到这一点：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> raw</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-005cc5-ffc799"> 198.18.0.12</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这个方法可以使性能达到惊人的1.688mpps</p>
 <p>这是一个相当大的性能飞跃，我不太理解为什么在路由前后丢包的性能差距这么大。要么是我们的路由层异常复杂，要么是我们的服务器配置有问题。</p>
@@ -157,7 +247,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nft</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> table</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">nft</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> chain</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> hook</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> device</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> priority</span><span class="sk-005cc5-99ffe4"> -500</span><span class="sk-005cc5-a0a0a0"> \;</span><span class="sk-032f62-99ffe4"> policy</span><span class="sk-032f62-99ffe4"> accept</span><span class="sk-005cc5-a0a0a0"> \;</span><span class="sk-032f62-99ffe4"> }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">nft</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> daddr</span><span class="sk-032f62-99ffe4"> 198.18.0.0/24</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> counter</span><span class="sk-032f62-99ffe4"> drop</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">nft</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> ip6</span><span class="sk-032f62-99ffe4"> daddr</span><span class="sk-032f62-99ffe4"> fd00::/64</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> counter</span><span class="sk-032f62-99ffe4"> drop</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">nft</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> netdev</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> ip6</span><span class="sk-032f62-99ffe4"> daddr</span><span class="sk-032f62-99ffe4"> fd00::/64</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> counter</span><span class="sk-032f62-99ffe4"> drop</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>可以使用以下命令查看计数器：</p>
 <div class="emdash-code">
@@ -168,7 +262,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        ip</span><span class="sk-032f62-99ffe4"> daddr</span><span class="sk-032f62-99ffe4"> 198.18.0.0/24</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> counter</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-032f62-99ffe4">    1.6m/s</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-032f62-99ffe4">    69.6m/s</span><span class="sk-032f62-99ffe4"> drop</span><span class="sk-6a737d-8b8b8b94"> # handle 2</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        ip6</span><span class="sk-032f62-99ffe4"> daddr</span><span class="sk-032f62-99ffe4"> fd00::/64</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-032f62-99ffe4"> counter</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> drop</span><span class="sk-6a737d-8b8b8b94"> # handle 3</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nftables “ingress” hook达到的性能在1.53mpps左右。这比PREROUTING层（未路由）中使用iptables稍慢一些。这令人费解——理论上“ingress”是在PREROUTING之前的，所以本应更快才对。</p>
 <p>在我们的测试中nftables比iptables略慢，但并不是慢很多。Nftables仍然是更好的选择:P</p>
@@ -177,7 +275,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> qdisc</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> ingress</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> parent</span><span class="sk-032f62-99ffe4"> ffff:</span><span class="sk-032f62-99ffe4"> prio</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-005cc5-ffc799"> 17</span><span class="sk-005cc5-ffc799"> 0xff</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-ffc799"> 0xffff</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> dst</span><span class="sk-032f62-99ffe4"> 198.18.0.0/24</span><span class="sk-032f62-99ffe4"> flowid</span><span class="sk-032f62-99ffe4"> 1:1</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-032f62-99ffe4"> drop</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> parent</span><span class="sk-032f62-99ffe4"> ffff:</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> ipv6</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip6</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-ffc799"> 0xffff</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip6</span><span class="sk-032f62-99ffe4"> dst</span><span class="sk-032f62-99ffe4"> fd00::/64</span><span class="sk-032f62-99ffe4"> flowid</span><span class="sk-032f62-99ffe4"> 1:1</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-032f62-99ffe4"> drop</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> vlan100</span><span class="sk-032f62-99ffe4"> parent</span><span class="sk-032f62-99ffe4"> ffff:</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> ipv6</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip6</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-005cc5-ffc799"> 0xffff</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> ip6</span><span class="sk-032f62-99ffe4"> dst</span><span class="sk-032f62-99ffe4"> fd00::/64</span><span class="sk-032f62-99ffe4"> flowid</span><span class="sk-032f62-99ffe4"> 1:1</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-032f62-99ffe4"> drop</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们可以验证一下：</p>
 <div class="emdash-code">
@@ -193,7 +295,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">         index</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> ref</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bind</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> installed</span><span class="sk-032f62-99ffe4"> 1.0/s</span><span class="sk-032f62-99ffe4"> sec</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Action</span><span class="sk-032f62-99ffe4"> statistics:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Sent</span><span class="sk-032f62-99ffe4">    79.7m/s</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-032f62-99ffe4">   1.8m/s</span><span class="sk-032f62-99ffe4"> pkt</span><span class="sk-24292e-fff"> (dropped   </span><span class="sk-032f62-99ffe4">1.8m/s,</span><span class="sk-032f62-99ffe4"> overlimits</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> requeues</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        backlog</span><span class="sk-032f62-99ffe4"> 0b</span><span class="sk-032f62-99ffe4"> 0p</span><span class="sk-032f62-99ffe4"> requeues</span><span class="sk-005cc5-ffc799"> 0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        backlog</span><span class="sk-032f62-99ffe4"> 0b</span><span class="sk-032f62-99ffe4"> 0p</span><span class="sk-032f62-99ffe4"> requeues</span><span class="sk-005cc5-ffc799"> 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>通过tc的ingress hook的u32匹配，可以让我们实现单核1.8mpps的丢包能力。这实在太棒了！</p>
 <p>但是，我们还可以更快……</p>
@@ -206,7 +312,11 @@
 </ul>
 <p>编写加载程序是相当困难的，所以我们可以使用<a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank" rel="noopener noreferrer">iproute2的新特性</a>，用这个简单的命令加载代码：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> ext0</span><span class="sk-032f62-99ffe4"> xdp</span><span class="sk-032f62-99ffe4"> obj</span><span class="sk-032f62-99ffe4"> xdp-drop-ebpf.o</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> ext0</span><span class="sk-032f62-99ffe4"> xdp</span><span class="sk-032f62-99ffe4"> obj</span><span class="sk-032f62-99ffe4"> xdp-drop-ebpf.o</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>成功了！</p>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank" rel="noopener noreferrer">此处提供了已加载的eBPF XDP程序</a>的源代码。该程序解析IP数据包并查找所需的特性：IP传输，UDP协议，所需的目标子网和目标端口：</p>
@@ -217,21 +327,33 @@
 <span class="line"><span>        &amp;&amp; udph-&gt;dest == htons(1234)) {</span></span>
 <span class="line"><span>        return XDP_DROP;</span></span>
 <span class="line"><span>    }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>XDP程序需要用现代的clang编译器编译成BPF字节码。在此之后，我们可以加载和验证运行的XDP程序：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> ext0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">4:</span><span class="sk-032f62-99ffe4"> ext0:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">BROADCAST,MULTICAST,UP,LOWER_U</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> mtu</span><span class="sk-005cc5-ffc799"> 1500</span><span class="sk-032f62-99ffe4"> xdp</span><span class="sk-032f62-99ffe4"> qdisc</span><span class="sk-032f62-99ffe4"> fq</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> UP</span><span class="sk-032f62-99ffe4"> mode</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> default</span><span class="sk-032f62-99ffe4"> qlen</span><span class="sk-005cc5-ffc799"> 1000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    link/ether</span><span class="sk-032f62-99ffe4"> 24:8a:07:8a:59:8e</span><span class="sk-032f62-99ffe4"> brd</span><span class="sk-032f62-99ffe4"> ff:ff:ff:ff:ff:ff</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    prog/xdp</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> tag</span><span class="sk-032f62-99ffe4"> aedc195cc0471f51</span><span class="sk-032f62-99ffe4"> jited</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    prog/xdp</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> tag</span><span class="sk-032f62-99ffe4"> aedc195cc0471f51</span><span class="sk-032f62-99ffe4"> jited</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>然后通过ethtool -S查看网卡的统计数字：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'ethtool -S ext0|egrep "rx"|egrep -v ": 0"|egrep -v "cache|csum"'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     rx_out_of_buffer:</span><span class="sk-032f62-99ffe4">     4.4m/s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     rx_xdp_drop:</span><span class="sk-032f62-99ffe4">         10.1m/s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     rx2_xdp_drop:</span><span class="sk-032f62-99ffe4">        10.1m/s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     rx2_xdp_drop:</span><span class="sk-032f62-99ffe4">        10.1m/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>哇哦！使用XDP，我们可以在单核CPU上每秒丢弃1000万个数据包。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

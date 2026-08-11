@@ -48,8 +48,30 @@
 </figure>
 <p>Tout comme Cloudflare possède les adresses IP qui sont utilisées pour les sites Web de nos clients, nous gérons 10 adresses .onion. Considérez-les comme 10 PoP (Points of Presence) Cloudflare sur le réseau Tor. L'en-tête exact ressemble à ceci, à l'exception des 10 adresses .onion jointes, chacune commençant par le préfixe « cflare » :</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span><span class="sk-24292e-fff">; persist</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Ceci indique simplement que l'accès à « cloudflare.com » peut être autorisé par le biais de HTTP/2 (« h2 ») via le service caché « cflare2n[...].onion », avec le port virtuel 443. Le champ « ma » (max-age) indique combien de temps en secondes le client doit se souvenir de l'existence du service alternatif et « persist » indique si le cache du service alternatif doit être vidé lorsque le réseau est interrompu.</p>
 <p>Une fois que le navigateur reçoit cet en-tête, il tente de mettre en place un nouveau circuit Tor vers le service caché indiqué dans l'en-tête alt-svc et de confirmer que le serveur qui écoute sur le port virtuel 443 peut présenter un certificat valide pour « cloudflare.com » (soit le nom d'hôte d’origine, pas l'adresse .onion).</p>
 <p>Le service caché relaie alors le paquet Client Hello à un serveur local qui peut délivrer un certificat pour « cloudflare.com ». Ainsi, le daemon Tor lui-même peut être très réduit. Voici un extrait de fichier de configuration :</p>
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServiceVersion</span><span class="sk-005cc5-ffc799"> 3</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">HiddenServicePort</span><span class="sk-005cc5-ffc799"> 443</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SafeLogging</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Log</span><span class="sk-032f62-99ffe4"> notice</span><span class="sk-032f62-99ffe4"> stdout</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Soyez prudent avec l'utilisation de la configuration ci-dessus, car elle permet un paramétrage non anonyme pour les services cachés qui n'ont pas besoin d'anonymat pour eux-mêmes. En clair, cela ne sacrifie pas la vie privée ou l'anonymat des utilisateurs de Tor, juste le serveur. De plus, la latence des circuits est améliorée.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -83,7 +109,11 @@
 <p>Souvenez-vous que les circuits Tor vers les services cachés portent un numéro de circuit que nous pouvons utiliser pour limiter le débit du circuit. La question est maintenant de savoir comment communiquer ce numéro à un serveur comme nginx avec un minimum d'efforts. En fait, avec une <a href="https://github.com/torproject/tor/pull/343" target="_blank" rel="noopener noreferrer">petite modification</a> dans le binaire de Tor, nous pouvons insérer un en-tête <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank" rel="noopener noreferrer">Protocole proxy</a> au début de chaque paquet envoyé sur le serveur. Ce protocole est conçu pour aider les proxys TCP à transmettre les paramètres qui peuvent être manquants, tels que les adresses IP de source et de destination, et est déjà pris en charge par nginx, Apache, Caddy, etc.</p>
 <p>Heureusement pour nous, l'espace IPv6 est si vaste que nous pouvons encoder le numéro de circuit Tor comme une adresse IP dans une plage inutilisée, et utiliser le protocole Proxy pour l'envoyer au serveur. Voici un exemple de l'en-tête que notre daemon Tor insérerait dans la connexion :</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP6</span><span class="sk-032f62-99ffe4"> 2405:8100:8000:6366:1234:ABCD</span><span class="sk-032f62-99ffe4"> ::1</span><span class="sk-005cc5-ffc799"> 43981</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dans ce cas, 0x1234ABCD code le numéro de circuit dans les 32 derniers bits de l'adresse IP source. Le serveur Cloudflare local peut alors utiliser cette adresse IP de manière transparente pour attribuer une réputation, afficher les CAPTCHA ou bloquer les requêtes si nécessaire.</p>
 <p>Notez que même si les requêtes relayées par un service caché ne portent pas d'adresse IP, vous verrez une adresse IP comme celle ci-dessus avec le code pays « T1 » dans vos journaux. Cette adresse IP ne spécifie que le numéro de circuit vu par le service caché, et non l'adresse IP réelle de l'utilisateur. En fait, 2405:8100:8000:8000::/48 est un sous-réseau inutilisé et alloué à Cloudflare que nous ne redirigeons pas dans le monde entier dans ce but.</p>
@@ -128,7 +158,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cflaresuje2rb7w2u3w43pn4luxdi6o7oatv6r2zrfb5xvsugj35d2qd.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareer7qekzp3zeyqvcfktxfrmncse4ilc7trbf6bp6yzdabxuload.onion</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cflareub6dtu7nvs3kqmoigcjdwap2azrkx5zohb2yk7gqjkwoyotwqd.onion</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Patrick McManus de Mozilla pour avoir rendu possible la compatibilité des services alternatifs .onion dans Firefox ; Arthur Edelstein du projet Tor pour avoir corrigé et activé HTTP/2 et HTTP Alternative Services dans Tor Browser 8.0 ; Alexander Færøy et George Kadianakis du projet Tor pour l'ajout de la compatibilité de Proxy Protocol avec les services cachés ; l'équipe du projet Tor pour son aide précieuse et les discussions qui ont été menées ; sans oublier tous les membres de Cloudflare ayant participé à ce projet.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

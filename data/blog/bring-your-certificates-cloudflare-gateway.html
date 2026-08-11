@@ -14,8 +14,30 @@
 <span class="line"><span>        "certificates":"&lt;ROOT_CERTIFICATE&gt;",</span></span>
 <span class="line"><span>        "private_key":"&lt;PRIVATE_KEY&gt;",</span></span>
 <span class="line"><span>        "ca":true</span></span>
-<span class="line"><span>        }'</span></span></code></pre>
+<span class="line"><span>        }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The root certificate will be stored across all of Cloudflare’s secure servers, designed to protect against unauthorized access. Once uploaded each certificate will receive an identifier in the form of a UUID (e.g. <code>2458ce5a-0c35-4c7f-82c7-8e9487d3ff60</code>) . This UUID can then be used with your Zero Trust account ID to associate and enable it for your account.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/gateway/configuration"\</span></span>
@@ -37,7 +59,11 @@
 <span class="line"><span>            "browser_isolation": {...},</span></span>
 <span class="line"><span>            "fips": {...},</span></span>
 <span class="line"><span>        }</span></span>
-<span class="line"><span>    }'</span></span></code></pre>
+<span class="line"><span>    }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>From there it takes approximately one minute and all new HTTPS connections for your organization's users will be secured using your custom certificate. For even more details check out our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/user-side-certificates/custom-certificate" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
 <p>An additional benefit of this fast propagation time is zero maintenance downtimes. If you’re transitioning from the Cloudflare provided certificate or a custom certificate, all new HTTPS connections will use the new certificate without impacting any current connections.</p>

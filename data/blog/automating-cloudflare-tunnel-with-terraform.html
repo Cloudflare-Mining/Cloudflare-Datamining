@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/cloudflare/cloudflare</span><span class="sk-032f62-99ffe4"> v2.18.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/hashicorp/google</span><span class="sk-032f62-99ffe4"> v3.56.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/hashicorp/random</span><span class="sk-032f62-99ffe4"> v3.0.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/hashicorp/template</span><span class="sk-032f62-99ffe4"> v2.2.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/hashicorp/template</span><span class="sk-032f62-99ffe4"> v2.2.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here is what the Terraform hierarchy looks like for this setup.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cdlg</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> ~/Documents/terraform/blog</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> master</span></span>
@@ -44,7 +66,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> test.plan</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">└──</span><span class="sk-032f62-99ffe4"> versions.tf</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">0</span><span class="sk-032f62-99ffe4"> directories,</span><span class="sk-005cc5-ffc799"> 12</span><span class="sk-032f62-99ffe4"> files</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">0</span><span class="sk-032f62-99ffe4"> directories,</span><span class="sk-005cc5-ffc799"> 12</span><span class="sk-032f62-99ffe4"> files</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can ignore the files <code>README.md</code> and <code>terraform.tfvars.example</code> for now. The files ending in <code>.tf</code> is where our Terraform configuration lives. Each file is designated to a specific purpose. For example, the <code>instance.tf</code> file only contains the scope of the GCP server resources used with this deployment and the affiliated DNS records pointing to the tunnel on it.</p>
 <div class="emdash-code">
@@ -107,7 +133,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  value</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">cloudflare_argo_tunnel</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">auto_tunnel</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">id</span><span class="sk-032f62-99ffe4">}.cfargotunnel.com"</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "CNAME"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  proxied</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is a personal preference — if desired, the entire Terraform config could be put into one file. One thing to note is the usage of variables throughout the files. For example, the value of <code>var.cloudflare_zone</code> is populated with the value provided to it from the <code>terraform.tfvars</code> file. This allows the configuration to be used as a template with other deployments. The only change that would be necessary is updating the relevant variables, such as in the <code>terraform.tfvars</code> file, when re-using the configuration.</p>
 <p>When using a credentials file (vs environment variables such as a <code>.tfvars</code> file) it is very important that this file is exempted from the version tracking tool. With git this is accomplished with a <code>.gitignore</code> file. Before running this example the <code>terraform.tfvars.example</code> file is copied to <code>terraform.tfvars</code> within the same directory and filled in as needed. The <code>.gitignore</code> file is told to ignore any file named <code>terraform.tfvars</code> to exempt the actual variables from version tracking.</p>
@@ -146,7 +176,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># example: *tfplan*</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">tfplan</span><span class="sk-d73a49-a0a0a0">*</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">.plan</span><span class="sk-d73a49-a0a0a0">*</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">lock</span><span class="sk-d73a49-a0a0a0">*</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">lock</span><span class="sk-d73a49-a0a0a0">*</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now to the fun stuff! To create a Cloudflare Tunnel in Terraform we only need to set the following resources in our Terraform config (this is what populates the <code>argo.tf</code> file).</p>
 <div class="emdash-code">
@@ -158,7 +192,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.cloudflare_account_id</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "zero_trust_ssh_http"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  secret</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> random_id.argo_secret.b64_std</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That’s it.</p>
 <p>Technically you could get away with just the <code>cloudflare_argo_tunnel</code> resource, but using the <code>random_id</code> resource helps with not having to hard code the secret for the tunnel. Instead we can dynamically generate a secret for our tunnel each time we run Terraform.</p>
@@ -176,7 +214,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      tunnel_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.auto_tunnel.name,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      secret</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> random_id.argo_secret.b64_std</span></span>
 <span class="line"><span class="sk-24292e-fff">    })</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This abbreviated section of the <code>google_compute_instance</code> resource shows a templatefile using 5 variables passed to the file located at <code>./server.tpl</code>. The file <code>server.tpl</code> is a bash script within the local directory that will configure the newly created GCP instance.</p>
 <p>As indicated earlier, Named Tunnels can make use of a JSON credentials file instead of the historic use of a <code>cert.pem</code> file. By using a templatefile function pointing to a bash script (or cloud-init, etc…) we can dynamically generate the fields that populate both the <code>cert.json</code> file and the <code>config.yml</code> file used for Ingress Rules on the server/host. Then the bash script can install <code>cloudflared</code> as <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/run-tunnel/run-as-service" target="_blank" rel="noopener noreferrer">a system service</a>, so it is persistent (i.e it can come back up after the machine is rebooted). Here is an example of this.</p>
@@ -213,7 +255,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-005cc5-99ffe4"> -via</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/cert.json</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> /tmp</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> docker-compose</span><span class="sk-032f62-99ffe4"> up</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> docker-compose</span><span class="sk-032f62-99ffe4"> up</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this example, a <a href="https://tldp.org/LDP/abs/html/here-docs.html" target="_blank" rel="noopener noreferrer">heredoc</a> is used to fill in the variable fields for the <code>cert.json</code> file and another heredoc is used to fill in the <code>config.yml</code> (Ingress Rules) file with the variables we set in Terraform. Taking a quick look at the <code>cert.json</code> file we can see that the Account ID is provided to it which secures the tunnel to your specific account. The UUID &nbsp;of the tunnel is then passed in along with the name that was assigned in the tunnel’s name argument. Lastly the 35 character secret is then passed to the tunnel. These are the necessary parameters to get our tunnel spun up against Cloudflare’s edge.</p>
 <p>The <code>config.yml</code> file is where we set up the Ingress Rules for the Cloudflare Tunnel. The first few lines tell the tunnel which UUID to attach to, where the credentials are on the OS, and where the tunnel should write logs to. The log level of <code>info</code> is good for general use but for troubleshooting <code>debug</code> may be needed.</p>
@@ -240,7 +286,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  include</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    email</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [var.cloudflare_email]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the above <code>cloudflare_access_application</code> resource, a variable, <code>var.cloudflare_zone_id</code>, is used to pull in the Cloudflare Zone’s ID based on the value of the variable provided in the <code>terraform.tfvars</code> file. The Zone Name is also dynamically populated at runtime in the <code>var.cloudflare_zone</code> fields based on the value provided in the <code>terraform.tfvars</code> file. We also limit the scope of this access policy to <code>ssh.targetdomain.com</code> using the <code>domain</code> argument in the <code>cloudflare_access_application</code> resource.</p>
 <p>In the <code>cloudflare_access_policy</code> resource, we take the information provided by the <code>cloudflare_access_application</code> resource called <code>ssh_app</code> and apply it as an active policy. The scope of who is allowed to log into this endpoint is the user’s email as provided by the <code>var.cloudflare_email</code> variable.</p>
@@ -259,7 +309,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> grep</span><span class="sk-005cc5-99ffe4"> -A2</span><span class="sk-032f62-99ffe4"> 'ssh.chrisdlg.com'</span><span class="sk-032f62-99ffe4"> ~/.ssh/config</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Host</span><span class="sk-032f62-99ffe4"> ssh.chrisdlg.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    IdentityFile</span><span class="sk-032f62-99ffe4"> /Users/cdlg/.ssh/google_compute_engine</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    ProxyCommand</span><span class="sk-032f62-99ffe4"> /usr/local/bin/cloudflared</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> ssh</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> %h</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    ProxyCommand</span><span class="sk-032f62-99ffe4"> /usr/local/bin/cloudflared</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> ssh</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> %h</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I can then SSH with my local user on the remote machine (cdlg) at the SSH hostname (ssh.chrisdlg.com). The instance of cloudflared running on my workstation will then proxy this request.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

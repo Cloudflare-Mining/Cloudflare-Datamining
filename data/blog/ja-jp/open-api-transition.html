@@ -14,8 +14,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> --init</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -v</span><span class="sk-032f62-99ffe4"> /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -p</span><span class="sk-032f62-99ffe4"> 4010:4010</span><span class="sk-032f62-99ffe4"> stoplight/prism:4</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  mock</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> /tmp/openapi.yaml</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  mock</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> /tmp/openapi.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>つまり開発時間が早まりテスト実行時間が短縮されるのです。それと同時にAPIコントラクトの問題を統合やデプロイ前に早期発見できます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -sX</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-032f62-99ffe4"> localhost:4010/zones/f00/activation_check</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -27,7 +49,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "023e105f4ecef8ad9ca31a8372d0c353"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>ライブラリ生成</h3>
 <p>Cloudflareには<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank" rel="noopener noreferrer">Terraform</a>や<a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>などの多くのプログラミング言語のライブラリがあります。しかし、当社製品はありとあらゆるプログラミング言語に対応しているわけではありません。幸い、<a href="https://github.com/OpenAPITools/openapi-generator" target="_blank" rel="noopener noreferrer">openapi generator</a>のようなツールを使えば、CloudflareのAPIスキーマを送り込み、さまざまな言語でライブラリを生成し、お客様のコードでCloudflareのAPIと通信できるようになります。例えば、以下のコマンドでJavaライブラリが生成できます。</p>
@@ -39,7 +65,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">java</span><span class="sk-005cc5-99ffe4"> -jar</span><span class="sk-032f62-99ffe4"> modules/openapi-generator-cli/target/openapi-generator-cli.jar</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   -i</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   -g</span><span class="sk-032f62-99ffe4"> java</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">   -o</span><span class="sk-032f62-99ffe4"> /var/tmp/java_api_client</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">   -o</span><span class="sk-032f62-99ffe4"> /var/tmp/java_api_client</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>CloudflareがOpenAPIに移行するまでの流れ</h2>
 <p>前述したように、以前はJSON Hyper-Schemaを使ってAPIを定義していました。すでにスキーマで定義されていたエンドポイントはおよそ600個あります。以下は、あるエンドポイントがJSON Hyper-Schemaにおけるスニペットの内容です。</p>
@@ -69,7 +99,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">          "#zone:read"</span></span>
 <span class="line"><span class="sk-24292e-fff">        ]</span></span>
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>両者はかなり似ていて、ほとんどの場合、メソッドタイプ、説明、リクエストとレスポンスの定義（これらは$refsでリンクされています）など、同じ情報がそれぞれに含まれていることがわかります。一方から他方への移行は、スキーマの定義方法の変更ではなく、スキーマを使用方法の変更に意味があります。後者のOpenAPIを解析できるツールは多数ありますが、前者のJSON Hyper-Schemaを解析できるツールははるかに少ないです。</p>
 <div class="emdash-code">
@@ -105,7 +139,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        business:</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        enterprise:</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        free:</span><span class="sk-005cc5-99ffe4"> true</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        pro:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        pro:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この 1 つのAPIがCloudflare APIを構成するすべてである場合、JSON Hyper-Schemaを手動でOpenAPIスキーマに変換するだけで簡単に終わります。しかし、600回も行うのは実に骨の折れる作業でした。チーム内で常に新しいエンドポイントを追加していることを考慮すれば、追いつくことは不可能です。また、既存の API ドキュメントが既存のJSON Hyper-Schemaを使用していた場合もあったため、移行期間中は両方のスキーマを最新の状態に保つ必要がありました。きっともっといい方法があったのでしょう。</p>
 <h3>自動コンバージョン</h3>

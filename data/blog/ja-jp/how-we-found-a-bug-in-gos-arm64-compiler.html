@@ -48,8 +48,30 @@
 <span class="line"><span>runtime stack:</span></span>
 <span class="line"><span>fatal error: traceback did not unwind completely</span></span>
 <span class="line"><span>       stack=[0x4015d6a000-0x4015d8a000</span></span>
-<span class="line"><span>runtime: g8221077: frame.sp=0x4015d784c0 top=0x4015d89fd0</span></span></code></pre>
+<span class="line"><span>runtime: g8221077: frame.sp=0x4015d784c0 top=0x4015d89fd0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h4>セグメント化の問題</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>goroutine 187 gp=0x40003aea80 m=13 mp=0x40003ca008 [GC worker (active)]:</span></span>
@@ -71,7 +93,11 @@
 <span class="line"><span>runtime.(*unwinder).next(0x7fff2afde5b0)</span></span>
 <span class="line"><span>goroutine 0 gp=0x40003af880 m=13 mp=0x40003ca008 [idle]:</span></span>
 <span class="line"><span>PC=0x55557e2bea58 m=13 sigcode=1 addr=0x118</span></span>
-<span class="line"><span>SIGSEGV: segmentation violation</span></span></code></pre>
+<span class="line"><span>SIGSEGV: segmentation violation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これで、いくつかの明確なパターンが観察されるようになりました。<code>(*unwinder).next</code>でスタックを解除する際に、両方のエラーが発生します。あるケースでは、ランタイムがアンウィンドを完了できず、スタックが悪性状態にあることを識別し、意図的な<a href="https://github.com/golang/go/blob/b3251514531123d7fd007682389bce7428d159a0/src/runtime/traceback.go#L566" target="_blank" rel="noopener noreferrer"><u>重大なエラー</u></a>が発生しました。別のケースでは、スタックを解約しようとしているときに、直接メモリアクセスエラーが発生しました。このセグメント違反は <a href="https://github.com/golang/go/issues/73259#issuecomment-2786818812" target="_blank" rel="noopener noreferrer"><u>GitHub の問題</u></a>で議論され、Go エンジニアはこれを、アンワインド時の Go スケジューラ構造体 <a href="https://github.com/golang/go/blob/924fe98902cdebf20825ab5d1e4edfc0fed2966f/src/runtime/runtime2.go#L536" target="_blank" rel="noopener noreferrer"><u>m</u></a> の逆参照であると<a href="https://github.com/golang/go/blob/b3251514531123d7fd007682389bce7428d159a0/src/runtime/traceback.go#L458" target="_blank" rel="noopener noreferrer"><u>特定しました</u></a>。 </p>
 <h3>Go Scheduler structsのレビュー</h3>
@@ -87,7 +113,11 @@
 <span class="line"><span>        /usr/local/go/src/runtime/preempt_arm64.s:47 +0x9c fp=0x4004cec6b0 sp=0x4004cec4c0 pc=0x4a6a8c</span></span>
 <span class="line"><span>github.com/vishvananda/netlink/nl.(*NetlinkSocket).Receive(0x14360300000000?)</span></span>
 <span class="line"><span>        /go/pkg/mod/github.com/!data!dog/netlink@v1.0.1-0.20240223195320-c7a4f832a3d1/nl/nl_linux.go:803 +0x130 fp=0x4004cfc710 sp=0x4004cec6c0 pc=0xf95de0</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>いくつかのスタックトレースをスポットチェックし、このNetlinkライブラリの存在を確認しました。ログを照会したところ、ライブラリを共有しただけでなく、当社が観測したセグメンテーションの不具合がすべて、<a href="https://github.com/vishvananda/netlink/blob/e1e260214862392fb28ff72c9b11adc84df73e2c/nl/nl_linux.go#L880" target="_blank" rel="noopener noreferrer"> <code><u>NetlinkSocket.Receive</u></code></a>をプリエンプトしている間に発生していたことがわかりました。</p>
 <h3>（非同期）プリエンプションとは？</h3>
@@ -124,7 +154,11 @@
 <span class="line"><span>        nl_linux.go:779 0x555577cb287c  ff430191        ADD $80, RSP, RSP</span></span>
 <span class="line"><span>        nl_linux.go:779 0x555577cb2880  ff434091        ADD $(16&lt;&lt;12), RSP, RSP</span></span>
 <span class="line"><span>        nl_linux.go:779 0x555577cb2884  c0035fd6        RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>関数エピローチの2つのオプコード間で、ゴルーチンが一時停止されていました。スタックを解約するプロセスは、スタックフレームが一貫した状態にあることに依存しているため、スタックポインターを調整する途中で先回りしたのは即座に疑わしく感じました。ゴルーチンは、<code>ADD $80, RSP, RSP と ADD $(16&lt;&lt;12), RSP, RSP</code> の間、0x555577cb2880で一時停止されていました。</p>
 <p>私たちは、この理論を確認するためにサービスログを照会しました。これは分離されたものではありません。スタックトレースの大半は、この同じオプコードがプリエンプトされていることを示していました。これはもう、再現不可能な本番環境のクラッシュではありませんでした。この2つのスタックポインタの調整の間、Goランタイムがプリエンプトした時にクラッシュが発生しました。Cloudflareには我々よりもユースケースが必要でした。</p>
@@ -167,7 +201,11 @@
 <span class="line"><span class="sk-24292e-fff">		_ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> big_stack</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この関数は、16ビットで表現できるよりも少し大きなスタックフレームになります。そのため、ARM64は、スタックポインタ調整を2つのオプコードに分割します。これらのオプコード間でランタイムがプリエンプトする場合、スタックアンウィンダーは無効なスタックポインターを読み取り、クラッシュします。</p>
 <div class="emdash-code">
@@ -178,7 +216,11 @@
 <span class="line"><span>; preemption is problematic between these opcodes</span></span>
 <span class="line"><span>ADD $(16&lt;&lt;12), RSP, RSP</span></span>
 <span class="line"><span>RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これを数分間実行した後、プログラムは予想通りにパニックになりました！</p>
 <div class="emdash-code">
@@ -204,7 +246,11 @@
 <span class="line"><span></span></span>
 <span class="line"><span>real    1m29.165s</span></span>
 <span class="line"><span>user    4m4.987s</span></span>
-<span class="line"><span>sys     0m43.212s</span></span></code></pre>
+<span class="line"><span>sys     0m43.212s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Standardライブラリのみで再現可能なクラッシュ？これは、私たちの問題がランタイムのバグであることを決定的に証明したように感じられました。</p>
 <p>これは非常に特殊な再現ツールでした。バグとその修正について十分に理解したとしても、それでも理解できない動作もあります。これは1つの指示による競合状態であり、小さな変更が大きな影響を与えることは当然のことです。たとえば、この再現者は当初、Go 1.23.4で書かれ、テストされました。1.23.9（本番稼働中のバージョン）でコンパイルした時にクラッシュすることはありませんでした。バイナリをオブジェクトダンプして、分割ADDがまだ存在しているのを見ることができたのです！この挙動については明確な説明ができません。バグが存在しても、競合状態に遭遇する可能性に影響する未知の変数がいくつかあります。</p>
@@ -223,7 +269,11 @@
 <span class="line"><span class="sk-24292e-fff">p.To.Type </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> obj.TYPE_REG</span></span>
 <span class="line"><span class="sk-24292e-fff">p.To.Reg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> REGSP</span></span>
 <span class="line"><span class="sk-24292e-fff">p.Spadj </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">c.autosize</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>特に、このIRは直接の長さの制限を認識していません。その代わり、これは<a href="https://github.com/golang/go/blob/2f653a5a9e9112ff64f1392ff6e1d404aaf23e8c/src/cmd/internal/obj/arm64/asm7.go" target="_blank" rel="noopener noreferrer"><u>asm7.go</u></a>で発生し、Goの内部中間表現がam64マシンコードに変換されます。アセンブラはビットサイズに基づいて<a href="https://github.com/golang/go/blob/2f653a5a9e9112ff64f1392ff6e1d404aaf23e8c/src/cmd/internal/obj/arm64/asm7.go#L1905" target="_blank" rel="noopener noreferrer"><u>コンクラス</u></a>の即時を分類し、必要に応じて追加で指示を発行する際にそれを使用します。</p>
 <p>Goアクセシビリティは、16ビットの即値に適合する一部のaddに対して（<code>mov, add</code> ）オペコードの組み合わせを使用し、16ビット以上の即時にとって（<code>add, add + lsl 12</code>）オプコードを優先します。 </p>
@@ -239,7 +289,11 @@
 <span class="line"><span>MOVD $32784, R27</span></span>
 <span class="line"><span>ADD R27, RSP, RSP</span></span>
 <span class="line"><span>RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>1&lt;&lt;16</code>のスタックの場合：</p>
 <div class="emdash-code">
@@ -253,7 +307,11 @@
 <span class="line"><span>ADD $16, RSP, RSP</span></span>
 <span class="line"><span>ADD $(16&lt;&lt;12), RSP, RSP</span></span>
 <span class="line"><span>RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>より大きなスタックのケースでは、<code>ADD x, RSP, RSP</code> オプコードの間に、スタックポインタがスタックフレームの先端を指していないポイントがあります。私たちは当初、これはメモリの破損の問題だと考えました。非同期のプリエンプションを処理する際に、ランタイムが関数呼び出しをスタックにプッシュし、スタックの中央を破損させるのではないかと思いました。しかし、このゴルーチンはすでに関数エキサイティングにあり、私たちが破損したデータはすべて積極的に破棄されます。では、何が問題なのでしょうか？ </p>
 <p>Goのランタイムは、スタックを<strong>解除する</strong>必要があることが多いです。それは、関数呼び出しのチェーンを逆方向にたどることを意味します。例えば、ガベージコレクションは、スタック上のライブリファレンスを見つけるために使用し、パニックは<code>待機</code>関数を評価するために使用し、スタックトレースを生成するにはコールスタックを表示する必要があります。これが機能するには、スタックポインターが<strong>アンウィンド時に正確でなければなりません</strong>。これは、golang dereferencesspが呼び出し関数を決定する方法だからです。スタックポインターが部分的に変更された場合、アンウィンダーはスタックの中央にある呼び出し関数を探します。基礎となるデータは、親スタックフレームへの指示として解釈されると意味がなく、その場合ランタイムがクラッシュする可能性が高くなります。</p>
@@ -264,7 +322,11 @@
 <span class="line"><span class="sk-24292e-fff">    lrPtr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> frame.sp</span></span>
 <span class="line"><span class="sk-24292e-fff">    frame.lr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*uintptr</span><span class="sk-24292e-fff">)(unsafe.</span><span class="sk-6f42c1-ffc799">Pointer</span><span class="sk-24292e-fff">(lrPtr))</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>非同期プリエンプションが発生すると、関数呼び出しをスタックにプッシュしますが、プリエンプションが発生したときspが部分的に調整されただけなので、親スタックフレームは正しくありません。クラッシュのフローは次のようになります： </p>
 <ol>
@@ -287,7 +349,11 @@
 <span class="line"><span>/usr/local/go/src/runtime/preempt_arm64.s:47 +0x9c fp=0x40060a27c0 sp=0x40060a25d0 pc=0x55557e2dc94c</span></span>
 <span class="line"><span>github.com/vishvananda/netlink/nl.(*NetlinkSocket).Receive(0xff48ce6e060b2848?)</span></span>
 <span class="line"><span>/vendor/github.com/vishvananda/netlink/nl/nl_linux.go:779 +0x130 fp=0x40060b2820 sp=0x40060a27d0 pc=0x55557e9d2880</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>根本的な原因を特定した後は、それを再現ツールに報告し、バグはすぐに修正されました。このバグは、<a href="https://github.com/golang/go/commit/e8794e650e05fad07a33fb6e3266a9e677d13fa8" target="_blank" rel="noopener noreferrer"><u>go1.23.12</u></a>、<a href="https://github.com/golang/go/commit/6e1c4529e4e00ab58572deceab74cc4057e6f0b6" target="_blank" rel="noopener noreferrer"><u>go1.24.6</u></a>、および<a href="https://github.com/golang/go/commit/f7cc61e7d7f77521e073137c6045ba73f66ef902" target="_blank" rel="noopener noreferrer"><u>go1.25.0</u></a>で修正されています。以前は、goコンパイラーは単一の<code>add x, rsp</code>命令を出力し、アセンブラに依存して、必要に応じて即時を複数のopcodeに分割しました。この変更の後、1&lt;&lt;12を超えるスタックは一時的なレジスタにオフセットを構築し、それを単一の不可分なオペコードで<code>rsp</code>に加算します。ゴルーチンは、スタックポインタの変更前または変更後にプリエンプションすることができますが、変更中は決して先述できません。つまり、スタックポインターは常に有効であり、競合状態は発生しません。</p>
 <div class="emdash-code">
@@ -295,7 +361,11 @@
 <span class="line"><span>MOVD $32, R27</span></span>
 <span class="line"><span>MOVK $(1&lt;&lt;16), R27</span></span>
 <span class="line"><span>ADD R27, RSP, RSP</span></span>
-<span class="line"><span>RET</span></span></code></pre>
+<span class="line"><span>RET</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これはデバッグがとても楽しい問題でした。コンパイラーを正確に非難できるバグはあまり見られません。デバッグに数週間かかり、私たちは通常、人が考える必要のないGoランタイムの領域について学びなければなりませんでした。これは、稀な競合状態の良い例であり、大規模でしか定量化できないバグの一種です。</p>
 <p>私たちは、このような捜査が好きな人を常に探しています。<a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer"><u>当社のエンジニアリングチームは募集を行っています</u></a>。 </p>

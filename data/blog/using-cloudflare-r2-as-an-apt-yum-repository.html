@@ -5,14 +5,40 @@
 <h2>How apt-get works</h2>
 <p>Let’s see what happens when you run something like this on your terminal.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflared</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflared</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Let’s also assume that apt sources were already added like so:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">  $</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-032f62-99ffe4"> 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared buster main'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /etc/apt/sources.list.d/cloudflared.list</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> update</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> update</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>From the source.list above, apt first looks up the <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/Release" target="_blank" rel="noopener noreferrer">Release</a> file (or <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/InRelease" target="_blank" rel="noopener noreferrer">InRelease</a> if it’s a signed package like cloudflared, but we will ignore this for the sake of simplicity).</p>
 <p>A Release file contains a list of supported architectures and their md5, sha1 and sha256 checksums. It looks something like this:</p>
@@ -44,7 +70,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">SHA1:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SHA256:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Depending on your system’s architecture, Debian picks the appropriate Packages location. A Packages file contains metadata about the binary apt wants to install, including location and its checksum. Let’s say it’s an amd64 machine. This means we’ll go here next:</p>
 <div class="emdash-code">
@@ -64,7 +94,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">SHA256:</span><span class="sk-032f62-99ffe4"> c47ca10a3c60ccbc34aa5750ad49f9207f855032eb1034a4de2d26916258ccc3</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SHA1:</span><span class="sk-032f62-99ffe4"> 1655dd22fb069b8438b88b24cb2a80d03e31baea</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">MD5sum:</span><span class="sk-032f62-99ffe4"> 3aca53ccf2f9b2f584f066080557c01e</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Description:</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-032f62-99ffe4"> Tunnel</span><span class="sk-032f62-99ffe4"> daemon</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Description:</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-032f62-99ffe4"> Tunnel</span><span class="sk-032f62-99ffe4"> daemon</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice the Filename field. This is where apt gets the deb from before running a dpkg command on it. What all of this means is the apt repository (and the yum repositories too) is basically a structured file system of mostly plaintext files and a deb.</p>
 <p>The deb file is a Debian software package that contains two things: installable data (in our case, the <em>cloudflared</em> binary) and metadata about the installable.</p>
@@ -74,7 +108,11 @@
 <p><strong>Note:</strong> It is optional but recommended one signs the packages. See the section about how apt verifies packages <a href="https://blog.cloudflare.com/dont-use-apt-key">here</a><em>.</em></p>
 <p>Debian files can be built by the <a href="https://man7.org/linux/man-pages/man1/dpkg-buildpackage.1.html" target="_blank" rel="noopener noreferrer">dpkg-buildpackage</a> tool in a linux or Debian environment. We use a handy command line tool called fpm (<a href="https://fpm.readthedocs.io/en/v1.13.1" target="_blank" rel="noopener noreferrer">https://fpm.readthedocs.io/en/v1.13.1/</a>) to do this because it works for both rpm and deb.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> fpm</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">di</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> deb</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> /path/to/project</span><span class="sk-005cc5-99ffe4"> -name</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">project_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> –version</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">versio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> fpm</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">di</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> deb</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> /path/to/project</span><span class="sk-005cc5-99ffe4"> -name</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">project_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> –version</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">versio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This yields a .deb file.</p>
 <h3>Create plaintext files needed by apt to lookup downloads</h3>
@@ -82,7 +120,11 @@
 <p>We use <a href="https://wiki.debian.org/DebianRepository/Setup?action=show&amp;redirect=HowToSetupADebianRepository#reprepro." target="_blank" rel="noopener noreferrer">reprepro</a>.</p>
 <p>Using it is as simple as</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> reprepro</span><span class="sk-032f62-99ffe4"> buster</span><span class="sk-032f62-99ffe4"> includedeb</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">path/to/the/de</span><span class="sk-24292e-fff">b</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> reprepro</span><span class="sk-032f62-99ffe4"> buster</span><span class="sk-032f62-99ffe4"> includedeb</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">path/to/the/de</span><span class="sk-24292e-fff">b</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>reprepro neatly creates a bunch of folders in the structure we looked into above.</p>
 <h3>Upload them to Cloudflare R2</h3>

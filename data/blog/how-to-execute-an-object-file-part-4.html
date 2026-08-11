@@ -17,19 +17,49 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Compiler (output <code>main.s</code> - assembly listing):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-032f62-99ffe4"> main.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">main.c</span><span class="sk-032f62-99ffe4">  main.s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">main.c</span><span class="sk-032f62-99ffe4">  main.s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Assembler (output <code>main.o</code> - an object file):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> main.s</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> main.o</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">main.c</span><span class="sk-032f62-99ffe4">  main.o</span><span class="sk-032f62-99ffe4">  main.s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">main.c</span><span class="sk-032f62-99ffe4">  main.o</span><span class="sk-032f62-99ffe4">  main.s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Linker (<code>main</code> - an object file):</p>
 <div class="emdash-code">
@@ -37,7 +67,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">main</span><span class="sk-032f62-99ffe4">  main.c</span><span class="sk-032f62-99ffe4">  main.o</span><span class="sk-032f62-99ffe4">  main.s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./main</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>All the examples assume gcc is running on a native aarch64 architecture or include a cross compilation flag for those who want to reproduce and have no aarch64.</p>
 <p>We have two object files in the output above: <code>main.o</code> and <code>main</code>. Object files are files encoded with the <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF (Executable and Linkable Format)</a> standard. Although, <code>main.o</code> is an ELF file, it doesn’t contain all the information to be fully executable.</p>
@@ -48,7 +82,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> main</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">main:</span><span class="sk-032f62-99ffe4"> ELF</span><span class="sk-032f62-99ffe4"> 64-bit</span><span class="sk-032f62-99ffe4"> LSB</span><span class="sk-032f62-99ffe4"> pie</span><span class="sk-032f62-99ffe4"> executable,</span><span class="sk-032f62-99ffe4"> ARM</span><span class="sk-032f62-99ffe4"> aarch64,</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff"> (SYSV), dynamically</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">linked,</span><span class="sk-032f62-99ffe4"> interpreter</span><span class="sk-032f62-99ffe4"> /lib/ld-linux-aarch64.so.1,</span></span>
-<span class="line"><span class="sk-24292e-fff">BuildID[sha1]</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">d3ecd2f8ac3b2dec11ed4cc424f15b3e1f130dd4,</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-032f62-99ffe4"> GNU/Linux</span><span class="sk-032f62-99ffe4"> 3.7.0,</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> stripped</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">BuildID[sha1]</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">d3ecd2f8ac3b2dec11ed4cc424f15b3e1f130dd4,</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-032f62-99ffe4"> GNU/Linux</span><span class="sk-032f62-99ffe4"> 3.7.0,</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> stripped</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>The ELF File</h2>
 <p>The central idea of this series of blog posts is to understand how to resolve dependencies from object files without directly involving the linker. For illustrative purposes we generated an object file based on some C-code and used it as a library for our main program. Before switching to the code, we need to understand the basics of the ELF structure.</p>
@@ -77,7 +115,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  Number of program headers:         9</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  Size of section headers:           64 (bytes)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  Number of section headers:         29</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  Section header string table index: 28</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  Section header string table index: 28</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>The ELF Program Header</h3>
 <p>The execution process of almost every program starts from an auxiliary program, called loader, which arranges the memory and calls the program’s entry point. In the following output the loader is marked with a line <code>“Requesting program interpreter: /lib/ld-linux-aarch64.so.1”</code>. The whole program memory is split into different segments with associated size, permissions and type (which instructs the loader on how to interpret this block of memory). Because the execution process should be performed in the shortest possible time, the <em>sections</em> with the same characteristics and located nearby are grouped into bigger blocks — <em>segments</em> — and placed in the <em>program header</em>. We can say that the <em>program header</em> summarizes the types of data that appear in the <em>section header</em>.</p>
@@ -112,7 +154,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   05</span><span class="sk-032f62-99ffe4">     .note.gnu.build-id</span><span class="sk-032f62-99ffe4"> .note.ABI-tag</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   06</span><span class="sk-032f62-99ffe4">     .eh_frame_hdr</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   07</span><span class="sk-24292e-fff">     </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   08</span><span class="sk-032f62-99ffe4">     .init_array</span><span class="sk-032f62-99ffe4"> .fini_array</span><span class="sk-032f62-99ffe4"> .dynamic</span><span class="sk-032f62-99ffe4"> .got</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   08</span><span class="sk-032f62-99ffe4">     .init_array</span><span class="sk-032f62-99ffe4"> .fini_array</span><span class="sk-032f62-99ffe4"> .dynamic</span><span class="sk-032f62-99ffe4"> .got</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>The ELF Section Header</h3>
 <p>In the source code of high-level languages, variables, functions, and constants are mixed together. However, in assembly you might see that the data and instructions are separated into different blocks. The ELF file content is divided in an even more granular way. For example, variables with initial values are placed into different sections than the uninitialized ones. This approach optimizes for space, otherwise the values for uninitialized variables would be filled with zeros. Along with the space efficiency, there are security reasons for stratification — executable instructions can’t have writable permissions, while memory containing variables can't be executable. The section header describes each of these sections.</p>
@@ -156,7 +202,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  W</span><span class="sk-24292e-fff"> (write), A (</span><span class="sk-6f42c1-ffc799">alloc</span><span class="sk-24292e-fff">), X (</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-24292e-fff">), M (</span><span class="sk-6f42c1-ffc799">merge</span><span class="sk-24292e-fff">), S (</span><span class="sk-6f42c1-ffc799">strings</span><span class="sk-24292e-fff">), I (</span><span class="sk-6f42c1-ffc799">info</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  L</span><span class="sk-24292e-fff"> (link </span><span class="sk-032f62-99ffe4">order</span><span class="sk-24292e-fff">), O (</span><span class="sk-6f42c1-ffc799">extra</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> processing</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-24292e-fff">), G (</span><span class="sk-6f42c1-ffc799">group</span><span class="sk-24292e-fff">), T (</span><span class="sk-6f42c1-ffc799">TLS</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  C</span><span class="sk-24292e-fff"> (compressed), x (</span><span class="sk-6f42c1-ffc799">unknown</span><span class="sk-24292e-fff">), o (</span><span class="sk-6f42c1-ffc799">OS</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">), E (</span><span class="sk-6f42c1-ffc799">exclude</span><span class="sk-24292e-fff">),</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  D</span><span class="sk-24292e-fff"> (mbind), p (</span><span class="sk-6f42c1-ffc799">processor</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  D</span><span class="sk-24292e-fff"> (mbind), p (</span><span class="sk-6f42c1-ffc799">processor</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Executing example from Part 1 on aarch64</h2>
 <p>Actually, our <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1" target="_blank" rel="noopener noreferrer">initial code</a> from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">Part 1</a> works on aarch64 as is!</p>
@@ -196,7 +246,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  30:</span><span class="sk-032f62-99ffe4">	b9401fe0</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#28]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  34:</span><span class="sk-005cc5-ffc799">	94000000</span><span class="sk-032f62-99ffe4"> 	bl</span><span class="sk-005cc5-ffc799">	0</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">add</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  38:</span><span class="sk-032f62-99ffe4">	a8c27bfd</span><span class="sk-032f62-99ffe4"> 	ldp</span><span class="sk-032f62-99ffe4">	x29,</span><span class="sk-032f62-99ffe4"> x30,</span><span class="sk-24292e-fff"> [sp], </span><span class="sk-6a737d-8b8b8b94">#32</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  3c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  3c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Have you noticed that all the hex values in the second column are exactly the same length, in contrast with the instructions lengths seen for x86 in Part 2 of our series? This is because all Armv8-A instructions are presented in 32 bits. Since it is impossible to encode every immediate value into less than 32 bits, some operations require more than one instruction, as we’ll see later. For now, we’re interested in one instruction <code>- bl</code> (<a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BL--Branch-with-Link-?lang=en" target="_blank" rel="noopener noreferrer">branch with link</a>) on rows <code>28</code> and <code>34</code>. The <code>bl</code> is a “jump” instruction, but before the jump it preserves the next instruction after the current one in the link register (<code>lr</code>). When the callee finishes execution the caller address is recovered from <code>lr</code>. Usually, the aarch64 instructions reserve the last 6 bits [31:26] for opcode and some auxiliary fields such as running architecture (32 or 64 bits), condition flag and others. Remaining bits are shared between arguments like source register, destination register and immediate value. Since the <code>bl</code> instruction does not require a source or destination register, the full 26 bits can be used to encode the immediate offset instead. However, 26 bits can only encode a small range (+/-32 MB), but because the jump can only target a beginning of an instruction, it must always be aligned to 4 bytes, which increases the effective range of the encoded immediate fourfold, to +/-128 MB.</p>
 <p>Similarly to what we did in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we’re going to resolve our relocations - first by manually calculating the correct addresses and then by using an approach similar to what the linker does. The current value of our <code>bl</code> instruction is <code>94000000</code> or in binary representation <code>100101**00000000000000000000000000**</code>. All 26 bits are zeros, so we don't jump anywhere. The address is calculated by an offset from the current <em>program counter</em> (<code>pc</code>), which can be positive or negative. In our case we expect it to be <code>-0x28</code> and <code>-0x34</code>. As described above, it should be divided by 4 and taken as <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="noopener noreferrer">two's complements</a>: <code>-0x28 / 4 = -0xA == 0xFFFFFFF6</code> and <code>-0x34 / 4 = -0xD == 0xFFFFFFF3</code>. From these values we need to take the lower 26 bits and concatenate them with the initial 6 bits to get the final instruction. So, the final ones will be: <code>100101**11111111111111111111110110** == 0x97FFFFF6</code> and <code>100101**11111111111111111111110011** == 0x97FFFFF3</code>. Have you noticed that all the distance calculations are done relative to the <code>bl</code> (or current <code>pc</code>), not the next instruction as in x86?</p>
@@ -215,7 +269,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">	/* make the `.text` copy readonly and executable */</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">mprotect</span><span class="sk-24292e-fff">(text_runtime_base, </span><span class="sk-6f42c1-ffc799">page_align</span><span class="sk-24292e-fff">(text_hdr-&gt;sh_size), PROT_READ </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> PROT_EXEC)) {</span></span>
-<span class="line"><span class="sk-24292e-fff">	...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Compile and run:</p>
 <div class="emdash-code">
@@ -224,7 +282,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It works! But this is not how the linker handles the relocations. The linker resolves relocation based on the type and formula assigned to this type. In our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we investigated it quite well. Here again we need to find the type and check the formula for this type:</p>
 <div class="emdash-code">
@@ -238,7 +300,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Relocation</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> '.rela.eh_frame'</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-005cc5-ffc799"> 0x258</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> entries:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  Offset</span><span class="sk-032f62-99ffe4">          Info</span><span class="sk-032f62-99ffe4">           Type</span><span class="sk-032f62-99ffe4">           Sym.</span><span class="sk-032f62-99ffe4"> Value</span><span class="sk-032f62-99ffe4">    Sym.</span><span class="sk-032f62-99ffe4"> Name</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> Addend</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">00000000001c</span><span class="sk-005cc5-ffc799">  000200000105</span><span class="sk-032f62-99ffe4"> R_AARCH64_PREL32</span><span class="sk-005cc5-ffc799">  0000000000000000</span><span class="sk-032f62-99ffe4"> .text</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">000000000034</span><span class="sk-005cc5-ffc799">  000200000105</span><span class="sk-032f62-99ffe4"> R_AARCH64_PREL32</span><span class="sk-005cc5-ffc799">  0000000000000000</span><span class="sk-032f62-99ffe4"> .text</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 18</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000034</span><span class="sk-005cc5-ffc799">  000200000105</span><span class="sk-032f62-99ffe4"> R_AARCH64_PREL32</span><span class="sk-005cc5-ffc799">  0000000000000000</span><span class="sk-032f62-99ffe4"> .text</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 18</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our Type is R_AARCH64_CALL26 and the <a href="https://github.com/ARM-software/abi-aa/blob/main/aaelf64/aaelf64.rst#5733relocation-operations" target="_blank" rel="noopener noreferrer">formula</a> for it is:</p>
 <div id="html-block-k6h" class="html-block">
@@ -300,7 +366,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">		break</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"><span class="sk-24292e-fff">	...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Compile and run:</p>
 <div class="emdash-code">
@@ -311,7 +381,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So far so good. The next challenge is to <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/2/obj.c#L16-L31" target="_blank" rel="noopener noreferrer">add constant data and global variables</a> to our object file and check relocations again:</p>
 <div class="emdash-code">
@@ -327,7 +401,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">0000000000000028</span><span class="sk-005cc5-ffc799">  0000000300000115</span><span class="sk-032f62-99ffe4"> R_AARCH64_ADD_ABS_LO12_NC</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">0000000000000068</span><span class="sk-032f62-99ffe4">  000000110000011b</span><span class="sk-032f62-99ffe4"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799">       0000000000000040</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">0000000000000074</span><span class="sk-032f62-99ffe4">  000000110000011b</span><span class="sk-032f62-99ffe4"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799">       0000000000000040</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have even two new relocations: <code>R_AARCH64_ADD_ABS_LO12_NC</code> and <code>R_AARCH64_ADR_PREL_PG_HI21</code>. Their formulas are:</p>
 <div id="html-block-k7d" class="html-block">
@@ -400,7 +478,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  30:</span><span class="sk-032f62-99ffe4">	b9000001</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	w1,</span><span class="sk-24292e-fff"> [x0]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  34:</span><span class="sk-032f62-99ffe4">	d503201f</span><span class="sk-032f62-99ffe4"> 	nop</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  38:</span><span class="sk-032f62-99ffe4">	910043ff</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  3c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  3c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We see that all <code>adrp</code> instructions are followed by <code>add</code> instructions. The <code>[add](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADD--immediate---Add--immediate--?lang=en)</code> instruction adds an immediate value to the source register and writes the result to the destination register. The source and destination registers can be the same, the immediate value is 12 bits. The <code>[adrp](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en)</code> instruction generates a <code>pc</code>-relative (program counter) address and writes the result to the destination register. It takes <code>pc</code> of the instruction itself and adds a 21-bit immediate value shifted left by 12 bits. If the immediate value weren’t shifted it would lie in a range of +/-1 MB memory, which isn’t enough. The left shift increases the range up to +/-1 GB. However, because the 12 bits are masked out with the shift, we need to store them somewhere and restore later. That’s why we see add instruction following <code>adrp</code> and two types instead of one. Also, it’s a bit tricky to encode <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en" target="_blank" rel="noopener noreferrer"><code>adrp</code></a>: 2 low bits of immediate value are placed in the position 30:29 and the rest in the position 23:5. Due to size limitations, the aarch64 instructions try to make the most out of 32 bits.</p>
 <p>In the code we are going to use the formulas to calculate the values and description of <code>adrp</code> and <code>add</code> instructions to obtain the final opcode:</p>
@@ -446,7 +528,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> immlo;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> immhi;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	break</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Compile and run:</p>
 <div class="emdash-code">
@@ -462,7 +548,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 5</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> set_var</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">42</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_var</span><span class="sk-032f62-99ffe4"> again...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 42</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 42</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It works! The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/2" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <h2>Executing example from Part 3 on aarch64</h2>
@@ -482,7 +572,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">1d2c:</span><span class="sk-032f62-99ffe4">	97fffb45</span><span class="sk-032f62-99ffe4"> 	bl</span><span class="sk-032f62-99ffe4">	a40</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">puts@pl</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1d30:</span><span class="sk-032f62-99ffe4">	f94017e0</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#40]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1d34:</span><span class="sk-032f62-99ffe4">	d63f0000</span><span class="sk-032f62-99ffe4"> 	blr</span><span class="sk-032f62-99ffe4">	x0</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The first instruction is <code>bl</code> jump to <code>puts@plt</code> stub. The next <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/LDR--immediate---Load-Register--immediate--" target="_blank" rel="noopener noreferrer"><code>ldr</code></a> instruction tells us that some value was loaded into the register <code>x0</code> from the stack. Each function has its own <a href="https://en.wikipedia.org/wiki/Call_stack#Stack_and_frame_pointers" target="_blank" rel="noopener noreferrer">stack frame</a> to hold the local variables. The last <code>blr</code> instruction makes a jump to the address stored in <code>x0</code> register. There is an agreement in the register naming: if the stored value is 64-bits then the register is called <code>x0-x30</code>; if only 32-bits are used then it’s called <code>w0-w30</code> (the value will be stored in the lower 32-bits and upper 32-bits will be zeroed).</p>
 <p>We need to do something similar — place the absolute address of our <code>my_puts</code> wrapper in some register and call <code>br</code> on this register. We don’t need to store the link before branching, the call will be returned to <code>say_hello</code> from <code>obj.c</code>, which is why a plain <code>br</code> will be enough. Let’s check an assembly of simple C-function:</p>
@@ -493,7 +587,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">void</span><span class="sk-6f42c1-ffc799"> say_hello</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    uint64_t</span><span class="sk-24292e-fff"> reg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">555555550c14</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> hello.c</span></span>
@@ -512,7 +610,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  10:</span><span class="sk-032f62-99ffe4">	f90007e0</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#8]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  14:</span><span class="sk-032f62-99ffe4">	d503201f</span><span class="sk-032f62-99ffe4"> 	nop</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  18:</span><span class="sk-032f62-99ffe4">	910043ff</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  1c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  1c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The number <code>0x555555550c14</code> is the address returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238" target="_blank" rel="noopener noreferrer"><code>lookup_ext_function</code></a>. We’ve printed it out to use as an example, but any <a href="https://www.kernel.org/doc/html/latest/arch/arm64/memory.html" target="_blank" rel="noopener noreferrer">48-bits</a> hex value can be used.</p>
 <p>In our output we see that the value was split in three sections and written in <code>x0</code> register with three instructions: one <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-" target="_blank" rel="noopener noreferrer"><code>mov</code></a> and two <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en" target="_blank" rel="noopener noreferrer"><code>movk</code></a>. The documentation says that there are only 16 bits for the immediate value, but a shift can be applied (in our case left shift <code>lsl</code>).</p>
@@ -524,7 +626,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> ext_jump</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> instr[</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">];</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As we saw above, we need four instructions: <code>mov</code>, <code>movk</code>, <code>movk</code>, <code>br</code>. We don’t need a stack frame as we aren’t preserving any local variables. We just want to load the address into the register and branch to it. But we can’t write human-readable code</p>
 <p>e.g. <code>mov &nbsp;x0, #0xc14</code> into instructions, we need machine binary or hex representation, e.g. <code>d2818280</code>.</p>
@@ -536,7 +642,11 @@
 <span class="line"><span class="sk-24292e-fff">_start: mov     x9, #</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">c14</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff">        movk    x9, #</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">5555</span><span class="sk-24292e-fff">, lsl #</span><span class="sk-005cc5-ffc799">16</span></span>
 <span class="line"><span class="sk-24292e-fff">        movk    x9, #</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">5555</span><span class="sk-24292e-fff">, lsl #</span><span class="sk-005cc5-ffc799">32</span></span>
-<span class="line"><span class="sk-24292e-fff">        br      x9</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        br      x9</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> hw.o</span><span class="sk-032f62-99ffe4"> hw.s</span></span>
@@ -551,7 +661,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   0:</span><span class="sk-032f62-99ffe4">	d2818289</span><span class="sk-032f62-99ffe4"> 	mov</span><span class="sk-032f62-99ffe4">	x9,</span><span class="sk-6a737d-8b8b8b94"> #0xc14                 	// #3092</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   4:</span><span class="sk-032f62-99ffe4">	f2aaaaa9</span><span class="sk-032f62-99ffe4"> 	movk</span><span class="sk-032f62-99ffe4">	x9,</span><span class="sk-6a737d-8b8b8b94"> #0x5555, lsl #16</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   8:</span><span class="sk-032f62-99ffe4">	f2caaaa9</span><span class="sk-032f62-99ffe4"> 	movk</span><span class="sk-032f62-99ffe4">	x9,</span><span class="sk-6a737d-8b8b8b94"> #0x5555, lsl #32</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   c:</span><span class="sk-032f62-99ffe4">	d61f0120</span><span class="sk-032f62-99ffe4"> 	br</span><span class="sk-032f62-99ffe4">	x9</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   c:</span><span class="sk-032f62-99ffe4">	d61f0120</span><span class="sk-032f62-99ffe4"> 	br</span><span class="sk-032f62-99ffe4">	x9</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Almost done! But there’s one more thing to consider. Even if the value <code>0x555555550c14</code> is a real <code>my_puts</code> wrapper address, it will be different on each run if <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization" target="_blank" rel="noopener noreferrer">ASLR(Address space layout randomization)</a> is enabled. We need to patch these instructions to put the value which will be returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238" target="_blank" rel="noopener noreferrer"><code>lookup_ext_function</code></a> on each run. We’ll split the obtained value in three parts, 16-bits each, and replace them in our <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-" target="_blank" rel="noopener noreferrer"><code>mov</code></a> and <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en" target="_blank" rel="noopener noreferrer"><code>movk</code></a> instructions according to the documentation, similar to what we did before for our second part.</p>
 <div class="emdash-code">
@@ -585,7 +699,11 @@
 <span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">mask_bl;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> val;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	break</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the code we took the address of the first instruction <code>&amp;jumptable[curr_jmp_idx].instr[0]</code> and wrote it in the <code>symbol_address</code>, further because the <code>type</code> is still <code>R_AARCH64_CALL26</code> it will be put into <code>bl</code> - jump to the relative address. Where our relative address is the first <code>mov</code> instruction. The whole <code>jumptable</code> code will be executed and finished with the <code>blr</code> instruction.</p>
 <p>The final run:</p>
@@ -605,7 +723,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 42</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> say_hello...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">my_puts</span><span class="sk-032f62-99ffe4"> executed</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/3" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <h2>Summary</h2>

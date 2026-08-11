@@ -54,8 +54,30 @@
 <p>Some resolvers returned EDE 6 (DNSSEC Bogus) with a descriptive message pointing directly at the broken signature. This is the correct behavior:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>EDE: 6 (DNSSEC Bogus): RRSIG with malformed signature found for example.de/nsec3 (keytag=33834)</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>1.1.1.1, on the other hand, returned EDE 22 (No Reachable Authority), which on the surface suggests a connectivity problem with the upstream nameservers rather than a DNSSEC validation failure. </p>
 <p>The cause is a bug in how we propagate DNSSEC EDE codes up from our trust chain verifier. When the verifier detects a bogus signature it creates the DNSSEC Bogus EDE code, but this is never inserted into the response. Instead, the outer layer of the resolver sees a problem with recursive resolution with no error code and falls back to reporting “No Reachable Authority.” This obscures the underlying DNSSEC cause.</p>
 <p>We're aware that this isn't helpful for 1.1.1.1 users and will be fixing our responses to surface the DNSSEC errors.</p>

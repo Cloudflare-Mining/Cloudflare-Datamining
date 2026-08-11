@@ -34,8 +34,30 @@
 <span class="line"><span>		ZoneID: cloudflare.String("023e105f4ecef8ad9ca31a8372d0c353"),</span></span>
 <span class="line"><span>	},</span></span>
 <span class="line"><span>)</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><br>Terraform 사용 시:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">resource </span><span class="sk-032f62-99ffe4">"cloudflare_dns_record"</span><span class="sk-032f62-99ffe4"> "example"</span><span class="sk-24292e-fff"> {</span></span>
@@ -43,14 +65,22 @@
 <span class="line"><span class="sk-24292e-fff">  name    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "@"</span></span>
 <span class="line"><span class="sk-24292e-fff">  content </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "example.com"</span></span>
 <span class="line"><span class="sk-24292e-fff">  type    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "CNAME"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>표면적으로는 Terraform의 접근 방식이 더 단순해 보이는데, 여러분의 생각이 맞을 것입니다. 새로운 리소스를 만들고 변경 사항을 유지하는 방법을 인지하는 것의 복잡성은 자동으로 처리됩니다. 하지만 Terraform이 이러한 추상화 및 데이터 보장을 제공하려면 적용 시점에 모든 값을 알고 있어야 한다는 문제가 있습니다. 즉, 프록시 설정된 값을 사용하지 않더라도, Terraform이 상태 파일에 저장하고 해당 속성을 관리하기 위해 필요한 값을 Terraform이 알아야 합니다. 다음 오류는 적용 시 값을 알 수 없을 때 Terraform 운영자가 공급자에게서 흔히 보게 되는 오류입니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-24292e-fff">: Provider produced inconsistent result after apply</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">When applying changes to example_thing.foo, provider </span><span class="sk-032f62-99ffe4">"provider[</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">registry.terraform.io/example/example</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">]"</span></span>
-<span class="line"><span class="sk-24292e-fff">produced an unexpected </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> value: .foo: was </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, but now cty.</span><span class="sk-6f42c1-ffc799">StringVal</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">).</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">produced an unexpected </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> value: .foo: was </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, but now cty.</span><span class="sk-6f42c1-ffc799">StringVal</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">).</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>반면 SDK를 사용할 때는 필드가 필요하지 않은 경우 생략하면 되므로, 알려진 값을 유지 관리하는 데 신경 쓸 필요가 없습니다.</p>
 <p>OpenAPI 스키마에서 이 문제를 해결하는 것은 쉬운 일이 아니었습니다. Terraform 세대 지원을 도입한 이후로 스키마의 품질이 크게 향상되었습니다. 이제 존재하는 모든 기본값, 요청 페이로드에 따른 가변 응답 속성, 서버 측 계산 속성을 명시적으로 호출합니다. 이 모든 것은 Cloudflare API와 상호 작용하는 모든 사람에게 더 나은 경험을 제공한다는 의미입니다.</p>
@@ -109,7 +139,11 @@
 <span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(diags</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">HasError</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>개요:</p>
 <ul>
@@ -151,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">env.Result</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(resp.State.</span><span class="sk-6f42c1-ffc799">Set</span><span class="sk-24292e-fff">(ctx, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">data)</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(resp.State.</span><span class="sk-6f42c1-ffc799">Set</span><span class="sk-24292e-fff">(ctx, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">data)</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>유형-모델 변환 메서드의 수백 가지 인스턴스를 생성할 필요 없이 올바른 태그로 Terraform 모델을 장식하고 일관된 방식으로 데이터의 마샬링 및 언마샬링을 처리할 수 있습니다. 이는 코드의 사소한 변경이지만 장기적으로 세대의 재사용성과 가독성을 높이는 데 도움이 됩니다. 여기에 더해, 이 접근 방식은 특정 유형의 필드에서 버그를 식별하고 통합 인터페이스에서 수정하면, 아직 발견하지 못한 다른 유형의 버그도 수정할 수 있어 버그 수정에 매우 유용하다는 이점도 있습니다.</p>
 <h2>잠시만요, 더 많은 문서가 있습니다!</h2>

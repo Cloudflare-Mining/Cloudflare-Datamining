@@ -10,16 +10,46 @@
 <p>The first step is to <a href="https://nginx.org/en/download.html" target="_blank" rel="noopener noreferrer">download and unpack the NGINX source code</a>. Note that the HTTP/3 and QUIC patch only works with the 1.16.x release branch (the latest stable release being 1.16.1).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -O</span><span class="sk-032f62-99ffe4"> https://nginx.org/download/nginx-1.16.1.tar.gz</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> xvzf</span><span class="sk-032f62-99ffe4"> nginx-1.16.1.tar.gz</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> xvzf</span><span class="sk-032f62-99ffe4"> nginx-1.16.1.tar.gz</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As well as quiche, the underlying implementation of HTTP/3 and QUIC:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/quiche</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/quiche</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next you’ll need to apply the patch to NGINX:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> nginx-1.16.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> patch</span><span class="sk-005cc5-99ffe4"> -p01</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> ../quiche/extras/nginx/nginx-1.16.patch</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> patch</span><span class="sk-005cc5-99ffe4"> -p01</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> ../quiche/extras/nginx/nginx-1.16.patch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And finally build NGINX with HTTP/3 support enabled:</p>
 <div class="emdash-code">
@@ -30,7 +60,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">   	--with-http_v3_module</span><span class="sk-005cc5-a0a0a0">               	\</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   	--with-openssl=../quiche/deps/boringssl</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   	--with-quiche=../quiche</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> make</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> make</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The above command instructs the NGINX build system to enable the HTTP/3 support ( <code>--with-http_v3_module</code>) by using the quiche library found in the path it was previously downloaded into ( <code>--with-quiche=../quiche</code>), as well as TLS and HTTP/2. Additional build options can be added as needed.</p>
 <p>You can check out the full instructions <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx#readme" target="_blank" rel="noopener noreferrer">here</a>.</p>
@@ -59,7 +93,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">        # Add Alt-Svc header to negotiate HTTP/3.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        add_header</span><span class="sk-032f62-99ffe4"> alt-svc</span><span class="sk-032f62-99ffe4"> 'h3-23=":443"; ma=86400'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This will enable both HTTP/2 and HTTP/3 on the TCP/443 and UDP/443 ports respectively.</p>
 <p>You can then use one of the available HTTP/3 clients (such as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a>, <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a> or even the <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-quiche-s-http3-client">example HTTP/3 client provided as part of quiche</a>) to connect to your NGINX instance using HTTP/3.</p>

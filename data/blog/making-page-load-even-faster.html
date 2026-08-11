@@ -29,8 +29,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">img src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/some-image.png"</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;!</span><span class="sk-6f42c1-ffc799">--</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">img data-cfsrc</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/some-image.png"</span><span class="sk-24292e-fff"> style</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"display:none;visibility:hidden;"</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">img data-cfsrc</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/some-image.png"</span><span class="sk-24292e-fff"> style</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"display:none;visibility:hidden;"</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Since browsers don't recognise <code>data-cfsrc</code>, the Mirage Javascript can control the whole process of loading these images. It uses this opportunity to intelligently load placeholder images on slow connections.</p>
 <p>Rocket Loader uses a similar approach to de-prioritise Javascript during page load, allowing the browser to show visitors the content of the page sooner.</p>
 <h3>The problems</h3>
@@ -78,7 +100,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Mirage:</span><span class="sk-032f62-99ffe4"> Mirage,</span></span>
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>with ECMAScript modules, ready for Rollup, like:</p>
 <div class="emdash-code">
@@ -87,7 +113,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> ...</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { </span><span class="sk-6f42c1-ffc799">Mirage</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { </span><span class="sk-6f42c1-ffc799">Mirage</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Post refactor weigh-in</h4>
 <p>Once the parts of CFJS used by the projects were inlined into the projects, we ended up with both Rocket and Mirage being slightly <a href="https://blog.cloudflare.com/#badge">larger</a> (all numbers minified + GZipped):</p>
@@ -99,14 +129,22 @@
 <span class="line"><span class="sk-032f62-99ffe4">&lt;script&gt;</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  var cloudflare = { rocket: true, mirage: true };</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">&lt;/script&gt;</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">&lt;script src="/cloudflare.min.js"&gt;&lt;/script&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">&lt;script src="/cloudflare.min.js"&gt;&lt;/script&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Inside cloudflare.min.js we found the dynamic code that, once run, would kick off the requests for Mirage and Rocket Loader:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> cloudflare.min.js</span></span>
 <span class="line"><span class="sk-24292e-fff">if(</span><span class="sk-6f42c1-ffc799">cloudflare.rocket</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    require(“cloudflare/rocket”</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our approach is now far more browser friendly, roughly:</p>
 <div class="emdash-code">
@@ -115,7 +153,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  var</span><span class="sk-032f62-99ffe4"> cloudflare</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4"> some</span><span class="sk-032f62-99ffe4"> config</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span><span class="sk-032f62-99ffe4"> }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/script</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/mirage.min.js"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/script</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/rocket.min.js"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/script</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/rocket.min.js"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/script</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you compare the new insertion sequence diagram, you can see why this is so much better:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

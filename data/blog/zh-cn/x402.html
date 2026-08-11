@@ -45,8 +45,30 @@
 <span class="line"><span class="sk-24292e-fff">      },</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h5>2. 客户端的签名支付承诺</h5>
 <p>接下来，客户端将重新发送请求，其中携带包含支付承诺的签名有效负载。该<strong>延迟</strong>支付方案采用 HTTP 消息签名，其中 <a href="https://datatracker.ietf.org/doc/html/rfc7517?cf_target_id=D4770F028006FD3F2FEE26B65F35A502" target="_blank" rel="noopener noreferrer"><u>JWK 格式的公钥</u></a>存放于一个可公开访问的目录中。通过 <code>Signature-Input</code> 标头明确标识请求中哪些部分被纳入 <code>Signature</code>，以此构成客户支付意图的密码学证明，服务提供商无需通过链上交易即可直接完成验证。</p>
 <div class="emdash-code">
@@ -64,7 +86,11 @@
 <span class="line"><span class="sk-24292e-fff">    expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1700011111</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    keyid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ba3e64=="</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    tag</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"web-bot-auth"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>3. 成功响应</h5>
 <p>资源服务器会验证签名，并在返回内容时附带确认标头信息。该服务器负责将支付关联到与 <strong>HTTP 消息签名</strong>相关联的账户，验证客户端身份后交付内容。在此场景中，支付流程不涉及区块链。</p>
@@ -75,7 +101,11 @@
 <span class="line"><span class="sk-24292e-fff">    scheme</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"deferred"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    network</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"abc123"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">    timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1730872968</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1730872968</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>4. 付款结算</h5>
 <p>如今服务器能够以灵活方式处理结算流程。经过验证的握手 ID 将作为参考标识。这种方法支持灵活的使用模式，且无需为每次请求额外付出开销，服务器可以按照订阅周期、每日或者批量方式进行款项汇总。由此构建起一个灵活的框架：加密信任机制会即时建立，而资金结算既可以沿用传统支付渠道，也能采用稳定币。</p>
@@ -125,7 +155,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>当智能体尝试使用付费工具时，MCP 服务器会返回 402 Payment Required 状态码。该智能体能够解析支付指令，并询问用户是否要继续交易。要构建一个兼容 x402 协议的客户端，只需对工具调用进行基本的封装：</p>
 <div class="emdash-code">
@@ -152,7 +186,11 @@
 <span class="line"><span class="sk-24292e-fff">        arguments: toolArgs</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>该测试智能体会从钱包中划拨资金，并向 MCP 服务器发送支付有效负载以完成交易结算。这些交易可设置为需要或无需人工确认两种模式，便于您为应用程序设计最合适的界面。</p>
 <h3>后续工作</h3>

@@ -11,15 +11,41 @@
 <span class="line"><span class="sk-24292e-fff">    sec </span><span class="sk-d73a49-a0a0a0">int64</span></span>
 <span class="line"><span class="sk-24292e-fff">	nsec </span><span class="sk-d73a49-a0a0a0">uintptr</span></span>
 <span class="line"><span class="sk-24292e-fff">	loc </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-6f42c1-ffc799">Location</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><a href="http://golang.org/pkg/time/#Location" target="_blank" rel="noopener noreferrer">Location</a> contains the timezone information for the time.</p>
 <p><a href="http://golang.org/pkg/time/#Duration" target="_blank" rel="noopener noreferrer">Duration</a> is used to express the difference between two Times and to configure timers and tickers.</p>
 <p><a href="http://golang.org/pkg/time/#Timer" target="_blank" rel="noopener noreferrer">Timer</a> is useful for implementing a timeout, typically as part of a <a href="http://golang.org/ref/spec#Select_statements" target="_blank" rel="noopener noreferrer">select</a> statement. <a href="http://golang.org/pkg/time/#Ticker" target="_blank" rel="noopener noreferrer">Ticker</a> can be used to wake up periodically, usually when you are using select in a for loop.</p>
 <p>Go’s time package is used in many other places in the Go standard library. When dealing with socket connections that may go slow or stop sending data completely, one uses the SetDeadline functions that are part of the <a href="http://golang.org/pkg/net/#Conn" target="_blank" rel="noopener noreferrer">net.Conn</a> interface.</p>
 <p>We love writing tests at CloudFlare, and having unit tests that include some kind of random component can turn up interesting issues. You can use the current time to seed random number generators in tests, using:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">rand.</span><span class="sk-6f42c1-ffc799">New</span><span class="sk-24292e-fff">(rand.</span><span class="sk-6f42c1-ffc799">NewSource</span><span class="sk-24292e-fff">(time.</span><span class="sk-6f42c1-ffc799">Now</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">UnixNano</span><span class="sk-24292e-fff">()))</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">rand.</span><span class="sk-6f42c1-ffc799">New</span><span class="sk-24292e-fff">(rand.</span><span class="sk-6f42c1-ffc799">NewSource</span><span class="sk-24292e-fff">(time.</span><span class="sk-6f42c1-ffc799">Now</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">UnixNano</span><span class="sk-24292e-fff">()))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you’re generating random numbers for a secure application, you really want to be using the <a href="http://golang.org/pkg/crypto/rand" target="_blank" rel="noopener noreferrer">crypto/rand</a> package. Interestingly, even the initialization of <a href="http://golang.org/pkg/crypto/rand/#pkg-variables" target="_blank" rel="noopener noreferrer">crypto/rand.Reader</a> <a href="http://golang.org/src/pkg/crypto/rand/rand_unix.go#L114" target="_blank" rel="noopener noreferrer">incorporates</a> the current time.</p>
 <p>The current time also features when one <a href="http://golang.org/src/pkg/log/log.go#L131" target="_blank" rel="noopener noreferrer">logs</a> something using the <a href="http://golang.org/pkg/log" target="_blank" rel="noopener noreferrer">log</a> package.</p>
@@ -30,35 +56,59 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">runtime:</span><span class="sk-032f62-99ffe4"> use</span><span class="sk-032f62-99ffe4"> vDSO</span><span class="sk-032f62-99ffe4"> clock_gettime</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> time.now</span><span class="sk-24292e-fff"> &amp; </span><span class="sk-6f42c1-ffc799">runtime.nanotime</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">on</span><span class="sk-032f62-99ffe4"> Linux/amd64.</span><span class="sk-032f62-99ffe4"> Performance</span><span class="sk-032f62-99ffe4"> improvement</span><span class="sk-032f62-99ffe4"> aside,</span><span class="sk-032f62-99ffe4"> time.Now</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">now</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">gets</span><span class="sk-032f62-99ffe4"> real</span><span class="sk-032f62-99ffe4"> nanosecond</span><span class="sk-032f62-99ffe4"> resolution</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> supported</span><span class="sk-032f62-99ffe4"> systems.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">gets</span><span class="sk-032f62-99ffe4"> real</span><span class="sk-032f62-99ffe4"> nanosecond</span><span class="sk-032f62-99ffe4"> resolution</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> supported</span><span class="sk-032f62-99ffe4"> systems.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To understand this commit message better, we first need to review the system calls available on Linux for obtaining the value of the clock.</p>
 <p>In the beginning, there was <a href="http://man7.org/linux/man-pages/man2/time.2.html" target="_blank" rel="noopener noreferrer">time</a> and <a href="http://man7.org/linux/man-pages/man2/settimeofday.2.html" target="_blank" rel="noopener noreferrer">gettimeofday</a>, which existed in SVr4, 4.3BSD and was described in POSIX.1-2001. time returns the number of seconds since the <a href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener noreferrer">Unix epoch</a>, 1970-01-01 00:00:00 UTC and is defined in C as:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">time_t</span><span class="sk-6f42c1-ffc799"> time</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">time_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">t</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">time_t</span><span class="sk-6f42c1-ffc799"> time</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">time_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">t</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>time_t is 4 bytes on 32-bit platforms and 8 bytes on 64-bit platforms, hence the Y2038 problem mentioned above.</p>
 <p>gettimeofday returns the number of seconds and microseconds since the epoch and is defined in C as:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> gettimeofday</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timeval </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">tv</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timezone </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">tz</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> gettimeofday</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timeval </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">tv</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timezone </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">tz</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>gettimeofday populates a <code>struct timeval</code>, which has the following fields:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timeval {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	time_t</span><span class="sk-24292e-fff"> tv_sec;</span><span class="sk-6a737d-8b8b8b94"> /* seconds */</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	suseconds_t</span><span class="sk-24292e-fff"> tv_usec;</span><span class="sk-6a737d-8b8b8b94"> /* microseconds */</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>gettimeofday yields timestamps that only have microsecond precision. POSIX.1-2008 marks gettimeofday as obsolete, recommending the use of <a href="http://man7.org/linux/man-pages/man2/clock_gettime.2.html" target="_blank" rel="noopener noreferrer">clock_gettime</a> instead, which is defined in C as:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> clock_gettime</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">clockid_t</span><span class="sk-e36209-fff"> clk_id</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timespec </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">tp</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> clock_gettime</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">clockid_t</span><span class="sk-e36209-fff"> clk_id</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timespec </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">tp</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>clock_gettime populates a <code>struct timespec</code>, which has the following fields:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> timespec {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	time_t</span><span class="sk-24292e-fff"> tv_sec;</span><span class="sk-6a737d-8b8b8b94"> /* seconds */</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	long</span><span class="sk-24292e-fff"> tv_nsec;</span><span class="sk-6a737d-8b8b8b94"> /* nanoseconds */</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>clock_gettime can yield timestamps that have nanosecond precision. The clock ID parameter determines the type of clock to use. Of interest to us are:</p>
 <ul>
@@ -83,33 +133,57 @@
 <p>BenchmarkSyscallTime and BenchmarkVDSOTime measure the time it takes to make a time system call and vDSO call, respectively:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BenchmarkSyscallTime</span><span class="sk-005cc5-ffc799"> 38.2</span><span class="sk-032f62-99ffe4"> ns/op</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkVDSOTime</span><span class="sk-005cc5-ffc799">    3.85</span><span class="sk-032f62-99ffe4"> ns/op</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkVDSOTime</span><span class="sk-005cc5-ffc799">    3.85</span><span class="sk-032f62-99ffe4"> ns/op</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>BenchmarkSyscallGettimeofday and BenchmarkVDSOGettimeofday measure the time it takes make to call a gettimeofday system call and vDSO call, respectively:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BenchmarkSyscallGettimeofday</span><span class="sk-005cc5-ffc799"> 59.3</span><span class="sk-032f62-99ffe4"> ns/op</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkVDSOGettimeofday</span><span class="sk-005cc5-ffc799">    23.4</span><span class="sk-032f62-99ffe4"> ns/op</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkVDSOGettimeofday</span><span class="sk-005cc5-ffc799">    23.4</span><span class="sk-032f62-99ffe4"> ns/op</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>BenchmarkTimeNow measures the time it takes to call time.Now, which makes an underlying vDSO call to <code>clock_gettime(CLOCK_REALTIME)</code> and converts the returned value to a time.Time struct:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BenchmarkTimeNow</span><span class="sk-005cc5-ffc799"> 23.6</span><span class="sk-032f62-99ffe4"> ns/op</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BenchmarkTimeNow</span><span class="sk-005cc5-ffc799"> 23.6</span><span class="sk-032f62-99ffe4"> ns/op</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Using autobench, we can also compare different Go versions against each other. To see how far we've come in the last few years, we also compared Go 1.2 to Go 1.0.3, which was released on Sep 27, 2012. The major difference was in the benchmark for time.Now:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">benchmark</span><span class="sk-032f62-99ffe4">        old</span><span class="sk-032f62-99ffe4"> ns/op</span><span class="sk-032f62-99ffe4">  new</span><span class="sk-032f62-99ffe4"> ns/op</span><span class="sk-032f62-99ffe4">  delta</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkTimeNow</span><span class="sk-005cc5-ffc799"> 406</span><span class="sk-005cc5-ffc799">        23</span><span class="sk-005cc5-99ffe4">         -94.19%</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkTimeNow</span><span class="sk-005cc5-ffc799"> 406</span><span class="sk-005cc5-ffc799">        23</span><span class="sk-005cc5-99ffe4">         -94.19%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To repeat this test with Go 1.0.3, you'll need the fix in <a href="https://code.google.com/p/go/source/detail?r=419dcca62a3d" target="_blank" rel="noopener noreferrer">changeset 419dcca62a3d</a> to compile if you are using a recent version of GCC.</p>
 <h2>Clock Sources</h2>
 <p>The speed at which you can tell time also depending on the clock source being used by your kernel. To see which clock sources you have available, run the following command:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /sys/devices/system/clocksource/clocksource0/available_clocksource</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tsc</span><span class="sk-032f62-99ffe4"> hpet</span><span class="sk-032f62-99ffe4"> acpi_pm</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tsc</span><span class="sk-032f62-99ffe4"> hpet</span><span class="sk-032f62-99ffe4"> acpi_pm</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To see which clock source is currently in use, run this command:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /sys/devices/system/clocksource/clocksource0/current_clocksource</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tsc</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tsc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://en.wikipedia.org/wiki/Time_Stamp_Counter" target="_blank" rel="noopener noreferrer">Time Stamp Counter (TSC)</a> is a 64-bit register that can be read by the RDTSC instruction. It is faster to read than the <a href="https://en.wikipedia.org/wiki/High_Precision_Event_Timer" target="_blank" rel="noopener noreferrer">High Precision Event Timer (HPET)</a>. The ACPI Power Management Timer (APCI PMT) is another timer that is found on many motherboards.</p>
 <p>We can also use the same benchmarks above to compare the TSC clock source and a HPET clock source. Doing so requires booting Linux with the <code>clocksource=hpet</code> kernel command line parameter. Here are the results:</p>
@@ -119,12 +193,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">BenchmarkVDSOGettimeofday</span><span class="sk-005cc5-ffc799">                 23</span><span class="sk-005cc5-ffc799">          598</span><span class="sk-032f62-99ffe4">      +2455.56%</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">BenchmarkSyscallClockGettimeRealtime</span><span class="sk-005cc5-ffc799">      58</span><span class="sk-005cc5-ffc799">          642</span><span class="sk-032f62-99ffe4">      +995.56%</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">BenchmarkSyscallClockGettimeMonotonic</span><span class="sk-005cc5-ffc799">     57</span><span class="sk-005cc5-ffc799">          641</span><span class="sk-032f62-99ffe4">      +1012.85%</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkTimeNow</span><span class="sk-005cc5-ffc799">                          23</span><span class="sk-005cc5-ffc799">          598</span><span class="sk-032f62-99ffe4">      +2433.90%</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">BenchmarkTimeNow</span><span class="sk-005cc5-ffc799">                          23</span><span class="sk-005cc5-ffc799">          598</span><span class="sk-032f62-99ffe4">      +2433.90%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you can see, querying the HPET clock source takes significantly longer.</p>
 <p>Not all CPUs are created equal. To see which TSC features your CPU supports, run the following command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /proc/cpuinfo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> tsc</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /proc/cpuinfo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> tsc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You will see some or all of the following CPU flags related to the TSC:</p>
 <ul>

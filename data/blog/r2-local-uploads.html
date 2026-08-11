@@ -4,8 +4,30 @@
 <p>Try it yourself <a href="https://local-uploads.r2-demo.workers.dev" target="_blank" rel="noopener noreferrer"><u>in this demo</u></a> to see the benefits of Local Uploads.</p>
 <p>Ready to try it? Enable Local Uploads in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflare Dashboard</u></a> under your bucket's settings, or with a single Wrangler command on an existing bucket.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>75% lower total request duration for global uploads</h2>
 <p><a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>Local Uploads</u></a> makes upload requests (i.e. PutObject, UploadPart) faster. In both our private beta tests with customers and our synthetic benchmarks, we saw up to 75% reduction in Time to Last Byte (TTLB) when upload requests are made in a different region than the bucket. In these results, TTLB is measured from when R2 receives the upload request to when R2 returns a 200 response.</p>
 <p>In our synthetic tests, we measured the impact of Local Uploads by using a synthetic workload to simulate a cross-region upload workflow. We deployed a test client in Western North America and configured an R2 bucket with a <a href="https://developers.cloudflare.com/r2/reference/data-location" target="_blank" rel="noopener noreferrer"><u>location hint</u></a> for Asia-Pacific. The client performed around 20 PutObject requests per second over 30 minutes to upload objects of 5 MB size. </p>
@@ -86,7 +108,11 @@
 <p>Local Uploads is available now in open beta. There is <strong>no additional cost</strong> to enable Local Uploads. Upload requests made with this feature enabled incur the standard <a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>Class A operation costs</u></a>, same as upload requests made without Local Uploads.</p>
 <p>To get started, visit the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflare Dashboard</u></a> under your bucket's settings and look for the Local Uploads card to enable, or simply run the following command using Wrangler to enable Local Uploads on a bucket.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Enabling Local Uploads on a bucket is seamless: existing uploads will complete as expected and there’s no interruption to traffic.</p>
 <p>For more information, refer to the <a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>Local Uploads documentation</u></a>. If you have questions or want to share feedback, join the discussion on our <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Developer Discord</u></a>.</p>

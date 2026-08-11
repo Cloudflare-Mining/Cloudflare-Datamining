@@ -1,4 +1,4 @@
-<p>We are moving toward a world in which you can store, build, test, and deploy your code fully on Cloudflare. We built the first piece with <a href="https://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a>, versioned code storage that scales to millions of repos.&nbsp;</p>
+<p>We are moving toward a world in which you can store, build, test, and deploy your code fully on Cloudflare. We built the first piece with <a href="https://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a>, versioned code storage that scales to millions of repos.&nbsp; </p>
 <p>We have stitched the store, build, and deploy steps together with the <a href="https://github.com/cloudflare/ci" target="_blank" rel="noopener noreferrer"><u>CI SDK</u></a>, built on <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a>, so that you can run your continuous integration (CI) pipeline on Cloudflare. You can send <code>artifact push</code> events directly to your Workflow, triggering an instance of its execution — a CI job, essentially — through a new <code>events</code> field in your wrangler configuration file.&nbsp;</p>
 <p>Then, directly from the Workflow with <a href="https://www.npmjs.com/package/@cloudflare/ci" target="_blank" rel="noopener noreferrer"><u>@cloudflare/ci</u></a> installed, you can:</p>
 <ul>
@@ -53,14 +53,36 @@
 <span class="line"><span class="sk-24292e-fff">  cloudflareCredentials: {</span></span>
 <span class="line"><span class="sk-24292e-fff">    accountId: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">CLOUDFLARE_DEPLOY_ACCOUNT_ID</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Writing your own CI pipeline in a Workflow allows you to customize as much as you want. For example, you could call an agent from your CI Workflow to give your CI jobs self-healing functionality: if a step in your build errors, the agent can fix it automatically, and push a commit for your approval.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA/f/9+Pv47/Dv6uvr7e/u8fPw7u/r5uTh/////P788/Py7u7t8fPx9ff08vHu6eTh////////+Pf28/Lx9vf2+fv69vTy7ebj/////////fz7+Pb2+vv7/f//+vj38ero/////////////Pr7/v7//////fz99e/v//////////////3/////////////+PX2////////////////////////////+vn8////////////////////////////+/v+" alt="" width="715" height="322" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=715&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=640&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=715&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=750&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=828&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=1080&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=1280&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=1430&amp;h=644&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3435 5.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ4Z77AA36JAVHQKVZ7B6VZ8.png&amp;w=1920&amp;h=865&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="865" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="322" class="pt-portable-image-media"></div>
 </figure>
 <p>Try an example of self-healing CI Workflows with Project Think: <a href="https://github.com/cloudflare/ci/blob/main/examples/self-healing" target="_blank" rel="noopener noreferrer"><u>https://github.com/cloudflare/ci/blob/main/examples/self-healing</u></a></p>
-<div id="html-block-jxqoow6gk" class="html-block">
+<div id="html-block-lo8rpexsv" class="html-block">
 	<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fci%2Ftree%2Fmain%2Fexamples%2Fself-healing">
 		<img src="https://camo.githubusercontent.com/aa3de9a0130879a84691a2286f5302105d5f3554c5d0af4e3f2f24174eeeea25/68747470733a2f2f6465706c6f792e776f726b6572732e636c6f7564666c6172652e636f6d2f627574746f6e" alt="Deploy to Cloudflare" data-canonical-src="https://deploy.workers.cloudflare.com/button" style="max-width:100%">
 	</a>
@@ -77,7 +99,11 @@
 <span class="line"><span class="sk-24292e-fff">  name: </span><span class="sk-032f62-99ffe4">'install'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  command: </span><span class="sk-032f62-99ffe4">'bun install --frozen-lockfile'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  cache: { inputs: [</span><span class="sk-032f62-99ffe4">'package.json'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'bun.lock'</span><span class="sk-24292e-fff">] },</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then define steps for the build and checks, each executed in its own safe, isolated sandbox environment. </p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -90,7 +116,11 @@
 <span class="line"><span class="sk-24292e-fff">   deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'test'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run test'</span><span class="sk-24292e-fff"> }),</span></span>
 <span class="line"><span class="sk-24292e-fff">   deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'typecheck'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run typecheck'</span><span class="sk-24292e-fff"> }),</span></span>
 <span class="line"><span class="sk-24292e-fff">   deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'build'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run build'</span><span class="sk-24292e-fff"> }),</span></span>
-<span class="line"><span class="sk-24292e-fff">]);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, to actually trigger your CI Workflow, add an <code>events</code> field to your Worker’s wrangler configuration, alongside your Workflow and Artifact bindings. The <code>events</code> field is a new field supported within your <code>triggers</code> field.&nbsp;</p>
 <p>You could already subscribe to Artifacts through Cloudflare Queues <a href="https://developers.cloudflare.com/artifacts/guides/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>via event subscriptions</u></a> and kick off a build pipeline every time there’s a push event. But that requires setting up the event subscription, Queue, consumer, and queue handler. Now, you can target a Workflow with that event — every time that event fires, it will trigger an instance of the Workflow.&nbsp;</p>
@@ -114,7 +144,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To fully configure your CI Workflow, add bindings to each piece of the infrastructure which powers the pipeline: <code>artifacts</code>, <code>workflows</code>, <code>containers</code> and <code>durable_objects</code> (+ <code>exports</code> config) bindings (to access your sandboxes), plus an <code>r2</code> binding if you are using <code>cache</code>. The R2 binding is required as the snapshot of your <code>install</code> step sandbox is stored in a <a href="https://developers.cloudflare.com/r2/buckets" target="_blank" rel="noopener noreferrer"><u>bucket</u></a>.</p>
 <h2>Self-healing CI runs</h2>
@@ -128,7 +162,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">       "class_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Healer"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">     },</span></span>
 <span class="line"><span class="sk-24292e-fff">   ],</span></span>
-<span class="line"><span class="sk-24292e-fff"> },</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> },</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Create your Think agent — <code>Healer</code> — by extending the <code>HealingAgent </code>class, which includes a <code>heal</code> method for you to call on failure. Pass whichever model you’d like to use:&nbsp;</p>
 <div class="emdash-code">
@@ -136,7 +174,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> getModel</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-032f62-99ffe4"> '@cf/moonshotai/kimi-k2.7-code'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then, wrap your steps in a <code>try/catch</code> block where a failure triggers the healing agent:</p>
 <div class="emdash-code">
@@ -185,7 +227,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  name: </span><span class="sk-032f62-99ffe4">'deploy'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  command: </span><span class="sk-032f62-99ffe4">'bun wrangler deploy'</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This example demonstrates a self-healing CI pipeline, but really, the Bring Your Own Workflow model allows you to customize the CI job however you want. This can be a place to add security rules, filters, or conditional CI steps. Using the BYO-W model, platforms can configure their CI/CD pipelines across different teams, customers, or applications according to each individual use case.&nbsp;</p>
 <h2>The benefits of using a Workflow</h2>
@@ -208,7 +254,7 @@
 <p><a href="http://forms.gle/DwBoPRa3CWQ8ajFp7?cf_target_id=37346A378E06FC53CEE53925EE8AAF47" target="_blank" rel="noopener noreferrer"><u>Request to join</u></a> the Artifacts private beta and get started with our <a href="https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push" target="_blank" rel="noopener noreferrer"><u>Workflows CI guide</u></a>. If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers community on Discord</u></a>.&nbsp;</p>
 <p>What’s coming next:</p>
 <ol>
-	<li>Direct integrations for Workers &amp; Workers for Platforms: build.preview() and build.deploy() primitives to automatically deploy on push to main and create previews on push to non-default branches</li>
+	<li>Direct integrations for Workers &amp; Workers for Platforms: <code>build.preview()</code> and <code>build.deploy()</code> primitives to automatically deploy on push to main and create previews on push to non-default branches</li>
 	<li>Gradual deployments: manage percentage-based rollouts via Workflows to customize your deployment progression and rollback logic</li>
 	<li>Monorepos: simplified management for multi-Worker deployments using one CI pipeline</li>
 	<li>Triggers: send push events from different sources to run CI jobs on a repo from any version control system, not just Artifacts</li>

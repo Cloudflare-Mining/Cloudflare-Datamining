@@ -24,8 +24,30 @@
 <p>The algorithm loops over the bits of the secret key, and does a <em>multiply</em> step if the current bit is a 1. Clearly, the runtime depends on the secret key. Not great, but if the attacker can only time the full run, then they only learn the number of 1s in the secret key. The typical catastrophic timing attack against RSA instead is hidden behind the “<strong>mod</strong> n”. In a naive implementation this modular reduction is slower if the number being reduced is larger or equal <em>n</em>. This <a href="https://www.cs.sjsu.edu/faculty/stamp/students/article.html#:~:text=Timing%20attacks%20are%20a%20form,performed%20or%20the%20media%20used." target="_blank" rel="noopener noreferrer">allows</a> an attacker to send specially crafted messages to tease out the secret key bit-by-bit and similar attacks are <a href="https://crypto.stanford.edu/~dabo/papers/ssl-timing.pdf" target="_blank" rel="noopener noreferrer">surprisingly practical</a>.</p>
 <p>Because of this, the mantra is: cryptography should run in “constant time”. This means that the runtime does not depend on any secret information. In our example, to remove the first timing issue, one would replace the if-statement with something equivalent to:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">	s</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> ((s </span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4"> powerOfM</span><span class="sk-24292e-fff">) mod n) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> bit(</span><span class="sk-6f42c1-ffc799">s,</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">) + s </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">1</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s,</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">))</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">	s</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> ((s </span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4"> powerOfM</span><span class="sk-24292e-fff">) mod n) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> bit(</span><span class="sk-6f42c1-ffc799">s,</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">) + s </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">1</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s,</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This ensures that the multiplication is always done. Similar countermeasures prevent practically all remote timing attacks.</p>
 <h3>Power side-channel</h3>
 <p>The story is quite different for power side-channel attacks. Again, the classic example is RSA signatures. If we hook up an oscilloscope to a smartcard that uses the naive algorithm from before, and measure the power usage while it signs, we can read off the private key by eye:</p>

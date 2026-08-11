@@ -107,8 +107,30 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>En una aplicación real, podríamos devolver ahora rápidamente las URL de recomendación de productos basadas en los productos más similares, ordenándolos por su puntuación (de mayor a menor), y aumentando el valor topK si queremos mostrar más. Los metadatos almacenados junto a cada vector también podrían incluir una ruta a un <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">objeto R2</a>, un identificador único universal (UUID) para una fila de una <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">base de datos D1</a>, o un par clave-valor de <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>.</p>
 <h3>Workers AI y Vectorize: búsqueda vectorial integral en Cloudflare</h3>
 <div class="emdash-code">
@@ -163,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>En una aplicación real, necesitamos un modelo de aprendizaje automático que pueda tanto generar incrustaciones vectoriales a partir de nuestro conjunto de datos original (para rellenar inicialmente nuestra base de datos) como convertir también <em>rápidamente</em> las consultas de los usuarios en incrustaciones vectoriales. Tienen que proceder del mismo modelo, ya que cada modelo representa las funciones de forma diferente.</p>
 <p>Aquí tienes un ejemplo resumido de creación de un proceso completo de búsqueda vectorial de principio a fin en Cloudflare:</p>
@@ -232,7 +258,11 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Este ejemplo puede parecer "demasiado" sencillo, pero en una aplicación de producción, solo tendríamos que cambiar dos cosas: insertar nuestros vectores una sola vez (o periódicamente a través <a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank" rel="noopener noreferrer">Cron Triggers</a>), y sustituir nuestras tres frases de ejemplo por datos reales almacenados en R2, una base de datos D1 u otro proveedor de almacenamiento.</p>
 <p>De hecho, este ejemplo es increíblemente similar a cómo ejecutamos <a href="https://developers.cloudflare.com/workers/ai" target="_blank" rel="noopener noreferrer">Cursor</a>, el asistente de IA que puede responder preguntas sobre Cloudflare Worker. Migramos Cursor para que se ejecutara en Workers AI y Vectorize. Generamos incrustaciones de texto de nuestra documentación para desarrolladores utilizando su modelo de incrustación de texto incorporado, las insertamos en un índice Vectorize y transformamos las consultas de los usuarios sobre la marcha a través de ese mismo modelo.</p>
@@ -244,7 +274,11 @@
 <h2>Previsibilidad del coste de la IA</h2>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Vectorize has ready-to-go presets that set the dimensions and distance metric for popular embeddings models</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hay un gran entusiasmo en torno a la inteligencia artificial y el aprendizaje automático, pero también una gran preocupación acerca del elevado coste de experimentación y la dificultad de predecir a escala.</p>
 <p>Con Vectorize, queríamos simplificar el modelo de precios de las bases de datos vectoriales. ¿Tienes una idea para una prueba de concepto en el trabajo? Debería encajar en nuestros límites de nivel gratuito. ¿Estás ampliando y optimizando tus dimensiones de incrustación en función del rendimiento vs. precisión? No debería salirte caro.</p>

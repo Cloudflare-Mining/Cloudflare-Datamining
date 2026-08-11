@@ -26,11 +26,37 @@
 <p>In 2008, a group working at Google proposed a protocol for negotiating shared dictionaries of content so that a web server can compress a page in the knowledge that a web browser has chunks of the page in its cache. The proposal is known as <a href="http://en.wikipedia.org/wiki/Shared_Dictionary_Compression_Over_HTTP" target="_blank" rel="noopener noreferrer">SDCH</a> (Shared Dictionary Compression over HTTP). Current versions of Google Chrome use SDCH to compress Google Search results.</p>
 <p>This can be seen in the Developer Tools in Google Chrome. Any search request will contain an HTTP header specifying that the browser accepts SDCH compressed pages:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Accept-Encoding:</span><span class="sk-032f62-99ffe4"> gzip,deflate,sdch</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Accept-Encoding:</span><span class="sk-032f62-99ffe4"> gzip,deflate,sdch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>And if SDCH is used then the server responds indicating the dictionary that was used. If necessary Chrome will retrieve the dictionary. Since the dictionary should change infrequently it will be in local web browser cache most of the time. For example, here's a sample HTTP header seen in a real response from a Google Search:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Get-Dictionary:</span><span class="sk-032f62-99ffe4"> /sdch/60W93cgP.dct</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Get-Dictionary:</span><span class="sk-032f62-99ffe4"> /sdch/60W93cgP.dct</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The dictionary file simply contains HTML (and JavaScript etc.) and the compressed page contains references to parts of the dictionary file using the <a href="http://en.wikipedia.org/wiki/VCDIFF" target="_blank" rel="noopener noreferrer">VCDIFF</a> format specified in <a href="http://tools.ietf.org/html/rfc3284" target="_blank" rel="noopener noreferrer">RFC 3284</a>. The compressed page consists mostly of COPY and ADD VCDIFF functions. A COPY x, y instruction tells the browser to copy y bytes of data from osition x in the dictionary (this is how common content gets compressed and expanded from the dictionary). The ADD instruction is used to insert uncompressed data (i.e. those parts of the page that are not in the dictionary).</p>
 <p>In a Google Search the dictionary is used to locally cache infrequently changing parts of a page (such as the HTML header, navigation elements and page footer).</p>
@@ -42,7 +68,11 @@
 <p>In 2001 a consortium of companies proposed addressing both latency and common content with <a href="http://en.wikipedia.org/wiki/Edge_Side_Includes" target="_blank" rel="noopener noreferrer">ESI</a> (Edge Side Includes). Edge Side Includes work by having a web page creator identify unchanging parts of the page and then making these available as separate mini-pages using HTTP.</p>
 <p>For example, if a page contains a common header and navigation, a web page author might place that in a separate nav.html file and then in a page they are authoring enter the following XML in place of the header and navigation HTML:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">\</span><span class="sk-24292e-fff">&amp;lt;</span><span class="sk-6f42c1-ffc799">esi:include</span><span class="sk-032f62-99ffe4"> src=</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">http://example.com/nav.html</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">; &amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">/</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">gt</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">\</span><span class="sk-24292e-fff">&amp;lt;</span><span class="sk-6f42c1-ffc799">esi:include</span><span class="sk-032f62-99ffe4"> src=</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">http://example.com/nav.html</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">; &amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-d73a49-a0a0a0">continue</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">/</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">gt</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ESI is intended for use with HTML content that is delivered via a Content Delivery Network and major CDNs were the sponsor of the original proposal.</p>
 <p>When a user retrieves a CDN managed page that contains ESI components the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> reconstructs the complete page from the component parts (which the CDN will either have to retrieve, or, more likely, have in cache since they change infrequently).</p>

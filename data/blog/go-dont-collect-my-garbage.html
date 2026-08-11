@@ -27,8 +27,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     3.20s</span><span class="sk-032f62-99ffe4">  3.42%</span><span class="sk-032f62-99ffe4"> 41.27%</span><span class="sk-032f62-99ffe4">      4.62s</span><span class="sk-032f62-99ffe4">  4.94%</span><span class="sk-032f62-99ffe4">  runtime.gcmarknewobject</span><span class="sk-032f62-99ffe4"> /state/home/vlad/go/src/runtime/mgcmark.go</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     3.09s</span><span class="sk-032f62-99ffe4">  3.30%</span><span class="sk-032f62-99ffe4"> 44.58%</span><span class="sk-032f62-99ffe4">      3.09s</span><span class="sk-032f62-99ffe4">  3.30%</span><span class="sk-032f62-99ffe4">  crypto/elliptic.p256OrdSqr</span><span class="sk-032f62-99ffe4"> /state/home/vlad/go/src/crypto/elliptic/p256_asm_amd64.s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     3.09s</span><span class="sk-032f62-99ffe4">  3.30%</span><span class="sk-032f62-99ffe4"> 47.88%</span><span class="sk-032f62-99ffe4">      3.09s</span><span class="sk-032f62-99ffe4">  3.30%</span><span class="sk-032f62-99ffe4">  runtime.</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">lfstack)</span><span class="sk-032f62-99ffe4">.pop</span><span class="sk-032f62-99ffe4"> /state/home/vlad/go/src/runtime/lfstack.go</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     2.76s</span><span class="sk-032f62-99ffe4">  2.95%</span><span class="sk-032f62-99ffe4"> 50.83%</span><span class="sk-032f62-99ffe4">      2.76s</span><span class="sk-032f62-99ffe4">  2.95%</span><span class="sk-032f62-99ffe4">  runtime.</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">gcSweepBuf)</span><span class="sk-032f62-99ffe4">.push</span><span class="sk-032f62-99ffe4"> /state/home/vlad/go/src/runtime/mgcsweepbuf.go</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     2.76s</span><span class="sk-032f62-99ffe4">  2.95%</span><span class="sk-032f62-99ffe4"> 50.83%</span><span class="sk-032f62-99ffe4">      2.76s</span><span class="sk-032f62-99ffe4">  2.95%</span><span class="sk-032f62-99ffe4">  runtime.</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">gcSweepBuf)</span><span class="sk-032f62-99ffe4">.push</span><span class="sk-032f62-99ffe4"> /state/home/vlad/go/src/runtime/mgcsweepbuf.go</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Clearly Go spends a disproportionate amount of time collecting garbage. All my benchmark does is generates signatures and then dumps them.</p>
 <p>So what are our options? The Go runtime states the following:</p>
 <blockquote>
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">gc</span><span class="sk-005cc5-ffc799"> 6789</span><span class="sk-032f62-99ffe4"> @9.998s</span><span class="sk-032f62-99ffe4"> 12%:</span><span class="sk-032f62-99ffe4"> 0.17+0.91+0.24</span><span class="sk-032f62-99ffe4"> ms</span><span class="sk-032f62-99ffe4"> clock,</span><span class="sk-032f62-99ffe4"> 0.85+1.8/5.0/0+1.2</span><span class="sk-032f62-99ffe4"> ms</span><span class="sk-032f62-99ffe4"> cpu,</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">6</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">1</span><span class="sk-032f62-99ffe4"> MB,</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> MB</span><span class="sk-032f62-99ffe4"> goal,</span><span class="sk-005cc5-ffc799"> 48</span><span class="sk-032f62-99ffe4"> P</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">gc</span><span class="sk-005cc5-ffc799"> 6790</span><span class="sk-032f62-99ffe4"> @10.000s</span><span class="sk-032f62-99ffe4"> 12%:</span><span class="sk-032f62-99ffe4"> 0.086+0.55+0.24</span><span class="sk-032f62-99ffe4"> ms</span><span class="sk-032f62-99ffe4"> clock,</span><span class="sk-032f62-99ffe4"> 0.78+0.30/4.2/0.043+2.2</span><span class="sk-032f62-99ffe4"> ms</span><span class="sk-032f62-99ffe4"> cpu,</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">5</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">1</span><span class="sk-032f62-99ffe4"> MB,</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> MB</span><span class="sk-032f62-99ffe4"> goal,</span><span class="sk-005cc5-ffc799"> 48</span><span class="sk-032f62-99ffe4"> P</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The first round of GC kicks in at 0.021s, then it starts collecting every 3ms and then every 1ms. That is insane, the benchmark runs for 10 seconds, and I saw 6,790 rounds of GC. The number that starts with @ is the time since program start, followed by a percentage that supposedly states the amount of time spent collecting garbage. This number is clearly misleading, because the performance indicates at least 90% of the time is wasted (indirectly) on GC, not 12%. The synchronization overhead is not taken into account. What really is interesting are the three numbers separated by arrows. They show the size of the heap at GC start, GC end, and the live heap size. Remember that a collection is triggered when the ratio of freshly allocated data to live data remaining after the previous collection reaches this percentage, and defaults to 100%.</p>
 <p>I am running a benchmark, where all allocated data is immediately discarded, and collected at the next GC cycle. The only live heap is fixed to the Go runtime, and having more goroutines does not add to the live heap. In contrast the freshly allocated data grows much faster with each additional goroutine, triggering increasingly frequent, and expensive GC cycles.</p>

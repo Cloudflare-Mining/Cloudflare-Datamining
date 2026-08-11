@@ -20,8 +20,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> a </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> HasDropA</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> b </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> HasDropB</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    imported_func</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>다음과 같이 WebAssembly로 컴파일합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">try</span></span>
@@ -32,7 +54,11 @@
 <span class="line"><span class="sk-24292e-fff">  rethrow</span></span>
 <span class="line"><span class="sk-24292e-fff">end</span></span>
 <span class="line"><span class="sk-24292e-fff">call &lt;drop_b&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">call &lt;drop_a&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">call &lt;drop_a&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이렇게 하면 <code>imported_func()</code> 가 패닉 상태에 빠지더라도 소멸자가 계속 실행됩니다. 마찬가지로, <code>std::panic::catch_unwind(|| some_func())은</code> 다음과 같이 컴파일됩니다.</p>
 <div class="emdash-code">
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-24292e-fff">    call &lt;</span><span class="sk-6f42c1-ffc799">core</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">panicking</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">cannot_unwind&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">    unreachable</span></span>
 <span class="line"><span class="sk-24292e-fff">  end</span></span>
-<span class="line"><span class="sk-24292e-fff">end</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">end</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이를 처음부터 작동하게 하려면 Wasm-bindgen 툴체인을 몇 가지 변경해야 했습니다. WebAssembly 파서 Walrus가 시도/캐치 명령을 처리하는 방법을 모르므로 우리가 해당 명령에 대한 지원을 추가했습니다. 설명자 인터프리터는 예외 처리 블록이 포함된 코드를 평가하는 방법도 알려야 했습니다. 이 시점에서 <code>Panic=unwind 명령으로 전체</code> 애플리케이션을 빌드할 수 있습니다.</p>
 <p>마지막 단계에서는 Rust-JavaScript 경계에서 패닉을 포착하고 JavaScript <code>PanicError</code> 예외로 표시하도록 wasm-bindgen으로 생성된 내보내기를 수정했습니다. 한 가지 미묘하게도, Rust는 <code>extern "C"</code> 함수를 통해 해제할 때 외부 예외를 포착하고 중단하므로 경계를 넘어 명시적으로 해제를 허용하려면 익스포트에 <code>extern "C-unwind"</code>를 표시해야 했습니다. 퓨처의 경우 패닉은 <code>PanicError와</code> 함께 JavaScript <code>Promise를</code> 거부합니다.</p>

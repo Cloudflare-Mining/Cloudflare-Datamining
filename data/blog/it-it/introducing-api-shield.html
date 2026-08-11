@@ -96,8 +96,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(handleRequest(event.request</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Ed ecco una successiva lettura di quella temperatura, insieme alle precedenti 4 che sono state inviate:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> TEMPERATURE=</span><span class="sk-24292e-fff">$(</span><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $((</span><span class="sk-6f42c1-ffc799">361</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> RANDOM</span><span class="sk-032f62-99ffe4"> %11</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{printf("%.2f",$1/10.0)}'</span><span class="sk-24292e-fff">)</span></span>
@@ -108,7 +130,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2020-09-28T02:57:49Z</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"temperature":'''</span><span class="sk-24292e-fff">$TEMPERATURE</span><span class="sk-032f62-99ffe4">''', "time": "'''</span><span class="sk-24292e-fff">$TIMESTAMP</span><span class="sk-032f62-99ffe4">'''"}'</span><span class="sk-032f62-99ffe4"> https://shield.upinatoms.com/temps</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "&lt; HTTP/2"</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/2 201 </span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/2 201 </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>2. Emissione del certificato client</h3>
 <div class="emdash-code">
@@ -134,7 +160,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "temperature"</span><span class="sk-24292e-fff">: 36.9,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-09-28T02:27:19Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">  } </span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>È arrivato quindi il momento di bloccare l'API per richiedere un certificato client valido. Prima di farlo, dobbiamo generare quei certificati. Passa alla scheda SSL/TLS → Certificati client del dashboard di Cloudflare e fai clic su "Crea certificato" oppure automatizza il processo tramite chiamate API.</p>
 <p>Poiché la maggior parte degli sviluppatori su larga scala genererà le proprie chiavi private e CSR e richiederà che vengano firmati tramite API, mostreremo questo processo qui. Utilizzeremo il toolkit PKI di Cloudflare <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a> e creeremo per prima cosa un certificato bootstrap per l'applicazione iOS, quindi creeremo un certificato per il dispositivo IoT:</p>
@@ -174,7 +204,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cfssl</span><span class="sk-032f62-99ffe4"> genkey</span><span class="sk-032f62-99ffe4"> csr.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cfssljson</span><span class="sk-005cc5-99ffe4"> -bare</span><span class="sk-032f62-99ffe4"> certificate</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate-key.pem</span><span class="sk-032f62-99ffe4"> sensor-key.pem</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate.csr</span><span class="sk-032f62-99ffe4"> sensor.csr</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate.csr</span><span class="sk-032f62-99ffe4"> sensor.csr</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Richiesta a Cloudflare di firmare i CSR con la CA privata emessa per la tua zona</p>
 <div class="emdash-code">
@@ -232,7 +266,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">EOF</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">)</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: YOUR_EMAIL'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key: YOUR_API_KEY'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$request_body</span><span class="sk-032f62-99ffe4">"</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -npe</span><span class="sk-032f62-99ffe4"> 's/\\n/\n/g; s/"//g'</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> sensor.pem</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: YOUR_EMAIL'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key: YOUR_API_KEY'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$request_body</span><span class="sk-032f62-99ffe4">"</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -npe</span><span class="sk-032f62-99ffe4"> 's/\\n/\n/g; s/"//g'</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> sensor.pem</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>3. Creazione della regola API Shield</h3>
 <p>Con i certificati disponibili, ora possiamo configurare l'endpoint API per richiederne l'utilizzo. Di seguito è riportata una dimostrazione di come creare tale regola.</p>
@@ -273,20 +311,32 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    r</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> requests.post</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">url,</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> json_headers,</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> payload,</span><span class="sk-032f62-99ffe4"> cert</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cert_file</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Request body: "</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> r.request.body</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Response status code: %d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> r.status_code</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Response status code: %d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> r.status_code</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Se non riusciamo a inviare il certificato client o proviamo a includere campi estranei nella richiesta API, la convalida dello schema (configurazione non mostrata) non riesce e la richiesta viene respinta:</p>
 <p>Se invece viene presentato un certificato valido e il payload segue lo schema precedentemente caricato, il nostro script POST invia all'API l'ultima lettura della temperatura.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:52:19Z"}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 403</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 403</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>5. Comunicazione per applicazioni per dispositivi mobili (iOS)</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:56:45Z"}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 201</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 201</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ora che le richieste di temperatura sono state inviate al nostro endpoint API, è il momento di leggerle in modo sicuro dalla nostra applicazione mobile utilizzando uno dei certificati client.</p>
 <p>Per brevità, incorporeremo un certificato e una chiave "bootstrap" come file PKCS#12 all'interno del bundle dell'applicazione. In una distribuzione reale, questo certificato bootstrap deve essere utilizzato solo insieme alle credenziali degli utenti per l'autenticazione a un endpoint API che può restituire un certificato utente univoco. Gli utenti aziendali vorranno utilizzare MDM per distribuire certificati per ulteriori opzioni di controllo e persistenza.</p>
@@ -296,7 +346,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> pkcs12</span><span class="sk-005cc5-99ffe4"> -export</span><span class="sk-005cc5-99ffe4"> -out</span><span class="sk-032f62-99ffe4"> bootstrap-cert.pfx</span><span class="sk-005cc5-99ffe4"> -inkey</span><span class="sk-032f62-99ffe4"> ios-key.pem</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> ios.pem</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Verifying</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Verifying</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copia codice" data-copy-label="Copia codice" data-copied-label="Codice copiato!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>All'interno di XCode, fai clic su File → Aggiungi file a "[nome progetto]" e seleziona il tuo file .pfx. Prima di confermare, assicurati di selezionare "Aggiungi alla destinazione".</p>
 <h4>Modifica del codice URLSession per utilizzare il certificato client</h4>

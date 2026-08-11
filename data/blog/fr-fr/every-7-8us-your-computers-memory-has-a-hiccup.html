@@ -18,8 +18,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> decode-dimms</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Size</span><span class="sk-005cc5-ffc799">                                       4096</span><span class="sk-032f62-99ffe4"> MB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Banks</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Rows</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Columns</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Bits</span><span class="sk-005cc5-ffc799">              8</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 64</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Ranks</span><span class="sk-005cc5-ffc799">                                      2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Ranks</span><span class="sk-005cc5-ffc799">                                      2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Pour le moment, nous n'avons pas besoin de comprendre toute la structure de la mémoire DDR DIMM, nous avons juste besoin de comprendre le fonctionnement d'une seule cellule mémoire qui stocke un bit de données. Concrètement, seul le processus de rafraîchissement nous intéresse.</p>
 <p>Nous allons examiner deux articles :</p>
 <ul>
@@ -51,7 +73,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Measure</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-032f62-99ffe4"> time</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		clock_gettime(CLOCK_MONOTONIC,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">ts</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank" rel="noopener noreferrer">Le code complet est disponible sur Github</a>.</p>
 <p>Le code est vraiment simple. Effectuer une lecture de mémoire. Vider les données des caches CPU. Mesurer la durée.</p>
@@ -67,7 +93,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">3101896403,</span><span class="sk-005cc5-ffc799">     135</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">3101896762,</span><span class="sk-005cc5-ffc799">     359</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">3101896901,</span><span class="sk-005cc5-ffc799">     139</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">3101897038,</span><span class="sk-005cc5-ffc799">     137</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">3101897038,</span><span class="sk-005cc5-ffc799">     137</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>J'obtiens en général ~ 140 ns par boucle, et la durée de la boucle saute de temps en temps à ~ 360 ns. Parfois, j'obtiens des mesures étranges supérieurs à 3200 ns.</p>
 <p>Malheureusement, les données se révèlent très excessives. Il est très difficile de voir s'il y a un retard notable lié aux cycles de rafraîchissement.</p>
@@ -92,20 +122,32 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    v1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1.8</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> A[p-1].duration</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">4</span><span class="sk-032f62-99ffe4"> else</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    v2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1.8</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> A[p].duration</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">4</span><span class="sk-032f62-99ffe4"> else</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    v</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> estimate_linear</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">v1,</span><span class="sk-032f62-99ffe4"> v2,</span><span class="sk-032f62-99ffe4"> A[p-1].timestamp,</span><span class="sk-032f62-99ffe4"> curr_ts,</span><span class="sk-032f62-99ffe4"> A[p].timestamp</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    B.append(</span><span class="sk-032f62-99ffe4"> v</span><span class="sk-24292e-fff"> )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    B.append(</span><span class="sk-032f62-99ffe4"> v</span><span class="sk-24292e-fff"> )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ce qui, d'après mes données, produit un vecteur de ce type :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, </span></span>
 <span class="line"><span class="sk-24292e-fff"> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,</span></span>
 <span class="line"><span class="sk-24292e-fff"> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, </span></span>
-<span class="line"><span class="sk-24292e-fff"> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cependant, le vecteur est assez long, environ 200 000 points de données. Les données ainsi préparées sont prêtes à être introduites dans la FFT !</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">C</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fft</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">C</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.abs</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">C</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">F</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fftfreq</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(B</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">1000000000/UNIT</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">F</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fftfreq</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(B</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">1000000000/UNIT</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Plutôt simple, n'est-ce pas ? Nous obtenons deux vecteurs :</p>
 <ul>
@@ -132,7 +174,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">255900.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">255950.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">383600.0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">383650.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">383650.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Soit : 1000000000 (ns/s) / 127900 (Hz) = 7818,6 ns</p>
 <p>Youpi ! Le premier pic de fréquence correspond bien à ce que nous recherchions, et il correspond bien aux durées de rafraîchissement.</p>
@@ -155,7 +201,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">127906Hz    7716</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">255813Hz    7947</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">383720Hz    7460</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">511626Hz    7141</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">511626Hz    7141</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Je dois admettre que le code n'est pas parfaitement stable. En cas de problème, pensez à désactiver le Turbo Boost, le réglage de la fréquence du processeur et le paramétrage des performances.</p>
 <h2><strong>Conclusion</strong></h2>

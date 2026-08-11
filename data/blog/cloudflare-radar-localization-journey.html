@@ -44,8 +44,30 @@
 <span class="line"><span class="sk-24292e-a0a0a0">      &lt;</span><span class="sk-005cc5-ffc799">Chart</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    &lt;/</span><span class="sk-005cc5-ffc799">Card</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Externalized key placeholders:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useTranslation } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "react-i18next"</span><span class="sk-24292e-fff">;</span></span>
@@ -62,7 +84,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">      &lt;</span><span class="sk-005cc5-ffc799">Chart</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    &lt;/</span><span class="sk-005cc5-ffc799">Card</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are several benefits to externalizing strings:</p>
 <ul>
@@ -140,7 +166,11 @@
 <span class="line"><span class="sk-24292e-fff">      }).</span><span class="sk-6f42c1-ffc799">format</span><span class="sk-24292e-fff">(date)</span><span class="sk-24292e-a0a0a0">}</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    &lt;/</span><span class="sk-22863a-ffc799">time</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Number notations</h3>
 <p>Similarly, different locales use different notations for numbers. In the US and the UK, a period is used as the decimal separator, and a comma as the thousands separator. Instead, other countries use a comma as the decimal separator and a period (or a space) as the thousands separator. Again, it’s not necessary for developers to know all the odds and ends for this, as they can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat" target="_blank" rel="noopener noreferrer"><u>Intl.NumberFormat</u></a>.</p>
@@ -155,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">    style: </span><span class="sk-032f62-99ffe4">"decimal"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    minimumFractionDigits: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }).</span><span class="sk-6f42c1-ffc799">format</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">12345678.9</span><span class="sk-24292e-fff">)</span><span class="sk-24292e-a0a0a0">}&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As of mid-December, regionalized number formatting is not fully implemented on Radar. We expect this to be complete by the end of Q1 2025.</p>
 <h3>List sorting</h3>
@@ -177,7 +211,11 @@
 <span class="line"><span class="sk-24292e-fff">    value: code,</span></span>
 <span class="line"><span class="sk-24292e-fff">  })).</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> a.label.</span><span class="sk-6f42c1-ffc799">localeCompare</span><span class="sk-24292e-fff">(b.label, i18n.language));</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-a0a0a0"> &lt;</span><span class="sk-005cc5-ffc799">Select</span><span class="sk-6f42c1-a0a0a0"> options</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">options</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-6f42c1-a0a0a0"> onChange</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">option</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-6a737d-8b8b8b94">/* do something */</span><span class="sk-24292e-fff"> }</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-a0a0a0"> /&gt;</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>API localization</h2>
 <p>Many of the Radar screens and reports include output from Cloudflare or third-party APIs. Unfortunately, the vast majority of these APIs only output English content. When combining that with the translated part of the site, it may give the impression of a poorly localized site.</p>
@@ -189,7 +227,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">"Certificate and/or SSL error when attempting to load page"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "Error de certificado y/o SSL al intentar cargar la página"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">"Crawl took too long to finish"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "El rastreo ha tardado demasiado en completarse."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">"DNS resolution failed"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "Error de resolución de DNS"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">"Network connection aborted."</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "Conexión de red cancelada"</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">"Network connection aborted."</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "Conexión de red cancelada"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It should be a best practice for APIs to accept a locale parameter or header, and for engineers to have multiple languages in mind when building these APIs, even if it’s just the error messages. That could save time and resources for any number of clients they might have.</p>
 <h2>Project setup</h2>
@@ -212,7 +254,11 @@
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-24292e-fff">    {},</span></span>
 <span class="line"><span class="sk-24292e-fff">  ),</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This creates a <a href="https://github.com/pcattori/vite-env-only?tab=readme-ov-file#serveronly" target="_blank" rel="noopener noreferrer"><u>server-side only</u></a> resources dictionary by importing all JSON files in the locales folder to be passed as the resources property for the i18next configuration in Remix’s <a href="https://remix.run/docs/en/main/file-conventions/entry.server" target="_blank" rel="noopener noreferrer"><u>entry.server.tsx</u></a>.</p>
 <p>To load namespaces on the client side, we created a Remix <a href="https://remix.run/docs/en/main/guides/resource-routes#creating-resource-routes" target="_blank" rel="noopener noreferrer"><u>resource route</u></a> that uses the resources dictionary and responds with the namespace object of the requested locale:</p>
@@ -224,7 +270,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> loader</span><span class="sk-24292e-fff">({ </span><span class="sk-e36209-fff">params</span><span class="sk-24292e-fff"> }</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> LoaderFunctionArgs</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">locale</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">namespace</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> params;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> resources[locale]?.[namespace] </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> {};</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can then use the <a href="https://github.com/i18next/i18next-http-backend" target="_blank" rel="noopener noreferrer"><u>i18next-http-backend</u></a> or <a href="https://github.com/dotcore64/i18next-fetch-backend" target="_blank" rel="noopener noreferrer"><u>i18next-fetch-backend</u></a> backend plugins for the i18next configuration in Remix’s <a href="https://remix.run/docs/en/main/file-conventions/entry.client" target="_blank" rel="noopener noreferrer"><u>entry.client.tsx</u></a>:</p>
 <div class="emdash-code">
@@ -241,21 +291,37 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">      ...</span><span class="sk-24292e-fff">options,</span></span>
 <span class="line"><span class="sk-24292e-fff">      ns: </span><span class="sk-6f42c1-ffc799">getInitialNamespaces</span><span class="sk-24292e-fff">(),</span></span>
 <span class="line"><span class="sk-24292e-fff">      backend: { loadPath: </span><span class="sk-032f62-99ffe4">"/api/i18n/{{lng}}/{{ns}}"</span><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">    });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Default namespaces are defined with the <em>defaultNS</em> config property:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> defaultNS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"main"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"countries"</span><span class="sk-24292e-fff">];</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> defaultNS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"main"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"countries"</span><span class="sk-24292e-fff">];</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Additional namespaces to be used for each route can be defined through Remix’s <a href="https://remix.run/docs/en/main/route/handle" target="_blank" rel="noopener noreferrer"><u>handle export</u></a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> handle</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  i18n: [</span><span class="sk-032f62-99ffe4">"url-scanner"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"domain-categories"</span><span class="sk-24292e-fff">],</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Namespaces on the server side get picked up by the <em>getRouteNamespaces</em> function on entry.server.tsx:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ns</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> i18n.</span><span class="sk-6f42c1-ffc799">getRouteNamespaces</span><span class="sk-24292e-fff">(remixContext);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ns</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> i18n.</span><span class="sk-6f42c1-ffc799">getRouteNamespaces</span><span class="sk-24292e-fff">(remixContext);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>On the client-side, examples suggested that you’d have to declare the namespaces on each <em>useTranslation()</em> hook instance, but we worked around that in Remix’s <a href="https://remix.run/docs/en/main/file-conventions/root" target="_blank" rel="noopener noreferrer"><u>root.tsx</u></a> file:</p>
 <div class="emdash-code">
@@ -269,7 +335,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> handle</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> matches?.</span><span class="sk-6f42c1-ffc799">find</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">m</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> m.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> location.pathname)?.handle </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> {};</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  useTranslation</span><span class="sk-24292e-fff">([</span><span class="sk-d73a49-a0a0a0">...new</span><span class="sk-6f42c1-ffc799"> Set</span><span class="sk-24292e-fff">([</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">defaultNS, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">(handle.i18n </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> [])])]);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This causes the client-side plugin to make calls to the resource route and load the required namespaces.</p>
 <p>We also wanted to have the locale in the URL pathname, but not for the default language, so Remix’s <a href="https://remix.run/docs/en/main/file-conventions/routes#optional-segments" target="_blank" rel="noopener noreferrer"><u>optional segments</u></a> allowed us to do just that. remix-i18next does not have URL locale detection by default, but you can provide your own <a href="https://github.com/sergiodxa/remix-i18next?tab=readme-ov-file#finding-the-locale-from-the-request-url-pathname" target="_blank" rel="noopener noreferrer"><u>findLocale function</u></a> that will receive the request as an argument, and you can then parse the request URL to extract the locale.</p>
@@ -293,7 +363,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">link</span><span class="sk-6f42c1-a0a0a0"> rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"alternate"</span><span class="sk-6f42c1-a0a0a0"> href</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://radar.cloudflare.com/"</span><span class="sk-6f42c1-a0a0a0"> hreflang</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"x-default"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">link</span><span class="sk-6f42c1-a0a0a0"> rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"canonical"</span><span class="sk-6f42c1-a0a0a0"> href</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://radar.cloudflare.com/"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  ...</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You should also localize page titles, descriptions, and relevant <a href="https://ogp.me" target="_blank" rel="noopener noreferrer"><u>Open Graph</u></a> metadata. To achieve this with Remix and remix-i18next, you use the <a href="https://github.com/sergiodxa/remix-i18next?tab=readme-ov-file#translating-text-inside-loaders-or-actions" target="_blank" rel="noopener noreferrer"><u>getFixedT</u></a> method in route loaders to resolve the translations and return data for the <a href="https://remix.run/docs/en/main/route/meta" target="_blank" rel="noopener noreferrer"><u>meta export</u></a>:</p>
 <div class="emdash-code">
@@ -311,7 +385,11 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-6f42c1-ffc799"> meta</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">data</span><span class="sk-24292e-fff"> }</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> MetaArgs</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">typeof</span><span class="sk-24292e-fff"> loader&gt;) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> data.meta;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-6f42c1-ffc799"> meta</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">data</span><span class="sk-24292e-fff"> }</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> MetaArgs</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">typeof</span><span class="sk-24292e-fff"> loader&gt;) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> data.meta;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you are defining default meta tags in parent routes you may also need to <a href="https://remix.run/docs/ru/main/route/meta#merging-with-parent-meta" target="_blank" rel="noopener noreferrer"><u>merge the meta objects</u></a>.</p>
 <h2>Conclusion</h2>

@@ -39,8 +39,30 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // handle request with my Worker code otherwise</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> myWorkerRequestHandler</span><span class="sk-24292e-fff">(request);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h4>Familiar and easy development workflow with <code>wrangler dev</code></h4>
 <p>To configure which container image to use, you can provide an image URL in wrangler config or a path to a local Dockerfile.&nbsp;</p>
 <p>This config tells wrangler to use a locally defined image:</p>
@@ -52,7 +74,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "max_instances"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "instance_type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"basic"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When developing your application, you just run <code>wrangler dev</code> and the container image will be automatically built and routable via your local Worker. This makes it easy to iterate on container code while making changes to your Worker at the same time. When you want to rebuild your image, just press “R” on your keyboard from your terminal running <code>wrangler dev</code>, and the Container is rebuilt and restarted.</p>
 <h4>Shipping your Container-enabled Worker to production with <code>wrangler deploy</code></h4>
@@ -174,7 +200,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// routes requests to the nearest ready container and load balance globally</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request, env) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> getContainer</span><span class="sk-24292e-fff">(env</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-fff">MY_BACKEND</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li><strong>More ways to communicate between Containers and Workers</strong> – We will be adding more ways for your Worker to communicate with your container and vice versa. We will add an <code>exec</code> command to run shell commands in your instance and handlers for HTTP requests <em>from</em> the container to Workers. This will allow you to more easily extend your containers with functionality from the entire developer platform, reach out to other containers, and programmatically set up each container instance.</li>
@@ -195,7 +225,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> command </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> this</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(`git clone </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">{repoUrl}`)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> command</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">print</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  }  </span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li><strong>Further integrations with the Developer Platform</strong> – We will continue to integrate with the developer platform with first-party APIs for our various services. We want it to be dead simple to mount <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 buckets</u></a>, reach <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>, access <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, and more.</li>

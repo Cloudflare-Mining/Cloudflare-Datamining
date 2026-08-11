@@ -22,8 +22,30 @@
 <span class="line"><span class="sk-005cc5-99ffe4"> --header</span><span class="sk-032f62-99ffe4"> 'cf-aig-authorization: CLOUDFLARE_AI_GATEWAY_TOKEN \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> --header 'anthropic-version:</span><span class="sk-032f62-99ffe4"> 2023-06-01' \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> --header 'Content-Type:</span><span class="sk-032f62-99ffe4"> application/json' \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4"> --data  '{"model":</span><span class="sk-032f62-99ffe4"> "claude-3-opus-20240229",</span><span class="sk-032f62-99ffe4"> "messages":</span><span class="sk-24292e-fff"> [{</span><span class="sk-6f42c1-ffc799">"role"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "user",</span><span class="sk-032f62-99ffe4"> "content":</span><span class="sk-032f62-99ffe4"> "What is Cloudflare?"}]}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4"> --data  '{"model":</span><span class="sk-032f62-99ffe4"> "claude-3-opus-20240229",</span><span class="sk-032f62-99ffe4"> "messages":</span><span class="sk-24292e-fff"> [{</span><span class="sk-6f42c1-ffc799">"role"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "user",</span><span class="sk-032f62-99ffe4"> "content":</span><span class="sk-032f62-99ffe4"> "What is Cloudflare?"}]}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Or, using Javascript:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Anthropic </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@anthropic-ai/sdk'</span><span class="sk-24292e-fff">;</span></span>
@@ -39,7 +61,11 @@
 <span class="line"><span class="sk-24292e-fff">  model: </span><span class="sk-032f62-99ffe4">'claude-3-opus-20240229'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  messages: [{role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">"What is Cloudflare?"</span><span class="sk-24292e-fff">}],</span></span>
 <span class="line"><span class="sk-24292e-fff">  max_tokens: </span><span class="sk-005cc5-ffc799">1024</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>By using Secrets Store to deploy your secrets, you no longer need to give every developer access to every key — instead, you can rely on Secrets Store’s <a href="https://developers.cloudflare.com/secrets-store/access-control" target="_blank" rel="noopener noreferrer"><u>role-based access control</u></a> to further lock down these sensitive values. For example, you might want your security administrators to have Secrets Store admin permissions so that they can create, update, and delete the keys when necessary. With Cloudflare <a href="https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs/?cf_target_id=1C767B900C4419A313C249A5D99921FB" target="_blank" rel="noopener noreferrer"><u>audit logging</u></a>, all such actions will be logged so you know exactly who did what and when. Your developers, on the other hand, might only need Deploy permissions, so they can reference the values in code, whether that is a Worker or AI Gateway or both. This way, you reduce the risk of the secret getting leaked accidentally or intentionally by a malicious actor. This also allows you to update your provider keys in one place and automatically propagate that value to any AI Gateway using those values, simplifying the management.&nbsp;</p>
 <h3>Unified Request/Response</h3>
@@ -58,7 +84,11 @@
 <span class="line"><span class="sk-24292e-fff">  messages: [{ role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">"What is Cloudflare?"</span><span class="sk-24292e-fff"> }],</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(response.choices[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">].message.content);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(response.choices[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">].message.content);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Dynamic Routes</h2>
 <p>When we first launched <a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>, it was an easy way for people to intercept HTTP requests and customize actions based on different attributes. We think the same customization is necessary for AI traffic, so we’re launching <a href="https://developers.cloudflare.com/ai-gateway/features/dynamic-routing" target="_blank" rel="noopener noreferrer"><u>Dynamic Routes</u></a> in AI Gateway.</p>
@@ -91,7 +121,11 @@
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(response);</span></span>
 <span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">error</span><span class="sk-24292e-fff">(e);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Built-in security with Firewall in AI Gateway</h2>
 <p>Earlier this year we announced <a href="https://developers.cloudflare.com/changelog/2025-02-26-guardrails" target="_blank" rel="noopener noreferrer"><u>Guardrails</u></a> in AI Gateway and now we’re expanding our security capabilities and include Data Loss Prevention (DLP) scanning in AI Gateway’s Firewall. With this, you can select the DLP profiles you are interested in blocking or flagging, and we will scan requests for the matching content. DLP profiles include general categories like “Financial Information”, “Social Security, Insurance, Tax and Identifier Numbers” that everyone has access to with a free Zero Trust account. If you would like to create a custom DLP profile to safeguard specific text, the upgraded Zero Trust plan allows you to create custom DLP profiles to catch sensitive data that is unique to your business.</p>

@@ -8,8 +8,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	link/none</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> tuntap</span><span class="sk-032f62-99ffe4"> list</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">CloudflareWARP:</span><span class="sk-032f62-99ffe4"> tun</span><span class="sk-032f62-99ffe4"> multi_queue</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">CloudflareWARP:</span><span class="sk-032f62-99ffe4"> tun</span><span class="sk-032f62-99ffe4"> multi_queue</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>More recently tap devices started to be used by <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine" target="_blank" rel="noopener noreferrer">virtual machines</a> to enable networking. The VMM (like Qemu, Firecracker, or gVisor) would open the application side of a tap and pass all the packets to the guest VM. The tap network interface would be left for the host kernel to deal with. Typically, a host would behave like a router and firewall, forward or NAT all the packets. This design is somewhat surprising - it's almost reversing the original use case for tap. In the VPN days tap was a traffic destination. With a VM behind, tap looks like a traffic source.</p>
 <p>A Linux tap device is a <strong>mean creature</strong>. It looks trivial — a virtual network interface, with a file descriptor behind it. However, it's <strong>surprisingly hard</strong> to get it to perform well. The Linux networking stack is optimized for packets handled by a physical network card, not a userspace application. However, over the years the Linux tap interface grew in features and nowadays, it's possible to get good performance out of it. Later I'll explain how to use the Linux tap API in a modern way.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -26,7 +48,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> tuntap</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> mode</span><span class="sk-032f62-99ffe4"> tap</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> marek</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> marek</span><span class="sk-032f62-99ffe4"> name</span><span class="sk-032f62-99ffe4"> tap0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> tuntap</span><span class="sk-032f62-99ffe4"> list</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tap0:</span><span class="sk-032f62-99ffe4"> tap</span><span class="sk-032f62-99ffe4"> persist</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-005cc5-ffc799"> 1000</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-005cc5-ffc799"> 1000</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tap0:</span><span class="sk-032f62-99ffe4"> tap</span><span class="sk-032f62-99ffe4"> persist</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-005cc5-ffc799"> 1000</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-005cc5-ffc799"> 1000</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Alternatively, it's possible to look for the <code>/sys/devices/virtual/net/&lt;ifr_name&gt;/tun_flags</code> files.</p>
 <h2>Tap device setup</h2>
@@ -40,7 +66,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> tap_fd </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> open</span><span class="sk-24292e-fff">(clone_dev_name, O_RDWR </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> O_CLOEXEC);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (tap_fd </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   	 error</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, errno, </span><span class="sk-032f62-99ffe4">"open(</span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">)"</span><span class="sk-24292e-fff">, clone_dev_name);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the clone device file descriptor we can now instantiate a specific tap device by name:</p>
 <div class="emdash-code">
@@ -50,7 +80,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> ioctl</span><span class="sk-24292e-fff">(tap_fd, TUNSETIFF, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">ifr);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (r </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   	 error</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, errno, </span><span class="sk-032f62-99ffe4">"ioctl(TUNSETIFF)"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If <strong>ifr_name</strong> is empty or with a name that doesn't exist, a new tap device is created. Otherwise, an existing device is opened. When opening existing devices, flags like IFF_MULTI_QUEUE must match with the way the device was created, or EINVAL is returned. It's a good idea to try to reopen the device with flipped multi queue setting on EINVAL error.</p>
 <p>The <strong>ifr_flags</strong> can have the following bits set:</p>
@@ -132,7 +166,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	RX:</span><span class="sk-032f62-99ffe4">  bytes</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-032f62-99ffe4"> errors</span><span class="sk-032f62-99ffe4"> dropped</span><span class="sk-032f62-99ffe4">  missed</span><span class="sk-032f62-99ffe4">   mcast</span><span class="sk-24292e-fff">      	 </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         	0</span><span class="sk-005cc5-ffc799">   	0</span><span class="sk-005cc5-ffc799">  	0</span><span class="sk-005cc5-ffc799">   	0</span><span class="sk-005cc5-ffc799">   	0</span><span class="sk-005cc5-ffc799">   	0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	TX:</span><span class="sk-032f62-99ffe4">  bytes</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-032f62-99ffe4"> errors</span><span class="sk-032f62-99ffe4"> dropped</span><span class="sk-032f62-99ffe4"> carrier</span><span class="sk-032f62-99ffe4"> collsns</span><span class="sk-24292e-fff">      	 </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       	266</span><span class="sk-005cc5-ffc799">   	3</span><span class="sk-005cc5-ffc799">  	0</span><span class="sk-005cc5-ffc799">  	66</span><span class="sk-005cc5-ffc799">   	0</span><span class="sk-005cc5-ffc799">   	0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       	266</span><span class="sk-005cc5-ffc799">   	3</span><span class="sk-005cc5-ffc799">  	0</span><span class="sk-005cc5-ffc799">  	66</span><span class="sk-005cc5-ffc799">   	0</span><span class="sk-005cc5-ffc799">   	0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In "ip link" statistics the column "<strong>TX dropped</strong>" indicates the tap application was too slow and the queue space exhausted.</p>
 <p>In the other direction - interface RX queue - &nbsp;from application towards the host, the queue size limit is measured in bytes and controlled by the TUNSETSNDBUF ioctl. The <a href="https://elixir.bootlin.com/qemu/v8.1.1/source/net/tap-linux.c#L120" target="_blank" rel="noopener noreferrer">qemu comment discusses</a> this setting, however it's not easy to cause this queue to overflow. See this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=508861" target="_blank" rel="noopener noreferrer">discussion for details</a>.</p>
@@ -143,7 +181,11 @@
 <span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> ioctl</span><span class="sk-24292e-fff">(tap_fd, TUNSETVNETHDRSZ, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">){len});</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (r </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   	 error</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, errno, </span><span class="sk-032f62-99ffe4">"ioctl(TUNSETVNETHDRSZ)"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Sensible values are {10, 12, 20}, which are derived from <a href="https://docs.oasis-open.org/virtio/virtio/v1.2/csd01/virtio-v1.2-csd01.html" target="_blank" rel="noopener noreferrer">virtio spec</a>. 12 bytes makes room for the following header (little endian):</p>
 <div class="emdash-code">
@@ -163,7 +205,11 @@
 <span class="line"><span class="sk-24292e-fff">    u16 csum_start;</span></span>
 <span class="line"><span class="sk-24292e-fff">    u16 csum_offset;</span></span>
 <span class="line"><span class="sk-24292e-fff">    u16 num_buffers;</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>offloads</h2>
 <p>To enable offloads use the ioctl:</p>
@@ -172,7 +218,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> ioctl</span><span class="sk-24292e-fff">(tap_fd, TUNSETOFFLOAD, off_flags);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (r </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   	 error</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, errno, </span><span class="sk-032f62-99ffe4">"ioctl(TUNSETOFFLOAD)"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here are the allowed bit values. They confirm that the userspace application can receive:</p>
 <div id="html-block-k3l" class="html-block">
@@ -261,7 +311,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">s </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> socket(</span><span class="sk-005cc5-fff">AF_INET</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">SOCK_DGRAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">s.setsockopt(</span><span class="sk-005cc5-fff">SOL_UDP</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">UDP_SEGMENT</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1400</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">s.sendto(</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"x"</span><span class="sk-24292e-fff">, (</span><span class="sk-032f62-99ffe4">"10.0.0.2"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">5201</span><span class="sk-24292e-fff">))     </span><span class="sk-6a737d-8b8b8b94"># Would you expect EIO ?</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">s.sendto(</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"x"</span><span class="sk-24292e-fff">, (</span><span class="sk-032f62-99ffe4">"10.0.0.2"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">5201</span><span class="sk-24292e-fff">))     </span><span class="sk-6a737d-8b8b8b94"># Would you expect EIO ?</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This simple code produces a packet. When directed at a tap device, this code will surprisingly yield an EIO "Input/output error". This weird behavior happens if the tap is opened without TUN_F_CSUM and the application is sending GSO / UDP_SEGMENT frames. Tough luck. It might be considered a kernel bug, and we're thinking about fixing that. However, in the meantime everyone using tap should just set the TUN_F_CSUM bit.</p>
 <h2>Segmentation offloads</h2>
@@ -289,7 +343,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">generic-receive-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tx-udp-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">rx-gro-list:</span><span class="sk-032f62-99ffe4"> off</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">rx-udp-gro-forwarding:</span><span class="sk-032f62-99ffe4"> off</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">rx-udp-gro-forwarding:</span><span class="sk-032f62-99ffe4"> off</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With ethtool we can see the enabled offloads and disable them as needed.</p>
 <p>While toying with UDP Segmentation Offload (USO) I've noticed that when packet trains from tap are forwarded to a real network interface, sometimes they seem badly packetized. See the <a href="https://lore.kernel.org/all/CAJPywTKDdjtwkLVUW6LRA2FU912qcDmQOQGt2WaDo28KzYDg+A@mail.gmail.com" target="_blank" rel="noopener noreferrer">netdev discussion</a>, and the <a href="https://lore.kernel.org/netdev/ZK9ZiNMsJX8+1F3N@debian.debian/T/#m9f532bb5463b89d997c5d16c78490ceeccb4497f" target="_blank" rel="noopener noreferrer">proposed fix</a>. In any case - beware of this bug, and maybe consider doing "ethtool -K tap0 rx-udp-gro-forwarding off".</p>
@@ -481,7 +539,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> qdisc</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> tap0</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-032f62-99ffe4"> 1:</span><span class="sk-032f62-99ffe4"> multiq</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tc</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> tap0</span><span class="sk-032f62-99ffe4"> parent</span><span class="sk-032f62-99ffe4"> 1:</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> prio</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        match</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> dst</span><span class="sk-005cc5-ffc799"> 192.168.0.3</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        action</span><span class="sk-032f62-99ffe4"> skbedit</span><span class="sk-032f62-99ffe4"> queue_mapping</span><span class="sk-005cc5-ffc799"> 0</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">        action</span><span class="sk-032f62-99ffe4"> skbedit</span><span class="sk-032f62-99ffe4"> queue_mapping</span><span class="sk-005cc5-ffc799"> 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>tc</strong> is fragile and thus it's not a solution I would recommend. A better way is to customize the queue selection algorithm with a TUNSETSTEERINGEBPF eBPF program. In that case, the flow tracking code is not employed anymore. By smartly using such a steering eBPF program, it's possible to keep the flow processing local to one CPU — useful for best performance.</p>
 <h2>Summary</h2>

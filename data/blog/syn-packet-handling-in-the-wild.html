@@ -19,8 +19,30 @@
 <p>The SYN Queue stores inbound SYN packets<a href="https://blog.cloudflare.com/#fn1">[1]</a> (specifically: <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L73" target="_blank" rel="noopener noreferrer"><code>struct inet_request_sock</code></a>). It's responsible for sending out SYN+ACK packets and retrying them on timeout. On Linux the number of retries is configured with:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_synack_retries</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank" rel="noopener noreferrer">docs describe this toggle</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcp_synack_retries</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> INTEGER</span></span>
@@ -31,7 +53,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	retransmission</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> current</span><span class="sk-032f62-99ffe4"> initial</span><span class="sk-032f62-99ffe4"> RTO</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> 1second.</span><span class="sk-032f62-99ffe4"> With</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	this</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> final</span><span class="sk-032f62-99ffe4"> timeout</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> passive</span><span class="sk-032f62-99ffe4"> TCP</span><span class="sk-032f62-99ffe4"> connection</span><span class="sk-032f62-99ffe4"> will</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	happen</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-005cc5-ffc799"> 63</span><span class="sk-032f62-99ffe4"> seconds.</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After transmitting the SYN+ACK, the SYN Queue waits for an ACK packet from the client - the last packet in the three-way-handshake. All received ACK packets must first be matched against the fully established connection table, and only then against data in the relevant SYN Queue. On SYN Queue match, the kernel removes the item from the SYN Queue, happily creates a fully fledged connection (specifically: <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L183" target="_blank" rel="noopener noreferrer"><code>struct inet_sock</code></a>), and adds it to the Accept Queue.</p>
 <h3>Accept Queue</h3>
@@ -40,13 +66,21 @@
 <h3>Queue size limits</h3>
 <p>The maximum allowed length of both the Accept and SYN Queues is taken from the <code>backlog</code> parameter passed to the <code>listen(2)</code> syscall by the application. For example, this sets the Accept and SYN Queue sizes to 1,024:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note: In kernels before 4.3 the <a href="https://github.com/torvalds/linux/commit/ef547f2ac16bd9d77a780a0e7c70857e69e8f23f#diff-56ecfd3cd70d57cde321f395f0d8d743L43" target="_blank" rel="noopener noreferrer">SYN Queue length was counted differently</a>.</p>
 <p>This SYN Queue cap used to be configured by the <code>net.ipv4.tcp_max_syn_backlog</code> toggle, but this isn't the case anymore. Nowadays <code>net.core.somaxconn</code> caps both queue sizes. On our servers we set it to 16k:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.core.somaxconn</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Perfect backlog value</h3>
 <p>Knowing all that, we might ask the question - what is the ideal <code>backlog</code> parameter value?</p>
@@ -65,7 +99,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :80</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">119</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :443</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Similar data can be shown with our <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/resq.stp" target="_blank" rel="noopener noreferrer">overenginered SystemTap script: <code>resq.stp</code></a>.</p>
 <h3>Slow application</h3>
@@ -86,13 +124,21 @@
 <p>You can trace the Accept Queue overflow stats by looking at <code>nstat</code> counters:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nstat</span><span class="sk-005cc5-99ffe4"> -az</span><span class="sk-032f62-99ffe4"> TcpExtListenDrops</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is a global counter. It's not ideal - sometimes we saw it increasing, while all applications looked healthy! The first step should always be to print the Accept Queue sizes with <code>ss</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -plnt</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :6443</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cat</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">   Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">  Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The column <code>Recv-Q</code> shows the number of sockets in the Accept Queue, and <code>Send-Q</code> shows the backlog parameter. In this case we see there are no outstanding sockets to be <code>accept()</code>ed, but we still saw the ListenDrops counter increasing.</p>
 <p>It turns out our application was stuck for fraction of a second. This was sufficient to let the Accept Queue overflow for a very brief period of time. Moments later it would recover. Cases like this are hard to debug with <code>ss</code>, so we wrote <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/acceptq.stp" target="_blank" rel="noopener noreferrer">an <code>acceptq.stp</code> SystemTap script</a> to help us. It hooks into kernel and prints the SYN packets which are being dropped:</p>
@@ -102,7 +148,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449075</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:28585</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449253</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:50500</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198450062</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:65434</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here you can see precisely which SYN packets were affected by the ListenDrops. With this script it's trivial to understand which application is dropping connections.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -134,7 +184,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  6</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 2</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     24</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">       |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> t</span><span class="sk-032f62-99ffe4"> mod</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  MSS</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-005cc5-ffc799"> hash</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">ip,</span><span class="sk-032f62-99ffe4"> port,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">|</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the MSS setting <a href="https://github.com/torvalds/linux/blob/5bbcc0f595fadb4cac0eddc4401035ec0bd95b09/net/ipv4/syncookies.c#L142" target="_blank" rel="noopener noreferrer">truncated to only 4 distinct values</a>, Linux doesn't know any optional TCP parameters of the other party. Information about Timestamps, ECN, Selective ACK, or Window Scaling is lost, and can lead to degraded TCP session performance.</p>
 <p>Fortunately Linux has a work around. If TCP Timestamps are enabled, the kernel can reuse another slot of 32 bits in the Timestamp field. It contains:</p>
@@ -142,12 +196,20 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  26</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 4</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> Timestamp</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  ECN</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> SACK</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> WScale</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>TCP Timestamps should be enabled by default, to verify see the sysctl:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_timestamps</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Historically there was plenty of discussion about the usefulness of TCP Timestamps.</p>
 <ul>

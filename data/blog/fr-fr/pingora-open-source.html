@@ -28,8 +28,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> upstream_peer</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">...</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Box</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">HttpPee</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        todo!</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Implémentons maintenant la sélection à tour de rôle. Le cadre Pingora fournit déjà le <code>LoadBalancer</code> avec des algorithmes de sélection courants (comme la sélection à tour de rôle et le hachage), alors utilisons-le. Si le scénario d'utilisation nécessite une logique de sélection de serveur plus sophistiquée ou personnalisée, les utilisateurs pourront simplement la mettre en œuvre eux-mêmes dans cette fonction.</p>
 <p>Puisque nous nous connectons à un serveur HTTPS, le SNI doit également être défini. Si nécessaire, vous pouvez également définir les certificats, le délai d'expiration et les autres options de connexion ici, dans l'objet HttpPeer.</p>
 <div class="emdash-code">
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">        let peer = Box::new(HttpPeer::new(upstream, true, "one.one.one.one".to_string()));</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        Ok(peer)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Il ne reste plus qu'à mettre le service en œuvre. Dans cet exemple, nous codons en dur les adresses IP du serveur d'origine. En conditions de travail réelles, les adresses IPS du serveur d'origine peuvent également être identifiées de manière dynamique lorsque le paramètre <code>upstream_peer()</code> est appelé ou fonctionne en arrière-plan. Une fois le service créé, il nous suffit de demander au service d'équilibrage de charge d'écouter l'adresse 127.0.0.1:6188. Au final, nous avons créé un serveur Pingora, qui sera le processus exécutant le service d'équilibrage de charge.</p>
 <p>Essayons notre équilibreur de charge :</p>
@@ -60,7 +86,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> my_server</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Server::new</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">None</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.unwrap</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    my_server.add_service(lb</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    my_server.run_forever</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nous pouvons voir que le proxy fonctionne, mais que le serveur d'origine nous rejette en nous renvoyant un code 403. Cette erreur est due au fait que notre service se contente de mettre en proxy l'en-tête Host, 127.0.0.1:6188, défini par curl. Or, ce comportement perturbe le serveur d'origine. Comment faire pour que le proxy corrige ce comportement ? Nous pouvons le faire très simplement en ajoutant un autre filtre appelé <code>upstream_request_filter</code>. Ce filtre s'exécute sur chaque requête après la connexion du serveur d'origine et avant l'envoi d'une requête HTTP. Nous pouvons ajouter, supprimer ou modifier les en-têtes de requête http au sein de ce filtre.</p>
 <div class="emdash-code">
@@ -70,18 +100,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> User-Agent: curl/7.88.1</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Accept: </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">/</span><span class="sk-d73a49-a0a0a0">*</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 403 Forbidden</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 403 Forbidden</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Essayons à nouveau :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> upstream_request_filter</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">…,</span><span class="sk-032f62-99ffe4"> upstream_request:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> RequestHeader,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result&lt;()</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    upstream_request.insert_header(</span><span class="sk-6f42c1-ffc799">"Host"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> "one.one.one.one"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cette fois, ça fonctionne ! Vous retrouverez l'exemple dans son intégralité <a href="https://github.com/cloudflare/pingora/blob/main/pingora-proxy/examples/load_balancer.rs" target="_blank" rel="noopener noreferrer">ici</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> 127.0.0.1:6188</span><span class="sk-005cc5-99ffe4"> -svo</span><span class="sk-032f62-99ffe4"> /dev/null</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 200 OK</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 200 OK</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vous trouverez ci-dessous un schéma très simple de la manière dont cette requête transite à travers les fonctions de rappel et de filtrage que nous avons utilisées dans cet exemple. Le framework du proxy Pingora propose actuellement <a href="https://github.com/cloudflare/pingora/blob/main/docs/user_guide/phase.md" target="_blank" rel="noopener noreferrer">davantage de filtres</a> et de fonctions de rappel à différentes étapes d'une requête afin de permettre aux utilisateurs de modifier, de rejeter, d'acheminer et/ou de journaliser la requête (et la réponse).</p>
 <p>En arrière-plan, le framework du proxy Pingora s'occupe de la mise en pool des connexions, des négociations TLS, de la lecture, de l'écriture et de l'analyse des requêtes, ainsi que de toutes les autres tâches de proxy courantes, afin que les utilisateurs puissent se concentrer sur la logique qui compte pour eux.</p>

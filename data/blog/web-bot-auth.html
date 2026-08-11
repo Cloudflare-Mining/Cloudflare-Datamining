@@ -45,8 +45,30 @@
 <span class="line"><span class="sk-24292e-fff">             	 expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1700011111</span><span class="sk-24292e-fff">;\</span></span>
 <span class="line"><span class="sk-24292e-fff">             	 keyid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ba3e64=="</span><span class="sk-24292e-fff">;\</span></span>
 <span class="line"><span class="sk-24292e-fff">             	 tag</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"web-bot-auth"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>For those building bots, <a href="https://datatracker.ietf.org/doc/draft-meunier-web-bot-auth-architecture" target="_blank" rel="noopener noreferrer"><u>we propose</u></a> signing the authority of the target URI, i.e. www.example.com, and a way to retrieve the bot public key in the form of <a href="https://datatracker.ietf.org/doc/draft-meunier-http-message-signatures-directory" target="_blank" rel="noopener noreferrer"><u>signature-agent</u></a>, if present, i.e. <a href="http://crawler.search.google.com" target="_blank" rel="noopener noreferrer"><u>crawler.search.google.com</u></a> for Google Search, <a href="http://operator.openai.com" target="_blank" rel="noopener noreferrer"><u>operator.openai.com</u></a> for OpenAI Operator, workers.dev for Cloudflare Workers.</p>
 <p>The <code>User-Agent</code> from the example above indicates that the software making the request is Chrome, because it is an agent that uses an orchestrated Chrome to browse the web. You should note that <code>MyBotCrawler/1.1</code> is still present. The <code>User-Agent</code> header can actually contain multiple products, in decreasing order of importance. If our agent is making requests via Chrome, that’s the most important product and therefore comes first.</p>
 <p>At Internet-level scale, these signatures may add a notable amount of overhead to request processing. However, with the right cryptographic suite, and compared to the cost of existing bot mitigation, both technical and social, this seems to be a straightforward tradeoff. This is a metric we will monitor closely, and report on as adoption grows.</p>
@@ -62,7 +84,11 @@
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">  { urls: [</span><span class="sk-032f62-99ffe4">"&lt;all_urls&gt;"</span><span class="sk-24292e-fff">] },</span></span>
 <span class="line"><span class="sk-24292e-fff">  [</span><span class="sk-032f62-99ffe4">"blocking"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"requestHeaders"</span><span class="sk-24292e-fff">] </span><span class="sk-6a737d-8b8b8b94">// requires "installation_mode": "force_installed"</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare provides a <a href="https://www.npmjs.com/package/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>web-bot-auth</u></a> helper package on npm that helps you generate request signatures with the correct parameters. <code>onBeforeSendHeaders</code> is a Chrome extension hook that needs to be implemented synchronously. To do so, we <code>import {signatureHeadersSync} from “web-bot-auth”</code>. Once the signature completes, both <code>Signature</code> and <code>Signature-Input</code> headers are assigned. The request flow can then continue.</p>
 <div class="emdash-code">
@@ -77,7 +103,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  new</span><span class="sk-6f42c1-ffc799"> Ed25519Signer</span><span class="sk-24292e-fff">(jwk),</span></span>
 <span class="line"><span class="sk-24292e-fff">  { created, expires }</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// `headers` object now contains `Signature` and `Signature-Input` headers that can be used</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// `headers` object now contains `Signature` and `Signature-Input` headers that can be used</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This extension code is available on <a href="https://github.com/cloudflareresearch/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>, alongside a&nbsp; debugging server, deployed at <a href="https://http-message-signatures-example.research.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>https://http-message-signatures-example.research.cloudflare.com</u></a>.&nbsp;</p>
 <h3>Validating request signatures&nbsp;</h3>
@@ -100,7 +130,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Extension</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> req mTLS (len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">12</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	Type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> req mTLS (</span><span class="sk-005cc5-ffc799">65025</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	Length</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 12</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	Data</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 0b0000000000000000000001</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	Data</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 0b0000000000000000000001</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The extension number is 65025, or 0xfe01. This corresponds to an unassigned block of <a href="https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#tls-extensiontype-values-1" target="_blank" rel="noopener noreferrer"><u>TLS extensions</u></a> that can be used to experiment with TLS Flags. Once the standard is adopted and published by the IETF, the number would be fixed. To use the <code>req mTLS</code> flag the client needs to set the 80<sup>th</sup> bit to true, so with our block length of 12 bytes, it should&nbsp; contain the data 0b0000000000000000000001, which is the case here. The server then responds with a certificate request, and the request follows its course.</p>
 <h3>Request mTLS in action</h3>
@@ -119,7 +153,11 @@
 <span class="line"><span>    	Certificates:  	certs,</span></span>
 <span class="line"><span>    	NextProtos:    	[]string{"h2"},</span></span>
 <span class="line"><span>}</span></span>
-<span class="line"><span>trans := http.Transport{TLSClientConfig: config, ForceAttemptHTTP2: true}</span></span></code></pre>
+<span class="line"><span>trans := http.Transport{TLSClientConfig: config, ForceAttemptHTTP2: true}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This example library allows you to configure Go to send <code>req mTLS 0x50</code> bytes in the <code>TLS Flags</code> extension. If you’d like to test your implementation out, you can prompt your client for certificates against <a href="http://req-mtls.research.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>req-mtls.research.cloudflare.com</u></a> using the Cloudflare Research client <a href="https://github.com/cloudflareresearch/req-mtls" target="_blank" rel="noopener noreferrer"><u>cloudflareresearch/req-mtls</u></a>. For clients, once they set the TLS Flags associated with <code>req mTLS</code>, they are done. The code section taking care of normal mTLS will take over at that point, with no need to implement something new.</p>
 <h2>Two approaches, one goal</h2>

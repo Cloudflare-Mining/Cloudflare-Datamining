@@ -17,8 +17,30 @@
 <h3>HTMLファイルGoogle Firebaseアプリケーション（na2signing[.]web[.]app）の確認</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2023-03-14T12:05:28Z</span><span class="sk-032f62-99ffe4">		First</span><span class="sk-032f62-99ffe4"> Observed</span><span class="sk-032f62-99ffe4"> SVB</span><span class="sk-032f62-99ffe4"> DocuSign</span><span class="sk-032f62-99ffe4"> Campaign</span><span class="sk-032f62-99ffe4"> Launched</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2023-03-14T15:25:26Z</span><span class="sk-032f62-99ffe4">		Last</span><span class="sk-032f62-99ffe4"> Observed</span><span class="sk-032f62-99ffe4"> SVB</span><span class="sk-032f62-99ffe4"> DocuSign</span><span class="sk-032f62-99ffe4"> Campaign</span><span class="sk-032f62-99ffe4"> Launched</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2023-03-14T15:25:26Z</span><span class="sk-032f62-99ffe4">		Last</span><span class="sk-032f62-99ffe4"> Observed</span><span class="sk-032f62-99ffe4"> SVB</span><span class="sk-032f62-99ffe4"> DocuSign</span><span class="sk-032f62-99ffe4"> Campaign</span><span class="sk-032f62-99ffe4"> Launched</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>攻撃に含まれるHTMLファイルは、再帰的なリダイレクト機能を持つWordPressインスタンスにユーザーを送り込みます。この記事を書いている時点では、この特定のWordPressインストールが侵害されたのか、このリダイレクト場所を開くプラグインがインストールされたのかは不明です。</p>
 <h3>安全性が損なわれたことを示す兆候</h3>
 <div class="emdash-code">
@@ -37,14 +59,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        Redirect(</span><span class="sk-6f42c1-ffc799">"https://eaglelodgealaska[.]com/wp-header.php?url="</span><span class="sk-6f42c1-ffc799">+e</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/script</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>推奨事項</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">na2signing[.]web[.]app</span><span class="sk-032f62-99ffe4">	Malicious</span><span class="sk-032f62-99ffe4"> Google</span><span class="sk-032f62-99ffe4"> Cloudbase</span><span class="sk-032f62-99ffe4"> Application.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">eaglelodgealaska[.]com</span><span class="sk-032f62-99ffe4">	Possibly</span><span class="sk-032f62-99ffe4"> compromised</span><span class="sk-032f62-99ffe4"> Wordpress</span><span class="sk-032f62-99ffe4"> website</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-032f62-99ffe4"> redirect.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">[.]kirklandellis[.]net		Attacker Controlled Application running on at least docusigning[.]kirklandellis[.]net.</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">[.]kirklandellis[.]net		Attacker Controlled Application running on at least docusigning[.]kirklandellis[.]net.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>Cloudflareメールセキュリティをご利用のお客様は、ダッシュボードで以下の検索キーワードを使用して、このキャンペーンを受け取ったかどうかを判断できます：</li>

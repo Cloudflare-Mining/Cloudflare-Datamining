@@ -23,12 +23,38 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>等等，我們犯了很多人以前都犯過的錯誤：我們忘記了 UPDATE 查詢中的 WHERE 子句。我們沒有更新特定的訂單 ID，而是更新了表格中每個訂單的送貨地址。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">I</span><span class="sk-24292e-fff"> think we might be forgetting something here</span><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>恐慌開始了。在此之前我們記得先做了備份嗎？那是多久以前的事了？我們開啟時間點恢復了嗎？當時它似乎很貴…</p>
 <div class="emdash-code">
@@ -38,7 +64,11 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">        │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>沒關係。我們用的是 D1。我們可以使用 Time Travel。預設情況下它是打開的：讓我們修復這個問題，回到幾分鐘前。</p>
 <p>讓我們檢查一下它是否有效：</p>
@@ -51,7 +81,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">⚡️ Time travel </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> progress</span><span class="sk-d73a49-a0a0a0">...</span></span>
 <span class="line"><span class="sk-24292e-fff">✅ Database dash</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">db restored back to bookmark </span><span class="sk-005cc5-ffc799">00000000</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">00000004</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">97a8857d35583887de16219c766c0785</span></span>
-<span class="line"><span class="sk-24292e-fff">↩️ To undo </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> operation, you can restore to the previous </span><span class="sk-6f42c1-ffc799">bookmark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">00000013</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ffffffff</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">90b029f26ab5bd88843c55c87b26f497</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">↩️ To undo </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> operation, you can restore to the previous </span><span class="sk-6f42c1-ffc799">bookmark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">00000013</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ffffffff</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">90b029f26ab5bd88843c55c87b26f497</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我們認為，當您擁有許多較小的資料庫時，Time Travel 會變得更加強大：任何還原操作的弊端都會進一步減少，並且僅限於單一使用者或租用戶。</p>
 <div class="emdash-code">
@@ -61,7 +95,11 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>這還只是 Time Travel 的開始：我們不僅在努力支援復原資料庫，還支援從現有資料庫中派生資料庫和複寫現有資料庫。如果您可以使用單一命令派生資料庫和/或針對真實資料測試遷移和結構描述變更，則可以消除過去使用資料庫所帶來的許多傳統挑戰的風險。</p>
 <h3>基於行的定價</h3>
@@ -91,12 +129,20 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>但我們可以透過索引做得更好：</p>
 <p>建立索引後，讓我們看看我們的查詢現在需要讀取多少行：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> INDEX</span><span class="sk-005cc5-fff"> IF</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> EXISTS</span><span class="sk-24292e-fff"> idx_orders_date </span><span class="sk-005cc5-fff">ON</span><span class="sk-24292e-fff"> [Order](ShippedDate)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> INDEX</span><span class="sk-005cc5-fff"> IF</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> EXISTS</span><span class="sk-24292e-fff"> idx_orders_date </span><span class="sk-005cc5-fff">ON</span><span class="sk-24292e-fff"> [Order](ShippedDate)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在 ShippedDate 欄上使用索引的相同查詢僅讀取 417 行：不僅速度更快（持續時間以毫秒為單位！），而且成本更低。使用 5 美元的 Workers 方案，我們可以每月執行此查詢 5900 萬次，超出此次數才需要額外付費。</p>
 <div class="emdash-code">
@@ -113,7 +159,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>D1 也透過 Cloudflare 儀表板和我們的 GraphQL 分析 API <a href="https://developers.cloudflare.com/d1/platform/metrics-analytics/#metrics" target="_blank" rel="noopener noreferrer">公開行計數</a>，這樣，您不僅可以在調整效能時查看每個查詢，還可以分解所有資料庫中的查詢模式。</p>
 <h3>D1 for Platforms</h3>

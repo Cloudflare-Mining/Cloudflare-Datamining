@@ -24,8 +24,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LOCATION=southcentralus</span><span class="sk-24292e-fff">; GROUPNAME</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">”HSMgroup”</span><span class="sk-24292e-fff">; HSMNAME</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">”KeylessHSM”</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> login</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-24292e-fff"> $GROUPNAME </span><span class="sk-005cc5-99ffe4">--location</span><span class="sk-24292e-fff"> $LOCATION</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-24292e-fff"> $GROUPNAME </span><span class="sk-005cc5-99ffe4">--location</span><span class="sk-24292e-fff"> $LOCATION</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>记录上面的命令返回的 <strong>hsmUri</strong> 属性。稍后在 VM 上配置无密钥 SSL 时将需要这个属性。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> MYOID=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">az</span><span class="sk-032f62-99ffe4"> ad</span><span class="sk-032f62-99ffe4"> signed-in-user</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-005cc5-99ffe4"> --query</span><span class="sk-032f62-99ffe4"> objectId</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> tsv</span><span class="sk-24292e-fff">)</span></span>
@@ -61,11 +83,19 @@
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "tags"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {},</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Microsoft.KeyVault/managedHSMs"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>预配 HSM 后，您必须向其提供至少 3 个 RSA 公钥。HSM 将使用这些公钥加密安全域并将其发回给您，其后 HSM 即可使用。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> HSMURI="https://keylesshsm.managedhsm.azure.net/"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> HSMURI="https://keylesshsm.managedhsm.azure.net/"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果收到“无法连接到 MSI” 错误，并且您在使用 Azure 门户的一个 cloud shell，这是一个已知问题，请再次运行 az 登录。</p>
 <div class="emdash-code">
@@ -73,12 +103,20 @@
 <span class="line"><span class="sk-24292e-fff">$ openssl req -newkey rsa:</span><span class="sk-005cc5-ffc799">2048</span><span class="sk-24292e-fff"> -nodes -keyout cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.key -x</span><span class="sk-005cc5-ffc799">509</span><span class="sk-24292e-fff"> -days </span><span class="sk-005cc5-ffc799">365</span><span class="sk-24292e-fff"> -out cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer</span></span>
 <span class="line"><span class="sk-24292e-fff">$ openssl req -newkey rsa:</span><span class="sk-005cc5-ffc799">2048</span><span class="sk-24292e-fff"> -nodes -keyout cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.key -x</span><span class="sk-005cc5-ffc799">509</span><span class="sk-24292e-fff"> -days </span><span class="sk-005cc5-ffc799">365</span><span class="sk-24292e-fff"> -out cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer --sd-quorum </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> --security-domain-file $HSMNAME-SD.json</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer --sd-quorum </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> --security-domain-file $HSMNAME-SD.json</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在您的 HSM 完成预配后，<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank" rel="noopener noreferrer">将您的私钥添加</a>到密钥库中。</p>
 <p>本命令将返回一个 URI，供您稍后添加到无密钥 YAML 文件中，用于指明私钥的存储位置。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> keyvault</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --KeylessHSM</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> keyvault</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --KeylessHSM</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>HSM 现已预配并激活，您需要创建一个 VM 来部署无密钥后台程序。在本例中，我们将在 Azure 中创建一个 Ubuntu Xenial VM。在门户中，前往<strong>虚拟机</strong>页面并<strong>添加</strong>一个 VM。在那里，您可以使用较早前为 HSM 创建的资源组。为获得最佳效果，请选择与 HSM 相同的地区。请注意 VM 的公共 IP，您将使用它来远程连接到服务器。</p>
 <p>接下来，将您的 VM 配置为密钥服务器。首先，您需要添加 <a href="https://pkg.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare 包存储库</a>。然后，您将更新操作系统的包清单并安装gokeyless 服务器。</p>
@@ -89,15 +127,27 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /etc/apt/sources.list.d/cloudflare-main.list</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> https://pkg.cloudflare.com/pubkey.gpg</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> apt-key</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> update</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> gokeyless</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> gokeyless</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最后，启动无密钥服务器。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> vim</span><span class="sk-032f62-99ffe4"> /etc/keyless/gokeyless.yaml</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> vim</span><span class="sk-032f62-99ffe4"> /etc/keyless/gokeyless.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>返回 Azure 门户并打开 Azure VM 所需的 TCP 端口。前往 VM → 网络 → 添加入站端口规则。确保您允许任何源端口上的流量并为目标端口指定端口 2407.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> gokeyless</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> gokeyless</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>保存更改，然后前往 Cloudflare 仪表板以上传您的 SSL 证书。您应该在 SSL/TLS 选项卡的边缘证书部分看到“上传无密钥 SSL 证书”。在此处输入有密钥服务器标签，YAML 文件中的主机名，密钥服务器端口（默认端口2407）字段，然后粘贴 SSL 证书。</p>
 <p>接下来，您已经准备好进行测试了！运行 <code>curl -v https://zone.com</code> 并检查 TLS 握手是否成功完成。</p>

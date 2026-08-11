@@ -27,12 +27,38 @@
 <span class="line"><span class="sk-6f42c1-ffc799">imgfetch</span><span class="sk-032f62-99ffe4"> AfuEfix64.efi</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">imgfetch</span><span class="sk-032f62-99ffe4"> bios-2.03.bin</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">imgexec</span><span class="sk-032f62-99ffe4"> shell.efi</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">imgexec</span><span class="sk-032f62-99ffe4"> shell.efi</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Meanwhile, startup.nsh contains the binary to run and command line arguments to effect the flash:</p>
 <p><code>startup.nsh</code>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%homefilesystem%\AfuEfix64.efi</span><span class="sk-032f62-99ffe4"> %homefilesystem%</span><span class="sk-005cc5-a0a0a0">\b</span><span class="sk-032f62-99ffe4">ios-2.03.bin</span><span class="sk-032f62-99ffe4"> /P</span><span class="sk-032f62-99ffe4"> /B</span><span class="sk-032f62-99ffe4"> /K</span><span class="sk-032f62-99ffe4"> /N</span><span class="sk-032f62-99ffe4"> /X</span><span class="sk-032f62-99ffe4"> /RLC:E</span><span class="sk-032f62-99ffe4"> /REBOOT</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%homefilesystem%\AfuEfix64.efi</span><span class="sk-032f62-99ffe4"> %homefilesystem%</span><span class="sk-005cc5-a0a0a0">\b</span><span class="sk-032f62-99ffe4">ios-2.03.bin</span><span class="sk-032f62-99ffe4"> /P</span><span class="sk-032f62-99ffe4"> /B</span><span class="sk-032f62-99ffe4"> /K</span><span class="sk-032f62-99ffe4"> /N</span><span class="sk-032f62-99ffe4"> /X</span><span class="sk-032f62-99ffe4"> /RLC:E</span><span class="sk-032f62-99ffe4"> /REBOOT</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After rebooting, the machine will boot using its new BIOS firmware, version 2.03. Since <code>${smbios/0.5.0}</code> now contains 2.03, the machine continues to boot and enter production.</p>
 <h3>Other firmware updates such as BMC, network cards and more</h3>
@@ -54,11 +80,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">./opt/preflight/scripts/flash</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">./opt/broadcom</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">./opt/broadcom/firmware.pkg</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">./opt/broadcom/bnxtnvm</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">./opt/broadcom/bnxtnvm</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we compress all of these files into an image called <code>broadcom.img</code>.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">find</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cpio</span><span class="sk-005cc5-99ffe4"> --quiet</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> newc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> gzip</span><span class="sk-005cc5-99ffe4"> -9</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> ../broadcom.img</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">find</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cpio</span><span class="sk-005cc5-99ffe4"> --quiet</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> newc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> gzip</span><span class="sk-005cc5-99ffe4"> -9</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> ../broadcom.img</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is the first step completed; we have the firmware packaged up into an <code>initrd</code>.</p>
 <p>Since it’s challenging to read, say, the firmware version of the NIC, from the EFI shell, we store firmware versions as UEFI variables. These can be written from Linux via <a href="https://www.kernel.org/doc/html/next/filesystems/efivarfs.html" target="_blank" rel="noopener noreferrer"><code>efivars</code></a>, the UEFI variable file system, and then read by iPXE on boot.</p>
@@ -75,7 +109,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    /usr/bin/chattr</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">fw_path</span><span class="sk-032f62-99ffe4">}"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">fi</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">efi_header</span><span class="sk-032f62-99ffe4">}${</span><span class="sk-24292e-fff">version</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-d73a49-a0a0a0"> &gt;|</span><span class="sk-6f42c1-ffc799"> "</span><span class="sk-24292e-fff">$fw_path</span><span class="sk-6f42c1-ffc799">"</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">efi_header</span><span class="sk-032f62-99ffe4">}${</span><span class="sk-24292e-fff">version</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-d73a49-a0a0a0"> &gt;|</span><span class="sk-6f42c1-ffc799"> "</span><span class="sk-24292e-fff">$fw_path</span><span class="sk-6f42c1-ffc799">"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then we can write an iPXE configuration file to load the flashing kernel, userland and flashing utilities.</p>
 <div class="emdash-code">
@@ -89,7 +127,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">kernel</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/vmlinuz</span><span class="sk-032f62-99ffe4"> initrd=baseimg.img</span><span class="sk-032f62-99ffe4"> initrd=linux-initramfs-modules.img</span><span class="sk-032f62-99ffe4"> initrd=broadcom.img</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">initrd</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/baseimg.img</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">initrd</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/linux-initramfs-modules.img</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">initrd</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/firmware/broadcom.img</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">initrd</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/firmware/broadcom.img</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Flashing scripts are deposited into <code>/opt/preflight/scripts</code> and we use <code>systemd</code> to execute them with <a href="https://manpages.debian.org/stretch/debianutils/run-parts.8.en.html" target="_blank" rel="noopener noreferrer">run-parts</a> on boot:</p>
 <p><code>/etc/systemd/system/preflight.service</code>:</p>
@@ -106,7 +148,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">[Install]</span></span>
 <span class="line"><span class="sk-24292e-fff">WantedBy</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">multi-user.target</span></span>
-<span class="line"><span class="sk-24292e-fff">RequiredBy</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">salt-highstate.service</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">RequiredBy</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">salt-highstate.service</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>An example flashing script in <code>/opt/preflight/scripts</code> might look like:</p>
 <div class="emdash-code">
@@ -158,7 +204,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-032f62-99ffe4"> "rebooting in 60 seconds"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    sleep</span><span class="sk-005cc5-ffc799"> 60</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /sbin/reboot</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">fi</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">fi</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Conclusion</h3>
 <p>Whether you manage just your laptop or desktop computer, or a fleet of servers, it’s important to keep the firmware updated to ensure that the availability, performance and security of the devices is maintained.</p>

@@ -34,8 +34,30 @@
 <span class="line"><span>		ZoneID: cloudflare.String("023e105f4ecef8ad9ca31a8372d0c353"),</span></span>
 <span class="line"><span>	},</span></span>
 <span class="line"><span>)</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><br>使用 Terraform：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">resource </span><span class="sk-032f62-99ffe4">"cloudflare_dns_record"</span><span class="sk-032f62-99ffe4"> "example"</span><span class="sk-24292e-fff"> {</span></span>
@@ -43,14 +65,22 @@
 <span class="line"><span class="sk-24292e-fff">  name    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "@"</span></span>
 <span class="line"><span class="sk-24292e-fff">  content </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "example.com"</span></span>
 <span class="line"><span class="sk-24292e-fff">  type    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "CNAME"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>從表面上看，Terraform 方法看起來更簡單，事實確實如此。建立新資源和維護變更的複雜性已得到妥善處理。但問題在於，為了讓 Terraform 提供這種抽象和資料保證，在套用時必須知道所有值。這意味著，即使您沒有使用代理值，Terraform 也需要知道這個值需要是什麼，以便將其儲存在狀態檔案中，並在日後管理該屬性。如果在套用時不知道值，則 Terraform 操作員通常會從提供程式處看到以下錯誤。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-24292e-fff">: Provider produced inconsistent result after apply</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">When applying changes to example_thing.foo, provider </span><span class="sk-032f62-99ffe4">"provider[</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">registry.terraform.io/example/example</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">]"</span></span>
-<span class="line"><span class="sk-24292e-fff">produced an unexpected </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> value: .foo: was </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, but now cty.</span><span class="sk-6f42c1-ffc799">StringVal</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">).</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">produced an unexpected </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> value: .foo: was </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, but now cty.</span><span class="sk-6f42c1-ffc799">StringVal</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">).</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>而在使用 SDK 時，如果您不需要某個欄位，只需忽略它即可，永遠無需操心維護已知值。</p>
 <p>為我們的 OpenAPI 結構描述解決這個問題並非易事。自引入 Terraform 產生支援以來，我們的結構描述品質提高了一個數量級。現在，我們明確調出所有存在的預設值、基於請求負載的可變回應屬性以及任何伺服器端計算屬性。所有這些意味著與我們 API 互動的所有人都能獲得更好的體驗。</p>
@@ -109,7 +139,11 @@
 <span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(diags</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">HasError</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>總體而言：</p>
 <ul>
@@ -151,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">env.Result</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(resp.State.</span><span class="sk-6f42c1-ffc799">Set</span><span class="sk-24292e-fff">(ctx, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">data)</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(resp.State.</span><span class="sk-6f42c1-ffc799">Set</span><span class="sk-24292e-fff">(ctx, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">data)</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我們不需要產生數百個類型到模型轉換方法的執行個體，而是為 Terraform 模型新增正確的標記，以一致的方式處理資料的封送處理和解封送處理。這只是對程式碼的一個小變更，但從長遠來看，卻使產生的程式碼更具可重複使用性和可讀性。這種方法的另一個好處是，它非常適合修復錯誤，因為一旦您識別出特定類型欄位的錯誤，只要在統一介面中修復該錯誤，就能在您尚未發現的其他地方修復該錯誤。</p>
 <h2>請等一下，還有更多（文件）！</h2>

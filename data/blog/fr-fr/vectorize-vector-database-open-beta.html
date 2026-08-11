@@ -107,8 +107,30 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Workers AI + Vectorize : recherche vectorielle full-stack sur Cloudflare</h3>
 <p>Dans une application réelle, nous avons besoin d'un modèle d'apprentissage automatique qui peut à la fois générer des intégrations vectorielles depuis notre ensemble de données d'origine (pour semer notre base de données) et convertir <em>rapidement</em> les requêtes utilisateur en intégrations vectorielles. Elles doivent provenir du même modèle dans la mesure où chaque modèle représente les caractéristiques différemment.</p>
 <div class="emdash-code">
@@ -163,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Voici un exemple synthétique de création d'un pipeline de recherche vectorielle de bout en bout sur Cloudflare :</p>
 <p>Le code ci-dessus exécute quatre actions :</p>
@@ -232,7 +258,11 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>En réalité, l'opération est incroyablement similaire à la manière dont nous exécutons <a href="https://developers.cloudflare.com/workers/ai" target="_blank" rel="noopener noreferrer">Cursor</a>, l'assistant d'IA capable de répondre à des questions concernant Cloudflare Worker : nous avons procédé à une migration de Cursor pour qu'il s'exécute sur Workers AI et Vectorize. Nous générons des intégrations de texte issu de notre documentation pour les développeurs à l'aide de son modèle interne d'intégration de texte, nous les insérons dans un index Vectorize et nous convertissons les requêtes utilisateur à la volée avec le même modèle.</p>
 <h2>Utilisez vos propres intégrations depuis votre API d'IA de prédilection</h2>
@@ -244,7 +274,11 @@
 <p>L'IA et la ML suscitent beaucoup d'enthousiasme, mais elles soulèvent aussi une inquiétude majeure : elles sont trop coûteuses à expérimenter et difficiles à prévoir à grande échelle.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Vectorize has ready-to-go presets that set the dimensions and distance metric for popular embeddings models</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Avec Vectorize, nous souhaitions proposer un modèle de tarification plus simple pour les bases de données vectorielles. Vous avez une idée pour une démonstration de faisabilité dans le cadre professionnel ? Cela devrait pouvoir se faire dans les limites de notre offre gratuite. Vous faites évoluer ou vous optimisez les dimensions de votre intégration en fonction des performances et de la précision ? Cela ne devrait pas vous coûter cher.</p>
 <p>Détail qui a son importance, nous souhaitons que Vectorize soit prévisible : inutile d'estimer la consommation de temps processeur et de mémoire, ce qui peut être difficile lorsque vous débutez, et encore plus difficile lorsque vous essayez de le faire en tenant compte de vos heures de pointe et vos heures creuses en production pour un tout nouveau cas d'utilisation. À la place, vous êtes facturé sur la base du nombre total de dimensions vectorielles que vous stockez, et du nombre de requêtes que vous leur adressez chaque mois. C'est nous qui nous chargeons des évolutions nécessaires en fonction de vos schémas de requêtes.</p>

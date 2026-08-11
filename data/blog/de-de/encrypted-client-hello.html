@@ -33,8 +33,30 @@
 <p>Für die Schlüsselverteilung verließ sich ESNI auf ein anderes kritisches Protokoll: <em>Domain Name Service</em> (DNS). Um ESNI für die Verbindung mit einer Website zu verwenden, nutzte der Client seine Standard-A/AAAA-Abfragen für die Anfrage eines TXT Record mit dem öffentlichen ESNI-Schlüssel. Um beispielsweise den Schlüssel für crypto.dance zu erhalten, forderte der Client den TXT Record von _esni.crypto.dance an:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ dig _esni.crypto.dance TXT +short</span></span>
-<span class="line"><span>"/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="</span></span></code></pre>
+<span class="line"><span>"/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Das mittels base64 kodierte BLOB enthält einen öffentlichen ESNI-Schlüssel und zugehörige Parameter wie den Verschlüsselungsalgorithmus.</p>
 <p>Aber welchen Sinn hat das Verschlüsseln der SNI, wenn der Servername über eine Klartext-DNS-Abfrage für Beobachter im Netzwerk erkennbar ist? Diese Art des Einsatzes von ESNI wurde durch die Einführung von <a href="https://blog.cloudflare.com/dns-encryption-explained"><em>DNS-over-HTTPS</em></a> (DoH) möglich. Dieses Protokoll erlaubt die Verschlüsselung von DNS-Abfragen, die an Resolver gerichtet sind, welche den DoH-Dienst bereitstellen (ein Beispiel für einen solchen Dienst wäre 1.1.1.1). Ein weiteres wichtiges Merkmal von DoH besteht darin, dass es einen authentifizierten Kanal für die Übertragung des öffentlichen ESNI-Schlüssels vom DoH-Server zum Client bereitstellt. Dies verhindert <a href="https://blog.cloudflare.com/sad-dns-explained">Cache Poisoning-Angriffe</a>, die vom lokalen Netzwerk des Client ausgehen: Ohne DoH könnte ein lokaler Angreifer den Client daran hindern, die ESNI-Erweiterung anzubieten, indem er einen leeren TXT Record zurückschickt. Alternativ könnte er den Client dazu zwingen, die ESNI-Erweiterung mit einem Schlüssel zu verwenden, über den er die Kontrolle hat.</p>
 <p>Mit ESNI wurde zwar ein bedeutender Fortschritt erzielt, das Ziel einer vollständigen Handshake-Verschlüsselung wird damit jedoch nicht erreicht. Erstens ist die Lösung unvollständig, da sie nur die SNI-Erweiterung schützt. Zweitens ist sie anfällig für <a href="https://tools.ietf.org/html/draft-ietf-tls-esni-08#section-10.10" target="_blank" rel="noopener noreferrer">eine Handvoll raffinierter Angriffe</a>. Diese sind zwar schwer umzusetzen, weisen jedoch auf theoretische Schwächen in der Protokollstruktur hin, die ausgemerzt werden müssen.</p>

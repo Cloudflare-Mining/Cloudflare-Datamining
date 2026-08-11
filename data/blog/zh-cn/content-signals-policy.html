@@ -6,8 +6,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>用户代理是您的浏览器或机器人在访问某个资源时用来标识自身身份的方式。在本例中，星号 (*) 表示允许使用何种设备或浏览器的任何用户代理访问该内容。而在 <code>Allow</code> 字段中的斜杠 (/) 则表明访客可以访问网站的任意部分。</p>
 <p><code>robots.txt</code> 文件还可以通过在 # 符号后添加字符来添加注释。机器人和机器会忽略这些注释，但这是一种为审阅文件的人留下更易读注释的方法。下面是<a href="https://www.cloudflare.com/robots.txt" target="_blank" rel="noopener noreferrer"><u>一个示例</u></a>：</p>
 <div class="emdash-code">
@@ -28,19 +50,31 @@
 <span class="line"><span class="sk-24292e-fff">#(  [][][][][____________][][][][]  )</span></span>
 <span class="line"><span class="sk-24292e-fff"># \ </span><span class="sk-d73a49-a0a0a0">------------------------------</span><span class="sk-d73a49-a0a0a0"> /</span></span>
 <span class="line"><span class="sk-24292e-fff">#  \______________________________</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>网站所有者可以通过列出某些用户代理（例如，仅允许某些机器人用户代理或浏览器用户代理）以及声明网站的哪些部分可以或不可以被抓取，使 <code>robots.txt</code> 更加具体。下面的示例告诉机器人跳过对存档路径的抓取。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Disallow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">archives</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这里的例子更加具体，它告诉 Google 机器人跳过对归档路径的抓取。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Googlebot</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Disallow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">archives</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这让您能够指定哪些爬虫被允许访问，以及它们可以访问您网站的哪些部分。然而，它并不能让这些爬虫知道，在访问您的内容之后，它们可以对这些内容做些什么。正如许多人已经<a href="https://datatracker.ietf.org/wg/aipref/about" target="_blank" rel="noopener noreferrer"><u>意识</u></a>到的那样，我们需要一种机器可读的标准方式来传达“道路规则”——即您的内容在被访问后可以如何被使用。</p>
 <p>这正是“内容信号政策”允许您表达的内容：您对于爬虫可以或不可以对您的内容做些什么的偏好。</p>
@@ -64,7 +98,11 @@
 <span class="line"><span class="sk-24292e-fff"># ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> inputting content into one or more </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> models (e</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">, retrieval augmented generation, grounding, or other real</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">time taking of content </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> generative </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> search answers)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff"># ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> training or fine</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tuning </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> models</span><span class="sk-d73a49-a0a0a0">.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">ANY</span><span class="sk-005cc5-fff"> RESTRICTIONS</span><span class="sk-005cc5-fff"> EXPRESSED</span><span class="sk-005cc5-fff"> VIA</span><span class="sk-005cc5-fff"> CONTENT</span><span class="sk-005cc5-fff"> SIGNALS</span><span class="sk-005cc5-fff"> ARE</span><span class="sk-005cc5-fff"> EXPRESS</span><span class="sk-005cc5-fff"> RESERVATIONS</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> UNDER</span><span class="sk-005cc5-fff"> ARTICLE</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> EUROPEAN</span><span class="sk-005cc5-fff"> UNION</span><span class="sk-005cc5-fff"> DIRECTIVE</span><span class="sk-005cc5-ffc799"> 2019</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">790</span><span class="sk-005cc5-fff"> ON</span><span class="sk-005cc5-fff"> COPYRIGHT</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-fff"> RELATED</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> IN</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> DIGITAL</span><span class="sk-005cc5-fff"> SINGLE</span><span class="sk-005cc5-fff"> MARKET</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">ANY</span><span class="sk-005cc5-fff"> RESTRICTIONS</span><span class="sk-005cc5-fff"> EXPRESSED</span><span class="sk-005cc5-fff"> VIA</span><span class="sk-005cc5-fff"> CONTENT</span><span class="sk-005cc5-fff"> SIGNALS</span><span class="sk-005cc5-fff"> ARE</span><span class="sk-005cc5-fff"> EXPRESS</span><span class="sk-005cc5-fff"> RESERVATIONS</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> UNDER</span><span class="sk-005cc5-fff"> ARTICLE</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> EUROPEAN</span><span class="sk-005cc5-fff"> UNION</span><span class="sk-005cc5-fff"> DIRECTIVE</span><span class="sk-005cc5-ffc799"> 2019</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">790</span><span class="sk-005cc5-fff"> ON</span><span class="sk-005cc5-fff"> COPYRIGHT</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-fff"> RELATED</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> IN</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> DIGITAL</span><span class="sk-005cc5-fff"> SINGLE</span><span class="sk-005cc5-fff"> MARKET</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>此文本包含三个部分：</p>
 <ul>
@@ -77,14 +115,22 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果网站运营商像上面的例子一样将 AI 输入的内容信号留空，这并不意味着他们对该用途没有偏好；这仅仅意味着他们没有使用 robots.txt 文件的这一部分来表达它。</p>
 <h2>如何在您的网站上添加内容信号</h2>
 <p>如果您已经知道如何配置 robots.txt 文件，那么部署内容信号就非常简单：只需添加上述的内容信号政策，然后通过内容信号定义您的偏好即可。</p>
 <p>我们希望让采用内容信号变得更加简单。Cloudflare 的客户已经为超过 380 万个域名启用了我们提供的托管 robots.txt 功能。通过这样做，他们选择向相关公司表明，不希望这些域名上的内容被用于 AI 训练。对于这些客户，我们将更新我们代表他们托管的 robots.txt 文件，以包含“内容信号政策”以及以下信号：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们不会为托管 robots.txt 的客户提供“AI 输入”信号。我们不清楚他们对该信号的偏好，因此我们不想妄加猜测。</p>
 <p>从今天开始，我们还将为尚未配置 robots.txt 文件的所有免费客户区域提供带注释、易于理解的内容信号政策。实际上，这意味着对该域名的 robots.txt 请求将返回定义内容信号的注释。这些注释将被爬虫程序忽略。重要的是，它不会包含任何 Allow 或 Disallow 指令，也不会提供任何实际的内容信号。用户有权选择并在他们准备好时表达自己的实际偏好。目前拥有 robots.txt 文件的客户将不会看到任何变化。</p>

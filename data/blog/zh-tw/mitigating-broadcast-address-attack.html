@@ -33,14 +33,40 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> ip rule show</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">	from all lookup local</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">32766</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">	from all lookup main</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">32767</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">	from all lookup default</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">32767</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">	from all lookup default</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Linux 將按數字升序查詢每個路由表，以嘗試找到相符的路由。找到一個之後，將終止搜尋並立即使用該路由。</p>
 <p>如果您以前使用過 Linux 上的路由規則，那麼您可能很熟悉 main 表格的內容。與名為「default」的資料表相反，「main」通常充當預設查閱表格。它也包含傳統上與路由表資訊相關的內容：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> ip route show table main</span></span>
 <span class="line"><span class="sk-24292e-fff">default via </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.1</span><span class="sk-24292e-fff"> dev eth0 onlink</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff"> dev eth0 proto kernel scope link src </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff"> dev eth0 proto kernel scope link src </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>然而，這並不是給定查找將查閱的第一個路由表，第一個路由表是本機表格：</p>
 <div class="emdash-code">
@@ -49,7 +75,11 @@
 <span class="line"><span class="sk-24292e-fff">local </span><span class="sk-005cc5-ffc799">127.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0.1</span><span class="sk-24292e-fff"> dev lo proto kernel scope host src </span><span class="sk-005cc5-ffc799">127.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">broadcast </span><span class="sk-005cc5-ffc799">127.255</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">255.255</span><span class="sk-24292e-fff"> dev lo proto kernel scope link src </span><span class="sk-005cc5-ffc799">127.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">local </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span><span class="sk-24292e-fff"> dev eth0 proto kernel scope host src </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span></span>
-<span class="line"><span class="sk-24292e-fff">broadcast </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.255</span><span class="sk-24292e-fff"> dev eth0 proto kernel scope link src </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">broadcast </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.255</span><span class="sk-24292e-fff"> dev eth0 proto kernel scope link src </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在表格中，我們看到了兩種新類型的路由——本機路由和廣播路由。顧名思義，這些路由決定了兩個截然不同的功能：在本機處理的路由和將導致廣播封包的路由。本機路由提供所需的功能——任何帶有本機路由的前置詞都會具有核心處理的範圍內的所有 IP 位址。廣播路由將導致封包被廣播到給定範圍內的所有 IP 位址。當 IP 位址繫結到介面時，會自動新增這兩種類型的路由（並且，當範圍繫結到回送 (lo) 介面時，範圍本身將被新增為本機路由）。</p>
 <h3>發現漏洞</h3>
@@ -64,7 +94,11 @@
 <span class="line"><span class="sk-24292e-fff">broadcast </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.255</span><span class="sk-24292e-fff"> dev eth0 proto kernel scope link src </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span></span>
 <span class="line"><span class="sk-24292e-fff">local </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.0</span><span class="sk-24292e-fff"> dev lo proto kernel scope host src </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.0</span></span>
 <span class="line"><span class="sk-24292e-fff">local </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff"> dev lo proto kernel scope host src </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.0</span></span>
-<span class="line"><span class="sk-24292e-fff">broadcast </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.255</span><span class="sk-24292e-fff"> dev lo proto kernel scope link src </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.0</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">broadcast </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.255</span><span class="sk-24292e-fff"> dev lo proto kernel scope link src </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在此範例系統上，Anycast 前置詞 203.0.113.0/24 已透過使用標準工具繫結到回送介面 (lo)。該工具嚴格遵循 IPv4 標準，為介面指派了兩種特殊類型的路由：用於 IP 範圍本身的本機路由和用於範圍內最終位址的廣播路由。</p>
 <p>雖然會按預期對前往我們路由器直連子網路廣播位址的流量進行篩選，但針對我們路由之 Anycast 前置詞的廣播流量仍會自行到達我們的伺服器。通常，到達回送介面的廣播流量幾乎不會引起問題。繫結到整個範圍內特定連接埠的服務將接收傳送到廣播位址的資料並繼續正常運作。不幸的是，當打破正常的預期時，這個相對簡單的特性就會失效。</p>
@@ -76,7 +110,11 @@
 <p>理想情況下，這可以透過修改我們的工具來實現，僅在本機路由表中新增本機路由，而完全跳過廣播路由的包含。不幸的是，執行此操作的唯一可行機制是修補和維護我們自己的 iproute2 套件內部分支，但這對於當前的問題來說是一個相當麻煩的解決方案。</p>
 <p>因此，我們決定專注於移除路由本身。與任何其他路由類似，可以使用標準工具將其移除：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> sudo ip route del </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.255</span><span class="sk-24292e-fff"> table local</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> sudo ip route del </span><span class="sk-005cc5-ffc799">203.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">113.255</span><span class="sk-24292e-fff"> table local</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>為了大規模實現這一點，我們對部署系統進行了相對較小的變更：</p>
 <div class="emdash-code">
@@ -90,7 +128,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">        "src"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> lo_route</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">src,</span></span>
 <span class="line"><span class="sk-24292e-fff">        }) </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-d73a49-a0a0a0">%-</span><span class="sk-24292e-fff"> endif </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">  {</span><span class="sk-d73a49-a0a0a0">%-</span><span class="sk-24292e-fff"> endfor </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  {</span><span class="sk-d73a49-a0a0a0">%-</span><span class="sk-24292e-fff"> endfor </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>這樣做之後，我們可以有效地確保移除連接到回送介面的所有廣播路由，確保同等對待規範定義的廣播位址與範圍內的任何其他位址，從而降低風險。</p>
 <h3>後續步驟</h3>

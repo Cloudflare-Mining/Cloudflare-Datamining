@@ -15,8 +15,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">, val </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> val;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>At first glance, this seems like reasonable code that returns a unique number each time it is called (incrementing each time).</p>
 <p>Unfortunately, before now, this code had two problems:</p>
 <ol>
@@ -140,7 +162,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> txn.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">, val </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> val;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This fixes our race condition. Now, if <code>getUniqueNumber()</code> is called multiple times concurrently such that the storage operations interleave, the system will detect the problem. One of the concurrent calls will be chosen to be the "winner", and will complete normally. The other calls will be canceled and retried, so that they can see the value written by the first call.</p>
 <p>This fixes our problems! But, at some cost:</p>
@@ -163,7 +189,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  ++</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.val;</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">  this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.val);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> result;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code is MUCH faster than the previous implementation, because it stores the value in memory. In fact, after the function runs once, further calls won't wait for any I/O at all -- they will return immediately. This is because by caching the value in memory, we avoid waiting for a <code>get()</code> (except for the first time), and we don't wait for the <code>put()</code> either, trusting that it will complete asynchronously later on.</p>
 <p>Returning immediately also means that there's no opportunity for concurrency, so the calls that return immediately will always return unique numbers! This means that not only is this implementation faster than our original implementation, it is also <em>more correct</em>. This is only possible because the Durable Objects platform guarantees that there will only be one instance, and therefore only one copy of <code>this.val</code>.</p>
@@ -187,7 +217,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">, val </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> val;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It turns out we can! We create a new rule:</p>
 <blockquote><strong>Input gates:</strong> While a storage operation is executing, no events shall be delivered to the object except for storage completion events. Any other events will be deferred until such a time as the object is no longer executing JavaScript code <em>and</em> is no longer waiting for any storage operations. We say that these events are waiting for the "input gate" to open.</blockquote>
@@ -295,7 +329,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> promise2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">123</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> promise1;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">frob</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> promise2;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> promise2;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here, the <code>get()</code> and <code>put()</code> execute concurrently. Moreover, the call to <code>frob()</code> may execute before the <code>put()</code> has completed (but strictly after the <code>get()</code> completes, since we <code>await</code>ed that promise). However, no <em>other</em> event -- such as receiving a new request -- can unexpectedly happen in the meantime.</p>
 <p>On the other hand, the rule protects you not just against concurrent incoming requests, but also concurrent responses to outgoing requests. For example, say you have:</p>
@@ -311,7 +349,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> promise1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> task1</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> promise2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> task2</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> val1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> promise1;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> val2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> promise2;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> val2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> promise2;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code launches two <code>fetch()</code> calls concurrently. After each fetch completes, getUniqueNumber() is invoked. Could the two calls interfere with each other?</p>
 <p>No, they will not. The completion of a <code>fetch()</code> is itself a kind of event. Our rule states that such events cannot be delivered while storage events are in progress. When the first of the two fetches returns, the app calls <code>getUniqueNumber()</code>, which starts performing some storage operations. If the second <code>fetch()</code> also returns while these storage operations are still outstanding, that return will be deferred until after the storage operations are done. Once again, our code ends up correct!</p>
@@ -321,7 +363,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> promise1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> getUniqueNumber</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> promise2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> getUniqueNumber</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> val1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> promise1;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> val2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> promise2;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> val2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> promise2;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this case, there is, in fact, a problem. Two calls to <code>getUniqueNumber()</code> are initiated <em>by the same event</em>. The application does not <code>await</code> the first call before starting the second, so the two calls end up running concurrently. Our special rule doesn't protect us here, because there is no incoming event that can be deferred between when the two calls are made. From the system's point of view, there's no way to distinguish this code from code which legitimately decided to perform two storage operations in parallel.</p>
 <p>As such, in this case, the two calls to <code>getUniqueNumber()</code> will interfere with each other. However, this problem is far less likely to come about by accident, and is far easier to catch in testing. This bug is <em>deterministic</em>, not caused by the unpredictable timing of network events. We consider this an acceptable caveat in order to solve the larger problem posed by concurrent requests.</p>
@@ -338,7 +384,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  ++</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.val;</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">  this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.val);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> result;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With input gates (part 1), we've solved one of the two problems this code had: the race condition of initialization. We no longer need to worry that two requests will call this at the same time, leading <code>this.val</code> to be initialized twice.</p>
 <p>However, the problem with not <code>await</code>ing the <code>put()</code> is still there. If we don't <code>await</code> it, then we could lose data. If we do <code>await</code> it, then the call is slow.</p>
@@ -355,7 +405,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"counter"</span><span class="sk-24292e-fff">, val </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> val;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The answer to this part is a classic one: we can add automatic caching to the storage layer, just like most operating systems do for disk storage.</p>
 <p>We have rolled out an in-memory caching layer for Durable Objects. This layer keeps up to several megabytes worth of data directly in memory in the process where the object runs.</p>
@@ -375,7 +429,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// There's no possibility of data loss, because the delete() and the</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// following put() are automatically coalesced into one atomic</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// operation. This is true as long as you do not `await` anything</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// in between.</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// in between.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Second, the API is also able to provide stronger ordering guarantees for reads. Previously, overlapping storage operations did not have guaranteed ordering. For example, if you issued a <code>get()</code> and a <code>put()</code> on the same key at the same time (without <code>await</code>ing one before starting the other), then it was not deterministic whether the <code>get()</code> might return the value written by the <code>put()</code> -- regardless of the ordering of the statements in your code. The caching layer fixes this. Now, operations are performed in exactly the order in which they were initiated, regardless of when they complete.</p>
 <p>These two features eliminate more subtle bugs that might otherwise be hard to catch in testing, so that you don't have to be a database expert to write code that works.</p>
@@ -384,7 +442,11 @@
 <p>For those cases, we offer explicit bypasses:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"foo"</span><span class="sk-24292e-fff">, {allowConcurrency: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, noCache: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">});</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"foo"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, {allowUnconfirmed: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, noCache: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"foo"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, {allowUnconfirmed: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, noCache: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Developers who have taken the time to think carefully about these issues can use these flags to tune performance to their specific needs. For those who don't want to think about it, the defaults should work well.</p>
 <h2>Conclusion</h2>

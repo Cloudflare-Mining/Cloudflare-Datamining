@@ -41,19 +41,49 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    http.request.uri.path</span><span class="sk-032f62-99ffe4"> matches</span><span class="sk-032f62-99ffe4"> "\n+."</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    or</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    http.request.uri.query</span><span class="sk-032f62-99ffe4"> matches</span><span class="sk-032f62-99ffe4"> "\x00+."</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This expression evaluates to a boolean “true” for HTTP/1.1 requests that either contain one or more newlines followed by a character in the request path or one or more NULL bytes followed by a character in the query string.</p>
 <p>Say we had the following request that would match the rule above:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> /cms/%0Aadmin?action=%00post</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> example.com</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If matched data logging is enabled, the rules that match would be executed again in a special context that tags all fields that are accessed during execution. We do this second execution because this tagging adds a noticeable computational overhead, and since the vast majority of requests don't trigger a rule at all we would be unnecessarily adding overhead to each request. Requests that do match any rules will only match a few rules as well, so we don't need to re-execute a large portion of the ruleset.</p>
 <p>You may notice that although <code>http.request.uri.query matches "\x00+."</code> evaluates to <code>true</code> for this request, it won’t be executed, because the expression short-circuits with the first <code>or</code> condition that also matches. This results in only <code>http.request.version</code> and <code>http.request.uri.path</code> being tagged as accessed:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http.request.version</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">http.request.uri.path</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /cms/%0Aadmin</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">http.request.uri.path</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /cms/%0Aadmin</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Having gathered the fields that were accessed, the Firewall engine does some post-processing; removing fields that are a subset of others (e.g., the query string and the full URI), or truncating fields that are beyond a certain character length.</p>
 <p>Finally, these get serialized as JSON, encrypted with the customer's public key, serialized again as a set of bytes, and prefixed with a version number should we need to change/update it in the future. To simplify consumption of these blobs, our APIs display a base64 encoded version of the bytes:</p>
@@ -64,7 +94,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> MATCHED_DATA=AkjQDktMX4FudxeQhwa0UPNezhkgLAUbkglNQ8XVCHYqPgAAAAAAAACox6cEwqWQpFVE2gCFyOFsSdm2hCoE0/oWKXZJGa5UPd5mWSRxNctuXNtU32hcYNR/azLjsGO668Jwk+qCdFvmKjEqEMJgI+fvhwLQmm4=</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> matched-data-cli</span><span class="sk-032f62-99ffe4"> decrypt</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-24292e-fff"> $MATCHED_DATA </span><span class="sk-005cc5-99ffe4">-k</span><span class="sk-24292e-fff"> $PRIVATE_KEY</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"http.request.version"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "HTTP/1.1",</span><span class="sk-032f62-99ffe4"> "http.request.uri.path":</span><span class="sk-032f62-99ffe4"> "/cms/%0Aadmin"}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"http.request.version"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "HTTP/1.1",</span><span class="sk-032f62-99ffe4"> "http.request.uri.path":</span><span class="sk-032f62-99ffe4"> "/cms/%0Aadmin"}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Or the dashboard UI:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

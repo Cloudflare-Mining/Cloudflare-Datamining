@@ -27,14 +27,40 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	kelly.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	christian.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	christian.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>高度なネームサーバーは、いくつかの方法で信頼性を向上しています。最初の改善点は、Foundation DNSの権威サーバーが複数のTLDに分散されていることです。分散により、TLDネームサーバーなど、DNSインフラストラクチャに影響を与える可能性がある大規模なDNS障害とDDoS攻撃から保護します。Foundation DNS権威ネームサーバーは現在、グローバルDNSツリー構造の複数のブランチに配置されており、お客様をさらに潜在的な障害や攻撃から保護します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.com.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.net.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.org.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.org.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>また、上記のFoundation DNSで返されたNSがもう一つあることにもお気づきかもしれません。これも改善点ではありますが、皆様が考えているような理由ではありません。これらのネームサーバーの1つをそれぞれのIPアドレスに解決すると、これをもう少し理解しやすくなります。まずは標準的なネームサーバーからやってみましょう：</p>
 <p>2つのネームサーバーに対して合計6つのIPアドレスが存在します。実を言うと、権威ネームサーバーを照会する際にDNSリゾルバーが実際に関心を持っているのは、これだけです。DNSリゾルバーは通常、権威サーバーの実際のドメイン名を追跡しません。特定のドメインに対するクエリを解決するために使用できるIPアドレスの順不同リストを維持するのみとなります。そのため、標準の権威ネームサーバーでは、DNSクエリの解決に使用する6つのIPアドレスをリゾルバーに割り当てました。次に、Foundation DNSの高度なネームサーバーのIPアドレスを見てみましょう：</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> christian.ns.cloudflare.com.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       108.162.195.247</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       162.159.44.247</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       172.64.35.247</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       172.64.35.247</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ご覧いただけましたでしょうか。Foundation DNSは、ゾーンに提供するのと同じIPアドレスを各権威ネームサーバーに提供します。この例では、DNSクエリの解決に使用するリゾルバーには、3つのIPアドレスを提供しただけです。「3つより6つの方がいいのではないか、これはダウングレードではないのか」と考える方もいるかと思います。多いほど良いというわけではありません。その理由をお話しします。</p>
 <div class="emdash-code">
@@ -64,7 +94,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> blue.foundationdns.org.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       108.162.198.1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       162.159.60.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflareが<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a>を使用している事はご存知かと思います。ご想像の通り、当社のDNSサービスはAnycastを活用し、当社の権威DNSサーバーをグローバルに、そしてインターネット上のユーザーやリゾルバーにできるだけ近いところで利用できるようにしています。標準ネームサーバーは、単一のCloudflare Anycastグループによって、すべてのデータセンターからアドバタイズされます。ヨーロッパに焦点を当てると、標準的なNSのデプロイメントでは、両方のネームサーバーがすべてのデータセンターからアドバタイズされていることがわかります。</p>
 <p>上記の標準ネームサーバからこれら6つのIPアドレスを取得し、「hostname.bind」を検索します。TXTレコードは、DNSクエリーの解決場所として最も近いデータセンターの空港コードまたは物理的な場所を示しています。この出力を見ると、多い方が必ずしも良いとは限らない理由がお分かりいただけるかと思います。</p>
@@ -89,7 +123,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.35.247</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>「これが意味するものは何か、自分との関係性は？」と疑問に思われるかもしれません。一例を見てみましょう。ロンドンのCloudflare標準ネームサーバーを使用してドメインを解決する必要があり、ロンドンにあるパブリックリゾルバーを使用している場合、リゾルバーは、到達しようとしているNSに関係なく、常にCloudflare LHRデータセンターに接続します。Anycastであるため、他の選択肢はありません。</p>
 <p>Anycastのため、LHRデータセンターが完全にオフラインになった場合、LHR向けのトラフィックはすべて他の近くのデータセンターにルーティングされ、リゾルバーは正常に機能し続けます。ただし、LHRデータセンターはオンラインであったが、DNSサービスがDNSクエリに応答できないという万が一のシナリオでは、リゾルバは他のデータに到達できないため、これらのDNSクエリを解決する方法がありません。仮にIPアドレスが100個あったとしても、このシナリオでは役に立ちません。最終的に、キャッシュされた応答は期限切れとなり、ドメインは最終的に解決できなくなります。</p>
@@ -113,12 +151,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.40.1</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"MAN"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"MAN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>太字のテキストの「<strong>m</strong>」の前の数字は、クエリに応答したデータセンターを表しています。3つの応答のいずれかでその数字が異なる場合、Foundation DNS権威ネームサーバーの1つが、異なる物理的な場所からアドバタイズされているということがわかります。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @108.162.198.1</span><span class="sk-032f62-99ffe4"> +nsid</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> NSID:</span></span>
-<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">NSID:</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-005cc5-ffc799"> 34</span><span class="sk-032f62-99ffe4"> 6d</span><span class="sk-005cc5-ffc799"> 33</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"94m39"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">NSID:</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-005cc5-ffc799"> 34</span><span class="sk-032f62-99ffe4"> 6d</span><span class="sk-005cc5-ffc799"> 33</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"94m39"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Foundation DNSは2つのAnycastグループを活用することで、従来の障害シナリオもシームレスに処理することができます。DNSリゾルバーは、特定のドメインに対して返されたすべての権威ネームサーバーへのリクエストを監視しますが、最も高速な応答を提供しているNSを主に使用します。</p>
 <p>この構成では、DNSリゾルバーは2つの異なるCloudflareデータセンターにリクエストを送信できるため、1つの物理的な場所で障害が発生した場合も、クエリは2番目のデータセンターに自動的に送信され、そこで適切に解決することができます。</p>
@@ -270,7 +316,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "datetime_leq"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2024-06-01T00:00:00Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>プライマリゾーン/セカンダリゾーン</p>
 <p>CloudflareをプライマリNSとして使用しながら、複数の権威DNSプロバイダーを持つことができます。</p>

@@ -47,8 +47,30 @@
 <p>稽核記錄始終與帳戶相關聯，一些動作還包括相關的使用者和區域資訊。動作部分概述了變更的內容和時間，而執行者部分則提供了有關變更執行者以及執行方式的背景資訊，包括變更是透過 API 還是透過 UI 完成的。</p>
 <p>還包括有關資源的資訊，以便您能夠輕鬆識別變更的內容（在本範例中，更新了<a href="https://developers.cloudflare.com/waf/reference/alerts" target="_blank" rel="noopener noreferrer"><u>進階安全性事件警示</u></a>）。此外，還提供原始 API 要求詳細資料，讓使用者能透過稽核記錄追溯到特定的 API 呼叫。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> PUT</span><span class="sk-6f42c1-ffc799"> https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt; --data-raw '{...'}</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> PUT</span><span class="sk-6f42c1-ffc799"> https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt; --data-raw '{...'}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">       {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            "account"</span><span class="sk-24292e-fff">: {</span></span>
@@ -100,7 +122,11 @@
 <span class="line"><span class="sk-24292e-fff">                },</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">                "scope"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"accounts"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"policies"</span></span>
-<span class="line"><span class="sk-24292e-fff">            }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">            }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>即將推出的增強功能</h2>
 <p>對於正式上市 (GA) 版本，我們專注於在 Automatic Audit Logs 儀表板中開發新的使用者介面，為稽核記錄擷取更多的可稽核欄位（包括系統發起的動作和使用者層級動作，如登入事件），並允許透過 <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a> 匯出稽核記錄。而在長期發展方面，我們計劃為稽核記錄引入儀表板、趨勢分析和警示功能，以進一步提高其實用性和易用性。透過增強我們的稽核記錄系統，Cloudflare 正在努力踐行承諾，讓使用者能夠以更高的透明度、安全性和效率管理其環境。</p>

@@ -57,8 +57,30 @@
 <p>In our design, the client side performs two operations—key generation and KEM decapsulation. Looking at those two operations we can see that the key generation is a bottleneck here.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Key</span><span class="sk-032f62-99ffe4"> generation:</span><span class="sk-005cc5-ffc799"> 	3553.5</span><span class="sk-24292e-fff"> [ops/sec]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">KEM</span><span class="sk-032f62-99ffe4"> decapsulation:</span><span class="sk-005cc5-ffc799"> 	17186.7</span><span class="sk-24292e-fff"> [ops/sec]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">KEM</span><span class="sk-032f62-99ffe4"> decapsulation:</span><span class="sk-005cc5-ffc799"> 	17186.7</span><span class="sk-24292e-fff"> [ops/sec]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In algorithms with quotient-style keys (like NTRU), the key generation algorithm performs an inversion in the quotient ring—an operation that is quite computationally expensive. Alternatively, a TLS implementation could generate ephemeral keys ahead of time in order to speed up key exchange. There are several other lattice-based key exchange candidates that may be worth experimenting with in the context of TLS key exchange, which are based on different underlying principles than the HRSS construction. These candidates have similar key sizes and faster key generation algorithms, but have their own drawbacks. <strong>For now, HRSS looks like the more promising algorithm for use in TLS</strong>.</p>
 <p>In the case of SIKE, we <a href="https://github.com/post-quantum-cryptography/c-sike" target="_blank" rel="noopener noreferrer">implemented</a> the most recent version of the algorithm, and instantiated it with the most performance-efficient parameter set for our experiment. The algorithm is computationally expensive, so we were required to use assembly to optimize it. In order to ensure best performance on Intel, most performance-critical operations have two different implementations; the library detects CPU capabilities and uses <a href="https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/ia-large-integer-arithmetic-paper.pdf" target="_blank" rel="noopener noreferrer">faster instructions</a> if available, but otherwise falls back to a slightly slower generic implementation. We developed our own optimizations for 64-bit ARM CPUs. Nevertheless, our results show that SIKE incurred a significant overhead for every connection, especially on devices with weaker processors. It must be noted that high-performance isogeny-based public key cryptography is arguably much less developed than its lattice-based counterparts. Some ideas to develop this are <a href="https://www.youtube.com/watch?v=UfF3_YtYzPA" target="_blank" rel="noopener noreferrer">floating around</a>, and we expect to see performance improvements in the future.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

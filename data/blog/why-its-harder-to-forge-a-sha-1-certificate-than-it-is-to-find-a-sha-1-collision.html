@@ -49,8 +49,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://blog.cloudflare.com/content/images/2015/08/brown.jpg</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> md5</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">b69dd1fd1254868b6e0bb8ed9fe7ecad</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://blog.cloudflare.com/content/images/2015/08/black.jpg</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> md5</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">b69dd1fd1254868b6e0bb8ed9fe7ecad</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">b69dd1fd1254868b6e0bb8ed9fe7ecad</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Despite being relatively trivial to find an MD5 collision, it’s still not known how to perform a second-preimage attack on MD5. For example, given a digitally signed certificate, nobody has been able to create a second certificate with the same hash. Despite this, researchers created a <a href="http://www.win.tue.nl/hashclash/rogue-ca" target="_blank" rel="noopener noreferrer">certificate</a> with the same signature as a certificate trusted by browsers.</p>
 <p>The technique they used, a chosen-prefix attack, was originally proposed by Marc Stevens in his <a href="http://www.win.tue.nl/hashclash/On%20Collisions%20for%20MD5%20-%20M.M.J.%20Stevens.pdf" target="_blank" rel="noopener noreferrer">Master’s Thesis</a>. It can be used to create a forged certificate as long as you can get a certificate authority to issue a certificate that starts with predictable values.</p>
 <h3>Chosen-prefix attacks</h3>
@@ -66,11 +88,19 @@
 </ul>
 <p>If the attacker knows every value before the domain, then they can take</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">P1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Serial</span><span class="sk-032f62-99ffe4"> number</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> Validity</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> real</span><span class="sk-032f62-99ffe4"> domain</span><span class="sk-032f62-99ffe4"> name</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">P1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Serial</span><span class="sk-032f62-99ffe4"> number</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> Validity</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> real</span><span class="sk-032f62-99ffe4"> domain</span><span class="sk-032f62-99ffe4"> name</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>and</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">P2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Serial</span><span class="sk-032f62-99ffe4"> number</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> Validity</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> forged</span><span class="sk-032f62-99ffe4"> domain</span><span class="sk-032f62-99ffe4"> name</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">P2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Serial</span><span class="sk-032f62-99ffe4"> number</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> Validity</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> forged</span><span class="sk-032f62-99ffe4"> domain</span><span class="sk-032f62-99ffe4"> name</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>and apply the attack to get S1 and S2 that fit into the public key section. If the serial number and validity period can be predicted, a collision can be found using the following steps:</p>
 <ol>

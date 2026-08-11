@@ -14,8 +14,30 @@
 <p>エンジニアの観点からは、翻訳からアプリケーションコードを分離することで、コードの再コンパイルしたり再デプロイしたりしなくても文字列の変更ができます。当社のReactベースのアプリケーションでは、文字列のほとんどを外部化して、次のようなコードブロックの変更にまとめました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Cancel</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>これを次のようにします。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;&lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-6f42c1-a0a0a0"> id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"signup.cancel"</span><span class="sk-24292e-a0a0a0"> /&gt;&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
@@ -26,13 +48,21 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.cancel"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cancel"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.next"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Next"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...many more keys</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>上記のコンポーネントは、当社アプリケーションで基本的なi18nビルディングブロックです。このスキームで、翻訳された文字列は翻訳IDによってキー設定された大きな辞書に保存されます。これを「翻訳カタログ」と呼び、当社がサポートする各言語の翻訳カタログのセットに入れます。</p>
 <p>実行時、このコンポーネントは提示されるキーの正しいカタログで翻訳を検索し、ページ（DOM経由で）この翻訳を挿入します。アプリケーションの静的テキストは全てこのように簡単な変換で外部化できます。</p>
 <p>ただし、動的データを静的テキストと混在させる必要がある場合は、ソリューションが多少複雑になります。i18nの地雷でいっぱいの一見簡単な例を考えていきましょう。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>次のように、この文をいくつかに切り刻んで外部化したくなるかもしれません。</p>
 <div class="emdash-code">
@@ -67,7 +97,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "pageRules"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Page Rules"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これで作業は完了し、エレガントなソリューションに見えるかもしれません。結局のところ、selected.prefixとpageRules.suffix文字列はリユースするようになっているようです。しかし、このように文を切り刻んでから翻訳されたビットを連結させると、国際化のための文字列の外部化する際に一つの大きな落とし穴となってしまいます。</p>
 <p>この問題は、翻訳されると文を構成する様々な語がコンテクスト（単数形コンテクスト vs 複数形コンテクスト、女性形と男性形に起因、主語/述語の一致など）に基づいて、<a href="https://en.wikipedia.org/wiki/Inflection" target="_blank" rel="noopener noreferrer">さまざまな方法でモーフィングされる</a>ことです。これは、<a href="https://en.wikipedia.org/wiki/Word_order" target="_blank" rel="noopener noreferrer">語順</a>のように言語間で大きく異なります。英語を例にすると、We like themという文は、主語-動詞-目的語の順ですが、他の言語の語順に従うと、主語-目的語-述語（We them like）だったり、述語-主語-目的語（Like we them）だったり、他の語順に従うこともあります。言語間にはこうした微妙な違いがあるため、翻訳された句を連結させて1つの文にするのは、ほとんどの場合、ローカライゼーションエラーとなるのです。</p>
@@ -118,7 +152,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これによって、翻訳者は文の完全なコンテクストで作業することができるようになり、すべての語が正しい語形変化で翻訳されます。</p>
 <p>別の潜在的な問題にお気づきになりましたか。この例で、totalSelectedが1だけの場合、どうなるのでしょうか。上記のコードの場合、ユーザーは「削除のために1 Page Rulesを選択しました」というメッセージが表示されます。動的データの値に基づいて、条件付きで文を複数形にする必要があります。これはかなり一般的なユースケースとなり、当社のコンポーネントがsmart_count機能を経由して自動的に処理します。</p>
@@ -145,14 +183,22 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Portuguese (Brazil) catalog.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ smart_count } Page Rule. |||| Você selecionou %{ smart_count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここでは、単数形バージョンと複数形バージョンは||||で区切られます。はtotalSelected値渡し変数に応じて、正しい翻訳を自動的に選択します。</p>
 <p>単一の文字列として外部化したいテキストのブロックとしてマークアップが混ざると、別の障害として発生します。たとえば、文中にあるいくつかの句に他のページへのリンクが必要な場合はどうなりますか。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  Don't forget to </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verify your email address.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このユースケースを解決するために、コンポーネントは、任意のエレメントを次のような翻訳文字列でプレースホルダーに注入できます。</p>
 <div class="emdash-code">
@@ -164,7 +210,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "notification.email_verification"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Don't forget to &lt;0&gt;verify your email address.&lt;/0&gt;"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この例では、コンポーネントはプレースホルダーエレメント（&lt;0&gt;、&lt;1&gt;など）をComponents配列のインデックスに位置するコンポーネントタイプのインスタンスに置き換えます。componentPropsで指定されたデータもそのインスタンスに転送します。上記の例は、Reactで次にまとめられます。</p>
 <div class="emdash-code">
@@ -176,7 +226,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// es-ES</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  No olvide </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-6f42c1-a0a0a0"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/profile"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verificar la dirección de correo electrónico.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>安全第一ではなく第三</h3>
 <p>上で説明した機能性は、文字列を外部化するのに十分です。しかし、時には、大量で繰り返しの多いコードになってしまうこともありました。2つの落とし穴があることがすぐに分かりました。</p>
@@ -216,7 +270,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Hmm... We couldn't find any matching websites.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ビルド時に実行するツールは、こうした文字列をすべて見つけ、カタログに抽出する作業を行います。たとえば、上記の結果では、次のようなカタログが生成されます。</p>
 <div class="emdash-code">
@@ -228,7 +286,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// locales/de_DE.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "Hmm... We couldn't find any matching websites."</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Hmm... Wir konnten keine übereinstimmenden Websites finden."</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このアプローチの明らかな利点は、別々のファイルがないことです！他の利点は、タイプミスはもう起こらないので、タイプチェックの必要性がなくなることです。</p>
 <p>ただし、当社のユースケースでは、いくつかの欠点がありました。</p>
@@ -239,7 +301,11 @@
 <p>以前、データ翻訳された文字列の注入について話した時には触れなかった大きな問題があります。注入するデータもユーザーの現地の慣習に準拠するようにフォーマットする必要があるかもしれないということです。日付、時間、数値、通貨、その他の種類のデータに当てはまることです。</p>
 <p>前回の内容からシンプルな例を見てみましょう。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>適切に書式が設定されていなければ、小さな数値が正しく表示されても、何千という数になるとすぐにローカライゼーションの問題が発生します。桁をグループに分けて、シンボルで区切る方法は<a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank" rel="noopener noreferrer">文化によって異なります</a>。ここで30万と300分の1が異なるロケールでどのようなフォーマットになるか示されています。</p>
 <p>言語（国名）</p>
@@ -382,7 +448,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> number </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 300000.03</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> formatted </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> number.</span><span class="sk-6f42c1-ffc799">toLocaleString</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hi-IN'</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">// 3,00,000.03</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ラッキーにも、Intlのブラウザサポートは、完全サポート付きの最新ブラウザになり、大きな発展を遂げています。</p>
 <p>V8のような最新のJavaScriptエンジンの中には、C++ベースの組み込み関数を選び、こうしたライブラリのセルフホストJavaScriptを実装しなくなるものもあり、<a href="https://v8.dev/blog/intl" target="_blank" rel="noopener noreferrer">その結果として大幅なスピードアップにつながりました</a>。</p>
@@ -420,7 +490,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "other.verify.button"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "verify.proceed.link"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email to proceed"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここに逐語的に複製された文字列とコピーされた部分文字列があります。翻訳サービスは単語数で請求されます。二回分の料金を払って、一貫性に関する問題が発生するリスクを負いたくはないものです。このため、翻訳メモリがきちんと機能するようにして、翻訳者がファイルを見る前にこうした文字列の事前翻訳のステップが確実に行われるようにしておきます。</p>
 <p>翻訳作業の準備が完了したとマークされると、翻訳チームは作業の大きさ、翻訳者のスケジュール、契約条件など様々な要因によって、翻訳済みコピーの提出まで数時間ほどから数週間かけます。この部分における懸念は、適切な翻訳チームの調達、コスト管理、品質と一貫性の確保、そして企業ブランドが適切に伝えられているかというものです。これについては、同じ長さの別のブログを書くことができるほどです。この記事は主にテクニカルな面を取り上げているので、詳細には触れませんが、間違いなく、この部分で間違いを犯すと、たとえ技術的な目標を達成できたとしても、全体の努力を無駄にしてしまうことになります。</p>

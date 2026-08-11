@@ -35,8 +35,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Get and print CSV string</span></span>
 <span class="line"><span class="sk-24292e-fff">csv_output </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> output.getvalue().strip()</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">print</span><span class="sk-24292e-fff">(csv_output)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">print</span><span class="sk-24292e-fff">(csv_output)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>正確なレート制限で攻撃の可能性を最小化</h3>
 <p>悪用を阻止するとなると、ほとんどの実務者はまず<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">レート制限</a>を思い浮かべるでしょう。**APIに制限を導入することは、悪用を抑制し、オリジンの偶発的な過負荷を防ぐための貴重なツールです。**しかし、正しいレート制限のアプローチを選択したかどうか、どうすればわかるのだでしょうか？アプローチは様々ですが、一般的には選択されたエラーコードと制限値そのものの根拠に行き着きます。</p>
 <p>APIによっては、HTTP 403（forbidden）で応答するようにレート制限エラーを設定するものもあれば、HTTP 429（too many reuqests）で応答するものもあります。HTTP 403の使用は有用に思えますが、他のセキュリティツールも403コードで応答している場合に問題が生じます。攻撃を受けているとき、どのツールがどのようなエラーやブロックを引き起こしているのかを読み解くのは難しくなります。</p>

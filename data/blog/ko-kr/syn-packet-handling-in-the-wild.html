@@ -19,8 +19,30 @@
 <h3>SYN 큐</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_synack_retries</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>SYN 큐는 수신 SYN 패킷<a href="https://blog.cloudflare.com/#fn1">[1]</a> (구체적으로는 <code>struct inet_request_sock</code>)을 저장합니다. 이는 SYN+ACK 패킷을 보내고 타임아웃시에 재시도하는 역할을 합니다. 리눅스에서 재시도 값은 다음과 같이 설정됩니다:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcp_synack_retries</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> INTEGER</span></span>
@@ -31,7 +53,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	retransmission</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> current</span><span class="sk-032f62-99ffe4"> initial</span><span class="sk-032f62-99ffe4"> RTO</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> 1second.</span><span class="sk-032f62-99ffe4"> With</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	this</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> final</span><span class="sk-032f62-99ffe4"> timeout</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> passive</span><span class="sk-032f62-99ffe4"> TCP</span><span class="sk-032f62-99ffe4"> connection</span><span class="sk-032f62-99ffe4"> will</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	happen</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-005cc5-ffc799"> 63</span><span class="sk-032f62-99ffe4"> seconds.</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank" rel="noopener noreferrer">문서</a>를 보면 다음과 같습니다:</p>
 <p>SYN+ACK을 전송한 뒤에 SYN 큐는 3방향 핸드쉐이크의 마지막 단계인 클라이언트로부터의 ACK패킷을 기다립니다. 수신된 ACK 패킷은 모두 완전히 수립된 연결 테이블에서 찾을 수 있어야 하며 관련된 SYN 큐에는 없어야 합니다. SYN 큐에서 찾을 수 있다면, 커널은 해당 연결을 SYN 큐에서 제거하고 완전히 수립된 연결을 만들어 (구체적으로는 <code>struct inet_sock</code>) Accept 큐에 추가합니다.</p>
@@ -40,13 +66,21 @@
 <p>이는 리눅스에의 SYN 패킷 처리를 매우 간략화한 것인데, <code>TCP_DEFER_ACCEPT</code><a href="https://blog.cloudflare.com/#fn2">[2]</a> 나 <code>TCP_FASTOPEN</code> 의 경우에는 약간 다르게 동작 합니다.</p>
 <h3>큐 크기 제한</h3>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Accept 와 SYN 큐의 최대 크기는 어플리케이션이 호출하는 <code>listen(2)</code> 시스템 콜의 <code>backlog</code> 파라미터로 전달되는 값으로 설정됩니다. 예를 들어 다음은 Accept 와 SYN 큐 크기를 1024로 지정합니다:</p>
 <p>참고로 커널 4.3 이전에는 SYN 큐 크기가 다르게 설정되었습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.core.somaxconn</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>SYN 큐의 최대 크기는 <code>net.ipv4.tcp_max_syn_backlog</code> 에 의해 지정되었지만 더 이상은 그렇지 않습니다. 최근에는 <code>net.core.somaxconn</code> 이 두개의 큐의 최대 크기를 지정합니다. 우리 서버는 16k로 지정하고 있습니다:</p>
 <h3>적절한 backlog 값</h3>
@@ -65,7 +99,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :80</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">119</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :443</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>리눅스에서 SYN 큐를 들여다보기 위해서는 <code>ss</code> 명령을 이용하여 <code>SYN-RECV</code> 소켓을 살펴 보면 됩니다. 예를 들어 Cloudflare 의 서버 중 하나에서는 다음과 같이 tcp/80 SYN 큐에 119개가, tcp/443에 78개가 쌓여 있음을 알 수 있습니다.</p>
 <p>유사한 데이터를 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/resq.stp" target="_blank" rel="noopener noreferrer">SystemTap 스크립트 resq.stp</a>를 통해서도 볼 수 있습니다.</p>
@@ -86,13 +124,21 @@
 <p>만약 여러분의 서버가 많은 연결을 처리해야 하고 <code>accept()</code> 성능 문제를 겪고 있다면, <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">Nginx tuning / Epoll work distribution</a> 과 <a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts">a follow up showing useful SystemTap scripts</a> 을 읽어 보세요.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nstat</span><span class="sk-005cc5-99ffe4"> -az</span><span class="sk-032f62-99ffe4"> TcpExtListenDrops</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Accept 큐가 넘쳤는지의 통계는 <code>nstat</code> 카운터를 보면 알 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -plnt</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :6443</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cat</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">   Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">  Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 값은 전체 카운터입니다. 모든 어플리케이션이 별 문제 없어 보이는데도 이 값이 증가하는걸 종종 볼 수 있다면 이상적인 상황은 아닐 겁니다. 가장 먼저 할 일은 <code>ss</code> 로 Accept 큐 크기를 살펴보는 겁니다:</p>
 <p><code>Recv-Q</code> 컬럼은 Accept 큐의 소켓 숫자, <code>Send-Q</code>는 backlog 값입니다. 이 경우에는 <code>accept()</code>가 안된 소켓은 아직 없다는 걸 볼 수 있는데, 그래도 ListenDrops 카운터가 증가할 수 있습니다.</p>
@@ -102,7 +148,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449075</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:28585</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449253</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:50500</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198450062</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:65434</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>우리의 경우 어플리케이션이 아주 잠깐동안만 멈춘 것으로 보입니다. 아주 짧은 시간이라도 멈추기만 한다면 Accept 큐가 넘칠 충분한 이유가 될 겁니다. 바로 뒤에는 복구가 되었을 수 있습니다. 이런 경우라면 <code>ss</code> 로 디버깅하는 건 어렵습니다. 이런 경우를 위해서 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/acceptq.stp" target="_blank" rel="noopener noreferrer">acceptq.stp SystemTap 스크립트</a>를 작성하였는데, 커널을 후킹해서 버려지는 SYN 패킷을 출력 합니다:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -134,7 +184,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  6</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 2</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     24</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">       |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> t</span><span class="sk-032f62-99ffe4"> mod</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  MSS</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-005cc5-ffc799"> hash</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">ip,</span><span class="sk-032f62-99ffe4"> port,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">|</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>SYN 쿠키 마법은 잘 됩니다만 부작용이 없는 것은 아닙니다. 주된 문제는 SYN 쿠키에 저장할 수 있는 데이터 크기가 작다는 겁니다. 구체적으로는 시퀀스 번호 32비트만이 ACK에 들어 있는데 다음과 같이 나누어서 사용 됩니다:</p>
 <p>MSS 값을 <a href="https://github.com/torvalds/linux/blob/5bbcc0f595fadb4cac0eddc4401035ec0bd95b09/net/ipv4/syncookies.c#L142" target="_blank" rel="noopener noreferrer">4가지만 정할 수 있게</a> 되면서 리눅스는 상대방의 다른 TCP 옵션 파라미터를 알 수 없습니다. 타임스탬프, ECN, 선택적인 ACK (SACK), 윈도우 크기 변경 정보를 잃게 되어 TCP 세션 성능을 저하하는 요인이 됩니다.</p>
@@ -142,12 +196,20 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  26</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 4</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> Timestamp</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  ECN</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> SACK</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> WScale</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>다행히 리눅스에는 대책이 있습니다. 만약 TCP 타임스탬프가 켜져 있다면, 타임스탬프 필드의 32비트를 다은 용도로 재사용할 수 있습니다. 여기에는 다음 정보가 보관됩니다:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_timestamps</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>TCP 타임스탬프는 기본적으로 켜져 있을 것입니다. 확인해 보기 위해 sysctl을 봅시다:</p>
 <p>예전부터 TCP 타임스탬프의 유용성에 대해 많은 논의가 있었습니다.</p>

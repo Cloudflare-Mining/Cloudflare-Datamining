@@ -27,14 +27,40 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	kelly.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	christian.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	christian.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Les serveurs de noms avancés améliorent la fiabilité de différentes manières. La première amélioration provient du fait que les serveurs DNS de référence de Foundation DNS sont répartis sur une multitude de domaines de premier niveau. Cette approche offre une protection contre les défaillances de DNS et les attaques DDoS de grande ampleur, susceptibles d'affecter l'infrastructure DNS à un niveau supérieur, notamment les serveurs de noms de domaines de premier niveau. Les serveurs de noms de référence de Foundation DNS sont désormais répartis dans différentes branches de l'arborescence mondiale de DNS, permettant ainsi d'isoler davantage nos clients de ces pannes et attaques potentielles.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.com.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.net.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.org.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.org.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Peut-être avez-vous également remarqué qu'un autre serveur de noms est répertorié avec Foundation DNS. Certes, il s'agit d'une amélioration ; toutefois, sa raison d'être n'est pas celle que vous pourriez penser. En résolvant chacun de ces serveurs de noms vers leurs adresses IP correspondantes, nous pouvons faciliter la compréhension du processus. C'est ce que nous allons faire ici, en commençant par nos serveurs de noms standard :</p>
 <p>Il existe au total six adresses IP pour les deux serveurs de noms. En réalité, il s'agit de l'unique aspect dont les résolveurs DNS se préoccupent lors de l'interrogation de serveurs de noms de référence. Les résolveurs DNS ne suivent généralement pas les noms de domaine réels des serveurs de référence ; ils gèrent simplement une liste non ordonnée d'adresses IP qu'ils peuvent utiliser pour résoudre les requêtes pour un domaine donné. Ainsi, avec nos serveurs de noms de référence, nous fournissons aux résolveurs six adresses IP devant être utilisées pour résoudre les requêtes DNS. Maintenant, examinons les adresses IP de nos serveurs de noms avancés dans Foundation DNS :</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> christian.ns.cloudflare.com.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       108.162.195.247</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       162.159.44.247</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       172.64.35.247</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       172.64.35.247</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Tiens donc ! Le service Foundation DNS fournit les mêmes adresses IP pour chacun des serveurs de noms de référence que nous fournissons à une zone. Dans ce cas, nous avons fourni trois adresses IP seulement que les résolveurs peuvent utiliser pour résoudre les requêtes DNS. Peut-être vous demandez-vous « Six, ce n'est pas mieux que trois ? Ce n'est pas pire, plutôt que mieux ? » Il s'avère que la supériorité numérique n'est pas toujours un avantage en soi. Examinons maintenant pourquoi.</p>
 <div class="emdash-code">
@@ -64,7 +94,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> blue.foundationdns.org.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       108.162.198.1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       162.159.60.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vous avez probablement connaissance de l'utilisation d'<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a> par Cloudflare ; et comme vous pouvez le supposer, nos services DNS utilisent Anycast pour garantir que nos serveurs DNS de référence sont disponibles dans le monde entier, aussi près que possible des utilisateurs et des résolveurs sur l'ensemble d'Internet. Nos serveurs de noms standard sont tous annoncés depuis chaque datacenter de Cloudflare par un groupe Anycast unique. Si nous effectuons un zoom sur l'Europe, vous pouvez voir que dans un déploiement de serveur de noms standard, les deux serveurs de noms sont annoncés depuis chaque datacenter.</p>
 <p>Nous pouvons prendre les six adresses IP de nos serveurs de noms standard mentionnés ci-dessus et effectuer une recherche pour leur enregistrement TXT « hostname.bind », qui nous indiquera le code de l'aéroport ou l'emplacement physique du datacenter le plus proche, depuis lequel nos requêtes DNS sont résolues. Ce résultat explique pourquoi la supériorité numérique n'est pas toujours un avantage en soi.</p>
@@ -89,7 +123,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.35.247</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vous vous demandez peut-être, « Et alors ? Qu'est-ce que ça signifie pour moi ? » Examinons un exemple. Si vous souhaitez résoudre un domaine avec les serveurs de noms standard de Cloudflare situés à Londres, et moi, j'utilise un résolveur public également situé à Londres, le résolveur se connectera toujours au datacenter LHR de Cloudflare, quel que soit le serveur de noms qu'il essaie d'atteindre. Il n'a pas d'autre choix, en raison d'Anycast.</p>
 <p>En raison d'Anycast, si le datacenter LHR était complètement hors ligne, tout le trafic destiné à LHR serait acheminé vers d'autres datacenters situés à proximité, et les résolveurs continueraient à fonctionner normalement. Cependant, dans le scénario improbable où le datacenter LHR est en ligne, mais nos services DNS ne sont pas en mesure de répondre aux requêtes DNS, le résolveur n'aurait aucun moyen de résoudre ces requêtes DNS, car il ne pourrait contacter aucun autre datacenter. Dans ce scénario, nous pourrions avoir 100 adresses IP sans que cela ne nous aide. À terme, les réponses en cache expireront et le domaine ne sera plus résolu.</p>
@@ -113,12 +151,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.40.1</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"MAN"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"MAN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dans le texte en gras, le nombre précédant le caractère « <strong>m</strong> » représente le datacenter qui a répondu à la requête. Tant que ce nombre est différent dans l'une des trois réponses, vous savez que l'un des serveurs de noms de référence de Foundation DNS est annoncé depuis un emplacement physique différent.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @108.162.198.1</span><span class="sk-032f62-99ffe4"> +nsid</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> NSID:</span></span>
-<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">NSID:</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-005cc5-ffc799"> 34</span><span class="sk-032f62-99ffe4"> 6d</span><span class="sk-005cc5-ffc799"> 33</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"94m39"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">NSID:</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-005cc5-ffc799"> 34</span><span class="sk-032f62-99ffe4"> 6d</span><span class="sk-005cc5-ffc799"> 33</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"94m39"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Avec Foundation DNS, qui tire parti de deux groupes Anycast, le scénario de panne évoqué plus haut est géré avec fluidité. Les résolveurs DNS surveillent les requêtes adressées à tous les serveurs de noms de référence et renvoyées pour un domaine donné, mais utilisent principalement le serveur de noms renvoyant les réponses les plus rapides.</p>
 <p>Avec cette configuration, les résolveurs DNS sont en mesure de transmettre des requêtes à deux datacenters Cloudflare différents ; ainsi, en cas de défaillance sur un site physique, les requêtes sont automatiquement transmises au deuxième datacenter, où elles peuvent être résolues correctement.</p>
@@ -270,7 +316,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "datetime_leq"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2024-06-01T00:00:00Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Zones principale et secondaire</p>
 <p>Cette fonctionnalité vous permet de configurer plusieurs fournisseurs DNS de référence, tout en utilisant Cloudflare comme serveur de noms principal.</p>

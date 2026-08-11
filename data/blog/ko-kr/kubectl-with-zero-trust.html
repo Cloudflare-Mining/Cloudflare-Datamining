@@ -27,8 +27,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  secret</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.tunnel_secret</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>터널을 만든 후에는 Cloudflare 네트워크가 터널을 통해 어떤 트래픽을 보내는지 알 수 있도록 경로를 만들어야 합니다.</p>
 <p>Cloudflare는 IPv4와 IPv6 주소 모두를 통한 쿠버네티스 API 액세스를 지원하므로 두 경로를 모두 설정합니다. 호스트 이름을 통해 API 서버에 연결하는 경우 이러한 IP 주소는 DNS 조회로 반환된 주소와 일치해야 합니다.</p>
 <div class="emdash-code">
@@ -44,7 +66,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  tunnel_id</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  network</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "2001:DB8::101/128"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  comment</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "Kubernetes API Server (IPv6)"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>다음에는 API 서버 및 클라이언트와 호환되도록 Cloudflare Gateway 설정을 구성합니다.</p>
 <p>클라이언트와 API 서버 간에 상호 TLS를 사용하며 kubectl과 API 서버 간의 트래픽이 모두 HTTP인 것은 아니므로 이러한 연결에 대한 HTTP 검사를 비활성화했습니다.</p>
@@ -65,7 +91,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  enabled</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  filters</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"http"</span><span class="sk-24292e-fff">]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  traffic</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"any(http.conn.dst_ip[*] in $%s)"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cloudflare_teams_list.k8s_apiserver_ips.id,</span><span class="sk-032f62-99ffe4"> "-",</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">))</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이러한 규칙을 <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices" target="_blank" rel="noopener noreferrer">장치 증명</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions" target="_blank" rel="noopener noreferrer">세션 수명</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors" target="_blank" rel="noopener noreferrer">사용자 및 그룹</a> 액세스 정책과 같은 추가 Zero Trust 규칙과 연결하여 보안을 더욱 사용자에게 맞출 수 있습니다.</p>
 <h3>터널 배포</h3>
@@ -85,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    credentials-file:</span><span class="sk-032f62-99ffe4"> /opt/zt/creds/creds.json</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    metrics:</span><span class="sk-032f62-99ffe4"> 0.0.0.0:8081</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    warp-routing:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        enabled:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        enabled:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>cloudflared tunnel list</code></p>
 <p>다음에는 터널 자격 증명의 암호를 만들어야 합니다. 암호 관리 시스템을 사용해야 하지만 여기서는 간단하게 직접 만들겠습니다.</p>
@@ -96,7 +130,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelName</span><span class="sk-24292e-fff"> $CF_TUNNEL_NAME </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelSecret</span><span class="sk-24292e-fff"> $CF_TUNNEL_SECRET </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   '{AccountTag: $accountTag, TunnelID: $tunnelID, TunnelName: $tunnelName, TunnelSecret: $tunnelSecret}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> generic</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> example</span><span class="sk-032f62-99ffe4"> tunnel-creds</span><span class="sk-005cc5-99ffe4"> --from-file=creds.json=/dev/stdin</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> generic</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> example</span><span class="sk-032f62-99ffe4"> tunnel-creds</span><span class="sk-005cc5-99ffe4"> --from-file=creds.json=/dev/stdin</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제 터널 자체를 배포할 수 있습니다. 노드를 비우는 동안에도 항상 일부를 사용할 수 있도록 복제본을 여러 개 배포합니다.</p>
 <h2>Cloudflare Zero Trust로 Kubectl 사용</h2>
@@ -162,7 +200,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> creds</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> configMap:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            name:</span><span class="sk-032f62-99ffe4"> tunnel-api-zt</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> config</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> config</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare Zero Trust 에이전트를 배포했다면, 이제 여러분의 팀 구성원은 SOCKS 터널을 특별히 설정하지 않고도 쿠버네티스 API에 액세스할 수 있습니다!</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -172,6 +214,10 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-99ffe4"> --short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Client</span><span class="sk-032f62-99ffe4"> Version:</span><span class="sk-032f62-99ffe4"> v1.24.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Server</span><span class="sk-032f62-99ffe4"> Version:</span><span class="sk-032f62-99ffe4"> v1.24.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Server</span><span class="sk-032f62-99ffe4"> Version:</span><span class="sk-032f62-99ffe4"> v1.24.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>시도해 보셨다면 피드백을 보내주세요! HTTP 이외의 워크플로에 대한 Zero Trust를 계속 개선하고 있습니다.</p>

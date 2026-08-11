@@ -72,8 +72,30 @@
 <span class="line"><span class="sk-24292e-fff">  url </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> :Text; </span><span class="sk-6a737d-8b8b8b94"># JavaScript script name or url.</span></span>
 <span class="line"><span class="sk-24292e-fff">  lineNumber </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff"> :Int32; </span><span class="sk-6a737d-8b8b8b94"># JavaScript script line number (0-based).</span></span>
 <span class="line"><span class="sk-24292e-fff">  columnNumber </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff"> :Int32; </span><span class="sk-6a737d-8b8b8b94"># JavaScript script column number (0-based).</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Okay, so by combining these two we can now parse and handle supported Network inspector messages ourselves and pass the rest through to V8 as usual.</p>
 <p>Now, we needed to make some changes to the frontend. Wait, you might ask, wasn't the entire point of these changes to speak the same protocol as frontend already does? That's true, but there are other challenges.</p>
 <p>First of all, because Network tab was designed to be used in a browser, it relies on various components that are actually irrelevant to us and, if pulled in as-is, would not only make frontend code larger, but also require extra backend support too. Some of them are used for cross-tab integration (e.g. with Profiler), but some are part of the Network tab itself - for example, it doesn't make much sense to use request blocking or mobile throttling when debugging server-side code. So we had some manual untangling to do here.</p>

@@ -25,8 +25,30 @@
 <p>この新機能の開発では、Cloudflareの開発者向けプラットフォームである<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>と<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>のコンポーネントを使用しました。基礎となるインフラを自社で管理するのではなく、<a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>を基盤として活用し、テキストの埋め込みにはWorkers AIを、ベクターデータベースとしてVectorizeを使用しました。このセットアップにより、基盤となるリソースのプロビジョニングにオーバーヘッドをかけずに、アルゴリズム自体に集中することができます。</p>
 <p>Workers AIのおかげで、テキスト埋め込みへの変換が極めて簡単になりました。たった1行のコードで、どんなテキストでも対応するベクトル表現に変換できます。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(model, {text: [text]}).data;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(model, {text: [text]}).data;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>トークン化からGPUによる推論まで、あらゆる処理が可能で、プロセスがシンプルかつスケーラブルになります。</p>
 <p>最近傍検索も同様に簡単です。Workers AIからベクトルを取得した後、Vectorizeを使って、過去のレポートから類似コンテキストをすばやく検索します。同時に、現在のパターン一致のベクトルをVectorizeに保存し、将来のフィードバックから学習できるようにします。</p>
 <p>リソースの使用を最適化するために、いくつかの巧妙なテクニックを取り入れました。例えば、パターンがヒットしたらそのすべてのベクトルを保存するのではなく、オンラインクラスタリングによってベクトルをクラスターにグループ化し、クラスターの重心だけを、ヒットを追跡するカウンター、レポートとともに保存します。これにより、ストレージの必要性が減り、検索が高速化されます。さらに、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queues</u></a>を統合して、インデックス作成プロセスをDLPスキャンのホットパスから分離することで、堅牢で応答性の高いシステムを実現しました。</p>

@@ -37,8 +37,30 @@
 <span class="line"><span class="sk-24292e-fff">      ],</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      "Outcome"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"ok"</span><span class="sk-6f42c1-ffc799">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      "ScriptName"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"example-script"</span></span>
-<span class="line"><span class="sk-24292e-fff">   }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Precio</h3>
 <p>Workers Logpush está disponible para los clientes de nuestros planes Workers de pago y Enterprise. Queríamos que fuera muy asequible para nuestros desarrolladores. Workers Logpush tiene un precio de 0,05 USD por cada millón de solicitudes y solo te facturamos por las solicitudes que se traducen en registros entregados a un destino final después de aplicar cualquier filtrado o muestreo. También incluye un uso de 10 millones de solicitudes al mes.</p>
 <h3>Configuración</h3>
@@ -56,11 +78,19 @@
 <span class="line"><span class="sk-032f62-99ffe4">"destination_conf": "r2://&lt;BUCKET_PATH&gt;/{DATE}?account-id=&lt;ACCOUNT_ID&gt;&amp;access-key-id=&lt;R2_ACCESS_KEY_ID&gt;&amp;secret-access-key=&lt;R2_SECRET_ACCESS_KEY&gt;",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">"dataset": "workers_trace_events",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">"enabled": true</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>2. Habilita el inicio de sesión en tu script Workers</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">"filter"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">where</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">: {</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">key</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">Outcome</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">operator</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">eq</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">exception</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">}}"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">"filter"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">where</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">: {</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">key</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">Outcome</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">operator</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">eq</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">value</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">exception</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-6f42c1-ffc799">}}"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Puedes hacerlo añadiendo una nueva propiedad, <code>logpush = true</code>, a tu archivo <code>wrangler.toml</code>. Se puede hacer en la configuración de nivel superior o en un entorno. El trabajo de Logpush recibirá cualquier nuevo script con esta propiedad de manera automática.</p>
 <h3>¡Empieza hoy mismo!</h3>

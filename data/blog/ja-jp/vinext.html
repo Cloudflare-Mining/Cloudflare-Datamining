@@ -17,13 +17,39 @@
 <p>もしNext.jsの出力を適応させるのではなく、Next.js APIサーフェスを<a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>Vite</u></a>上で直接再実装したらどうでしょうか。Viteは、Next.js以外のフロントエンドエコシステムの大部分で使用されているビルドツールで、Astro、SvelteKit、Nuxt、Remixなどのフレームワークを動作させます。単なるラッパーやアダプターではなく、クリーンな再実装です。正直、効果があると思っていませんでした。しかし、2026年、ソフトウェア構築のコストは完全に変化しました。</p>
 <p>当初の予想をはるかに超えるものになりました。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm install vinext</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm install vinext</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>スクリプトで<code>next</code>を<code>vinext</code>に置き換えれば、他はすべて同じです。既存の<code>app/</code>、<code>pages/</code>、および<code>next.config.js</code>は、そのまま機能します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">vinext</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-6a737d-8b8b8b94">          # Development server with HMR</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">vinext</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-6a737d-8b8b8b94">        # Production build</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">vinext</span><span class="sk-032f62-99ffe4"> deploy</span><span class="sk-6a737d-8b8b8b94">       # Build and deploy to Cloudflare Workers</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">vinext</span><span class="sk-032f62-99ffe4"> deploy</span><span class="sk-6a737d-8b8b8b94">       # Build and deploy to Cloudflare Workers</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これはNext.jsとTurbopackの出力のラッパーではありません。これは、ルーティング、サーバーレンダリング、React Server Components、サーバーアクション、キャッシング、ミドルウェアなど、APIサーフェスの代替実装です。そのすべてがVite上にプラグインとして構築されています。最も重要なのは、<a href="https://vite.dev/guide/api-environment" target="_blank" rel="noopener noreferrer"><u>Vite Environment API</u></a>のおかげで、Vite出力があらゆるプラットフォームで実行されることです。</p>
 <h2>数字</h2>
@@ -191,7 +217,11 @@
 <h2>Cloudflare Workersへのデプロイ</h2>
 <p>vinextは、Cloudflare Workersを最初のデプロイメントターゲットとして構築されています。単一のコマンドで、ソースコードから実行中のWorkerへアクセスできます。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">vinext</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">vinext</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>アプリケーションの構築、Worker設定の自動生成、デプロイなど、すべてを行うことができるのです。App ルーターとPages ルーターは両方ともWorkersで動作し、完全なクライアントサイドのハイドレーション、インタラクティブコンポーネント、クライアントサイドナビゲーション、Reactステートを備えています。</p>
 <p>本番環境のキャッシングのために、VinextにはCloudflare KVキャッシュハンドラーが含まれており、すぐにISR（Incremental Static Regeneration）を提供します。</p>
@@ -199,7 +229,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { KVCacheHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "vinext/cloudflare"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { setCacheHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "next/cache"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">setCacheHandler</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> KVCacheHandler</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">MY_KV_NAMESPACE</span><span class="sk-24292e-fff">));</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">setCacheHandler</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> KVCacheHandler</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">MY_KV_NAMESPACE</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>は、ほとんどのアプリケーションにとって良いデフォルトですが、キャッシュレイヤーはプラグ可能なように設計されています。このsetCacheHandlerの呼び出しは、意味のあるバックエンドであればスワップできることを意味します。<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>は、大きなキャッシュペイロードを持つアプリや、異なるアクセスパターンを持つアプリに適しているかもしれません。また、より少ない設定で強力なキャッシングレイヤーを提供できるように、Cache APIの改善にも取り組んでいます。目指すべきは柔軟性であり、アプリに合ったキャッシング戦略を選択できるのです。</p>
 <p>現在実行中のライブ例：</p>
@@ -240,7 +274,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  TPR</span><span class="sk-24292e-fff">: Pre</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">rendered </span><span class="sk-005cc5-ffc799">184</span><span class="sk-24292e-fff"> pages </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> 8.3s → </span><span class="sk-005cc5-fff">KV</span><span class="sk-24292e-fff"> cache</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">  Deploying to Cloudflare Workers</span><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>10万ページのあるサイトでは、電力法はトラフィックの90％が通常50～200ページに向けられることを意味します。これらは数秒でプリレンダリングされます。それ以外はすべてオンデマンドSSRに戻り、最初のリクエスト後にISR経由でキャッシュされます。新たにデプロイするたびに、現在のトラフィックパターンに基づいてセットが更新されます。拡散したページは自動的に取り上げられます。これはすべて、<code>generateStaticParams()</code> なしで、ビルドを本番データベースに結びつけることなく動作します。</p>
 <h2>Next.jsの課題に挑むが、今回はAIを使って</h2>
@@ -280,17 +318,29 @@
 <h2>ぜひお試しください</h2>
 <p>vinextには、移行を処理する<a href="https://agentskills.io" target="_blank" rel="noopener noreferrer"><u>エージェントスキル</u></a>が含まれています。Claude Code、OpenCode、Cursor、Codeex、その他数十のAIコーディングツールと連携します。インストールし、Next.jsプロジェクトを開き、AIに移行するよう指示してください。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npx skills add cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">vinext</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npx skills add cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">vinext</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>そして、サポートされているツールでNext.jsプロジェクトを開いて、まさに以下を押してください。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">migrate </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> project to vinext</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">migrate </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> project to vinext</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このスキルでは、互換性のチェック、依存関係のインストール、設定の生成、開発サーバーの起動も行えます。Vinextが何をサポートしているかを知っており、手作業による注意が必要なものすべてにフラグを立てます。</p>
 <p>手動で行いたい場合は：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npx vinext init    # Migrate an existing Next.js project</span></span>
 <span class="line"><span class="sk-24292e-fff">npx vinext dev     # Start the dev server</span></span>
-<span class="line"><span class="sk-24292e-fff">npx vinext deploy  # Ship to Cloudflare Workers</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">npx vinext deploy  # Ship to Cloudflare Workers</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ソースは<a href="https://github.com/cloudflare/vinext" target="_blank" rel="noopener noreferrer"><u>github.com/cloudflare/vinext</u></a>にあります。問題、PR、フィードバックをお待ちしています。</p>

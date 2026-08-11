@@ -17,8 +17,30 @@
 <p><strong>요청 예시:</strong></p>
 <p><strong>응답 예시:</strong></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> --request</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-005cc5-a0a0a0"> \ </span><span class="sk-032f62-99ffe4">--url</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/radar/traffic_anomalies</span><span class="sk-005cc5-a0a0a0"> \ </span><span class="sk-032f62-99ffe4">--header</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-a0a0a0"> \ </span><span class="sk-032f62-99ffe4">--header</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: '</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> --request</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-005cc5-a0a0a0"> \ </span><span class="sk-032f62-99ffe4">--url</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/radar/traffic_anomalies</span><span class="sk-005cc5-a0a0a0"> \ </span><span class="sk-032f62-99ffe4">--header</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-a0a0a0"> \ </span><span class="sk-032f62-99ffe4">--header</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: '</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>알림 개요</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -49,7 +71,11 @@
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>트래픽 감소나 라우팅 문제와 같은 인터넷 "이벤트"에 대한 시의적절한 지식은 잠재적으로 여러 사용자가 관심을 가질 수 있는 주제입니다. 고객 서비스 또는 헬프 데스크 상담원은 이 정보를 사용하여 앱 성능이나 가용성에 대한 고객/사용자의 불만 사항을 진단할 수 있습니다. 마찬가지로 네트워크 관리자도 이 정보를 사용하여 네트워크 외부의 인터넷 상태를 더 잘 이해할 수 있습니다. 또한 시민 사회 단체에서는 분쟁이나 불안정한 지역에서 통신을 유지하고 인권을 보호하기 위한 행동 계획을 알리는 데 이 정보를 사용할 수 있습니다. 오늘부터는 새로운 알림 기능도 출시되므로 국가 또는 자율 시스템 수준에서 트래픽 이상 징후, 확인된 인터넷 중단, 경로 유출, 경로 하이재킹에 대한 알림을 신청할 수 있습니다. 다음 섹션에서는 알림을 구독하고 구성하는 방법과 다양한 유형의 알림에 포함된 정보에 대해 설명합니다.</p>
 <h4>알림 구독하기</h4>

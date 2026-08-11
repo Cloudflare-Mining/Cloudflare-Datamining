@@ -6,14 +6,40 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">real</span><span class="sk-032f62-99ffe4">    0m2.305s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">user</span><span class="sk-032f62-99ffe4">    0m2.059s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.252s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.252s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">vlad@arm:~$</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-032f62-99ffe4"> ./jpegtran</span><span class="sk-005cc5-99ffe4"> -outfile</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-005cc5-99ffe4"> -progressive</span><span class="sk-005cc5-99ffe4"> -optimise</span><span class="sk-005cc5-99ffe4"> -copy</span><span class="sk-032f62-99ffe4"> none</span><span class="sk-032f62-99ffe4"> test.jpg</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">real</span><span class="sk-032f62-99ffe4">    0m8.654s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">user</span><span class="sk-032f62-99ffe4">    0m8.433s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.225s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.225s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ideally we want to have the ARM performing at or above 50% of the Xeon performance per core. This would make sure we have no performance regressions, and net performance gain, since the ARM CPUs have double the core count as our current 2 socket setup.</p>
 <p>In this case, however, I was disappointed to discover an almost 4X slowdown.</p>
@@ -30,7 +56,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">perf</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-032f62-99ffe4"> ./jpegtran</span><span class="sk-005cc5-99ffe4"> -outfile</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-005cc5-99ffe4"> -progressive</span><span class="sk-005cc5-99ffe4"> -optimise</span><span class="sk-005cc5-99ffe4"> -copy</span><span class="sk-032f62-99ffe4"> none</span><span class="sk-032f62-99ffe4"> test.jpeg</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">perf</span><span class="sk-032f62-99ffe4"> report</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  71.24%</span><span class="sk-032f62-99ffe4">  lt-jpegtran</span><span class="sk-032f62-99ffe4">  libjpeg.so.9.1.0</span><span class="sk-24292e-fff">   [.] encode_mcu_AC_refine</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  15.24%</span><span class="sk-032f62-99ffe4">  lt-jpegtran</span><span class="sk-032f62-99ffe4">  libjpeg.so.9.1.0</span><span class="sk-24292e-fff">   [.] encode_mcu_AC_first</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  15.24%</span><span class="sk-032f62-99ffe4">  lt-jpegtran</span><span class="sk-032f62-99ffe4">  libjpeg.so.9.1.0</span><span class="sk-24292e-fff">   [.] encode_mcu_AC_first</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Aha, <code>encode_mcu_AC_refine</code> and <code>encode_mcu_AC_first</code>, my old nemeses!</p>
 <h3>The straightforward approach</h3>
@@ -45,7 +75,11 @@
 <span class="line"><span class="sk-e36209-fff">  absvalues</span><span class="sk-24292e-fff">[k] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> temp;</span><span class="sk-6a737d-8b8b8b94"> /* save abs value for main pass */</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (temp </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    EOB </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> k;</span><span class="sk-6a737d-8b8b8b94">           /* EOB = index of last newly-nonzero coef */</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And the SSE solution to this problem was:</p>
 <div class="emdash-code">
@@ -66,7 +100,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">x1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> _mm_cmpeq_epi16</span><span class="sk-24292e-fff">(x1, </span><span class="sk-6f42c1-ffc799">_mm_set1_epi16</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">));</span><span class="sk-6a737d-8b8b8b94">     // Compare to 1</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff"> idx </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> _mm_movemask_epi8</span><span class="sk-24292e-fff">(x1);</span><span class="sk-6a737d-8b8b8b94">        // Extract byte mask</span></span>
-<span class="line"><span class="sk-24292e-fff">EOB </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> idx</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> k </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799"> __builtin_clz</span><span class="sk-24292e-fff">(idx)</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">2</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-24292e-fff"> EOB;</span><span class="sk-6a737d-8b8b8b94">  // Compute index</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">EOB </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> idx</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> k </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799"> __builtin_clz</span><span class="sk-24292e-fff">(idx)</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">2</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-24292e-fff"> EOB;</span><span class="sk-6a737d-8b8b8b94">  // Compute index</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For the most part the transition to NEON is indeed straightforward.</p>
 <p>To initialize a register to all zeros, we can use the <code>vdupq_n_s16</code> intrinsic, that duplicates a given value across all lanes of a register. The insertions are performed with the <code>vsetq_lane_s16</code> intrinsic. Use <code>vabsq_s16</code> to get the absolute values.</p>
@@ -99,7 +137,11 @@
 <span class="line"><span class="sk-24292e-fff">is_one </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> vuzp1q_u8</span><span class="sk-24292e-fff">(is_one, is_one);</span><span class="sk-6a737d-8b8b8b94">  // Compact the compare result into 64 bits</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">uint64_t</span><span class="sk-24292e-fff"> idx </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> vgetq_lane_u64</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">vreinterpretq_u64_u8</span><span class="sk-24292e-fff">(is_one), </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span><span class="sk-6a737d-8b8b8b94"> // Extract</span></span>
-<span class="line"><span class="sk-24292e-fff">EOB </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> idx </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> k </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799"> __builtin_clzl</span><span class="sk-24292e-fff">(idx)</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">8</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-24292e-fff"> EOB;</span><span class="sk-6a737d-8b8b8b94">                // Get the index</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">EOB </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> idx </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> k </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-6f42c1-ffc799"> __builtin_clzl</span><span class="sk-24292e-fff">(idx)</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">8</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-24292e-fff"> EOB;</span><span class="sk-6a737d-8b8b8b94">                // Get the index</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note the intrinsics for explicit type casts. They don't actually emit any instructions, since regardless of the type the operands always occupy the same registers.</p>
 <p>On to the second loop:</p>
@@ -107,7 +149,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> ((temp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-e36209-fff"> absvalues</span><span class="sk-24292e-fff">[k]) </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  r</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  continue</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The SSE solution was:</p>
 <div class="emdash-code">
@@ -124,7 +170,11 @@
 <span class="line"><span class="sk-24292e-fff">  k </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> skip;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (k</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">Se) </span><span class="sk-d73a49-a0a0a0">break</span><span class="sk-24292e-fff">;</span><span class="sk-6a737d-8b8b8b94">      // Stop if gone too far</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">temp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-e36209-fff"> absvalues</span><span class="sk-24292e-fff">[k];</span><span class="sk-6a737d-8b8b8b94">    // Load the next nonzero value</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">temp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-e36209-fff"> absvalues</span><span class="sk-24292e-fff">[k];</span><span class="sk-6a737d-8b8b8b94">    // Load the next nonzero value</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But we already know that there is no way to extract the byte mask. Instead of using NEON I chose to simply skip four zero values at a time, using 64-bit integers, like so:</p>
 <div class="emdash-code">
@@ -134,7 +184,11 @@
 <span class="line"><span class="sk-24292e-fff">           (</span><span class="sk-d73a49-a0a0a0">int64_t</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">absvalues</span><span class="sk-24292e-fff">[k])</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">;</span><span class="sk-6a737d-8b8b8b94">           // Get index of next nonzero</span></span>
 <span class="line"><span class="sk-24292e-fff">k </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> skip;</span></span>
 <span class="line"><span class="sk-24292e-fff">r </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> skip;</span></span>
-<span class="line"><span class="sk-24292e-fff">temp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-e36209-fff"> absvalues</span><span class="sk-24292e-fff">[k];</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">temp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-e36209-fff"> absvalues</span><span class="sk-24292e-fff">[k];</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>How fast are we now?</p>
 <div class="emdash-code">
@@ -142,7 +196,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">real</span><span class="sk-032f62-99ffe4">    0m4.008s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">user</span><span class="sk-032f62-99ffe4">    0m3.770s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.241s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.241s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wow, that is incredible. Over 2X speedup!</p>
 <h4>encode_mcu_AC_first</h4>
@@ -158,7 +216,11 @@
 <span class="line"><span class="sk-24292e-fff">  temp2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> temp;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-e36209-fff">t1</span><span class="sk-24292e-fff">[k] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> temp;</span></span>
-<span class="line"><span class="sk-e36209-fff">t2</span><span class="sk-24292e-fff">[k] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> temp2;</span></span></code></pre>
+<span class="line"><span class="sk-e36209-fff">t2</span><span class="sk-24292e-fff">[k] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> temp2;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here it is required to assign the absolute value of temp to <code>t1[k]</code>, and its inverse to <code>t2[k]</code> if temp is negative, otherwise <code>t2[k]</code> assigned the same value as <code>t1[k]</code>.</p>
 <p>To get the inverse of a value, we use the <code>vmvnq_s16</code> intrinsic, to check if the values are negative we need to compare with zero using the <code>vcgezq_s16</code> and finally selecting based on the mask using <code>vbslq_s16</code>.</p>
@@ -189,7 +251,11 @@
 <span class="line"><span class="sk-24292e-fff">n </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> vbslq_s16</span><span class="sk-24292e-fff">(is_positive, x, n);</span><span class="sk-6a737d-8b8b8b94"> // Select based on positive mask</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">vst1q_s16</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">t1</span><span class="sk-24292e-fff">[k], x);</span><span class="sk-6a737d-8b8b8b94"> // Store</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">vst1q_s16</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">t2</span><span class="sk-24292e-fff">[k], n);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">vst1q_s16</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">t2</span><span class="sk-24292e-fff">[k], n);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And the moment of truth:</p>
 <div class="emdash-code">
@@ -197,7 +263,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">real</span><span class="sk-032f62-99ffe4">    0m3.480s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">user</span><span class="sk-032f62-99ffe4">    0m3.243s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.241s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sys</span><span class="sk-032f62-99ffe4">     0m0.241s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Overall 2.5X speedup from the original C implementation, but still 1.5X slower than Xeon.</p>
 <h3>Batch benchmark</h3>
@@ -367,13 +437,21 @@
 <span class="line"><span>    sub x0, x2, x0</span></span>
 <span class="line"><span>    # Not of zero mask (so 1 bits indecates non-zeroes)</span></span>
 <span class="line"><span>    mvn x1, x1</span></span>
-<span class="line"><span>    ret</span></span></code></pre>
+<span class="line"><span>    ret</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you look carefully at the code, you will see, that I decided that while generating the mask to find EOB is useful, I can use the same method to generate the mask for zero values, and then I can find the next nonzero value, and zero runlength this way:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">uint64_t</span><span class="sk-032f62-99ffe4"> skip</span><span class="sk-032f62-99ffe4"> =__builtin_clzl</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">zero_mask</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff"> k);</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">r += skip;</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">k += skip;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">k += skip;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Similarly for <code>encode_mcu_AC_first</code>:</p>
 <div class="emdash-code">
@@ -507,7 +585,11 @@
 <span class="line"><span></span></span>
 <span class="line"><span>    mov x0, v6.d[0]</span></span>
 <span class="line"><span>    mvn x0, x0</span></span>
-<span class="line"><span>    ret</span></span></code></pre>
+<span class="line"><span>    ret</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Final results and power</h2>
 <p>The final version of our jpegtran managed to reduce the test image in 2.756 seconds. Or an extra 1.26X speedup, that gets it incredibly close to the performance of the Xeon on that image. As a bonus batch performance also improved!</p>

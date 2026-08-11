@@ -17,8 +17,30 @@
 <p>We don't plan to stop here. Folks will rightly note that there are some critical developer workflow steps that are missing from <code>wrangler</code>: linting, testing, benchmarking, and size profiling are a few that come to mind. We've got some big plans and we're excited to build out more, but we're eager to release this now to enable <em>more</em> folks to participate in the process. The best way to know what developers need is to ask and listen- by creating and open sourcing <code>wrangler</code> in such an early phase we're hoping to shorten the feedback cycle between product and user- and build the <em>right</em> thing, <em>faster</em>.</p>
 <p>You can install <code>wrangler</code> using <code>cargo</code>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cargo</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> wrangler</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cargo</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> wrangler</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>To get started, head on over to the <a href="https://developers.cloudflare.com/workers/cli-wrangler" target="_blank" rel="noopener noreferrer">Cloudflare docs</a> and follow the <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank" rel="noopener noreferrer">tutorial</a>. You'll build and preview a Cloudflare Worker that uses Rust compiled to WebAssembly to parse <a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer">Markdown</a>.</p>
 <p>Don't stop there though. Please check out <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">the repo</a>, <a href="https://github.com/cloudflare/wrangler/issues" target="_blank" rel="noopener noreferrer">file some issues</a>, build project templates, and write about your experience- we want to hear from you.</p>
 <p>We're really excited to see what y'all build!</p>

@@ -37,8 +37,30 @@
 <p>The IRR (Internet Routing Registries) is used to record a route that will be announced on the Internet and associate it with the ASN that will announce it. In this example we will use the private or documentation ranges of 10.0.0.0/8 and 2001:db8::/32 along with ASN 65099. The simplest IRR routing record looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">route:</span><span class="sk-032f62-99ffe4">	10.0.0.0/8</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">origin:</span><span class="sk-032f62-99ffe4">	AS65099</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">origin:</span><span class="sk-032f62-99ffe4">	AS65099</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In reality, we need a lot more to make it fully-functional and we need a place to upload this routing record. You could use your RIR to host your IRR data, or you could use global services like <a href="https://radb.net" target="_blank" rel="noopener noreferrer">RADB</a> or <a href="https://altdb.net" target="_blank" rel="noopener noreferrer">ALTDB</a>. You can also use your transit provider in some cases. Once you have an account setup on one of these services, you will be ready to upload these routing record (how you upload it is very specific to the IRR chosen).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">route:</span><span class="sk-032f62-99ffe4">	10.0.0.0/8</span></span>
@@ -48,7 +70,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">	MNT-UNIVERSITY</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">notify:</span><span class="sk-032f62-99ffe4">	person@example.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">changed:</span><span class="sk-032f62-99ffe4">	person@example.com</span><span class="sk-005cc5-ffc799"> 20180101</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">	RADB</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">	RADB</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That last line reflects where you store your IRR routing record.</p>
 <h3>IRR for your ASN</h3>
@@ -61,7 +87,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">     MNT-UNIVERSITY</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">notify:</span><span class="sk-032f62-99ffe4">     person@example.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">changed:</span><span class="sk-032f62-99ffe4">    person@example.com</span><span class="sk-005cc5-ffc799"> 20180101</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">     RADB</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">     RADB</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can check for their existence using the classic command line whois command (or the RADB website).</p>
 <p>One last item needs to be completed; but not by you.</p>
@@ -75,7 +105,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">     MNT-NREN</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">notify:</span><span class="sk-032f62-99ffe4">     person@example.edu</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">changed:</span><span class="sk-032f62-99ffe4">    person@example.edu</span><span class="sk-005cc5-ffc799"> 20180101</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">     RADB</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">     RADB</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The members area of this as-set provides a list of ASNs that are announced by the upstream (the ASN). We have not defined the upstreams ASN yet, so lets pretend they are ASN 65001 (this ASN is still from the documentation range).</p>
 <h3>Getting the university online</h3>
@@ -84,7 +118,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">router</span><span class="sk-032f62-99ffe4"> bgp</span><span class="sk-005cc5-ffc799"> 65099</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">neighbor</span><span class="sk-005cc5-ffc799"> 192.168.0.2</span><span class="sk-032f62-99ffe4"> remote-as</span><span class="sk-005cc5-ffc799"> 65001</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">neighbor</span><span class="sk-005cc5-ffc799"> 192.168.0.2</span><span class="sk-032f62-99ffe4"> prefix-list</span><span class="sk-032f62-99ffe4"> as65001-listen</span><span class="sk-032f62-99ffe4"> in</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">neighbor</span><span class="sk-005cc5-ffc799"> 192.168.0.2</span><span class="sk-032f62-99ffe4"> route-map</span><span class="sk-032f62-99ffe4"> as65001-listen</span><span class="sk-032f62-99ffe4"> in</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">neighbor</span><span class="sk-005cc5-ffc799"> 192.168.0.2</span><span class="sk-032f62-99ffe4"> route-map</span><span class="sk-032f62-99ffe4"> as65001-listen</span><span class="sk-032f62-99ffe4"> in</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is a very trivial example (it’s missing a complete filter configuration that’s normally required). The key point is that the router doesn’t contain any code or language regarding the IRR entries shown above. That’s because the IRR entries are out-of-band. They exist outside of the BGP protocol. In other words, it takes more than just configuring a BGP session in order to actually connect to the global Internet.</p>
 <p>The key filtering comes into play on the upstream (the NREN in this example). It’s the job of that network to confirm everything heard from its customer.</p>
@@ -109,7 +147,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">IPv4:</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 255.255.255.255</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IPv6:</span><span class="sk-032f62-99ffe4"> 0000:0000:0000:0000:0000:0000:0000:0000</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ASN:</span><span class="sk-005cc5-ffc799">  1</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> 4,294,967,295</span><span class="sk-24292e-fff"> (AS </span><span class="sk-005cc5-ffc799">0</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> unused</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ASN:</span><span class="sk-005cc5-ffc799">  1</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> 4,294,967,295</span><span class="sk-24292e-fff"> (AS </span><span class="sk-005cc5-ffc799">0</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> unused</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://www.iana.org" target="_blank" rel="noopener noreferrer">IANA</a> (Internet Assigned Numbers Authority) holds the master list for this space and divvies it up the five RIRs as allocations or assignments. The IPv4 and IPv6 assignments can be seen <a href="https://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xhtml" target="_blank" rel="noopener noreferrer">here</a> and &nbsp;<a href="https://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml" target="_blank" rel="noopener noreferrer">here</a>. ASNs can be found <a href="https://www.iana.org/assignments/as-numbers/as-numbers.xhtml" target="_blank" rel="noopener noreferrer">here</a>. For example, here’s an abbreviated overview into how IPv6 space is allocated to various RIRs.</p>
 <div class="emdash-code">
@@ -126,7 +168,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2a00:0000::/12</span><span class="sk-032f62-99ffe4"> RIPE</span><span class="sk-032f62-99ffe4"> NCC</span><span class="sk-032f62-99ffe4">    2006-10-03</span><span class="sk-032f62-99ffe4"> whois.ripe.net</span><span class="sk-032f62-99ffe4">     ALLOCATED</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2c00:0000::/12</span><span class="sk-032f62-99ffe4"> AFRINIC</span><span class="sk-032f62-99ffe4">     2006-10-03</span><span class="sk-032f62-99ffe4"> whois.afrinic.net</span><span class="sk-032f62-99ffe4">  ALLOCATED</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As stated above; each RIR holds a root key (a TA, or Trust Anchor) that provides them the ability to create signed records below their root. Below that TA there is a certificate that covers the exact space allocated or assigned to the specific RIR. This allows the TA to be somewhat static (or stable) and the RIR to update the underlying records as-needed.</p>
 <h3>Who is implementing RPKI today?</h3>

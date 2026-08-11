@@ -58,8 +58,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> g</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-005cc5-ffc799"> 42</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here, when the parser is looking at the body of <code>f</code>, it doesn’t know yet what <code>g</code> is referring to - it could be an already existing global function or something declared further in the same file - so it can’t finalise parsing of the original function and start the actual compilation.</p>
 <p>BinaryAST fixes this by storing all the scope information and making it available upfront before the actual expressions.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -73,13 +95,21 @@
 <p>One common technique used by modern engines to improve parsing times is lazy parsing. It utilises the fact that lots of websites include more JavaScript than they actually need, especially for the start-up.</p>
 <p>Working around this involves a set of heuristics that try to guess when any given function body in the code can be safely skipped by the parser initially and delayed for later. A common example of such heuristic is immediately running the full parser for any function that is wrapped into parentheses:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">(...</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">(...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Such prefix usually indicates that a following function is going to be an IIFE (immediately-invoked function expression), and so the parser can assume that it will be compiled and executed ASAP, and wouldn’t benefit from being skipped over and delayed for later.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-24292e-fff">	…</span></span>
-<span class="line"><span class="sk-24292e-fff">})();</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>These heuristics significantly improve the performance of the initial parsing and cold starts, but they’re not completely reliable or trivial to implement.</p>
 <p>One of the reasons is the same as in the previous section - even with lazy parsing, you still need to read the contents, analyse them and store an additional scope information for the declarations.</p>
@@ -94,15 +124,27 @@
 <p>Another problem is an ambiguity in the grammar itself. It was already an issue in the ES5 world, but could usually be resolved with some extra bookkeeping based on the previously seen tokens. However, in ES6+ there are productions that can be ambiguous all the way through until they’re parsed completely.</p>
 <p>For example, a token sequence like:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(a, {b: c, d}, [e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">...</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(a, {b: c, d}, [e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>can start either a parenthesized comma expression with nested object and array literals and an assignment:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(a, {b: c, d}, [e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]); </span><span class="sk-6a737d-8b8b8b94">// it was an expression</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(a, {b: c, d}, [e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]); </span><span class="sk-6a737d-8b8b8b94">// it was an expression</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>or a parameter list of an arrow expression function with nested object and array patterns and a default value:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, {</span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff">: </span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">d</span><span class="sk-24292e-fff">}, [</span><span class="sk-e36209-fff">e</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> … </span><span class="sk-6a737d-8b8b8b94">// it was a parameter list</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, {</span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff">: </span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">d</span><span class="sk-24292e-fff">}, [</span><span class="sk-e36209-fff">e</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> … </span><span class="sk-6a737d-8b8b8b94">// it was a parameter list</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Both representations are perfectly valid, but have completely different semantics, and you can’t know which one you’re dealing with until you see the final token.</p>
 <p>To work around this, parsers usually have to either backtrack, which can easily get exponentially slow, or to parse contents into intermediate node types that are capable of holding both expressions and patterns, with following conversion. The latter approach preserves linear performance, but makes the implementation more complicated and requires preserving more state.</p>

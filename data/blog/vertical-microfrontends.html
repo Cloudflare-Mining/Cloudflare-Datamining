@@ -12,13 +12,39 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-d73a49-a0a0a0">      =</span><span class="sk-6f42c1-ffc799"> Marketing</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">docs  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Documentation</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">blog  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Blog</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We could take it a step further and focus on more granular sub-path Worker associations, too, such as a dashboard. Within a dashboard, you likely segment out various features or products by adding depth to your URL path (e.g. <code>/dash/product-a</code>) and navigating between two products could mean two entirely different code bases.&nbsp;</p>
 <p>Now with vertical microfrontends, we could also have the following:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">product</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">a  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WorkerA</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">product</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">b  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WorkerB</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">product</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">b  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WorkerB</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Each of the above paths are their own frontend project with zero shared code between them. The <code>product-a</code> and <code>product-b</code> routes map to separately deployed frontend applications that have their own frameworks, libraries, CI/CD pipelines defined and owned by their own teams. FINALLY.</p>
 <p>You can now own your own code from end to end. But now we need to find a way to stitch these separate projects together, and even more so, make them feel as if they are a unified experience.</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-005cc5-fff">    animation-timing-function</span><span class="sk-24292e-a0a0a0">:</span><span class="sk-005cc5-ffc799"> ease-in-out</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  nav</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">view-transition-name</span><span class="sk-24292e-a0a0a0">:</span><span class="sk-24292e-a0a0a0"> navigation</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="314" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=640&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=750&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=828&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1080&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1280&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1430&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3015 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1920&amp;h=842&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="842" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="314" class="pt-portable-image-media"></div>
@@ -67,7 +97,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  }</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With that, our application prefetches our other microfrontends and holds them in our in-memory cache, so if we were to navigate to those pages it would feel nearly instant.</p>
 <p>You likely won’t require this for clearly discernible vertical slices (marketing, docs, dashboard) because users would expect a slight load between them. However, it is highly encouraged to use when vertical slices are defined within a specific visible experience (e.g. within dashboard pages).</p>
@@ -97,7 +131,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "service"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"worker_dash"</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our above sample definition is defined in our Router Worker, which then tells us that we are permitted to make requests into three separate additional Workers (marketing, docs, and dash). Granting permissions is as simple as that, but let’s tumble into some of the more complex logic with request routing and HTML rewriting network responses.</p>
 <h3>Request routing</h3>
@@ -107,7 +145,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-d73a49-a0a0a0">      =</span><span class="sk-6f42c1-ffc799"> Marketing</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">docs  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Documentation</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Each of the above paths need to be mapped to an actual Worker (see our wrangler definition for services in the section above). For our Router Worker, we define an additional variable with the following data, so we can know which paths should map to which service bindings. We now know where to route users as requests come in! Define a wrangler variable with the name ROUTES and the following contents:</p>
 <div class="emdash-code">
@@ -117,7 +159,11 @@
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"DOCS"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/docs"</span><span class="sk-24292e-fff">},</span></span>
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"DASH"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/dash"</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let’s envision a user visiting our website path <code>/docs/installation</code>. Under the hood, what happens is the request first reaches our Router Worker which is in charge of understanding what URL paths map to which individual Workers. It understands that the <code>/docs</code> path prefix is mapped to our <code>DOCS</code> service binding which referencing our wrangler file points us at our <code>worker_docs</code> project. Our Router Worker, knowing that <code>/docs</code> is defined as a vertical microfrontend route, removes the <code>/docs</code> prefix from the path and forwards the request to our <code>worker_docs</code> Worker to handle the request and then finally returns whatever response we get.</p>
 <p>Why does it drop the <code>/docs</code> path, though? This was an implementation detail choice that was made so that when the Worker is accessed via the Router Worker, it can clean up the URL to handle the request <em>as if </em>it were called from outside our Router Worker. Like any Cloudflare Worker, our <code>worker_docs</code> service might have its own individual URL where it can be accessed. We decided we wanted that service URL to continue to work independently. When it’s attached to our new Router Worker, it would automatically handle removing the prefix, so the service could be accessible from its own defined URL or through our Router Worker… either place, doesn’t matter.</p>
@@ -138,7 +184,11 @@
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"APP1"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/app1"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"preload"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">},</span></span>
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"APP2"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/app2"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"preload"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Get started</h2>
 <p>You can start building with the Vertical Microfrontend template today.</p>

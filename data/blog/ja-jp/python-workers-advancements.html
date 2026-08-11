@@ -21,14 +21,40 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">class </span><span class="sk-6f42c1-ffc799">Default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">WorkerEntrypoint</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">   async</span><span class="sk-24292e-fff"> def </span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">, request)</span><span class="sk-d73a49-a0a0a0">:</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> asgi</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(app, request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js_object, </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">env)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> asgi</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(app, request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js_object, </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">env)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>同様のことをデプロイするには、<code>uv</code>と<code>npm</code>がインストールされていることを確認してから、以下を実行してください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> uv</span><span class="sk-032f62-99ffe4"> tool</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> workers-py</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    https://github.com/cloudflare/python-workers-examples/03-fastapi</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ほんの少しのコードとPythonでのデプロイで、<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>125か国、330か所に広がる</u></a>Cloudflareのエッジネットワーク全体にアプリケーションを<code>デプロイ</code>できました。インフラストラクチャやスケーリングを心配する必要はありません。</p>
 <p>また、多くの場合、Python Workersは完全に無料です。当社の無料枠では、1日あたりリクエスト100,000件、呼び出し1回あたりのCPU時間10ミリ秒を保証しています。詳しくは、<a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>当社のドキュメントで価格設定</u></a>をご覧ください。</p>
@@ -154,7 +180,11 @@
 <p>これにより、スナップショットを復元した後も、各関数のポインターが、スナップショット取得時と同じ意味を持つことが保証されます。</p>
 <p>JavaScriptの参照を処理するために、かなり限定的なシステムを実装しました。JavaScriptオブジェクトがグローバルからアクセス可能な場合は、一連のプロパティアクセスによって、それらのプロパティアクセスを記録し、スナップショットを復元する時に再生します。この方法でアクセスできないJavaScriptオブジェクトへの参照が存在する場合、Workerのデプロイに失敗します。これは、Pyodideサポートを持つすべての既存のPythonパッケージを扱うのに十分です。Pyodideは、次のようなトップレベルのインポートを行います。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fetch</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fetch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>シャーディングによるコールドスタートの頻度の低減</h3>
 <p>Python Workersのパフォーマンス戦略におけるもう1つの重要な特徴は、シャーディングです。実装の経緯については、<a href="https://blog.cloudflare.com/eliminating-cold-starts-2-shard-and-conquer" target="_blank" rel="noopener noreferrer"><u>こちら</u></a>に詳しく説明されています。簡単に言うと、以前は新しいインスタンスを開始することを選択していたかもしれませんが、既存のWorkerインスタンスにリクエストをルーティングするようになりました。</p>

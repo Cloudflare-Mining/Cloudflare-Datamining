@@ -113,8 +113,30 @@
 <span class="line"><span class="sk-24292e-fff">    stderr: </span><span class="sk-032f62-99ffe4">"pipe"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>レビュープラグイン：</strong>OpenCodeプロセス内では、ランタイムプラグインが<code>spawn_reviewers</code>ツールを提供します。コーディネーターであるLLMがコードをレビューする時期だと判断すると、このツールを呼び出し、OpenCodeのSDKクライアントを通じてサブレビュー担当セッションを開始します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> createResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.client.session.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
@@ -131,7 +153,11 @@
 <span class="line"><span class="sk-24292e-fff">    model: { providerID, modelID },</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>各サブレビュー担当者は、独自のエージェントプロンプトを使用して独自のOpenCodeセッションで実行されます。コーディネーターは、サブレビュー担当者がどのようなツールを使用するかを見ることも、制御することもできません。ソースファイルを読み取ったり、情報を調べたり、適切なコードベースを検索したりできます。そして、処理が完了したら構造化されたXMLとして結果を返すだけです。</p>
 <h3>JSONLとは何か、何に使うのか？</h3>
@@ -142,7 +168,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Stripped:</span><span class="sk-032f62-99ffe4">   authorization,</span><span class="sk-032f62-99ffe4"> cf-access-token,</span><span class="sk-032f62-99ffe4"> host</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Added:</span><span class="sk-032f62-99ffe4">      cf-aig-authorization:</span><span class="sk-032f62-99ffe4"> Bearer</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">API_KE</span><span class="sk-24292e-fff">Y</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            cf-aig-metadata:</span><span class="sk-032f62-99ffe4"> {"userId":</span><span class="sk-032f62-99ffe4"> "&lt;anonymous-uuid&gt;"}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>長期間実行されるプロセスから構造化された出力を解析する必要があるCIシステムはすべて、最終的にJSONLのようなものに到達しますが、当社は土台から作り直す必要はありませんでした。（OpenCodeはすでにそれをサポートしています！）</p>
 <h3>ストリーミングパイプライン</h3>
@@ -165,7 +195,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> Defense</span><span class="sk-d73a49-a0a0a0">-in-</span><span class="sk-24292e-fff">depth suggestions when primary defenses are adequate</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> Issues </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> unchanged code that </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-005cc5-fff"> MR</span><span class="sk-24292e-fff"> doesn</span><span class="sk-032f62-99ffe4">'t affec</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">t</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-032f62-99ffe4"> "Consider using library X"</span><span class="sk-24292e-fff"> style suggestions</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>LLMに<strong>しない</strong>ことを伝えることが、実際のプロンプトエンジニアリングの価値があるところだと判明しました。このような境界がなければ、投機的な理論的警告が大量に送り付けられ、開発者はすぐに無視するようになります。</p>
 <p>各レビュー担当者は、重大度分類（<code>重大</code>（障害の原因となる、または悪用可能）、<code>警告</code>（測定可能な後退または具体的なリスク）、<code>提案</code>（検討に値する改善））を含む構造化されたXML形式で発見事項を作成します。これにより、アドバイザリーテキストを解析するのではなく、ダウンストリームの動作を引き起こす構造化されたデータを処理していることが保証されます。</p>
@@ -189,7 +223,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> BOUNDARY_TAG_PATTERN</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> RegExp</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  `&lt;/?(?:${</span><span class="sk-005cc5-fff">PROMPT_BOUNDARY_TAGS</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-032f62-99ffe4">(</span><span class="sk-032f62-99ffe4">"|"</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">})[^&gt;]*&gt;`</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"gi"</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>コンテキストを共有してトークンを節約する</h3>
 <p>システムはプロンプトに完全な相違点を埋め込むことはありません。その代わり、ファイルごとのパッチファイルを<code>diff_directory</code>に書き込んでパスを渡します。各サブレビュー担当者は、自身のドメインに関連するパッチファイルのみを読みます。</p>
@@ -296,7 +334,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (totalLines </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> fileCount </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> "lite"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> "full"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>セキュリティに機密性の高いファイル：<code>auth/</code>、<code>crypto/</code>、またはリモートでもセキュリティ関連と思われるファイルパスに触れるものは、常に完全レビューのトリガーとなります。セキュリティの脆弱性を見逃す可能性があるため、トークンに多少の費用をかけることを厭わないからです。</p>
 <p>各階層には、異なるエージェントセットが付与されます。</p>
@@ -387,7 +429,11 @@
 <span class="line"><span class="sk-24292e-fff">];</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> NOISE_EXTENSIONS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">".min.js"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".min.css"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".bundle.js"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".map"</span><span class="sk-24292e-fff">];</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>また、最初の数行をスキャンして、<code>// @generated</code>や<code>/* eslint-disable */</code>などの生成されたファイルをフィルタリングします。しかし、データベースマイグレーションは、このルールから明示的に除外しています。それは、移行ツールが、絶対にレビューが必要なスキーマ変更が含まれていたとしても、生成されたファイルにスタンプを押すことが多いためです。</p>
 <h2>Spawn_reviewersツール：同時オーケストレーション</h2>
@@ -415,7 +461,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "sonnet-4-6"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sonnet-4-5"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "sonnet-4-5"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>各モデルファミリーは分離されているため、1つのモデルが過負荷になると、ストリームを横断するのではなく、古い世代モデルに戻ります。回線が開始されると、プロバイダーが回復したかどうかを確認するための2分間の冷却ダウン後に、正確に1つのプローブリクエストの通過を許可することで、苦労しているAPIをスタンプさせることを防ぐことができます。</p>
 <h3>エラーの分類</h3>
@@ -435,7 +485,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // User/system abort (not a model problem)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> { shouldFailback: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>再試行可能なAPIエラーのみがフェイルバックをトリガーします。認証エラー、コンテキストオーバーフロー、中断、構造化出力エラーはゼロです。</p>
 <h3>コーディネーターレベルのフェイルバック</h3>
@@ -453,7 +507,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> config.enabled;            </span><span class="sk-6a737d-8b8b8b94">// Disabled → filter out</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>つまり、KVでスイッチをオンにするだけでプロバイダー全体を無効にすることができ、実行中のCIジョブはすべて5秒以内にそのプロバイダーをルーティングすることができます。設定フォーマットはフェイルバックチェーンのオーバーライドもあり、1回のWorker更新からモデルルーティングトポロジー全体を再形成することができます。</p>
 <p>また、別のCloudflare Workerと通信し、ジョブの開始、完了、検出結果、トークン使用量、Prometheusメトリクスを追跡する、絶え間ない<code>TrackerClient</code>を使用しています。クライアントは、CIパイプラインをブロックしないように設計されており、2秒の<code>AbortSignal.タイムアウト</code>を使用し、50エントリーを超えた場合は保留中リクエストを削除します。Prometheusのメトリクスは、次のマイクロタスクでバッチ処理され、プロセスが終了する直前に消去され、Workers Loggingを介して内部の可観測性スタックに転送されるため、私たちがリアルタイムで消費しているトークンの数を正確に把握することができます。</p>
@@ -484,7 +542,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">include</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff"> component</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-6f42c1-ffc799">CI_SERVER_FQDN</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">ci</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">ai</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">opencode</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">~latest</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このコンポーネントは、Dockerイメージの取得、Vaultシークレットの設定、レビューの実行、コメントの投稿を処理します。チームは、プロジェクト固有のレビュー指示を用いてリポジトリルートに<code>AGENTS.md</code>ファイルをドロップすることで動作をカスタマイズできます。また、チームは、すべてのエージェントのプロンプトに挿入されるAGENTS.mdテンプレートへのURLを提供することもでき、複数のAGENTS.mdファイルを最新の状態に保つ必要がなくなります。</p>
 <p>また、システム全体がローカルで実行されます。<code>@opencode-reviewer/local</code>プラグインは、OpenCodeのTUI内で<code>/fullreview</code>コマンドを提供します。これは、作業ツリーから差分を生成し、同じリスク評価とエージェントオーケストレーションを実行し、結果をインラインで投稿します。これはエージェントとプロンプトがまったく同じで、CIではなくノートパソコン上で実行されます。</p>

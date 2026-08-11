@@ -15,8 +15,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-6f42c1-ffc799"> fib</span><span class="sk-24292e-fff">(n </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-6f42c1-ffc799"> fib</span><span class="sk-24292e-fff">(n </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Listing 1. An okay Fibonacci number generator implementation</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// fib_cool.c</span></span>
@@ -36,7 +58,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">uint64_t</span><span class="sk-6f42c1-ffc799"> fib</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">uint64_t</span><span class="sk-e36209-fff"> n</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> fib_tail</span><span class="sk-24292e-fff">(n, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Listing 2. A better version of the same</p>
 <p>If we take a look at the machine code the compiler produces, the “cool” variant translates to a nice and tight sequence of instructions:</p>
@@ -54,7 +80,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> objdump</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> fib_okay.o</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> call</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 10c:</span><span class="sk-032f62-99ffe4">   e8</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">          call</span><span class="sk-005cc5-ffc799">   111</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">fib+0x11</span><span class="sk-d73a49-a0a0a0">1&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> objdump</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> fib_cool.o</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> call</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This has an important consequence - as fib recursively calls itself, the stacks keep growing. We can observe it with a bit of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/trace_rsp.gdb" target="_blank" rel="noopener noreferrer">help from the debugger</a>.</p>
 <div class="emdash-code">
@@ -77,7 +107,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">n</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> %rsp</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0xffffd900</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">13</span></span>
 <span class="line"><span class="sk-24292e-fff">[Inferior </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> (process </span><span class="sk-005cc5-ffc799">50904</span><span class="sk-24292e-fff">) exited normally]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>While the “cool” variant makes no use of the stack.</p>
 <div class="emdash-code">
@@ -88,7 +122,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">n</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 6,</span><span class="sk-032f62-99ffe4"> %rsp</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0xffffd938</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">13</span></span>
 <span class="line"><span class="sk-24292e-fff">[Inferior </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> (process </span><span class="sk-005cc5-ffc799">50949</span><span class="sk-24292e-fff">) exited normally]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Where did the <code>calls</code> go?</h2>
 <p>The smart compiler turned the last function call in the body into a regular jump. Why was it allowed to do that?</p>
@@ -117,7 +155,11 @@
 <span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">while</span><span class="sk-24292e-fff"> (param_1 </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> lVar3;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Listing 4. <code>fib_cool.o</code> decompiled by Ghidra</p>
 <p>This is very much desired. Not only is the generated machine code much shorter. It is also way faster due to lack of calls, which pop up on the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/fib_okay_50.perf.txt#L85" target="_blank" rel="noopener noreferrer">profile</a> for fib_okay.</p>
@@ -150,7 +192,11 @@
 <span class="line"><span>              raising the maximum number of available eBPF instructions,</span></span>
 <span class="line"><span>              or  to  execute  given programs in conditional blocks. For</span></span>
 <span class="line"><span>              security reasons, there is an upper limit to the number of</span></span>
-<span class="line"><span>              successive tail calls that can be performed.</span></span></code></pre>
+<span class="line"><span>              successive tail calls that can be performed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html" target="_blank" rel="noopener noreferrer">bpf-helpers(7) man page</a></p>
 <p>At first glance, this looks somewhat similar to the <a href="https://man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve(2) syscall</a>. It is easy to mistake it for a way to execute a new program from the current program context. To quote the excellent <a href="https://docs.cilium.io/en/stable/bpf/#tail-calls" target="_blank" rel="noopener noreferrer">BPF and XDP Reference Guide</a> from the Cilium project documentation:</p>
@@ -189,7 +235,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> server2</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> __sk_buff </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">skb</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    __attribute__</span><span class="sk-24292e-fff">((musttail)) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> bring_order</span><span class="sk-24292e-fff">(skb);  </span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have two seemingly not so different BPF programs - <code>server1()</code> and <code>server2()</code>. They both call the same BPF function <code>bring_order()</code>. The function tail calls into the <code>serve_drink()</code> program, if the <code>bar[0]</code> map entry points to it (let’s assume that).</p>
 <p>Do both <code>server1</code> and <code>server2</code> return the same value? Turns out that - no, they don’t. We get a hex ? from <code>server1</code>, and a ☕ from <code>server2</code>. How so?</p>
@@ -252,7 +302,11 @@
 <span class="line"><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-005cc5-ffc799"> 0xf00d</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  37:</span><span class="sk-032f62-99ffe4">   mov</span><span class="sk-24292e-fff">    $0xf00d</span><span class="sk-032f62-99ffe4">,%eax</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  3c:</span><span class="sk-032f62-99ffe4">   leave</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  3d:</span><span class="sk-032f62-99ffe4">   ret</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  3d:</span><span class="sk-032f62-99ffe4">   ret</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There is a caveat. The target addresses for tail call jumps in <code>bpftool prog dump jited</code> output will not make any sense. To discover the real jump targets, we have to peek into the kernel memory. That can be done with <code>gdb</code> after we find the address of our JIT’ed BPF programs in <code>/proc/kallsyms</code>:</p>
 <div class="emdash-code">
@@ -292,7 +346,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">   0xffffffffa000072b:  mov    </span><span class="sk-24292e-fff">$0xcafe</span><span class="sk-032f62-99ffe4">,%eax</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   0xffffffffa0000730:  leave</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   0xffffffffa0000731:  ret</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">#</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">#</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Lastly, it will be handy to have a cheat sheet of <a href="https://elixir.bootlin.com/linux/v5.15.63/source/arch/x86/net/bpf_jit_comp.c#L104" target="_blank" rel="noopener noreferrer">mapping</a> between BPF registers (<code>r0</code>, <code>r1</code>, …) to hardware registers (<code>rax</code>, <code>rdi</code>, …) that the JIT compiler uses.</p>
 <div id="html-block-k86" class="html-block">
@@ -448,7 +506,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">EACCES;</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">        …</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>While the stack depth can be calculated by the BPF verifier at load-time, we still need to keep count of tail call jumps at run-time. Even when subprograms are involved.</p>
 <p>This means that we have to pass the tail call count from one BPF subprogram to another, just like we did when making a BPF tail call, so we yet again turn to value passing through the <code>rax register</code>.</p>
@@ -489,7 +551,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">processed</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> insns</span><span class="sk-24292e-fff"> (limit </span><span class="sk-005cc5-ffc799">1000000</span><span class="sk-24292e-fff">) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">--</span><span class="sk-032f62-99ffe4"> END</span><span class="sk-032f62-99ffe4"> PROG</span><span class="sk-032f62-99ffe4"> LOAD</span><span class="sk-032f62-99ffe4"> LOG</span><span class="sk-005cc5-99ffe4"> --</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">#</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That is a pity! We have been looking forward to reaping the benefits of code sharing with BPF to BPF calls in our lengthy machine generated BPF programs. So we asked - how hard could it be to make it work?</p>
 <p>After all, BPF <a href="https://elixir.bootlin.com/linux/v5.15.70/source/arch/arm64/net/bpf_jit_comp.c" target="_blank" rel="noopener noreferrer">JIT for arm64</a> already can handle BPF tail calls and BPF to BPF calls, when used in isolation.</p>
@@ -611,7 +677,11 @@
 <span class="line"><span>   2: (b7) r3 = 0</span></span>
 <span class="line"><span>   3: (85) call bpf_tail_call#12</span></span>
 <span class="line"><span>   4: (b7) r0 = 61453               // 0xf00d</span></span>
-<span class="line"><span>   5: (95) exit</span></span></code></pre>
+<span class="line"><span>   5: (95) exit</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Output: ARM64 assembly (<code>bpftool prog dump jited</code>)</p>
 <div class="emdash-code">
@@ -658,7 +728,11 @@
 <span class="line"><span>a0:   ldp     x29, x30, [sp], #16        // ⋮</span></span>
 <span class="line"><span>a4:   add     x0, x7, #0x0               // Set return value</span></span>
 <span class="line"><span>a8:   autiasp                            // Authenticate LR</span></span>
-<span class="line"><span>ac:   ret                                // Return to caller</span></span></code></pre>
+<span class="line"><span>ac:   ret                                // Return to caller</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>① BPF program prologue starts with Pointer Authentication Code (PAC), which protects against Return <a href="https://developer.arm.com/documentation/102433/0100/Return-oriented-programming" target="_blank" rel="noopener noreferrer">Oriented Programming attacks</a>. PAC instructions are emitted by JIT only if CONFIG_ARM64_PTR_AUTH_KERNEL is enabled.</p>
 <p>② <a href="https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst" target="_blank" rel="noopener noreferrer">Arm 64 Architecture Procedure Call Standard</a> <a href="https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst#the-frame-pointer" target="_blank" rel="noopener noreferrer">mandates</a> that the Frame Pointer (register X29) and the Link Register (register X30), aka the return address, of the caller should be recorded onto the stack.</p>
@@ -680,7 +754,11 @@
 <span class="line"><span>   1: (95) exit</span></span>
 <span class="line"><span>int sub_func(struct __sk_buff * skb):</span></span>
 <span class="line"><span>   2: (b7) r0 = 61453                   // 0xf00d</span></span>
-<span class="line"><span>   3: (95) exit</span></span></code></pre>
+<span class="line"><span>   3: (95) exit</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Output: ARM64 assembly</p>
 <div class="emdash-code">
@@ -734,7 +812,11 @@
 <span class="line"><span>  44:   ldp     x29, x30, [sp], #16     |       // ⋮</span></span>
 <span class="line"><span>  48:   add     x0, x7, #0x0            |       // ⋮</span></span>
 <span class="line"><span>  4c:   autiasp                         |       // ⋮</span></span>
-<span class="line"><span>  50:   ret ----------------------------'       // End epilogue</span></span></code></pre>
+<span class="line"><span>  50:   ret ----------------------------'       // End epilogue</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have now seen what a BPF tail call and a BPF function/subprogram call compiles down to. Can you already spot what would go wrong if mixing the two was allowed?</p>
 <p>That’s right! Every time we enter a BPF subprogram, we reset the X26 register, which holds the tail call count, to zero (<code>mov x26</code>, <code>#0x0</code>). This is bad. It would let users create program chains longer than the <code>MAX_TAIL_CALL_CNT</code> limit.</p>
@@ -755,7 +837,11 @@
 <span class="line"><span class="sk-b31d28-ff8080">-       if (!ebpf_from_cbpf) {</span></span>
 <span class="line"><span class="sk-22863a-99ffe4">+       if (!ebpf_from_cbpf &amp;&amp; is_main_prog) {</span></span>
 <span class="line"><span class="sk-24292e-fff">                /* Initialize tail_call_cnt */</span></span>
-<span class="line"><span class="sk-24292e-fff">                emit(A64_MOVZ(1, tcc, 0, 0), ctx);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">                emit(A64_MOVZ(1, tcc, 0, 0), ctx);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Believe it or not. This is everything that <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4609a5d8c70d21b4a3f801cf896a3c16c613fe1" target="_blank" rel="noopener noreferrer">was missing</a> to get BPF tail calls working with function calls on arm64. The feature will be enabled in the upcoming Linux 6.0 release.</p>
 <h2>Outro</h2>

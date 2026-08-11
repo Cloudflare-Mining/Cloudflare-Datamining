@@ -34,8 +34,30 @@
 <span class="line"><span>		ZoneID: cloudflare.String("023e105f4ecef8ad9ca31a8372d0c353"),</span></span>
 <span class="line"><span>	},</span></span>
 <span class="line"><span>)</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><br>Et avec Terraform&nbsp;:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">resource </span><span class="sk-032f62-99ffe4">"cloudflare_dns_record"</span><span class="sk-032f62-99ffe4"> "example"</span><span class="sk-24292e-fff"> {</span></span>
@@ -43,14 +65,22 @@
 <span class="line"><span class="sk-24292e-fff">  name    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "@"</span></span>
 <span class="line"><span class="sk-24292e-fff">  content </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "example.com"</span></span>
 <span class="line"><span class="sk-24292e-fff">  type    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "CNAME"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>De prime abord, l'approche de Terraform paraît plus simple (et vous auriez raison de croire que c'est le cas). La complexité des connaissances qu'exigent la création d'une nouvelle ressource et la gestion des modifications est gérée à votre place. Cependant, le problème est le suivant&nbsp;: pour que Terraform puisse proposer cette abstraction et cette garantie de données, toutes les valeurs doivent être connues au moment de l'application. Cela signifie que même si vous n'utilisez pas la valeur traitée en proxy, Terraform doit connaître la valeur requise afin de l'enregistrer dans le fichier d'état et de gérer cet attribut à l'avenir. L'erreur ci-dessous est celle qu'observent régulièrement les opérateurs Terraform&nbsp;; elle est renvoyée par les fournisseurs lorsque la valeur n'est pas connue au moment de l'application.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-24292e-fff">: Provider produced inconsistent result after apply</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">When applying changes to example_thing.foo, provider </span><span class="sk-032f62-99ffe4">"provider[</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">registry.terraform.io/example/example</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">]"</span></span>
-<span class="line"><span class="sk-24292e-fff">produced an unexpected </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> value: .foo: was </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, but now cty.</span><span class="sk-6f42c1-ffc799">StringVal</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">).</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">produced an unexpected </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> value: .foo: was </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, but now cty.</span><span class="sk-6f42c1-ffc799">StringVal</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">).</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Lorsque vous utilisez les SDK, en revanche, si vous n'avez pas besoin d'un champ, il vous suffit de l'omettre&nbsp;; vous n'aurez jamais à vous préoccuper de gérer des valeurs connues.</p>
 <p>Remédier à ce problème pour nos schémas OpenAPI n'a pas été une mince affaire. Depuis l'introduction de la prise en charge de la génération de Terraform, la qualité de nos schémas s'est considérablement améliorée. Maintenant, nous désignons explicitement toutes les valeurs par défaut présentes, les propriétés de réponse variables basées sur la charge utile de la requête ainsi que les éventuels attributs calculés côté serveur. Tout ceci permet de proposer une meilleure expérience à toutes les personnes qui interagissent avec nos API.</p>
@@ -110,7 +140,11 @@
 <span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(diags</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">HasError</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>À un niveau élevé&nbsp;:</p>
 <ul>
@@ -152,7 +186,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">env.Result</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(resp.State.</span><span class="sk-6f42c1-ffc799">Set</span><span class="sk-24292e-fff">(ctx, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">data)</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">resp.Diagnostics.</span><span class="sk-6f42c1-ffc799">Append</span><span class="sk-24292e-fff">(resp.State.</span><span class="sk-6f42c1-ffc799">Set</span><span class="sk-24292e-fff">(ctx, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">data)</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Au lieu de devoir générer des centaines d'instances de méthodes de convertisseur de type en modèle, nous pouvons, à la place, décorer le modèle Terraform avec les balises correctes et gérer le marshaling des données de manière cohérente. Il s'agit d'une modification mineure du code qui, à long terme, rend la génération plus réutilisable et plus lisible. Cette approche offre également l'avantage de faciliter considérablement la correction des bugs. En effet, lorsque vous avez identifié un bug avec un type de champ particulier, la correction de ce bug dans l'interface unifiée entraîne également sa correction pour d'autres événements que vous n'avez peut-être pas encore identifiés.</p>
 <h2>Mais attendez, ce n'est pas fini... documentation à l'appui&nbsp;!</h2>

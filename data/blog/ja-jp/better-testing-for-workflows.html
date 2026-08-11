@@ -46,8 +46,30 @@
 <span class="line"><span class="sk-24292e-fff">   ).</span><span class="sk-6f42c1-ffc799">toEqual</span><span class="sk-24292e-fff">({ status: </span><span class="sk-032f62-99ffe4">"published"</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   await</span><span class="sk-6f42c1-ffc799"> expect</span><span class="sk-24292e-fff">(instance.</span><span class="sk-6f42c1-ffc799">waitForStatus</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"complete"</span><span class="sk-24292e-fff">)).resolves.not.</span><span class="sk-6f42c1-ffc799">toThrow</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>このテストは、<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>を呼び出す「AIコンテンツスキャン」や、外部のブログAPIを呼び出す「コメント公開」ステップなど、外部API呼び出しを必要とするステップの結果をモックします。</p>
 <p>インスタンスIDが不明な場合は、ランダムに生成されたIDで1つまたは複数のWorkflowインスタンスを開始するworkerリクエストを作成しているため、<code>introspectWorkflow(env.MY_WORKFLOW)</code>を呼び出すことができます。以下は、そのシナリオのテストコードです。ここでは、Workflowインスタンスが1つだけ作成されています：</p>
 <div class="emdash-code">
@@ -68,7 +90,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> instances[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">];</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">waitForStepResult</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">"AI content scan"</span><span class="sk-24292e-fff">  })).</span><span class="sk-6f42c1-ffc799">toEqual</span><span class="sk-24292e-fff">({ violationScore: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   await</span><span class="sk-6f42c1-ffc799"> expect</span><span class="sk-24292e-fff">(instance.</span><span class="sk-6f42c1-ffc799">waitForStatus</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"complete"</span><span class="sk-24292e-fff">)).resolves.not.</span><span class="sk-6f42c1-ffc799">toThrow</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>どちらの例でも、<code>awaitを使って</code>イントロスペクターを呼び出していることに注目してください。これは、現代のJavaScriptの<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Resource_management#the_using_and_await_using_declarations" target="_blank" rel="noopener noreferrer"><u>明示的リソース管理構文</u></a>です。ここでは重要です。なぜなら、テストの終了時にイントロスペクターオブジェクトがスコープから外れると、その廃棄メソッドが自動的に呼び出されるからです。このようにして、各テストが独自の分離されたストレージで動作するようにしています。</p>
 <p><code>変更全ての関数</code>は、インスタンスを制御するためのゲートウェイです。コールバックの中では、モダナイゼーションオブジェクトにアクセスすることができ、ステップ結果のモック化、イベント、スリープ無効化などの動作を注入することができます。</p>
@@ -119,7 +145,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // Same logic for createBatch()</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>introspectWorkflow()</code>からのブロックを使用した<code>awaitが終了するか</code>、テストの終了時に<code>disposition()</code>メソッドが呼び出されると、イントロスペクターは処分され、プロキシは削除され、バインディングは元の状態のままとなります。開発者エクスペリエンスと長期的な保守性を優先する、影響の少ないアプローチです。</p>
 <h3>Workflowsのテストを開始する</h3>

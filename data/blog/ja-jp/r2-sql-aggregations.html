@@ -9,8 +9,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><br>「GROUP BY」文を使用することで、テーブル行をバケットに分割することができます。各バケットには、特定の部署に対応するラベルが付いています。バケットが満杯になると、各バケットの全行の「合計（value）」を計算し、対応する部門で行われる売上の総量を求めることができます。</p>
 <p>レポートによっては、量が最も多い部門だけに関心があるかもしれません。そこで登場するのが「ORDER BY」文です。</p>
 <div class="emdash-code">
@@ -18,7 +40,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">DESC</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここでは、すべての部門バケットを合計売上高で降順にソートし、上位10件のみを返すようにクエリーエンジンに指示しています。</p>
 <p>最後に、異常をフィルタリングすることに関心があるかもしれません。たとえば、売上合計が5件を超える部門のみをレポートに含めたい場合があります。「HAVING」ステートメントを使うことで、簡単にそれを行うことができます。</p>
@@ -28,7 +54,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">HAVING</span><span class="sk-005cc5-ffc799"> count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 5</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">DESC</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここでは、クエリに新しい集計関数「count(*)」を追加しています。これは、各バケットの最終行数を計算するものです。これは、各部門の売上数に直接対応するため、「HAVING」ステートメントに予測条件を追加し、5行以上のバケットのみを残りするようにしました。</p>
 <h2>集約には2つのアプローチがあります：早い段階での計算</h2>
@@ -55,7 +85,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(sales) </span><span class="sk-d73a49-ffc799">DESC</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>グローバルトップ2を正しく判断するには、データセット全体の各部門の合計売上を知る必要があります。データは基盤となるParquetファイル全体にランダムに効果的に分散されるため、特定の部門の売上が多くの異なるWorkerに分割される可能性があります。同じ部署は、個々の労働者の売上が低い場合があり、ローカルトップ2リストから除外すれば、それらの労働者の合計売上がグローバルでは最高売上になります。</p>
 <p>次の図は、このクエリに対して分散型収集アプローチが機能しないことを示しています。「Dept A」はグローバルなセールスリーダーですが、売上が従業員全体に均等に行き渡るため、ローカルのトップ2リストにランクインせず、コーディネーターから破棄されてしまいます。</p>

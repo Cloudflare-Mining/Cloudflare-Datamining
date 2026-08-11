@@ -24,8 +24,30 @@
 </ul>
 <p><strong>Migrate existing projects</strong>If you have an existing Pages project, we’ve added a new Wrangler CLI command that downloads your existing configuration and provides you with a valid <code>wrangler.toml</code> file.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ npx wrangler@latest pages download config </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-fff">PROJECT_NAME</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ npx wrangler@latest pages download config </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-fff">PROJECT_NAME</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Run this command, add the wrangler.toml file that it generates to your project’s root directory, and then when you deploy, your project will be configured based on this configuration file.</p>
 <p>If you are already using wrangler.toml to define your local development configuration, you can continue doing so. By default, your existing wrangler.toml file will continue to only apply to local development. When you run <code>wrangler pages deploy</code>, Wrangler will show you the additional fields that you must add in order for your configuration to apply to production and preview environments. Add these fields to your wrangler.toml, and then when you deploy your changes, the configuration you’ve defined in wrangler.toml will be used by your Pages project.</p>
 <p>Refer to the <a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration" target="_blank" rel="noopener noreferrer">documentation</a> for more information on exactly what’s supported and how to leverage wrangler.toml in your development workflows.</p>

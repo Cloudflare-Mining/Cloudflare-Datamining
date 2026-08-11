@@ -48,12 +48,38 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    :scheme</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> https</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    :authority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> example.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    :path</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> /index.html</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> u=0,i</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> u=0,i</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The PRIORITY_UPDATE frame only carries the serialized Extensible Priority value:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PRIORITY_UPDATE:</span></span>
-<span class="line"><span class="sk-24292e-fff">    u</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0,i</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    u</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0,i</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Structured Fields has some other neat tricks. If you want to indicate the use of a default value, then that can be done via omission. Recall that the urgency default is 3, and incremental default is false. A client could send "u=1" alongside our important CSS request (urgency=1, incremental=false). For our lower priority image it could send just "i=?1" (urgency=3, incremental=true). There's even another trick, where boolean true dictionary parameters are sent as just "i". You should expect all of these formats to be used in practice, so it pays to be mindful about their meaning.</p>
 <p>Extensible Priority servers need to decide how best to use the available connection bandwidth to schedule the response data bytes. When servers receive priority client signals, they get one form of input into a decision making process. RFC 9218 provides a set of <a href="https://www.rfc-editor.org/rfc/rfc9218.html#name-server-scheduling" target="_blank" rel="noopener noreferrer">scheduling recommendations</a> that are pretty good at meeting a board set of needs. These can be distilled down to some golden rules.</p>
@@ -83,14 +109,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    :scheme</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> https</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    :authority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> example.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    :path</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> /lcp-image.jpg</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> u=3,i</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> u=3,i</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> HEADERS:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">:status</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 200</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">content-length:</span><span class="sk-005cc5-ffc799"> 10000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">content-type:</span><span class="sk-032f62-99ffe4"> image/jpeg</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> u=</span><span class="sk-005cc5-ffc799">2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> u=</span><span class="sk-005cc5-ffc799">2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Priority response headers are one tool to tweak client behavior and they are complementary to other web performance techniques. Methods like efficiently ordering elements in HTML, using attributes like "async" or "defer", augmenting HTML links with Link headers, or using more descriptive link relationships like “<a href="https://html.spec.whatwg.org/multipage/links.html#link-type-preload" target="_blank" rel="noopener noreferrer">preload</a>” all help to improve a browser's understanding of the resources comprising a page. A website that optimizes these things provides a better chance for the browser to make the best choices for prioritizing requests.</p>
 <p>More recently, a new attribute called “<a href="https://web.dev/fetch-priority" target="_blank" rel="noopener noreferrer">fetchpriority</a>” has emerged that allows developers to tune some of the browser behavior, by boosting or dropping the priority of an element relative to other elements of the same type. The attribute can help the browser do two important things for Extensible priorities: first, the browser might send the request earlier or later, helping to satisfy our golden rule #1 - ordering. Second, the browser might pick a different urgency value, helping to satisfy rule #2. However, "fetchpriority" is a nudge mechanism and it doesn't allow for directly setting a desired priority value. The nudge can be a bit opaque. Sometimes the circumstances benefit greatly from just knowing plainly what the values are and what the server will do, and that's where the response header can help.</p>

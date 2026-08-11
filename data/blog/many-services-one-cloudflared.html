@@ -32,8 +32,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> foo.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   service:</span><span class="sk-032f62-99ffe4"> hello_world</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> # This “catch-all” rule doesn’t have a hostname/path, so it matches everything</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This example maps traffic to three different local services. But cloudflared can map traffic to more than just addresses: it can respond with a given HTTP status (as in the last rule) or with the built-in Hello World test server (as in the second-last rule). See <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress" target="_blank" rel="noopener noreferrer">the docs</a> for a full list of supported services.</p>
 <p>You can match traffic using the hostname, a path regex, or both. If you don’t use any filters, the ingress rule will match everything (so if you have DNS records from different zones routing into the tunnel, the rule will match all their URLs). Traffic is matched to rules from top to bottom, so in this example, the last rule will match anything that wasn’t matched by an earlier rule. We actually require the last rule to match everything; otherwise, cloudflared could receive a request and not know what to respond with.</p>
 <h3>Testing your rules</h3>
@@ -47,7 +69,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> validate</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Validating</span><span class="sk-032f62-99ffe4"> rules</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> /usr/local/etc/cloudflared/config.yml</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Validation</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> last</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> must</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> URLs</span><span class="sk-24292e-fff"> (i.e. </span><span class="sk-032f62-99ffe4">it</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> hostname</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> path</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Validation</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> last</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> must</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> URLs</span><span class="sk-24292e-fff"> (i.e. </span><span class="sk-032f62-99ffe4">it</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> hostname</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> path</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This will check that all your ingress rules use valid regexes and map to valid services, and it’ll ensure that your last rule (and only your last rule) matches all traffic. To make sure your ingress rules do what you expect them to do, you can run</p>
 <div class="emdash-code">
@@ -55,7 +81,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Using</span><span class="sk-032f62-99ffe4"> rules</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> ~/cloudflared_config.yaml</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Matched</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-6a737d-8b8b8b94"> #2</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Hostname:</span><span class="sk-032f62-99ffe4"> static.example.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        path:</span><span class="sk-032f62-99ffe4"> /images/</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-005cc5-a0a0a0">\.</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">jpg</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">png</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">gif</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        path:</span><span class="sk-032f62-99ffe4"> /images/</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-005cc5-a0a0a0">\.</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">jpg</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">png</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">gif</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This will check which rule matches the given URL, almost like a dry run for the ingress rules (no tunnels are run and no requests are actually sent). It’s helpful for making sure you’re routing the right URLs to the right services!</p>
 <h3>Per-rule configuration</h3>
@@ -74,7 +104,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     connectTimeout:</span><span class="sk-032f62-99ffe4"> 10s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     disableChunkedEncoding:</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> # Catch-all rule doesn’t actually use any of the config</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For a full list of configuration options, check out the <a href="https://developers.cloudflare.com/argo-tunnel/configuration/ingress" target="_blank" rel="noopener noreferrer">docs</a>.</p>
 <h3>What’s next?</h3>

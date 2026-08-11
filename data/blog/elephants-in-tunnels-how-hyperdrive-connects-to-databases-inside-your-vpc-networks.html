@@ -68,8 +68,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-6f42c1-ffc799"> ConnectionError</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">InternalError</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> send_startup</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-24292e-fff"> stream, </span><span class="sk-032f62-99ffe4">"db_user"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"my_db"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> send_startup</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-24292e-fff"> stream, </span><span class="sk-032f62-99ffe4">"db_user"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"my_db"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>With this approach, if we wanted to encrypt the stream using <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/#:~:text=Transport%20Layer%20Security%2C%20or%20TLS,web%20browsers%20loading%20a%20website." target="_blank" rel="noopener noreferrer"><u>TLS</u></a> before we write to it (upgrading our existing <code>TcpStream</code> connection in-place, to an <code>SslStream</code>), we would only have to change the code we use to create the stream, while generating and sending the traffic would remain unchanged. This is because <code>SslStream</code> also implements <code>AsyncWrite</code>!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/// We're handwaving the SSL setup here. You're welcome.</span></span>
@@ -83,7 +105,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-6f42c1-ffc799"> ConnectionError</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">InternalError</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> send_startup</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-24292e-fff"> ssl_stream, </span><span class="sk-032f62-99ffe4">"db_user"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"my_db"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> send_startup</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-24292e-fff"> ssl_stream, </span><span class="sk-032f62-99ffe4">"db_user"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"my_db"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Whence WebSocket</h2>
 <p><a href="https://datatracker.ietf.org/doc/html/rfc6455" target="_blank" rel="noopener noreferrer"><u>WebSocket</u></a> is an application layer protocol that enables bidirectional communication between a client and server. Typically, to establish a WebSocket connection, a client initiates an HTTP request and indicates they wish to upgrade the connection to WebSocket via the “Upgrade” header. Then, once the client and server complete the handshake, both parties can send messages over the connection until one of them terminates it.</p>
@@ -119,7 +145,11 @@
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With that translation done, we can use an existing WebSocket library to upgrade our <code>SslStream</code> connection to a Cloudflare Tunnel, and wrap the result in our <code>AsyncRead/AsyncWrite</code> implementation. The result can then be used anywhere that our other transport streams would work, without any changes needed to the rest of our codebase!&nbsp;</p>
 <p>That would look something like this:</p>
@@ -132,7 +162,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> websocket_stream </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> HyperSocket</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-24292e-fff">(websocket));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> send_startup</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-24292e-fff"> websocket_stream, </span><span class="sk-032f62-99ffe4">"db_user"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"my_db"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> send_startup</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-24292e-fff"> websocket_stream, </span><span class="sk-032f62-99ffe4">"db_user"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"my_db"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Access granted</h2>
 <p>An observant reader might have noticed that in the code example above we snuck in a variable named request that we passed in when upgrading from an <code>SslStream to a WebSocketStream</code>. This is for multiple reasons. The first reason is that Tunnels are assigned a hostname and use this hostname for routing. The second and more interesting reason is that (as mentioned above) when negotiating an upgrade from HTTP to WebSocket, a request must be sent to the server hosting the ingress side of the Tunnel to <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism" target="_blank" rel="noopener noreferrer"><u>perform the upgrade</u></a>. This is pretty universal, but we also add in an extra piece here.</p>
@@ -160,7 +194,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "CF-Access-Client-Secret"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    http</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">header</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">HeaderValue</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">from_str</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">client_secret)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">unwrap</span><span class="sk-24292e-fff">(),</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Building for customer zero</h2>
 <p>If you’ve been reading the blog for a long time, some of this might sound a bit familiar.&nbsp; This isn’t the first time that we’ve <a href="https://blog.cloudflare.com/cloudflare-tunnel-for-postgres" target="_blank" rel="noopener noreferrer"><u>sent Postgres traffic across a tunnel</u></a>, it’s something most of us do from our laptops regularly.&nbsp; This works very well for interactive use cases with low traffic volume and a high tolerance for latency, but historically most of our products have not been able to employ the same approach.</p>

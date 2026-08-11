@@ -7,8 +7,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Client</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">----</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Workers</span><span class="sk-032f62-99ffe4"> application</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">------</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> API</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">                                   |</span><span class="sk-6f42c1-ffc799">-------</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">Route</span><span class="sk-032f62-99ffe4"> A</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                                   |</span><span class="sk-6f42c1-ffc799">-------</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">Route</span><span class="sk-032f62-99ffe4"> B</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">                                   |</span><span class="sk-6f42c1-ffc799">-------</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">Route</span><span class="sk-032f62-99ffe4"> B</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>A/B testing is just one of many potential things you can do with Workers. By picking something seemingly “simple”, we can hone in on how each applicant used the Workers APIs – making requests, parsing and modifying responses – as well as deploying their app using our command-line tool <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler</a>. In addition, because Workers can do all these things directly on the edge, it meant that we could provide a <em>self-contained</em> exercise. It felt unfair to ask applicants to spin up their own servers, or host files in some service. As I learned during this process, Cloudflare Workers projects can be a great way to gauge experience in take home projects, without the usual deployment headaches!</p>
 <p>To provide a foundation for the project, I created my own Workers application with three routes - first, an API route that returns an array with two URLs, and two HTML pages, each slightly different from the other (referred to as "variants").</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">variants</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> apiResp.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> random</span><span class="sk-24292e-fff">(variants)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(url)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When an applicant completed the exercise, they needed to use wrangler to deploy their project to a registered <a href="https://blog.cloudflare.com/announcing-workers-dev">Workers.dev subdomain</a>. This falls under the free tier of Workers, so it was a great way to get people exploring <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler</a>, our documentation, and the deploy process. We saw a number of GitHub issues filed on our docs and in the wrangler repo from people attempting to install wrangler and deploy their code, so it was great feedback on a number of things across the Workers ecosystem!</p>
 <h3>Extra credit: using the Workers APIs</h3>
@@ -72,7 +98,11 @@
 <span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://cloudflare.com'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'https://workers.cloudflare.com'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Return to cloudflare.com'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Return to Cloudflare Workers'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(replacedCtaText, response)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you’ve used string replacement at scale, on larger applications, you know that it can be fragile. The strings have to match <em>exactly</em>, and on a more technical level, reading <code>response.text()</code> into a variable means that Workers has to hold the entire response in memory. This problem is common when writing Workers applications, so in this exercise, we wanted to push people towards trying our runtime solution to this problem: the HTMLRewriter API.</p>
 <p>The HTMLRewriter API provides a streaming selector-based interface for modifying a response as it passes through a Workers application. In addition, the API also allows developers to compose handlers to modify parts of the response using JavaScript classes or functions, so it can be a good way to test how people write JavaScript and their understanding of APIs. In the below example, we set up a new instance of the HTMLRewriter, and rewrite the <code>title</code> tag, as well as three pieces of content on the site: <code>h1#title</code>, <code>p#description</code>, and <code>a#url</code>:</p>
@@ -125,7 +155,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Pass the variant response through the HTMLRewriter while sending it</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // back to the client.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> rewriter.</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(response)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Persisting variants</h3>
 <p>A traditional A/B test application isn't as simple as randomly sending users to different URLs: for it to work correctly, it should also <em>persist</em> a chosen URL per-user. This means that when User A is sent to variant A, they should continue to see Variant A in subsequent visits. In this portion of the extra credit, applicants were encouraged to use Workers' close integration with the <code>Request</code> and <code>Response</code> classes to persist a cookie for the user, which can be parsed in subsequent requests to indicate a specific variant to be returned.</p>
@@ -159,7 +193,11 @@
 <span class="line"><span class="sk-24292e-fff">      },</span></span>
 <span class="line"><span class="sk-24292e-fff">    })</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Deploying to a domain</h3>
 <p>Workers makes a great platform for these take home-style projects because the existence of <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a> and the ability to claim your workers.dev subdomain means you can deploy your Workers application without needing to own any domains. That being said, wrangler and Workers do have the ability to deploy to a domain, so for another piece of extra credit, applicants were encouraged to deploy their project to a domain that they owned! We were careful here to tell people <em>not</em> to buy a domain for this project: that's a potential financial burden that we don't want to put on anyone (especially interns), but for many web developers, they may already have test domains or even subdomains they could deploy their project to.</p>
@@ -169,7 +207,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "my-fullstack-example"</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "webpack"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "0a1f7e807cfb0a78bec5123ff1d3"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "9f7e1af6b59f99f2fa4478a159a4"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "9f7e1af6b59f99f2fa4478a159a4"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Where people went wrong</h3>
 <p>By far the place where applicants struggled the most was in writing <em>clean code</em>. While we didn't evaluate submissions against a style guide, most people would have benefitted strongly from running their code through a "code prettifier": this could have been as simple as opening the file in VS Code or something similar, and using the "Format Document" option. Consistent indentation and similar "readability" problems made some submissions, even though they were technically correct, very hard to read!</p>

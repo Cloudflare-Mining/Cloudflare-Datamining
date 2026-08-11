@@ -15,25 +15,59 @@
 <p><strong>1. 执行 SQL 文件</strong></p>
 <p>其中，您的 <code>.sql</code>文件如下所示：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> my-database-name</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> ./customers.sql</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> my-database-name</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> ./customers.sql</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>customers.sql</p>
 <p><strong>2. 创建并运行迁移</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">DROP</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-d73a49-ffc799"> IF</span><span class="sk-d73a49-ffc799"> EXISTS</span><span class="sk-24292e-fff"> Customers;</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-6f42c1-ffc799"> Customers</span><span class="sk-24292e-fff"> (CustomerID </span><span class="sk-d73a49-a0a0a0">INT</span><span class="sk-24292e-fff">, CompanyName </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">, ContactName </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">PRIMARY KEY</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">`CustomerID`</span><span class="sk-24292e-fff">));</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">INSERT INTO</span><span class="sk-24292e-fff"> Customers (CustomerID, CompanyName, ContactName) </span></span>
-<span class="line"><span class="sk-d73a49-ffc799">VALUES</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Alfreds Futterkiste'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Maria Anders'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Around the Horn'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Thomas Hardy'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">11</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Bs Beverages'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Victoria Ashworth'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">13</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Bs Beverages'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Random Name'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">VALUES</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Alfreds Futterkiste'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Maria Anders'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Around the Horn'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Thomas Hardy'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">11</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Bs Beverages'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Victoria Ashworth'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">13</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Bs Beverages'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Random Name'</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>迁移是对数据库更改进行版本控制的一种方式。使用 D1，您可以<a href="https://developers.cloudflare.com/d1/migrations" target="_blank" rel="noopener noreferrer">创建迁移</a>，然后将其应用于您的数据库。</p>
 <p>要创建迁移，请执行：</p>
 <p>届时将在 <code>migrations</code> 文件夹中创建 SQL 文件，您可在其中添加查询。然后将迁移应用于您的数据库，方法是执行：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">short</span><span class="sk-032f62-99ffe4"> description</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> migratio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">short</span><span class="sk-032f62-99ffe4"> description</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> migratio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>从您的Worker 中访问 D1</h3>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您可以通过将 D1 绑定添加到您的 <code>wrangler.toml</code> 配置文件，将 D1 附加到 Worker。然后与 D1 交互，方法是在 Worker 中执行查询，具体如下所示：</p>
 <h3><strong>或者从您的 Pages Function 中访问 D1</strong></h3>
@@ -53,7 +87,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Call /api/beverages to see Bs Beverages customers"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在此 α 测试发布中，D1 还支持与 <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a> 集成！您可以在 Pages 仪表板中添加 D1 绑定，并在 Pages Function 中编写查询以构建全堆栈应用程序！查看<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank" rel="noopener noreferrer">完整文档</a>，开始使用 Pages 和 D1。</p>
 <h2><strong>社区构建的工具</strong></h2>
@@ -77,7 +115,11 @@
 <span class="line"><span class="sk-24292e-fff">    where: {</span></span>
 <span class="line"><span class="sk-24292e-fff">        id: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>workers-qb</strong></h3>
 <p>这是一种零依赖性的查询构建器，不仅提供了简单的标准化界面，同时保留了在传统 ORM 上使用原始查询的优势和速度。<code>workers-qb</code>虽然并不旨在提供类似于 ORM 的功能，但可以更方便地通过直接访问 SQL 的代码与数据库交互：</p>
@@ -92,7 +134,11 @@
 <span class="line"><span class="sk-24292e-fff">    conditions: </span><span class="sk-032f62-99ffe4">'department = ?1'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    params: [</span><span class="sk-032f62-99ffe4">'HQ'</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>d1-console</h3>
 <p>您不必每次与数据库交互时在终端运行 <code>wrangler d1 execute</code> 命令，而可以从d1-console 中与 D1 交互。<code>d1-console</code>由 Discord 社区拥护者创建，具有执行多行查询、获取命令历史记录和查看整洁格式化表格输出的优势。</p>
@@ -114,7 +160,11 @@
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">selectFrom</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'kv'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">selectAll</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">where</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'key'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'='</span><span class="sk-24292e-fff">, key)</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">executeTakeFirst</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">executeTakeFirst</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2><strong>哪些内容仍在测试中？</strong></h2>
 <p>此 α 测试版中禁用的最大部分是复制和 JavaScript 事务支持。虽然我们会逐渐应用这些更改，但我们想着重强调我们正在积极进行测试的一些现存局限性：</p>

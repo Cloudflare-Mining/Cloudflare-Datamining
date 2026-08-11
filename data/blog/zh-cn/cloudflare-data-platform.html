@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-24292e-fff">  user_agent</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> events_json</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-ffc799"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'page_view'</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>SQL 转换功能非常强大，让您可以完全控制数据的结构以及将其写入表的方式。例如，您可以</p>
 <ul>
 	<li>对数据进行模式化和标准化处理，甚至使用 <a href="https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json" target="_blank" rel="noopener noreferrer"><u>JSON 函数</u></a>从任意 JSON 中提取字段</li>
@@ -59,7 +81,11 @@
 <p>它让 Iceberg 的入门变得简单。无需设置数据库集群、连接对象存储或管理任何基础设施。您可以使用几个 <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> 命令创建目录：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler bucket create mycatalog </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这提供了一个可扩展到 PB 级存储的数据湖，您可以通过任何您想要使用的引擎进行查询，且无需支付任何输出费用。</p>
 <p>但仅仅存储数据是不够的。随着时间推移和数据持续写入，构成表的底层数据文件的数量将会增加，导致查询性能越来越慢。</p>
@@ -67,7 +93,11 @@
 <p>解决方案是<em>压缩</em>，这是目录自动执行的定期维护操作。压缩会将小文件重写为更大的文件，从而减少元数据开销并提高查询性能。</p>
 <p>今天，我们正式推出 R2 Data Catalog 的压缩功能支持。要为您的目录启用此功能，操作非常简单：<br></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们目前支持小文件压缩，未来将扩展至更多压缩策略。请参阅<a href="https://developers.cloudflare.com/r2/data-catalog/about-compaction" target="_blank" rel="noopener noreferrer"><u>压缩文档</u></a>，详细了解其工作原理和启用方法。</p>
 <p>目前处于公开测试阶段，R2 Data Catalog 暂不收费。以下是我们对未来定价的初步规划：</p>
@@ -144,7 +174,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 sql query </span><span class="sk-032f62-99ffe4">"{WAREHOUSE}"</span><span class="sk-032f62-99ffe4"> "\</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  SELECT user_id, url FROM events \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare 在全球网络任意节点调度计算的能力，是 R2 SQL 设计的基石。这使我们能够直接在数据存储位置进行处理，无需您为分析工作负载管理集中式集群。</p>
 <p>R2 SQL 与 R2 Data Catalog 和 R2 服务紧密集成，这使得查询规划器不仅能进行简单的存储扫描，还能深度利用 R2 Data Catalog 中存储的丰富统计信息。这为新一代查询优化提供了强大基础，例如未来可支持辅助索引或更复杂分析函数。</p>

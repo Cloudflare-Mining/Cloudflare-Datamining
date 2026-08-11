@@ -15,8 +15,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4"> Thu,</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-032f62-99ffe4"> Sep</span><span class="sk-005cc5-ffc799"> 2021</span><span class="sk-032f62-99ffe4"> 10:30:02</span><span class="sk-005cc5-99ffe4"> -0500</span><span class="sk-24292e-fff"> (CDT)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">product-updates@cloudflare.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Reply-To:</span><span class="sk-032f62-99ffe4"> product-updates@cloudflare.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my_personal_email_addres</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my_personal_email_addres</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>当我收到以上邮件时，我会自动认为这封邮件是由 Cloudflare 发送的。然而，任何人都可以从他们的电子邮件服务器发送带有修改过的 From 标头的电子邮件。如果我的电子邮件提供商没有进行适当的检查（这一点将在本文稍后讨论），我有可能受骗，以为某一封电子邮件是从 Cloudflare 发送的，但实际上并非如此。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="156" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=640&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 712w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=750&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=828&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1080&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1280&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1424&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 1424w" alt="BLOG-667 Embedded Image - qPVxMF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp" data-lightbox-width="712" data-lightbox-height="156" data-astro-cid-7nvefuv6="true" sizes="(min-width: 712px) 712px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="712" height="156" class="pt-portable-image-media"></div>
@@ -46,7 +68,11 @@
 <p>SPF 用于指定哪些 IP 地址和域被允许代表您的域发送电子邮件。SPF 策略以 TXT 记录的形式发布在您的网域上，以便人人都能通过 DNS访问。我们来检查 cloudflare.com 上的 TXT 记录：</p>
 <p>SPF TXT 记录始终需要以 v=spf1 开头。它通常包含发送电子邮件服务器的 IP 地址列表（使用 ip4 或 ip6 机制）。include 机制用于参考其他域名上的其他 SPF 记录。如果您依赖于其他需要代表我们发送电子邮件的供应商，则通常会这样做。您可以在 cloudflare.com 的 SPF 记录中看到一些例子：我们使用 Zendesk 作为客户支持软件，使用 Mandrill 作为营销和交易电子邮件。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflare.com</span><span class="sk-032f62-99ffe4"> 	TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflare.com</span><span class="sk-032f62-99ffe4"> 	TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最后，还有一种全面捕获机制 -all，其中规定了所有未指定的入站电子邮件应如何处理。全面捕获机制之前有一个限定符，可以是 + (Allow)、~ (Softfail) 或 - (Fail)。不建议使用 Allow 限定符，因为它基本上会使 SPF 记录无效，并允许所有 IP 地址和域名代表您的域名发送电子邮件。Softfail 通过接收邮件服务器进行不同解读，将电子邮件标记为垃圾邮件或不安全，具体取决于服务器。Fail 告诉服务器不要接受任何来自不明来源的电子邮件。</p>
 <p>上图显示了为确保收到的邮件符合 SPF 策略所采取的步骤。</p>
@@ -64,7 +90,11 @@
 <p>此时即可使用 DKIM。DKIM 提供一种机制，可加密签署电子邮件的多个部分 — 通常为主体和某些标头 — 它使用的是<a href="https://www.cloudflare.com/zh-cn/learning/ssl/how-does-public-key-encryption-work" target="_blank" rel="noopener noreferrer">公共密钥加密</a>。在深入了解其工作原理之前，我们先看看 cloudflare.com 使用的 DKIM 记录：</p>
 <p>DKIM 记录的结构为 ._domainkey.，其中，selector 由您的电子邮件提供商提供。DKIM TXT 记录的内容始终以 v=DKIM1 开头，之后是公共密钥。我们可以看到公共密钥的类型，引用了 k 标记和公共密钥本身，前面是 p 标记。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">google._domainkey.cloudflare.com.</span><span class="sk-032f62-99ffe4">	TXT</span><span class="sk-032f62-99ffe4">	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">google._domainkey.cloudflare.com.</span><span class="sk-032f62-99ffe4">	TXT</span><span class="sk-032f62-99ffe4">	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>下面是签名和 DKIM 检查工作原理的简化序列：</p>
 <ol>
@@ -83,7 +113,11 @@
 <span class="line"><span class="sk-24292e-fff">   bh</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">uMixy0BsCqhbru4fqPZQdeZY5Pq865sNAnOAxNgUS0s</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">   b</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">LiIvJeRyqMo0gngiCygwpiKphJjYezb5kXBKCNj8DqRVcCk7obK6OUg4o+EufEbB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    tRYQfQhgIkx5m70IqA6dP+DBZUcsJyS9C+vm2xRK7qyHi2hUFpYS5pkeiNVoQk/Wk4w</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    ZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU</span><span class="sk-032f62-99ffe4">=</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    ZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU</span><span class="sk-032f62-99ffe4">=</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>完整 DKIM 规范可参阅 <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank" rel="noopener noreferrer">RFC4871</a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank" rel="noopener noreferrer">RFC5672</a>。</p>
 <h2>基于域名的邮件身份验证报告和一致性 (DMARC)</h2>
@@ -93,7 +127,11 @@
 <p>策略标记 (p) 指示电子邮件接收者如何处理 SPF 或 DKIM 检查不通过的电子邮件。可能值为 none、reject 和 quarantine。none 策略也称为仅监视，允许仍然接受检查不通过的电子邮件。通过指定 quarantine，电子邮件接收者将不符合 SPF 或 DKIM 的电子邮件放入垃圾邮件文件夹。对于 reject，如果 SPF 或 DKIM 检查不通过，将丢弃电子邮件，根本不发送。</p>
 <p>百分比标记 (pct) 可用于仅对传入电子邮件的子集应用指定的策略。如果您刚刚推出 DMARC，并且希望通过在子集上测试以确保所有配置都正确无误，则这样很有帮助。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">_dmarc.cloudflare.com.</span><span class="sk-032f62-99ffe4">   TXT</span><span class="sk-032f62-99ffe4">   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">_dmarc.cloudflare.com.</span><span class="sk-032f62-99ffe4">   TXT</span><span class="sk-032f62-99ffe4">   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们可以在记录中找到的最后一个标记是报告 URI (rua)。这用于指定一个电子邮件地址，该地址将接收关于不符合要求的电子邮件的汇总报告(通常是每天)。</p>
 <p>以上，我们可以看到 DMARC 是如何逐步工作的。</p>
@@ -249,7 +287,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">example.com</span><span class="sk-032f62-99ffe4">			TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 -all"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">._domainkey.example.com.	TXT	</span><span class="sk-032f62-99ffe4">"v=DKIM1; p="</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">_dmarc.example.com.</span><span class="sk-032f62-99ffe4">		TXT</span><span class="sk-032f62-99ffe4">	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">_dmarc.example.com.</span><span class="sk-032f62-99ffe4">		TXT</span><span class="sk-032f62-99ffe4">	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>加拿大</p>
 <p>24</p>

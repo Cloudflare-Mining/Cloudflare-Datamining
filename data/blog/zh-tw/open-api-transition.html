@@ -14,8 +14,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> --init</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -v</span><span class="sk-032f62-99ffe4"> /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -p</span><span class="sk-032f62-99ffe4"> 4010:4010</span><span class="sk-032f62-99ffe4"> stoplight/prism:4</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  mock</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> /tmp/openapi.yaml</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  mock</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> /tmp/openapi.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>這意味著更快的開發和更短的測試執行，同時仍然可以在 API 合併或部署之前儘早發現它們的合約問題。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -sX</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-032f62-99ffe4"> localhost:4010/zones/f00/activation_check</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -27,7 +49,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "023e105f4ecef8ad9ca31a8372d0c353"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>庫產生</h3>
 <p>Cloudflare 擁有多種程式設計語言的庫，例如 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank" rel="noopener noreferrer">Terraform</a> 和 <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>，但我們並不支援所有可能的程式設計語言。幸運的是，使用像 <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank" rel="noopener noreferrer">openapi generator</a> 這樣的工具，您可以輸入 Cloudflare 的 API 結構描述並產生各種語言的庫，然後在您的程式碼中使用它們來與 Cloudflare 的 API 對話。例如，您可以使用以下命令產生 Java 庫：</p>
@@ -39,7 +65,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">java</span><span class="sk-005cc5-99ffe4"> -jar</span><span class="sk-032f62-99ffe4"> modules/openapi-generator-cli/target/openapi-generator-cli.jar</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   -i</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   -g</span><span class="sk-032f62-99ffe4"> java</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">   -o</span><span class="sk-032f62-99ffe4"> /var/tmp/java_api_client</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">   -o</span><span class="sk-032f62-99ffe4"> /var/tmp/java_api_client</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Cloudflare 如何向 OpenAPI 轉換</h2>
 <p>如前所述，我們之前使用 JSON Hyper-Schema 來定義我們的 API。我們有大約 600 個已在結構描述中定義的端點。下面的程式碼片段展示了 JSON Hyper-Schema 中的端點是什麼樣子的：</p>
@@ -69,7 +99,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">          "#zone:read"</span></span>
 <span class="line"><span class="sk-24292e-fff">        ]</span></span>
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您可以看到，兩者看起來非常相似，並且在大多數情況下，它們都包含相同的資訊，包括方法類型、描述以及請求和回應定義（儘管它們在 $refs 中連結）。從一個結構描述移轉到另一個結構描述的價值不在於我們如何定義結構描述本身，而在於我們可以用這些結構描述做什麼。許多工具可以剖析 OpenAPI，但只有很少的工具可以剖析 JSON Hyper-Schema。</p>
 <div class="emdash-code">
@@ -105,7 +139,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        business:</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        enterprise:</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        free:</span><span class="sk-005cc5-99ffe4"> true</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        pro:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        pro:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果這個 API 是構成 Cloudflare API 的全部，那麼只需手動將 JSON Hyper-Schema 轉換為 OpenAPI 結構描述就可以了。然而，重複此動作 600 次將是一項艱巨的任務。考慮到團隊會不斷新增新的端點，這可以說是不可能維持的。我們現有的 API 文件也使用了現有的 JSON Hyper-Schema，這意味著我們需要在整個過渡期間使兩個結構描述保持最新。與這相比，肯定有更好的方法。</p>
 <h3>自動轉換</h3>

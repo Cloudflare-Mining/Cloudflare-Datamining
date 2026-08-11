@@ -71,15 +71,41 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> datasets</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">search_datasets</span><span class="sk-24292e-fff">({ query: </span><span class="sk-032f62-99ffe4">"billing product revenue"</span><span class="sk-24292e-fff"> })</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> queryId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">start_query</span><span class="sk-24292e-fff">({ sql: </span><span class="sk-032f62-99ffe4">"SELECT ..."</span><span class="sk-24292e-fff"> })</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">fetch_results</span><span class="sk-24292e-fff">({ queryId, mode: </span><span class="sk-032f62-99ffe4">"inject"</span><span class="sk-24292e-fff"> })</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">create_chart</span><span class="sk-24292e-fff">({ chartType: </span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, data: results.rows, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> })</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> skipper.</span><span class="sk-6f42c1-ffc799">create_chart</span><span class="sk-24292e-fff">({ chartType: </span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, data: results.rows, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> })</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>해당 JavaScript는 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>WorkerLoader</u></a>를 통해 샌드박스 처리된 동적 Worker 격리에서 실행됩니다. 모델은 복잡한 다단계 워크플로를 이미 아주 잘 알고 있는 언어로 한 번의 왕복으로 표현할 수 있습니다. 더 빠르고 저렴하며 생성하는 워크플로우를 코드로 감사할 수 있습니다.</p>
 <h3>보안 모델은 데이터 모델임</h3>
 <p>Skipper가 하는 모든 일은 호출한 사용자로서 실행됩니다. 여러분에게 테이블에 대한 액세스 권한이 없으면 Skipper가 해당 테이블을 쿼리할 수 없습니다. PII를 요청하면 권한을 확인합니다. 저장한 쿼리가 팀원과 공유되는 경우, 그룹 구성원이 변경되므로 저장 시간이 아니라 보기 시 액세스 권한이 확인됩니다.</p>
 <p>공유 대시보드는 나름의 특징이 있습니다. 단일 플레이스홀더 div와 script 태그를 통해 모든 내부 Cloudflare 도구에 임베딩할 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> data-skipper-dashboard</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"dash-123"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://skipper.cloudflare.com/embed.js"</span><span class="sk-6f42c1-ffc799"> async</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://skipper.cloudflare.com/embed.js"</span><span class="sk-6f42c1-ffc799"> async</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>iframe은 콘텐츠에 맞게 크기가 자동으로 조정됩니다. 콘텐츠 보안 정책(CSP) <code>프레임-상위</code>는 기업 도메인 외부의 모든 곳에서의 임베딩을 차단합니다. Cloudflare Access에서는 여전히 iframe 콘텐츠를 차단하므로 인증되지 않은 사용자는 데이터를 확인하지 않고 iframe에서 Access 로그인 페이지를 방문합니다. 소유자가 아닌 최종 사용자는 기본 테이블과 비교하여 확인됩니다. 해당 사용자에게 액세스 권한이 없는 경우 해당 사용자에게 적절한 그룹을 지정하여 요청하도록 지정할 수 있습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

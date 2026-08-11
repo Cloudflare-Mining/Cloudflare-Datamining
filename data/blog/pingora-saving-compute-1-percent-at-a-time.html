@@ -8,8 +8,30 @@
 <span class="line"><span class="sk-005cc5-fff">    INTERNAL_HEADERS</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">iter</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">for_each</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">h</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">        request_header</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">remove_header</span><span class="sk-24292e-fff">(h);</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This small and pleasantly-readable function consumes more than 1.7% of pingora-origin’s total cpu time. To put that in perspective, the total cpu time consumed by pingora-origin is 40,000 compute-seconds per second. You can think of this as 40,000 saturated CPU cores fully dedicated to running pingora-origin. Of those 40,000, 1.7% (680) are only dedicated to evaluating <code>clear_internal_headers</code>. The function’s heavy usage and simplicity make it seem like a great place to start optimizing.</p>
 <h2>Benchmarking</h2>
 <p>Benchmarking the function shown above is straightforward because we can use the wonderful <a href="https://crates.io/crates/criterion" target="_blank" rel="noopener noreferrer"><u>criterion</u></a> Rust crate. Criterion provides an api for timing rust code down to the nanosecond by aggregating multiple isolated executions. It also provides feedback on how the performance improves or regresses over time. The input for the benchmark is a large set of synthesized requests with a random number of headers with a uniform distribution of internal vs. non-internal headers. With our tooling and test data we find that our original <code>clear_internal_headers</code> function runs in an average of <strong>3.65µs</strong>. Now for each new method of clearing headers, we can measure against the same set of requests and get a relative performance difference.&nbsp;</p>
@@ -37,7 +59,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">   to_remove</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">into_iter</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">for_each</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">k</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">       request_header</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">remove_header</span><span class="sk-24292e-fff">(k);</span></span>
-<span class="line"><span class="sk-24292e-fff">   });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our first attempt used <code>std::HashMap</code>, but there may be other data structures that better suit our needs. All computer science students were taught at some point that hash tables are great because they have constant-time asymptotic behavior, or O(1), for reading. (If you are not familiar with <a href="https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/big-o-notation" target="_blank" rel="noopener noreferrer"><u>big O notation</u></a>, it is a way to express how an algorithm consumes a resource, in this case time, as the input size changes.) This means no matter how large the map gets, reads always take the same amount of time. Too bad this is only partially true. In order to read from a hash table, you have to compute the hash. Computing a hash for strings requires reading every byte, so while read time for a hashmap is constant over the table’s size, it’s linear over key length. So, our goal is to find a data structure that is better than O(L) where L is the length of the key.</p>
 <p>There are a few common data structures that provide for reads that have read behavior that meets our criteria. Sorted sets like <code>BTreeSet</code> use comparisons for searching, and that makes them logarithmic over key length <strong>O(log(L))</strong>, but they are also logarithmic in size too. The net effect is that even very fast sorted sets like <a href="https://crates.io/crates/fst" target="_blank" rel="noopener noreferrer"><u>FST</u></a> work out to be a little (50 ns) slower in our benchmarks than the standard hashmap.</p>

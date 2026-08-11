@@ -22,8 +22,30 @@
 <span class="line"><span class="sk-24292e-fff">$adapter </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-ffc799"> Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Adapter</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Guzzle</span><span class="sk-24292e-fff">($key);</span></span>
 <span class="line"><span class="sk-24292e-fff">$user    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Endpoints</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">User</span><span class="sk-24292e-fff">($adapter);</span></span>
 <span class="line"><span class="sk-24292e-fff">    </span></span>
-<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $user</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getUserID</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $user</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getUserID</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The first class being instantiated is called <code>APIKey</code> (a few other classes for authentication are available). We then proceed to instantiate the <code>Guzzle</code> class and the <code>APIKey</code> object is then injected into the constructor of the <code>Guzzle</code> class. The <code>Auth</code> interface that the <code>APIKey</code> class implements is fairly simple:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">namespace</span><span class="sk-6f42c1-ffc799"> Cloudflare</span><span class="sk-6f42c1-a0a0a0">\</span><span class="sk-6f42c1-ffc799">API</span><span class="sk-6f42c1-a0a0a0">\</span><span class="sk-6f42c1-ffc799">Auth</span><span class="sk-24292e-fff">;</span></span>
@@ -31,7 +53,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Auth</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    public</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getHeaders</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-ffc799"> array</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>Adapter</code> interface (which the <code>Guzzle</code> class implements) makes explicit that an object built on the <code>Auth</code> interface is expected to be injected into the constructor:</p>
 <div class="emdash-code">
@@ -45,7 +71,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    public</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> __construct</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Auth</span><span class="sk-24292e-fff"> $auth</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> string</span><span class="sk-24292e-fff"> $baseURI);</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In doing so; we define that classes which implement the <code>Adapter</code> interface are to be composed using objects made from classes which implement the <code>Auth</code> interface.</p>
 <p>So why am I explaining basic Dependency Injection here? It is critical to understand as the design of our API changes, the mechanisms for Authentication may vary independently of the HTTP Client or indeed API Endpoints themselves. Similarly the HTTP Client or the API Endpoints may vary independently of the other elements involved. Indeed, this package already contains three classes for the purpose of authentication (<code>APIKey</code>, <code>UserServiceKey</code> and <code>None</code>) which need to be interchangeably used. This package therefore considers the possibility for changes to different components in the API and seeks to allow these components to vary independently.</p>
@@ -65,7 +95,11 @@
 <span class="line"><span class="sk-24292e-fff">$pageRulesConfig</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">setCacheLevel</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'bypass'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">$pageRules </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Endpoints</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">PageRules</span><span class="sk-24292e-fff">($adapter);</span></span>
-<span class="line"><span class="sk-24292e-fff">$pageRules</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">createPageRule</span><span class="sk-24292e-fff">($zoneID, $pageRulesTarget, $pageRulesConfig, </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">$pageRules</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">createPageRule</span><span class="sk-24292e-fff">($zoneID, $pageRulesTarget, $pageRulesConfig, </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The structure of this project is overall based on simple object composition; this provides a far more simple object model for the long-term and a design that provides higher flexibility. For example; should we later want to create an Endpoint class which is a <a href="https://en.wikipedia.org/wiki/Composite_pattern" target="_blank" rel="noopener noreferrer">composite</a> of other Endpoints, it becomes fairly trivial for us to build this by implementing the same interface as the other Endpoint classes. As more code is added, we are able to keep the design of the software relatively thinly layered.</p>
 <h3>Testing/Mocking HTTP Requests</h3>
@@ -92,7 +126,11 @@
 <span class="line"><span class="sk-24292e-fff">   $ips </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> $ips</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">listIPs</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">   $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">assertObjectHasAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ipv4_cidrs"</span><span class="sk-24292e-fff">, $ips);</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">   $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">assertObjectHasAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ipv6_cidrs"</span><span class="sk-24292e-fff">, $ips);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We are able to build a simple mock of our <code>Adapter</code> interface by using the standardised PSR-7 response format, when we do so we are able to define what parameters PHPUnit expects to be passed to this mock. With a mock <code>Adapter</code> class in place we are able to test the <code>IPs</code> Endpoint class as any if it was using a real HTTP client.</p>
 <h3>Conclusions</h3>

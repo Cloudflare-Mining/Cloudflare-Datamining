@@ -9,8 +9,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><br>"GROUP BY" 문을 사용하면 테이블 행을 버킷으로 분할할 수 있습니다. 각 버킷에는 특정 부서에 해당하는 레이블이 있습니다. 버킷이 가득 차면 각 버킷의 모든 행에 대한 "합(값)"을 계산하여 해당 부서에서 수행한 총 매출을 알 수 있습니다.</p>
 <p>일부 보고서의 경우 가장 많은 볼륨을 가진 부서에만 관심이 있을 수 있습니다. 이런 경우에 “ORDER BY” 문이 유용합니다.</p>
 <div class="emdash-code">
@@ -18,7 +40,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">DESC</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>여기에서는 쿼리 엔진에 모든 부서 버킷의 총량을 기준으로 내림차순으로 정렬하고 가장 큰 상위 10개만 반환하도록 지시합니다.</p>
 <p>마지막으로, 이상을 필터링하는 데 관심이 있을 수 있습니다. 예를 들어, 보고서에 매출 합계가 5개보다 큰 부서만 포함시키고 싶을 수 있습니다. "HAVING" 문으로 이를 쉽게 수행할 수 있습니다.</p>
@@ -28,7 +54,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">HAVING</span><span class="sk-005cc5-ffc799"> count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 5</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">DESC</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>여기에서는 각 버킷에서 끝난 행 수를 계산하는 "count(*)"라는 새로운 집계 함수를 쿼리에 추가했습니다. 이는 각 부서의 매출 수와 직접적으로 일치하므로, 5개 이상의 행이 포함된 버킷만 남겨두도록 “HAVING” 문에 조건자를 추가했습니다.</p>
 <h2>집계에 대한 두 가지 접근 방식: 조만간 컴퓨팅</h2>
@@ -55,7 +85,11 @@
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(sales) </span><span class="sk-d73a49-ffc799">DESC</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>글로벌 상위 2위를 올바르게 결정하려면 전체 데이터 세트에 걸쳐 모든 부서의 총 매출을 알아야 합니다. 데이터가 기본 Parquet 파일 간에 효과적으로 무작위로 분산되어 있으므로 특정 부서의 영업이 여러 직원에게 분산될 가능성이 높습니다. 부서에서 현지 상위 2개 목록에서 제외하면 모든 개별 worker의 매출이 낮지만, 총 매출을 보면 전 세계적으로 가장 높은 매출을 기록할 수 있습니다.</p>
 <p>아래 다이어그램에는 이 쿼리에 대해 분산-수집 접근 방식이 작동하지 않는 이유가 나와 있습니다. "A 부서"는 글로벌 영업 리더이지만, 직원들에게 매출이 고르게 분포되어 있으므로 일부 현지 상위 2개 목록에 들지 못하며, 코디네이터가 폐기하게 됩니다.</p>

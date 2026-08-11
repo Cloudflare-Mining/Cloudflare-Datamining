@@ -17,13 +17,39 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[d1_databases]]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "blog-products-db"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "XXXXXXXXXXXXXXXX"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "XXXXXXXXXXXXXXXX"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>是的，没错！现在，您可以通过 <a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration" target="_blank" rel="noopener noreferrer"> wrangler.toml 文件</a> 配置<a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">绑定资源</a> ，甚至部署到 Pages 的全栈应用也可以。我们将在一则<a href="https://blog.cloudflare.com/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">专门的公告</a>中分享有关 Pages 配置增强的更多信息。</p>
 <p>现在，让我们创建一个简单的 schema.sql 文件来表示数据库模式：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CREATE</span><span class="sk-032f62-99ffe4"> TABLE</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">product_id</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-032f62-99ffe4"> PRIMARY</span><span class="sk-032f62-99ffe4"> KEY,</span><span class="sk-032f62-99ffe4"> name</span><span class="sk-032f62-99ffe4"> TEXT,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff"> (product_id, </span><span class="sk-032f62-99ffe4">name,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">1,</span><span class="sk-032f62-99ffe4"> 'Apple',</span><span class="sk-005cc5-ffc799"> 250</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">2,</span><span class="sk-032f62-99ffe4"> 'Banana',</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">3,</span><span class="sk-032f62-99ffe4"> 'Cherry',</span><span class="sk-005cc5-ffc799"> 375</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff"> (product_id, </span><span class="sk-032f62-99ffe4">name,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">1,</span><span class="sk-032f62-99ffe4"> 'Apple',</span><span class="sk-005cc5-ffc799"> 250</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">2,</span><span class="sk-032f62-99ffe4"> 'Banana',</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">3,</span><span class="sk-032f62-99ffe4"> 'Cherry',</span><span class="sk-005cc5-ffc799"> 375</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>并初始化我们的数据库：</p>
 <p><code>$ npx wrangler d1 execute blog-products-db --local --file schema.sql</code></p>
@@ -38,7 +64,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> getRequestContext</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.env.DB</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> Response.json</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> Response.json</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>或者，在 Nuxt 应用中，我们可以使用如下代码创建 <code>server/api/hello.ts</code> 文件并填充内容：</p>
 <div class="emdash-code">
@@ -46,7 +76,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> context.cloudflare.env.DB</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-032f62-99ffe4"> productsResults.results</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff"> });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>假设框架开发服务器运行于端口 3000，您可以通过访问 <a href="http://localhost:3000/api/hello" target="_blank" rel="noopener noreferrer">http://localhost:3000/api/hello</a> 测试任一框架中的新 API 路由。为简单起见，我们选择了这些示例的 API 路由，但这也适用于任何 UI 生成路由。</p>
 <p>每个 Web 框架都有自己定义路由和在应用中传递请求上下文信息的方式，因此您访问数据库、对象存储和其他资源的方法将取决于您的框架。您可以阅读我们的更新全栈框架指南以了解更多信息：</p>
@@ -80,7 +114,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> //</span><span class="sk-032f62-99ffe4"> Now</span><span class="sk-032f62-99ffe4"> let’s</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> DB</span><span class="sk-032f62-99ffe4"> query</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> runs</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> D1</span><span class="sk-032f62-99ffe4"> db</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> //</span><span class="sk-032f62-99ffe4"> powered</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> miniflare/workerd</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> result</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> Node.js</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> console.log(productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> console.log(productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>有了 <code>getPlatformProxy()</code> API，剩下的工作就是更新所有框架适配器、插件，在某些情况下还要更新框架本身，以便使用这个API。我们感谢框架团队在这一过程中提供的支持，特别是 Astro 的 <a href="https://github.com/alexanderniebuhr" target="_blank" rel="noopener noreferrer">Alex</a> 、 <a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer">Nuxt</a> 的 pi0、Remix 的 <a href="https://github.com/pcattori" target="_blank" rel="noopener noreferrer">Pedro</a> 、Solid 的 <a href="https://github.com/ryansolid" target="_blank" rel="noopener noreferrer">Ryan</a> 、Svelte 的 <a href="https://github.com/benmccann" target="_blank" rel="noopener noreferrer">Ben</a> 和 <a href="https://github.com/Rich-Harris" target="_blank" rel="noopener noreferrer">Rich</a> ，以及我们 <a href="https://github.com/cloudflare/next-on-pages" target="_blank" rel="noopener noreferrer">next-on pages</a> 项目的合作者， <a href="https://github.com/james-elicx" target="_blank" rel="noopener noreferrer">James Anderson</a> 。</p>
 <h3>未来对 Vite 开发工作流程的改进</h3>

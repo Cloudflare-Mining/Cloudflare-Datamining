@@ -74,8 +74,30 @@
 <span class="line"><span class="sk-24292e-fff">	__u64 addr;</span></span>
 <span class="line"><span class="sk-24292e-fff">	__u32 len;</span></span>
 <span class="line"><span class="sk-24292e-fff">	__u32 options;</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>内核用来接收数据包的空描述符</p>
 <p>RX</p>
 <p>消费</p>
@@ -89,7 +111,11 @@
 <span class="line"><span class="sk-24292e-fff">	__u32 rx_queue_index;</span><span class="sk-6a737d-8b8b8b94">  /* rxq-&gt;queue_index  */</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">	__u32 egress_ifindex;</span><span class="sk-6a737d-8b8b8b94">  /* txq-&gt;dev-&gt;ifindex */</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>生产</p>
 <p>包含内核最近收到的数据包的描述符</p>
@@ -105,7 +131,11 @@
 <h3>我们的设置</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> flowtrackd.service-2022-11-03.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 87m237</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-005cc5-99ffe4"> -E</span><span class="sk-032f62-99ffe4"> 'desc_addr: [[:digit:]]+'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  49750</span><span class="sk-032f62-99ffe4"> desc_addr:</span><span class="sk-005cc5-ffc799"> 69837056</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  49750</span><span class="sk-032f62-99ffe4"> desc_addr:</span><span class="sk-005cc5-ffc799"> 69837056</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们的应用程序在一对多队列 veth 接口（“外部”接口和“内部”接口，分别位于不同的网络命名空间）上使用 AF_XDP。我们按照上述过程为每个接口的队列绑定一个 XSK，将数据包从一个接口转发到另一个接口，将数据包从其接收接口发送回去或丢弃。凭借这一功能，我们实现了双向流量检查，可以执行 DDoS 缓解逻辑。</p>
 <p>下图描述了这一设置：</p>
@@ -121,7 +151,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 23:49:01</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[45807]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-ZrBh'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 26476800 transitioned from Fill to Tx'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 17</span><span class="sk-032f62-99ffe4"> 02:09:01</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[45926]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-Ay0i'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 18422016 transitioned from Comp to Rx'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 29</span><span class="sk-032f62-99ffe4"> 10:52:08</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[83849]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-5UYF'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 3154176 transitioned from Tx to Rx'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 29</span><span class="sk-032f62-99ffe4"> 10:52:08</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[83849]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-5UYF'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 3154176 transitioned from Tx to Rx'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们与数据包内容的第一次交互发生在附加到网络接口的 BPF 代码中。</p>
 <p>在这里，我们的入口点函数得到一个指向 xdp_md C 结构体的指针，<a href="https://elixir.bootlin.com/linux/v5.15.77/source/include/uapi/linux/bpf.h#L5442" target="_blank" rel="noopener noreferrer">其定义如下</a>：</p>
@@ -162,7 +196,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      8</span><span class="sk-032f62-99ffe4">         if</span><span class="sk-24292e-fff"> (err) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                        xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx_queue_full++</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">                        return</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">                }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>第二个无效转换发生在描述符从 COMP 环移动到 RX 环时，没有先插入 FILL 环。这似乎暗示存在内核错误，也许表明内核复制了一个描述符，分别插入 COMP 环和 RX 环中。</p>
 <p>第三个无效转换是从 TX 环到 RX 环时，没有先经过 FILL 或 COMP 环。这似乎是前面 COMP 向 RX 转换的扩展案例，再次暗示可能存在内核错误。</p>
@@ -203,7 +241,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    	ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].len</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    	return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>值得注意的是，将消息写入 trace_marker 虚拟文件仍然需要进行系统调用，并将您的消息复制到环形缓冲区。这仍然会增加开销，而在我们的案例中，我们每个数据包都要记录多个输出结果，可能是一笔不小的开销。此外，ftrace 是一项覆盖整个系统的内核跟踪功能，所以您可能需要调整虚拟文件的权限，或者以适当的权限运行应用程序。</p>
 <p>当然，使用 ftrace 来协助排查该问题还有一大优势。如前所述，我们可以使用 trace_marker 文件将我们自己的应用程序消息记录到 ftrace 中，但 ftrace 本质上是一项内核跟踪功能。这意味着，我们可以额外使用 ftrace 来记录内核端有关 AF_XDP 数据包处理的事件。有几种方法来实现这一点，但在这个案例中，我们使用的是 kprobes，这样我们就可以瞄准非常具体的代码行，并输出一些变量。kprobes 可以直接在 ftrace 中创建，但我发现在 Linux 中，使用 perf 工具的“perf probe”命令来创建会更加简单。使用“-L”和“-V”参数，您可发现可以探测到一个函数的哪些行，可以在这些探测点查看哪些变量。最后，您可以使用“-a”参数来添加探测器。例如，检查了内核代码之后，我们在 XSK 的接收路径中插入以下探测器：</p>
@@ -232,7 +274,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                                                        //</span><span class="sk-032f62-99ffe4"> flowtrackd</span><span class="sk-032f62-99ffe4"> reads</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> descriptor</span><span class="sk-032f62-99ffe4"> "too soon"</span><span class="sk-032f62-99ffe4"> where</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> addr</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                                                        //</span><span class="sk-032f62-99ffe4"> and/or</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-032f62-99ffe4"> fields</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> yet</span><span class="sk-032f62-99ffe4"> been</span><span class="sk-032f62-99ffe4"> updated.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].addr</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> addr</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].len</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].len</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在我们的案例中，第 7 行是对 xskq_prod_reserve_desc() 的调用。在此时的代码中，内核已经从 FILL 队列中移除了一个描述符，并将一个数据包复制到该描述符中。对 xsk_prod_reserve_desc() 的调用将确保 RX 队列中有空间，以及是否有空间将该描述符添加到 RX 队列。需要注意的是，虽然 xskq_prod_reserve_desc() 会把描述符插入 RX 队列中，但它不会更新 RX 环的生产者指针，也不会通知 XSK 数据包已准备就绪，等待读取，因为内核会尝试批量处理这些操作。</p>
 <p>同样，我们想在内核端的传输路径上放置一个探测器，最终放置了以下探测器：</p>
@@ -268,7 +314,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	xdp_clear_return_frame_no_direct</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-032f62-99ffe4"> done</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>perf probe -a 'xp_raw_get_data:0 addr'</code></p>
 <p>这个<a href="https://elixir.bootlin.com/linux/v5.15.77/source/net/xdp/xsk_buff_pool.c#L542" target="_blank" rel="noopener noreferrer">代码</a>中没什么有趣的内容可以展示，但是这个探测器放置的位置是：描述符已经从 TX 队列中移除，但尚未插入 COMPLETION 队列。</p>

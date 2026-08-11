@@ -37,8 +37,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 188.138.125.254.11211</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 104.28.1.1.41281:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1400</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 188.138.125.254.11211</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 104.28.1.1.41281:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1400</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 5.196.85.159.11211</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 104.28.1.1.1635:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1400</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 46.31.44.199.11211</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 104.28.1.1.6358:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 13</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 46.31.44.199.11211</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 104.28.1.1.6358:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 13</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>En el pico vimos 260 Gbps de tráfico de Memcached UDP entrante. Esto es enorme para un nuevo vector de amplificación. Pero los números no mienten. Es posible porque todos los paquetes reflejados son muy grandes. Así es como se ve en tcpdump:</p>
 <p>La mayoría de los paquetes tienen un tamaño de 1400 bytes. Si se hace el cálculo, 23 Mpps x 1400 bytes da 257 Gbps de ancho de banda, exactamente lo que muestra el gráfico.</p>
 <h3><strong>¿Memcached crea UDP?</strong></h3>
@@ -49,7 +71,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 172.16.170.135.39396</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 192.168.2.1.11211:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 15</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 192.168.2.1.11211</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 172.16.170.135.39396:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1400</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">IP</span><span class="sk-005cc5-ffc799"> 192.168.2.1.11211</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 172.16.170.135.39396:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1400</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">repeated</span><span class="sk-032f62-99ffe4"> hundreds</span><span class="sk-032f62-99ffe4"> times</span><span class="sk-24292e-fff">)...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">repeated</span><span class="sk-032f62-99ffe4"> hundreds</span><span class="sk-032f62-99ffe4"> times</span><span class="sk-24292e-fff">)...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>La ejecución sintética con Tcpdump muestra el tráfico:</p>
 <p>15 bytes de solicitud desencadenaron 134 KB de respuesta. ¡Este es un factor de amplificación multiplicado por 10 000! En la práctica, hemos visto que un resultado de solicitud de 15 bytes da como resultado una respuesta de 750 kB (una amplificación multiplicada por 51 200).</p>
@@ -83,7 +109,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-005cc5-ffc799">  31</span><span class="sk-032f62-99ffe4"> │</span><span class="sk-032f62-99ffe4"> AS8100</span><span class="sk-032f62-99ffe4">  │</span><span class="sk-032f62-99ffe4"> ASN-QUADRANET-GLOBAL</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> QuadraNet,</span><span class="sk-032f62-99ffe4"> Inc</span><span class="sk-032f62-99ffe4">        │</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-005cc5-ffc799">  30</span><span class="sk-032f62-99ffe4"> │</span><span class="sk-032f62-99ffe4"> AS14618</span><span class="sk-032f62-99ffe4"> │</span><span class="sk-032f62-99ffe4"> AMAZON-AES</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Amazon.com,</span><span class="sk-032f62-99ffe4"> Inc.</span><span class="sk-032f62-99ffe4">                │</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-005cc5-ffc799">  30</span><span class="sk-032f62-99ffe4"> │</span><span class="sk-032f62-99ffe4"> AS31034</span><span class="sk-032f62-99ffe4"> │</span><span class="sk-032f62-99ffe4"> ARUBA-ASN</span><span class="sk-032f62-99ffe4">                                    │</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">└─────┴─────────┴──────────────────────────────────────────────┘</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">└─────┴─────────┴──────────────────────────────────────────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Curiosamente, nuestros centros de datos en EWR, HAM y HKG han visto un número desproporcionadamente alto de IP atacantes. Esto es así porque la mayoría de los servidores vulnerables están ubicados en los principales proveedores de hosting. Los números de AS de las IP que hemos visto son estos:</p>
 <p>La mayoría de los servidores Memcached que hemos visto venían de AS16276 - AS14061 - Digital Ocean y AS7684 - Sakura.</p>
@@ -103,7 +133,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">STAT</span><span class="sk-032f62-99ffe4"> pid</span><span class="sk-005cc5-ffc799"> 21357</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">STAT</span><span class="sk-032f62-99ffe4"> uptime</span><span class="sk-005cc5-ffc799"> 41557034</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">STAT</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-005cc5-ffc799"> 1519734962</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Puede probar con facilidad si su servidor es vulnerable ejecutando:</p>
 <p>Si ve una respuesta que no está vacía (como la de arriba), su servidor es vulnerable.</p>
@@ -128,7 +162,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">   TCP</span><span class="sk-032f62-99ffe4"> Port</span><span class="sk-005cc5-ffc799">             11211</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">   UDP</span><span class="sk-032f62-99ffe4"> Port</span><span class="sk-005cc5-ffc799">             11211</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">_</span><span class="sk-032f62-99ffe4">  Authentication</span><span class="sk-032f62-99ffe4">       no</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">11211/udp</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">filtered</span><span class="sk-032f62-99ffe4"> memcache</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">11211/udp</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">filtered</span><span class="sk-032f62-99ffe4"> memcache</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>¡Asegúrese de que los servidores Memcached cuenten con un firewall contra internet! Para probar si se puede acceder a ellos usando UDP, recomiendo el ejemplo nc anterior. Para verificar si TCP se cierra, ejecutE nmap:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

@@ -23,8 +23,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">R2-D2,32</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Shmi</span><span class="sk-032f62-99ffe4"> Skywalker,72</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Wedge</span><span class="sk-032f62-99ffe4"> Antilles,21</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Yoda,896</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Yoda,896</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>You can get an ASCII histogram of the ages as follows using the <code>mmhistogram</code> tool.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cut</span><span class="sk-005cc5-99ffe4"> -d,</span><span class="sk-005cc5-99ffe4"> -f2</span><span class="sk-032f62-99ffe4"> epiv</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> mmhistogram</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> "Age"</span></span>
@@ -41,7 +63,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">             *************************************</span><span class="sk-005cc5-ffc799"> 6</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   128</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                            ******</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   256</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   512</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                      ************</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   512</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                      ************</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Handy for getting a quick sense of the data. (These charts are inspired by the <a href="https://blog.cloudflare.com/revenge-listening-sockets">ASCII output from systemtap</a>).</p>
 <h3>mmwatch</h3>
@@ -55,11 +81,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">map</span><span class="sk-005cc5-99ffe4"> -hosts</span><span class="sk-032f62-99ffe4">             0B</span><span class="sk-032f62-99ffe4">     0B</span><span class="sk-032f62-99ffe4">     0B</span><span class="sk-032f62-99ffe4">   100%</span><span class="sk-005cc5-ffc799">        0</span><span class="sk-005cc5-ffc799">       0</span><span class="sk-032f62-99ffe4">  100%</span><span class="sk-032f62-99ffe4">   /net</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">map</span><span class="sk-032f62-99ffe4"> auto_home</span><span class="sk-032f62-99ffe4">          0B</span><span class="sk-032f62-99ffe4">     0B</span><span class="sk-032f62-99ffe4">     0B</span><span class="sk-032f62-99ffe4">   100%</span><span class="sk-005cc5-ffc799">        0</span><span class="sk-005cc5-ffc799">       0</span><span class="sk-032f62-99ffe4">  100%</span><span class="sk-032f62-99ffe4">   /home</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">/dev/disk4</span><span class="sk-032f62-99ffe4">             7.3G</span><span class="sk-032f62-99ffe4">    50M</span><span class="sk-032f62-99ffe4">   7.2G</span><span class="sk-032f62-99ffe4">     1%</span><span class="sk-005cc5-ffc799">    12105</span><span class="sk-005cc5-ffc799"> 1761461</span><span class="sk-032f62-99ffe4">    1%</span><span class="sk-24292e-fff">   </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">/Volumes/LANGDON</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">/Volumes/LANGDON</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now imagine you were interested in understanding the rate of change in iused and ifree. You can with <code>mmwatch</code>. It's just like <code>watch</code> but looks for changing numbers and interprets them as rates:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'df -H'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mmwatch</span><span class="sk-032f62-99ffe4"> 'df -H'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here's a short GIF showing it working:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -71,6 +105,10 @@
 <p>Suppose you are downloading real-time rainfall data from the UK's Environment Agency and would like to know the total current rainfall. <code>mmsum</code> can help:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> '.items[].latestReading.value+0'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> ./mmsum</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">40.2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">40.2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp" target="_blank" rel="noopener noreferrer">Github</a>.</p>

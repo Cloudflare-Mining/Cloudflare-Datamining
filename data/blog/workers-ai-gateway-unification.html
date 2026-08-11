@@ -1,0 +1,126 @@
+<p>AI Gateway and Workers AI first started as distinct products, but over time, we noticed our users were converging. With AI Gateway, you can proxy requests to any model provider and get built-in observability, logging, access, and security. On Workers AI, we host models on the GPU infrastructure that we manage, exposing an API endpoint you can leverage to access inference-as-a-service.&nbsp;</p>
+<p>The architecture of these products looks different, but to an end user, it achieves the same goal: connecting you to models with a sophisticated control plane. Today, we're excited to share our plans on how these products converge into one unified path, so you can connect to any model provider (including Workers AI), while managing things like observability, billing, security, and logging from a single control plane.</p>
+<p>It’s the next step toward some big plans we have — read on to learn what a unified control plane means for the future of model routing.</p>
+<h2>Merging the binding and API</h2>
+<p>We've been hinting at the fact that these products are becoming more unified through our entrypoints: the Workers binding and the REST API. We have an AI binding that you can use to call AI Gateway and Workers AI. There's no concept of a separate AI Gateway and Workers AI binding: it all goes through the same path. We shipped the idea of a “default” gateway a few months ago, so that if you have never set up an AI Gateway before, you could still automatically inherit the AI Gateway observability and logging. Of course, you can still specify your own gateway if you'd like to split up applications into multiple projects.</p>
+<p>Here's what the binding call looks like, if you are calling Workers AI via AI Gateway:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      '@cf/zai-org/glm-5.2'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        messages: [</span></span>
+<span class="line"><span class="sk-24292e-fff">          { role: </span><span class="sk-032f62-99ffe4">'user'</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">'What is the capital of France?'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">        ]</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        gateway: {</span></span>
+<span class="line"><span class="sk-24292e-fff">          id: </span><span class="sk-032f62-99ffe4">'default'</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// Use 'default' for the built-in gateway</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(response), {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: { </span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'application/json'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>We’ve also announced a single unified REST API — the /ai/ endpoint that allows you to make similar calls to Workers AI via AI Gateway.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/zai-org/glm-5.2"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer {api_token}"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "cf-aig-gateway-id: default"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "messages": [{"role": "user", "content": "What is the capital of France?"}],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Doing this allows us to unify the entrypoints to AI Gateway and Workers AI, so you don't need to make a choice between which product to use first: it all comes with batteries included.</p>
+<h2>Automatic observability and control for all Workers AI users</h2>
+<p>One of the most immediate benefits of this convergence is that you no longer need to explicitly create an AI Gateway before you start getting visibility into your inference traffic. If you've never set up a gateway before, just pass default as the gateway ID in your binding or REST API calls, and AI Gateway will create it automatically on the first authenticated request.</p>
+<p>With this, every request is logged with full request and response payloads, token counts are tracked per model, and you get cost attribution without any dashboard setup. If you later outgrow the default gateway — if you want custom caching rules or to split traffic by application — you can create a named gateway and point your requests at it with a single parameter change.</p>
+<p>Here's how it looks in the binding. Before, you called Workers AI directly:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/zai-org/glm-5.2'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  messages: [{ role: </span><span class="sk-032f62-99ffe4">'user'</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">'Hello!'</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Now, add a third argument to route through AI Gateway and get full observability:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  '@cf/zai-org/glm-5.2'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  { messages: [{ role: </span><span class="sk-032f62-99ffe4">'user'</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">'Hello!'</span><span class="sk-24292e-fff"> }] },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { gateway: { id: </span><span class="sk-032f62-99ffe4">'default'</span><span class="sk-24292e-fff"> } } </span><span class="sk-6a737d-8b8b8b94">// Auto-creates the gateway on first use</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Head to the Cloudflare AI Gateway dashboard and you'll see every request: latency breakdowns, token usage, error rates, and the exact prompts and responses. For teams debugging model behavior or auditing AI output, this is a huge upgrade from flying blind.</p>
+<h2>New: using AI Gateway credits for Workers AI</h2>
+<p>A new thing we're launching today is the ability to use AI Gateway credits for Workers AI. Before, you could only use AI Gateway credits on external model providers (e.g., OpenAI, Anthropic) but you couldn't apply your AI Gateway credits to Workers AI usage just yet. We've finally enabled our systems to allow unified billing for Workers AI. This means that you can load a wallet full of credits, and then choose to spend that across OpenAI, Anthropic, Workers AI, or any provider that we support.</p>
+<p>Since we're now offering pre-paid billing for Workers AI and want to encourage users to use this new path, we're also offering elevated rate limits on Workers AI models if you use AI Gateway unified billing. Please refer to the <a href="https://developers.cloudflare.com/changelog/post/2026-08-07-workers-ai-unified-billing" target="_blank" rel="noopener noreferrer"><u>developer docs</u></a> for up-to-date information regarding rate limits, as well as how to request a higher rate limit.</p>
+<h2>Coming soon: model-first routing</h2>
+<p>With all your inference traffic flowing through a single control plane, we can start making smarter decisions about how to serve each request starting with the model you want, not the provider you have to manage. Provider-first routing forces you to think about infrastructure: "Which provider do I call? What if they're down?" Model-first routing flips that. You think about what you need — a capable reasoning model, a fast summarizer, a cheap embedding model — and the control plane handles provider selection, failover, and load balancing.</p>
+<p>Today, if you want to call a model, you have to know which provider hosts it. If that provider is down or rate-limiting you, your application breaks. We're moving toward a world where you specify the model, and AI Gateway handles the rest.&nbsp;</p>
+<p>This way, you can request Kimi K2.7 Code and not care whether it comes from Workers AI, Moonshot's own API, or another provider that hosts the same weights. If Workers AI has capacity, you get the benefit of our managed infrastructure. If Workers AI is at capacity, the gateway transparently load balances you to another provider that can serve the same model. You can still choose to stick to a single provider if you’d like, but model-first routing enables you to get more flexibility if you care about resiliency. We work with vetted providers, so the quality of model outputs remains top priority, and will also be able to respect requirements such as Zero Data Retention (ZDR).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">X</span><span class="sk-005cc5-fff"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer {api_token}"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "cf-aig-gateway-id: my-gateway"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "model": "kimi-k2.7-code",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "messages": [{"role": "user", "content": "Review this function"}]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>This also means better resiliency by default. If one provider's version of a model is having issues, traffic shifts to another without application-level retries or complex fallback logic in your Workers. The gateway treats model availability as a routing problem. We hope to pilot this in the coming months for all AI Gateway and Workers AI users.</p>
+<h2>Next: smart routing</h2>
+<p>The next evolution of routing goes beyond simple failover. We're building intelligent routing that understands what you're asking for and picks the right model for the job without any configuration required.</p>
+<p>Instead of specifying a model, you can let the gateway decide. Under the hood, a classifier running on Workers AI reads your prompt and predicts what kind of task it is (coding, research, summarization, general Q&amp;A), how complex it is, and how much context matters. A heuristic scorer then maps that to the best model from a curated pool. For teams that want control, you can still specify exact models. For everyone else, the zero-config path means you get better economics and performance without maintaining your own routing logic. We are currently piloting this internally, and we’ll be actively testing and iterating in the next few weeks before release.&nbsp;</p>
+<h2>Get started today</h2>
+<p>If you're already using Workers AI, the easiest way to try this out is to start routing your existing calls through a default gateway. You'll immediately get request logging, token tracking, and cost attribution without changing anything else about how you call the models.</p>
+<p>If you're already using AI Gateway, adding Workers AI to the mix is as simple as calling a Workers AI model. Load up your AI Gateway wallet and you'll get unified billing across every provider we support, plus elevated rate limits on Workers AI models.</p>
+<p><a href="https://developers.cloudflare.com/ai-gateway/get-started" target="_blank" rel="noopener noreferrer"><u>Set up your first gateway</u></a>, browse the <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>Workers AI model catalog</u></a>, and get started building today.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA4uLi3Nzcz8/PyMjJzM3O0NPTzM/PwcTE7+7u6Ojo2dnc0dHW1NXb2tvg19ncztDR////+Pj56Ont3uDn4eLs6Onx5+nt4OLh////////+vv/7/H68vP++fr/+vr/8/Tz////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="117" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=715&amp;h=117&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=640&amp;h=105&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=715&amp;h=117&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=750&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=828&amp;h=135&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=1080&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=1280&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=1430&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3407 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA5VCJV75DK26GMEJ23ZVNT.png&amp;w=1920&amp;h=314&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="314" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="117" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p></p>

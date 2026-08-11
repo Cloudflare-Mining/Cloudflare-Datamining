@@ -55,8 +55,30 @@
 <p>递归库是 BigPineapple 的 DNS 大脑，它知道如何为查询中的问题找到答案。它从根开始，将客户端查询分解为子查询，并使用它们从互联网上的各种权威名称服务器中递归地收集知识。这个过程的结果就是答案。得益于 async/await，它可以被抽象为这样的函数：</p>
 <p>该函数包含对给定请求生成响应需要的所有逻辑，但它自己不做任何 I/O。相反，我们传递一个 Exchanger trait (Rust 接口)，它知道如何与上游权威名称服务器异步交换 DNS 消息。exchanger 通常在不同的 await 被调用——例如，当递归开始时，它最初做的事情之一就是为该域查找最近的缓存委托。如果它在缓存中没有最终的委托，则需要询问哪些名称服务器负责这个域，并等待响应，然后才能继续进行下去。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>得益于这种设计，将“等待某些响应”部分从递归 DNS 逻辑中分离出来，通过提供 exchanger 的模拟实现，测试起来就容易得多。此外，它使递归迭代代码(以及，特别是 DNSSEC 验证逻辑)更具可读性，因为它是按顺序编写的，而不是分散在许多回调中。</p>
 <p>有趣的事实：从头开始写一个 DNS 递归解析器一点都不好玩！</p>
 <p>不仅因为 DNSSEC 验证的复杂性，还因为各种不兼容 RFC 的服务器、转发器、防火墙等提供必须的“变通方法”。因此，我们将 <a href="https://github.com/CZ-NIC/deckard" target="_blank" rel="noopener noreferrer">deckard</a> 移植到 Rust 中来帮助测试它。此外，当我们开始迁移到这个新的异步递归库时，我们首先在“影子”模式下运行它：处理来自生产服务的真实世界查询样本，并比较差异。我们过去在 Cloudflare 的权威 DNS 服务上也这样做过。递归服务要稍微困难一些，因为递归服务必须在互联网上查找所有数据，而且，由于本地化、负载平衡等原因，权威名称服务器通常会对相同的查询给出不同的答案，导致许多误报。</p>
@@ -93,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostOk</span><span class="sk-24292e-fff">  =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Ready,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostEof</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Pending,</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>以上复杂操作都封装在我们的客户异步运行时中，提供易于使用的 API，以便客机应用可以访问常规的异步函数，而不必考虑底层的细节。</p>
 <h2>(非)结束</h2>

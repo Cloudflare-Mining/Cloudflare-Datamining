@@ -28,8 +28,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl -X PUT https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets/{bucket_name}/sippy \</span></span>
 <span class="line"><span>--header "Authorization: Bearer &lt;API_TOKEN&gt;" \</span></span>
-<span class="line"><span>--data '{"provider": "AWS", "bucket": "&lt;AWS_BUCKET_NAME&gt;", "zone": "&lt;AWS_REGION&gt;","key_id": "&lt;AWS_ACCESS_KEY_ID&gt;", "access_key":"&lt;AWS_SECRET_ACCESS_KEY&gt;", "r2_key_id": "&lt;R2_ACCESS_KEY_ID&gt;", "r2_access_key": "&lt;R2_SECRET_ACCESS_KEY&gt;"}'</span></span></code></pre>
+<span class="line"><span>--data '{"provider": "AWS", "bucket": "&lt;AWS_BUCKET_NAME&gt;", "zone": "&lt;AWS_REGION&gt;","key_id": "&lt;AWS_ACCESS_KEY_ID&gt;", "access_key":"&lt;AWS_SECRET_ACCESS_KEY&gt;", "r2_key_id": "&lt;R2_ACCESS_KEY_ID&gt;", "r2_access_key": "&lt;R2_SECRET_ACCESS_KEY&gt;"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>For more information on getting started, please refer to the <a href="https://developers.cloudflare.com/r2/data-migration/sippy" target="_blank" rel="noopener noreferrer">documentation</a>. Once enabled, requests to your bucket will now start copying data over from S3 if it’s not already present in your R2 bucket.</p>
 <h3>Finish your migration with Super Slurper</h3>
 <p>You can run your incremental migration for as long as you want, but eventually you may want to complete the migration to R2. To do this, you can pair Sippy with <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer">Super Slurper</a> to easily migrate your remaining data that hasn’t been accessed to R2.</p>

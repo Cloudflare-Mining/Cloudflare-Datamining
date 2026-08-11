@@ -41,8 +41,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-24292e-fff"> err</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>예리한 독자는 인사이트가 많은 경우, 이 코드가 인사이트마다 데이터베이스를 왕복한다는 것을 알 수 있습니다. 최대 500,000개의 관찰된 크기를 보면, 단일 API 호출로 인한 왕복, 쿼리, 트랜잭션은 50만 건에 달했습니다.</p>
 <p>우리는 처음에 Postgres: COPY 임시 테이블에 대량 삽입을 위한 최적의 표준을 시도했습니다. 그러나 우리는 이러한 접근 방식으로 인해 Postgres 시스템 테이블이 비대해지는 것을 발견했습니다.</p>
 <p>Cloudflare는 하이브리드 접근 방식으로 결정했습니다.</p>
@@ -77,7 +99,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    For</span><span class="sk-24292e-fff"> each account</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Trigger</span><span class="sk-24292e-fff"> scan </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> account</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Trigger</span><span class="sk-24292e-fff"> scan </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> all zones </span><span class="sk-d73a49-ffc799">in</span><span class="sk-24292e-fff"> the account</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        Update</span><span class="sk-24292e-fff"> last_scheduled_at </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> now</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        Update</span><span class="sk-24292e-fff"> last_scheduled_at </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> now</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare는 데이터베이스의 다수의 계정에서 last_scheduled_at이 유사하다는 것을 빠르게 발견했으며, 이는 이러한 불균등의 원인이 되었습니다.</p>
 <p>그러나 완벽하게 고른 분포라 하더라도 스캔 빈도를 늘리면 이 문제가 더욱 악화될 수 있습니다. 예를 들어, 스캔 빈도를 15일마다에서 7일마다로 변경하면 계정의 53%가 갑자기 스캔해야 합니다.</p>
@@ -111,7 +137,11 @@
 <span class="line"></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-24292e-fff"> rate.</span><span class="sk-6f42c1-ffc799">Limit</span><span class="sk-24292e-fff">(r)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>현재 Cloudflare의 위치</h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

@@ -55,8 +55,30 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">                }}</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            ],</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            ...</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">        }}</span><span class="sk-032f62-99ffe4">"""</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-a0a0a0">        }}</span><span class="sk-032f62-99ffe4">"""</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>A Scout test is a succession of roundtrips of requests and responses against a given API. We use the functionalities of Pytest fixtures and marks to be able to target specific resources while validating the request and responses. &nbsp;Pytest marks in Scout allow to provide an extra set of information to test suites. Pytest fixtures are contexts with information and methods which can be used across tests to enhance their capabilities. Hence the conjunction of marks with fixtures allow Scout to build the whole harness required to run a test suite against APIs.</p>
 <p>Being able to exactly describe the resources against which a given test will run provides us confidence the live API behaves as expected under various conditions.</p>
 <p>The <strong><em>cfapi</em></strong> fixture provides the capability to target different resources such as a Cloudflare account or a zone. In the test above, we use a Pytest mark <strong><em>@requires</em></strong> to describe the characteristics of the resources we want, e.g. we need here an account with a flag allowing us to have 2 rules for a ruleset. This will allow the test to only be run against accounts with such entitlements.</p>
@@ -81,7 +103,11 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">                }}</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            ],</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            ...</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">        }}</span><span class="sk-032f62-99ffe4">"""</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-a0a0a0">        }}</span><span class="sk-032f62-99ffe4">"""</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Among many test assertions possible, Scout can assert the validity of a partial json response and it will log the information. We added the handling of ellipsis <strong>…</strong> as an indication for Scout not to care about any further fields at a given json nesting level. Hence, we are able to do partial matching on JSON API responses, thus focusing only on what matters the most in each test.</p>
 <p>Once a test suite run is complete, the results are pushed by the service and stored using Cloudflare Workers KV. They are displayed via a Cloudflare Worker.</p>
@@ -109,13 +135,21 @@
 <p>The Registry contains all the information regarding a pool of accounts and zones we use for testing. As an example, entitlements are flags gating customers for using products features, the Registry provides the capability to describe entitlements per account and zone so that Scout can run a test against a specific setup.</p>
 <p>As explained earlier, Scout can validate requests and responses against OpenAPI schemas. This is the responsibility of validators. A validator is built per OpenAPI schema and can be selected via the <strong><em>@validate</em></strong> mark we saw above.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">@validate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">schema</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"rulesets"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ignorePaths</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">[</span><span class="sk-032f62-99ffe4">"accounts/[^/]+/rules/lists"</span><span class="sk-24292e-fff">])</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">@validate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">schema</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"rulesets"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ignorePaths</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">[</span><span class="sk-032f62-99ffe4">"accounts/[^/]+/rules/lists"</span><span class="sk-24292e-fff">])</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As soon as a validator is selected, all the interaction of a given test with an API will be validated. If there is a validation failure, it will be marked as a test failure.</p>
 <p>Last element of the setup, the config reader. It is the sub component in charge of providing all the URLs and authentication elements required for the Scout plugin to communicate with APIs.</p>
 <p>Next in the chain, the resources allocator. This component is in charge of consuming the configuration and objects of the setup to build multiple runners. This is a factory which will make available the runners in the <strong><em>cfapi</em></strong> fixture.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cfapi.zone.request(method, path, payload)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cfapi.zone.request(method, path, payload)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When such a line of code is processed, it is the actual method <strong><em>request</em></strong> of the zone runner allocated for the test which is executed. Actually, the resources allocator is able to provide specialized runners (account, zone or default) which grant the possibility of targeting specific API endpoints for a given account or zone.</p>
 <p>Runners are in charge of handling the execution of requests, managing the test expectations and using the validators for request/response schema validation.</p>

@@ -27,14 +27,40 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    /* notify that we're done */</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    log_completion</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Compile and run our program:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> broken</span><span class="sk-032f62-99ffe4"> broken.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./broken</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">encrypting</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> super</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> key:</span><span class="sk-032f62-99ffe4"> hunter2</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">not</span><span class="sk-032f62-99ffe4"> important,</span><span class="sk-032f62-99ffe4"> just</span><span class="sk-032f62-99ffe4"> fyi:</span><span class="sk-032f62-99ffe4"> hunter2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">not</span><span class="sk-032f62-99ffe4"> important,</span><span class="sk-032f62-99ffe4"> just</span><span class="sk-032f62-99ffe4"> fyi:</span><span class="sk-032f62-99ffe4"> hunter2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Oops, we printed the secret key in the “fyi” logger instead of the intended log message! There are two problems with the code above:</p>
 <ul>
@@ -54,7 +80,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&gt;&gt;&gt;</span><span class="sk-005cc5-ffc799"> print</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x: </span><span class="sk-005cc5-ffc799">{}</span><span class="sk-032f62-99ffe4">, y: </span><span class="sk-005cc5-ffc799">{}</span><span class="sk-032f62-99ffe4">, </span><span class="sk-005cc5-ffc799">{}</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">.format(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-24292e-fff">Traceback (most recent call last):</span></span>
 <span class="line"><span class="sk-24292e-fff">  File </span><span class="sk-032f62-99ffe4">"&lt;stdin&gt;"</span><span class="sk-24292e-fff">, line </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-24292e-fff">module</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">IndexError</span><span class="sk-24292e-fff">: Replacement index </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> out of </span><span class="sk-005cc5-ffc799">range</span><span class="sk-d73a49-a0a0a0"> for</span><span class="sk-24292e-fff"> positional args </span><span class="sk-005cc5-ffc799">tuple</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">IndexError</span><span class="sk-24292e-fff">: Replacement index </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> out of </span><span class="sk-005cc5-ffc799">range</span><span class="sk-d73a49-a0a0a0"> for</span><span class="sk-24292e-fff"> positional args </span><span class="sk-005cc5-ffc799">tuple</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>However, this is a quote from one of 36 (for now) <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html" target="_blank" rel="noopener noreferrer">vulnerabilities</a>:</p>
 <blockquote><em>Python 2.7.14 is vulnerable to a Heap-Buffer-Overflow as well as a Heap-Use-After-Free.</em></blockquote>
@@ -103,23 +133,39 @@
 <p>In one terminal we will trace the <code>[user_destroy](https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146)</code> function, which is responsible for deleting a user key:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftrace</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Att</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Att</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And in another terminal let’s try to add a key to the process keyring:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> keyctl</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> mykey</span><span class="sk-032f62-99ffe4"> hunter2</span><span class="sk-032f62-99ffe4"> @p</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">742524855</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">742524855</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Going back to the first terminal we can immediately see:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Attaching</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> probe...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">destroying</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-005cc5-ffc799"> 742524855</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">destroying</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-005cc5-ffc799"> 742524855</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And we can confirm the key is not available by trying to access it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> keyctl</span><span class="sk-032f62-99ffe4"> print</span><span class="sk-005cc5-ffc799"> 742524855</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">keyctl_read_alloc:</span><span class="sk-032f62-99ffe4"> Required</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> available</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">keyctl_read_alloc:</span><span class="sk-032f62-99ffe4"> Required</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> available</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So in the above example, the key “mykey” was added to the process keyring of the subshell executing <code>keyctl add user mykey hunter2 @p</code>. But since the subshell process terminated the moment the command was executed, both its process keyring and the added key were destroyed.</p>
 <p>Instead, the session keyring allows our interactive commands to add keys to our current shell environment and subsequent commands to consume them. The keys will still be securely destroyed, when our main shell process terminates (likely, when we log out from the system).</p>
@@ -328,7 +374,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">+	key_serial_t serial;</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> };</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> </span></span>
-<span class="line"><span class="sk-032f62-99ffe4"> #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4"> #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We need to download and patch OpenSSH from the latest git as the above patch won’t work on the latest release (<code>V_9_1_P1</code> at the time of this writing):</p>
 <div class="emdash-code">
@@ -338,7 +388,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-24292e-fff"> $ </span><span class="sk-032f62-99ffe4">patch</span><span class="sk-005cc5-99ffe4"> -p1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> ../openssh.patch</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">patching</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> ssh-rsa.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">patching</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> sshkey.c</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">patching</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> sshkey.h</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">patching</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> sshkey.h</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now compile and build the patched OpenSSH</p>
 <div class="emdash-code">
@@ -346,14 +400,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./configure</span><span class="sk-005cc5-99ffe4"> --with-libs=-lkeyutils</span><span class="sk-005cc5-99ffe4"> --disable-pkcs11</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that we instruct the build system to additionally link with <code>[libkeyutils](https://man7.org/linux/man-pages/man3/keyctl.3.html)</code>, which provides convenient wrappers to access the Linux Kernel Key Retention Service. Additionally, we had to disable PKCS11 support as the code has a function with the same name as in `libkeyutils`, so there is a naming conflict. There might be a better fix for this, but it is out of scope for this post.</p>
 <p>Now that we have the patched OpenSSH - let’s test it. Firstly, we need to generate a new SSH RSA key that we will use to access the system. Because the Linux kernel only supports private keys in the PKCS8 format, we’ll use it from the start (instead of the default OpenSSH format):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./ssh-keygen</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-005cc5-ffc799"> 4096</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> PKCS8</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Generating</span><span class="sk-032f62-99ffe4"> public/private</span><span class="sk-032f62-99ffe4"> rsa</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> pair.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Normally, we would be using `ssh-add` to add this key to our ssh agent. In our case we need to use a replacement script, which would add the key to our current session keyring:</p>
 <p>ssh-add-keyring.sh</p>
@@ -438,19 +500,31 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># load the PKCS8 private key into the designated keyring</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> pkcs8</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-24292e-fff"> $in </span><span class="sk-005cc5-99ffe4">-topk8</span><span class="sk-005cc5-99ffe4"> -outform</span><span class="sk-032f62-99ffe4"> DER</span><span class="sk-005cc5-99ffe4"> -nocrypt</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> keyctl</span><span class="sk-032f62-99ffe4"> padd</span><span class="sk-032f62-99ffe4"> asymmetric</span><span class="sk-24292e-fff"> $key_desc $keyring</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Depending on how our kernel was compiled, we might also need to load some kernel modules for asymmetric private key support:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> modprobe</span><span class="sk-032f62-99ffe4"> pkcs8_key_parser</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./ssh-add-keyring.sh</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa</span><span class="sk-032f62-99ffe4"> myssh</span><span class="sk-032f62-99ffe4"> @s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Enter</span><span class="sk-032f62-99ffe4"> pass</span><span class="sk-032f62-99ffe4"> phrase</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">723263309</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">723263309</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, our private ssh key is added to the current session keyring with the name “myssh”. In addition, the <code>ssh-add-keyring.sh</code> will create a pseudo-private key file in <code>~/.ssh/id_rsa_keyring</code>, which needs to be passed to the main <code>ssh</code> process. It is a pseudo-private key, because it doesn’t have any sensitive cryptographic material. Instead, it only has the “myssh” identifier in a native OpenSSH format. If we use multiple SSH keys, we have to tell the main <code>ssh</code> process somehow which in-kernel key name should be requested from the system.</p>
 <p>Before we start testing it, let’s make sure our SSH server (running locally) will accept the newly generated key as a valid authentication:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa.pub</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> ~/.ssh/authorized_keys</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa.pub</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> ~/.ssh/authorized_keys</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we can try to SSH into the system:</p>
 <div class="emdash-code">
@@ -461,7 +535,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">Linux dev 5.15.79-cloudflare-2022.11.6 #1 SMP Mon Sep 27 00:00:00 UTC 2010 x86_64</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">…</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It worked! Notice that we’re resetting the `SSH_AUTH_SOCK` environment variable to make sure we don’t use any keys from an ssh-agent running on the system. Still the login flow does not request any password for our private key, the key itself is resident of the kernel address space, and we reference it using its serial for signature operations.</p>
 <h3>User or session keyring?</h3>
@@ -471,20 +549,32 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Session</span><span class="sk-032f62-99ffe4"> Keyring</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 577779279</span><span class="sk-005cc5-99ffe4"> --alswrv</span><span class="sk-005cc5-ffc799">   1000</span><span class="sk-005cc5-ffc799">  1000</span><span class="sk-032f62-99ffe4">  keyring:</span><span class="sk-032f62-99ffe4"> _ses</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 846694921</span><span class="sk-005cc5-99ffe4"> --alswrv</span><span class="sk-005cc5-ffc799">   1000</span><span class="sk-005cc5-ffc799"> 65534</span><span class="sk-005cc5-a0a0a0">   \_</span><span class="sk-032f62-99ffe4"> keyring:</span><span class="sk-032f62-99ffe4"> _uid.1000</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 723263309</span><span class="sk-005cc5-99ffe4"> --als--v</span><span class="sk-005cc5-ffc799">   1000</span><span class="sk-005cc5-ffc799">  1000</span><span class="sk-005cc5-a0a0a0">   \_</span><span class="sk-032f62-99ffe4"> asymmetric:</span><span class="sk-032f62-99ffe4"> myssh</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 723263309</span><span class="sk-005cc5-99ffe4"> --als--v</span><span class="sk-005cc5-ffc799">   1000</span><span class="sk-005cc5-ffc799">  1000</span><span class="sk-005cc5-a0a0a0">   \_</span><span class="sk-032f62-99ffe4"> asymmetric:</span><span class="sk-032f62-99ffe4"> myssh</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We might have used user keyring as well. What is the difference? Currently, the “myssh” key lifetime is limited to the current login session. That is, if we log out and login again, the key will be gone, and we would have to run the <code>ssh-add-keyring.sh</code> script again. Similarly, if we log in to a second terminal, we won’t see this key:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> keyctl</span><span class="sk-032f62-99ffe4"> show</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Session</span><span class="sk-032f62-99ffe4"> Keyring</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 333158329</span><span class="sk-005cc5-99ffe4"> --alswrv</span><span class="sk-005cc5-ffc799">   1000</span><span class="sk-005cc5-ffc799">  1000</span><span class="sk-032f62-99ffe4">  keyring:</span><span class="sk-032f62-99ffe4"> _ses</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 846694921</span><span class="sk-005cc5-99ffe4"> --alswrv</span><span class="sk-005cc5-ffc799">   1000</span><span class="sk-005cc5-ffc799"> 65534</span><span class="sk-005cc5-a0a0a0">   \_</span><span class="sk-032f62-99ffe4"> keyring:</span><span class="sk-032f62-99ffe4"> _uid.1000</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 846694921</span><span class="sk-005cc5-99ffe4"> --alswrv</span><span class="sk-005cc5-ffc799">   1000</span><span class="sk-005cc5-ffc799"> 65534</span><span class="sk-005cc5-a0a0a0">   \_</span><span class="sk-032f62-99ffe4"> keyring:</span><span class="sk-032f62-99ffe4"> _uid.1000</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice that the serial number of the session keyring <code>_ses</code> in the second terminal is different. A new keyring was created and &nbsp;“myssh” key along with the previous session keyring doesn’t exist anymore:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SSH_AUTH_SOCK=""</span><span class="sk-032f62-99ffe4"> ./ssh</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> ~/.ssh/id_rsa_keyring</span><span class="sk-032f62-99ffe4"> localhost</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Load</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> "/home/ignat/.ssh/id_rsa_keyring":</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> found</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If instead we tell <code>ssh-add-keyring.sh</code> to load the private key into the user keyring (replace <code>@s</code> with <code>@u</code> in the command line parameters), it will be available and accessible from both login sessions. In this case, during logout and re-login, the same key will be presented. Although, this has a security downside - any process running as our user id will be able to access and use the key.</p>
 <h3>Summary</h3>

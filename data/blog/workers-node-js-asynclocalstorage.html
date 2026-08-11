@@ -29,8 +29,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    logWithId</span><span class="sk-24292e-fff">(id, </span><span class="sk-032f62-99ffe4">'complete'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ok"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>While this approach works, it can be cumbersome to coordinate correctly, especially as the complexity of an application grows. Using <code>AsyncLocalStorage</code> this becomes significantly easier by eliminating the need to explicitly pass the context around. Our application functions (<code>doSomething</code> and <code>doSomethingElse</code> in this case) never need to know about the request ID at all while the <code>logWithId</code> function does exactly what we need it to:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AsyncLocalStorage } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:async_hooks'</span><span class="sk-24292e-fff">;</span></span>
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ok"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility flag</a> enabled, import statements are used to access specific APIs. The Workers implementation of these APIs requires the use of the node: specifier prefix that was introduced recently in Node.js (e.g. <code>node:async_hooks</code>, <code>node:events</code>, etc)</p>
 <p>We implement <a href="https://github.com/wintercg/proposal-common-minimum-api/blob/main/asynclocalstorage.md" target="_blank" rel="noopener noreferrer">a subset</a> of the <code>AsyncLocalStorage</code> API in order to keep things as simple as possible. Specifically, we've chosen not to support the <code>enterWith()</code> and <code>disable()</code> APIs that are found in Node.js implementation simply because they make async context tracking more brittle and error prone.</p>
@@ -90,7 +116,11 @@
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// The root frame is restored as the current. The store values for</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// both als1 and als2 are both undefined again.</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// both als1 and als2 are both undefined again.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Whenever an asynchronous operation is initiated in JavaScript, for example, creating a new JavaScript promise, scheduling a timer, etc, the current frame is captured and associated with that operation, allowing the store values at the moment the operation was initialized to be propagated and restored as needed.</p>
 <div class="emdash-code">
@@ -111,7 +141,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">als.run(</span><span class="sk-6f42c1-ffc799">'XYZ'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> () =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> queueMicrotask</span><span class="sk-24292e-fff">(() </span><span class="sk-032f62-99ffe4">=</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  console.log(als.getStore(</span><span class="sk-24292e-fff">));  </span><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> prints</span><span class="sk-032f62-99ffe4"> "XYZ"</span></span>
-<span class="line"><span class="sk-24292e-fff">}));</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that for unhandled promise rejections, the "<code>unhandledrejection</code>" event will automatically propagate the context that is associated with the promise that was rejected. This behavior is different from other types of events emitted by <code>EventTarget</code> implementations, which will propagate whichever frame is current when the event is emitted.</p>
 <div class="emdash-code">
@@ -124,7 +158,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // prints 123 for the first unhandled rejection ('boom'), and</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // 321 for the second unhandled rejection ('boom2')</span></span>
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(asyncLocalStorage.</span><span class="sk-6f42c1-ffc799">getStore</span><span class="sk-24292e-fff">());</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Workers can use the <code>AsyncLocalStorage.snapshot()</code> method to create their own objects that capture and propagate the context:</p>
 <div class="emdash-code">
@@ -144,7 +182,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> resource2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> asyncLocalStorage.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">321</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MyResource</span><span class="sk-24292e-fff">());</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">resource1.</span><span class="sk-6f42c1-ffc799">doSomething</span><span class="sk-24292e-fff">();  </span><span class="sk-6a737d-8b8b8b94">// prints 123</span></span>
-<span class="line"><span class="sk-24292e-fff">resource2.</span><span class="sk-6f42c1-ffc799">doSomething</span><span class="sk-24292e-fff">();  </span><span class="sk-6a737d-8b8b8b94">// prints 321</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">resource2.</span><span class="sk-6f42c1-ffc799">doSomething</span><span class="sk-24292e-fff">();  </span><span class="sk-6a737d-8b8b8b94">// prints 321</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For more, refer to the <a href="https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asynclocalstorage" target="_blank" rel="noopener noreferrer">Node.js documentation</a> about the <code>AsyncLocalStorage</code> API.</p>
 <p>There is currently an effort underway to add a new <a href="https://github.com/tc39/proposal-async-context" target="_blank" rel="noopener noreferrer">AsyncContext</a> mechanism (inspired by <code>AsyncLocalStorage</code>) to the JavaScript language itself. While it is still early days for the TC-39 proposal, there is good reason to expect it to progress through the committee. Once it does, we look forward to being able to make it available in the Cloudflare Workers platform. We expect our implementation of <code>AsyncLocalStorage</code> to be compatible with this new API.</p>
@@ -159,7 +201,11 @@
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">args);</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">emitter.</span><span class="sk-6f42c1-ffc799">emit</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hello'</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">emitter.</span><span class="sk-6f42c1-ffc799">emit</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hello'</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <a href="https://github.com/cloudflare/workerd/blob/main/src/node/internal/events.ts" target="_blank" rel="noopener noreferrer">implementation</a> in the Workers runtime fully supports the entire Node.js EventEmitter API including the captureRejections option that allows improved handling of async functions as event handlers:</p>
 <div class="emdash-code">
@@ -169,7 +215,11 @@
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"><span class="sk-24292e-fff">emitter.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'error'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">err</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // the async promise rejection is emitted here!</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Please refer to the Node.js documentation for more details on the use of the <code>EventEmitter</code> API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events</a>.</p>
 <h3>Buffer</h3>
@@ -182,17 +232,29 @@
 <span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(buf.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hex'</span><span class="sk-24292e-fff">));</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Prints: 68656c6c6f20776f726c64</span></span>
 <span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(buf.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'base64'</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// Prints: aGVsbG8gd29ybGQ=</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Prints: aGVsbG8gd29ybGQ=</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Because a Buffer extends from Uint8Array, it can be used in any workers API that currently accepts Uint8Array, such as creating a new Response:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"hello world"</span><span class="sk-24292e-fff">));</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"hello world"</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Or interacting with streams:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getWritableStreamSomehow</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writable.</span><span class="sk-6f42c1-ffc799">getWriter</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"hello world"</span><span class="sk-24292e-fff">));</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"hello world"</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Please refer to the Node.js documentation for more details on the use of the Buffer API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html</a>.</p>
 <h3>Assertions</h3>
@@ -215,7 +277,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ok</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">// fails! throws AssertionError</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> doesNotReject</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {}); </span><span class="sk-6a737d-8b8b8b94">// ok!</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> doesNotReject</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'boom'</span><span class="sk-24292e-fff">) }); </span><span class="sk-6a737d-8b8b8b94">// fails! throws AssertionError</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> doesNotReject</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'boom'</span><span class="sk-24292e-fff">) }); </span><span class="sk-6a737d-8b8b8b94">// fails! throws AssertionError</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the Workers implementation of assert, all assertions run in what Node.js calls the "<a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html#strict-assertion-mode" target="_blank" rel="noopener noreferrer">strict assertion mode</a>", which means that non-strict methods behave like their corresponding strict methods. For instance, <code>deepEqual()</code> will behave like <code>deepStrictEqual()</code>.</p>
 <p>Please refer to the Node.js documentation for more details on the use of the assertion API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/assert.html</a>.</p>
@@ -235,7 +301,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> promisifiedFoo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> promisify</span><span class="sk-24292e-fff">(foo);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> promisifiedFoo</span><span class="sk-24292e-fff">(args);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> promisifiedFoo</span><span class="sk-24292e-fff">(args);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Similarly, callbackify converts a Promise-returning async function into a Node.js-style callback function:</p>
 <div class="emdash-code">
@@ -249,7 +319,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">callbackifiedFoo</span><span class="sk-24292e-fff">(args, (</span><span class="sk-e36209-fff">err</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">value</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (err) </span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-24292e-fff"> err;</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Together these utilities make it easy to properly handle all of the generally tricky nuances involved with properly bridging between callbacks and promises.</p>
 <p>Please refer to the Node.js documentation for more information on how to use these APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal</a>, <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal</a>.</p>
@@ -269,7 +343,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">types.</span><span class="sk-6f42c1-ffc799">isAsyncFunction</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> foo</span><span class="sk-24292e-fff">() {});  </span><span class="sk-6a737d-8b8b8b94">// Returns false</span></span>
 <span class="line"><span class="sk-24292e-fff">types.</span><span class="sk-6f42c1-ffc799">isAsyncFunction</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> foo</span><span class="sk-24292e-fff">() {});  </span><span class="sk-6a737d-8b8b8b94">// Returns true</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// .. and so on</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// .. and so on</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Please refer to the Node.js documentation for more information on how to use the type check APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes" target="_blank" rel="noopener noreferrer">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes</a>. The workers implementation currently does not provide implementations of the <code>util.types.isExternal()</code>, <code>util.types.isProxy()</code>, <code>util.types.isKeyObject()</code>, or <code>util.type.isWebAssemblyCompiledModule()</code> APIs.</p>
 <h3>What's next</h3>

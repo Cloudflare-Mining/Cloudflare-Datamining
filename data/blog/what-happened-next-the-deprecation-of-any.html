@@ -79,8 +79,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">;; Query time: 30 msec</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; SERVER: 204.13.250.31#53(204.13.250.31)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Wed Apr 13 09:57:59 2016</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 565</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 565</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Unsigned answer from large internet company is 565 bytes long.</p>
 <p>In contrast a signed answer from CloudFlare.com is only 224 bytes long or less than ½ the unsigned answer above.</p>
 <div class="emdash-code">
@@ -102,7 +124,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">;; Query time: 80 msec</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; SERVER: 2400:cb00:2049:1::a29f:21#53(2400:cb00:2049:1::a29f:21)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Wed Apr 13 10:01:47 2016</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 224</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 224</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have been returning the HINFO answer for ANY queries since October 2015, with very few reports of problems in the field, besides a single Twitter rant about us not understanding DNS.</p>
 <p>A few other DNS server vendors and DNS operators have followed our lead or adopted a similar line of defense. The latest example is the <a href="http://fanf.livejournal.com/140566.html" target="_blank" rel="noopener noreferrer">University of Cambridge</a> which modified their BIND implementation to only return a single RRset for an <a href="https://git.csx.cam.ac.uk/x/ucs/ipreg/bind9.git/commitdiff/f8c420dd8e" target="_blank" rel="noopener noreferrer">ANY query</a>. A common DNS server (NSD) has also been limiting ANY responses to only A+AAAA+MX types and/or CNAME, and a <a href="https://gist.github.com/hdais/25cb3fc86335026d40f0" target="_blank" rel="noopener noreferrer">patch to return an even smaller answer</a> has been proposed.</p>

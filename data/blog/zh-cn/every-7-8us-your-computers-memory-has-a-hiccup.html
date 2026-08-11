@@ -18,8 +18,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> decode-dimms</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Size</span><span class="sk-005cc5-ffc799">                                       4096</span><span class="sk-032f62-99ffe4"> MB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Banks</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Rows</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Columns</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Bits</span><span class="sk-005cc5-ffc799">              8</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 64</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Ranks</span><span class="sk-005cc5-ffc799">                                      2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Ranks</span><span class="sk-005cc5-ffc799">                                      2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>如今我们不需要进入整个DDR DIMM布局，我们只需要知道单个存储单元（存储一位信息）。具体来说，我们只关心储存单元如何执行刷新过程。</p>
 <p>我们来看两份文档：</p>
 <ul>
@@ -51,7 +73,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Measure</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-032f62-99ffe4"> time</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		clock_gettime(CLOCK_MONOTONIC,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">ts</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>要以纳秒级间隔测量操作，我们必须编写一个紧密循环（也许用C语言编写）。它看起来是这样的：</p>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank" rel="noopener noreferrer">Github上提供了完整代码</a>。</p>
@@ -67,7 +93,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">3101896403,</span><span class="sk-005cc5-ffc799">     135</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">3101896762,</span><span class="sk-005cc5-ffc799">     359</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">3101896901,</span><span class="sk-005cc5-ffc799">     139</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">3101897038,</span><span class="sk-005cc5-ffc799">     137</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">3101897038,</span><span class="sk-005cc5-ffc799">     137</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在我的计算机上，它生成的数据是这样的：</p>
 <p>通常我每循环得到140ns，循环持续时间周期性地跳到360ns。有时我会得到超过3200ns的奇数读数。</p>
@@ -92,20 +122,32 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    v1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1.8</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> A[p-1].duration</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">4</span><span class="sk-032f62-99ffe4"> else</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    v2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1.8</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> A[p].duration</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">4</span><span class="sk-032f62-99ffe4"> else</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    v</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> estimate_linear</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">v1,</span><span class="sk-032f62-99ffe4"> v2,</span><span class="sk-032f62-99ffe4"> A[p-1].timestamp,</span><span class="sk-032f62-99ffe4"> curr_ts,</span><span class="sk-032f62-99ffe4"> A[p].timestamp</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    B.append(</span><span class="sk-032f62-99ffe4"> v</span><span class="sk-24292e-fff"> )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    B.append(</span><span class="sk-032f62-99ffe4"> v</span><span class="sk-24292e-fff"> )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>该算法大致是：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, </span></span>
 <span class="line"><span class="sk-24292e-fff"> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,</span></span>
 <span class="line"><span class="sk-24292e-fff"> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, </span></span>
-<span class="line"><span class="sk-24292e-fff"> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>结果会在我的数据中产生相当单调的矢量，如下所示：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">C</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fft</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">C</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.abs</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">C</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">F</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fftfreq</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(B</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">1000000000/UNIT</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">F</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fftfreq</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(B</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">1000000000/UNIT</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>矢量很长，通常约为20万个数据点。通过这样的数据准备，我们准备将其输入FFT！</p>
 <p>很简单吧？结果将会产生两个向量：</p>
@@ -132,7 +174,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">255900.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">255950.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">383600.0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">383650.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">383650.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们可以清楚地看到前三个峰值。经过一些无意义的算术，包括将读数至少是平均值10倍的滤除，我们可以提取出基础频率：</p>
 <p>计算：1000000000（ns / s）/ 127900（Hz）= 7818.6 ns</p>
@@ -155,7 +201,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">127906Hz    7716</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">255813Hz    7947</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">383720Hz    7460</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">511626Hz    7141</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">511626Hz    7141</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>为了便于实验，我们<a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank" rel="noopener noreferrer">准备了此工具的命令行版本</a>。您可以自己运行代码。这是在我的服务器上运行的示例：</p>
 <p>我必须承认代码并不完全稳定。如果出现问题，请考虑禁用Turbo Boost，或进行CPU频率调整和性能调整。</p>

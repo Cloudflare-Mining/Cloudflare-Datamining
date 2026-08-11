@@ -3,12 +3,38 @@
 <p>Since we are not doing anything special, just establishing TCP and UDP connections, how could anything go wrong? Here's one example: we noticed alerts from a misbehaving server, logged in to check it out and saw:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">marek@:~#</span><span class="sk-032f62-99ffe4"> ssh</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ssh:</span><span class="sk-032f62-99ffe4"> connect</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> host</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-032f62-99ffe4"> 22:</span><span class="sk-032f62-99ffe4"> Cannot</span><span class="sk-032f62-99ffe4"> assign</span><span class="sk-032f62-99ffe4"> requested</span><span class="sk-032f62-99ffe4"> address</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ssh:</span><span class="sk-032f62-99ffe4"> connect</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> host</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-032f62-99ffe4"> 22:</span><span class="sk-032f62-99ffe4"> Cannot</span><span class="sk-032f62-99ffe4"> assign</span><span class="sk-032f62-99ffe4"> requested</span><span class="sk-032f62-99ffe4"> address</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>You can imagine the face of my colleague who saw that. SSH to localhost refuses to work, while she was already using SSH to connect to that server! On another occasion:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">marek@:~#</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">dig:</span><span class="sk-032f62-99ffe4"> isc_socket_bind:</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> use</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">dig:</span><span class="sk-032f62-99ffe4"> isc_socket_bind:</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> use</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This time a basic DNS query failed with a weird networking error. Failing DNS is a bad sign!</p>
 <p>In both cases the problem was Linux running out of ephemeral ports. When this happens it's unable to establish any outgoing connections. This is a pretty serious failure. It's usually transient and if you don't know what to look for it might be hard to debug.</p>
@@ -28,21 +54,33 @@
 <p>When establishing an outbound connection a typical user needs the destination address and port. For example, DNS might resolve <code>cloudflare.com</code> to the '104.1.1.229' IPv4 address. A simple Python program can establish a connection to it with the following code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">AF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4">.connect</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">'104.1.1.229'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 80</span><span class="sk-24292e-fff">))</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4">.connect</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">'104.1.1.229'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 80</span><span class="sk-24292e-fff">))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The operating system’s job is to figure out how to reach that destination, selecting an appropriate source address and source port to form the full 4-tuple for the connection:</p>
 <p>The operating system chooses the source IP based on the routing configuration. On Linux we can see which source IP will be chosen with <code>ip route get</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-ffc799"> 104.1.1.229</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">104.1.1.229</span><span class="sk-032f62-99ffe4"> via</span><span class="sk-005cc5-ffc799"> 192.168.1.1</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> eth0</span><span class="sk-032f62-99ffe4"> src</span><span class="sk-005cc5-ffc799"> 192.168.1.8</span><span class="sk-032f62-99ffe4"> uid</span><span class="sk-005cc5-ffc799"> 1000</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	cache</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	cache</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>src</code> parameter in the result shows the discovered source IP address that should be used when going towards that specific target.</p>
 <p>The source port, on the other hand, is chosen from the local port range configured for outgoing connections, also known as the ephemeral port range. On Linux this is controlled by the following sysctls:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.ip_local_port_range</span><span class="sk-032f62-99ffe4"> net.ipv4.ip_local_reserved_ports</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.ip_local_port_range</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 32768</span><span class="sk-005cc5-ffc799">    60999</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.ip_local_reserved_ports</span><span class="sk-032f62-99ffe4"> =</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.ip_local_reserved_ports</span><span class="sk-032f62-99ffe4"> =</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>ip_local_port_range</code> sets the low and high (inclusive) port range to be used for outgoing connections. The <code>ip_local_reserved_ports</code> is used to skip specific ports if the operator needs to reserve them for services.</p>
 <h3>Vanilla TCP is a happy case</h3>
@@ -155,7 +193,11 @@
 <p>This "source two-tuple" sharing can happen in practice when establishing connections using the vanilla TCP code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (remote_ip, </span><span class="sk-032f62-99ffe4">remote_port</span><span class="sk-24292e-fff">) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (remote_ip, </span><span class="sk-032f62-99ffe4">remote_port</span><span class="sk-24292e-fff">) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But slightly different code can prevent this sharing, as we’ll discuss.</p>
 <p>In the rest of this blog post, we’ll summarise the behaviour of code fragments that make outgoing connections showing:</p>
@@ -226,7 +268,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sd.bind(</span><span class="sk-24292e-fff"> (src_IP, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">) )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div id="html-block-k39" class="html-block">
 	<style>
@@ -289,7 +335,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sd.setsockopt(IPPROTO_IP,</span><span class="sk-032f62-99ffe4"> IP_BIND_ADDRESS_NO_PORT,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sd.bind(</span><span class="sk-24292e-fff"> (src_IP, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">) )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div id="html-block-k3y" class="html-block">
 	<style>
@@ -349,7 +399,11 @@
 <p>Recently a colleague wanted to run a cURL command for debugging, and he needed the source port to be fixed. cURL provides the <code>--local-port</code> option to do this¹ :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> --local-port</span><span class="sk-005cc5-ffc799"> 9999</span><span class="sk-005cc5-99ffe4"> -4svo</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-032f62-99ffe4"> https://cloudflare.com/cdn-cgi/trace</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">   Trying 104.1.1.229:443...</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">   Trying 104.1.1.229:443...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In other situations source port numbers should be controlled, as they can be used as an input to a routing mechanism.</p>
 <p>But setting the source port manually is not easy. We're back to square one in our hackery since IP_BIND_ADDRESS_NO_PORT is not an appropriate tool when calling <code>bind()</code> with a specific source port value. To get the scheme working again and be able to share source 2-tuple, we need to turn to SO_REUSEADDR:</p>
@@ -357,7 +411,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sd.setsockopt(socket.SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> socket.SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sd.bind(</span><span class="sk-24292e-fff"> (src_IP, </span><span class="sk-032f62-99ffe4">src_port</span><span class="sk-24292e-fff">) )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our summary table:</p>
 <div id="html-block-k4j" class="html-block">
@@ -416,7 +474,11 @@
 <h3>Userspace connectx implementation</h3>
 <p>With these tricks, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py#L93-L110" target="_blank" rel="noopener noreferrer">we can implement a common function and call it <code>connectx</code></a>. It will do what <code>bind()</code>+<code>connect()</code> should, but won't have the unfortunate ephemeral port range limitation. In other words, created sockets are able to share local two-tuples as long as they are going to distinct destinations:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">def</span><span class="sk-032f62-99ffe4"> connectx</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">source_IP,</span><span class="sk-032f62-99ffe4"> source_port</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> (destination_IP, </span><span class="sk-032f62-99ffe4">destination_port</span><span class="sk-24292e-fff">)):</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">def</span><span class="sk-032f62-99ffe4"> connectx</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">source_IP,</span><span class="sk-032f62-99ffe4"> source_port</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-24292e-fff"> (destination_IP, </span><span class="sk-032f62-99ffe4">destination_port</span><span class="sk-24292e-fff">)):</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have three use cases this API should support:</p>
 <div id="html-block-k53" class="html-block">
@@ -500,7 +562,11 @@
 <p>Ok, let's start with the simplest and most common way of establishing outgoing UDP connections:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">SOCK_DGRAM</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div id="html-block-k6c" class="html-block">
 	<style>
@@ -564,7 +630,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">SOCK_DGRAM</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sd.setsockopt(socket.SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> socket.SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sd.connect(</span><span class="sk-24292e-fff"> (dst_IP, </span><span class="sk-032f62-99ffe4">dst_port</span><span class="sk-24292e-fff">) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div id="html-block-k6s" class="html-block">
 	<style>
@@ -626,7 +696,11 @@
 <p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2022-02-connectx/ebpf_connect4" target="_blank" rel="noopener noreferrer">Here is how to load and attach our eBPF</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">bpftool</span><span class="sk-032f62-99ffe4"> prog</span><span class="sk-032f62-99ffe4"> load</span><span class="sk-032f62-99ffe4"> ebpf.o</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/prog_connect4</span><span class="sk-032f62-99ffe4">  type</span><span class="sk-032f62-99ffe4"> cgroup/connect4</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">bpftool</span><span class="sk-032f62-99ffe4"> cgroup</span><span class="sk-032f62-99ffe4"> attach</span><span class="sk-032f62-99ffe4"> /sys/fs/cgroup/unified/user.slice</span><span class="sk-032f62-99ffe4"> connect4</span><span class="sk-032f62-99ffe4"> pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/prog_connect4</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">bpftool</span><span class="sk-032f62-99ffe4"> cgroup</span><span class="sk-032f62-99ffe4"> attach</span><span class="sk-032f62-99ffe4"> /sys/fs/cgroup/unified/user.slice</span><span class="sk-032f62-99ffe4"> connect4</span><span class="sk-032f62-99ffe4"> pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/prog_connect4</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With such a code, we'll greatly reduce the probability of overshadowing:</p>
 <div id="html-block-k79" class="html-block">
@@ -696,7 +770,11 @@
 <span class="line"><span class="sk-24292e-fff">c, _ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> _netlink_udp_lookup(family, src_addr, dst_addr)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> c </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> cookie:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    raise</span><span class="sk-005cc5-ffc799"> OSError</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">...</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">sd.connect( dst_addr )</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">sd.connect( dst_addr )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code has the same race condition issue as the connect inet eBPF hook before. But it's a good starting point. We need some locking to avoid the race condition. Perhaps it's possible to do it in the userspace.</p>
 <h3>SO_REUSEADDR as a lock</h3>
@@ -711,7 +789,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> c </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> cookie:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    raise</span><span class="sk-005cc5-ffc799"> OSError</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">sd.connect( dst_addr )</span></span>
-<span class="line"><span class="sk-24292e-fff">sd.setsockopt(socket.</span><span class="sk-005cc5-fff">SOL_SOCKET</span><span class="sk-24292e-fff">, socket.</span><span class="sk-005cc5-fff">SO_REUSEADDR</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">sd.setsockopt(socket.</span><span class="sk-005cc5-fff">SOL_SOCKET</span><span class="sk-24292e-fff">, socket.</span><span class="sk-005cc5-fff">SO_REUSEADDR</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The idea here is:</p>
 <ul>
@@ -784,7 +866,11 @@
 <span class="line"><span class="sk-24292e-fff">        _read_ephemeral()</span></span>
 <span class="line"><span class="sk-24292e-fff">    lo, hi </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ephemeral_lo, ephemeral_hi</span></span>
 <span class="line"><span class="sk-24292e-fff">    start </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> random.randint(lo, hi)</span></span>
-<span class="line"><span class="sk-005cc5-fff">    ...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">    ...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Putting it all together</h3>
 <p>Combining the manual source IP, port discovery and the REUSEADDR locking dance, we get a decent userspace implementation of <code>connectx()</code> for UDP.</p>

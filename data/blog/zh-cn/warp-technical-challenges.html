@@ -16,8 +16,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">workers.dev.</span><span class="sk-005cc5-ffc799">    161</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  A</span><span class="sk-005cc5-ffc799">  198.41.215.162</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">workers.dev.</span><span class="sk-005cc5-ffc799">    161</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  A</span><span class="sk-005cc5-ffc799">  198.41.214.162</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> 1.1.1.1#53</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1.1.1.1</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> 1.1.1.1#53</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">1.1.1.1</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>workers.dev有两个地址198.41.215.162和198.41.214.162（还有两个通过AAAA DNS查询获得的IPv6地址）。这两个地址来自我们在世界各地的每个数据中心。当某人连接到Cloudflare上的任何互联网资产时，其数据包通过的每个网络设备将从其计算机或手机中选择到最近的Cloudflare数据中心的最短路径。</p>
 <p>一旦数据包到达我们的数据中心，我们就把它们发送到其中一个服务器上。传统上，可以使用负载均衡器在多台机器之间进行这种类型的流量分配。不幸的是，在每个数据中心放置一组能够处理我们的流量的负载平衡器将是非常昂贵的，并且不像我们的服务器那样容易扩展。相反，我们使用的设备是为在非常大的流量上运行而设计的：网络路由器。</p>
 <p>一旦数据包到达我们的数据中心，它就会被路由器处理。该路由器使用称为ECMP（等成本多路径）的路由策略将流量发送到负责处理该地址的一组服务器之一。ECMP指的是路由器在多条路由之间没有明确的“赢家”，而是有多个好的下一跳，都指向同一个最终目的地。在我们的例子中，我们稍微修改了这个概念，不使用ECMP来平衡多个中间链接，而是将中间链接地址作为流量的最终目的地：我们的服务器。</p>
@@ -33,7 +55,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">forwarding-table {</span></span>
 <span class="line"><span class="sk-24292e-fff">  export load-balancing-policy</span><span class="sk-6a737d-8b8b8b94">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>因为“下一跳”是我们的服务器，所以流量将非常有效地分布在多台机器上。</p>
 <h2>TCP，IP和ECMP</h2>
@@ -48,7 +74,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Transmission</span><span class="sk-032f62-99ffe4"> Control</span><span class="sk-032f62-99ffe4"> Protocol,</span><span class="sk-032f62-99ffe4"> Src</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-032f62-99ffe4"> 51602,</span><span class="sk-032f62-99ffe4"> Dst</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-032f62-99ffe4"> 443,</span><span class="sk-032f62-99ffe4"> Seq:</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> Len:</span><span class="sk-005cc5-ffc799"> 0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Source</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-005cc5-ffc799"> 51602</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Destination</span><span class="sk-032f62-99ffe4"> Port:</span><span class="sk-005cc5-ffc799"> 443</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>从Cloudflare端查看相同的请求将是一个镜像，这是来自我的公共IP地址的请求，该请求发自我的源端口，发往端口443（这里我先暂时忽略NAT，稍后会详细介绍）：</p>
 <div class="emdash-code">
@@ -58,7 +88,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    Destination</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">19.5</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">7.21</span></span>
 <span class="line"><span class="sk-24292e-fff">Transmission Control Protocol, Src </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">443</span><span class="sk-24292e-fff">, Dst </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Seq</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Len</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    Source </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">443</span></span>
-<span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">51602</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们现在回到ECMP！理论上可以使用ECMP在服务器之间随机平衡数据包，但您几乎不希望这样做。互联网上的消息通常由多个TCP包组成。如果每个信息包被发送到不同的服务器，就不可能在任何地方重新构造原始消息并对其进行处理。除此之外，它对性能的影响也很糟糕：我们依赖于能够维持长期存在的TCP和TLS会话，这些会话需要到单个服务器的持久连接。为了提供这种持久性，我们的路由器不会随机平衡流量，而是使用四个值的组合：源地址、源端口、目标地址和目标端口。具有这四个值的相同组合的流量将始终到达相同的服务器。在上面的例子中，我发送到cloudflare.com的所有消息都将到达一个服务器，该服务器可以将TCP包重新构造到我的请求中，并在响应中返回包。</p>
 <h2>进入WARP</h2>
@@ -120,7 +154,11 @@
 <p>如果将创建NWUDPSession所需的代码与上面的示例进行比较，您会注意到我们突然关心使用的协议是IPv4还是IPv6：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>let v4Session = NWUDPSession(upgradeFor: self.ipv4Session)</span></span>
-<span class="line"><span>v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</span></span></code></pre>
+<span class="line"><span>v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>实际上，NWUDPSession并不处理在互联网上创建连接的许多更复杂的元素。例如，网络框架将自动确定连接应该通过IPv4还是IPv6：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -144,7 +182,11 @@
 <span class="line"><span class="sk-24292e-fff">User Datagram Protocol, Src Port: 49946, Dst Port: 53</span></span>
 <span class="line"><span class="sk-24292e-fff">Domain Name System (query)</span></span>
 <span class="line"><span class="sk-24292e-fff">    Queries</span></span>
-<span class="line"><span class="sk-24292e-fff">        zack.is: type AAAA, class IN</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        zack.is: type AAAA, class IN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在这种情况下，对A查询的响应返回得更快，并且使用该协议开始连接：</p>
 <div class="emdash-code">
@@ -160,7 +202,11 @@
 <span class="line"><span class="sk-24292e-fff">Transmission Control Protocol, Src </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">55244</span><span class="sk-24292e-fff">, Dst </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Seq</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Len</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    Source </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">55244</span></span>
 <span class="line"><span class="sk-24292e-fff">    Destination </span><span class="sk-6f42c1-ffc799">Port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Flags</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0x002</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">SYN</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Flags</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0x002</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">SYN</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们不需要进行DNS查询即可建立WARP连接，我们已经知道数据中心的IP地址，但是我们确实想知道IPv4和IPv6地址中的哪个可以提供通过互联网的更快的路由。为了实现这一点，我们在网络层执行相同的技术：我们通过每一种协议发送一个数据包，并使用首先返回后续消息的协议。为简洁起见，我删除了一些错误处理和日志记录，如下所示：</p>
 <div class="emdash-code">
@@ -194,7 +240,11 @@
 <span class="line"><span>        // Send a handshake message</span></span>
 <span class="line"><span>        session.writeDatagram(onViable())</span></span>
 <span class="line"><span>    }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>该技术成功地使我们能够支持IPv6寻址。实际上，即使在没有支持WARP的网络上，每个使用WARP的设备也都可以立即支持IPv6寻址。有34%的Comcast网络用户和69%的Charter网络用户不支持IPv6（截止至2018年），在使用WARP后可以成功连接到IPv6服务器。</p>
 <p>以下测试显示了启用WARP之前和之后我的手机对IPv6的支持：</p>
@@ -230,7 +280,11 @@
 <span class="line"><span>Unlike `happyEyeballs`, this function will use viability as its only success criteria.</span></span>
 <span class="line"><span>*/</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)</span></span></code></pre>
+<span class="line"><span>func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>使用reconnect（重新连接），我们可以重新创建被代码55错误打断的会话，但它仍然增加了延迟，这并不理想。但是，与所有在封闭源代码平台上进行的客户端软件开发一样，我们依赖于平台来识别和修复平台级的bug。</p>
 <p>说实话，这只是我们在构建WARP时遇到的<a href="https://forums.developer.apple.com/thread/121648" target="_blank" rel="noopener noreferrer">一长串</a>特定于平台的bug中的一个。我们希望继续与设备供应商合作，使他们得到修复。设备和连接组合的数量多得难以想象，而且每个连接都不仅仅是只存在于某一刻的，它们总是在变化，进入和离开断开状态的速度几乎比我们能够跟踪的速度快。即使是现在，让WARP在地球上的每个设备和连接上工作仍无法完全实现，我们仍然每天收到bug报告，我们会分类并解决它们。</p>
@@ -250,7 +304,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    Connection</span><span class="sk-24292e-fff">: keep</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">alive\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">    Accept</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Encoding</span><span class="sk-24292e-fff">: gzip, deflate\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">    Accept</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Language</span><span class="sk-24292e-fff">: en</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">US</span><span class="sk-24292e-fff">,en;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0.9</span><span class="sk-24292e-fff">\r\n</span></span>
-<span class="line"><span class="sk-24292e-fff">    \r\n</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    \r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>但是，现代而安全的网络给我们带来了一个问题：当我通过HTTPS（<a href="https://zack.is" target="_blank" rel="noopener noreferrer">https://zack.is</a>）而不是仅通过HTTP（<a href="http://zack.is" target="_blank" rel="noopener noreferrer">http://zack.is</a>）发出相同的请求时，透过网线，我看到了一个截然不同的结果：</p>
 <div class="emdash-code">
@@ -262,7 +320,11 @@
 <span class="line"><span class="sk-005cc5-fff">    TCP</span><span class="sk-6f42c1-ffc799"> payload</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">54</span><span class="sk-24292e-fff"> bytes)</span></span>
 <span class="line"><span class="sk-24292e-fff">Transport Layer Security</span></span>
 <span class="line"><span class="sk-24292e-fff">    TLSv1.</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> Record </span><span class="sk-6f42c1-ffc799">Layer</span><span class="sk-24292e-fff">: Application Data </span><span class="sk-6f42c1-ffc799">Protocol</span><span class="sk-24292e-fff">: http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">over</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tls</span></span>
-<span class="line"><span class="sk-24292e-fff">        Encrypted Application </span><span class="sk-6f42c1-ffc799">Data</span><span class="sk-24292e-fff">: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        Encrypted Application </span><span class="sk-6f42c1-ffc799">Data</span><span class="sk-24292e-fff">: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我的请求已加密！WARP（或目的地以外的任何人）不再可能知道有效载荷中的内容。它可能是HTTP，但也可能是任何其他协议。如果我的网站已经是使用Cloudflare的两千万个网站之一，那么我们可以解密流量并加快流量（以及进行其他众多优化措施）。但是对于发往其他来源的加密流量，现有的仅HTTP Argo技术将无法正常工作。</p>
 <p>幸运的是，我们现在有了通过我们的<a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a>和<a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a>产品处理非HTTP流量的丰富经验。为了解决我们的问题，Argo团队转向了CONNECT协议。</p>
@@ -273,7 +335,11 @@
 <span class="line"><span class="sk-22863a-ffc799">Exit-Tcp-Keepalive-Duration</span><span class="sk-d73a49-ffc799">:</span><span class="sk-032f62-99ffe4"> 15\r\n</span></span>
 <span class="line"><span class="sk-22863a-ffc799">Application</span><span class="sk-d73a49-ffc799">:</span><span class="sk-032f62-99ffe4"> warp\r\n</span></span>
 <span class="line"><span class="sk-24292e-fff">\r\n</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">data</span><span class="sk-24292e-fff"> to send to origin</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">data</span><span class="sk-24292e-fff"> to send to origin</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>消息到达目标数据中心后，它要么被转发到另一个数据中心（如果这样做最适合性能），要么直接被定向到正在等待流量进入的源。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

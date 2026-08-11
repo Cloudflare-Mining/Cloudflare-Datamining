@@ -8,8 +8,30 @@
 <p>En Cloudflare hacemos un amplio uso de NGINX. Al investigar el TTFB encontramos una diferencia significativa en TTFB de NGINX según se utilice compresión o no. La compresión gzip de las páginas web reduce en gran medida el tiempo que tarda una página web en descargarse, pero la compresión en sí tiene un coste. Ese coste hace que el TTFB aumente a pesar de que la descarga completa es más rápida.</p>
 <p>Para ilustrarlo, tomamos la mayor página de Wikipedia (<a href="http://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank" rel="noopener noreferrer">List of Advanced Dungeons and Dragons 2nd Edition Monsters</a>) y la alojamos usando NGINX, con y sin compresión gzip habilitada. La tabla a continuación muestra el TTFB y el tiempo de descarga total con la compresión activada y desactivada.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">                      |</span><span class="sk-6f42c1-ffc799">  TTFB</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">  Page</span><span class="sk-032f62-99ffe4"> loaded</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">                      |</span><span class="sk-6f42c1-ffc799">  TTFB</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">  Page</span><span class="sk-032f62-99ffe4"> loaded</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Se nota cómo con la compresión gzip activada, la página se descargó cinco veces más rápido, pero el TTFB era ocho veces mayor. Eso se debe a que NGINX espera hasta que la compresión haya comenzado antes de enviar los encabezados de HTTP. Cuando la compresión se desactiva, envía los encabezados de inmediato. Así que si nos fijamos en TTFB, parece como si la compresión fuera una mala idea. Pero si se comprueba el tiempo de descarga, se ve lo contrario.</p>
 <p>Desde el punto de vista del usuario final, el TTFB es casi inútil. En este ejemplo real, de hecho se correlaciona negativamente con el tiempo de descarga: cuanto peor es el TTFB, mejor es el tiempo de descarga. Mirando el código fuente de NGINX nos dimos cuenta de que podríamos engañar y enviar rápidamente los encabezados para que pareciera que nuestro TTFB era estupendo incluso con compresión, pero al final decidimos no hacerlo: eso también habría afectado negativamente a la experiencia de usuario final, porque habríamos desperdiciado un valioso paquete cuando TCP <a href="https://blog.cloudflare.com/why-mobile-performance-is-difficult">se inicia con lentitud</a>. Habría provocado que Cloudflare quedara bien en algunas pruebas, pero realmente habría perjudicado al usuario final.</p>
 <p>Probablemente, el TTFB solo sea útil como tendencia. Y se mide mejor en el propio servidor para que se elimine la latencia de la red. Examinando una tendencia es posible detectar si existe un problema en el servidor web (por ejemplo, que se sobrecargue).</p>

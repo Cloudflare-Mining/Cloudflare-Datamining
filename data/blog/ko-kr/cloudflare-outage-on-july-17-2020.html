@@ -31,8 +31,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{master}[edit]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">atl01#</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> compare</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff">[edit policy-options policy-statement 6-BBONE-OUT term 6-SITE-LOCAL from]</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">       inactive:</span><span class="sk-032f62-99ffe4"> prefix-list</span><span class="sk-032f62-99ffe4"> 6-SITE-LOCAL</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">       inactive:</span><span class="sk-032f62-99ffe4"> prefix-list</span><span class="sk-032f62-99ffe4"> 6-SITE-LOCAL</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>전체 코드는 다음과 같습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">from</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -44,7 +66,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> ATL01</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> NORTH-AMERICA</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    accept</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 코드는 local-preference를 설정하고, 일부 커뮤니티를 추가하고, prefix-list와 일치하는 경로를 수락합니다. local preference는 iBGP 세션 상의 전이 자산입니다(다음 BGP 피어로 전송됨).</p>
 <p>올바르게 변경하였다면, prefix-list 대신 이 코드가 비활성화됐을 것입니다.</p>

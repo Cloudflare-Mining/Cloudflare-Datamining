@@ -49,8 +49,30 @@
 <p>API Token summary from the Cloudflare Dashboard</p>
 <p>Now we set the API Token we created as an environment variable so that both Terraform and cf-terraforming can access it for any commands (and so I don’t have to remove it from code examples).</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$export CLOUDFLARE_API_TOKEN</span><span class="sk-d73a49-a0a0a0">=&lt;</span><span class="sk-032f62-99ffe4">token_secret</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$export CLOUDFLARE_API_TOKEN</span><span class="sk-d73a49-a0a0a0">=&lt;</span><span class="sk-032f62-99ffe4">token_secret</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Terraform requires us to have a folder to hold our Terraform configuration and state. For that we create a folder for our use case and create a <code>cloudflare.tf</code> config file with a provider definition for Cloudflare so Terraform knows we will be using the Cloudflare provider.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> terraforming_test</span></span>
@@ -67,7 +89,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">provider "cloudflare" {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"># api_token  = ""  ## Commented out as we are using an environment var</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here is the content of our <code>cloudflare.tf</code> file if you would rather copy and paste it into your text editor of choice:</p>
 <div class="emdash-code">
@@ -81,27 +107,47 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">provider</span><span class="sk-032f62-99ffe4"> "cloudflare"</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># api_token  = ""  ## Commented out as we are using an environment var</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We call <code>terraform init</code> to ensure Terraform is fully initialized and has the Cloudflare provider installed. At the time of writing this blog post, this is what <code>terraform -v</code> gives me for version info. We recommend that you use the latest versions of both Terraform and the Cloudflare provider.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-005cc5-99ffe4"> -v</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Terraform</span><span class="sk-032f62-99ffe4"> v0.14.10</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/cloudflare/cloudflare</span><span class="sk-032f62-99ffe4"> v2.19.2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> provider</span><span class="sk-032f62-99ffe4"> registry.terraform.io/cloudflare/cloudflare</span><span class="sk-032f62-99ffe4"> v2.19.2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And finally we install cf-terraforming with the following command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> GO111MODULE=on</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cf-terraforming/...</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> GO111MODULE=on</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cf-terraforming/...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you’re using <a href="https://brew.sh" target="_blank" rel="noopener noreferrer">Homebrew</a> on MacOS, this can be simplified to:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> tap</span><span class="sk-032f62-99ffe4"> cloudflare/cloudflare</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --cask</span><span class="sk-032f62-99ffe4"> cloudflare/cloudflare/cf-terraforming</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --cask</span><span class="sk-032f62-99ffe4"> cloudflare/cloudflare/cf-terraforming</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Using cf-terraforming to generate Terraform configuration</h4>
 <p>We are now ready to start generating a Terraform config. To begin, we run cf-terraforming to generate the first blocks of config for the DNS record resources and append it to the <code>cloudflare.tf</code> file we previously created.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_record</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_record</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Breaking this command down:</p>
 <p><code>generate</code> is the command that will produce a valid HCL config of resources</p>
@@ -110,7 +156,11 @@
 <p>Example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_record</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Success will return with no output to console. If you want to see the output before adding it to the config file, run the command without <code>&gt;&gt; cloudflare.tf</code> and it will output to console.</p>
 <p>Here is the partial output in my case, if it is not appended to the config file:</p>
@@ -125,25 +175,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "9c2f972575d986b99fa03c7bbfaab414"</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_record"</span><span class="sk-032f62-99ffe4"> "terraform_managed_resource_e908d014ebef5011d5981b3ba961a011"</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The output resources are given standardized names of “terraform_managed_resource_&lt;resource_id&gt;”. Because the resource id is included in the name, the object names between the config we just exported and the state we will import will always be consistent. This is necessary to ensure Terraform knows which config belongs to which state.</p>
 <p>After generating the DNS record resources, we now do the same for both firewall rules and filters.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_firewall_rule</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_filter</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_filter</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_firewall_rule</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cf-terraforming</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_filter</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Using cf-terraforming to import Terraform state</h4>
 <p>Before we can ask Terraform to verify the config, we need to import the state so that Terraform does not attempt to create new objects but instead reuses the existing objects we already have in Cloudflare.</p>
 <p>Similar to what we did with the generate command, we use the import command to generate <code>terraform import</code> commands.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_record</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_record</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Breaking this command down:</p>
 <p><code>import</code> is the command that will produce a valid <code>terraform import</code> command that we can then run<code>--resource-type</code> (same as the generate command) specifies the Terraform resource name that we want to create import commands for. You can only use one resource at a time. In this example we are using <code>cloudflare_record--zone</code> (same as the generate command) specifies the Cloudflare zone ID we wish to fetch all the DNS records for so cf-terraforming can populate the commands with the appropriate API calls</p>
@@ -153,7 +219,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_record.terraform_managed_resource_db185030f44e358e1c2162a9ecda7253</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414/db185030f44e358e1c2162a9ecda7253</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_record.terraform_managed_resource_e908d014ebef5011d5981b3ba961a011</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414/e908d014ebef5011d5981b3ba961a011</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_record.terraform_managed_resource_3f62e6950a5e0889a14cf5b913e87699</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414/3f62e6950a5e0889a14cf5b913e87699</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_record.terraform_managed_resource_47581f47852ad2ba61df90b15933903d</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414/47581f47852ad2ba61df90b15933903d</span><span class="sk-24292e-fff">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_record.terraform_managed_resource_47581f47852ad2ba61df90b15933903d</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414/47581f47852ad2ba61df90b15933903d</span><span class="sk-24292e-fff">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The output of this will be ready to use <code>terraform import</code> commands. Running the generated <code>terraform import</code> command will leverage existing Cloudflare Terraform provider functionality to import the resource state into Terraform’s <code>terraform.tfstate</code> file. This removes the tedium of pulling all the appropriate resource IDs from Cloudflare’s API and then formatting these commands one by one. The order of operations of the config then state is important as Terraform expects there to be configuration in the <code>.tf</code> file for these resources before importing the state.</p>
 <p>Note: Be careful when you actually import these resources, though, as from that point on any subsequent Terraform actions like plan or apply will expect this resource to be there. Removing the state is possible but requires manually editing the <code>terraform.tfstate</code> file. Terraform does keep a backup locally in case you make a mistake though.</p>
@@ -166,12 +236,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_record.terraform_managed_resource_47581f47852ad2ba61df90b15933903d:</span><span class="sk-032f62-99ffe4"> Refreshing</span><span class="sk-032f62-99ffe4"> state...</span><span class="sk-24292e-fff"> [id=47581f47852ad2ba61df90b15933903d]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Import</span><span class="sk-032f62-99ffe4"> successful!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> resources</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> were</span><span class="sk-032f62-99ffe4"> imported</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> shown</span><span class="sk-032f62-99ffe4"> above.</span><span class="sk-032f62-99ffe4"> These</span><span class="sk-032f62-99ffe4"> resources</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> now</span><span class="sk-032f62-99ffe4"> in</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">your</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> henceforth</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> managed</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> Terraform.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">your</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> henceforth</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> managed</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> Terraform.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With <code>cloudflare_record</code> imported, now we do the same for the firewall_rules and filters.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_firewall_rule</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_filter</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cf-terraforming</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_filter</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">zone_i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Shown with output:</p>
 <div class="emdash-code">
@@ -181,7 +259,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cf-terraforming</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --resource-type</span><span class="sk-032f62-99ffe4"> cloudflare_filter</span><span class="sk-005cc5-99ffe4"> --zone</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_filter.terraform_managed_resource_ee048570bb874972bbb6557f7529e094</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414/ee048570bb874972bbb6557f7529e094</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">terraform</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> cloudflare_filter.terraform_managed_resource_1bb6cd50e2534a64a9ec698fd841ffc5</span><span class="sk-032f62-99ffe4"> 9c2f972575d986b99fa03c7bbfaab414/1bb6cd50e2534a64a9ec698fd841ffc5</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As with <code>cloudflare_record</code>, we run these <code>terraform import</code> commands to ensure all the state is successfully imported.</p>
 <h4>Verifying everything is correct</h4>
@@ -190,7 +272,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> changes.</span><span class="sk-032f62-99ffe4"> Infrastructure</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> up-to-date.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">This</span><span class="sk-032f62-99ffe4"> means</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> did</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> detect</span><span class="sk-032f62-99ffe4"> any</span><span class="sk-032f62-99ffe4"> differences</span><span class="sk-032f62-99ffe4"> between</span><span class="sk-032f62-99ffe4"> your</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">configuration</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> real</span><span class="sk-032f62-99ffe4"> physical</span><span class="sk-032f62-99ffe4"> resources</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> exist.</span><span class="sk-032f62-99ffe4"> As</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> result,</span><span class="sk-032f62-99ffe4"> no</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">actions</span><span class="sk-032f62-99ffe4"> need</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> performed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">actions</span><span class="sk-032f62-99ffe4"> need</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> performed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You now can begin managing these resources in Terraform. If you want to add more resources into Terraform, follow these steps for other resources. You can find which resources are supported in the <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">README</a>. We will add additional resources over time, but if there are specific ones you are looking for, please create GitHub issues or upvote any existing ones.</p>
 <h3>It has never been easier to get started with Cloudflare + Terraform</h3>

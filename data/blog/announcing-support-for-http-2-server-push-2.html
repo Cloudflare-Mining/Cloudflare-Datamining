@@ -18,14 +18,40 @@
 <p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer"><code>preload</code></a> keyword in <code>Link</code> headers<a href="https://blog.cloudflare.com/#fn1">[1]</a>, and we will continue to track that standard as it evolves.</p>
 <p>So, if you want to push assets for a given request, you simply add a specially formatted <code>Link</code> header to the response:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/asset/to/push.j</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">script</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/asset/to/push.j</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">script</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Those links can be manually added, but they’re already created automatically by many publishing tools or via plugins for popular content management systems (CMS) such as WordPress.</p>
 <p>Only relative links will be pushed by our edge servers, which means Server Push won’t work with third-party resources.</p>
 <h4>Disabling Server Push</h4>
 <p>The <code>Link</code> header was originally designed to let browsers know that they should preload an asset. If you still need this behavior for legacy reasons, you can append the <code>nopush</code> directive to the header, like so:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/dont/want/to/push/this.cs</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">style</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">nopush</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/dont/want/to/push/this.cs</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">style</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">nopush</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Is Server Push For Me?</h3>
 <p>Server Push has the potential for tremendous performance gains. However, it’s not able to speed up every website, and it can even degrade the performance somewhat if you get overzealous. Generally, the downside of pushing assets that will end up unused is only the wasted bandwidth, while the upside is a speedup equivalent to one round trip from the client to our edge network.</p>

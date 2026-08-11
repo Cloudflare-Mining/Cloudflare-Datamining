@@ -5,15 +5,41 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> IPMap</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	sync</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">RWMutex</span></span>
 <span class="line"><span class="sk-24292e-fff">	M </span><span class="sk-d73a49-a0a0a0">map</span><span class="sk-24292e-fff">[</span><span class="sk-d73a49-a0a0a0">string</span><span class="sk-24292e-fff">][]</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">IP</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>It's a global filter attribute:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> V2Filter</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">	name       </span><span class="sk-d73a49-a0a0a0">string</span></span>
 <span class="line"><span class="sk-24292e-fff">	IPTable    </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-6f42c1-ffc799">IPMap</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">	// [...]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://www.flickr.com/photos/28293006@N05/8144747570" target="_blank" rel="noopener noreferrer">CC-BY-NC-ND image by Martin SoulStealer</a></p>
 <p>The table changes often, so a background goroutine periodically reloads it from our distributed key-value store, acquires the lock (<code>f.IPTable.Lock()</code>), updates it and releases the lock (<code>f.IPTable.Unlock()</code>). This happens every 5 minutes.</p>
@@ -26,7 +52,11 @@
 <span class="line"><span class="sk-24292e-fff">	f.IPTable.</span><span class="sk-6f42c1-ffc799">RLock</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">	// [... append IPs from f.IPTable.M to result ...]</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>f.IPTable.RUnlock()</code> is never called. Whoops. But it's an RLock, so multiple <code>getCFAddr</code> calls should work, and only table reloading should break, no? Instead <code>getCFAddr</code> started blocking after a few minutes. To the docs!</p>
 <p><em>To ensure that the lock eventually becomes available, a blocked Lock call excludes new readers from acquiring the lock.</em> <a href="https://golang.org/pkg/sync/#RWMutex.Lock" target="_blank" rel="noopener noreferrer">https://golang.org/pkg/sync/#RWMutex.Lock</a></p>

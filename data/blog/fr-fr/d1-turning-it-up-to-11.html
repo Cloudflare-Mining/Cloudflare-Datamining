@@ -1,8 +1,30 @@
 <p>Nous n'allons pas noyer le poisson : nous sommes ravis de lancer une mise à jour majeure de notre base de données D1, offrant des améliorations spectaculaires en termes de performances et d'évolutivité. Les utilisateurs de la version alpha (cela inclut <em>tous</em> les utilisateurs de Workers) peuvent dès maintenant créer de nouvelles bases de données sur le nouveau backend de stockage avec la commande suivante :</p>
 <p>Dans les semaines à venir, ceci deviendra l'expérience par défaut pour tous les utilisateurs, mais nous voulons inviter les développeurs à commencer à expérimenter dès maintenant avec la nouvelle version de D1. Nous partagerons également, très prochainement, d'autres informations sur le développement du nouveau sous-système de stockage de D1 et les avantages que lui apporte le réseau distribué de Cloudflare..</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> your-database</span><span class="sk-005cc5-99ffe4"> --experimental-backend</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> your-database</span><span class="sk-005cc5-99ffe4"> --experimental-backend</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Rafraîchissez-moi la mémoire : D1, qu'est-ce que c'est ?</h3>
 <p>D1 est la base de données serverless native de Cloudflare, que nous avons <a href="https://blog.cloudflare.com/d1-open-alpha">lancée dans sa version alpha</a> en novembre de l'année dernière. Des développeurs ont créé des applications complexes avec Workers, KV, Durable Objects, et dernièrement, Queues et R2 ; cependant, ils nous demandent également une chose : une base de données qu'ils peuvent interroger.</p>
 <p>Nous avons, par ailleurs, recueilli de nombreux commentaires nous demandant une solution basée sur SQL, « scale-to-zero » (c'est-à-dire pouvant être réduite à zéro instance, comme le service Workers lui-même), qui adopte une approche globale (« Region: Earth ») de la réplication. Nous avons donc entendu ces commentaires et avons entrepris de créer D1. SQLite nous a offert un dialecte SQL que nous connaissions, un moteur de requêtes robuste et une base de code particulièrement éprouvée, sur laquelle développer notre solution.</p>
@@ -37,7 +59,11 @@
 <p>Par exemple, supposons que vous stockiez les informations d'horodatage des dernières connexions sous forme de tableau JSON dans une colonne TEXT intitulée login_history : vous pouvez interroger (et extraire) directement des sous-objets ou des éléments de la table en fournissant un chemin d'accès à la clé correspondante :</p>
 <p>La prise en charge des fonctions JSON par D1 est extrêmement flexible, et tire profit du cœur SQLite sur lequel est développée D1.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span><span class="sk-032f62-99ffe4"> user_id,</span><span class="sk-032f62-99ffe4"> json_extract</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">login_history,</span><span class="sk-032f62-99ffe4"> '$.[0]'</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">as</span><span class="sk-032f62-99ffe4"> latest_login</span><span class="sk-032f62-99ffe4"> FROM</span><span class="sk-032f62-99ffe4"> users</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SELECT</span><span class="sk-032f62-99ffe4"> user_id,</span><span class="sk-032f62-99ffe4"> json_extract</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">login_history,</span><span class="sk-032f62-99ffe4"> '$.[0]'</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">as</span><span class="sk-032f62-99ffe4"> latest_login</span><span class="sk-032f62-99ffe4"> FROM</span><span class="sk-032f62-99ffe4"> users</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Lorsque vous créez pour la première fois une base de données avec D1, nous déduisons automatiquement la localisation de l'endroit depuis lequel vous vous connectez actuellement. Dans certains cas, cependant, il peut être souhaitable d'influer sur ce choix, par exemple, lorsque vous êtes en déplacement ou que votre équipe est présente dans une région différente de celle depuis laquelle proviendra, selon vous, la majorité de vos écritures.</p>
 <p>La prise en charge de Location Hints par D1 simplifie cette procédure :</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> user-prod-db</span><span class="sk-005cc5-99ffe4"> --experimental-backend</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Indicate a preferred location to create your database</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> eu-users-db</span><span class="sk-005cc5-99ffe4"> --location=weur</span><span class="sk-005cc5-99ffe4"> --experimental-backend</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> eu-users-db</span><span class="sk-005cc5-99ffe4"> --location=weur</span><span class="sk-005cc5-99ffe4"> --experimental-backend</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Par ailleurs, nous avons publié <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">d'autres documents</a> destinés à aider les développeurs à effectuer leurs premiers pas, mais également à utiliser les fonctionnalités avancées de D1. Vous pouvez vous attendre à ce que la documentation de D1 continue à s'étoffer considérablement au cours des prochains mois.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -80,13 +110,21 @@
 <span class="line"><span class="sk-24292e-fff">$ wrangler d1 time</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">travel my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">database </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">before</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1683570504</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff"># Alternatively, restore prior to a specific transaction </span><span class="sk-6f42c1-ffc799">ID</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-24292e-fff">$ wrangler d1 time</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">travel my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">database </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">before</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">01</span><span class="sk-005cc5-fff">H0FM2XHKACETEFQK2P5T6BWD</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">$ wrangler d1 time</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">travel my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">database </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">before</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">01</span><span class="sk-005cc5-fff">H0FM2XHKACETEFQK2P5T6BWD</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Par exemple, supposons que je commette l'erreur classique consistant à oublier WHERE dans une instruction UPDATE :</p>
 <p>Sans Time Travel, je n'aurais plus qu'à espérer qu'une sauvegarde programmée ait été exécutée récemment ou que j'aie pensé à effectuer une sauvegarde manuelle juste avant. Grâce à Time Travel, je peux revenir à un point situé une minute ou deux avant cette erreur (et espérer en tirer une leçon pour la prochaine fois).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> Don</span><span class="sk-032f62-99ffe4">'t do this at hom</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">e</span></span>
-<span class="line"><span class="sk-005cc5-fff">UPDATE</span><span class="sk-24292e-fff"> users </span><span class="sk-005cc5-fff">SET</span><span class="sk-24292e-fff"> email </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'matt@example.com'</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-6f42c1-ffc799"> missing</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "abc123"</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">UPDATE</span><span class="sk-24292e-fff"> users </span><span class="sk-005cc5-fff">SET</span><span class="sk-24292e-fff"> email </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'matt@example.com'</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-6f42c1-ffc799"> missing</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "abc123"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nous explorons également des fonctionnalités permettant d'identifier des changements plus importants dans l'état de votre base de données, notamment en facilitant l'identification des modifications de schéma, du nombre de tables, des écarts importants dans les données stockées <em>et même des requêtes spécifiques</em> (via les identifiants de transaction), afin de vous aider à mieux comprendre à quel instant précis vous devez restaurer votre base de données.</p>
 <h3>En prévision</h3>

@@ -67,8 +67,30 @@
 <span class="line"><span class="sk-24292e-fff">  	sitemapUrl: env.</span><span class="sk-005cc5-fff">SITEMAP_URL</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">	})</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>With this syntax, we can see where the various events incoming to the application - the <code>fetch</code> event, the <code>queue</code> event, and the <code>scheduled</code> event - are handled. The <code>fetch</code> event is the main entrypoint for the application, and is where we handle all of the API routes. The <code>queue</code> event is where we handle the work that's been added to the queue, and the <code>scheduled</code> event is where we handle the scheduled scraping process.</p>
 <p>Central to the application, of course, is Workers - acting as the API gateway and coordinator. We've elected to use the popular open-source framework <a href="https://honojs.dev" target="_blank" rel="noopener noreferrer">Hono</a>, an Express-style API for Workers, in Prospector. With Hono, we can quickly map out a REST API in just a few lines of code. Here's an example of a few API routes and how they're defined with Hono:</p>
 <div class="emdash-code">
@@ -97,7 +119,11 @@
 <span class="line"><span class="sk-24292e-fff">  ).</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> sitemaps</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">DBSitemap</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> query.results</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(sitemaps)</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Crucial to the development of Prospector are the improved TypeScript bindings for Workers. <a href="https://blog.cloudflare.com/improving-workers-types">As announced in November of last year</a>, TypeScript bindings for Workers are now automatically generated based on <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">our open source runtime, <code>workerd</code></a>. This means that whenever we use the types provided from the <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer"><code>@cloudflare/workers-types</code> package</a> in our application, we can be sure that the types are always up-to-date.</p>
 <p>With these bindings, we can define the types for our environment variables, and use them in our application. Here's an example of the <code>Env</code> type, which defines the environment variables that we use in the application:</p>
@@ -107,7 +133,11 @@
 <span class="line"><span class="sk-e36209-fff">  DB</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> D1Database</span></span>
 <span class="line"><span class="sk-e36209-fff">  QUEUE</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Queue</span></span>
 <span class="line"><span class="sk-e36209-fff">  SITEMAP_URL</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice the types of the <code>DB</code> and <code>QUEUE</code> bindings - <code>D1Database</code> and <code>Queue</code>, respectively. These types are automatically generated, complete with type signatures for each method inside of the D1 and Queue APIs. This means that we can be sure that we're using the correct methods, and that we're passing the correct arguments to them, directly from our text editor - without having to refer to the documentation.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -140,7 +170,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  max_batch_size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 10</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  max_batch_timeout</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 30</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  max_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 10</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  dead_letter_queue</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "queue-dlq"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  dead_letter_queue</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "queue-dlq"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next, you can run the <code>bin/migrate</code> script to create the tables in your database:</p>
 <p><code>bin/migrate</code></p>

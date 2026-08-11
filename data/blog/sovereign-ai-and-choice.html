@@ -23,8 +23,30 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "text": ["What is your favourite food?", "I like pizza"],</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "target_language": "guj_Gujr"</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>Japan: </strong>Japan has a very clear and expansive <a href="http://www8.cao.go.jp/cstp/ai/aistratagy2022en.pdf" target="_blank" rel="noopener noreferrer"><u>vision</u></a> of AI development. Concerned about Japan’s slow AI uptake, the Japanese government aims to make the country “the world’s most friendly AI nation” by creating the ideal conditions for AI growth, both at home and abroad. A major initiative for Japan’s government is supporting AI that deeply understands the complexities and cultural context of the Japanese language.&nbsp;</p>
 <p>Cloudflare is offering Preferred Networks, Inc.(PFN)&nbsp; <a href="https://huggingface.co/pfnet/plamo-embedding-1b" target="_blank" rel="noopener noreferrer"><u>PLaMo-Embedding-1B</u></a>, a home-grown Japanese text embedding model, made freely and openly available. The Japanese government supported PFN through its <a href="https://www.meti.go.jp/english/policy/mono_info_service/geniac/index.html" target="_blank" rel="noopener noreferrer"><u>Generative AI Accelerator Challenge (GENIAC)</u></a> program, which supports local LLM development through subsidized access to compute resources for training. The PLaMo Embedding model enables users to generate high-quality embeddings for Japanese text, which is helpful for building RAG-powered applications and semantic search use cases.</p>
 <p>You can use the <a href="https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b" target="_blank" rel="noopener noreferrer"><u>@cf/pfnet/plamo-embedding-1b</u></a> model on Workers AI as follows:</p>
@@ -38,7 +60,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">            "PLaMo-Embedding-1Bは、Preferred Networks, Inc. によって開発された日本語テキスト埋め込みモデルです。",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            "最近は随分と暖かくなりましたね。"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        ]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>Southeast Asia: </strong>As Chair of the<a href="https://www.imda.gov.sg/about-imda/international-relations/asean-working-group-on-ai-governance" target="_blank" rel="noopener noreferrer"><u> Association of Southeast Asian Nations (ASEAN) Working Group on AI Governance</u></a>,<strong> </strong>Singapore’s ambitious <a href="https://www.smartnation.gov.sg/initiatives/national-ai-strategy" target="_blank" rel="noopener noreferrer"><u>National AI Strategy 2.0</u></a> aims to ensure that AI is a public good, both for Southeast Asia and the world. As a cornerstone of this strategy, Singapore is championing the development and adoption of SEA-LION, a family of open-source LLMs designed for Southeast Asia's diverse languages and cultures. The initiative aims to establish the nation as an inclusive global AI leader, ensuring the technology is both accessible and regionally relevant to its multilingual and multicultural populaces. The models are adept in numerous regional languages, including Bahasa Indonesia, Bahasa Malaysia, Thai, Vietnamese, and Tamil, unlocking AI technologies for a significant portion of the Asian and global population.</p>
 <p><a href="https://huggingface.co/aisingapore/Gemma-SEA-LION-v4-27B-IT-FP8-Dynamic" target="_blank" rel="noopener noreferrer"><u>SEA-LION model v4-27B</u></a> is now available on the Workers AI platform. SEA-LION v4 stands out on the Singapore government’s leaderboard as its most powerful, efficient, multimodal and multilingual model yet.&nbsp;</p>
@@ -55,7 +81,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "content": "แล้วทำผัดไทยอย่างไร"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  ]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Bringing AI models to the world</h2>
 <p>Singapore, India and Japan have all chosen to open-source many of their local language models, a strategy that champions an expansive vision of AI sovereignty. This approach demonstrates a crucial understanding: true AI sovereignty is ensuring you have choices.&nbsp;</p>

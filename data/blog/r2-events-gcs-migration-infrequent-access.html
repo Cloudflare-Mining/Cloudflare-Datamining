@@ -13,8 +13,30 @@
 <p>Event notifications work by sending messages to your <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">queue</a> each time there is a change to your data. These messages are then received by a <a href="https://developers.cloudflare.com/queues/get-started/#5-create-your-consumer-worker" target="_blank" rel="noopener noreferrer">consumer Worker</a> where you can then define any subsequent action that needs to be taken.</p>
 <p>To get started enabling event notifications on your R2 bucket, you can run the following <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a> command (replacing bucket_name and queue_name with your bucket and queue names respectively):</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> notification</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">bucket_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> --event-type</span><span class="sk-032f62-99ffe4"> object-create</span><span class="sk-005cc5-99ffe4"> --queue</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">queue_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> notification</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">bucket_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> --event-type</span><span class="sk-032f62-99ffe4"> object-create</span><span class="sk-005cc5-99ffe4"> --queue</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">queue_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>For more information on how to set up event notifications on your R2 buckets today and limitations during beta, please refer to the <a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
 <h2>Super Slurper for Google Cloud Storage</h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -52,7 +74,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not a PUT!"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In addition to uploading objects directly to Infrequent Access, you can define an <a href="https://developers.cloudflare.com/r2/buckets/object-lifecycles" target="_blank" rel="noopener noreferrer">object lifecycle policy</a> to move data to Infrequent Access after a period of time goes by and you no longer need to access your data as often. In the future, we plan to automatically optimize storage classes for data so you can avoid manually creating rules and better adapt to changing data access patterns.</p>
 <p>For data stored in the Infrequent Access storage class, the pricing components will be similar to <a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer">what you’re used to with R2</a>: storage, <a href="https://developers.cloudflare.com/r2/pricing/#class-a-operations" target="_blank" rel="noopener noreferrer">Class A operations</a> (writes, lists), <a href="https://developers.cloudflare.com/r2/pricing/#class-b-operations" target="_blank" rel="noopener noreferrer">Class B operations</a> (reads), and data retrieval (processing). Data retrieval is charged per GB when data in the Infrequent Access storage class is retrieved and is what allows us to provide storage at a lower price. It reflects the additional computational resources required to fetch data from underlying storage optimized for less frequent access. And when the time comes, and you do need to use your data, there are still no egress fees.</p>

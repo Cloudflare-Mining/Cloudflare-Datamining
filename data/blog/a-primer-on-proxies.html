@@ -24,8 +24,30 @@
 <p>A client sends a CONNECT request to the proxy server, which requests that it opens a TCP connection to the target server and desired port. It looks something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CONNECT</span><span class="sk-032f62-99ffe4"> target.example.com:80</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> target.example.com</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> target.example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>If the proxy succeeds in opening a TCP connection to the target, it responds with a 2xx range status code. If there is some kind of problem, an error status in the 5xx range can be returned. Once a tunnel is established there are two independent TCP connections; one on either side of the proxy. If a flow needs to stop, you can simply terminate them.</p>
 <p>HTTP CONNECT proxies forward data between the client and the target server. The TCP packets themselves are not tunneled, only the data on the logical byte stream. Although the proxy is supposed to forward data and not process it, if the data is plaintext there would be nothing to stop it. In practice, CONNECT is often used to create an end-to-end TLS connection where only the client and target server have access to the protected content; the proxy sees only TLS records and can't read their content because it doesn't have access to the keys.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -42,7 +64,11 @@
 <p><a href="https://datatracker.ietf.org/doc/html/rfc7540#section-8.3" target="_blank" rel="noopener noreferrer">HTTP/2 also supports the CONNECT method</a>. In contrast to HTTP/1.1, CONNECT requests do not take over an entire HTTP/2 connection. Instead, they convert a single stream into an end-to-end tunnel. It looks something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">:method</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> CONNECT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">:authority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> target.example.com:443</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">:authority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> target.example.com:443</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If the proxy succeeds in opening a TCP connection, it responds with a 2xx (Successful) status code. After this, the client sends DATA frames to the proxy, and the content of these frames are put into TCP packets sent to the target. In the return direction, the proxy reads from the TCP byte stream and populates DATA frames. If a tunnel needs to stop, you can simply terminate the stream; there is no need to terminate the HTTP/2 connection.</p>
 <p>By using HTTP/2, a client can create multiple CONNECT tunnels in a single connection. This can help reduce resource usage (saving the global count of TCP connections) and allows related tunnels to be logically grouped together, ensuring that they "share fate" when either client or proxy need to gracefully close. On the proxy-to-server side there are still multiple independent TCP connections.</p>

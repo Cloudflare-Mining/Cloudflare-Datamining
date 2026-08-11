@@ -40,8 +40,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">  {“name”: “Attack Traffic on /api”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/api”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]},</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  {“name”: “Attack Traffic on /admin”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/admin”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]}</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">```</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">```</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>이 방법을 사용하면 고객 정보를 비공개로 유지하고 보안 분석 데이터가 AI 모델 자체에 노출되지 않도록 하면서도 사람이 자신의 데이터를 쉽게 쿼리할 수 있습니다. 따라서 쿼리가 모델 학습에 절대로 사용되지 않습니다. 또한 Workers AI는 Cloudflare의 자체 네트워크에서 LLM의 로컬 인스턴스를 호스팅하므로 고객의 쿼리 및 결과 데이터가 Cloudflare의 네트워크를 절대로 벗어나지 않습니다.</p>
 <h2>향후 개발</h2>
 <p>현재 이 기능을 개발하는 초기 단계에 있으며, 보안 분석 AI 비서의 기능을 빠르게 확대할 계획입니다. 처음에는 일부 요청을 저희가 처리하지 못하더라도 놀라지 마세요. 출시와 함께 현재 필터링 가능한 모든 필드에 대해 '표시' 또는 '비교'와 같이 시계열 차트에 그릴 수 있는 기본 쿼리를 지원할 수 있습니다.</p>

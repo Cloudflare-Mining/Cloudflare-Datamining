@@ -49,8 +49,30 @@
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(resizingReq);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Cloudflare Images製品のメリットは、お客様側で1行のコードも変更する必要のないAVIFサポートを追加したことです。</p>
 <p>画像をAVIFに変換すると計算量が多くなりますが、ファイルサイズに大きなメリットがあります。どの形式を提供するかを決定する際には、常にコストとメリットを比較検討しています。</p>
 <p>WebPおよびAVIF形式へのすべての変換は、現時点では画像配信のリクエストフェーズで行われることに注意してください。将来的には、アップロードフェーズで画像を変換する機能を追加する予定です。</p>
@@ -62,7 +84,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>お客様は、アクセストークンが必要な画像をアップロードします。</p>
 <p>APIを介して定義したバリアントを使用して、署名を提供せずに画像を取得できます。</p>
@@ -70,7 +96,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     --form</span><span class="sk-032f62-99ffe4"> 'file=@./&lt;file_name&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --form</span><span class="sk-032f62-99ffe4"> 'requireSignedURLs=true'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --form</span><span class="sk-032f62-99ffe4"> 'requireSignedURLs=true'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>保護された画像にアクセスするには、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">有効な署名付きURL</a>が必要です。</p>
 <div id="html-block-k2m" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps"></div>
@@ -96,11 +126,19 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> destinationURL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> IMAGE_DELIVERY_HOST</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> pathname</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> search</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-032f62-99ffe4"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">destinationURL</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>簡素化するために、Workersスクリプトは、デプロイされているドメインからimagedelivery.netにリダイレクトします。Cloudflare ImagesのURLと同じ形式を想定しています。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/&lt;encoded </span><span class="sk-032f62-99ffe4">account</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">image</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">variant</span><span class="sk-032f62-99ffe4"> nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/&lt;encoded </span><span class="sk-032f62-99ffe4">account</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">image</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">variant</span><span class="sk-032f62-99ffe4"> nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Workerは、次のようなお客様のニーズに合わせて調整できます。</p>
 <ul>
@@ -110,7 +148,11 @@
 </ul>
 <p>CloudflareのドメインからCloudflare Imagesを簡単に提供したいお客様のために、次の形式を使用してCloudflare Imagesを提供する機能を追加します。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>画像配信は、Cloudflare Imagesサブスクリプションが有効化されている同じCloudflareアカウントのすべてのカスタマードメインからサポートされます。これは、連休前にすべてのCloudflare Imagesのお客様が利用できるようになります。</p>
 <h3><strong>ImagesとStreaｍのバンドル</strong></h3>

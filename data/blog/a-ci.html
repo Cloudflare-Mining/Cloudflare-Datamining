@@ -9,8 +9,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> package.json</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-d73a49-a0a0a0"> package-</span><span class="sk-24292e-fff">lock.json</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> .travis.yml</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> .gitignore</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> .gitignore</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>The Worker Script</h3>
 <p><a href="https://blog.cloudflare.com/unit-testing-worker-functions">In a recent post</a> we discussed a method for testing Workers. We’ll reuse this method here to test a really simple Worker script below which simply returns <code>Hello World!</code> in the body of the response. We will name our Worker <code>worker.js</code>.</p>
 <div class="emdash-code">
@@ -19,7 +41,11 @@
 <span class="line"><span class="sk-24292e-fff">})</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello World!'</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>The Test</h3>
 <p>We will create a single test case following the method discussed <a href="https://blog.cloudflare.com/unit-testing-worker-functions">unit testing blog</a> post.</p>
@@ -38,13 +64,21 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">    assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(body, </span><span class="sk-032f62-99ffe4">'Hello World!'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    })</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then we’ll update our <code>package.json</code> file to include:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"scripts"</span><span class="sk-24292e-fff">: {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "test"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"mocha"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And install <code>mocha</code> with <code>npm install mocha --save-dev</code> and <code>cloudworker</code> with <code>npm install @dollarshaveclub/cloudworker --save-dev</code>.</p>
 <h3>serverless.yml</h3>
@@ -69,7 +103,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">functions</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">  deploy</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">from</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">travis</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    name</span><span class="sk-24292e-fff">: travis</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">deployed</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">worker</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    script</span><span class="sk-24292e-fff">: worker</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    script</span><span class="sk-24292e-fff">: worker</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Make sure to install both the Serverless Framework, and the Cloudflare Workers plugin with <code>npm install --save serverless</code> and <code>npm install --save serverless-cloudflare-workers</code>.</p>
 <h3>travis.yml</h3>
@@ -84,7 +122,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  script</span><span class="sk-24292e-fff">: sls deploy</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  skip_cleanup</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  on</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    branch</span><span class="sk-24292e-fff">: main</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    branch</span><span class="sk-24292e-fff">: main</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Before diving in, Travis has some great resources on deploying <code>node.js</code> projects <a href="https://docs.travis-ci.com/user/languages/javascript-with-nodejs" target="_blank" rel="noopener noreferrer">here</a>. While this isn’t strictly what we’re doing, it’s a great jumping off point.</p>
 <p>So what does this <code>.travis.yml</code> mean? First, we’re telling Travis CI to use the most recent <code>node.js</code> image (you have the option to specify). Then we specify the command to run to actually do the deployment, <code>sls deploy</code>, but only when the main branch is involved in the build. Travis will run <code>npm test</code> for us as it’s default for any <code>node.js</code> project, which will execute our unit tests.</p>

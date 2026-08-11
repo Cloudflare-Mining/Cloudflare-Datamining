@@ -140,8 +140,30 @@
 <span class="line"><span class="sk-22863a-ffc799">        key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb</span></span>
 <span class="line"><span class="sk-22863a-ffc799">        objects</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">        - </span><span class="sk-22863a-ffc799">key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"*"</span></span>
-<span class="line"><span class="sk-22863a-ffc799">    access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">    access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Bach DNS 用户角色（使用域范围限定策略）</h3>
 <p>（略为修改以便于阅读）</p>
 <p>一旦我们将用户的权限限制到仅包括一个明确的域，我们就能看到两个主要的差异。首先，权限大幅减少了。这是因为我们没有授予该用户读取或列出很多帐户级资源的权限，而这是传统帐户范围角色会授予的。所授予的唯一帐户级权限是 <em>account.read</em>、<em>subscriptions.read</em> 和 <em>subscriptions.list</em>。有这些权限，用户才能使用仪表板。在仪表板中查看该帐户时，显示的唯一帐户级产品将是域。其他产品，如 Cloudflare Workers、Zero Trust 等将被隐藏。</p>
@@ -176,7 +198,11 @@
 <span class="line"><span class="sk-22863a-ffc799">      key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb</span></span>
 <span class="line"><span class="sk-22863a-ffc799">      objects</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">      - </span><span class="sk-22863a-ffc799">key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f</span></span>
-<span class="line"><span class="sk-22863a-ffc799">  access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">  access</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">allow</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>其次，在资源组范围部分，我们看到明确提及一个区域（line X: <code>com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f</code>）。这意味着，该策略中列出的区域权限仅适用于这个特定的区域。尝试访问该区域的其他特性，或更改任何其他区域的 DNS，都会被 Cloudflare 拒绝。</p>
 <h2>下一步</h2>

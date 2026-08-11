@@ -19,8 +19,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">4.72.42.184.18436</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.53:</span><span class="sk-032f62-99ffe4"> 64439+</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">4.240.78.0.61444</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.53:</span><span class="sk-032f62-99ffe4"> 64271+</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">5.73.44.84.18693</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.53:</span><span class="sk-032f62-99ffe4"> 64182+</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">4.69.99.10.17668</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.53:</span><span class="sk-032f62-99ffe4"> 64442+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">4.69.99.10.17668</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.53:</span><span class="sk-032f62-99ffe4"> 64442+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>I've removed the destination IP address, but left in the DNS ID number (the number with the plus after it), the spoofed source IP, and port. There are three different TTLs represented (40, 41, and 42) by filtering on ip[8].</p>
 <p>Stop reading here if you want to go figure this out for yourself.</p>
 <h3>Into the hex</h3>
@@ -36,12 +58,20 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">01.b5.cf.07.b501</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">02.0a.1e.02.0a02</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">04.48.2a.b8.4804</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">04.48.2a.b8.4804</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It's immediately obvious that the 'random' source port is the first two bytes of the random IP source address reversed: <code>01.b5.cf.07</code> has source port <code>b501</code>.</p>
 <p>A little bit of tinkering revealed a relationship between the TTL and the first byte of the IP address.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">TTL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> first</span><span class="sk-032f62-99ffe4"> byte</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 40</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">TTL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> first</span><span class="sk-032f62-99ffe4"> byte</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 40</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This relationship was confirmed by a later packet that had a TTL of 150 and a source IP of 220.255.141.181. The shift right also explained why the same TTL was used when the first byte differed by one (see the third group above for an example: 4.x.x.x and 5.x.x.x have the same TTL).</p>
 <p>I then spotted that the DNS ID field was also related to the IP address.</p>
@@ -50,7 +80,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Converted</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> hex:</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">01.b5.cf.07.b501</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.35:</span><span class="sk-032f62-99ffe4"> fe4a+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">01.b5.cf.07.b501</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.35:</span><span class="sk-032f62-99ffe4"> fe4a+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It's probably not obvious at first glance (unless you're a hex-level hacker), but fe4a is the one's complement of 01b5. So the DNS ID field was simply the one's complement of the first two bytes of the source IP.</p>
 <p>Finally, Marek gave me a pcap, and I had one more relationship to find. The ID value in the IPv4 header was also related to the random source IP address—in fact, it was just the first two bytes of the IP address.</p>
@@ -70,7 +104,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">205.26.91.155</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">140.206.27.92</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">70.62.151.0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">161.98.197.249</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">161.98.197.249</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have no real guarantee that the attacker generated them in this order, but perhaps there's an interesting way these are being generated.</p>
 <p>Answers in comments if you manage to figure it out!</p>

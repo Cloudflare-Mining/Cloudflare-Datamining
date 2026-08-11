@@ -49,8 +49,30 @@
 <span class="line"><span>;; EDE: 33 (Negative Trust Anchor): 'a Negative Trust Anchor has been applied for this query (see RFC 7646)'</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>;; ANSWER SECTION:</span></span>
-<span class="line"><span>google.al.              300    IN    A    142.251.142.196</span></span></code></pre>
+<span class="line"><span>google.al.              300    IN    A    142.251.142.196</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The response is a NOERROR with a valid answer: <code>google.al</code> resolves, but two EDE codes accompany it. <code>EDE 9 (DNSKEY Missing)</code> surfaces the underlying DNSSEC failure: the chain of trust was broken and validation failed. <code>EDE 33 (Negative Trust Anchor)</code> signals that 1.1.1.1 applied a Negative Trust Anchor and served the response anyway. Together they give clients and operators full visibility into what happened: the answer is real, but it was not DNSSEC-validated.</p>
 <p>1.1.1.1 returns EDE 33 on any response generated while an NTA is active, regardless of whether the query itself would have failed DNSSEC validation. A query for a domain that does not use DNSSEC at all will still carry EDE 33 if it falls under an active NTA. This is intentional: the NTA covers the entire zone, and transparency applies equally to every response served under it. This also resolves an issue we flagged in our <code>.de</code> blog, where 1.1.1.1 incorrectly returned <code>EDE 22 (No Reachable Authority)</code> instead of surfacing the underlying DNSSEC error. During the <code>.al</code> incident, 1.1.1.1 correctly returned <code>EDE 9 (DNSKEY Missing)</code> alongside EDE 33.</p>
 <p>The Internet-Draft is an individual submission and EDE 33 has been <a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#extended-dns-error-codes" target="_blank" rel="noopener noreferrer"><u>assigned by the Internet Assigned Numbers Authority (IANA)</u></a>. Thanks to our co-author, Babak Farrokhi at Quad9, the <a href="https://www.knot-dns.cz/docs/latest/html/man_kdig.html" target="_blank" rel="noopener noreferrer"><u>kdig</u></a> tool from the Knot project <a href="https://github.com/CZ-NIC/knot/commit/1b053bcfe17eaa4f008d589d6ec0ea53145e22e4" target="_blank" rel="noopener noreferrer"><u>now recognizes EDE 33 by name</u></a>, and <a href="https://github.com/NLnetLabs/unbound/pull/1470" target="_blank" rel="noopener noreferrer"><u>a pull request for Unbound</u></a> is under review. We hope other resolver implementations will follow. The Internet-Draft has been submitted to the <a href="https://datatracker.ietf.org/wg/dnsop/about" target="_blank" rel="noopener noreferrer"><u>Internet Engineering Task Force (IETF) DNSOP Working Group</u></a>, and will be discussed in the DNSOP Working Group at the IETF meeting, taking place in Vienna from July 18 to July 24.</p>

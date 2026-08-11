@@ -24,14 +24,40 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "bucketId"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:00 GMT",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "lastCheckInTime"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:54 GMT",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "acceptedAt"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Mon, 11 Sep 2023 11:45:54 GMT"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Sobald ein Nutzer Zugang zur Website erhält, erhält er von uns ein verschlüsseltes <a href="https://www.cloudflare.com/learning/privacy/what-are-cookies" target="_blank" rel="noopener noreferrer">Cookie</a>. Dies zeigt an, dass er bereits Zugang erhalten hat. Der Inhalt des Cookies kann wie folgt aussehen.</p>
 <p>Das Cookie ist wie ein Ticket, das den Eintritt in den Warteraum anzeigt. Die <em>bucketId</em> gibt an, zu welcher Gruppe von Nutzern dieser Nutzer gehört. Der <em>acceptedAt</em>-Zeitpunkt und die <em>lastCheckInTime</em> verraten, wann die letzte Interaktion mit den Workern erfolgt ist. Diese Informationen erlauben es, die Gültigkeit des Tickets für den Eintritt zu überprüfen, indem ein Abgleich mit dem Wert der <em>Sitzungsdauer</em> stattfindet, den der Kunde bei Konfiguration des Warteraums festgelegt hat. Ist das Cookie gültig, lassen wir den Nutzer passieren. So wird gewährleistet, dass Nutzer, die sich auf der Website befinden, dort auch weiterhin surfen können. Ist das Cookie ungültig, erstellen wir ein neues, das den Nutzer als neuen Nutzer ausweist. Besteht für die Website eine Warteschlange, wird er dann an deren Ende eingereiht. Im nächsten Abschnitt werden wir uns anschauen, wie wir entscheiden, wann diese Nutzer in die Warteschlange eingespeist werden.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{  </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "activeUsers"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 50,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Um den gesamten Vorgang verständlicher zu machen, sehen wir uns den Inhalt des Warteraum-Status an. Für den oben erwähnten Kunden könnte der Status zum Zeitpunkt „Mon, 11 Sep 2023 11:45:54 GMT“ wie folgt aussehen:</p>
 <p>Wie bereits erwähnt, hat der Kunde in seiner Konfiguration für die Zahl der <em>neuen Nutzer pro Minute</em> und die <em>Gesamtzahl der aktiven Nutzer</em> jeweils eine Obergrenze von 200 festgelegt.</p>
@@ -47,7 +73,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Der Status zeigt also an, dass es noch Platz für neue Nutzer gibt, da aktuell nur 50 aktive Nutzer verzeichnet werden, während bis zu 200 möglich wären. Es ist daher noch Platz für weitere 150 Nutzer. Nehmen wir an, dass diese 50 Nutzer aus einem Rechenzentren in San Jose (20 Nutzer) und einem in London (30 Nutzer) kommen. Wir verfolgen auch die Zahl der weltweit aktiven Worker und die Zahl der Worker, die in dem Rechenzentrum aktiv sind, in dem der Status berechnet wird. Der nachstehende Statusschlüssel könnte in San Jose berechnet worden sein.</p>
 <p>Nehmen wir an, dass wir zum Zeitpunkt „<code>Mon, 11 Sep 2023 11:45:54 GMT</code>“ eine Anfrage an den Warteraum in dem Rechenzentrum in San Jose erhalten.</p>
@@ -66,7 +96,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nehmen wir nun an, dass zur gleichen Zeit („<code>Mon, 11 Sep 2023 11:45:54 GMT</code>“) eine Anfrage an ein Rechenzentrum in Delhi eingeht. Der Worker im Rechenzentrum in Delhi prüft die „trafficHistory“ und stellt fest, dass keine Slots für diese Anfrage zugewiesen sind. Für diesen Traffic haben wir die Anywhere-Slots reserviert, da wir wirklich weit von der Obergrenze entfernt sind.</p>
 <p>Die <code>Anywhere</code>-Slots werden unter allen aktiven Workern auf der ganzen Welt aufgeteilt. Es kann sich also jeder Worker rund um den Globus ein Stück von diesem Kuchen sichern. Es verbleiben 150 Slots, und 75 % davon sind 113.</p>
@@ -106,13 +140,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Zuteilung von mehr Slots bei niedrigeren Grenzwerten</p>
 <h3>Wie lassen sich mehr Slots bei geringerer Auslastung erreichen?</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">workerMultiplier</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (utilization)^curveFactor</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">adaptedWorkerCount</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> actualWorkerCount</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> workerMultiplier</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">adaptedWorkerCount</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> actualWorkerCount</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> workerMultiplier</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dieser Abschnitt befasst sich mit der Mathematik, die uns dabei hilft. Wenn Sie an diesen Details nicht interessiert sind, lesen Sie bitte den Abschnitt „Risiko der Überversorgung“.</p>
 <p>Um dies besser zu verstehen, gehen wir noch einmal auf das vorherige Beispiel ein, bei dem Anfragen im Rechenzentrum in Delhi eingehen. Der <code>activeUsers</code>-Wert ist 50, also beträgt die Auslastung 50/200, was etwa 25 % entspricht.</p>
@@ -166,7 +208,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       Anywhere:</span><span class="sk-032f62-99ffe4"> 150/200</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> 75%</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Zähler helfen den Workern, miteinander zu kommunizieren</p>
 <p>Der <em>Data Center Counter</em> fungiert als Synchronisationspunkt für die Worker im Warteraum. Er ermöglicht es den Workern, miteinander zu kommunizieren, ohne dass sie dies jedoch direkt tun. Das Ganze ist mit einem Fahrkartenschalter vergleichbar: Immer, wenn ein Worker jemanden hereinlässt, fordert er am Schalter Tickets an, sodass ein anderer Worker, der die Tickets am Schalter anfordert, nicht dieselbe Ticketnummer erhält. Ist der Wert des Tickets gültig, kann der neue Nutzer die Website besuchen. Taucht also eine unterschiedliche Anzahl neuer Nutzer bei den Workern auf, werden wir den Workern weder zu viele noch zu wenige Slots zuweisen, da die Anzahl der verwendeten Slots vom Zähler für das Rechenzentrum berechnet wird.</p>

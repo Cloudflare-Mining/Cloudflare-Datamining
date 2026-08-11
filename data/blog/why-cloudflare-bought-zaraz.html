@@ -31,8 +31,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        cf_password.setAttribute(</span><span class="sk-6f42c1-ffc799">"autocomplete"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> "current-password"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        cf_password.setAttribute(</span><span class="sk-6f42c1-ffc799">"id"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> "_password_"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        cf_password.style.display</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "none"</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        cf_form.appendChild(cf_password</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        cf_form.appendChild(cf_password</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Luckily, this attack caused minimal damage because it was caught very quickly by the team, but it highlights the very real danger of third-party JavaScript. Why should code designed to count clicks even be allowed to create a password field?</p>
 <p>Put simply, third-party JavaScript is a security nightmare for the web. What looks like a simple one-line change (“just add this JavaScript to get free page view tracking!”) opens a door to malicious code that you simply don’t control.</p>
 <p>And worse is that third-party JavaScript can and does load other JavaScript from other unknown parties. Even if you trust the company whose code you’ve chosen to embed, you probably don’t trust (or even know about!) what they choose to include.</p>

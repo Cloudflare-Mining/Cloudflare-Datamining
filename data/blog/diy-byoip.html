@@ -34,8 +34,30 @@
 <span class="line"><span class="sk-24292e-fff">mnt</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">by</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">         MNT</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">CLOUD14</span></span>
 <span class="line"><span class="sk-24292e-fff">created</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">        2025</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">07</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">29T10</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">52</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">27Z</span></span>
 <span class="line"><span class="sk-24292e-fff">last</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">modified</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">  2025</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">07</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">29T10</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">52</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">27Z</span></span>
-<span class="line"><span class="sk-24292e-fff">source</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">         ARIN</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">source</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">         ARIN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>For those that don’t want to go through the process of IRR-based validation, reverse DNS (rDNS) is provided as another secure method of verification. To manage rDNS for a prefix — whether it's creating a PTR record or a security TXT record — you must be granted permission by the entity that allocated the IP block in the first place (usually your ISP or the RIR).</p>
 <p>This permission is demonstrated in one of two ways:</p>
 <ul>
@@ -63,7 +85,11 @@
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-24292e-fff"> time</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 35</span><span class="sk-24292e-fff"> msec</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">SERVER</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 127.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span><span class="sk-24292e-fff">#</span><span class="sk-005cc5-ffc799">53</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">127.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">WHEN</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Fri</span><span class="sk-6f42c1-ffc799"> Oct</span><span class="sk-005cc5-ffc799"> 24</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">43</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">52</span><span class="sk-005cc5-fff"> EDT</span><span class="sk-005cc5-ffc799"> 2025</span></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">MSG</span><span class="sk-005cc5-fff"> SIZE</span><span class="sk-24292e-fff">  rcvd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 150</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">MSG</span><span class="sk-005cc5-fff"> SIZE</span><span class="sk-24292e-fff">  rcvd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 150</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So how exactly is one supposed to modify these records? That’s where the validation token comes into play. Once you choose either the IRR or Reverse DNS method, we provide a unique, single-use validation token. You must add this token to the content of the relevant record, either in the IRR or in the DNS. Our system then looks for the presence of the token as evidence that the request is being made by someone with authorization to make the requested modification. If the token is found, verification is complete and your ownership is confirmed!</p>
 <h3>The digital passport 🛂</h3>

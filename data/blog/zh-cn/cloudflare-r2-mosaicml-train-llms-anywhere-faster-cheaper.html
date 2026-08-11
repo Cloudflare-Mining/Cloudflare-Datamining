@@ -31,11 +31,37 @@
 <span class="line"><span class="sk-032f62-99ffe4">            'image'</span><span class="sk-24292e-fff">: Image.fromarray(np.random.randint(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">256</span><span class="sk-24292e-fff">, (</span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">), np.uint8)),</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            'class'</span><span class="sk-24292e-fff">: np.random.randint(</span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-24292e-fff">        out.write(sample)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        out.write(sample)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>最后，您可以将数据读取到任何具有 R2 存储桶读取权限的设备上。您可以获取单个样本，遍历整个数据集，并将其输送到标准的 PyTorch dataloader 中。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> aws</span><span class="sk-032f62-99ffe4"> s3</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> path-to-dataset</span><span class="sk-032f62-99ffe4"> s3://my-bucket/folder</span><span class="sk-005cc5-99ffe4"> --endpoint-url</span><span class="sk-24292e-fff"> $S3_ENDPOINT_URL</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> aws</span><span class="sk-032f62-99ffe4"> s3</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> path-to-dataset</span><span class="sk-032f62-99ffe4"> s3://my-bucket/folder</span><span class="sk-005cc5-99ffe4"> --endpoint-url</span><span class="sk-24292e-fff"> $S3_ENDPOINT_URL</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>StreamingDataset 库内置了高性能、具有弹性确定性、快速恢复和多 worker 支持。它还使用智能混洗和分发来确保最小化下载带宽。在各种工作负载(例如 LLMs 和扩散模型)中，我们发现从像 R2 这样的对象存储中进行训练时，没有对训练吞吐量产生影响(没有数据加载器瓶颈)。如果您想了解更多信息，请查看 StreamingDataset <a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset" target="_blank" rel="noopener noreferrer">公告博客</a>！</p>
 <div class="emdash-code">
@@ -60,7 +86,11 @@
 <span class="line"><span class="sk-005cc5-a0a0a0">cls</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> sample[</span><span class="sk-032f62-99ffe4">'class'</span><span class="sk-24292e-fff">]</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Create PyTorch DataLoader</span></span>
-<span class="line"><span class="sk-24292e-fff">dataloader </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> DataLoader(dataset)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">dataloader </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> DataLoader(dataset)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>使用 Composer 读取/写入模型检查点到 R2</h3>
 <p>将数据流式传输到您的训练循环中解决了一半的问题，但是如何加载/保存您的模型检查点呢？幸运的是，如果您使用像 <a href="https://github.com/mosaicml/composer" target="_blank" rel="noopener noreferrer">Composer</a> 这样的训练库，只需指向一个 R2 路径即可！</p>
@@ -80,7 +110,11 @@
 <span class="line"><span class="sk-e36209-fff">        save_folder</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">s3:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">mpt</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">7b</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">checkpoints,</span></span>
 <span class="line"><span class="sk-e36209-fff">        save_interval</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'1000ba'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">        # load_path=s3://my-bucket/mpt-7b-prev/checkpoints/ep0-ba100-rank0.pt,</span></span>
-<span class="line"><span class="sk-24292e-fff">    )</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>使用 MosaicML 和 R2 在任何地方进行有效训练</h3>
 <p>使用上述工具以及 Cloudflare R2，用户可以在任何计算提供商上运行训练工作负载，享有完全的自由，而且没有任何切换成本。</p>
@@ -115,7 +149,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">✔</span><span class="sk-032f62-99ffe4">  Run</span><span class="sk-032f62-99ffe4"> mpt-125m-r2-X2k3Uq</span><span class="sk-032f62-99ffe4"> started</span><span class="sk-24292e-fff">                                                                                    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">i</span><span class="sk-032f62-99ffe4">  Following</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> logs.</span><span class="sk-032f62-99ffe4"> Press</span><span class="sk-032f62-99ffe4"> Ctrl+C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> quit.</span><span class="sk-24292e-fff">                                                                            </span></span>
 <span class="line"><span class="sk-24292e-fff">                                                                                                                        </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Cloning</span><span class="sk-032f62-99ffe4"> into</span><span class="sk-032f62-99ffe4"> 'llm-foundry'...</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Cloning</span><span class="sk-032f62-99ffe4"> into</span><span class="sk-032f62-99ffe4"> 'llm-foundry'...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>一个 MCLI 指定运行名称、Docker 镜像、一组命令以及要用于运行的计算集群。</em></p>
 <div class="emdash-code">
@@ -143,7 +181,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">gpu_num:</span><span class="sk-005cc5-ffc799"> 8</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">gpu_type:</span><span class="sk-032f62-99ffe4"> a100_40gb</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cluster:</span><span class="sk-032f62-99ffe4"> oci-1</span><span class="sk-6a737d-8b8b8b94">  # can be any compute cluster!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cluster:</span><span class="sk-032f62-99ffe4"> oci-1</span><span class="sk-6a737d-8b8b8b94">  # can be any compute cluster!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>立即开始使用！</h3>
 <p>MosaicML 平台是一个非常有用的工具，帮助将您的训练提升到一个新的水平。本文探讨了 Cloudflare R2 如何让您能够在任何或所有计算提供商上使用自己的数据训练模型。通过消除数据出口费用，R2 存储成为 MosaicML训练一个极具成本效益的补充，提供最大的自主权和控制。结合这两个工具，您可以随时在云服务提供商之间切换，以适应组织需求随时间的变化。</p>

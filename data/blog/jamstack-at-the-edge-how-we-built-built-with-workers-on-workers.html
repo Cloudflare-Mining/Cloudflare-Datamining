@@ -84,8 +84,30 @@
 <span class="line"><span class="sk-24292e-fff">      context: { slug: node.slug }</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Using Sanity to drive the content for Built with Workers has been a <em>huge</em> win for our team. We're no longer constrained by code deploys to make changes to content on the site – we don't need to make a pull request to create a new project, and edits to a project's name or description aren't constrained by someone with the ability to deploy the project. Instead, we can empower members of our team to log in directly to the CMS and make changes, and be confident that once the corresponding deploy has completed (see <em>"The CDN is the deployment platform"</em> below), their changes will be live on the site.</p>
 <h3>Dynamic JAMstack layouts</h3>
 <p>As our team got up and running with Sanity.io, we found that the flexibility of a headless CMS platform was useful not just for creating our original data requirements – projects and features – but in rethinking and innovating on how we actually format the application itself.</p>
@@ -108,7 +130,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "bytesized_scraper_bookmarked"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "web_scraper_bookmarked"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When a user returns to Built with Workers, we can make a request to Workers KV, looking for corresponding data for that user and the project they're currently viewing. If that data exists, we can embed the "edge state" directly into the HTML using the streaming HTML rewriter.</p>
 <div class="emdash-code">
@@ -149,7 +175,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // Get associated state for a request, based on the user and URL</span></span>
 <span class="line"><span class="sk-24292e-fff">    state: </span><span class="sk-6f42c1-ffc799">transformBookmark</span><span class="sk-24292e-fff">(event.request),</span></span>
 <span class="line"><span class="sk-24292e-fff">  })</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When the React application is rendered on the client, it can then check for that embedded edge state, which influences how the "bookmark" icon is rendered - either as "bookmarked", or "bookmarked". To support this, we've leaned on React's <code>useContext</code>, which allows any component inside of the application component tree to pull out the edge state and use it inside of the component:</p>
 <div class="emdash-code">
@@ -188,7 +218,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">state</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">setState</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> React.</span><span class="sk-6f42c1-ffc799">useContext</span><span class="sk-24292e-fff">(EdgeStateContext)</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// `bookmarked` value is a simplification of actual code</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-a0a0a0"> &lt;</span><span class="sk-005cc5-ffc799">BookmarkButton</span><span class="sk-6f42c1-a0a0a0"> bookmarked</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">state[project.id]</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The combination of a straightforward JAMstack deployment platform with dynamic key-value <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> and a streaming HTML rewriter is really, really cool. This is an initial exploration into what I consider to be <em>a platform-defining feature</em>, and if you're interested in this stuff and want to continue to explore how this will influence how we write web applications, <a href="https://twitter.com/signalnerve" target="_blank" rel="noopener noreferrer">get in touch with me on Twitter</a>!</p>
 <h2>The CDN is the deployment platform</h2>
@@ -211,7 +245,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'OK'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, handleRequest)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, handleRequest)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In doing this, we've made it possible to completely abstract away <em>every</em> deployment task around the Built with Workers project. Not only does the site deploy on a schedule, and on new commits to <code>master</code>, but it can also do additional deploys as the content changes, so that the site is always reflective of the current content in our CMS.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

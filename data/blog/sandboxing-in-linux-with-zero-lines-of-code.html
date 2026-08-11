@@ -45,13 +45,39 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"My OS is </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name.sysname);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This is a simplified version of the <a href="https://www.man7.org/linux/man-pages/man1/uname.1.html" target="_blank" rel="noopener noreferrer">uname command line tool</a>, which just prints your operating system name. Like its full-featured counterpart, it uses the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> to actually get the name of the current operating system from the kernel. Let’s see it action:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Great! We’re on Linux, so can further experiment with <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> (it is a Linux-only feature). Notice that we’re properly handling the error code after invoking the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a>. However, according to the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">man page</a> it can only fail, when the passed in buffer pointer is invalid. And in this case the set error number will be “EINVAL”, which translates to invalid parameter. In our case, the “struct utsname” structure is being allocated on the stack, so our pointer will always be valid. In other words, in normal circumstances the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> should never fail in this particular program.</p>
 <p>To illustrate seccomp capabilities we will add a “sandbox” function to our program before the main logic</p>
@@ -122,20 +148,32 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"My OS is </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name.sysname);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To sandbox itself the application defines a <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">BPF program</a>, which implements the desired sandboxing policy. Then the application passes this program to the kernel via the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> system call. The kernel does some validation checks to ensure the BPF program is OK and then runs this program on every system call the application makes. The results of the execution of the program is used by the kernel to determine if the current call complies with the desired policy. In other words the BPF program is the “contract” between the application and the kernel.</p>
 <p>In our toy example above, the BPF program simply checks which system call is about to be invoked. If the application is trying to use the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> we tell the kernel to just return a EPERM (which stands for “operation not permitted”) error code. We also tell the kernel to allow any other system call. Let’s see if it works now:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos_raw_seccomp.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>uname</code> failed now with the EPERM error code and EPERM is not even described as a potential failure code in the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname manpage</a>! So we know now that this happened because we “told” the kernel to prohibit us using the uname syscall and to return EPERM instead. We can double check this by replacing EPERM with some other error code, which is totally inappropriate for this context, for example ENETDOWN (“network is down”). Why would we need the network to be up to just get the currently executing OS? Yet, recompiling and rerunning the program we get:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos_raw_seccomp.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Network</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> down</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Network</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> down</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can also verify the other part of our “contract” works as expected. We told the kernel to allow any other system call, remember? In our program, when uname fails, we convert the error code to a human readable message and print it on the screen with the <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html" target="_blank" rel="noopener noreferrer">perror</a> function. To print on the screen <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html" target="_blank" rel="noopener noreferrer">perror</a> uses the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write system call</a> under the hood and since we can actually see the printed error message, we know that the kernel allowed our program to make the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write system call</a> in the first place.</p>
 <h3>seccomp with libseccomp</h3>
@@ -186,7 +224,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"My OS is </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name.sysname);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our <code>sandbox()</code> function not only became shorter and much more readable, but also provided the ability to reference syscalls in our rules by names and not internal numbers as well as not having to deal with other quirks, like setting <code>PR_SET_NO_NEW_PRIVS</code> bit and dealing with system architectures.</p>
 <p>It is worth noting we have modified our seccomp policy a bit. In the raw seccomp example above we instructed the kernel to return an error code when the application tries to execute a prohibited syscall. This is good for demonstration purposes, but in most cases a stricter action is required. Just returning an error code and allowing the application to continue gives the potentially malicious code a chance to bypass the policy. There are many syscalls in Linux and some of them do the same or similar things. For example, we might want to prohibit the application to read data from disk, so we deny the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a> syscall in our policy and tell the kernel to return an error code instead. However, if the application does get exploited, the exploit code/logic might look like below:</p>
@@ -199,14 +241,22 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    /* bypassed the prohibited read(2) syscall */</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wait what?! There is more than one read system call? Yes, there are <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a>, <a href="https://man7.org/linux/man-pages/man2/pread.2.html" target="_blank" rel="noopener noreferrer">pread</a>, <a href="https://man7.org/linux/man-pages/man2/readv.2.html" target="_blank" rel="noopener noreferrer">readv</a> as well as more obscure ones, like <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about" target="_blank" rel="noopener noreferrer">io_submit</a> and <code>io_uring_enter</code>. Of course, it is our fault for providing incomplete seccomp policy, which does not block all possible read syscalls. But if at least we had instructed the kernel to terminate the process immediately upon violation of the first plain <code>read</code>, the malicious code above would not have the chance to be clever and try other options.</p>
 <p>Given the above in the libseccomp example we have a stricter policy now, which tells the kernel to terminate the process upon the policy violation. Let’s see if it works:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos_libseccomp.c</span><span class="sk-005cc5-99ffe4"> -lseccomp</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice that we need to link against <a href="https://github.com/seccomp/libseccomp" target="_blank" rel="noopener noreferrer">libseccomp</a> when compiling the application. Also, when we run the application, we don’t see the <code>uname failed: Operation not permitted</code> error output anymore, because we don’t give the application the ability to even print a failure message. Instead, we see a <code>Bad system call</code> message from the shell, which tells us that the application was terminated with a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener noreferrer">signal</a>. Great!</p>
 <h2>zero code seccomp</h2>
@@ -216,7 +266,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we can run the same code with systemd, but prohibit the application for using <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname</a> without changing or recompiling any code (we’re using <a href="https://www.freedesktop.org/software/systemd/man/systemd-run.html" target="_blank" rel="noopener noreferrer">systemd-run</a> to create an ephemeral systemd service unit for us):</p>
 <div class="emdash-code">
@@ -225,7 +279,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Press</span><span class="sk-032f62-99ffe4"> ^]</span><span class="sk-032f62-99ffe4"> three</span><span class="sk-032f62-99ffe4"> times</span><span class="sk-032f62-99ffe4"> within</span><span class="sk-032f62-99ffe4"> 1s</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> disconnect</span><span class="sk-032f62-99ffe4"> TTY.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Finished</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> result:</span><span class="sk-032f62-99ffe4"> signal</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Main</span><span class="sk-032f62-99ffe4"> processes</span><span class="sk-032f62-99ffe4"> terminated</span><span class="sk-032f62-99ffe4"> with:</span><span class="sk-032f62-99ffe4"> code=killed/status=SYS</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Service</span><span class="sk-032f62-99ffe4"> runtime:</span><span class="sk-032f62-99ffe4"> 6ms</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Service</span><span class="sk-032f62-99ffe4"> runtime:</span><span class="sk-032f62-99ffe4"> 6ms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We don’t see the normal <code>My OS is Linux!</code> output anymore and systemd conveniently tells us that the managed process was terminated with a <code>SIGSYS</code> signal. We can even go further and use another directive <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallErrorNumber=" target="_blank" rel="noopener noreferrer"><code>SystemCallErrorNumber=</code></a> to configure our seccomp policy not to terminate the application, but return an error code instead as in our first seccomp raw example:</p>
 <div class="emdash-code">
@@ -235,7 +293,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Network</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> down</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Finished</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> result:</span><span class="sk-032f62-99ffe4"> exit-code</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Main</span><span class="sk-032f62-99ffe4"> processes</span><span class="sk-032f62-99ffe4"> terminated</span><span class="sk-032f62-99ffe4"> with:</span><span class="sk-032f62-99ffe4"> code=exited/status=</span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Service</span><span class="sk-032f62-99ffe4"> runtime:</span><span class="sk-032f62-99ffe4"> 6ms</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Service</span><span class="sk-032f62-99ffe4"> runtime:</span><span class="sk-032f62-99ffe4"> 6ms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>systemd small print</h3>
 <p>Great! We can now inject almost any seccomp policy into any process without the need to write any code or recompile the application. However, there is an interesting statement in the <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer">systemd documentation</a>:</p>
@@ -257,13 +319,21 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ldd</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	linux-vdso.so.1</span><span class="sk-24292e-fff"> (0x00007ffd8e1e3000)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	libc.so.6</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /lib/x86_64-linux-gnu/libc.so.6</span><span class="sk-24292e-fff"> (0x00007f339ddfb000)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	/lib64/ld-linux-x86-64.so.2</span><span class="sk-24292e-fff"> (0x00007f339dfcf000)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	/lib64/ld-linux-x86-64.so.2</span><span class="sk-24292e-fff"> (0x00007f339dfcf000)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Yes, it is . Now, let’s prohibit it from using the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname</a> system call with our toolkit:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Yet again, we’ve managed to inject our desired seccomp policy into the <code>myos</code> application without modifying or recompiling it. The advantage of this approach is that it doesn’t have the shortcomings of the systemd’s <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> and we can block any system call (luckily <a href="https://www.gnu.org/software/bash" target="_blank" rel="noopener noreferrer">Bash</a> is a dynamically linked application as well):</p>
 <div class="emdash-code">
@@ -273,7 +343,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=execve</span><span class="sk-032f62-99ffe4"> /bin/bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> try</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> something...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The only problem here is that we may accidentally forget to <code>LD_PRELOAD</code> our <code>libsandbox.so</code> library and potentially run unprotected. Also, as described in the <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">man page</a>, <code>LD_PRELOAD</code> has some limitations. We can overcome all these problems by making <code>libsandbox.so</code> a permanent part of our target application:</p>
 <div class="emdash-code">
@@ -282,7 +356,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	linux-vdso.so.1</span><span class="sk-24292e-fff"> (0x00007fff835ae000)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-24292e-fff"> (0x00007fc4f55f2000)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	libc.so.6</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /lib/x86_64-linux-gnu/libc.so.6</span><span class="sk-24292e-fff"> (0x00007fc4f5425000)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	/lib64/ld-linux-x86-64.so.2</span><span class="sk-24292e-fff"> (0x00007fc4f5647000)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	/lib64/ld-linux-x86-64.so.2</span><span class="sk-24292e-fff"> (0x00007fc4f5647000)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Again, we didn’t need access to the source code here, but patched the compiled binary instead. Now we can just configure our seccomp policy as before without the need of <code>LD_PRELOAD</code>:</p>
 <div class="emdash-code">
@@ -290,7 +368,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>sandboxing statically linked executables</h3>
 <p>The above method is quite convenient and easy, but it doesn’t work for statically linked executables:</p>
@@ -299,14 +381,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ldd</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	not</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> dynamic</span><span class="sk-032f62-99ffe4"> executable</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is because there is no <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">dynamic loader</a> involved in starting a statically linked executable, so <code>LD_PRELOAD</code> has no effect. For this case our toolkit contains a special application launcher, which will inject the seccomp rules similarly to the way systemd does it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sandboxify</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> sandboxify</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that we don’t see the <code>Bad system call</code> shell message anymore, because our target executable is being started by the launcher instead of the shell directly. Unlike systemd however, we can use this launcher to block dangerous system calls, like <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a>, as well:</p>
 <div class="emdash-code">
@@ -315,7 +405,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Doing</span><span class="sk-032f62-99ffe4"> arbitrary</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> execution!!!</span></span>
 <span class="line"><span class="sk-24292e-fff">SECCOMP_SYSCALL_DENY</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">execve</span><span class="sk-6f42c1-ffc799"> sandboxify</span><span class="sk-032f62-99ffe4"> /bin/bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> try</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> something...</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> try</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> something...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>sandboxify vs libsandbox.so</h3>
 <p>From the examples above you may notice that it is possible to use <code>sandboxify</code> with dynamically linked executables as well, so why even bother with <code>libsandbox.so</code>? The difference becomes visible, when we start using not the “denylist” policy as in most examples in this post, but rather the preferred “allowlist” policy, where we explicitly allow only the system calls we need, but prohibit everything else.</p>
@@ -331,7 +425,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> fstat</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So we need to allow 4 system calls: <code>exit_group:fstat:uname:write</code>. This is the tightest “sandbox”, which still doesn’t break the application. If we remove any system call from this list, the application will terminate with the <code>Bad system call</code> message (try it yourself!).</p>
 <p>If we use the same allowlist, but with the <code>sandboxify</code> launcher, things do not work anymore:</p>
@@ -340,7 +438,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> exit_group</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> fstat</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The reason is <code>sandboxify</code> and <code>libsandbox.so</code> inject seccomp rules at different stages of the process lifecycle. Consider the following very high level diagram of a process startup:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -364,7 +466,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It is 13 syscalls vs 4 syscalls, if we’re using the <code>libsandbox.so</code> approach!</p>
 <h2>Conclusions</h2>

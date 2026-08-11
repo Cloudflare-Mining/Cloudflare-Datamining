@@ -27,8 +27,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare.net.</span><span class="sk-005cc5-ffc799">         172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      NS</span><span class="sk-032f62-99ffe4">      ns1.cloudflare.net.</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">ADDITIONAL</span><span class="sk-032f62-99ffe4"> SECTION:</span></span>
-<span class="line"><span class="sk-24292e-fff">[ skipped for now ]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[ skipped for now ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We politely asked one of <code>.net</code> nameservers: where can I find <code>cloudflare.net</code>? The answer is: I don't know, but I know who to ask! Go talk to <code>ns1.cloudflare.net</code>, it knows all about the <code>cloudflare.net</code> zone!</p>
 <p>This is called "a delegation". <code>.net</code> told us to go away and ask <code>ns1.cloudflare.net</code> instead.</p>
 <p>Hold on, but where is <code>ns1.cloudflare.net</code>? What is its IP address? If we asked the <code>.net</code> nameserver, it would tell us the same thing - go and talk to <code>ns1.cloudflare.net</code>!</p>
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare.net.</span><span class="sk-005cc5-ffc799">         172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      NS</span><span class="sk-032f62-99ffe4">      ns1.cloudflare.net.</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">ADDITIONAL</span><span class="sk-032f62-99ffe4"> SECTION:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ns1.cloudflare.net.</span><span class="sk-005cc5-ffc799">     172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       173.245.59.31</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ns1.cloudflare.net.</span><span class="sk-005cc5-ffc799">     172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       173.245.59.31</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To break the resolution loop we need the second bit of data in the answer - the ADDITIONAL SECTION. Here the <code>.net</code> server says: by the way, in case you wondered where is <code>ns1.cloudflare.net</code>, it's <code>173.245.59.31</code>.</p>
 <p>This is DNS glue. Conceptually it's a pretty weird invention. We are asking the authoritative nameservers of <code>.net</code> zone, for the resolution of <code>cloudflare.net</code>. In response we not only get the delegation information but also an address of the server. Think about it - it's as if a part of the <code>cloudflare.net</code> zone was handled by the <code>.net</code> TLD zone!</p>
@@ -59,7 +85,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">ADDITIONAL</span><span class="sk-032f62-99ffe4"> SECTION:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ns1.cloudflare.net.</span><span class="sk-005cc5-ffc799">     172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       173.245.59.31</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">www.google.com</span><span class="sk-005cc5-ffc799">          172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       1.2.3.4</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">www.google.com</span><span class="sk-005cc5-ffc799">          172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       1.2.3.4</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The fun story is: it used to "work" and confuse recursors. This is precisely what the <a href="http://www.secure64.com/news-internic-alternic-dns-poisoning" target="_blank" rel="noopener noreferrer">Kashpureff attack did in 1997</a>.</p>
 <p>This is a good old school DNS cache injection or cache poisoning attack. The recursor logic of interpreting DNS glue answers is pretty twisted. The details are poorly understood, and vary with every implementation. Conceptually the barrier between a valid glue record and cache injection is very thin. This is being actively discussed by the DNS gurus, see <a href="https://tools.ietf.org/html/draft-fujiwara-dnsop-resolver-update-00" target="_blank" rel="noopener noreferrer">draft-fujiwara-dnsop-resolver-update-00</a> and <a href="https://tools.ietf.org/id/draft-weaver-dnsext-comprehensive-resolver-00.html#object_scope" target="_blank" rel="noopener noreferrer">draft-weaver-dnsext-comprehensive-resolver-00</a>.</p>
@@ -68,12 +98,20 @@
 <p>Let me now explain the problem. Let's take a look at the glue answer again:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">ADDITIONAL</span><span class="sk-032f62-99ffe4"> SECTION:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ns1.cloudflare.net.</span><span class="sk-005cc5-ffc799">     172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       173.245.59.31</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ns1.cloudflare.net.</span><span class="sk-005cc5-ffc799">     172800</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       173.245.59.31</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The problem is the TTL value. Here, you can see the TTL of that record is 172800 seconds = 48 hours. In normal situations a domain owner, in this case my colleague managing the <code>cloudflare.net</code> domain, has a way to configure this value in a glue record. But 48 hours is not the value we intended to use! If you ask a <code>cloudflare.net</code> authoritative nameserver for this record you get a different TTL that's much shorter:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns1.cloudflare.net</span><span class="sk-032f62-99ffe4"> @173.245.59.31</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ns1.cloudflare.net.</span><span class="sk-005cc5-ffc799">	900</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">	173.245.59.31</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ns1.cloudflare.net.</span><span class="sk-005cc5-ffc799">	900</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">	173.245.59.31</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can see that the authoritative nameserver claims this record is valid for only 900 seconds = 15 minutes, not 48 hours!</p>
 <p>Where does this discrepancy come from?</p>

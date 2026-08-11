@@ -49,8 +49,30 @@
 <p>Anyone can perform audit proof verification —&nbsp;<a href="https://dash.key-transparency.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>the proofs are publicly available</u></a> —&nbsp;but Cloudflare will be doing so automatically and publicly to make the results accessible to all. Verify that Cloudflare’s signature matches WhatsApp’s by visiting our <a href="https://dash.key-transparency.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Key Transparency website</u></a>, or via our <a href="https://github.com/cloudflare/plexi" target="_blank" rel="noopener noreferrer"><u>command line</u></a> tool.</p>
 <p>To use our command line tool, you’ll need to download the <a href="https://github.com/cloudflare/plexi" target="_blank" rel="noopener noreferrer"><u>plexi</u></a> client. It helps construct data structures which are used for signatures, and requires you to have git and cargo installed.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">cargo install plexi</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">cargo install plexi</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>With the client installed, let’s now check the audit proofs for WhatsApp namespace: <code>whatsapp.key-transparency.v1</code>. Plexi Auditor is represented by one public key, which can verify and vouch for multiple Logs with their own dedicated “namespace.” To validate an epoch, such as epoch 458298 (the epoch at which the log decided to start sharing data), you can run the following command:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">plexi</span><span class="sk-032f62-99ffe4"> audit</span><span class="sk-005cc5-99ffe4"> --remote-url</span><span class="sk-032f62-99ffe4"> 'https://akd-auditor.cloudflare.com'</span><span class="sk-005cc5-99ffe4"> --namespace</span><span class="sk-032f62-99ffe4"> 'whatsapp.key-transparency.v1'</span><span class="sk-005cc5-99ffe4"> --long</span></span>
@@ -63,7 +85,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  Epoch</span><span class="sk-032f62-99ffe4"> digest</span><span class="sk-032f62-99ffe4">      	:</span><span class="sk-032f62-99ffe4"> cbe5097ae832a3ae51ad866104ffd4aa1f7479e873fd18df9cb96a02fc91ebfe</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  Signature</span><span class="sk-032f62-99ffe4">         	:</span><span class="sk-032f62-99ffe4"> fe94973e19da826487b637c019d3ce52f0c08093ada00b4fe6563e2f8117b4345121342bc33aae249be47979dfe704478e2c18aed86e674df9f934b718949c08</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  Signature</span><span class="sk-032f62-99ffe4"> verification:</span><span class="sk-032f62-99ffe4"> success</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  Proof</span><span class="sk-032f62-99ffe4"> verification</span><span class="sk-032f62-99ffe4">	:</span><span class="sk-032f62-99ffe4"> success</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  Proof</span><span class="sk-032f62-99ffe4"> verification</span><span class="sk-032f62-99ffe4">	:</span><span class="sk-032f62-99ffe4"> success</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Interested in having Cloudflare audit your public key infrastructure?</h2>
 <p>At the end of the day, security threats shouldn’t become usability problems —&nbsp;everyday messaging app users shouldn’t have to worry about whether the public keys of the people they’re talking to have been compromised. In the same way that <a href="https://ct.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>certificate transparency</u></a> is now built into the issuance and use of digital certificates to encrypt web traffic, we think that public key transparency and auditing should be built into end-to-end encrypted systems by default, so that users never have to do manual QR code verification again. </p>

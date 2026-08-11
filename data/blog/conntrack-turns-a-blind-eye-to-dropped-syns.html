@@ -17,13 +17,39 @@
 <span class="line"><span>$ vagrant ssh</span></span>
 <span class="line"><span>Last login: Sun Jan 31 15:08:02 2021 from 192.168.122.1</span></span>
 <span class="line"><span>[vagrant@ct-vm ~]$ sudo conntrack -L</span></span>
-<span class="line"><span>conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.</span></span></code></pre>
+<span class="line"><span>conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>… nothing!</p>
 <p>Even though the conntrack kernel module is loaded:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[vagrant@ct-vm ~]$ lsmod | grep '^nf_conntrack\b'</span></span>
-<span class="line"><span>nf_conntrack          163840  1 nf_conntrack_netlink</span></span></code></pre>
+<span class="line"><span>nf_conntrack          163840  1 nf_conntrack_netlink</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hold on a minute. Why is the SSH connection to the VM not listed in conntrack entries? SSH is working. With each keystroke we are sending packets to the VM. But conntrack doesn’t register it.</p>
 <p>Isn’t conntrack an integral part of the network stack that sees every packet passing through it? ?</p>
@@ -43,7 +69,11 @@
 <span class="line"><span>    return NF_HOOK(NFPROTO_IPV4, NF_INET_PRE_ROUTING,</span></span>
 <span class="line"><span>               net, NULL, skb, dev, NULL,</span></span>
 <span class="line"><span>               ip_rcv_finish);</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Netfilter users, like conntrack, can register callbacks with it. Netfilter will then run all registered callbacks when its hook processes a network packet.</p>
 <p>For the INET family, that is IPv4 and IPv6, there are five Netfilter hooks &nbsp;to choose from:</p>
@@ -58,7 +88,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[vagrant@ct-vm ~]$ modinfo nf_conntrack</span></span>
 <span class="line"><span>…</span></span>
-<span class="line"><span>parm:           enable_hooks:Always enable conntrack hooks (bool)</span></span></code></pre>
+<span class="line"><span>parm:           enable_hooks:Always enable conntrack hooks (bool)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Going back to our toy VM, let’s try to reload the conntrack module with enable_hooks set:</p>
 <div class="emdash-code">
@@ -67,7 +101,11 @@
 <span class="line"><span>[vagrant@ct-vm ~]$ sudo conntrack -L</span></span>
 <span class="line"><span>tcp      6 431999 ESTABLISHED src=192.168.122.204 dst=192.168.122.1 sport=22 dport=34858 src=192.168.122.1 dst=192.168.122.204 sport=34858 dport=22 [ASSURED] mark=0 secctx=system_u:object_r:unlabeled_t:s0 use=1</span></span>
 <span class="line"><span>conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.</span></span>
-<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre>
+<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nice! The conntrack table now contains an entry for our SSH session.</p>
 <p>The Netfilter hook notified conntrack about SSH session packets passing through the stack.</p>
@@ -78,13 +116,21 @@
 	<li>Add a rule to drop anything coming to port tcp/2570<sup>2</sup></li>
 </ol>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[vagrant@ct-vm ~]$ sudo iptables -t filter -A INPUT -p tcp --dport 2570 -j DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[vagrant@ct-vm ~]$ sudo iptables -t filter -A INPUT -p tcp --dport 2570 -j DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>Connect to the VM on port tcp/2570 from the outside</li>
 </ol>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>host $ nc -w 1 -z 192.168.122.204 2570</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>host $ nc -w 1 -z 192.168.122.204 2570</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>List conntrack table entries</li>
@@ -92,7 +138,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[vagrant@ct-vm ~]$ sudo conntrack -L</span></span>
 <span class="line"><span>tcp      6 431999 ESTABLISHED src=192.168.122.204 dst=192.168.122.1 sport=22 dport=34858 src=192.168.122.1 dst=192.168.122.204 sport=34858 dport=22 [ASSURED] mark=0 secctx=system_u:object_r:unlabeled_t:s0 use=1</span></span>
-<span class="line"><span>conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.</span></span></code></pre>
+<span class="line"><span>conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>No new entries. Conntrack didn’t record a new flow for the dropped SYN.</p>
 <p>But did it process the SYN packet? To answer that we have to find out which callbacks conntrack registered with Netfilter.</p>
@@ -103,7 +153,11 @@
 <span class="line"><span>    struct nf_hook_entries __rcu *hooks_ipv4[NF_INET_NUMHOOKS];</span></span>
 <span class="line"><span>    struct nf_hook_entries __rcu *hooks_ipv6[NF_INET_NUMHOOKS];</span></span>
 <span class="line"><span>    …</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>struct nf_hook_entries</code>, if you look at its <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/linux/netfilter.h#L101" target="_blank" rel="noopener noreferrer">definition</a>, is a bit of an exotic construct. A glance at how the object size is calculated during its <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/core.c#L50" target="_blank" rel="noopener noreferrer">allocation</a> gives a hint about its memory layout:</p>
 <div class="emdash-code">
@@ -111,7 +165,11 @@
 <span class="line"><span>    size_t alloc = sizeof(*e) +</span></span>
 <span class="line"><span>               sizeof(struct nf_hook_entry) * num +</span></span>
 <span class="line"><span>               sizeof(struct nf_hook_ops *) * num +</span></span>
-<span class="line"><span>               sizeof(struct nf_hook_entries_rcu_head);</span></span></code></pre>
+<span class="line"><span>               sizeof(struct nf_hook_entries_rcu_head);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It’s an element count, followed by two arrays glued together, and some <a href="https://en.wikipedia.org/wiki/Read-copy-update" target="_blank" rel="noopener noreferrer">RCU</a>-related state which we’re going to ignore. The two arrays have the same size, but hold different kinds of values.</p>
 <p>We can walk the second array, holding pointers to struct nf_hook_ops, to discover the registered callbacks and their priority. Priority determines the invocation order.</p>
@@ -129,7 +187,11 @@
 <span class="line"><span>...</span></span>
 <span class="line"><span>(nf_hookfn *)ipv4_conntrack_defrag+0x0 = 0xffffffffc092c000</span></span>
 <span class="line"><span>(nf_hookfn *)ipv4_conntrack_in+0x0 = 0xffffffffc093f290</span></span>
-<span class="line"><span>&gt;&gt;&gt;</span></span></code></pre>
+<span class="line"><span>&gt;&gt;&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Neat! We have a way to access Netfilter state.</p>
 <p>Let’s take it to the next level and list all registered callbacks for each Netfilter hook (using <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/tools/list-nf-hooks" target="_blank" rel="noopener noreferrer">less than 100 lines of Python</a>):</p>
@@ -148,7 +210,11 @@
 <span class="line"><span>         50 → iptable_security_hook</span></span>
 <span class="line"><span>        100 → nf_nat_ipv4_fn</span></span>
 <span class="line"><span> 2147483647 → ipv4_confirm</span></span>
-<span class="line"><span>…</span></span></code></pre>
+<span class="line"><span>…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The output from our script shows that conntrack has two callbacks registered with the <code>PRE_ROUTING</code> hook - <code>ipv4_conntrack_defrag</code> and <code>ipv4_conntrack_in</code>. But are they being called?</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -178,11 +244,19 @@
 <span class="line"><span>               (uint16)($th-&gt;dest &lt;&lt; 8) | ($th-&gt;dest &gt;&gt; 8),</span></span>
 <span class="line"><span>               func);</span></span>
 <span class="line"><span>    }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What does this program do? It is roughly an equivalent of a tcpdump filter:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>dst port 2570 and tcp[tcpflags] &amp; tcp-syn != 0</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>dst port 2570 and tcp[tcpflags] &amp; tcp-syn != 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But only for packets passing through conntrack <code>PRE_ROUTING</code> callbacks.</p>
 <p>(If you haven’t used bpftrace, it comes with an excellent <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md" target="_blank" rel="noopener noreferrer">reference guide</a> and gives you the ability to explore kernel data types on the fly with <code>bpftrace -lv 'struct iphdr'</code>.)</p>
@@ -195,7 +269,11 @@
 <span class="line"><span>13:22:56 192.168.122.1:33254 &gt; 192.168.122.204:2570 tcp syn ipv4_conntrack_in</span></span>
 <span class="line"><span>^C</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre>
+<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Conntrack callbacks have processed the TCP SYN packet destined to tcp/2570.</p>
 <p>But if conntrack saw the packet, why is there no corresponding flow entry in the conntrack table?</p>
@@ -242,7 +320,11 @@
 <span class="line"><span> 1) + 34.595 us   |    }</span></span>
 <span class="line"><span> 1) + 35.742 us   |  }</span></span>
 <span class="line"><span> …</span></span>
-<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre>
+<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What catches our attention here is the allocation, <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1471" target="_blank" rel="noopener noreferrer">__nf_conntrack_alloc()</a> (❶), inside <code>init_conntrack() (❷). __nf_conntrack_alloc()</code> creates a <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/net/netfilter/nf_conntrack.h#L58" target="_blank" rel="noopener noreferrer">struct nf_conn</a> object which represents a tracked connection.</p>
 <p>This object is not created in vain. <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1633" target="_blank" rel="noopener noreferrer">A glance</a> at <code>init_conntrack()</code> <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1633" target="_blank" rel="noopener noreferrer">source</a> shows that it is pushed onto a list of unconfirmed connections<sup>3</sup>.</p>
@@ -255,7 +337,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       This</span><span class="sk-032f62-99ffe4"> table</span><span class="sk-032f62-99ffe4"> shows</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> entries,</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> yet</span><span class="sk-032f62-99ffe4"> inserted</span><span class="sk-032f62-99ffe4"> into</span><span class="sk-032f62-99ffe4"> the</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       conntrack</span><span class="sk-032f62-99ffe4"> table.</span><span class="sk-032f62-99ffe4"> These</span><span class="sk-032f62-99ffe4"> entries</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> attached</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4">  are</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       traversing</span><span class="sk-032f62-99ffe4">  the</span><span class="sk-032f62-99ffe4">  stack,</span><span class="sk-032f62-99ffe4"> but</span><span class="sk-032f62-99ffe4"> did</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> reach</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> confirmation</span><span class="sk-032f62-99ffe4"> point</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       at</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> postrouting</span><span class="sk-032f62-99ffe4"> hook.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       at</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> postrouting</span><span class="sk-032f62-99ffe4"> hook.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Perhaps we have been looking for our flow in the wrong table? Does the unconfirmed table have a record for our dropped TCP SYN?</p>
 <h2>Pulling the rabbit out of the hat</h2>
@@ -263,7 +349,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[vagrant@ct-vm ~]$ sudo conntrack -L unconfirmed</span></span>
 <span class="line"><span>conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.</span></span>
-<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre>
+<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The flow is not present in the unconfirmed table. We have to dig deeper.</p>
 <p>Let’s for a moment assume that a <code>struct nf_conn</code> object was added to the <code>unconfirmed</code> list. If the list is now empty, then the object must have been removed from the list before we inspected its contents.</p>
@@ -271,7 +361,11 @@
 <p>It turns out that <code>nf_ct_add_to_unconfirmed_list()</code> which <code>init_conntrack()</code> invokes, has its opposite defined just right beneath it - <code>nf_ct_del_from_dying_or_unconfirmed_list()</code>.</p>
 <p>It is worth a shot to check if this function is being called, and if so, from where. For that we can again use a BPF tracing program, attached to function entry. However, this time our program will record a kernel stack trace:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>kprobe:nf_ct_del_from_dying_or_unconfirmed_list { @[kstack()] = count(); exit(); }</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>kprobe:nf_ct_del_from_dying_or_unconfirmed_list { @[kstack()] = count(); exit(); }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With <code>bpftrace</code> running our one-liner, we connect to the VM from the host with <code>nc</code> as before:</p>
 <div class="emdash-code">
@@ -295,7 +389,11 @@
 <span class="line"><span>    …</span></span>
 <span class="line"><span>]: 1</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre>
+<span class="line"><span>[vagrant@ct-vm ~]$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Bingo. The conntrack delete function was called, and the captured stack trace shows that on local delivery path (❶), where <code>LOCAL_IN</code> Netfilter hook runs (❷), the packet is destroyed (❸). Conntrack must be getting called when <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/linux/skbuff.h#L713" target="_blank" rel="noopener noreferrer">sk_buff</a> (the packet and its metadata) is destroyed. This causes conntrack to remove the unconfirmed flow entry (❹).</p>
 <p>It makes sense. After all we have a <code>DROP</code> rule in the <code>filter/INPUT</code> chain. And that <code>iptables -j DROP</code> rule has a significant side effect. It cleans up an entry in the conntrack <code>unconfirmed</code> table!</p>
@@ -312,7 +410,11 @@
 <span class="line"><span>         50 → iptable_security_hook</span></span>
 <span class="line"><span>        100 → nf_nat_ipv4_fn</span></span>
 <span class="line"><span> 2147483647 → ipv4_confirm              ☜ another conntrack callback</span></span>
-<span class="line"><span>… </span></span></code></pre>
+<span class="line"><span>… </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>ipv4_confirm</code> is “the confirmation point” mentioned in the <a href="https://manpages.debian.org/buster/conntrack/conntrack.8.en.html" target="_blank" rel="noopener noreferrer">conntrack(8) man page</a>. When a flow gets confirmed, it is moved from the <code>unconfirmed</code> table to the main <code>conntrack</code> table.</p>
 <p>The callback is registered with a “weird” priority – 2,147,483,647. It’s the maximum positive value of a 32-bit signed integer can hold, and at the same time, the lowest possible priority a callback can have.</p>
@@ -323,7 +425,11 @@
 <p>First, delete the tcp/2570 drop rule in iptables and unregister conntrack.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>vm # iptables -t filter -F</span></span>
-<span class="line"><span>vm # rmmod nf_conntrack_netlink nf_conntrack</span></span></code></pre>
+<span class="line"><span>vm # rmmod nf_conntrack_netlink nf_conntrack</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then add tcp/2570 drop rule in <code>nftables</code>, with lowest possible priority.</p>
 <div class="emdash-code">
@@ -336,11 +442,19 @@
 <span class="line"><span>                type filter hook input priority 2147483647; policy accept;</span></span>
 <span class="line"><span>                tcp dport 2570 counter packets 0 bytes 0 drop # handle 4</span></span>
 <span class="line"><span>        }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, re-register conntrack hooks.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>vm # modprobe nf_conntrack enable_hooks=1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>vm # modprobe nf_conntrack enable_hooks=1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The registered callbacks for the <code>LOCAL_IN</code> hook now look like this:</p>
 <div class="emdash-code">
@@ -352,13 +466,21 @@
 <span class="line"><span>         50 → iptable_security_hook</span></span>
 <span class="line"><span>        100 → nf_nat_ipv4_fn</span></span>
 <span class="line"><span> 2147483647 → ipv4_confirm, nft_do_chain_ipv4</span></span>
-<span class="line"><span>…</span></span></code></pre>
+<span class="line"><span>…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What happens if we connect to port tcp/2570 now?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>vm # conntrack -L</span></span>
 <span class="line"><span>tcp      6 115 SYN_SENT src=192.168.122.1 dst=192.168.122.204 sport=54868 dport=2570 [UNREPLIED] src=192.168.122.204 dst=192.168.122.1 sport=2570 dport=54868 mark=0 secctx=system_u:object_r:unlabeled_t:s0 use=1</span></span>
-<span class="line"><span>conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.</span></span></code></pre>
+<span class="line"><span>conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have fooled conntrack ?</p>
 <p>Conntrack promoted the flow from the <code>unconfirmed</code> to the main <code>conntrack</code> table despite the fact that the firewall dropped the packet. We can observe it.</p>

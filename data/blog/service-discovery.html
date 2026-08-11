@@ -38,14 +38,40 @@
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"type":"SRV","data":{"service":"_http","proto":"_tcp","name":"name","priority":1,"weight":1,"port":80,"target":"staging.badtortilla.com"},"ttl":1,"zone_name":"badtortilla.com","name":"_http._tcp.name.","content":"SRV 1 1 80 staging.badtortilla.com.","proxied":false,"proxiable":false,"priority":1}'</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>De-Registration:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> DELETE</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Add or remove an origin from an origin pool (this should be a unique IP per node added to the pool):</p>
 <div class="emdash-code">
@@ -53,7 +79,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"description":"Primary data center - Provider XYZ","name":"primary-dc-1","enabled":true,"monitor":"f1aba936b94213e5b8dca0c0dbf1f9cc","origins":[{"name":"app-server-1","address":"1.2.3.4","enabled":true}],"notification_email":"someone@example.com"}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"description":"Primary data center - Provider XYZ","name":"primary-dc-1","enabled":true,"monitor":"f1aba936b94213e5b8dca0c0dbf1f9cc","origins":[{"name":"app-server-1","address":"1.2.3.4","enabled":true}],"notification_email":"someone@example.com"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Create a health check. You can do this <a href="https://api.cloudflare.com/#load-balancer-monitors-create-a-monitor" target="_blank" rel="noopener noreferrer">in the API</a> or in the <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a> (in the Load Balancer card).</p>
 <div class="emdash-code">
@@ -61,7 +91,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"type":"https","description":"Login page monitor","method":"GET","path":"/health","header":{"Host":["example.com"],"X-App-ID":["abc123"]},"timeout":3,"retries":0,"interval":90,"expected_body":"alive","expected_codes":"2xx"}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"type":"https","description":"Login page monitor","method":"GET","path":"/health","header":{"Host":["example.com"],"X-App-ID":["abc123"]},"timeout":3,"retries":0,"interval":90,"expected_body":"alive","expected_codes":"2xx"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Create an initial load balancer, either <a href="https://api.cloudflare.com/#load-balancers-create-a-load-balancer" target="_blank" rel="noopener noreferrer">through the API</a> or in the <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a>.</p>
 <div class="emdash-code">
@@ -69,7 +103,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(optional) Setup geographic routing rules. You can do this <a href="https://api.cloudflare.com/#load-balancers-modify-a-load-balancer" target="_blank" rel="noopener noreferrer">via API</a> or in the <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a>.</p>
 <div class="emdash-code">
@@ -77,7 +115,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"description":"Load Balancer for www.example.com","name":"www.example.com","ttl":30,"fallback_pool":"17b5962d775c646f3f9725cbc7a53df4","default_pools":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196","00920f38ce07c2e2f4df50b1f61d4194"],"region_pools":{"WNAM":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"ENAM":["00920f38ce07c2e2f4df50b1f61d4194"]},"pop_pools":{"LAX":["de90f38ced07c2e2f4df50b1f61d4194","9290f38c5d07c2e2f4df57b1f61d4196"],"LHR":["abd90f38ced07c2e2f4df50b1f61d4194","f9138c5d07c2e2f4df57b1f61d4196"],"SJC":["00920f38ce07c2e2f4df50b1f61d4194"]},"proxied":true}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(optional) Setup Argo for faster PoP to PoP transit in the <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">traffic app of the Cloudflare dashboard</a>.</p>
 <p>(optional) Setup rate limiting <a href="https://api.cloudflare.com/#rate-limits-for-a-zone-create-a-ratelimit" target="_blank" rel="noopener noreferrer">via API</a> or <a href="https://www.cloudflare.com/a/firewall" target="_blank" rel="noopener noreferrer">in the dashboard</a></p>
@@ -86,6 +128,10 @@
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"id":"372e67954025e0ba6aaa6d586b9e0b59","disabled":false,"description":"Prevent multiple login failures to mitigate brute force attacks","match":{"request":{"methods":["GET","POST"],"schemes":["HTTP","HTTPS"],"url":"*.example.org/path*"},"response":{"status":[401,403],"origin_traffic":true}},"bypass":[{"name":"url","value":"api.example.com/*"}],"threshold":60,"period":900,"action":{"mode":"simulate","timeout":86400,"response":{"content_type":"text/xml","body":"&lt;error&gt;This request has been rate-limited.&lt;/error&gt;"}}}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"id":"372e67954025e0ba6aaa6d586b9e0b59","disabled":false,"description":"Prevent multiple login failures to mitigate brute force attacks","match":{"request":{"methods":["GET","POST"],"schemes":["HTTP","HTTPS"],"url":"*.example.org/path*"},"response":{"status":[401,403],"origin_traffic":true}},"bypass":[{"name":"url","value":"api.example.com/*"}],"threshold":60,"period":900,"action":{"mode":"simulate","timeout":86400,"response":{"content_type":"text/xml","body":"&lt;error&gt;This request has been rate-limited.&lt;/error&gt;"}}}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(optional) Setup TLS client authentication. (Enterprise only) Send your account manager your root CA certificate and <a href="https://support.cloudflare.com/hc/en-us/articles/115000088491-Cloudflare-TLS-Client-Auth" target="_blank" rel="noopener noreferrer">which options you would like enabled</a>.</p>

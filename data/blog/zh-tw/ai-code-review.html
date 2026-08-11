@@ -112,8 +112,30 @@
 <span class="line"><span class="sk-24292e-fff">    stderr: </span><span class="sk-032f62-99ffe4">"pipe"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>審查外掛程式：</strong>在 OpenCode 程序內部，一個執行時外掛程式提供了 <code>spawn_reviewers</code> 工具。當協調者 LLM 判斷是時候審查程式碼時，它會呼叫此工具，該工具會透過 OpenCode 的 SDK 用戶端啟動子審查者工作階段：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> createResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.client.session.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
@@ -130,7 +152,11 @@
 <span class="line"><span class="sk-24292e-fff">    model: { providerID, modelID },</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>每個子審查者都在其專屬的 OpenCode 工作階段中執行，擁有自己的智慧體提示詞。協調者看不到也無法控制子審查者使用的工具。子審查者可以自由地讀取來源檔案、執行 grep 或根據其需求搜尋程式碼庫，並在完成時以結構化的 XML 格式回傳其發現。</p>
 <h3>JSONL 是什麼以及我們用它來做什麼？</h3>
@@ -141,7 +167,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Stripped:</span><span class="sk-032f62-99ffe4">   authorization,</span><span class="sk-032f62-99ffe4"> cf-access-token,</span><span class="sk-032f62-99ffe4"> host</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Added:</span><span class="sk-032f62-99ffe4">      cf-aig-authorization:</span><span class="sk-032f62-99ffe4"> Bearer</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">API_KE</span><span class="sk-24292e-fff">Y</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            cf-aig-metadata:</span><span class="sk-032f62-99ffe4"> {"userId":</span><span class="sk-032f62-99ffe4"> "&lt;anonymous-uuid&gt;"}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>每個需要從長時間執行的處理序中剖析結構化輸出的 CI 系統，最終都會採用類似 JSONL 的方案——但我們不想浪費時間與力氣去重新創作。（而且 OpenCode 已經支援它了！）</p>
 <h3>串流處理管線</h3>
@@ -164,7 +194,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> Defense</span><span class="sk-d73a49-a0a0a0">-in-</span><span class="sk-24292e-fff">depth suggestions when primary defenses are adequate</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> Issues </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> unchanged code that </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-005cc5-fff"> MR</span><span class="sk-24292e-fff"> doesn</span><span class="sk-032f62-99ffe4">'t affec</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">t</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-032f62-99ffe4"> "Consider using library X"</span><span class="sk-24292e-fff"> style suggestions</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>結果證明，告訴一個 LLM <strong>不要</strong>做什麼，才是提示詞工程價值的真正所在。沒有這些限制，您將會得到大量推測性的理論警告，而開發人員很快就會學會忽略它們。</p>
 <p>每個審查者都會以結構化的 XML 格式產生發現結果，並附帶嚴重性分級：<code>critical</code>（將導致服務中斷或可被利用）、<code>warning</code>（可測量的回退或具體風險）或 <code>suggestion</code>（值得考慮的改進）。這確保我們處理的是驅動下游行為的結構化資料，而不是解析建議性的文字。</p>
@@ -188,7 +222,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> BOUNDARY_TAG_PATTERN</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> RegExp</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  `&lt;/?(?:${</span><span class="sk-005cc5-fff">PROMPT_BOUNDARY_TAGS</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-032f62-99ffe4">(</span><span class="sk-032f62-99ffe4">"|"</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">})[^&gt;]*&gt;`</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"gi"</span></span>
 <span class="line"><span class="sk-24292e-fff">);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>藉由共用脈絡節省詞元</h3>
 <p>系統不會在提示詞中嵌入完整的程式碼差異。相反，它會將每個檔案的修補檔案寫入到一個 <code>diff_directory</code> 並傳遞路徑。每個子審查者只讀取與其領域相關的修補檔案。</p>
@@ -295,7 +333,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (totalLines </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> fileCount </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-032f62-99ffe4"> "lite"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> "full"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>安全敏感檔案：任何觸及 <code>auth/</code>、<code>crypto/</code>，或路徑名稱聽起來稍微跟安全有關的檔案，永遠都會觸發完整 (full) 審查，因為我們寧可多花一點詞元，也不要錯過任何可能的安全漏洞。</p>
 <p>每個層級對應一組不同的智慧體：</p>
@@ -386,7 +428,11 @@
 <span class="line"><span class="sk-24292e-fff">];</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> NOISE_EXTENSIONS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">".min.js"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".min.css"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".bundle.js"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">".map"</span><span class="sk-24292e-fff">];</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我們還會掃描檔案的前幾行，尋找 <code>// @generated</code> 或 <code>/* eslint-disable */</code> 之類的標記，來濾除自動產生的檔案。然而，我們明確地將資料庫遷移指令碼排除在此規則之外，因為遷移工具通常會將檔案標記為「自動產生」，但它們實際上包含了絕對需要人工審查的資料庫結構變更。</p>
 <h2>spawn_reviewers 工具：並行協調</h2>
@@ -414,7 +460,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "sonnet-4-6"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sonnet-4-5"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "sonnet-4-5"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>每個模型系列都是獨立的，因此如果一個模型負載過高，我們會回退到舊一代的模型，而不是切換到不同類型的模型。當斷路器「開啟」時，我們會在兩分鐘的冷卻期之後，恰好允許一個探測請求通過，以確認提供者是否已恢復，這可以防止我們對一個已經不堪負荷的 API 造成更大的衝擊。</p>
 <h3>錯誤分類</h3>
@@ -434,7 +484,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // User/system abort (not a model problem)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> { shouldFailback: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>只有可重試的 API 錯誤才會觸發故障回退。驗證錯誤、脈絡溢出、中止和結構化輸出錯誤則不會。</p>
 <h3>協調者層級的故障回退</h3>
@@ -452,7 +506,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> config.enabled;            </span><span class="sk-6a737d-8b8b8b94">// Disabled → filter out</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>這表示我們可以在 KV 中切換一個開關來停用整個提供者，而所有正在執行的 CI 任務都會在五秒內繞過它。這個設定格式也包含了故障回退鏈的覆寫設定，讓我們可以透過單次 Worker 更新，就重塑整個模型路由的拓撲結構。</p>
 <p>我們還使用一個「發送後即忘」的 <code>TrackerClient</code>，它與另一個獨立的 Cloudflare Worker 通訊，以追蹤工作的開始、完成、發現結果、詞元使用量和 Prometheus 指標。該用戶端經過精心設計，永遠不會封鎖 CI 管線，它使用一個 2 秒的 <code>AbortSignal.timeout</code>，並且如果待處理的請求超過 50 個，會對其進行修剪。Prometheus 指標會在接下來的微任務中被批次處理，並在處理序結束前立即刷新，透過 Workers Logging 轉寄到我們的內部可觀測性堆疊，因此我們能即時準確地知道我們正在消耗多少詞元。</p>
@@ -483,7 +541,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">include</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff"> component</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-6f42c1-ffc799">CI_SERVER_FQDN</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">ci</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">ai</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">opencode</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">~latest</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>該元件負責處理拉取 Docker 映像檔、設定 Vault 機密、執行審查，以及發佈評論。團隊可以透過在存放庫根目錄放置一個包含專案特定審查指示的 <code>AGENTS.md</code> 檔案來自訂行為，也可以選擇提供一個 AGENTS.md 範本的 URL，這個範本會被插入到所有智慧體的提示詞中，確保他們的標準慣例能夠套用至所有存放庫，而無需維護多個 AGENTS.md 檔案為最新狀態。</p>
 <p>整個系統也支援在本地端執行。<code>@opencode-reviewer/local</code> 外掛程式在 OpenCode 的 TUI 中提供了一個 <code>/fullreview</code> 命令，該命令會從工作目錄樹 (working tree) 產生 diff、執行相同的風險評估與智慧體協調，並將結果內嵌發佈。它使用完全相同的智慧體和提示詞，只是在您的筆記型電腦上執行，而不是 CI 環境中。</p>

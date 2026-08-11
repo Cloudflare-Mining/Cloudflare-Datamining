@@ -23,8 +23,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	&lt;-</span><span class="sk-24292e-fff">waitForUpgradeRequest</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">	syscall.</span><span class="sk-6f42c1-ffc799">Exec</span><span class="sk-24292e-fff">(os.Argv[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">], os.Argv[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:], os.</span><span class="sk-6f42c1-ffc799">Environ</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Unfortunately this has a fatal flaw since we can’t “undo” the exec. Imagine a configuration file with too much white space in it or an extra semicolon. The new process would try to read that file, get an error and exit.</p>
 <p>Even if the exec call works, this solution assumes that initialisation of the new process is practically instantaneous. We can get into a situation where the kernel refuses new connections because the <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html" target="_blank" rel="noopener noreferrer">listen queue is overflowing</a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -48,7 +70,11 @@
 <span class="line"><span class="sk-24292e-fff">	cmd.</span><span class="sk-6f42c1-ffc799">Start</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	&lt;-</span><span class="sk-24292e-fff">waitForNewProcess</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now both processes have working listening sockets and the upgrade works. Right?</p>
 <p><code>SO_REUSEPORT</code> is a little bit peculiar in what it does inside the kernel. As systems programmers, we tend to think of a socket as the file descriptor that is returned by the socket call. The kernel however makes a distinction between the data structure of a socket, and one or more file descriptors pointing at it. It creates a separate socket structure if you bind using <code>SO_REUSEPORT</code>, not just another file descriptor. The old and the new process are thus referring to two separate sockets, which happen to share the same address. This leads to an unavoidable race condition: new-but-not-yet-accepted connections on the socket used by the old process will be orphaned and terminated by the kernel. GitHub wrote <a href="https://githubengineering.com/glb-part-2-haproxy-zero-downtime-zero-delay-reloads-with-multibinder/#haproxy-almost-safe-reloads" target="_blank" rel="noopener noreferrer">an excellent blog post about this problem</a>.</p>
@@ -77,7 +103,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       	├─1192</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       	├─1193</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       	├─1194</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       	└─1195</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       	└─1195</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At this point there are two completely independent NGINX processes running. PID 1176 might be a new version of NGINX, or could use an updated config file. When a new connection arrives for port 80, one of the 16 worker processes is chosen by the kernel.</p>
 <p>After executing the remaining steps, we end up with a fully replaced NGINX:</p>
@@ -91,12 +121,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       	├─1192</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       	├─1193</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       	├─1194</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       	└─1195</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       	└─1195</span><span class="sk-032f62-99ffe4"> nginx:</span><span class="sk-032f62-99ffe4"> worker</span><span class="sk-032f62-99ffe4"> process</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, when a request arrives the kernel chooses between one of the eight remaining processes.</p>
 <p>This process is rather fickle, so NGINX has a safeguard in place. Try requesting a second upgrade while the first hasn’t finished, and you’ll find the following message in the error log:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[crit] 1176#1176: the changing binary signal is ignored: you should shutdown or terminate before either old or new binary</span><span class="sk-032f62-99ffe4">'s process</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[crit] 1176#1176: the changing binary signal is ignored: you should shutdown or terminate before either old or new binary</span><span class="sk-032f62-99ffe4">'s process</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is very sensible, there is no good reason why there should be more than two processes at any given point in time. In the best case, we also want this behaviour from our Go solution.</p>
 <h3>Graceful upgrade wishlist</h3>
@@ -145,7 +183,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;-</span><span class="sk-24292e-fff">upg.</span><span class="sk-6f42c1-ffc799">Exit</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Wait for connections to drain.</span></span>
-<span class="line"><span class="sk-24292e-fff">server.</span><span class="sk-6f42c1-ffc799">Shutdown</span><span class="sk-24292e-fff">(context.</span><span class="sk-6f42c1-ffc799">TODO</span><span class="sk-24292e-fff">())</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">server.</span><span class="sk-6f42c1-ffc799">Shutdown</span><span class="sk-24292e-fff">(context.</span><span class="sk-6f42c1-ffc799">TODO</span><span class="sk-24292e-fff">())</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Calling <code>Upgrader.Upgrade</code> spawns a new process with the necessary net.Listeners, and waits for the new process to signal that it has finished initialisation, to die or to time out. Calling it when an upgrade is ongoing returns an error.</p>
 <p><code>Upgrader.Fds.Listen</code> is inspired by <code>facebookgo/grace</code> and allows inheriting net.Listener easily. Behind the scenes, <code>Fds</code> makes sure that unused inherited sockets are cleaned up. This includes UNIX sockets, which are tricky due to <a href="https://golang.org/pkg/net/#UnixListener.SetUnlinkOnClose" target="_blank" rel="noopener noreferrer">UnlinkOnClose</a>. You can also pass straight up <code>*os.File</code> to the new process if you desire.</p>

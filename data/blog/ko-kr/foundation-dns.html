@@ -41,15 +41,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-2028.awsdns-61.co.uk.</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">205.251.199.236</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-917.awsdns-50.net.</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>모든 이름 서버 IP는 205.251.192.0/21의 일부입니다. 다행스럽게도, <a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing" target="_blank" rel="noopener noreferrer">AWS는 이제</a> <a href="https://isbgpsafeyet.com/#what-is-rpki" target="_blank" rel="noopener noreferrer">RPKI</a>를 통해 <a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing" target="_blank" rel="noopener noreferrer">범위에 서명하고</a> 있어서 유출 가능성이 적어집니다(단, 리졸버 ISP가 RPKI를 확인해야 합니다). 하지만 리졸버 ISP가 RPKI를 확인하지 않아서 해당 서브넷이 유출되거나 가로채기를 당한다면 리졸버가 이름 서버에 도달할 수 없게 되고 aws.com을 리졸빙할 수 없게 될 것입니다.</p>
 <p>Cloudflare가 우리의 모든 경로에 서명하고 <a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">인터넷의 나머지 부분이 경로</a> 유출의 영향을 최소화하도록 도울 것이라는 점은 두말할 필요도 없지만 RPKI가 보편적으로 배치될 때까지 우리의 DNS 시스템이 경로 유출 시 회복력을 유지하도록 하려면 그 밖에 또 무엇을 할 수 있을까요?</p>
 <p>현재 Free, Pro, Business, Enterprise 요금제로 Cloudflare DNS를 사용하고 계신다면 귀사 도메인에 2개의 이름 서버가 제공되는데, 구조는 .ns.cloudflare.com이 되고 여기서 은 무작위 이름입니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> isbgpsafeyet.com</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tom.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제, 앞에서 보았듯이 도메인을 사용할 수 있으려면 도메인의 이름 서버를 사용할 수 있어야 합니다. 그래서 이런 이름 서버 각각이 3개의 Anycast IPv4 주소와 3개의 Anycast IPv6 주소로 리졸빙됩니다.</p>
 <div class="emdash-code">
@@ -61,7 +87,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> tom.ns.cloudflare.com</span><span class="sk-032f62-99ffe4"> aaaa</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2606:4700:58::adf5:3b93</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2803:f800:50::6ca2:c193</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>여기서 주목해야 할 필수 사항은 이 3개의 IPv4 주소와 3개의 IPv6 주소 각각이 다른 /8 IPv4(IPv6는 /45) 블록에서 나온다는 점입니다. 따라서 IPv4를 통해 귀사의 이름 서버를 사용할 수 없게 되려면 경로 유출이 정확히 3개의 /8 IPv4 블록 모두에 대한 해당 서브넷에 영향을 줘야 할 것입니다. 이런 종류의 이벤트는 이론상으로는 가능하지만 실제로는 거의 불가능합니다.</p>
 <h3><strong>이것을 어떻게 하면 더 개선할 수 있을까요?</strong></h3>

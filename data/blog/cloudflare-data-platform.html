@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-24292e-fff">  user_agent</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> events_json</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-ffc799"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'page_view'</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>SQL transformations are very powerful and give you full control over how data is structured and written into the table. For example, you can</p>
 <ul>
 	<li>Schematize and normalize your data, even using <a href="https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json" target="_blank" rel="noopener noreferrer"><u>JSON functions</u></a> to extract fields from arbitrary JSON</li>
@@ -59,7 +81,11 @@
 <p>It makes getting started with Iceberg easy. There’s no need to set up a database cluster, connect to object storage, or manage any infrastructure. You can create a catalog with a couple of <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> commands:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler bucket create mycatalog </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This provisions a data lake that can scale to petabytes of storage, queryable by whatever engine you want to use with zero egress fees.</p>
 <p>But just storing the data isn't enough. Over time, as data is ingested, the number of underlying data files that make up a table will grow, leading to slower and slower query performance.</p>
@@ -67,7 +93,11 @@
 <p>The solution is <em>compaction</em>, a periodic maintenance operation performed automatically by the catalog. Compaction rewrites small files into larger files which reduces metadata overhead and increases query performance.&nbsp;</p>
 <p>Today we are launching compaction support in R2 Data Catalog. Enabling it for your catalog is as easy as:<br></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We're starting with support for small-file compaction, and will expand to additional compaction strategies in the future. Check out the <a href="https://developers.cloudflare.com/r2/data-catalog/about-compaction" target="_blank" rel="noopener noreferrer"><u>compaction documentation</u></a> to learn more about how it works and how to enable it.</p>
 <p>At this time, during open beta, we aren’t billing for R2 Data Catalog. Below is our current thinking on future pricing:</p>
@@ -144,7 +174,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 sql query </span><span class="sk-032f62-99ffe4">"{WAREHOUSE}"</span><span class="sk-032f62-99ffe4"> "\</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  SELECT user_id, url FROM events \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare's ability to schedule compute anywhere on its global network is the foundation of R2 SQL's design. This lets us process data directly where it lives, instead of requiring you to manage centralized clusters for your analytical workloads.</p>
 <p>R2 SQL is tightly integrated with R2 Data Catalog and R2, which allows the query planner to go beyond simple storage scanning and make deep use of the rich statistics stored in the R2 Data Catalog metadata. This provides a powerful foundation for a new class of query optimizations, such as auxiliary indexes or enabling more complex analytical functions in the future.</p>

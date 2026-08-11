@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> main.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> variables.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    └──</span><span class="sk-24292e-fff"> [...]  </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">└──</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">└──</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Terragrunt modules repository</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">environments/</span></span>
@@ -45,7 +67,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> main.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> variables.tf</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    └──</span><span class="sk-032f62-99ffe4"> terragrunt.hcl</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">└──</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">└──</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Terragrunt modules tree gives flexibility, since we are able to apply configuration on a zone, group zone, or organisation level (which is inline with Cloudflare configuration capabilities - i.e.: custom error pages can also be configured on the organisation level).</p>
 <h3>Resource types</h3>
@@ -62,7 +88,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    value</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "x.x.x.x"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>2. Parametrized resources</h5>
 <p>Our next step was to add variables to gain flexibility. This is useful when few attributes of a shared resource configuration differ between multiple zones. Most of the configuration remains the same (as described above) and the variable instantiation is added in the Terraform module, while their values are fed through the Terragrunt module, as input variables, or entries inside_.tfvars_ files. The <em>zone_settings_override</em> resource was implemented accordingly:</p>
@@ -86,7 +116,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    webp</span><span class="sk-032f62-99ffe4">                =</span><span class="sk-032f62-99ffe4"> "off"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    websockets</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> "on"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>environments/qa/main.tf</p>
 <div class="emdash-code">
@@ -95,14 +129,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  zone_name</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.zone_name</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  browser_check</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.zone_settings_browser_check</span></span>
 <span class="line"><span class="sk-24292e-fff">  [...]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>environments/qa/config.tfvars</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#zone settings</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">zone_settings_browser_check</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "off"</span></span>
 <span class="line"><span class="sk-24292e-fff">[...]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h5>3. Dynamic resource</h5>
 <p>At that point, we thought that a more interesting approach would be to create generic resource templates to manage all instances of a given resource in one place. A template is implemented as a Terraform module and creates each resource dynamically, based on its input: data fed through the Terragrunt modules (/environments in our case), or entries in the tfvars files.</p>
@@ -115,7 +157,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">variable</span><span class="sk-032f62-99ffe4"> "member_roles"</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  description</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "account role ids"</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> map</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>modules/account_members/main.tf</p>
 <div class="emdash-code">
@@ -126,7 +172,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> lifecycle</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   prevent_destroy</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We feed the template with a list of users (list of maps). Each member is assigned a number of roles. To make code more readable, we mapped users to role names instead of role ids:environments/config.tfvars</p>
 <div class="emdash-code">
@@ -143,7 +193,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "user3@workable.com"</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"cf_stream"</span><span class="sk-24292e-fff">]</span></span>
 <span class="line"><span class="sk-24292e-fff">  [...]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "robot1@workable.com"</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"cf_stream"</span><span class="sk-24292e-fff">]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Another interesting case we dealt with was the <em>rate_limit</em> resource; the variable declaration (list of objects) &amp; implementation goes as follows:modules/rate_limit/variables.tf</p>
 <div class="emdash-code">
@@ -174,7 +228,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      timeout</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> number</span></span>
 <span class="line"><span class="sk-24292e-fff">    })</span></span>
 <span class="line"><span class="sk-24292e-fff">  }))</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>modules/rate_limit/main.tf</p>
 <div class="emdash-code">
@@ -211,7 +269,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    mode</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].action.mode</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    timeout</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].action.timeout</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>environments/qa/rate_limit.tfvars</p>
 <div class="emdash-code">
@@ -244,13 +306,21 @@
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">  [...]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The biggest advantage of this approach is that all common <em>rate_limit</em> rules are in one place and each environment can include its own rules in their <em>.tfvars</em>. The combination of those using Terraform built-in <code>concat()</code> function, achieves a 2-layer join of the two lists (common|unique rules). So we wanted to give it a try:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">locals</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  rate_limits</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> concat</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">var.common_rate_limits,</span><span class="sk-032f62-99ffe4"> var.unique_rate_limits</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There is however a drawback: <em>.tfvars</em> files can only contain static values. So, since all <em>url</em> attributes - that include the zone name itself - have to be set explicitly in the data of each environment, it means that every time a change is needed to a url, this value has to be copied across all environments and change the zone name to match the environment.</p>
 <p>The solution we came up with, in order to make the zone name dynamic, was to split the <em>url</em> attribute into 3 parts: subdomain, domain and path. This is effective for the <em>.tfvars</em>, but the added complexity to handle the new variables is non negligible. The corresponding code illustrates the issue:modules/rate_limit/main.tf</p>
@@ -258,7 +328,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">locals</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  rate_limits</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> concat</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">var.common_rate_limits,</span><span class="sk-032f62-99ffe4"> var.unique_rate_limits</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  url_patterns</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [for </span><span class="sk-032f62-99ffe4">rate_limit</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> local.rate_limits:</span><span class="sk-032f62-99ffe4">  "${</span><span class="sk-24292e-fff">lookup</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">rate_limit</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">match</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">request</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url_pattern</span><span class="sk-032f62-99ffe4">, "subdomain", </span><span class="sk-24292e-fff">null</span><span class="sk-032f62-99ffe4">) </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-032f62-99ffe4">= </span><span class="sk-24292e-fff">null</span><span class="sk-032f62-99ffe4"> ? "${</span><span class="sk-24292e-fff">lookup</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">rate_limit</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">match</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">request</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url_pattern</span><span class="sk-032f62-99ffe4">, "subdomain")}." </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> ""}"</span><span class="sk-24292e-fff">${lookup(rate_limit.match.request.url_pattern, </span><span class="sk-032f62-99ffe4">"domain"</span><span class="sk-24292e-fff">, null) </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">= null ? </span><span class="sk-032f62-99ffe4">"${</span><span class="sk-24292e-fff">lookup</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">rate_limit</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">match</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">request</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url_pattern</span><span class="sk-032f62-99ffe4">, "domain")}"</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-24292e-fff"> ${var.zone_name}}${lookup(rate_limit.match.request.url_pattern, </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">, null) </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">= null ? lookup(rate_limit.match.request.url_pattern, </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">}</span><span class="sk-032f62-99ffe4">"]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Readability vs functionality</em>: although flexibility is increased and code duplication is reduced, the url transformations have an impact on code's readability and ease of debugging (it took us several minutes to spot a typo). You can imagine this is even worse if you attempt to implement a more complex resource (such as <em>page_rule</em> which is a list of maps with four <em>url</em> attributes).</p>
 <p>The underlying issue here is that at the point we were implementing our resources, we had to choose maps over objects due to their capability to omit attributes, using the lookup() function (by setting default values). This is a requirement for certain resources such as <em>page_rules</em>: only certain attributes need to be defined (and others ignored).</p>
@@ -304,7 +378,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      url</span><span class="sk-032f62-99ffe4">             =</span><span class="sk-032f62-99ffe4"> "https://foo.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone_name</span><span class="sk-032f62-99ffe4">}/</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">/</span><span class="sk-005cc5-fff">$2</span><span class="sk-032f62-99ffe4">"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So we had to go with to a more static resource configuration because the <em>depends_on</em> attribute only takes static values (not dynamically calculated ones during the runtime).</p>
 <h2>Conclusion</h2>

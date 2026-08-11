@@ -29,15 +29,41 @@
 <span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">finally</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Finally, we release the lock on the stream</span></span>
 <span class="line"><span class="sk-24292e-fff">  reader.</span><span class="sk-6f42c1-ffc799">releaseLock</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>You might assume this pattern is inherent to streaming. It isn't. The reader acquisition, the lock management, and the <code>{ value, done }</code> protocol are all just design choices, not requirements. They are artifacts of how and when the Web streams spec was written. Async iteration exists precisely to handle sequences that arrive over time, but async iteration did not yet exist when the streams specification was written. The complexity here is pure API overhead, not fundamental necessity.</p>
 <p>Consider the alternative approach now that Web streams do support <code>for await...of</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  chunks.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(chunk);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is better in that there is far less boilerplate, but it doesn't solve everything. Async iteration was retrofitted onto an API that wasn't designed for it, and it shows. Features like <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB (bring your own buffer)</u></a> reads aren't accessible through iteration. The underlying complexity of readers, locks, and controllers are still there, just hidden. When something does go wrong, or when additional features of the API are needed, developers find themselves back in the weeds of the original API, trying to understand why their stream is "locked" or why <code>releaseLock()</code> didn't do what they expected or hunting down bottlenecks in code they don't control.</p>
 <h4>The locking problem</h4>
@@ -54,7 +80,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> first</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> peekFirstChunk</span><span class="sk-24292e-fff">(stream);</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// TypeError: Cannot obtain lock — stream is permanently locked</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) { </span><span class="sk-6a737d-8b8b8b94">/* never runs */</span><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) { </span><span class="sk-6a737d-8b8b8b94">/* never runs */</span><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Forgetting <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock" target="_blank" rel="noopener noreferrer"><code><u>releaseLock()</u></code></a> permanently breaks the stream. The <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked" target="_blank" rel="noopener noreferrer"><u>locked</u></a> </code>property tells you that a stream is locked, but not why, by whom, or whether the lock is even still usable. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo" target="_blank" rel="noopener noreferrer"><u>Piping</u></a> internally acquires locks, making streams unusable during pipe operations in ways that aren't obvious.</p>
 <p>The semantics around releasing locks with pending reads were also unclear for years. If you called read() but didn't await it, then called releaseLock(), what happened? The spec was recently clarified to cancel pending reads on lock release – but implementations varied, and code that relied on the previous unspecified behavior can break.</p>
@@ -72,7 +102,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// 'view' should now be detached and unusable</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// (it isn't always in every impl)</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// result.value is a NEW view, possibly over different memory</span></span>
-<span class="line"><span class="sk-24292e-fff">view </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> result.value; </span><span class="sk-6a737d-8b8b8b94">// Must reassign</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">view </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> result.value; </span><span class="sk-6a737d-8b8b8b94">// Must reassign</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>BYOB also can't be used with async iteration or TransformStreams, so developers who want zero-copy reads are forced back into the manual reader loop.</p>
 <p>For implementers, BYOB adds significant complexity. The stream must track pending BYOB requests, handle partial fills, manage buffer detachment correctly, and coordinate between the BYOB reader and the underlying source. The <a href="https://github.com/web-platform-tests/wpt/tree/master/streams/readable-byte-streams" target="_blank" rel="noopener noreferrer"><u>Web Platform Tests for readable byte streams</u></a> include dedicated test files just for BYOB edge cases: detached buffers, bad views, response-after-enqueue ordering, and more.</p>
@@ -136,7 +170,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    cancel</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">reason</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Stream canceled:'</span><span class="sk-24292e-fff">, reason);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When a host runtime provides a byte-oriented ReadableStream from the runtime itself, for instance, as the <code>body </code>of a fetch <code>Response</code>, it is often far easier for the runtime itself to provide an optimized implementation of BYOB reads, but those still need to be capable of handling both default and BYOB reading patterns and that requirement brings with it a fair amount of complexity.</p>
 <h4>Backpressure: good in theory, broken in practice</h4>
@@ -150,7 +188,11 @@
 <span class="line"><span class="sk-24292e-fff">      controller.</span><span class="sk-6f42c1-ffc799">enqueue</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">generateData</span><span class="sk-24292e-fff">()); </span><span class="sk-6a737d-8b8b8b94">// desiredSize: -999999</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Stream implementations can and do ignore backpressure; and some spec-defined features explicitly break backpressure. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><code><u>tee()</u></code></a>, for instance, creates two branches from a single stream. If one branch reads faster than the other, data accumulates in an internal buffer with no limit. A fast consumer can cause unbounded memory growth while the slow consumer catches up, and there's no way to configure this or opt out beyond canceling the slower branch.</p>
 <p>Web streams do provide clear mechanisms for tuning backpressure behavior in the form of the <code>highWaterMark</code> option and customizable size calculations, but these are just as easy to ignore as <code>desiredSize</code>, and many applications simply fail to pay attention to them.</p>
@@ -164,7 +206,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// the writables internal backpressure is cleared and</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// it is ok to write more data</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.ready;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For implementers, backpressure adds complexity without providing guarantees. The machinery to track queue sizes, compute <code>desiredSize</code>, and invoke <code>pull()</code> at the right times must all be implemented correctly. However, since these signals are advisory, all that work doesn't actually prevent the problems backpressure is supposed to solve.</p>
 <h4>The hidden cost of promises</h4>
@@ -192,7 +238,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// In a loop, this can exhaust connection pools</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> urls) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> checkEndpoint</span><span class="sk-24292e-fff">(url);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This pattern has caused connection pool exhaustion in Node.js applications using <a href="https://nodejs.org/api/globals.html#fetch" target="_blank" rel="noopener noreferrer"><u>undici</u></a> (the <code>fetch() </code>implementation built into Node.js), and similar issues have appeared in other runtimes. The stream holds a reference to the underlying connection, and without explicit consumption or cancellation, the connection may linger until garbage collection – which may not happen soon enough under load.</p>
 <p>The problem is compounded by APIs that implicitly create stream branches. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" target="_blank" rel="noopener noreferrer"><code><u>Request.clone()</u></code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone" target="_blank" rel="noopener noreferrer"><code><u>Response.clone()</u></code></a> perform implicit <code>tee()</code> operations on the body stream – a detail that's easy to miss. Code that clones a request for logging or retry logic may unknowingly create branched streams that need independent consumption, multiplying the resource management burden.</p>
@@ -208,7 +258,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Storage write is slow — meanwhile, the entire stream</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// may be buffered in memory waiting for this branch</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> writeToStorage</span><span class="sk-24292e-fff">(forStorage);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> writeToStorage</span><span class="sk-24292e-fff">(forStorage);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The spec does not mandate buffer limits for <code>tee()</code>. And to be fair, the spec allows implementations to implement the actual internal mechanisms for <code>tee()</code>and other APIs in any way they see fit so long as the observable normative requirements of the specification are met. But if an implementation chooses to implement <code>tee()</code> in the specific way described by the streams specification, then <code>tee()</code> will come with a built-in memory management issue that is difficult to work around.</p>
 <p>Implementations have had to develop their own strategies for dealing with this. Firefox initially used a linked-list approach that led to O<code>(n)</code> memory growth proportional to the consumption rate difference. In Cloudflare Workers, we opted to implement a shared buffer model where backpressure is signaled by the slowest consumer rather than the fastest.</p>
@@ -230,7 +284,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Pipe a fast source through the transform to a slow sink</span></span>
 <span class="line"><span class="sk-24292e-fff">fastSource</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(fastTransform)</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(slowSink);  </span><span class="sk-6a737d-8b8b8b94">// Buffer grows without bound</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(slowSink);  </span><span class="sk-6a737d-8b8b8b94">// Buffer grows without bound</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What TransformStreams are supposed to do is check for backpressure on the controller and use promises to communicate that back to the writer:</p>
 <div class="emdash-code">
@@ -242,7 +300,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">    controller.</span><span class="sk-6f42c1-ffc799">enqueue</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">processChunk</span><span class="sk-24292e-fff">(chunk));</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A difficulty here, however, is that the <code>TransformStreamDefaultController</code> does not have a ready promise mechanism like Writers do; so the <code>TransformStream</code> implementation would need to implement a polling mechanism to periodically check when <code>controller.desiredSize</code>&nbsp;becomes positive again.</p>
 <p>The problem gets worse in pipelines. When you chain multiple transforms – say, parse, transform, then serialize – each <code>TransformStream</code> has its own internal readable and writable buffers. If implementers follow the spec strictly, data cascades through these buffers in a push-oriented fashion: the source pushes to transform A, which pushes to transform B, which pushes to transform C, each accumulating data in intermediate buffers before the final consumer has even started pulling. With three transforms, you can have six internal buffers filling up simultaneously.</p>
@@ -252,7 +314,11 @@
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(parse)      </span><span class="sk-6a737d-8b8b8b94">// buffers filling...</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(transform)  </span><span class="sk-6a737d-8b8b8b94">// more buffers filling...</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(serialize)  </span><span class="sk-6a737d-8b8b8b94">// even more buffers...</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(destination);    </span><span class="sk-6a737d-8b8b8b94">// consumer hasn't started yet</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(destination);    </span><span class="sk-6a737d-8b8b8b94">// consumer hasn't started yet</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Implementations have found ways to optimize transform pipelines by collapsing identity transforms, short-circuiting non-observable paths, deferring buffer allocation, or falling back to native code that does not run JavaScript at all. Deno, Bun, and Cloudflare Workers have all successfully implemented "native path" optimizations that can help eliminate much of the overhead, and Vercel's recent <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>fast-webstreams</u></a> research is working on similar optimizations for Node.js. But the optimizations themselves add significant complexity and still can't fully escape the inherently push-oriented model that TransformStream uses.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -270,7 +336,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Each one triggers promise machinery internally</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> component</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> components) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  renderComponent</span><span class="sk-24292e-fff">(controller);  </span><span class="sk-6a737d-8b8b8b94">// Promises created, objects allocated</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Every fragment means promises created for <code>read()</code> calls, promises for backpressure coordination, intermediate buffer allocations, and <code>{ value, done } </code>result objects – most of which become garbage almost immediately.</p>
 <p>Under load, this creates GC pressure that can devastate throughput. The JavaScript engine spends significant time collecting short-lived objects instead of doing useful work. Latency becomes unpredictable as GC pauses interrupt request handling. I've seen SSR workloads where garbage collection accounts for a substantial portion (up to and beyond 50%) of total CPU time per request. That's time that could be spent actually rendering content.</p>
@@ -303,7 +373,11 @@
 <p>At its core, a stream is just a sequence of data that arrives over time. You don't have all of it at once. You process it incrementally as it becomes available.</p>
 <p>Unix pipes are perhaps the purest expression of this idea:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> access.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "error"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> access.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "error"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><br>Data flows left to right. Each stage reads input, does its work, writes output. There's no pipe reader to acquire, no controller lock to manage. If a downstream stage is slow, upstream stages naturally slow down as well. Backpressure is implicit in the model, not a separate mechanism to learn (or ignore).</p>
 <p>In JavaScript, the natural primitive for "a sequence of things that arrive over time" is already in the language: the async iterable. You consume it with <code>for await...of</code>. You stop consuming by stopping iteration.</p>
@@ -344,7 +418,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> readable) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">(chunk, { stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Even this relatively clean version requires: a <code>TransformStream</code>, manual <code>TextEncoder</code> and <code>TextDecoder</code>, and explicit lock release.</p>
 <p>Here's the equivalent with the new API:</p>
@@ -359,7 +437,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Consume as text</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(readable);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(readable);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The readable is just an async iterable. You can pass it to any function that expects one, including <code>Stream.text()</code> which collects and decodes the entire stream.</p>
 <p>The writer has a simple interface: <code>write(), writev()</code> for batched writes, <code>end()</code> to signal completion, and <code>abort()</code> for errors. That's essentially it.</p>
@@ -399,7 +481,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Use it</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createBufferWriter</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(source, writer);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> allData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">getChunks</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> allData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">getChunks</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>No base class to extend, no abstract methods to implement, no controller to coordinate with. Just an object with the right shape.</p>
 <h4>Pull-through transforms</h4>
@@ -413,7 +499,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> chunks) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    process</span><span class="sk-24292e-fff">(chunk);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>Stream.pull()</code> creates a lazy pipeline. The <code>compress</code> and <code>encrypt</code> transforms don't run until you start iterating output. Each iteration pulls data through the pipeline on demand.</p>
 <p>This is fundamentally different from Web streams' <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough" target="_blank" rel="noopener noreferrer"><code><u>pipeThrough()</u></code></a>, which starts actively pumping data from the source to the transform as soon as you set up the pipe. Pull semantics mean you control when processing happens, and stopping iteration stops processing.</p>
@@ -430,7 +520,11 @@
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Use it directly</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, toUpperCase);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, toUpperCase);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Stateful transforms are simple objects with member functions that maintain state across calls:</p>
 <div class="emdash-code">
@@ -474,7 +568,11 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, </span><span class="sk-6f42c1-ffc799">createLineParser</span><span class="sk-24292e-fff">());</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, </span><span class="sk-6f42c1-ffc799">createLineParser</span><span class="sk-24292e-fff">());</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For transforms that need cleanup on abort, add an abort handler:</p>
 <div class="emdash-code">
@@ -502,7 +600,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">      // Clean up compressor resources on error/cancellation</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For implementers, there's no Transformer protocol with <code>start()</code>, <code>transform()</code>, <code>flush()</code> methods and controller coordination passed into a <code>TransformStream</code> class that has its own hidden state machine and buffering mechanisms. Transforms are just functions or simple objects: far simpler to implement and test.</p>
 <h4>Explicit backpressure policies</h4>
@@ -528,7 +630,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">writer</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">readable</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  highWaterMark: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  backpressure: </span><span class="sk-032f62-99ffe4">'strict'</span><span class="sk-6a737d-8b8b8b94"> // or 'block', 'drop-oldest', 'drop-newest'</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>No more hoping producers cooperate. The policy you choose determines what happens when the buffer fills.</p>
 <p>Here's how each policy behaves when a producer writes faster than the consumer reads:</p>
@@ -559,7 +665,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> dropNew</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({ highWaterMark: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, backpressure: </span><span class="sk-032f62-99ffe4">'drop-newest'</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk1);  </span><span class="sk-6a737d-8b8b8b94">// ok</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk2);  </span><span class="sk-6a737d-8b8b8b94">// ok</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk3);  </span><span class="sk-6a737d-8b8b8b94">// silently dropped</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk3);  </span><span class="sk-6a737d-8b8b8b94">// silently dropped</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Explicit Multi-consumer patterns</h4>
 <div class="emdash-code">
@@ -570,7 +680,11 @@
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer1</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(decompress);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(decompress);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Instead of <code>tee()</code> with its hidden unbounded buffer, you get explicit multi-consumer primitives. <code>Stream.share()</code> is pull-based: consumers pull from a shared source, and you configure the buffer limits and backpressure policy upfront.</p>
 <p>There's also <code>Stream.broadcast()</code> for push-based multi-consumer scenarios. Both require you to think about what happens when consumers run at different speeds, because that's a real concern that shouldn't be hidden.</p>
@@ -582,7 +696,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textAsync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(source);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Sync — when all components are synchronous</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textSync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">textSync</span><span class="sk-24292e-fff">(source);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textSync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">textSync</span><span class="sk-24292e-fff">(source);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here's a complete synchronous pipeline – compression, transformation, and consumption with zero async overhead:</p>
 <div class="emdash-code">
@@ -594,7 +712,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> encrypted</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pullSync</span><span class="sk-24292e-fff">(compressed, aesEncryptSync);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Synchronous consumption — no promises, no event loop trips</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">bytesSync</span><span class="sk-24292e-fff">(encrypted);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">bytesSync</span><span class="sk-24292e-fff">(encrypted);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The entire pipeline executes in a single call stack. No promises are created, no microtask queue scheduling occurs, and no GC pressure from short-lived async machinery. For CPU-bound workloads like parsing, compression, or transformation of in-memory data, this can be significantly faster than the equivalent Web streams code – which would force async boundaries even when every component is synchronous.</p>
 <p>Web streams has no synchronous path. Even if your source has data ready and your transform is a pure function, you still pay for promise creation and microtask scheduling on every operation. Promises are fantastic for cases in which waiting is actually necessary, but they aren't always necessary. The new API lets you stay in sync-land when that's what you need.</p>
@@ -605,7 +727,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(readable, transform1, transform2);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> input) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // process chunks</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When adapting to a ReadableStream, a bit more work is required since the alternative approach yields batches of chunks, but the adaptation layer is as easily straightforward:</p>
 <div class="emdash-code">
@@ -618,7 +744,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, transform1, transform2);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">adapt</span><span class="sk-24292e-fff">(input));</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">adapt</span><span class="sk-24292e-fff">(input));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>How this addresses the real-world failures from earlier</h4>
 <ul>

@@ -4,8 +4,30 @@
 <p><a href="https://local-uploads.r2-demo.workers.dev" target="_blank" rel="noopener noreferrer"><u>이 데모에서</u></a> 직접 사용해 보고 로컬 업로드의 이점을 확인해 보세요.</p>
 <p>사용할 준비가 되셨나요? <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflare</u></a> 대시보드의 버킷 설정 아래에서, 또는 기존 버킷에 대해 단일 Wrangler 명령으로 로컬 업로드를 활성화할 수 있습니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>75% 단축된 글로벌 업로드 총 요청 시간</h2>
 <p><a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>로컬 업로드</u></a> 에서 업로드 요청(예: (PutObject, UploadPart)보다 더 빨라집니다. 고객을 대상으로 한 비공개 베타 테스트와 종합 벤치마크 모두에서 버킷이 아닌 지역에서 업로드 요청이 이루어질 때 TTLB(Time to Last Byte)가 최대 75%까지 감소했습니다. 이 결과에서 TTLB는 R2가 업로드 요청을 수신한 시점부터 R2가 200 응답을 반환한 시점까지를 측정했습니다.</p>
 <p>신세틱 테스트에서 저희는 가상 워크로드를 사용하여 교차 지역 업로드 워크플로우를 시뮬레이션하는 방식으로 로컬 업로드의 영향을 측정했습니다. 저희는 북미 서부에 테스트 클라이언트를 배포하고 아시아 태평양 지역에 대한 <a href="https://developers.cloudflare.com/r2/reference/data-location" target="_blank" rel="noopener noreferrer"><u>위치 힌트</u></a> 로 R2 버킷을 구성했습니다. 클라이언트는 5MB 크기의 개체를 업로드하기 위해 30분 동안 초당 약 20건의 PutObject 요청을 수행했습니다. </p>
@@ -86,7 +108,11 @@
 <p>로컬 업로드는 현재 오픈 베타로 이용 가능합니다. 로컬 업로드를 활성화하는 데 <strong>추가 비용은 없습니다</strong>. 이 기능을 활성화한 상태에서 업로드 요청을 하면, 로컬 업로드를 이용하지 않고 업로드 요청을 할 때와 마찬가지로 표준 <a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>클래스 A 작업 비용</u></a>이 발생합니다.</p>
 <p>시작하려면 버킷 설정에서 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflare 대시보드</u></a> 를 방문하여 로컬 업로드 카드를 찾아 활성화하거나, Wrangler를 사용하여 다음 명령을 실행하여 버킷에서 로컬 업로드를 활성화하세요.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>버킷에 로컬 업로드를 사용하면 원활하게 진행할 수 있습니다. 기존 업로드가 예상대로 완료되고 트래픽이 중단되지 않습니다.</p>
 <p>자세한 내용은 <a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>Local Uploads 문서</u></a>를 참조하세요. 질문이 있거나 피드백을 공유하고 싶다면 <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>개발자 Discord</u></a>의 토론에 참여하세요.</p>

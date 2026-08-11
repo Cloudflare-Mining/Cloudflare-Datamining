@@ -21,8 +21,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(out.response);</span></span>
 <span class="line"><span class="sk-24292e-fff">   },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>이러한 맥락에서 LLM이 최선의 해답을 제공합니다. 우리에게 계획과 지침을 제공할 뿐, 우리를 대신하여 작업을 수행하지는 않습니다. 우리에게는 선택의지가 있고 세상에 영향을 미칠 수 있으므로, 여러분과 저는 지침 목록을 받아들고 조치를 취할 수 있습니다. 에이전트가 더 많은 세상과 상호 작용할 수 있도록 웹 브라우저에 대한 제어 권한을 부여합니다.</p>
 <p>Cloudflare에서는 Worker에 직접 바인딩할 수 있는 <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>브라우저 렌더링</u></a> 서비스를 제공합니다. 그렇게 합시다. 다음 코드에서는 브라우저를 간단하게 제어할 수 있게 해주는 자동화 프레임워크인 스테이지핸드를 <a href="https://www.stagehand.dev" target="_blank" rel="noopener noreferrer"><u>사용합니다.</u></a> 저희는 여기에 Cloudflare 원격 브라우저의 인스턴스 및 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>용 클라이언트를 전달합니다.</p>
 <div class="emdash-code">
@@ -49,7 +71,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">       const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">extraction</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"what are the pizza available on the menu?"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(extraction);</span></span>
 <span class="line"><span class="sk-24292e-fff">   },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>해당 코드는 <a href="https://mini-ai-agent.cloudflareresearch.com/llm" target="_blank" rel="noopener noreferrer"><em><u>https://mini-ai-agent.cloudflareresearch.com/llm</u></em></a>에서 직접 확인할 수 있습니다. 2025년 10월 10일에 Cloudflare가 받은 응답은 다음과 같습니다.</p>
 <div class="emdash-code">
@@ -57,7 +83,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Pepperoni</span><span class="sk-6f42c1-ffc799"> Supreme</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">14.99</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Veggie</span><span class="sk-6f42c1-ffc799"> Garden</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">13.99</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Meat</span><span class="sk-6f42c1-ffc799"> Lovers</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">16.99</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hawaiian</span><span class="sk-6f42c1-ffc799"> Paradise</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">15.49</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hawaiian</span><span class="sk-6f42c1-ffc799"> Paradise</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">15.49</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>브라우저 렌더링의 스크린샷 API를 사용하여 에이전트가 무엇을 하고 있는지 검사할 수도 있습니다. 위 예시에서 브라우저가 페이지를 렌더링하는 방법은 다음과 같습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -90,7 +120,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(result.message);</span></span>
 <span class="line"><span class="sk-24292e-fff">   },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>단계별 지침을 추가하는 대신 에이전트가 제어할 수 있음을 확인할 수 있습니다. 실제로 결제하려면 <a href="https://en.wikipedia.org/wiki/Controlled_payment_number" target="_blank" rel="noopener noreferrer"><u>가상 신용 카드</u></a>와 같은 결제 방법에 액세스할 수 있어야 합니다.</p>
 <p>위치 범위를 Cloudflare의 오스틴 사무실로 지정했다는 점에서 이 프롬프트는 약간 미묘한 차이가 있습니다. 이는 에이전트가 우리에게 응답하는 동안 맥락을 이해해야 하기 때문입니다. 이 경우 에이전트는 우리와 멀리 떨어진 Cloudflare 에지에서 작동합니다. 이는 음식이 배달되었다 하더라도 이 <a href="https://www.cloudflare.com/learning/cdn/glossary/data-center" target="_blank" rel="noopener noreferrer"><u>데이터 센터</u></a> 에서 피자를 배달받을 가능성은 거의 없음을 의미합니다.</p>

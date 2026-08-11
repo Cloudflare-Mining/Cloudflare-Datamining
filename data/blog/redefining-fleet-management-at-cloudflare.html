@@ -9,8 +9,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    clickhouse:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      cluster:</span><span class="sk-032f62-99ffe4"> dns</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    comment:</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">-</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      Updated</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">use</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">      Updated</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">use</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As time went on, this became extremely cumbersome for engineers to manage and assign workloads for servers. Engineers would often have to update multiple files, updating every entry to assign and change workload data by hand. While this may seem like a slight inconvenience at first, when provisioning new hardware or changing workload configuration data, engineers would have to update hundreds of lines of YAML. Additionally, this data was not readily accessible to other systems and automation to read and modify. It became clear that this pattern could not scale, and a stronger framework would need to be created to manage this information.</p>
 <p>First, we aimed to tackle this problem by making nodes and their workloads — which we call roles — first class data structures. Workload and node information were collected and stored in this new system called Zinc, and our configuration management system <a href="https://saltproject.io/index.html" target="_blank" rel="noopener noreferrer">Salt</a> began to read this information not from the YAML files, but a new RESTful API. We also added several features to Zinc to administer and manage node data:</p>
 <ul>
@@ -51,7 +73,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Querying all nodes in a specific rack, that are Kubernetes nodes. </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> zinc</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-032f62-99ffe4"> "rack:A413"</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-032f62-99ffe4"> “role:kubernetes”</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Putting a node failure into a repair state with debug information on how to fix. </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> zinc</span><span class="sk-032f62-99ffe4"> repair</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> –name</span><span class="sk-032f62-99ffe4"> compute4015</span><span class="sk-005cc5-99ffe4"> --repair-type</span><span class="sk-032f62-99ffe4"> motherboard</span><span class="sk-032f62-99ffe4"> –remove-from-prod</span><span class="sk-032f62-99ffe4"> –comments</span><span class="sk-032f62-99ffe4"> “Diagnostic</span><span class="sk-032f62-99ffe4"> determined</span><span class="sk-032f62-99ffe4"> bad</span><span class="sk-032f62-99ffe4"> motherboard”</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> zinc</span><span class="sk-032f62-99ffe4"> repair</span><span class="sk-032f62-99ffe4"> node</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> –name</span><span class="sk-032f62-99ffe4"> compute4015</span><span class="sk-005cc5-99ffe4"> --repair-type</span><span class="sk-032f62-99ffe4"> motherboard</span><span class="sk-032f62-99ffe4"> –remove-from-prod</span><span class="sk-032f62-99ffe4"> –comments</span><span class="sk-032f62-99ffe4"> “Diagnostic</span><span class="sk-032f62-99ffe4"> determined</span><span class="sk-032f62-99ffe4"> bad</span><span class="sk-032f62-99ffe4"> motherboard”</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>While these are simple queries, Zinc also provides its own query syntax to get more detailed information using its own query structure. Here we see an example of looking for Kubernetes workers that are a part of our pdx cluster, while ignoring storage and rook nodes.</p>
 <div class="emdash-code">
@@ -61,7 +87,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">compute1995</span><span class="sk-032f62-99ffe4">  compute</span><span class="sk-032f62-99ffe4">     V</span><span class="sk-005cc5-ffc799">           349</span><span class="sk-032f62-99ffe4">      pdx06</span><span class="sk-032f62-99ffe4">      A104</span><span class="sk-005cc5-ffc799">  7</span><span class="sk-032f62-99ffe4">          kubernetes</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">compute1192</span><span class="sk-032f62-99ffe4">  compute</span><span class="sk-032f62-99ffe4">     V</span><span class="sk-005cc5-ffc799">           36</span><span class="sk-032f62-99ffe4">       pdx01</span><span class="sk-032f62-99ffe4">      A203</span><span class="sk-005cc5-ffc799">  10</span><span class="sk-032f62-99ffe4">         kubernetes</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-032f62-99ffe4"> records:</span><span class="sk-005cc5-ffc799"> 1337</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-032f62-99ffe4"> records:</span><span class="sk-005cc5-ffc799"> 1337</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>Web UI</strong></p>
 <p>Despite being an internal tool, we felt it necessary to ensure that the UX of Zinc was intuitive and crisp. As it stands, hundreds of engineers at Cloudflare rely on Zinc’s web interface, so we found it essential to provide a fast, easy to use design. Built in React as a <a href="https://developer.mozilla.org/en-US/docs/Glossary/SPA" target="_blank" rel="noopener noreferrer">single page application</a>, we aim to optimize for ease of use wherever possible. Querying items such as assets in repair, nodes in a specific city or country, or even CPU model are all first-class searchable items in our UI.</p>

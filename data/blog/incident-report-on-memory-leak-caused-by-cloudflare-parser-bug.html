@@ -24,8 +24,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> generated</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> ( </span><span class="sk-6f42c1-ffc799">++p</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> pe</span><span class="sk-24292e-fff"> )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    goto</span><span class="sk-032f62-99ffe4"> _test_eof</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    goto</span><span class="sk-032f62-99ffe4"> _test_eof</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The root cause of the bug was that reaching the end of a buffer was checked using the equality operator and a pointer was able to step past the end of the buffer. This is known as a buffer overrun. Had the check been done using &gt;= instead of == jumping over the buffer end would have been caught. The equality check is generated automatically by Ragel and was not part of the code that we wrote. This indicated that we were not using Ragel correctly.</p>
 <p>The Ragel code we wrote contained a bug that caused the pointer to jump over the end of the buffer and past the ability of an equality check to spot the buffer overrun.</p>
 <p>Here’s a piece of Ragel code used to consume an attribute in an HTML <code>&lt;script&gt;</code> tag. The first line says that it should attempt to find zero or more <code>unquoted_attr_char</code> followed by (that’s the :&gt;&gt; concatenation operator) whitespace, forward slash or then &gt; signifying the end of the tag.</p>
@@ -34,12 +56,20 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">{ </span><span class="sk-6f42c1-ffc799">ddctx(</span><span class="sk-6f42c1-ffc799">"script consume_attr"</span><span class="sk-24292e-fff">); }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">@</span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> fhold</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">fgoto</span><span class="sk-032f62-99ffe4"> script_tag_parse</span><span class="sk-24292e-fff">; }</span></span>
 <span class="line"><span class="sk-24292e-fff">$lerr{ </span><span class="sk-6f42c1-ffc799">dd(</span><span class="sk-6f42c1-ffc799">"script consume_attr failed"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       fgoto</span><span class="sk-032f62-99ffe4"> script_consume_attr</span><span class="sk-24292e-fff">; };</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       fgoto</span><span class="sk-032f62-99ffe4"> script_consume_attr</span><span class="sk-24292e-fff">; };</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If an attribute is well-formed, then the Ragel parser moves to the code inside the <code>@{ }</code> block. If the attribute fails to parse (which is the start of the bug we are discussing today) then the <code>$lerr{ }</code> block is used.</p>
 <p>For example, in certain circumstances (detailed below) if the web page <em>ended</em> with a broken HTML tag like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script type</span><span class="sk-d73a49-a0a0a0">=</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script type</span><span class="sk-d73a49-a0a0a0">=</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>the <code>$lerr{ }</code> block would get used and the buffer would be overrun. In this case the <code>$lerr</code> does <code>dd(“script consume_attr failed”);</code> (that’s a debug logging statement that is a nop in production) and then does <code>fgoto script_consume_attr;</code> (the state transitions to <code>script_consume_attr</code> to parse the next attribute).From our statistics it appears that such broken tags at the end of the HTML occur on about 0.06% of websites.</p>
 <p>If you have a keen eye you may have noticed that the <code>@{ }</code> transition also did a <code>fgoto</code> but right before it did <code>fhold</code> and the <code>$lerr{ }</code> block did not. It’s the missing <code>fhold</code> that resulted in the memory leakage.</p>
@@ -54,7 +84,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">{ </span><span class="sk-6f42c1-ffc799">ddctx(</span><span class="sk-6f42c1-ffc799">"script consume_attr"</span><span class="sk-24292e-fff">); }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">@</span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> fhold</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">fgoto</span><span class="sk-032f62-99ffe4"> script_tag_parse</span><span class="sk-24292e-fff">; }</span></span>
 <span class="line"><span class="sk-24292e-fff">$lerr{ </span><span class="sk-6f42c1-ffc799">dd(</span><span class="sk-6f42c1-ffc799">"script consume_attr failed"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       fgoto</span><span class="sk-032f62-99ffe4"> script_consume_attr</span><span class="sk-24292e-fff">; };</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       fgoto</span><span class="sk-032f62-99ffe4"> script_consume_attr</span><span class="sk-24292e-fff">; };</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What happens when the parser runs out of characters to parse while consuming an attribute differs whether the buffer currently being parsed is the last buffer or not. If it’s not the last buffer, then there’s no need to use <code>$lerr</code> as the parser doesn’t know whether an error has occurred or not as the rest of the attribute may be in the next buffer.</p>
 <p>But if this is the last buffer, then the <code>$lerr</code> is executed. Here’s how the code ends up skipping over the end-of-file and running through memory.</p>
@@ -63,7 +97,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ngx_int_t</span><span class="sk-032f62-99ffe4"> ngx_http_email_parse_email</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">ngx_http_request_t</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">r,</span><span class="sk-032f62-99ffe4"> ngx_http_email_ctx_t</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">ctx</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    u_char</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-032f62-99ffe4">p</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ctx</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">pos</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    u_char</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-032f62-99ffe4">pe</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ctx</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">buf</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">last</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    u_char</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-032f62-99ffe4">eof</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ctx</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">buf</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">last_buf</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> pe</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    u_char</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-032f62-99ffe4">eof</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ctx</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">buf</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">last_buf</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> pe</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can see that <code>p</code> points to the first character in the buffer, <code>pe</code> to the character after the end of the buffer and <code>eof</code> is set to <code>pe</code> if this is the last buffer in the chain (indicated by the <code>last_buf</code> boolean), otherwise it is NULL.</p>
 <p>When the old and new parsers are both present during request handling a buffer such as this will be passed to the function above:</p>
@@ -78,7 +116,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  last_buf</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">  [...]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here there is data and <code>last_buf</code> is 1. When the new parser is not present the final buffer that <em>contains data</em> looks like this:</p>
 <div class="emdash-code">
@@ -92,7 +134,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  last_buf</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 0,</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">  [...]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A final empty buffer (<code>pos</code> and <code>last</code> both NULL and <code>last_buf = 1</code>) will follow that buffer but <code>ngx_http_email_parse_email</code> is not invoked if the buffer is empty.</p>
 <p>So, in the case where only the old parser is present, the final buffer that contains data has <code>last_buf</code> set to 0. That means that <code>eof</code> will be NULL. Now when trying to handle <code>script_consume_attr</code> with an unfinished tag at the end of the buffer the <code>$lerr</code> will not be executed because the parser believes (because of <code>last_buf</code>) that there may be more data coming.</p>
@@ -107,7 +153,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">st1266:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> ( </span><span class="sk-6f42c1-ffc799">++p</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> pe</span><span class="sk-24292e-fff"> )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        goto</span><span class="sk-032f62-99ffe4"> _test_eof1266</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        goto</span><span class="sk-032f62-99ffe4"> _test_eof1266</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The parser runs out of characters while trying to perform <code>script_consume_attr</code> and <code>p</code> will be <code>pe</code> when that happens. Because there’s no <code>fhold</code> (that would have done <code>p--</code>) when the code jumps to <code>st1266</code> <code>p</code> is incremented and is now past <code>pe</code>.</p>
 <p>It then won’t jump to <code>_test_eof1266</code> (where EOF checking would have been performed) and will carry on past the end of the buffer trying to parse the HTML document.</p>
@@ -126,11 +176,19 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> NGX_ERROR</span><span class="sk-24292e-fff">;</span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    *p</span><span class="sk-24292e-fff">;</span><span class="sk-005cc5-a0a0a0">\</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And we began seeing log lines like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2017/02/19</span><span class="sk-032f62-99ffe4"> 13:47:34</span><span class="sk-24292e-fff"> [crit] 27558#0: </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">2 email filter tried to access char past EOF </span><span class="sk-d73a49-a0a0a0">while</span><span class="sk-6f42c1-ffc799"> sending</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> client,</span><span class="sk-032f62-99ffe4"> client:</span><span class="sk-032f62-99ffe4"> 127.0.0.1,</span><span class="sk-032f62-99ffe4"> server:</span><span class="sk-032f62-99ffe4"> localhost,</span><span class="sk-032f62-99ffe4"> request:</span><span class="sk-032f62-99ffe4"> "GET /malformed-test.html HTTP/1.1”</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2017/02/19</span><span class="sk-032f62-99ffe4"> 13:47:34</span><span class="sk-24292e-fff"> [crit] 27558#0: </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">2 email filter tried to access char past EOF </span><span class="sk-d73a49-a0a0a0">while</span><span class="sk-6f42c1-ffc799"> sending</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> client,</span><span class="sk-032f62-99ffe4"> client:</span><span class="sk-032f62-99ffe4"> 127.0.0.1,</span><span class="sk-032f62-99ffe4"> server:</span><span class="sk-032f62-99ffe4"> localhost,</span><span class="sk-032f62-99ffe4"> request:</span><span class="sk-032f62-99ffe4"> "GET /malformed-test.html HTTP/1.1”</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Every log line indicates an HTTP request that could have leaked private memory. By logging how often the problem was occurring we hoped to get an estimate of the number of times HTTP request had leaked memory while the bug was present.</p>
 <p>In order for the memory to leak the following had to be true:</p>

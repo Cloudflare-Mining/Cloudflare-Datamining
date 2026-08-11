@@ -53,11 +53,37 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> linux</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">./scripts/config</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">    -e</span><span class="sk-032f62-99ffe4"> KCOV</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> KCOV_INSTRUMENT_ALL</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> KCOV_INSTRUMENT_ALL</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>KCOV is capable of recording code coverage from the whole kernel. It can be set with KCOV_INSTRUMENT_ALL option. This has disadvantages though - it would slow down the parts of the kernel we don't want to profile, and would introduce noise in our measurements (reduce "stability"). For starters, let's disable KCOV_INSTRUMENT_ALL and enable KCOV selectively on the code we actually want to profile. Today, we focus on netlink machinery, so let's enable KCOV on whole "net" directory tree:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">find</span><span class="sk-032f62-99ffe4"> net</span><span class="sk-005cc5-99ffe4"> -name</span><span class="sk-032f62-99ffe4"> Makefile</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> xargs</span><span class="sk-005cc5-99ffe4"> -L1</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> {}</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo "KCOV_INSTRUMENT := y" &gt;&gt; {}'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">find</span><span class="sk-032f62-99ffe4"> net</span><span class="sk-005cc5-99ffe4"> -name</span><span class="sk-032f62-99ffe4"> Makefile</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> xargs</span><span class="sk-005cc5-99ffe4"> -L1</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> {}</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo "KCOV_INSTRUMENT := y" &gt;&gt; {}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In a perfect world we would enable KCOV only for a couple of files we really are interested in. But netlink handling is peppered all over the network stack code, and we don't have time for fine tuning it today.</p>
 <p>With KCOV in place, it's worth to add "kernel hacking" toggles that will increase the likelihood of reporting memory corruption bugs. See the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing/README.md" target="_blank" rel="noopener noreferrer">README</a> for the list of <a href="https://github.com/google/syzkaller/blob/master/docs/linux/kernel_configs.md" target="_blank" rel="noopener noreferrer">Syzkaller suggested options</a> - most importantly <a href="https://www.kernel.org/doc/html/latest/dev-tools/kasan.html" target="_blank" rel="noopener noreferrer">KASAN</a>.</p>
@@ -65,7 +91,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">./scripts/config</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">    -e</span><span class="sk-032f62-99ffe4"> VIRTIO</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> VIRTIO_PCI</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> NET_9P</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> NET_9P_VIRTIO</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> 9P_FS</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">    -e</span><span class="sk-032f62-99ffe4"> VIRTIO_NET</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> VIRTIO_CONSOLE</span><span class="sk-005cc5-99ffe4">  -e</span><span class="sk-032f62-99ffe4"> DEVTMPFS</span><span class="sk-032f62-99ffe4"> ...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">    -e</span><span class="sk-032f62-99ffe4"> VIRTIO_NET</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> VIRTIO_CONSOLE</span><span class="sk-005cc5-99ffe4">  -e</span><span class="sk-032f62-99ffe4"> DEVTMPFS</span><span class="sk-032f62-99ffe4"> ...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(see the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing/README.md" target="_blank" rel="noopener noreferrer">README</a> for full list)</p>
 <h2>How to use KCOV</h2>
@@ -74,14 +104,22 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ioctl</span><span class="sk-24292e-fff">(kcov_fd, KCOV_ENABLE, KCOV_TRACE_PC);</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">/* profiled code */</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ioctl</span><span class="sk-24292e-fff">(kcov_fd, KCOV_DISABLE, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ioctl</span><span class="sk-24292e-fff">(kcov_fd, KCOV_DISABLE, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After this sequence the ring buffer contains the list of %rip values of all the basic blocks of the KCOV-enabled kernel code. To read the buffer just run:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">n </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> __atomic_load_n</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">kcov_ring</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">], __ATOMIC_RELAXED);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> n; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"0x</span><span class="sk-005cc5-fff">%lx</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">kcov_ring</span><span class="sk-24292e-fff">[i </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With tools like <code>addr2line</code> it's possible to resolve the %rip to a specific line of code. We won't need it though - the raw %rip values are sufficient for us.</p>
 <h2>Feeding KCOV into AFL</h2>
@@ -91,7 +129,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">cur_location </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-24292e-fff">COMPILE_TIME_RANDOM</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-e36209-fff">shared_mem</span><span class="sk-24292e-fff">[cur_location </span><span class="sk-d73a49-a0a0a0">^</span><span class="sk-24292e-fff"> prev_location]</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">; </span></span>
-<span class="line"><span class="sk-24292e-fff">prev_location </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cur_location </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">prev_location </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cur_location </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In our case with KCOV we don't have compile-time-random values for each branch. Instead we'll use a hash function to generate a uniform 16 bit number from %rip recorded by KCOV. This is how to feed a KCOV report into the AFL "shared_mem" array:</p>
 <div class="emdash-code">
@@ -101,14 +143,22 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        uint16_t</span><span class="sk-24292e-fff"> cur_location </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> hash_function</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">kcov_ring</span><span class="sk-24292e-fff">[i </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]);</span></span>
 <span class="line"><span class="sk-e36209-fff">        shared_mem</span><span class="sk-24292e-fff">[cur_location </span><span class="sk-d73a49-a0a0a0">^</span><span class="sk-24292e-fff"> prev_location]</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">        prev_location </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cur_location </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Reading test data from AFL</h2>
 <p>Finally, we need to actually write the test code hammering the kernel netlink interface! First we need to read input data from AFL. By default AFL sends a test case to stdin:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* read AFL test data */</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">char</span><span class="sk-e36209-fff"> buf</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">512</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799">1024</span><span class="sk-24292e-fff">];</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff"> buf_len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> read</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, buf, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(buf));</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff"> buf_len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> read</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, buf, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(buf));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Fuzzing netlink</h2>
 <p>Then we need to send this buffer into a netlink socket. But we know nothing about how netlink works! Okay, let's use the first 5 bytes of input as the netlink protocol and group id fields. This will allow the AFL to figure out and guess the correct values of these fields. The code testing netlink (simplified):</p>
@@ -131,7 +181,11 @@
 <span class="line"><span class="sk-24292e-fff">r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> sendmsg</span><span class="sk-24292e-fff">(netlink_fd, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">msg</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (r </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">      /* sendmsg succeeded! great I guess... */</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That's basically it! For speed, we will wrap this in a short loop that mimics <a href="https://lcamtuf.blogspot.com/2014/10/fuzzing-binaries-without-execve.html" target="_blank" rel="noopener noreferrer">the AFL "fork server" logic</a>. I'll skip the explanation here, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing/src/forksrv.c" target="_blank" rel="noopener noreferrer">see our code for details</a>. The resulting code of our AFL-to-KCOV shim looks like:</p>
 <div class="emdash-code">
@@ -148,7 +202,11 @@
 <span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         forksrv_status</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing/src/fuzznetlink.c" target="_blank" rel="noopener noreferrer">See full source code</a>.</p>
 <h2>How to run the custom kernel</h2>
@@ -161,7 +219,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">virtme-run</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">    --kimg</span><span class="sk-032f62-99ffe4"> bzImage</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">    --rw</span><span class="sk-005cc5-99ffe4"> --pwd</span><span class="sk-005cc5-99ffe4"> --memory</span><span class="sk-032f62-99ffe4"> 512M</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">    --script-sh</span><span class="sk-032f62-99ffe4"> "&lt;what to run inside kvm&gt;"</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">    --script-sh</span><span class="sk-032f62-99ffe4"> "&lt;what to run inside kvm&gt;"</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But hold on. We forgot about preparing input corpus data for our fuzzer!</p>
 <h2>Building the input corpus</h2>
@@ -169,14 +231,22 @@
 <p>Instead we can ask AFL to "figure out" what inputs make sense. This is what <a href="https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html" target="_blank" rel="noopener noreferrer">Michał did back in 2014 with JPEGs</a> and it worked for him. With this in mind, here is our input corpus:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> inp</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "hello world"</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> inp/01.txt</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "hello world"</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> inp/01.txt</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Instructions, how to compile and run the whole thing are in <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-07-kernel-fuzzing" target="_blank" rel="noopener noreferrer">README.md</a> on our github. It boils down to:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">virtme-run</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">    --kimg</span><span class="sk-032f62-99ffe4"> bzImage</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">    --rw</span><span class="sk-005cc5-99ffe4"> --pwd</span><span class="sk-005cc5-99ffe4"> --memory</span><span class="sk-032f62-99ffe4"> 512M</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">    --script-sh</span><span class="sk-032f62-99ffe4"> "./afl-fuzz -i inp -o out -- fuzznetlink"</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">    --script-sh</span><span class="sk-032f62-99ffe4"> "./afl-fuzz -i inp -o out -- fuzznetlink"</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With this running you will see the familiar AFL status screen:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

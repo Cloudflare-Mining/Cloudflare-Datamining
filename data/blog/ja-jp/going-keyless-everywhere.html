@@ -56,12 +56,38 @@
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015231 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015271 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015280 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
-<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:50.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:50 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015289 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:50.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:50 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015289 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>タイムアウトを記録した最初の要求のIDが1015157だったことがわかります。また、興味深いのは、最初のログ行が「timed out while reading,（読み取り中にタイムアウト）」であるのに、そのほかのすべてが「timed out while waiting,（待機中にタイムアウト）」であり、このメッセージが永遠に続いていることです。gokeylessログ内の一致する要求を以下に示します：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">➜ ~ </span><span class="sk-d73a49-a0a0a0">grep</span><span class="sk-032f62-99ffe4"> 'id=1015157 '</span><span class="sk-24292e-fff"> gokeyless.log | head -1</span></span>
-<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:39.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:39 [DEBUG] connection 127.0.0.1:30520: worker=ecdsa-29 opcode=OpECDSASignSHA256 id=1015157 sni=announce.php?info_hash=%a8%9e%9dc%cc%3b1%c8%23%e4%93%21r%0f%92mc%0c%15%89&amp;peer_id=-ut353s-%ce%ad%5e%b1%99%06%24e%d5d%9a%08&amp;port=42596&amp;uploaded=65536&amp;downloaded=0&amp;left=0&amp;corrupt=0&amp;key=04a184b7&amp;event=started&amp;numwant=200&amp;compact=1&amp;no_peer_id=1 ip=104.20.33.147</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:39.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:39 [DEBUG] connection 127.0.0.1:30520: worker=ecdsa-29 opcode=OpECDSASignSHA256 id=1015157 sni=announce.php?info_hash=%a8%9e%9dc%cc%3b1%c8%23%e4%93%21r%0f%92mc%0c%15%89&amp;peer_id=-ut353s-%ce%ad%5e%b1%99%06%24e%d5d%9a%08&amp;port=42596&amp;uploaded=65536&amp;downloaded=0&amp;left=0&amp;corrupt=0&amp;key=04a184b7&amp;event=started&amp;numwant=200&amp;compact=1&amp;no_peer_id=1 ip=104.20.33.147</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>なるほど！SNI値が明らかに無効であり（SNIはホストヘッダーに似たもので、URLパスではなくドメインです）、非常に長いです。当社のストレージシステムは、どのSNIに応答するか、どのIPアドレスに応答するか（SNIをサポートしない古いクライアントの場合）、という2つのインデックスに基づいて証明書に索引を付けます。当社のストレージインタフェースはmemcachedプロトコルを使用し、gokeyless-internalが使用するクライアントライブラリは250文字（memcachedの最大鍵長）を超える鍵に対する拒否要求を使用するのに対して、nginxロジックは無効なSNIを無視してIPのみを持っているかのように要求を処理します。新しいリリースの変更により、この状態がErrKeyNotFoundからErrInternalに切り替わり、nginx内で連鎖的な問題を引き起こしました。発生した「タイムアウト」は、1つの要求に対してErrInternalを返す接続で多重化されたすべてのインフライト要求を破棄した結果でした。これらの要求は再試行されましたが、この状態が引き起こされると、nginxは再試行された要求の数と不良SNIを伴って着信する新しい要求の連続ストリームによって過負荷になり、回復することができませんでした。それで、なぜgokeyless-internalにロールバックすることで問題が解決しなかったのかがわかりました。</p>
 <p>この発見によって、ようやくnginxに注意を向けることができました。nginxは、長年にわたってお客様の鍵サーバーと安定して動作していたので、これまで責任を逃れてきたのです。ただし、localhostを介したmultitenant鍵サーバーとの通信は、公衆インターネット経由でのお客様の鍵サーバーとの通信とは根本的に異なるため、次のような変更を行う必要がありました：</p>

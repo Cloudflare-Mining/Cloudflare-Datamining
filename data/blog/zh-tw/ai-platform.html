@@ -9,8 +9,30 @@
 <span class="line"><span class="sk-24292e-fff">input: </span><span class="sk-032f62-99ffe4">'What is Cloudflare?'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">}, {</span></span>
 <span class="line"><span class="sk-24292e-fff">gateway: { id: </span><span class="sk-032f62-99ffe4">"default"</span><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>對於不使用 Workers 的開發人員，我們將在接下來幾週內推出 REST API 支援，讓您能從任何環境存取完整的模型目錄。</p>
 <p>我們也很高興地宣布，您現在將可以存取橫跨 12 家以上提供者的 70 多個模型——全部透過一個 API、一行切換模型的程式碼，以及一套付費點數就能搞定。而且我們正在持續快速擴充中。</p>
 <p>您可以瀏覽我們的<a href="https://developers.cloudflare.com/ai/models" target="_blank" rel="noopener noreferrer"><u>模型目錄</u></a>，為您的使用情境找到最適合的模型，從 Cloudflare Workers AI 代管的開源模型，到各大模型提供者的專有模型。我們很高興能擴展對來自 <strong>Alibaba Cloud、AssemblyAI、Bytedance、Google、InWorld、MiniMax、OpenAI、Pixverse、Recraft、Runway 和 Vidu</strong> 之模型的存取——這些提供者將透過 AI Gateway 提供他們的模型。值得注意的是，我們正在擴展我們的模型供應，納入影像、影片和語音模型，讓您能夠建置多模態應用程式。</p>
@@ -28,7 +50,11 @@
 <span class="line"><span class="sk-24292e-fff">      {</span></span>
 <span class="line"><span class="sk-24292e-fff">metadata: { </span><span class="sk-032f62-99ffe4">"teamId"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"userId"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">12345</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    );</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    );</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="488" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=640&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=750&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=828&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1080&amp;h=737&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1280&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1430&amp;h=976&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3209 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1920&amp;h=1310&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1310" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="488" class="pt-portable-image-media"></div>
@@ -42,7 +68,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">build:</span></span>
 <span class="line"><span class="sk-24292e-fff">  python_version: "3.13"</span></span>
 <span class="line"><span class="sk-24292e-fff">  python_requirements: requirements.txt</span></span>
-<span class="line"><span class="sk-24292e-fff">predict: "predict.py:Predictor"</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">predict: "predict.py:Predictor"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="http://predict.py" target="_blank" rel="noopener noreferrer"><code><u>predict.py</u></code></a> 檔案範例，其中包含一個設定模型的函數，以及一個在收到推斷請求（預測）時執行的函數：</p>
 <div class="emdash-code">
@@ -62,7 +92,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">        # ... pre-processing ...</span></span>
 <span class="line"><span class="sk-24292e-fff">        output </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.net(</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">        # ... post-processing ...</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> output</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> output</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>接著，您可以執行 cog build 來建置您的容器映像檔，然後將您的 Cog 容器推送到 Workers AI。我們將為您部署並提供模型，之後您就可以透過平常使用的 Workers AI API 來存取它。</p>
 <p>我們正在進行一些大型專案，希望能將此功能推廣給更多客戶，例如面向客戶的 API 和 Wrangler 指令，讓您可以推送自己的容器，以及透過 GPU 快照來實現更快的冷啟動。目前，我們正與 Cloudflare 內部團隊及部分外部客戶合作進行內部測試。如果您有興趣成為我們的設計夥伴，請與我們聯絡！很快，任何人都將能夠打包他們的模型並透過 Workers AI 使用。</p>

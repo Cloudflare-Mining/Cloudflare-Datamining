@@ -40,14 +40,40 @@
 <span class="line"><span class="sk-24292e-fff">&lt;form action</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/login"</span><span class="sk-24292e-fff"> method</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  &lt;div class</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cf-turnstile"</span><span class="sk-24292e-fff"> data</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">sitekey</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"your-site-key"</span><span class="sk-24292e-fff"> data</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">action</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"login"</span><span class="sk-24292e-fff"> data</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cdata</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”session123”&gt;&lt;</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">div&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  &lt;input </span><span class="sk-d73a49-a0a0a0">type=</span><span class="sk-032f62-99ffe4">"submit"</span><span class="sk-24292e-fff"> value</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"Log in"</span><span class="sk-24292e-fff">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">form&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">form&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>To place the Turnstile widget on your signup page:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">&lt;form action</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/signup"</span><span class="sk-24292e-fff"> method</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  &lt;div class</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cf-turnstile"</span><span class="sk-24292e-fff"> data</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">sitekey</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"your-site-key"</span><span class="sk-24292e-fff"> data</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">action</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"signup"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">div&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  &lt;input </span><span class="sk-d73a49-a0a0a0">type=</span><span class="sk-032f62-99ffe4">"submit"</span><span class="sk-24292e-fff"> value</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"Sign up"</span><span class="sk-24292e-fff">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">form&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">form&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Validating the Turnstile token with the Siteverify API&nbsp;</h4>
 <p>At this point, you have placed the Turnstile widget in your login page. When a visitor visits this page, a Turnstile challenge will be issued and when the visitor completes the challenge, you will receive a Turnstile token that contains the outcome of the challenge. This must be validated via the Siteverify API like below:&nbsp;</p>
@@ -82,7 +108,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // option 1: custom error page directing the visitor to reach out to support</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // option 2: same as happy path but flag as potential bot</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you can see in the code example above, you can control the visitor experience based on the Siteverify outcome. In the case where Siteverify API said the token is valid, it’s straightforward — let the visitor continue to log in and sign up. This can be monitored by the <strong>Valid tokens</strong> metric in the Token validation section in the new Turnstile Analytics.&nbsp;</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -100,7 +130,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "metadata"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "ephemeral_id"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "x:9f78e0ed210960d7693b167e"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="108" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=715&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=640&amp;h=97&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=715&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=750&amp;h=113&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=828&amp;h=125&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=1080&amp;h=163&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=1280&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=1430&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2699 Image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46765QDDEPABXQNDQ2VAS4.png&amp;w=999&amp;h=151&amp;f=webp" data-lightbox-width="999" data-lightbox-height="151" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="108" class="pt-portable-image-media"></div>

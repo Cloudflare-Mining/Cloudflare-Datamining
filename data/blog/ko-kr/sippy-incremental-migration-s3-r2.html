@@ -29,8 +29,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl -X PUT https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets/{bucket_name}/sippy \</span></span>
 <span class="line"><span>--header "Authorization: Bearer &lt;API_TOKEN&gt;" \</span></span>
-<span class="line"><span>--data '{"provider": "AWS", "bucket": "&lt;AWS_BUCKET_NAME&gt;", "zone": "&lt;AWS_REGION&gt;","key_id": "&lt;AWS_ACCESS_KEY_ID&gt;", "access_key":"&lt;AWS_SECRET_ACCESS_KEY&gt;", "r2_key_id": "&lt;R2_ACCESS_KEY_ID&gt;", "r2_access_key": "&lt;R2_SECRET_ACCESS_KEY&gt;"}'</span></span></code></pre>
+<span class="line"><span>--data '{"provider": "AWS", "bucket": "&lt;AWS_BUCKET_NAME&gt;", "zone": "&lt;AWS_REGION&gt;","key_id": "&lt;AWS_ACCESS_KEY_ID&gt;", "access_key":"&lt;AWS_SECRET_ACCESS_KEY&gt;", "r2_key_id": "&lt;R2_ACCESS_KEY_ID&gt;", "r2_access_key": "&lt;R2_SECRET_ACCESS_KEY&gt;"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Super Slurper를 이용하여 마이그레이션을 완료하세요</h3>
 <p>점진적 마이그레이션은 원하는 기간 동안 실행할 수 있지만, 결국에는 R2로 마이그레이션을 완료하고 싶을 수도 있습니다. 그러려면 Sippy와 <a href="https://developers.cloudflare.com/r2/data-migration/super-slurper" target="_blank" rel="noopener noreferrer">R2 Super Slurper</a>를 페어링하여 액세스되지 않은 나머지 데이터를 R2로 쉽게 마이그레이션할 수 있습니다.</p>
 <h2>다음은?</h2>

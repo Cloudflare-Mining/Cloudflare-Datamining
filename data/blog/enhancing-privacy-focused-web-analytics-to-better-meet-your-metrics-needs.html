@@ -31,8 +31,30 @@
 <p>You might have noticed that some websites keep the # in the URL whenever you navigate their webpages. You would see URLs like the following:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://cloudflare.com/#blog</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">https://cloudflare.com/#marketing</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">https://cloudflare.com/#marketing</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The portion separated by the # is called a fragment, and based on the fragment changes, SPAs dynamically pull the resources to rewrite the webpage. That is how it was done before the HTML 5 History API was introduced and widely used. These days most SPA libraries/frameworks use HTML 5 History API to keep your UI in sync with the URL instead of using # (although, some still support #-based routers). In most cases you won’t easily notice a SPA by looking at the URL path.</p>
 <p>To support analytics for SPAs, we implemented sending additional payloads to the beacon endpoint, which collects the data for analytics, whenever we detect any changes to the state of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/state" target="_blank" rel="noopener noreferrer">History API</a>. The JavaScript snippet overrides the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState" target="_blank" rel="noopener noreferrer"><strong>pushState</strong></a> method and listens to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate" target="_blank" rel="noopener noreferrer"><strong>onpopstate</strong></a> event. By tracking the History API's state, you'll now see the route changes in SPAs within the Web Analytics dashboard.</p>
 <p>Some older SPA libraries/frameworks still support hash-based routers. If your application or website is using a hash-based router, unfortunately it is not yet supported in Web Analytics. However, this is our initial launch to support SPAs, so stay tuned for any improvements and updates.</p>

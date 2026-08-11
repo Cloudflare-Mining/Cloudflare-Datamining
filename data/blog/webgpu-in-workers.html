@@ -60,8 +60,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  JSG_REQUIRE</span><span class="sk-24292e-fff">(flags.</span><span class="sk-6f42c1-ffc799">getWebgpu</span><span class="sk-24292e-fff">(), TypeError, </span><span class="sk-032f62-99ffe4">"webgpu needs the webgpu compatibility flag set"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> jsg</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">alloc</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">api</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">gpu</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">GPU</span><span class="sk-24292e-fff">&gt;();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The WebGPU API can only be accessed using <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>, which are essentially global singleton instances of Cloudflare Workers. There are two important reasons for this:</p>
 <ul>
 	<li>WebGPU code typically wants to store the state between requests, for example, loading an <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer">AI model</a> into the GPU memory once and using it multiple times for inference.</li>
@@ -76,7 +98,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> adapter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> navigator.gpu.</span><span class="sk-6f42c1-ffc799">requestAdapter</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> adapterInfo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> adapter.</span><span class="sk-6f42c1-ffc799">requestAdapterInfo</span><span class="sk-24292e-fff">([</span><span class="sk-032f62-99ffe4">"device"</span><span class="sk-24292e-fff">]);</span></span>
-<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(adapterInfo.device);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(adapterInfo.device);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A more interesting example, though, is a simple compute shader. In this case, we will fill a results buffer with an incrementing value taken from the iteration number via <code>global_invocation_id</code>.</p>
 <p>For this, we need two buffers, one to store the results of the computations as they happen (<code>storageBuffer</code>) and another to copy the results at the end (<code>mappedBuffer</code>).</p>
@@ -152,7 +178,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> mappedBuffer.</span><span class="sk-6f42c1-ffc799">mapAsync</span><span class="sk-24292e-fff">(GPUMapMode.</span><span class="sk-005cc5-fff">READ</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Float32Array</span><span class="sk-24292e-fff">(mappedBuffer.</span><span class="sk-6f42c1-ffc799">getMappedRange</span><span class="sk-24292e-fff">()));</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// [0, 1, 2, 3]</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// [0, 1, 2, 3]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now that we covered the basics of WebGPU and compute shaders, let's move to something more demanding. What if we could perform machine learning inference using Workers and GPUs?</p>
 <h3>ONNX WebGPU demo</h3>
@@ -185,7 +215,11 @@
 <span class="line"><span class="sk-24292e-fff">        };</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Ok((</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is only required once, when the Durable Object is instantiated. For subsequent requests, we retrieve the model input tensor, call the existing session for the inference, and return to the calling worker the result tensor converted to JSON:</p>
 <div class="emdash-code">
@@ -211,7 +245,11 @@
 <span class="line"><span class="sk-24292e-fff">            .map_err(|err: TensorConversionError| err.to_string())?;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">        let do_response = serde_json::to_string(&amp;probabilities)?;</span></span>
-<span class="line"><span class="sk-24292e-fff">        Response::ok(do_response)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        Response::ok(do_response)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>On the Worker script itself, we load the uploaded image and pre-process it into a model input tensor:</p>
 <div class="emdash-code">
@@ -221,32 +259,56 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        None</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> return</span><span class="sk-032f62-99ffe4"> Response::error</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"missing </span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">file</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 400</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> image_content</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> image_file.bytes</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.await?</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> image</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> load_image</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">image_content</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> image</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> load_image</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">image_content</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we call the GPU Durable Object, which runs the model and returns the most likely classes of our image:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> probabilities</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> execute_gpu_do</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">image,</span><span class="sk-032f62-99ffe4"> stub</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.await?</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> probabilities</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> probabilities.iter</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.enumerate</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.collect::</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Vec</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">_</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    probabilities.sort_unstable_by(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">a,</span><span class="sk-032f62-99ffe4"> b</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> b.1.partial_cmp(a.1</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">.unwrap</span><span class="sk-24292e-fff">());</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Response::ok(LABELS[probabilities[0].0]</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Response::ok(LABELS[probabilities[0].0]</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We packaged this demo in a public repository, so you can also run it. Make sure that you have a <a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer">Rust</a> compiler, <a href="https://nodejs.org/en" target="_blank" rel="noopener noreferrer">Node.js</a>, <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer">Git</a> and <a href="https://curl.se" target="_blank" rel="noopener noreferrer">curl</a> installed, then clone the repository:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/workers-wonnx.git</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> workers-wonnx</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> workers-wonnx</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Upload the model to the local R2 simulator:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler@latest</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> object</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-032f62-99ffe4"> model-bucket-dev/opt-squeeze.onnx</span><span class="sk-005cc5-99ffe4"> --local</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> models/opt-squeeze.onnx</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler@latest</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> object</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-032f62-99ffe4"> model-bucket-dev/opt-squeeze.onnx</span><span class="sk-005cc5-99ffe4"> --local</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> models/opt-squeeze.onnx</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And then run the Worker locally:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler@latest</span><span class="sk-032f62-99ffe4"> dev</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler@latest</span><span class="sk-032f62-99ffe4"> dev</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the Worker running and waiting for requests you can then open another terminal window and upload one of the image examples in the same repository using curl:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&gt; curl -F "file=@images/pelican.jpeg" http://localhost:8787</span></span>
-<span class="line"><span>n02051845 pelican</span></span></code></pre>
+<span class="line"><span>n02051845 pelican</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If everything goes according to plan the result of the curl command will be the most likely class of the image.</p>
 <h3>Next steps and final words</h3>

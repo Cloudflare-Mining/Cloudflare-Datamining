@@ -192,8 +192,30 @@
 <p>전체 설정은 하나의 명령으로 시작됩니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">opencode auth login https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//opencode.internal.domain</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>이 명령은 사용자가 구성 파일을 건드리지 않고도 공급자, 모델, MCP 서버, 에이전트, 명령, 권한을 구성하는 체인을 트리거합니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="428" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=715&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=640&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=715&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=750&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=828&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=1080&amp;h=646&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=1280&amp;h=766&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=1430&amp;h=856&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3270 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BA1ZGHF7CM1S3G23K2ZG.png&amp;w=1920&amp;h=1151&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1151" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="428" class="pt-portable-image-media"></div>
@@ -214,7 +236,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "permission"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"..."</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>2단계: Cloudflare Access로 인증합니다.</strong> OpenCode가 auth 명령을 실행하고 사용자는 Cloudflare의 다른 모든 것에 사용하는 것과 동일한 SSO를 통해 인증합니다. <code>cloudflared</code>는 서명된 JWT를 반환합니다. OpenCode는 정보를 로컬에 저장하고 이후 모든 공급자 요청에 자동으로 첨부합니다.</p>
 <p><strong>3단계: 구성을 OpenCode에 병합합니다.</strong> 제공된 구성은 전체 조직의 공유 기본값이지만, 항상 로컬 구성이 우선합니다. 사용자는 다른 누구에게도 영향을 주지 않으면서 기본 모델을 재정의하거나 자체 에이전트를 추가하거나 프로젝트 및 사용자 범위 권한을 조정할 수 있습니다.</p>
@@ -227,7 +253,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Stripped:</span><span class="sk-032f62-99ffe4">   authorization,</span><span class="sk-032f62-99ffe4"> cf-access-token,</span><span class="sk-032f62-99ffe4"> host</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Added:</span><span class="sk-032f62-99ffe4">      cf-aig-authorization:</span><span class="sk-032f62-99ffe4"> Bearer</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">API_KE</span><span class="sk-24292e-fff">Y</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            cf-aig-metadata:</span><span class="sk-032f62-99ffe4"> {"userId":</span><span class="sk-032f62-99ffe4"> "&lt;anonymous-uuid&gt;"}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>요청은 AI Gateway로 전달되고, AI Gateway는 이를 적절한 공급자에게 라우팅합니다. 응답은 버퍼링 없이 바로 전달됩니다. 클라이언트 구성의 <code>apiKey</code> 필드는 비어 있습니다. Worker가 서버 측에서 실제 키를 삽입하기 때문입니다. API 키는 사용자 컴퓨터에 존재하지 않습니다.</li>
@@ -293,7 +323,11 @@
 <span class="line"><span class="sk-24292e-fff">## </span><span class="sk-6f42c1-ffc799">Dependencies</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799"> Depends</span><span class="sk-24292e-fff"> on</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> auth</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">service, config</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">service</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799"> Depended</span><span class="sk-24292e-fff"> on by</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">gateway, dashboard</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>에이전트는 이 파일을 읽을 때 리포지토리를 처음부터 추론할 필요가 없습니다. 코드베이스가 구성되는 방식, 어떤 규칙을 따라야 하는지, 어떤 엔지니어링 Codex 규칙을 적용하는지 알고 있습니다.</p>
 <h4>Cloudflare에서 대규모로 리소스를 생성하는 방법</h4>
@@ -472,7 +506,11 @@
 <p>Agents Week에서 필요한 모든 것을 <a href="https://blogs.cloudflare.com/agents-week-in-review" target="_blank" rel="noopener noreferrer"><u>제공했습니다</u></a>. 플랫폼이 바로 여기에 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> create-cloudflare@latest</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare/agents-starter</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Agents Starter가 귀사의 가동을 보장합니다. 아래 다이어그램은 확장할 준비가 되었으며 최상위에 도구(챗봇, 웹 UI, CLI, 브라우저 익스텐션)가, 중간에서 세션 상태 및 오케스트레이션을 처리하는 에이전트 SDK, 그리고 Cloudflare 서비스가 계층화되어 있는 전체 아키텍처입니다. 호출할 수 있습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

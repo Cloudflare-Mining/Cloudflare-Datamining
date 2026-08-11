@@ -16,8 +16,30 @@
 <p>Wir haben das Ziel, bis 2025 sämtliche jemals durch den Betrieb unseres Netzwerks angefallenen Emissionen zu kompensieren. Zu diesem Zweck müssen wir zuerst in Erfahrung bringen, wie viel Kohlendioxid dabei in den Jahren 2010 bis 2019 genau freigesetzt wurde. Der nächste Schritt besteht darin, in Klimakompensation und Negativemissionen zu investieren.</p>
 <p>Die Höhe der mit dem erworbenen Strom verbundenen CO2-Emissionen lässt sich vergleichsweise leicht ermitteln. Tatsächlich handelt es sich im Grunde nur um eine einfache Umrechnung:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Energy</span><span class="sk-24292e-fff"> (KWH) x Emissions Factor (</span><span class="sk-6f42c1-ffc799">gC02e/KWH</span><span class="sk-24292e-fff">) = Carbon emissions (</span><span class="sk-6f42c1-ffc799">gC02e</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Energy</span><span class="sk-24292e-fff"> (KWH) x Emissions Factor (</span><span class="sk-6f42c1-ffc799">gC02e/KWH</span><span class="sk-24292e-fff">) = Carbon emissions (</span><span class="sk-6f42c1-ffc799">gC02e</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Um möglichst exakte Ergebnisse zu erhalten, kommt es auf die Emissionsfaktoren an. Dabei handelt es sich im Grunde um Messungen der von einem bestimmten Energieanbieter freigesetzten Treibhausgasemissionen (z. B. Kraftwerk X in San Francisco) je erzeugter Energieeinheit. Für unsere Zwecke handelt es sich bei Treibhausgasemissionen (THG) um diejenigen, die im <a href="https://unfccc.int/process-and-meetings/the-kyoto-protocol/what-is-the-kyoto-protocol/kyoto-protocol-targets-for-the-first-commitment-period" target="_blank" rel="noopener noreferrer">Kyoto-Protokoll</a> von 1992 definiert wurden (Kohlendioxid, Methan, Stickoxidul, Fluorkohlenwasserstoffe, Perfluorcarbone und Schwefelhexafluorid). Um die Berichterstattung zu erleichtern, werden diese sechs Treibhausgase oft unter dem Begriff „CO2-Äquivalent“ zusammengefasst, der sich auf das Treibhauspotenzial der einzelnen Gase stützt. Emissionsfaktoren eines einzelnen Energieanbieters werden häufig zusammengefasst und gemittelt, um durchschnittliche Emissionsfaktoren der Stromnetze von Städten, Regionen oder Ländern zu berechnen. Gemäß den Vorgaben des GHG Protocol nutzt Cloudflare Emissionsfaktoren der US-Behörde EPA, der britischen Behörde DEFRA und der IEA.</p>
 <p>Für unsere <a href="https://assets.ctfassets.net/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf" target="_blank" rel="noopener noreferrer">jährliche Bestandsaufnahme</a>, die ebenfalls heute veröffentlicht wird, berechnen wir die CO2-Emissionswerte für jedes einzelne Rechenzentrum im Cloudflare-Netzwerk. Dazu multiplizieren wir die tatsächlich von den Anlagen verbrauchte Energie mit den für das entsprechende Stromnetz geltenden durchschnittlichen Emissionsfaktoren in jedem der mehr als 100 Länder, in denen unsere Geräte stehen.</p>
 <p>Für unsere rückwirkenden Berechnungen stehen uns Daten zu unserem tatsächlichen Kohlendioxidausstoß seit dem Jahr 2018 zur Verfügung, in dem wir erstmals Ökostrom bezogen haben. Was die vorhergehenden Jahre betrifft, durchkämmen wir alle unsere Einkaufs-, Fracht-, Strom- und Colocation-Verträge, um zu rekonstruieren, wie viel Energie wir wann verbraucht haben. Tatsächlich ist es erfreulich, das Wachstum unseres Netzwerks im Rückblick zu verfolgen. Wir verfügen zwar noch nicht über die abschließenden Ergebnisse dieser Berechnungen, werden Sie aber auf dem Laufenden halten – vor allem, wenn die spannende Zusammenarbeit mit Organisationen und Unternehmen beginnt, die sich für die Beseitigung von CO2-Emissionen einsetzen.</p>

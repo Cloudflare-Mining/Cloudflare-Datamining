@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     10</span><span class="sk-032f62-99ffe4">   udp</span><span class="sk-005cc5-ffc799">    137</span><span class="sk-032f62-99ffe4">        Netbios</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      6</span><span class="sk-032f62-99ffe4">   tcp</span><span class="sk-005cc5-ffc799">    80</span><span class="sk-032f62-99ffe4">         HTTP</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      5</span><span class="sk-032f62-99ffe4">   udp</span><span class="sk-005cc5-ffc799">    27005</span><span class="sk-032f62-99ffe4">      SRCDS</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      2</span><span class="sk-032f62-99ffe4">   udp</span><span class="sk-005cc5-ffc799">    520</span><span class="sk-032f62-99ffe4">        RIP</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">      2</span><span class="sk-032f62-99ffe4">   udp</span><span class="sk-005cc5-ffc799">    520</span><span class="sk-032f62-99ffe4">        RIP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>Source port 123/udp NTP</h2>
 <p>By far the most popular reflection attack vector remains NTP. We have blogged about NTP in the past:</p>
 <ul>
@@ -67,7 +89,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   128</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   11</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   256</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   7</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   512</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   2</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  1024</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  1024</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Most of the attacks used a small number of reflectors - we've recorded an average of 1.5k unique IPs per attack. The largest attack used an estimated 12.3k reflector servers.</p>
 <div class="emdash-code">
@@ -83,7 +109,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  1024</span><span class="sk-d73a49-a0a0a0"> |**************************************************</span><span class="sk-24292e-fff"> 1093</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  2048</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                   *******************************</span><span class="sk-005cc5-ffc799"> 685</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  4096</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                        **********</span><span class="sk-005cc5-ffc799"> 220</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  8192</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   13</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  8192</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   13</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The peak attack bandwidth was on average 5.76Gbps and max of 64Gbps:</p>
 <div class="emdash-code">
@@ -97,7 +127,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     8</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                ******************</span><span class="sk-005cc5-ffc799"> 526</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    16</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                           *******</span><span class="sk-005cc5-ffc799"> 212</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                 *</span><span class="sk-005cc5-ffc799"> 39</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This stacked chart shows the geographical distribution of the largest NTP attack we've seen in the last six months. You can see the packets per second number directed to each datacenter. One our datacenters (San Jose to be precise) received about a third of the total attack volume, while the remaining packets were distributed roughly evenly across other datacenters.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -116,7 +150,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">11:38:06.095971</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">tos</span><span class="sk-032f62-99ffe4"> 0x0,</span><span class="sk-032f62-99ffe4"> ttl</span><span class="sk-032f62-99ffe4"> 60,</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> proto</span><span class="sk-032f62-99ffe4"> UDP</span><span class="sk-24292e-fff"> (17)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 468</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    126.219.94.77.123</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.21784:</span><span class="sk-24292e-fff">  [</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">ntp]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">11:38:06.113935</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">tos</span><span class="sk-032f62-99ffe4"> 0x0,</span><span class="sk-032f62-99ffe4"> ttl</span><span class="sk-032f62-99ffe4"> 59,</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> proto</span><span class="sk-032f62-99ffe4"> UDP</span><span class="sk-24292e-fff"> (17)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 516</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    69.57.241.60.123</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.9285:</span><span class="sk-24292e-fff">  [</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">ntp]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    69.57.241.60.123</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.9285:</span><span class="sk-24292e-fff">  [</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">ntp]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Source port 1900/udp SSDP</h2>
 <p>The second most popular reflection attack was <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol" target="_blank" rel="noopener noreferrer">SSDP</a>, with a count of 1,692 unique events. These attacks were using much larger fleets of reflector servers. On average we've seen around 100k reflectors used in each attack, with the largest attack using 1.23M reflector IPs. Here's the histogram of number of unique IPs used <a href="https://www.us-cert.gov/ncas/alerts/TA14-017A" target="_blank" rel="noopener noreferrer">in SSDP attacks</a>:</p>
@@ -136,7 +174,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  131072</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">              ************************************</span><span class="sk-005cc5-ffc799"> 225</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  262144</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                   ***************</span><span class="sk-005cc5-ffc799"> 95</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  524288</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                           *******</span><span class="sk-005cc5-ffc799"> 47</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 1048576</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                 *</span><span class="sk-005cc5-ffc799"> 7</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 1048576</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                 *</span><span class="sk-005cc5-ffc799"> 7</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The attacks were also longer, with 24 minutes average duration:</p>
 <div class="emdash-code">
@@ -155,7 +197,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   128</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                 *</span><span class="sk-005cc5-ffc799"> 19</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   256</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                 *</span><span class="sk-005cc5-ffc799"> 16</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   512</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  1024</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  1024</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Interestingly the bandwidth doesn't follow a <a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank" rel="noopener noreferrer">normal distribution</a>. The average SSDP attack was 12Gbps and the largest just shy of 80Gbps:</p>
 <div class="emdash-code">
@@ -170,7 +216,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     8</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                            ******</span><span class="sk-005cc5-ffc799"> 65</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    16</span><span class="sk-d73a49-a0a0a0"> |**************************************************</span><span class="sk-24292e-fff"> 533</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                       ***********</span><span class="sk-005cc5-ffc799"> 118</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                 *</span><span class="sk-005cc5-ffc799"> 13</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                 *</span><span class="sk-005cc5-ffc799"> 13</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's take a closer look at the largest (80Gbps) attack we've recorded. Here's a stacked chart showing packets per second going to each datacenter. This attack was using 940k reflector IPs, generated 30Mpps. The datacenters receiving the largest proportion of the traffic were San Jose, Los Angeles and Moscow.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -185,7 +235,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">10:24:34.460455</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 77.49.122.27.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.25255:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 289</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">10:24:34.491559</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 212.171.247.139.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.25255:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 323</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">10:24:34.494385</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 111.1.86.109.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.37081:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 320</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">10:24:34.495474</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 112.2.47.110.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.37081:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 288</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">10:24:34.495474</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 112.2.47.110.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.37081:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 288</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Source port 0/udp IP fragmentation</h2>
 <p>Sometimes we see reflection attacks showing UDP source and destination port numbers set to zero. This is usually a side effect of attacks where the reflecting servers responded with large fragmented packets. Only the first IP fragment contains a UDP header, preventing subsequent fragments from being reported properly. From a router point of view this looks like a UDP packet without UDP header. A confused router reports a packet from source port 0, going to port 0!</p>
@@ -199,7 +253,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">02:05:03.571970</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 54.158.14.127.0</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.0:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1328</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">02:05:03.734834</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 1.21.56.71.0</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.0:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1250</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">02:05:03.745220</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 195.4.131.174.0</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.0:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1472</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">02:05:03.766862</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 157.7.137.101.0</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.0:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1122</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">02:05:03.766862</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 157.7.137.101.0</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> x.x.x.x.0:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 1122</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>An avid reader will notice - the source IPs above are open DNS resolvers! Indeed, from our experience most of the attacks categorized as fragmentation are actually a side effect of DNS amplifications.</p>
 <h2>Source port 53/udp DNS</h2>
@@ -216,7 +274,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   128</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   84</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   256</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   164</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   512</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   268</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  1024</span><span class="sk-d73a49-a0a0a0"> |**************************************************</span><span class="sk-24292e-fff"> 38876</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  1024</span><span class="sk-d73a49-a0a0a0"> |**************************************************</span><span class="sk-24292e-fff"> 38876</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The great majority of the received DNS packets were indeed close to the max packet size. This suggests the DNS responses were large and were split into multiple fragmented packets. Let's see the packet size distribution for accompanying source port 0 attack:</p>
 <div class="emdash-code">
@@ -241,11 +303,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  1100</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">              ************************************</span><span class="sk-005cc5-ffc799"> 12986</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  1200</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                             *****</span><span class="sk-005cc5-ffc799"> 1791</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  1300</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                             *****</span><span class="sk-005cc5-ffc799"> 2057</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  1400</span><span class="sk-d73a49-a0a0a0"> |**************************************************</span><span class="sk-24292e-fff"> 17785</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  1400</span><span class="sk-d73a49-a0a0a0"> |**************************************************</span><span class="sk-24292e-fff"> 17785</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>About half of the fragments were large, close to the max packet length in size, and rest were just shy of 1,200 bytes. This makes sense: a typical max DNS response is capped at 4,096 bytes. 4,096 bytes would be seen on the wire as one DNS packet fragment with an IP header, one max length packet fragment and one fragment of around 1,100 bytes:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">4,096</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,460+1,460+1,060</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">4,096</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,460+1,460+1,060</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For the record, the particular attack illustrated here used about 17k reflector server IPs, lasted 64 minutes, generated about 6Gbps on the source port 53 strand and 11Gbps of source port 0 fragments.</p>
 <p>We have blogged about DNS reflection attacks in the past:</p>
@@ -286,7 +356,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        count</span><span class="sk-032f62-99ffe4"> ACCEPT-SSDP-UPNP</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        next</span><span class="sk-032f62-99ffe4"> term</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But properly configuring firewall requires some Internet hygiene. You should avoid using the same IP for inbound and outbound traffic. For example, filtering a potential NTP DDoS will be harder if you can't just block inbound port 123 indiscriminately. If your server requires NTP, make sure it exits to the Internet over non-server IP address!</p>
 <h2>Capacity game</h2>
@@ -302,7 +376,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     8</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                  ****************</span><span class="sk-005cc5-ffc799"> 641</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    16</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                               *******************</span><span class="sk-005cc5-ffc799"> 748</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                              ****</span><span class="sk-005cc5-ffc799"> 157</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   14</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   14</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But not all Cloudflare datacenters have equal sized network connections to the Internet. So how can we manage?</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

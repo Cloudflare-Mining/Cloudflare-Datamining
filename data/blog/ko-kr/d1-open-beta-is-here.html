@@ -23,12 +23,38 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>잠깐만요. 이전에 많은 사람이 했던 실수를 저질렀네요. 업데이트 쿼리에서 WHERE 절을 잊어버렸습니다. 특정 주문 ID를 업데이트하는 대신 테이블의 모든 주문에 대해 ShipAddress를 업데이트했습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">I</span><span class="sk-24292e-fff"> think we might be forgetting something here</span><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>패닉이 시작됩니다. 이 작업을 수행하기 전에 백업하는 것을 기억했나요? 얼마나 오래 전이었나요? 특정 시점 복구를 설정했나요? 당시에는 비용이 많이 들 것 같았는데...</p>
 <div class="emdash-code">
@@ -38,7 +64,11 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">        │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>괜찮습니다. D1을 사용하고 있습니다. Time Travel을 할 수 있습니다. 기본적으로 켜져 있습니다. 이 문제를 해결하고 몇 분 전으로 돌아가 보겠습니다.</p>
 <p>잘 작동했는지 확인해 보겠습니다.</p>
@@ -51,7 +81,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">⚡️ Time travel </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> progress</span><span class="sk-d73a49-a0a0a0">...</span></span>
 <span class="line"><span class="sk-24292e-fff">✅ Database dash</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">db restored back to bookmark </span><span class="sk-005cc5-ffc799">00000000</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">00000004</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">97a8857d35583887de16219c766c0785</span></span>
-<span class="line"><span class="sk-24292e-fff">↩️ To undo </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> operation, you can restore to the previous </span><span class="sk-6f42c1-ffc799">bookmark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">00000013</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ffffffff</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">90b029f26ab5bd88843c55c87b26f497</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">↩️ To undo </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> operation, you can restore to the previous </span><span class="sk-6f42c1-ffc799">bookmark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">00000013</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ffffffff</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">90b029f26ab5bd88843c55c87b26f497</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>우리는 더 작은 데이터베이스가 많을 때 Time Travel이 더욱 강력해진다고 생각합니다. 모든 복원 작업의 단점이 더 줄어들고 범위가 단일 사용자 또는 테넌트로 제한됩니다.</p>
 <div class="emdash-code">
@@ -61,7 +95,11 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cloudflare에서는 데이터베이스 복원뿐만 아니라 기존 데이터베이스에서 분기하고 덮어쓰는 기능도 지원하기 위해 노력 중이니 Time Travel은 이제 시작에 불과합니다. 단일 명령으로 데이터베이스를 분기시키거나 실제 데이터에 대해 마이그레이션 및 스키마 변경을 테스트할 수 있다면, 데이터베이스 작업을 하면서 기존에 수반되었던 많은 어려움을 해소할 수 있습니다.</p>
 <h3>행 기반 가격 책정</h3>
@@ -91,12 +129,20 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>하지만 인덱스를 사용하면 더 나은 결과를 얻을 수 있습니다.</p>
 <p>인덱스가 생성되었으므로 이제 쿼리에서 얼마나 많은 행을 읽어야 하는지 확인해 보겠습니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> INDEX</span><span class="sk-005cc5-fff"> IF</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> EXISTS</span><span class="sk-24292e-fff"> idx_orders_date </span><span class="sk-005cc5-fff">ON</span><span class="sk-24292e-fff"> [Order](ShippedDate)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> INDEX</span><span class="sk-005cc5-fff"> IF</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> EXISTS</span><span class="sk-24292e-fff"> idx_orders_date </span><span class="sk-005cc5-fff">ON</span><span class="sk-24292e-fff"> [Order](ShippedDate)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ShippedDate 열에 인덱스가 있는 동일한 쿼리에서는 417행만 읽습니다. 이 쿼리는 더 빠를 뿐만 아니라(소요 시간은 밀리초 단위!) 비용도 저렴합니다. 이 쿼리를 한 달에 5,900만 번 실행해도 Workers 요금제에서 제공하는 $5보다 더 많은 비용을 지불할 필요가 없습니다.</p>
 <div class="emdash-code">
@@ -113,7 +159,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>또한 D1은 Cloudflare 대시보드와 GraphQL 분석 API 모두를 통해<a href="https://developers.cloudflare.com/d1/platform/metrics-analytics/#metrics" target="_blank" rel="noopener noreferrer">행 수가 노출</a>되므로 성능을 조정할 때 쿼리별로 확인할 수 있을 뿐만 아니라 모든 데이터베이스의 쿼리 패턴을 분석할 수도 있습니다.</p>
 <h3>플랫폼용 D1</h3>

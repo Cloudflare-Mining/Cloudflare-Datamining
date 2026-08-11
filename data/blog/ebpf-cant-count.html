@@ -14,14 +14,40 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">                    2</span><span class="sk-005cc5-ffc799"> 0x0000000000000002</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>OK, eBPF, what is 2^32 - 1?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-24292e-fff"> $</span><span class="sk-032f62-99ffe4">[2</span><span class="sk-005cc5-a0a0a0">**</span><span class="sk-032f62-99ffe4">32]</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">           4294967296</span><span class="sk-005cc5-ffc799"> 0x0000000100000000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799"> 18446744073709551615</span><span class="sk-005cc5-ffc799"> 0xffffffffffffffff</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799"> 18446744073709551615</span><span class="sk-005cc5-ffc799"> 0xffffffffffffffff</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wrong! But if we ask nicely with sudo:</p>
 <div class="emdash-code">
@@ -29,7 +55,11 @@
 <span class="line"><span class="sk-24292e-fff">[sudo] password </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> jkbs:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">           4294967296</span><span class="sk-005cc5-ffc799"> 0x0000000100000000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">           4294967295</span><span class="sk-005cc5-ffc799"> 0x00000000ffffffff</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">           4294967295</span><span class="sk-005cc5-ffc799"> 0x00000000ffffffff</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Who is messing with my eBPF?</h3>
 <p>When computers stop subtracting, you know something big is up. We called for reinforcements.</p>
@@ -39,13 +69,21 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> llvm-objdump</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-005cc5-99ffe4"> -no-show-raw-insn</span><span class="sk-005cc5-99ffe4"> -section=socket1</span><span class="sk-032f62-99ffe4"> bpf/filter.o</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      20:</span><span class="sk-032f62-99ffe4">       1f</span><span class="sk-005cc5-ffc799"> 76</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         r6</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> r7</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>However, that's not what the kernel actually runs. Apparently after the rewrite the subtraction becomes a complex, multi-step operation.</p>
 <p>To see what the kernel is actually running we can use little known <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/bpf/bpftool?h=v5.0" target="_blank" rel="noopener noreferrer">bpftool utility</a>. First, we need to load our BPF</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-005cc5-99ffe4"> --stop-after-load</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-24292e-fff">[2]+  Stopped                 ./run-bpf 2 1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[2]+  Stopped                 ./run-bpf 2 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then list all BPF programs loaded into the kernel with <code>bpftool prog list</code></p>
 <div class="emdash-code">
@@ -53,7 +91,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">5951:</span><span class="sk-032f62-99ffe4"> socket_filter</span><span class="sk-032f62-99ffe4">  name</span><span class="sk-032f62-99ffe4"> filter_alu64</span><span class="sk-032f62-99ffe4">  tag</span><span class="sk-032f62-99ffe4"> 11186be60c0d0c0f</span><span class="sk-032f62-99ffe4">  gpl</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        loaded_at</span><span class="sk-032f62-99ffe4"> 2019-04-05T13:01:24+0200</span><span class="sk-032f62-99ffe4">  uid</span><span class="sk-005cc5-ffc799"> 1000</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        xlated</span><span class="sk-032f62-99ffe4"> 424B</span><span class="sk-032f62-99ffe4">  jited</span><span class="sk-032f62-99ffe4"> 262B</span><span class="sk-032f62-99ffe4">  memlock</span><span class="sk-032f62-99ffe4"> 4096B</span><span class="sk-032f62-99ffe4">  map_ids</span><span class="sk-005cc5-ffc799"> 28786</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        xlated</span><span class="sk-032f62-99ffe4"> 424B</span><span class="sk-032f62-99ffe4">  jited</span><span class="sk-032f62-99ffe4"> 262B</span><span class="sk-032f62-99ffe4">  memlock</span><span class="sk-032f62-99ffe4"> 4096B</span><span class="sk-032f62-99ffe4">  map_ids</span><span class="sk-005cc5-ffc799"> 28786</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The most recently loaded <code>socket_filter</code> must be our program (<code>filter_alu64</code>). Now we now know its id is 5951 and we can list its bytecode with</p>
 <div class="emdash-code">
@@ -68,7 +110,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  39:</span><span class="sk-24292e-fff"> (5f) r6 &amp;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> r11</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  40:</span><span class="sk-24292e-fff"> (1f) r6 -</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> r7</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  41:</span><span class="sk-24292e-fff"> (7b) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u64</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-6f42c1-ffc799">r10</span><span class="sk-005cc5-99ffe4"> -16</span><span class="sk-24292e-fff">) = r6</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>bpftool can also display the JITed code with: <code>bpftool prog dump jited id 5951</code>.</p>
 <p>As you see, subtraction is replaced with a series of opcodes. That is unless you are root. When running from root all is good</p>
@@ -82,7 +128,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  31:</span><span class="sk-24292e-fff"> (79) r7 = </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u64</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-6f42c1-ffc799">r0</span><span class="sk-032f62-99ffe4"> +0</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  32:</span><span class="sk-24292e-fff"> (1f) r6 -</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> r7</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  33:</span><span class="sk-24292e-fff"> (7b) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u64</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-6f42c1-ffc799">r10</span><span class="sk-005cc5-99ffe4"> -16</span><span class="sk-24292e-fff">) = r6</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you've spent any time using eBPF, you must have experienced first hand the dreaded eBPF verifier. It's a merciless judge of all eBPF code that will reject any programs that it deems not worthy of running in kernel-space.</p>
 <p>What perhaps nobody has told you before, and what might come as a surprise, is that the very same verifier will actually also <a href="https://elixir.bootlin.com/linux/v4.20.13/source/kernel/bpf/verifier.c#L6421" target="_blank" rel="noopener noreferrer">rewrite and patch up your eBPF code</a> as needed to make it safe.</p>
@@ -113,7 +163,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sub32:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       0:</span><span class="sk-032f62-99ffe4">       bc</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         w0</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> w1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       1:</span><span class="sk-032f62-99ffe4">       1c</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         w0</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> w2</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       2:</span><span class="sk-005cc5-ffc799">       95</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         exit</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       2:</span><span class="sk-005cc5-ffc799">       95</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         exit</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>0x1c</code> <a href="https://elixir.bootlin.com/linux/v5.0/source/include/uapi/linux/bpf_common.h#L11" target="_blank" rel="noopener noreferrer">opcode</a> of the instruction #1, which can be broken down as <code>BPF_ALU | BPF_X | BPF_SUB</code> (read more in the <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">kernel docs</a>), is the 32-bit subtraction between registers we are looking for, as opposed to regular 64-bit subtract operation <code>0x1f = BPF_ALU64 | BPF_X | BPF_SUB</code>, which will get rewritten.</p>
 <p>Armed with this knowledge we can borrow a page from <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic" target="_blank" rel="noopener noreferrer">bignum arithmetic</a> and subtract 64-bit numbers using just 32-bit ops:</p>
@@ -132,7 +186,11 @@
 <span class="line"><span class="sk-24292e-fff">        hi </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> xh </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> yh </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> (lo </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> xl);</span><span class="sk-6a737d-8b8b8b94"> /* underflow? */</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> ((u64)hi </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> (u64)lo;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code compiles as expected on normal architectures, like x86-64 or ARM64, but BPF Clang target plays by its own rules:</p>
 <div class="emdash-code">
@@ -146,7 +204,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      17:       67 01 00 00 20 00 00 00         r1 &lt;&lt;= 32</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">      18:       77 01 00 00 20 00 00 00         r1 &gt;&gt;= 32</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">      19:       4f 10 00 00 00 00 00 00         r0 |= r1</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">      20:       95 00 00 00 00 00 00 00         exit</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">      20:       95 00 00 00 00 00 00 00         exit</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Apparently the compiler decided it was better to operate on 64-bit registers and discard the upper 32 bits. Thus we weren't able to get rid of the problematic <code>0x1f</code> opcode. Annoying, back to square one.</p>
 <h3>Surely a bit of IR will do?</h3>
@@ -171,7 +233,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  %16</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> shl</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %15,</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">         ; </span><span class="sk-6f42c1-ffc799">tmp2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> hi</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff"> 32</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  %17 = or i64 %16, %6          ; res = tmp2 | (u64)lo</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  ret i64 %17</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It may not be pretty but it does produce <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.s#L5" target="_blank" rel="noopener noreferrer">desired BPF code</a> when compiled<a href="https://blog.cloudflare.com/#f3"><sup>3</sup></a>. You will likely find the <a href="https://llvm.org/docs/LangRef.html" target="_blank" rel="noopener noreferrer">LLVM IR reference</a> helpful when deciphering it.</p>
 <p>And voila! First working solution that produces correct results:</p>
@@ -179,7 +245,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-005cc5-99ffe4"> -filter</span><span class="sk-032f62-99ffe4"> ir</span><span class="sk-24292e-fff"> $</span><span class="sk-032f62-99ffe4">[2</span><span class="sk-005cc5-a0a0a0">**</span><span class="sk-032f62-99ffe4">32]</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">           4294967296</span><span class="sk-005cc5-ffc799"> 0x0000000100000000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">           4294967295</span><span class="sk-005cc5-ffc799"> 0x00000000ffffffff</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">           4294967295</span><span class="sk-005cc5-ffc799"> 0x00000000ffffffff</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Actually using this hand-written IR function from C is tricky. See <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/build.ninja#L27" target="_blank" rel="noopener noreferrer">our code on GitHub</a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -201,7 +271,11 @@
 <p>However, if we play our cards right we just might reduce it a little. We don't actually need the volatile load or store to happen, we just want the side effect. So instead of declaring the value as volatile, which implies that both reads and writes are volatile, let's try to make only the writes volatile with a help of a macro:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* Emits a "store volatile" in LLVM IR */</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> ST_V</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">rhs</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lhs</span><span class="sk-24292e-fff">) (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">volatile</span><span class="sk-6f42c1-ffc799"> typeof</span><span class="sk-24292e-fff">(rhs) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">(rhs) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (lhs))</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> ST_V</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">rhs</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lhs</span><span class="sk-24292e-fff">) (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">volatile</span><span class="sk-6f42c1-ffc799"> typeof</span><span class="sk-24292e-fff">(rhs) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">(rhs) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (lhs))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If this macro looks strangely familiar, it's because it does the same thing as <a href="https://elixir.bootlin.com/linux/v5.1-rc5/source/include/linux/compiler.h#L214" target="_blank" rel="noopener noreferrer"><code>WRITE_ONCE()</code> macro</a> in the Linux kernel. Applying it to our example:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

@@ -45,15 +45,41 @@
 <p>Cloudflareが作成したコードと、私たちが依存している依存関係からのコードの両方を詳しく見てみました。<a href="https://crates.io/crates/memcache-async" target="_blank" rel="noopener noreferrer"><code>memcacheコマンドを送信できるコードを実装するために、memcache-async</code></a> クレートに依存していました。memcached <code>Version</code>コマンドを送信するためのコードを次に示します。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">io</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">write_all</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">b"version</span><span class="sk-005cc5-a0a0a0">\r\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">io</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">flush</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">io</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">flush</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>珍しいことはありません。次に、get関数の内部を調べました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> writer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">io</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">get_mut</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">writer</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">write_all</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">b"get "</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">writer</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">write_all</span><span class="sk-24292e-fff">(key</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">as_ref</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">writer</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">write_all</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">b"</span><span class="sk-005cc5-a0a0a0">\r\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">writer</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">flush</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">writer</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">flush</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>コードでは、<code>io</code>を<code>TcpStream</code>として設定します。つまり、各<code>write_all</code>呼び出しがメッセージを送信することになります。Nagleのアルゴリズムを有効にすると、データの流れは次のようになります：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -73,11 +99,19 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">#else</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> TCP_DELACK_MIN</span><span class="sk-005cc5-ffc799">	4</span><span class="sk-d73a49-ffc799">U</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> TCP_ATO_MIN</span><span class="sk-005cc5-ffc799">	4</span><span class="sk-d73a49-ffc799">U</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">#endif</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">#endif</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>コメントでは、<code>TCP_DELACK_MIN</code>は、ACKがACKを送信する前に待機する最小遅延時間であることを示しています。Cloudflareのカスタムカーネル設定を調べたところ、以下のことがわかりました。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CONFIG_HZ</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1000</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CONFIG_HZ</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1000</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>CONIG_HZ</code>は最終的に<code>HZ</code>に伝播し、40ミリ秒の遅延をもたらします。数字の背景はここにあるのです！</p>
 <h2>修正方法</h2>

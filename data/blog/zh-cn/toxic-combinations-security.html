@@ -51,8 +51,30 @@
 <span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
 <span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span></span>
-<span class="line"><span class="sk-24292e-fff">  request_count </span><span class="sk-005cc5-fff">DESC</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  request_count </span><span class="sk-005cc5-fff">DESC</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3><strong>为什么这个问题很严重？</strong></h3>
 <p>可公开访问的管理面板可能会让攻击者能够发起<a href="https://www.cloudflare.com/learning/bots/brute-force-attack" target="_blank" rel="noopener noreferrer"><u>暴力破解攻击</u></a>。如果成功，攻击者可能通过将面板添加到僵尸网络来进一步入侵主机，而僵尸网络会探测其他网站是否存在类似的漏洞。此外，这种有毒组合可能会导致：</p>
 <ul>
@@ -138,7 +160,11 @@
 <span class="line"><span class="sk-005cc5-fff">    OR</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestQuery, </span><span class="sk-032f62-99ffe4">'(?i)(?:^|[&amp;?])user=([^&amp;]+)'</span><span class="sk-24292e-fff">), </span><span class="sk-032f62-99ffe4">'^[0-9]{3,10}$'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-005cc5-fff">    OR</span><span class="sk-6f42c1-ffc799"> length</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestQuery, </span><span class="sk-032f62-99ffe4">'(?i)(?:^|[&amp;?])uid=([^&amp;]+)'</span><span class="sk-24292e-fff">))  </span><span class="sk-005cc5-fff">BETWEEN</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-ffc799"> 8</span></span>
 <span class="line"><span class="sk-005cc5-fff">    OR</span><span class="sk-6f42c1-ffc799"> length</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestQuery, </span><span class="sk-032f62-99ffe4">'(?i)(?:^|[&amp;?])user=([^&amp;]+)'</span><span class="sk-24292e-fff">)) </span><span class="sk-005cc5-fff">BETWEEN</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-ffc799"> 8</span></span>
-<span class="line"><span class="sk-24292e-fff">  )</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>为什么这个问题很严重？</strong></h3>
 <p>这是一个“零利用”漏洞，也就是说，攻击者无需是黑客即可窃取您的数据；他们只需更改 Web 链接中的某个数字即可。这会导致：</p>
@@ -250,7 +276,11 @@
 <span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
 <span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span></span>
-<span class="line"><span class="sk-24292e-fff">  request_count </span><span class="sk-005cc5-fff">DESC</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  request_count </span><span class="sk-005cc5-fff">DESC</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>为什么这个问题很严重？</strong></h3>
 <p>虽然这不会立即窃取数据，但它为攻击者提供了您的内部基础设施的高清地图。这种“侦察”模式会显著提高攻击者下一次攻击的成功率，因为他们能够看到：</p>
@@ -358,7 +388,11 @@
 <span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> clientRequestPath </span><span class="sk-005cc5-fff">LIKE</span><span class="sk-032f62-99ffe4"> '%/actuator/metrics%'</span><span class="sk-6a737d-8b8b8b94"> // an example</span></span>
 <span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
-<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span><span class="sk-24292e-fff"> request_count </span><span class="sk-005cc5-fff">DESC</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span><span class="sk-24292e-fff"> request_count </span><span class="sk-005cc5-fff">DESC</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>为什么这个问题很严重？</strong></p>
 <p>虽然这些端点通常不会直接泄露客户密码，但却为复杂攻击提供了“蓝图”。暴露这些端点会导致：</p>
@@ -465,7 +499,11 @@
 <span class="line"><span class="sk-005cc5-fff">AND</span><span class="sk-24292e-fff"> clientRequestPath like </span><span class="sk-032f62-99ffe4">'%/</span><span class="sk-005cc5-a0a0a0">\_</span><span class="sk-032f62-99ffe4">search%'</span></span>
 <span class="line"><span class="sk-005cc5-fff">AND</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestHTTPHost, </span><span class="sk-032f62-99ffe4">'^[^:/]+'</span><span class="sk-24292e-fff">), </span><span class="sk-032f62-99ffe4">'^</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d{1,3}(</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d{1,3}){3}(:</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d+)?$'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
-<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>为什么这个问题很严重？</strong></h3>
 <p>这是一个非常严重的漏洞，因为它无需任何技术技能即可利用，但造成的破坏却相当严重：</p>
@@ -574,7 +612,11 @@
 <span class="line"><span class="sk-005cc5-fff">AND</span><span class="sk-005cc5-fff"> LOWER</span><span class="sk-24292e-fff">(clientRequestQuery) </span><span class="sk-005cc5-fff">LIKE</span><span class="sk-032f62-99ffe4"> '%sleep(%'</span></span>
 <span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
 <span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
-<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span><span class="sk-24292e-fff"> request_count </span><span class="sk-005cc5-fff">DESC</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span><span class="sk-24292e-fff"> request_count </span><span class="sk-005cc5-fff">DESC</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>为什么这个问题很严重？</strong></h3>
 <p>这是数据泄露的“隐蔽途径”。由于系统返回了成功状态代码 (<strong>HTTP 200</strong>)，因此，这些攻击通常与合法流量混合在一起。如果不加以处理，攻击者可以：</p>

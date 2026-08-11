@@ -14,8 +14,30 @@
 <p>Sur le plan technique, la séparation du code d’application et du contenu à traduire permet d’apporter des modifications aux chaînes sans recompiler et/ou redéployer le code. Dans notre application basée sur React, l’extraction de la plupart des chaînes consistait à modifier des blocs de code tels que le suivant :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Cancel</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Pour obtenir ce qui suit :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;&lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-6f42c1-a0a0a0"> id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"signup.cancel"</span><span class="sk-24292e-a0a0a0"> /&gt;&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
@@ -26,13 +48,21 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.cancel"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cancel"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.next"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Next"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...many more keys</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>L’élément <code>&lt;Trans&gt;</code> ci-dessus constitue la base fondamentale de l’internationalisation dans notre application. Dans ce schéma, les chaînes traduites sont conservées dans de grands dictionnaires indexés par un identifiant de traduction. Nous appelons ces dictionnaires des catalogues de traduction, et il en existe un ensemble pour chaque langue que nous proposons.</p>
 <p>Au moment de l’exécution, l’élément recherche la traduction dans le catalogue correspondant à l’identifiant indiqué et insère ensuite cette traduction dans la page (via le DOM). Tout le texte statique d’une application peut être extrait au moyen de simples transformations telles que celle-ci.</p>
 <p>Cependant, lorsqu’il faut combiner des données dynamiques avec du texte statique, la solution devient un peu plus compliquée. Prenons l’exemple suivant, simple en apparence, qui est truffé de pièges d’internationalisation :</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>&lt;span&gt;Vous avez sélectionné { totalSelected } Page Rules.&lt;/span&gt;</code></p>
 <div class="emdash-code">
@@ -67,7 +97,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "pageRules"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Page Rules"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>On pourrait être tenté d’extraire cette phrase en la découpant en plusieurs parties, de cette manière :</p>
 <p>Cela suffit à accomplir cette tâche et peut même sembler être une solution élégante. Après tout, les champs <code>selected.prefix</code> et <code>pageRules.suffix</code> semblent destinés à être réutilisés. Malheureusement, le fait de découper des phrases et de reconstituer des éléments traduits de cette manière s’avère être le plus grand écueil de l’extraction de chaînes pour leur internationalisation.</p>
@@ -118,7 +152,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ainsi, afin de garantir que les traducteurs seront en mesure de restituer fidèlement le sens de votre document, vous devez extraire chaque phrase intacte. Notre élément <code>&lt;Trans&gt;</code> permet d’injecter facilement des valeurs dans des modèles de chaînes, ce qui nous permet de faire exactement cela :</p>
 <p>Les traducteurs disposent ainsi du contexte complet de la phrase, ce qui garantit que tous les mots seront traduits en conservant leur sens originel.</p>
@@ -145,14 +183,22 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Portuguese (Brazil) catalog.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ smart_count } Page Rule. |||| Você selecionou %{ smart_count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vous avez peut-être remarqué un autre problème potentiel. Que se passe-t-il dans cet exemple lorsque <code>totalSelected</code> est seulement égal à 1 ? Avec le code ci-dessus, l’utilisateur verrait « Vous avez sélectionné 1 Page Rules à supprimer ». La mise au pluriel de la phrase doit être conditionnelle et basée sur la valeur de nos données dynamiques. Il s’agit d’un cas d’utilisation assez courant, et notre élément <code>&lt;Trans&gt;</code> s’en charge automatiquement via la fonctionnalité smart_count :</p>
 <p>Ici, les versions au singulier et au pluriel sont délimitées par ||||. sélectionnera automatiquement la bonne traduction à utiliser en fonction de la variable <code>totalSelected</code>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  Don't forget to </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verify your email address.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Un autre obstacle se présente lorsque le balisage est mélangé à un bloc de texte que nous voudrions extraire sous la forme d’une seule chaîne. Par exemple, que faut-il faire pour qu’une phrase apparaisse comme un lien vers une autre page ?</p>
 <div class="emdash-code">
@@ -164,7 +210,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "notification.email_verification"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Don't forget to &lt;0&gt;verify your email address.&lt;/0&gt;"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Pour résoudre ce cas d’utilisation, l’élément permet d’injecter des éléments arbitraires dans les caractères de remplissage d’une chaîne traduite, par exemple :</p>
 <div class="emdash-code">
@@ -176,7 +226,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// es-ES</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  No olvide </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-6f42c1-a0a0a0"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/profile"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verificar la dirección de correo electrónico.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dans cet exemple, l’élément <code>&lt;Trans&gt;</code> remplacera les caractères génériques (&lt;0&gt;,&lt;1&gt;, etc.) par des instances appartenant au type d’élément qui appartient à cette catégorie dans le tableau <code>Components</code> (Éléments). Il transfère également toutes les données indiquées dans <code>componentProps</code> vers cette instance. L’exemple ci-dessus correspondrait à ce qui suit dans React :</p>
 <h3>N’oublions pas la sécurité</h3>
@@ -216,7 +270,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Hmm... We couldn't find any matching websites.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>De nouvelles bibliothèques i18n telles que <a href="https://github.com/lingui/js-lingui" target="_blank" rel="noopener noreferrer">jslingui</a> permettent d’éviter ce problème en appliquant une stratégie de gestion des catalogues de traduction fondée sur l’extraction. Avec ce système, vous utilisez toujours un élément , mais les chaînes sont conservées dans l’élément lui-même, et non dans un catalogue séparé :</p>
 <div class="emdash-code">
@@ -228,7 +286,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// locales/de_DE.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "Hmm... We couldn't find any matching websites."</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Hmm... Wir konnten keine übereinstimmenden Websites finden."</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Un outil que vous exécutez au moment de la compilation se charge ensuite de trouver toutes ces chaînes et de les extraire dans des catalogues pour vous. Par exemple, les catalogues suivants seraient générés à partir de ce qui précède :</p>
 <p>Cette méthode présente l’avantage évident de ne plus nécessiter de fichiers séparés ! Autre avantage : il n’est plus nécessaire de vérifier la typographie des codes d’identification puisqu’il n’est plus possible de faire de fautes de frappe.</p>
@@ -239,7 +301,11 @@
 <h3>Nombres, dates et heures</h3>
 <p>Nous avons déjà parlé de l’injection de chaînes dont les données ont été traduites, mais nous avons laissé de côté un problème majeur : il se peut qu’il soit nécessaire de les mettre en forme pour qu’elles soient conformes aux pratiques locales des utilisateurs. C’est le cas des dates, des heures, des chiffres, des devises et de quelques autres types de données.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Reprenons notre exemple simple de tout à l’heure :</p>
 <p>L’absence de mise en forme appropriée ne posera pas de problème pour les petits nombres, mais dès que l’on dépassera le millier, la traduction ne sera plus correcte, car la façon dont les chiffres sont groupés et séparés par des symboles <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank" rel="noopener noreferrer">diffère selon les cultures</a>. Voici des exemples de mise en forme du nombre trois cent mille et trois centièmes dans plusieurs langues :</p>
@@ -382,7 +448,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> number </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 300000.03</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> formatted </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> number.</span><span class="sk-6f42c1-ffc799">toLocaleString</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hi-IN'</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">// 3,00,000.03</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Pour gérer le formatage des chiffres, nous avons utilisé l’<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank" rel="noopener noreferrer">API Intl</a> (la bibliothèque d’internationalisation définie par la norme ECMAScript) :</p>
 <p>Heureusement, Intl est devenu assez largement compatible avec les navigateurs ces dernières années, tous les navigateurs modernes étant pleinement compatibles.</p>
@@ -420,7 +490,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "other.verify.button"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "verify.proceed.link"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email to proceed"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Imaginons que vos fichiers de traduction finissent par ressembler à ceci :</p>
 <p>Nous avons ici des chaînes reproduites mot à mot, ainsi que des sous-chaînes copiées. Les services de traduction sont facturés au mot : mieux vaut ne pas payer deux fois pour la même chose et éviter les problèmes de cohérence. Il est donc important de disposer de bases de données de traduction bien conçues afin que ces chaînes soient traduites dès les étapes de pré-traduction, avant même que les traducteurs ne reçoivent le fichier.</p>

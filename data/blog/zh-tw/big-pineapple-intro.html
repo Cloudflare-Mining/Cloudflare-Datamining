@@ -55,8 +55,30 @@
 <p>遞迴程式庫是 BigPineapple 的 DNS 大腦，因為它知道如何在查詢中找到問題的答案。從根目錄開始，它將用戶端查詢分解為子查詢，並使用它們從網際網路上的各種權威名稱伺服器以遞迴方式收集知識。而這個程序的結果就是問題的答案。藉助 async/await，可以將它提取為一個像下面這樣的函數：</p>
 <p>該函數包含針對指定要求產生回應所需的全部邏輯，但不會獨自執行任何 I/O。而我們會傳遞一個 Exchanger 特性（Rust 介面），該特性瞭解如何以非同步的方式與上游權威名稱伺服器交換 DNS 訊息。交換程式呼叫通常在各種 await 點進行，例如，當遞迴開始後，它所做的第一件事就是查詢該網域距離最近的快取委派。如果它在快取中沒有最終委派，則需要詢問哪些名稱伺服器負責此網域並等待回應，然後才能繼續進行。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>由於這種設計會從遞迴 DNS 邏輯中分離「等待一些回應」部分，透過模擬交換程式實作，測試就變得更輕鬆了。此外，它還會讓遞迴反覆運作程式碼（特別是 DNSSEC 驗證邏輯）更具可讀性，因為它是依順序撰寫，而不是散佈在多個回呼中。</p>
 <p>好玩的是：從頭開始撰寫 DNS 遞迴解析程式一點都不好玩！</p>
 <p>不僅因為 DNSSEC 驗證非常複雜，還因為需要針對各種各樣的 RFC 不相容伺服器、轉寄站、防火牆等採取必要的「因應措施」。因此，我們將 <a href="https://github.com/CZ-NIC/deckard" target="_blank" rel="noopener noreferrer">deckard</a> 移轉到 Rust 中來協助測試。此外，當我們開始遷移到這一新的非同步遞迴程式庫時，還會先以「影子」模式執行：處理來自生產服務的真實查詢範例，並比較不同之處。我們過去也在 Cloudflare 的權威 DNS 服務中這樣做過。但遞迴服務的難度略大一些，因為遞迴服務必須在網際網路上查詢所有資料，而權威名稱伺服器通常為同一個查詢提供不同的答案，因為當地語系化、負載平衡等因素導致出現很多誤判。</p>
@@ -93,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostOk</span><span class="sk-24292e-fff">  =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Ready,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostEof</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Pending,</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>所有這些複雜的東西統統封裝在我們的來賓非同步執行階段中，並提供易於使用的 API，因此，來賓應用程式不必擔心基礎詳細資料，即可使用標準非同步函數。</p>
 <h2>結尾（不是結束）</h2>

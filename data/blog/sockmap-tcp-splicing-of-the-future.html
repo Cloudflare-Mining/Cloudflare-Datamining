@@ -89,8 +89,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-6f42c1-ffc799"> data:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">sd,</span><span class="sk-005cc5-ffc799"> 4096</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    writeall(sd,</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    writeall(sd,</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Nothing simpler. On a blocking socket this is a totally valid program, and will work just fine. For completeness, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-naive.c#L57-L78" target="_blank" rel="noopener noreferrer">I prepared full code here</a>.</p>
 <h3>Splice: specialized syscall</h3>
 <p>Linux has an amazing <a href="http://man7.org/linux/man-pages/man2/splice.2.html" target="_blank" rel="noopener noreferrer">splice(2) syscall</a>. It can tell the kernel to move data between a TCP buffer on a socket and a buffer on a pipe. The data remains in the buffers, on the kernel side. This solves the problem of needlessly having to copy the data between userspace and kernel-space. With the <code>SPLICE_F_MOVE</code> flag the kernel may be able to avoid copying the data at all!</p>
@@ -101,7 +123,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-032f62-99ffe4"> n</span><span class="sk-d73a49-a0a0a0">:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    n</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> splice</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">sd,</span><span class="sk-032f62-99ffe4"> pipe_wr,</span><span class="sk-005cc5-ffc799"> 4096</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    splice(pipe_rd,</span><span class="sk-032f62-99ffe4"> sd,</span><span class="sk-032f62-99ffe4"> n</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    splice(pipe_rd,</span><span class="sk-032f62-99ffe4"> sd,</span><span class="sk-032f62-99ffe4"> n</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We still need wake up the userspace program and make two syscalls to forward any piece of data, but at least we avoid all the copying. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-splice.c#L76-L98" target="_blank" rel="noopener noreferrer">Full source</a>.</p>
 <h3>io_submit: Using Linux AIO API</h3>
@@ -126,13 +152,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">prog_parser</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> bpf_load_program</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">BPF_PROG_TYPE_SK_SKB,</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">prog_verdict</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> bpf_load_program</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">BPF_PROG_TYPE_SK_SKB,</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">bpf_prog_attach(prog_parser,</span><span class="sk-032f62-99ffe4"> sock_map,</span><span class="sk-032f62-99ffe4"> BPF_SK_SKB_STREAM_PARSER</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">bpf_prog_attach(prog_verdict,</span><span class="sk-032f62-99ffe4"> sock_map,</span><span class="sk-032f62-99ffe4"> BPF_SK_SKB_STREAM_VERDICT</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">bpf_prog_attach(prog_verdict,</span><span class="sk-032f62-99ffe4"> sock_map,</span><span class="sk-032f62-99ffe4"> BPF_SK_SKB_STREAM_VERDICT</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ta-da! At this point we have an established <code>sock_map</code> eBPF map, with two eBPF programs attached: parser and verdict. The next step is to add a TCP socket descriptor to this map. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap.c#L130-L142" target="_blank" rel="noopener noreferrer">Nothing simpler</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">int</span><span class="sk-032f62-99ffe4"> idx</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">int</span><span class="sk-032f62-99ffe4"> val</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sd</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">bpf_map_update_elem(sock_map,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">idx,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">val,</span><span class="sk-032f62-99ffe4"> BPF_ANY</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">bpf_map_update_elem(sock_map,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">idx,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">val,</span><span class="sk-032f62-99ffe4"> BPF_ANY</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At this point <em>the magic happens</em>. From now on, each time our socket <code>sd</code> receives a packet, prog_parser and prog_verdict are called. Their semantics are described in the <a href="https://www.kernel.org/doc/Documentation/networking/strparser.txt" target="_blank" rel="noopener noreferrer">strparser.txt</a> and the <a href="https://lwn.net/Articles/731133" target="_blank" rel="noopener noreferrer">introductory SOCKMAP commit</a>. For simplicity, our trivial echo server only needs the minimal stubs. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap-kern.c#L32-L43" target="_blank" rel="noopener noreferrer">This is the eBPF code</a>:</p>
 <div class="emdash-code">
@@ -147,7 +181,11 @@
 <span class="line"><span>{</span></span>
 <span class="line"><span>	uint32_t idx = 0;</span></span>
 <span class="line"><span>	return bpf_sk_redirect_map(skb, &amp;sock_map, idx, 0);</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Side note: for the purposes of this test program, I wrote a minimal eBPF loader. It has no dependencies (neither bcc, libelf, nor libbpf) and can do basic relocations (like resolving the <code>sock_map</code> symbol mentioned above). <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/tbpf.c" target="_blank" rel="noopener noreferrer">See the code</a>.</p>
 <p>The call to <code>bpf_sk_redirect_map</code> is doing all the work. It tells the kernel: for the received packet, please oh please <em>redirect</em> it from a receive queue of some socket, to a transmit queue of the socket living in sock_map under index 0. In our case, these are the same sockets! Here we achieved exactly what the echo server is supposed to do, but purely in eBPF.</p>
@@ -158,7 +196,11 @@
 <span class="line"><span>struct pollfd fds[1] = {</span></span>
 <span class="line"><span>    {.fd = sd, .events = POLLRDHUP},</span></span>
 <span class="line"><span>};</span></span>
-<span class="line"><span>poll(fds, 1, -1);</span></span></code></pre>
+<span class="line"><span>poll(fds, 1, -1);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-02-tcp-splice/echo-sockmap.c#L144-L148" target="_blank" rel="noopener noreferrer">Full code.</a></p>
 <h3>The benchmarks</h3>
@@ -289,7 +331,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> 16384</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 32768</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 65536</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   11585</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">131072</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">131072</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                   1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The great majority of the echo runs (of 128KiB in this case) were finished in the 512us band, while a small fraction stalled for 65ms. This is pretty bad and makes comparison of SOCKMAP to other implementations pretty meaningless. This is a second reason why we are skipping 1% of worst results from all the runs - it makes SOCKMAP numbers way more usable. Sorry.</p>
 <h3>2MiB blocks - throughput</h3>

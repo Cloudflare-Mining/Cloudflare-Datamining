@@ -13,8 +13,30 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># id</span></span>
 <span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,65534</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">nogroup</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># cat /proc/self/uid_map</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">         0</span><span class="sk-005cc5-ffc799">       1000</span><span class="sk-005cc5-ffc799">          1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">         0</span><span class="sk-005cc5-ffc799">       1000</span><span class="sk-005cc5-ffc799">          1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Syscalls <em>clone</em> 和 <em>clone3</em> 很是值得研究，因為它們還具有 <em>CLONE_NEWUSER</em> 的能力。然而，在這篇貼文中，我們將重點討論 unshare。</p>
 <p>Debian 透過這個<a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch" target="_blank" rel="noopener noreferrer">「add sysctl to disallow unprivileged CLONE_NEWUSER by default」</a>修補程式解決了這個問題，但它不是主流。另一個類似的修補程式<a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org" target="_blank" rel="noopener noreferrer">「sysctl: allow CLONE_NEWUSER to be disabled」</a>試圖成為主流，但遭到了排擠。一種批評意見是針對特定的應用程式<a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org" target="_blank" rel="noopener noreferrer">無法切換此功能</a>。在《<a href="https://lwn.net/Articles/673597" target="_blank" rel="noopener noreferrer">Controlling access to user namespaces</a>》（控制對使用者命名空間的存取權）這篇文章中，作者寫道「...the current patches do not appear to have an easy path into the mainline（現有修補程式似乎很難成為主流）。」我們可以看到，這些修補程式最終並沒有包含在 vanilla 核心中。</p>
 <h2>我們的解決方案 — LSM BPF</h2>
@@ -23,14 +45,22 @@
 <p>首先，我們來追蹤目標 syscall。我們可以在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank" rel="noopener noreferrer"><em>include/linux/syscalls.h</em></a> 檔案中找到原型。這在其中並不太容易進行追蹤，但這一行：</p>
 <p>為我們提供了接下來在 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank" rel="noopener noreferrer"><em>kernel/fork.c</em></a> 中的何處進行尋找的線索。在那裡對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank" rel="noopener noreferrer"><em>ksys_unshare()</em></a> 進行了呼叫。透過該函式進行挖掘，我們找到了對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> 的呼叫。這看起來很有希望成功。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* kernel/fork.c */</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* kernel/fork.c */</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>到目前為止，我們已經確定了 syscall 實作，但下一個問題是我們可以使用哪些勾點？因為我們透過<a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank" rel="noopener noreferrer">手冊頁</a>知道 unshare 用於變動工作，所以我們在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank" rel="noopener noreferrer"><em>include/linux/lsm_hooks.h</em></a> 中查看基於工作的勾點。回到函式 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a>，我們看到對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a> 進行了呼叫。這對 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank" rel="noopener noreferrer"><em>cred_prepare</em></a> 勾點來說非常熟悉。為了透過 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a> 驗證我們有自己的配對，我們看到對安全性勾點 <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank" rel="noopener noreferrer"><em>security_prepare_creds()</em></a> 的呼叫，其最終呼叫了勾點：</p>
 <p>無需詳細探究細節，我們也知道這是一個很好用的勾點，因為 <em>prepare_creds()</em> 剛好在 <em>create_user_ns()</em> （位於 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> 中）前進行了呼叫，後者是我們嘗試封鎖的操作。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
 <span class="line"><span class="sk-24292e-fff">rc </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> call_int_hook</span><span class="sk-24292e-fff">(cred_prepare, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, new, old, gfp);</span></span>
-<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>LSM BPF 解決方案</h3>
 <p>我們將使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank" rel="noopener noreferrer">eBPF compile once-run everywhere (CO-RE)</a> 方法進行編譯。透過這種方法，我們可以在一個架構上進行編譯，在另一個架構中進行載入。但我們將專門以 x86_64 為目標。適用於 ARM64 的 LSM BPF 仍在開發中，以下程式碼將無法在該架構上執行。關注 <a href="https://lore.kernel.org/bpf" target="_blank" rel="noopener noreferrer">BPF 郵寄名單</a>以追蹤進度。</p>
@@ -47,7 +77,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">DYNAMIC_FTRACE</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNCTION_TRACER</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">HAVE_DYNAMIC_FTRACE</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">HAVE_DYNAMIC_FTRACE</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我們從前序編碼開始：</p>
 <p><em>deny_unshare.bpf.c</em>：</p>
@@ -64,7 +98,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;bpf/bpf_core_read.h&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> X86_64_UNSHARE_SYSCALL</span><span class="sk-005cc5-ffc799"> 272</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> UNSHARE_SYSCALL</span><span class="sk-24292e-fff"> X86_64_UNSHARE_SYSCALL</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> UNSHARE_SYSCALL</span><span class="sk-24292e-fff"> X86_64_UNSHARE_SYSCALL</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>deny_unshare.bpf.c</em>：</p>
 <p>我們不需要完全充實結構；我們只需要提供程式運作所需的絕對最少資訊即可。CO-RE 將採取任何必要的動作來為您的核心執行重新配置。因此，編寫 LSM BPF 程式就變得特別簡單！</p>
@@ -93,7 +131,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">char</span><span class="sk-24292e-fff"> LICENSE</span><span class="sk-d73a49-a0a0a0">[]</span><span class="sk-6f42c1-ffc799"> SEC</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"license"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "GPL"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>deny_unshare.bpf.c</em>：</p>
 <p>建立程式是第一步，第二步是載入程式並將其連接到所需的勾點。可以採取幾種方法來完成這一步：<a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">Cilium ebpf</a> 專案、<a href="https://github.com/libbpf/libbpf-rs" target="_blank" rel="noopener noreferrer">Rust 繫結</a>以及 <a href="https://ebpf.io/projects" target="_blank" rel="noopener noreferrer">ebpf.io</a> 專案橫向頁面上的其他幾個專案。我們將使用原生 libbpf。</p>
@@ -138,7 +180,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">EPERM;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>deny_unshare.c</em>：</p>
 <p>最後，我們使用下列 Makefile 進行編譯：</p>
@@ -185,7 +231,11 @@
 <span class="line"><span class="sk-24292e-fff">cleanup:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    deny_unshare_bpf__destroy</span><span class="sk-24292e-fff">(skel);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> err;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Makefile</em>：</p>
 <h3>結果</h3>
@@ -225,33 +275,53 @@
 <span class="line"><span>	$(CC) -g -Wall -c $&lt; -o $@.o</span></span>
 <span class="line"><span>	$(CC) -g -o $@ $(LIBS_DIR) $@.o $(LIBS)</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>.DELETE_ON_ERROR:</span></span></code></pre>
+<span class="line"><span>.DELETE_ON_ERROR:</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在新的終端機視窗中執行：</p>
 <p>在另一個終端機視窗中，我們被成功封锁！</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> run</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LSM</span><span class="sk-032f62-99ffe4"> loaded!</span><span class="sk-032f62-99ffe4"> ctrl+c</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> exit.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">LSM</span><span class="sk-032f62-99ffe4"> loaded!</span><span class="sk-032f62-99ffe4"> ctrl+c</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> exit.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>該原則還有一個額外功能，可以永遠允許權限通過：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">unshare:</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Cannot</span><span class="sk-032f62-99ffe4"> allocate</span><span class="sk-032f62-99ffe4"> memory</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> id</span></span>
-<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在無權限情况下，syscall 會提前中止。在有權限情况下，會對效能產生什麼影響呢？</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># id</span></span>
-<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>測量效能</h3>
 <p>我們將使用一行 unshare 來對應使用者命名空間，並在其中執行一個命令進行測量：</p>
 <p>透過解析 syscall unshare 進入/結束的 CPU 週期數，我們將以 root 使用者身分進行下列測量：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -frU</span><span class="sk-005cc5-99ffe4"> --kill-child</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "exit 0"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -frU</span><span class="sk-005cc5-99ffe4"> --kill-child</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "exit 0"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>在無原則情况下執行命令</li>
@@ -262,21 +332,37 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> su</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># cd /sys/kernel/debug/tracing</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>接下來，我們開始進行測量：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># echo 'x86-tsc' &gt; trace_clock </span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># echo 'x86-tsc' &gt; trace_clock </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在新的終端機視窗中執行原則，然後執行下一個 syscall：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
-<span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">92014</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">92014</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>現在我們對兩個呼叫進行比較：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
-<span class="line"><span class="sk-24292e-fff">[2] </span><span class="sk-6f42c1-ffc799">92019</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[2] </span><span class="sk-6f42c1-ffc799">92019</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>unshare-92014 使用了 63294 個週期。</p>
 <div class="emdash-code">
@@ -297,7 +383,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">         unshare-92014</span><span class="sk-24292e-fff">   [002] ..... 762950852622321: sys_unshare -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 0x0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         unshare-92019</span><span class="sk-24292e-fff">   [007] ..... 762975980681895: sys_unshare(</span><span class="sk-6f42c1-ffc799">unshare_flags:</span><span class="sk-005cc5-ffc799"> 10000000</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         unshare-92019</span><span class="sk-24292e-fff">   [007] ..... 762975980752033: sys_unshare -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 0x0</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>unshare-92019 使用了 70138 個週期。</p>
 <p>在兩次測量之間有 6844 (~10%) 個週期的差值。結果還不錯！</p>

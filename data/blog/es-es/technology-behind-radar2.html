@@ -67,8 +67,30 @@
 <span class="line"><span class="sk-24292e-fff">      data: </span><span class="sk-005cc5-fff">undefined</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Debido a que Remix se ejecuta tanto en el servidor como en el cliente, puede ser inteligente y saber qué se puede precargar y calcular del lado del servidor y qué debe pasar a través de la conexión de red, optimizando todo para mejorar el rendimiento y la capacidad de respuesta.</p>
 <p>Este es un ejemplo de una ruta de Radar, simplificada para facilitar la lectura, para la página <a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">Outage Center</a>.</p>
 <p>Y, este es el resultado:</p>
@@ -108,7 +130,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">      &lt;/</span><span class="sk-005cc5-ffc799">Grid</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    &lt;/</span><span class="sk-005cc5-ffc799">Page</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Remix y SSR también pueden ayudarlo con sus puntuaciones <a href="https://developer.chrome.com/docs/lighthouse/overview" target="_blank" rel="noopener noreferrer">Lighthouse</a> y SEO. Puede mejorar drásticamente métricas como <a href="https://web.dev/cls" target="_blank" rel="noopener noreferrer">Cumulative Layout Shift</a>, <a href="https://web.dev/fcp" target="_blank" rel="noopener noreferrer">First Contentful Paint</a> y <a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer">Largest Contentful Paint</a> al reducir la cantidad de búsquedas y la información que viaja desde el servidor al navegador y representar previamente el DOM.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -188,7 +214,11 @@
 <span class="line"><span class="sk-6f42c1-a0a0a0">      height</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-005cc5-ffc799">400</span><span class="sk-24292e-a0a0a0">}</span></span>
 <span class="line"><span class="sk-6f42c1-a0a0a0">      direction</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">attacksDirection</span><span class="sk-24292e-a0a0a0">}</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    /&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-005cc5-ffc799">Card.Section</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-005cc5-ffc799">Card.Section</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Otro cambio que hicimos en Radar fue cambiar nuestras imágenes y recursos gráficos a <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank" rel="noopener noreferrer">Scalable Vector Graphics</a>. Los SVG son geniales porque básicamente son un lenguaje de gráficos declarativo. Son archivos de texto XML con información vectorial. Por lo tanto, se pueden manipular, transformar, almacenar o indexar fácilmente y, por supuesto, se pueden representar en cualquier tamaño, produciendo resultados hermosos y claros en cualquier dispositivo y resolución.</p>
 <p>Los SVG también son extremadamente pequeños y eficientes en cuanto a tamaño, comparado con los formatos de mapa de bits y admiten la <a href="https://www.w3.org/TR/SVGTiny12/i18n.html" target="_blank" rel="noopener noreferrer">internationalización</a>, lo que los hace más fáciles de traducir a otros idiomas (localización) y, por ende, proporcionando una mejor <a href="https://www.a11yproject.com" target="_blank" rel="noopener noreferrer">accesibilidad</a>.</p>
@@ -253,7 +283,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">  "card.about.cloudflare.p1"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cloudflare, Inc. ({website} / {twitter}) is on a mission to help build a better Internet. Cloudflare's suite of products protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine's Top Company Cultures 2018 list and ranked among the World's Most Innovative Companies by Fast Company in 2019."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "card.about.cloudflare.p2"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Headquartered in San Francisco, CA, Cloudflare has offices in Austin, TX, Champaign, IL, New York, NY, San Jose, CA, Seattle, WA, Washington, D.C., Toronto, Dubai, Lisbon, London, Munich, Paris, Beijing, Singapore, Sydney, and Tokyo."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "card.about.cloudflare.title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"About Cloudflare"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">...</span></span></code></pre>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Informes de Radar y cuadernos Jupyter</h2>
 <p><a href="https://radar.cloudflare.com/reports" target="_blank" rel="noopener noreferrer">Los informes de Radar</a> son documentos que utilizan la exploración de datos y la narración de historias para analizar un tema en particular en profundidad. Algunos informes tienden a recibir actualizaciones de vez en cuando. Algunos ejemplos de los informes de Radar son nuestras <a href="https://radar.cloudflare.com/reports/ddos-2022-q3" target="_blank" rel="noopener noreferrer">Tendencias de ataques DDoS</a> o la <a href="https://radar.cloudflare.com/reports/ipv6" target="_blank" rel="noopener noreferrer">adopción IPv6</a>.</p>

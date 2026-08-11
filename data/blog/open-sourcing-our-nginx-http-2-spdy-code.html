@@ -6,8 +6,30 @@
 <p>The patch means that NGINX can be built with both <code>--with-http_v2_module</code> and <code>--with-http_spdy_module</code>. And it will accept both the <code>spdy</code> and <code>http2</code> keywords to the <code>listen</code> directive.</p>
 <p>To configure both HTTP/2 and SPDY in NGINX you'll need to run:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">./configure</span><span class="sk-005cc5-99ffe4"> --with-http_spdy_module</span><span class="sk-005cc5-99ffe4"> --with-http_v2_module</span><span class="sk-005cc5-99ffe4"> --with-http_ssl_module</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">./configure</span><span class="sk-005cc5-99ffe4"> --with-http_spdy_module</span><span class="sk-005cc5-99ffe4"> --with-http_v2_module</span><span class="sk-005cc5-99ffe4"> --with-http_ssl_module</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Note that you need SSL support for both SPDY and HTTP/2.</p>
 <p>Then it will be possible to configure an NGINX server to support both HTTP/2 and SPDY on the same port as follows:</p>
 <div class="emdash-code">
@@ -22,13 +44,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">            root</span><span class="sk-032f62-99ffe4">   html</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            index</span><span class="sk-032f62-99ffe4">  index.html</span><span class="sk-032f62-99ffe4"> index.htm</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our patch uses <a href="https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation" target="_blank" rel="noopener noreferrer">ALPN</a> and NPN to advertise the availability of the two protocols. To test that the two protocols are being advertised you can use the OpenSSL client as follows (sending an empty ALPN/NPN extension in the ClientHello causes the server to return a list of available protocols).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-032f62-99ffe4"> www.example.com:443</span><span class="sk-005cc5-99ffe4"> -nextprotoneg</span><span class="sk-032f62-99ffe4"> ''</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">CONNECTED(00000003</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Protocols</span><span class="sk-032f62-99ffe4"> advertised</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> server:</span><span class="sk-032f62-99ffe4"> h2,</span><span class="sk-032f62-99ffe4"> spdy/3.1,</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Protocols</span><span class="sk-032f62-99ffe4"> advertised</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> server:</span><span class="sk-032f62-99ffe4"> h2,</span><span class="sk-032f62-99ffe4"> spdy/3.1,</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Many other tools for testing and debugging HTTP/2 connections can be found <a href="https://blog.cloudflare.com/tools-for-debugging-testing-and-using-http-2">here</a>.</p>
 <p>The patch puts HTTP/2 before SPDY/3.1 and will prefer HTTP/2 over SPDY/3.1. If a web browser offers both, HTTP/2 will be preferred and used for the connection.</p>

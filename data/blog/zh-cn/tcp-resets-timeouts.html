@@ -192,8 +192,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">--state</span><span class="sk-032f62-99ffe4"> NEW</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> statistic</span><span class="sk-005cc5-99ffe4"> --mode</span><span class="sk-032f62-99ffe4"> random</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">--probability</span><span class="sk-005cc5-ffc799"> 0.0001</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> connlabel</span><span class="sk-005cc5-99ffe4"> --label</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">labe</span><span class="sk-24292e-fff">l</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">--set</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> comment</span><span class="sk-005cc5-99ffe4"> --comment</span><span class="sk-032f62-99ffe4"> "Label a sample of ingress TCP connections"</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>分解来说，这个规则安装在处理入站数据包 (<code>-A PREROUTING</code>) 的链中的 <code>mangle</code> 表（用于修改数据包）中。仅当连接没有先前状态 (<code>--state NEW</code>) 时才考虑设置 SYN 标志的 TCP 数据包 (<code>-p tcp --syn</code>)。过滤器会在每 10,000 个 SYN 数据包中选择一个数据包 (<code>-m statistic –mode random --probability 0.0001</code>) 并将标签应用于连接 (<code>-m connlabel --label &lt;label&gt; --set</code>)。</p>
 <p>第二个 iptables 规则会记录连接中的后续数据包，最多记录 10 个数据包。同样地，数字 10 也没有什么神奇之处，因为通常情况下，这些数据包足以捕获连接建立、后续请求数据包，以及在预期时间之前已关闭连接的重置。</p>
 <div class="emdash-code">
@@ -202,7 +224,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">--connbytes-dir</span><span class="sk-032f62-99ffe4"> original</span><span class="sk-005cc5-99ffe4"> --connbytes-mode</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">-j</span><span class="sk-032f62-99ffe4"> NFLOG</span><span class="sk-005cc5-99ffe4"> --nflog-prefix</span><span class="sk-032f62-99ffe4"> "&lt;logging flags&gt;"</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">comment</span><span class="sk-005cc5-99ffe4"> --comment</span><span class="sk-032f62-99ffe4"> "Log the first 10 incoming packets of each sampled ingress connection"</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这个规则安装在与上一个规则相同的链中。它仅匹配来自已取样连接 <code>(-m connlabel --label &lt;label&gt;) </code>的数据包，并且仅匹配每个连接的前 10 个数据包 (<code>-m connbytes ! --connbytes 11 --connbytes-dir original --connbytes-mode packets</code>)。匹配的数据包将会发送到 NFLOG (<code>-j NFLOG --nflog-prefix "&lt;logging flags&gt;"</code>) ，日志记录系统会在此处提取这些数据包并将其保存到一个集中位置，以供离线分析。</p>
 <h2><strong>根据已取样数据包重建连接</strong></h2>

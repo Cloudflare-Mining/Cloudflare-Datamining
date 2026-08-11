@@ -35,7 +35,29 @@
 </figure>
 <p><em>Photo by</em> <a href="https://unsplash.com/@eyeforebony?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash" target="_blank" rel="noopener noreferrer"><em>Eye for Ebony</em></a> <em>on</em> <a href="https://unsplash.com/photos/photo-of-woman-wearing-purple-lipstick-and-black-crew-neck-shirt-vYpbBtkDhNE?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash" target="_blank" rel="noopener noreferrer"><em>Unsplash</em></a></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">https://example.com/cdn-cgi/image/fit=crop,width=500,height=500,gravity=face,zoom=0.6/https://example.com/images/picture.jpg</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">https://example.com/cdn-cgi/image/fit=crop,width=500,height=500,gravity=face,zoom=0.6/https://example.com/images/picture.jpg</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Meet the Media team over Discord</h3>
 <p>As we’re working to build the next set of media tools, we’d love to hear what you’re building for your users. Come <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">say hi to us on Discord</a>. You can also learn more by visiting our developer documentation for <a href="https://developers.cloudflare.com/calls" target="_blank" rel="noopener noreferrer">Calls</a>, <a href="https://developers.cloudflare.com/stream" target="_blank" rel="noopener noreferrer">Stream</a>, and <a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer">Images</a>.</p>

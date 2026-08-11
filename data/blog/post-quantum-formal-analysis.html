@@ -23,8 +23,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">rule</span><span class="sk-032f62-99ffe4"> Register_pk:</span></span>
 <span class="line"><span class="sk-24292e-fff">  [ Fr(</span><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">ltkA) ]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">--[</span><span class="sk-032f62-99ffe4"> GenLtk</span><span class="sk-24292e-fff">($A, </span><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">ltkA)</span><span class="sk-032f62-99ffe4">]</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">  [ </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Ltk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">ltkA), </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Pk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> pk(</span><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">ltkA)), Out(pk(</span><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">ltkA)) ]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  [ </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Ltk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">ltkA), </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Pk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> pk(</span><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">ltkA)), Out(pk(</span><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">ltkA)) ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This rule is used to represent that a protocol participant has acquired a new public/private key pair. The rule has three parts:</p>
 <ul>
 	<li>The first part lists the preconditions. In this case, there is only one: we take a <code>Fr</code>esh value called <code>~ltkA</code>, the “long-term key of A”. This precondition is always met, because Tamarin always allows us to generate fresh values.</li>
@@ -105,7 +127,11 @@
 <span class="line"><span class="sk-24292e-fff">  [</span></span>
 <span class="line"><span class="sk-24292e-fff">    State(C3</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> tid</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> $C</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> $S</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> ClientState),</span></span>
 <span class="line"><span class="sk-24292e-fff">    Out(senc{</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">'encaps'</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> ciphertext</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">}hs_keyc)</span></span>
-<span class="line"><span class="sk-24292e-fff">  ]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This rule represents the client getting the server’s certificate and encapsulating a fresh key to it. It then sends the encapsulated key back to the server.</p>
 <p>Note that the <code>let … in</code> part of the rule is used to assign expressions to variables. The real meat of the rule starts with the preconditions. As we can see, in this rule there are four preconditions that Tamarin needs to already have in its bag for this rule to be triggered:</p>
@@ -130,7 +156,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">lemma</span><span class="sk-032f62-99ffe4"> exists_C2d:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    exists-trace</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    "Ex tid #j. C2d(tid)@#j"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    "Ex tid #j. C2d(tid)@#j"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This was the first lemma that we asked Tamarin to prove. Because we’ve marked this lemma <code>exists-trace</code>, it does not need to hold in all traces, all runs of the protocol. It just needs one. This lemma asks if there exists a trace ( <code>exists-trace</code>), where there exists ( <code>Ex</code> ) a variable <code>tid</code> and a time <code>#j</code> (times are marked with <code>#</code>) at which action <code>C2d(tid)</code> is recorded. What this captures is that Tamarin could find a branch of the tree where the rule described above was triggered. Thus, we know that our model can be executed, at least as far as <code>C2d</code>.</p>
 <h3>Modeling the adversary</h3>
@@ -143,13 +173,21 @@
 <span class="line"><span class="sk-24292e-fff">  [ </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Ltk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">ltkA), </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    !</span><span class="sk-24292e-fff">Pk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> kempk($k</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">ltkA)), </span></span>
 <span class="line"><span class="sk-24292e-fff">    Out(kempk($k</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">ltkA))</span></span>
-<span class="line"><span class="sk-24292e-fff">  ]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This rule is very similar to the one we saw at the beginning of this blog post, but we’ve tweaked it to generate KEM public keys. It goes as follows: it generates a fresh value, and registers it as the actor <code>$A</code>’s long-term private key symbol <code>!Ltk</code> and <code>$A</code>’s public key symbol <code>!Pk</code> that we use to model our certificate infrastructure. It also sends ( <code>Out</code> ) the public key to the network such that the adversary has access to it.</p>
 <p>The adversary can not deconstruct symbols like <code>Ltk</code> without rules to do so. Thus, we provide the adversary with a special <code>Reveal</code> query, that takes the <code>!Ltk</code> fact and reveals the private key:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">rule</span><span class="sk-032f62-99ffe4"> Reveal_Ltk:</span></span>
-<span class="line"><span class="sk-24292e-fff">   [ </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Ltk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">ltkA) ] </span><span class="sk-6f42c1-ffc799">--[</span><span class="sk-032f62-99ffe4"> RevLtk</span><span class="sk-24292e-fff">($A) </span><span class="sk-032f62-99ffe4">]</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> [ </span><span class="sk-032f62-99ffe4">Out</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">~ltkA</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   [ </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Ltk($A</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">ltkA) ] </span><span class="sk-6f42c1-ffc799">--[</span><span class="sk-032f62-99ffe4"> RevLtk</span><span class="sk-24292e-fff">($A) </span><span class="sk-032f62-99ffe4">]</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> [ </span><span class="sk-032f62-99ffe4">Out</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">~ltkA</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Executing this rule registers the <code>RevLtk($A)</code> action, so that we know that <code>$A</code>’s certificate can no longer be trusted after <code>RevLtk</code> occurred.</p>
 <h3>Writing security lemmas</h3>
@@ -161,7 +199,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      not (Ex #r. RevLtk(peer)@#r &amp; #r &lt; #i) &amp;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      not (Ex tid3 esk #r. RevEKemSk(tid3, peer, esk)@#r &amp; #r &lt; #i) &amp;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      not (Ex tid4 esk #r. RevEKemSk(tid4, actor, esk)@#r &amp; #r &lt; #i)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    ==&gt; not Ex #j. K(kr)@#j"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    ==&gt; not Ex #j. K(kr)@#j"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This lemma states that if the actor has completed the protocol and the attacker hasn’t used one of their special actions, then the attacker doesn’t know the actor’s read key, <code>kr</code>. We’ll go through the details of the lemma in a moment, but first let’s address some questions you might have about this proof statement.</p>
 <p>The first question that might arise is: “If we are only secure in the case the attacker doesn’t use their special abilities then why bother modeling those abilities?” The answer has two parts:</p>

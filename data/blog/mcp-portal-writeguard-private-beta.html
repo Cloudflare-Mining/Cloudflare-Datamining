@@ -1,0 +1,160 @@
+<p>Let’s imagine the Case of the Endlessly Closing Tickets.&nbsp;</p>
+<p>The bug tickets start closing at noon. Nobody thinks much of it. Joe moved a few tickets to Done, and Joe is having a productive afternoon. Then the pace picks up. By 4 p.m., thousands of tickets have been closed, all by Joe.</p>
+<p>Joe is a good engineer. Joe is not a thousand-tickets-an-hour engineer.</p>
+<p>We learn that he has several background agents running across three concurrent sessions. It takes half an hour to find the one at fault: a cleanup task with a prompt that was a little too broad.</p>
+<p>Once we’ve stopped the agent, we need to repair the state of the ticketing system. Joe has also been legitimately closing tickets by hand that afternoon. The system records all those changes under Joe regardless of whether it was him or his agent, and the network logs do not distinguish one agent session from another. From the outside, the actions look identical.</p>
+<p>The example above is relatively low-stakes, but we can all imagine, or <a href="https://www.theguardian.com/technology/2026/apr/29/claude-ai-deletes-firm-database" target="_blank" rel="noopener noreferrer"><u>read about</u></a>, much more destructive cases. An agent with access to contract software could amend an agreement. An agent wreaking havoc in a support queue could send hundreds of replies to customers. An agent with database access could drop entire tables.</p>
+<p>At Cloudflare, we knew we could not depend on every employee to configure every agent perfectly or watch every tool call. So before expanding write access across our own internal MCP servers, we built WriteGuard. We are now bringing those controls to <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP server portals</u></a> through a private beta.</p>
+<h2>MCP Fundamentals</h2>
+<p>Before explaining WriteGuard, let’s review what an MCP server is and how it works with AI agents.</p>
+<p>MCP stands for <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol</u></a>, a popular standard for connecting AI applications to external tools and data sources. MCP servers provide tools that connected clients can use. Each tool has a name, a description, an input schema, and a handler that performs the work.</p>
+<p>When an agent selects a tool, the MCP client sends the tool call to the server, which then interacts with the downstream application.&nbsp;</p>
+<h2>MCPs at Cloudflare</h2>
+<p>MCP is a critical piece of the infrastructure powering Cloudflare's internal agents. Those agents use MCP through local clients such as<a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"> <u>OpenCode</u></a> and <a href="http://blog.cloudflare.com/cloudflare-os" target="_blank" rel="noopener noreferrer"><u>Cloudflare OS</u></a>, as well as through long-running agentic services. We run the servers behind <a href="https://developers.cloudflare.com/cloudflare-one/access-controls" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> and connect to them through a single internal<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"> <u>MCP server portal</u></a>.</p>
+<p>When we described<a href="https://blog.cloudflare.com/internal-ai-engineering-stack" target="_blank" rel="noopener noreferrer"> <u>our internal AI engineering stack</u></a> in April, our portal connected 13 MCP servers. Today, it connects 27, with teams shipping more servers every month. They all began as read-only servers, allowing teams to search Jira, GitLab, our wiki, and operational systems without changing them.</p>
+<p>Read-only was a good starting point. As models improved and teams gained experience with AI, people across engineering, product, design, sales, and customer success began asking for tools that could take action.</p>
+<p>To avoid our own case of the endlessly closing tickets, we wanted centralized control over the write actions agents could perform, agent labels to appear in downstream applications, and an audit trail that made agent activity easy to investigate. We could not count on client-side controls such as skills or elicitation prompts. Their behavior varies by harness, and users can disable them.</p>
+<p>So we built WriteGuard.</p>
+<h2>Introducing WriteGuard</h2>
+<p>WriteGuard is a shared policy, attribution, and auditing layer.</p>
+<p>It uses each tool’s configuration and the request context to determine what happens. WriteGuard can pass a call through unchanged, enrich supported writes with agent attribution and produce a scrubbed audit event, or block an action before its handler runs.</p>
+<p>The diagram below shows where WriteGuard sits in our current internal MCP architecture.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////////+ffz8vLt9PX0+Pn89vf67vDv////////9fXz7e/u8PT19fn+9Pj87vHx////////8fT06O7v7PP38/r/9Pr+7fLz////////8PT25+7x6/P59Pz/9fz/7/T2////////8vb56fD07/b89/7/+P7/8ff4////////9vr97/T39fr+/P///P//9fn5////////+/z/9ff6+v3/////////9/r6/////////P7/9/n7/P7/////////+Pv7" alt="" width="715" height="1204" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=715&amp;h=1204&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=640&amp;h=1078&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=715&amp;h=1204&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=750&amp;h=1263&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=828&amp;h=1394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=1080&amp;h=1819&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=1280&amp;h=2155&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=1430&amp;h=2408&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="unnamed.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9329Z2GK7CVX8PNC84Z1RA.png&amp;w=1216&amp;h=2048&amp;f=webp" data-lightbox-width="1216" data-lightbox-height="2048" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1204" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>WriteGuard combines tool policy with human and agent identity, downstream attribution, and centralized auditing. It gives us one place to control agent actions and preserve the context needed to understand them.</p>
+<h2>Beyond callable tools to governable actions</h2>
+<p>WriteGuard lets us define policy alongside each tool without changing the underlying MCP server. Every tool gets a risk tier, an enabled or disabled state, and a labeling configuration. Risk tiers determine whether the action is logged and whether the tool call is permitted, and the tiers allow for querying the audit log by risk. We support labeling so that we can insert agent attribution labeling and use the best text format for the downstream application, without any code changes needed in the MCP server itself.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Risk Tier</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Examples</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Read Only</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Search issues; read a Merge Request (MR); view pipeline status<br><code>get_merge_request</code></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Minimal Impact</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Add a reaction; mark a notification as read; subscribe to an issue</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Contained Write</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Add a comment; create an MR; update an issue field<br><code>create_mr_note</code></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Critical</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Merge an MR; trigger a production deployment; bulk-delete records<br><code>merge_mr</code></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> sendEmailTool</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  tool: EmailMCP.sendEmailTool,</span></span>
+<span class="line"><span class="sk-24292e-fff">  writeGuard: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    riskLevel: RiskLevel.</span><span class="sk-005cc5-fff">CONTAINED_WRITE</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    enabled: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    labeling: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      field: </span><span class="sk-032f62-99ffe4">"body"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      supportedFormats: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        LabelFormat.</span><span class="sk-005cc5-fff">PLAIN_TEXT</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        LabelFormat.</span><span class="sk-005cc5-fff">HTML</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      ],</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>Today, we define this configuration in TypeScript in our internal MCP monorepo. As private beta access rolls out in the coming months, server owners will be able to configure the same policies through Cloudflare MCP server portals. Every MCP server will have a baseline Access policy along with WriteGuard controls for individual tools.</p>
+<h2>Keep the person, add the agent</h2>
+<p>Our internal MCP servers use <a href="https://blog.cloudflare.com/managed-oauth-for-access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access and OAuth</u></a> to identify the user. Agents using those servers therefore operate with that employee’s permissions. If Joe cannot close a particular issue, Joe’s agent cannot close it either.</p>
+<p>We kept that model instead of introducing standalone agent accounts. Agent accounts would create a second set of permissions to manage and make the connection to the person responsible for the agent less clear. The tradeoff with that decision, however, is that downstream applications see Joe’s credentials but nothing identifying the agent behind the action.</p>
+<p>WriteGuard adds MCP client and session context to the human identity, identifying each write as an agent session acting on behalf of a particular person. Notably, that attribution is extremely useful even when nothing goes wrong. It helps humans and other agents interpret changes and decide how to respond.</p>
+<h2>Make machine-speed activity queryable</h2>
+<p>Visible labels explain individual actions and provide helpful context in the downstream application, but they don’t provide a fleet-wide view. Because an agent can repeat an action much faster than a person, we also needed central auditing across every MCP server.</p>
+<p>WriteGuard classifies each invocation as successful, failed, or blocked, then asynchronously sends a scrubbed event to an internal audit Worker. The event omits values for keys considered secret or sensitive. It includes the server, tool, risk tier, outcome, user, client, and duration.</p>
+<p>This makes agentic activity queryable across all of our MCP-enabled systems.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//z//Pb48urn7OPe7+Xk9Ort8+vt6+bm//7//vf38+nk7d/Y8eLd9ujo9Orq7OXj//////n49uji8N7U8+HZ+Ojl9uro7uXi//////38+e3m9OLY9+Xc/O3o+e7r8ejl/////////fXw+O3k++/o//Xx/fXz9e/t///////////8/fr1//z4///+//79+Pj2////////////////////////////+/7+/////////////////////////////P//" alt="" width="715" height="570" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=715&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=640&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=715&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=750&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=828&amp;h=660&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=1080&amp;h=861&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=1280&amp;h=1020&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=1430&amp;h=1140&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Our internal WriteGuard dashboard, with example data." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0NRRE7DXB99C8W5YZ1N.jpg&amp;w=1152&amp;h=919&amp;f=webp" data-lightbox-width="1152" data-lightbox-height="919" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="570" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">Our internal WriteGuard dashboard, with example data.</figcaption>
+</figure>
+<p>The dashboard complements the request logs provided by <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>MCP server portals</u></a>. Portal logs show tool invocations, while WriteGuard adds semantic tool classifications, agent context, and outcomes from the backing servers.</p>
+<p>We made audit logging asynchronous, so it adds no latency to the response the agent is waiting for.</p>
+<h2>WriteGuard in Action: GitLab</h2>
+<p>Earlier in this post, we mentioned three tools from our GitLab MCP server: get_merge_request, create_mr_note, and merge_mr. Let’s follow each one through WriteGuard.</p>
+<h3>Reading a merge request</h3>
+<p>Suppose an engineer asks an agent to summarize a proposed code change and the agent calls the <code>get_merge_request</code> tool. WriteGuard classifies the tool as <code>READ_ONLY</code> and WriteGuard allows the call to pass through unchanged.</p>
+<h3>Adding a note to a merge request</h3>
+<p>Now the engineer asks the agent to leave comments on a merge request (MR), and the agent calls the <code>create_mr_note</code> tool.</p>
+<p>The tool is classified as CONTAINED_WRITE. WriteGuard adds agent attribution to the configured note field using a format GitLab supports, then invokes the tool handler. It also asynchronously records a scrubbed audit event containing the user, tool, outcome, and agent identity context.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA8vPz8PDw7Ovr7Ovr8fDw9PT08PDw5+fn9PX18fHx6urq6unp8vHx9/f38/T06erq+Pn58/T06+rq6+np9PPz/Pz8+fn57e7u/v7++Pj47+/v7+7u+fj4////////8vT0//////7+9/f39/f3////////////+fr6////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="317" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=715&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=640&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=715&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=750&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=828&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=1080&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=1280&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=1430&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot example from the GitLab create_mr_note tool." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0Z8WCP1DWTHRKC9QHYJ.png&amp;w=1920&amp;h=850&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="850" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="317" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">Screenshot example from the GitLab create_mr_note tool.</figcaption>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vn69vb38fHx8PHw9fb2+Pn69PX16+zs/Pv7+fn59fX09PX0+Pn5+/v79/f37+/v/v39/fv7+fn4+fn5/Pz8/f39+vn68/Ly//7+/v39/Pv7/Pv7/v7+/////Pv79vX1/////v39+/v7+/v7/v7+/////Pz89vX1///+/fz8+Pn5+Pn5/P39/////Pz79PPz/v7++/v79fb29fb3+vz8/v//+/v78vLy/v7++vv79PX28/X2+fv7/v//+vv68fHx" alt="" width="715" height="881" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=715&amp;h=881&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=640&amp;h=789&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=715&amp;h=881&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=750&amp;h=924&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=828&amp;h=1020&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=1080&amp;h=1331&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=1280&amp;h=1577&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=1430&amp;h=1762&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Audit log example from the GitLab create_mr_note tool." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ0VPZ860CSARB07DCVP2.png&amp;w=1190&amp;h=1466&amp;f=webp" data-lightbox-width="1190" data-lightbox-height="1466" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="881" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">Audit log example from the GitLab create_mr_note tool.</figcaption>
+</figure>
+<h3>Merging the code</h3>
+<p>Suppose an engineer asks an agent to help review a merge request. Trying to be helpful, the agent goes beyond the request and calls the merge_mr tool without being asked.</p>
+<p>Because merges at Cloudflare typically trigger deployment pipelines, we require a human in the loop. We therefore classify the merge_mr tool as CRITICAL risk tier and configure the tool disabled in WriteGuard.</p>
+<p>If called, WriteGuard will block the request before its handler runs and record the attempt.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+vj49/b18PDv6Ors4+ft4ubv5Obs5+bn/Pz8+vn58/Pz6uvu4uXt3+Tt4+Xs6Ojp/////f399vb37Ozx4eXt3eLs4uXs6+rr////////+fj57+/z5Ofv3+Tu5Oft7ezt////////+vr68vL16ezy5urx6ezw8O/v///////++vr59PX28PL27/H28PH08fHx///+/v/8+fr49vf29ff59vj69fb38vLy///9/f77+Pr39vj29/n6+fr89/j58/Py" alt="" width="715" height="625" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=715&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=640&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=715&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=750&amp;h=656&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=828&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=1080&amp;h=944&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=1280&amp;h=1119&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=1430&amp;h=1250&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Blocked merge_mr calls in the WriteGuard audit dashboard." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7CJ17VV6MV8G86SYGD0S1D.jpg&amp;w=1099&amp;h=960&amp;f=webp" data-lightbox-width="1099" data-lightbox-height="960" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="625" class="pt-portable-image-media"></div>
+	<figcaption data-astro-cid-7nvefuv6="">Blocked merge_mr calls in the WriteGuard audit dashboard.</figcaption>
+</figure>
+<h2>Beyond the single server example</h2>
+<p>These tools use the same server, identity flow, and downstream API, but WriteGuard handles each one differently before its code runs.</p>
+<p>For GitLab alone, we could have built these controls directly into the server. But we needed the same capabilities for Jira, our internal wiki, Google Workspace, and every new MCP server we added. Reimplementing them in each server would take more work and produce inconsistent behavior.</p>
+<p>Instead, we built WriteGuard as a shared layer that needs only per-tool configuration and works across every MCP server connected through the portal.</p>
+<h2>From internal rollout to private beta</h2>
+<p>We built WriteGuard for Cloudflare's own MCP servers because we needed to move beyond read-only tools without losing control of the writes that followed. The <a href="https://www.cloudflare.com/resource/writeguard-beta-landing-page" target="_blank" rel="noopener noreferrer"><u>private beta</u></a> brings that architecture to MCP server portals, providing a way to classify write tools, block tools before execution, add agent attribution, and inspect write activity across connected servers.</p>
+<p>The beta will start small and expand over time, leading up to general availability. We want to validate how the risk model maps to customer tools, which downstream applications need attribution formats, and what audit delivery guarantees customers require before making WriteGuard broadly available.</p>
+<p>If your organization is adding write tools to MCP servers and wants to test these controls with us, <a href="https://www.cloudflare.com/resource/writeguard-beta-landing-page" target="_blank" rel="noopener noreferrer"><u>sign up for the WriteGuard private beta</u></a>.</p>

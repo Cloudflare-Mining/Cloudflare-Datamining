@@ -9,8 +9,30 @@
 <p>在本教程中，我将以<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank" rel="noopener noreferrer">逆波兰式</a>为例。它非常有趣，因为它非常简单，您可能在学校时就已经熟悉了它，但是要在编译时静态地实现它，您就需要使用递归宏方法。</p>
 <p>逆波兰式（也称后缀式）使用堆栈进行所有操作，从而将任意操作数压入堆栈，而任何_[二进制]_操作都从堆栈中获取两个操作数，计算结果并将其放回堆栈。因此如下所示：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>转换为：</p>
 <ol>
 	<li>将2放入堆栈。</li>
@@ -27,7 +49,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // TODO</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>让我们先从将数字压入堆栈开始。</p>
 <p>宏当前不允许匹配文字，并且expr对我们不起作用，因为它可能会意外地匹配序列，例如2 + 3 ......而不是仅取单个数字，因此我们将求助于tt——一种仅匹配一个标签树的通用令牌匹配器（无论它是一个原始令牌，例如literal/identifier/lifetime/等等；或一个()/[]/{}——带括号的表达式包含着更多令牌）：</p>
@@ -36,7 +62,11 @@
 <span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // TODO</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>现在，我们需要一个用于堆栈的变量。</p>
 <p>宏不能使用实变量，因为我们希望这个堆栈只在编译时存在。相反，这里的技巧是使用一个单独的令牌序列，它可以被传递，就像一个累加器一样。</p>
@@ -46,7 +76,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // TODO</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>现在，令牌序列并不是一个真正的变量——你不能就地修改它，然后再做一些事情。相反，你可以通过必要的修改创建这个令牌序列的新副本，然后再次递归地调用相同的宏。</p>
 <p>如果您有函数语言背景，或者曾经使用过任何提供不可变数据的库，那么你可能已经熟悉这两种方法了——通过创建修改后的副本来修改数据和使用递归处理列表：</p>
@@ -55,7 +89,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ])</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>现在，很明显，只有一个数字的情况不太可能出现，并且这对我们来说也不太有趣，因此我们需要将该数字之后的其他任何内容匹配为零个或多个tt令牌序列，这些令牌可以传递给我们下一个调用的宏，用于进一步匹配和处理：</p>
 <div class="emdash-code">
@@ -63,7 +101,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>到这一步，我们仍然缺少运算符支持。我们如何匹配运算符？</p>
 <p>如果我们的RPN是一系列令牌，我们希望以完全相同的方式进行处理，则可以简单地使用像这样的列表$($token:tt)*。不幸的是，这并不能让我们遍历列表并根据每个令牌推送操作数或应用运算符。</p>
@@ -90,7 +132,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如前所述，运算符应用于堆栈上的最后两个数字，因此我们需要分别匹配它们，“计算”结果（构造一个正则中缀表达式）并将其放回：</p>
 <div class="emdash-code">
@@ -114,7 +160,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我不太喜欢这种明显的重复，但是，就像文字一样，没有特殊的令牌类型可以匹配运算符。</p>
 <p>但是，我们可以做的是添加一个负责计算的助手，并将任何显式的运算符分支委托给它。</p>
@@ -146,7 +196,11 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr),</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">num </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">stack)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">rest)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>现在，所有令牌都由相应的分支处理，我们只需要处理最后一种情况，当堆栈包含一个项目时，没有剩余的令牌：</p>
 <div class="emdash-code">
@@ -156,12 +210,20 @@
 <span class="line"><span class="sk-24292e-fff">  ([ </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">result</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">expr ]) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    $</span><span class="sk-24292e-fff">result</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>此时，如果使用空堆栈和RPN表达式调用此宏，则该宏将已产生正确的结果：</p>
 <p><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable" target="_blank" rel="noopener noreferrer">Playground</a></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">([] </span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">([] </span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>然而，我们的堆栈是一个实现细节，我们真的不希望每个消费者传递一个空的堆栈，所以让我们在最后添加另一个通用分支作为入口点，并自动添加[]：</p>
 <p><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable" target="_blank" rel="noopener noreferrer">Playground</a></p>
@@ -174,17 +236,29 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们的宏甚至可以用于更复杂的表达式，例如<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation#Example" target="_blank" rel="noopener noreferrer">Wikipedia页面上有关RPN的</a>表达式！</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 5</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">)); </span><span class="sk-6a737d-8b8b8b94">// 5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>错误处理</h2>
 <p>现在，对于正确的RPN表达式，一切似乎都可以正常运行，但是对于要投入生产的宏，我们需要确保它也可以处理无效输入，并带有合理的错误消息。</p>
 <p>首先，让我们尝试在中间插入另一个数字，看看会发生什么：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>输出：</p>
 <div class="emdash-code">
@@ -195,7 +269,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    ^^^^^^^^^^^^^^^^^</span><span class="sk-032f62-99ffe4"> `[{integer}; 2]`</span><span class="sk-6f42c1-ffc799"> cannot</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> formatted</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> default</span><span class="sk-032f62-99ffe4"> formatter</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> using</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4">?`</span><span class="sk-6f42c1-ffc799"> instead</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> using</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-032f62-99ffe4"> string</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> help:</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> trait</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">std::fmt::Display</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> is</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> implemented</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> `[{integer}; 2]`</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">std::fmt::Display::fmt</span><span class="sk-032f62-99ffe4">`</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">std::fmt::Display::fmt</span><span class="sk-032f62-99ffe4">`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>好吧，因为它没有提供与表达式中的实际错误相关的任何信息，因此它看起来毫无用处。</p>
 <p>为了弄清发生了什么，我们需要调试宏。为此，我们将使用<a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html" target="_blank" rel="noopener noreferrer">trace_macros</a>特性（并且，与其他可选的编译器特性一样，您需要一个不稳定测试版Rust）。我们不想回溯println!调用，因此我们将我们的RPN计算分离出一个变量：</p>
@@ -210,7 +288,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> e </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  trace_macros!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">false</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, e);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在输出中，我们现在将逐步查看宏的递归计算方式：</p>
 <div class="emdash-code">
@@ -243,12 +325,20 @@
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> expanding</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-032f62-99ffe4"> { [  ] [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] }`</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn</span><span class="sk-032f62-99ffe4"> ! ( [ [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] ] )`</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> expanding</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-032f62-99ffe4"> { [ [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] ] }`</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `[(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-99ffe4"> 4, 2]`</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `[(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-99ffe4"> 4, 2]`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果我们仔细查看回溯，就会发现问题出在以下步骤：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> expanding</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-032f62-99ffe4"> { [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] }`</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn</span><span class="sk-032f62-99ffe4"> ! ( [  ] [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] )`</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> note:</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rpn</span><span class="sk-032f62-99ffe4"> ! ( [  ] [ </span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> + </span><span class="sk-005cc5-ffc799">7</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> , </span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> ] )`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>由于[ 3 + 7 * 4 , 2 ] 无法匹配([$result:expr]) =&gt;……分支来作为最终表达式，因此它最终反而被我们的($($tokens:tt)*) =&gt; ......分支全捕获，并以空堆栈[]作为前缀，然后用通用的$num:tt匹配原始的[ 3 + 7 * 4 , 2 ]，并作为单个最终值压入堆栈。</p>
 <p>为了防止这种情况发生，让我们在最后两个分支之间插入另一个分支，它将匹配任何堆栈。</p>
@@ -273,7 +363,11 @@
 <span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">tokens</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">tt)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    rpn!</span><span class="sk-24292e-fff">([] </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">tokens)</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>错误信息现在意义更明确了，并且至少包含一些关于当前状态评估的详细信息：</p>
 <div class="emdash-code">
@@ -284,12 +378,20 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">40</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     println!(</span><span class="sk-6f42c1-ffc799">"{}"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -----------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -----------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>但如果，相反地，我们错过了某个数字呢？</p>
 <p><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable" target="_blank" rel="noopener noreferrer">Playground</a></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{}"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>不幸的是，前面的做法不太奏效了：</p>
 <div class="emdash-code">
@@ -300,7 +402,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">              ^</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">40</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     println!(</span><span class="sk-6f42c1-ffc799">"{}"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果您尝试使用trace_macros，即使出于某种原因它不会在这里扩大堆栈，但幸运的是，正在发生的事情是相对比较清楚的——@op对于什么应该匹配（预计至少有两个值在堆栈上）有着非常具体的条件，并且，当它匹配失败时，@会与同一个极度“贪婪”的$num:tt进行匹配，以及被压入堆栈。</p>
 <p>为避免这种情况，再一次，我们将添加另一个分支以匹配任何@op尚未匹配的内容，并生成编译错误提示：</p>
@@ -321,7 +427,11 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>让我们再试一次：</p>
 <div class="emdash-code">
@@ -332,7 +442,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">46</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     println!(</span><span class="sk-6f42c1-ffc799">"{}"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> rpn!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-6f42c1-ffc799">                    -------------</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> macro</span><span class="sk-032f62-99ffe4"> invocation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>好多了！现在我们的宏可以在编译时对任意RPN表达式求值，并且可以正常处理最常见的错误，所以我们今天就到此为止，并声明它已经可以投入生产了 :）</p>
 <p>我们可以添加更多的小改进，但是我想把它们留在本演示教程之外再讲。</p>

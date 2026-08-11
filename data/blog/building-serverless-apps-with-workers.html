@@ -33,8 +33,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> serverless</span><span class="sk-005cc5-99ffe4"> -g</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">serverless</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare-workers</span><span class="sk-005cc5-99ffe4"> --path</span><span class="sk-032f62-99ffe4"> myproject</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> myproject</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>If you are an enterprise client, you want to use the cloudflare-workers-enterprise template as it will set up more than one worker (but don’t worry, you can add more to any template). Also, I’ll touch on this later, but if you want to write your workers in Rust, use the cloudflare-workers-rust template.</p>
 <p>You should now have a project that feels familiar, ready to be added to your favorite source control. In the project should be a serverless.yml file like the following.</p>
 <div class="emdash-code">
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-22863a-ffc799">          method</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">GET</span></span>
 <span class="line"><span class="sk-22863a-ffc799">          headers</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">            foo</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">bar</span></span>
-<span class="line"><span class="sk-22863a-ffc799">            x-client-data</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">value</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">            x-client-data</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">value</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The service block simply contains the name of your service. This will be used in your Worker script names if you do not overwrite them.</p>
 <p>Under provider, name must be ‘cloudflare’ &nbsp;and you need to add your account and zone IDs. You can find them in the Cloudflare Dashboard.</p>
@@ -71,7 +97,11 @@
 <p><strong>events</strong>: Currently Workers only support http events. We call these routes. The example provided says that GET <a href="https://example.com/hello" target="_blank" rel="noopener noreferrer">https://example.com/hello/</a> will &nbsp;cause this worker to execute. The headers block is for testing invocations.</p>
 <p>At this point you can deploy your worker!</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">CLOUDFLARE_AUTH_EMAIL=you@yourdomain.com CLOUDFLARE_AUTH_KEY=XXXXXXXX serverless deploy</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">CLOUDFLARE_AUTH_EMAIL=you@yourdomain.com CLOUDFLARE_AUTH_KEY=XXXXXXXX serverless deploy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is very easy to deploy, but it doesn’t address our requirements. Luckily, there’s just a few simple modifications to make.</p>
 <h3>Maturing our YAML File</h3>
@@ -119,7 +149,11 @@
 <span class="line"><span class="sk-22863a-ffc799">          method</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">GET</span></span>
 <span class="line"><span class="sk-24292e-fff">      - </span><span class="sk-22863a-ffc799">http</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">          url</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"${self:custom.deployVars.SUBDOMAIN}.mydomain.com/alsohello*"</span></span>
-<span class="line"><span class="sk-22863a-ffc799">          method</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">GET</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">          method</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">GET</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can add a custom section where we can put custom variables to use later in the file.</p>
 <p><strong>defaultStage</strong>: We set this to development so that forgetting to pass a stage doesn’t trigger a production deploy. Combined with the <strong>stage</strong> option under provider we can set the stage for deployment.</p>
@@ -127,18 +161,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">env_var_value</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span></span>
 <span class="line"><span class="sk-22863a-ffc799">sentry_key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">XXXXX</span></span>
-<span class="line"><span class="sk-22863a-ffc799">SUBDOMAIN</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dev</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">SUBDOMAIN</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dev</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>kv</strong>: Here we are showing off a feature of YAML. If you assign a name to a block using the ‘&amp;’, you can use it later as a YAML variable. This is very handy in a multi script account. We could have named this variable anything, but we are naming it kv since it holds our Workers Key Value storage settings to be used in our function below.</p>
 <p>Inside of the <strong>kv</strong> block we're creating a namespace and binding it to a variable available in your Worker. It will ensure that the namespace “users” exists and is bound to MYUSERS.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">kv</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">kv</span></span>
 <span class="line"><span class="sk-24292e-fff">  - </span><span class="sk-22863a-ffc799">variable</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">MYUSERS</span></span>
-<span class="line"><span class="sk-22863a-ffc799">    namespace</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">users</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">    namespace</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">users</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>provider</strong>: The only new part of the provider block is <strong>stage</strong>.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">stage</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">${opt:stage, self:custom.defaultStage}</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">stage</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">${opt:stage, self:custom.defaultStage}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This line sets stage to either the command line option or custom.defaultStage if opt:stage is blank. When we deploy, we pass —stage=production to serverless deploy.</p>
 <p>Now under our function we have added webpack, resources, and environment.</p>
@@ -147,13 +193,21 @@
 <p><em>Side note: If you would like to include WASM bindings in your project, it can be done in a very similar way to how we included Workers KV. For more information on WASM, see the <a href="https://serverless.com/plugins/serverless-cloudflare-workers" target="_blank" rel="noopener noreferrer">documentation</a>.</em></p>
 <p><strong>environment</strong>: This is the butter for the bread that is managing configuration for different stages. Here we can specify values to bind to variables to use in worker scripts. Combined with YAML magic, we can store our values in the aforementioned config files so that we deploy different values in different stages. With environments, we can easily tie into our CI tool. The CI tool has our deploy.production.yml. We simply run the following command from within our CI.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sls</span><span class="sk-032f62-99ffe4"> deploy</span><span class="sk-005cc5-99ffe4"> --stage=production</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sls</span><span class="sk-032f62-99ffe4"> deploy</span><span class="sk-005cc5-99ffe4"> --stage=production</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, I added a route to demonstrate that a script can be executed on multiple routes.</p>
 <p>At this point I’ve covered (or hinted) at everything on our original list except Unit Testing. There are a few ways to do this.</p>
 <p>We have a previous blog post about <a href="https://blog.cloudflare.com/unit-testing-worker-functions">Unit Testing</a> that covers using <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank" rel="noopener noreferrer">cloud worker</a>, a great tool built by <a href="https://www.dollarshaveclub.com" target="_blank" rel="noopener noreferrer">Dollar Shave Club</a>.</p>
 <p>My team opted to use the classic node frameworks mocha and sinon. Because we are using Typescript, we can build for node or build for v8. You can also make mocha work for non-typescript projects if you use an <a href="https://nodejs.org/api/esm.html" target="_blank" rel="noopener noreferrer">experimental feature that adds import/export support to node</a>.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">--experimental-modules</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">--experimental-modules</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We’re excited about moving more and more of our services to Cloudflare Workers, and the Serverless Framework makes that easier to do. If you’d like to learn even more or get involved with the project, see us on <a href="https://github.com/cloudflare/serverless-cloudflare-workers" target="_blank" rel="noopener noreferrer">github.com</a>. For additional information on using Serverless Framework with Cloudflare Workers, check out our <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless" target="_blank" rel="noopener noreferrer">documentation on the Serverless Framework</a>.</p>

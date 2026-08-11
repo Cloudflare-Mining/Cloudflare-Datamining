@@ -9,8 +9,30 @@
 <p>When a user makes an API request to configure their firewall, a daemon running on every server detects the change and makes the corresponding changes to nftables. Because nftables configuration is stored within the namespace, each user’s firewall rules are isolated from the next. Every Cloudflare server routes traffic for all of our customers, so it’s important that the firewall only applies a customer’s rules to their own traffic.</p>
 <p>Using our existing technologies, we built IP lists using <a href="https://wiki.nftables.org/wiki-nftables/index.php/Sets" target="_blank" rel="noopener noreferrer">nftables sets</a>. In practice, this means that the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language" target="_blank" rel="noopener noreferrer">wirefilter</a> expression</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip.geoip.country</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> “US”</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip.geoip.country</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> “US”</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>is implemented as</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">table</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -21,7 +43,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	chain</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		ip</span><span class="sk-032f62-99ffe4"> saddr</span><span class="sk-032f62-99ffe4"> @geoip.US</span><span class="sk-032f62-99ffe4"> block</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This design for the feature made it very easy to extend our wirefilter syntax so that <a href="https://developers.cloudflare.com/magic-firewall/how-to/use-rules-list" target="_blank" rel="noopener noreferrer">users could write rules</a> using all the different IP lists we support.</p>
 <h3>Scaling to many customers</h3>
@@ -37,12 +63,20 @@
 <p>Can you guess when the nftables updates take place? &nbsp;Now the CPU usage wasn’t particularly problematic, as the service is already quite lean. However, those spikes also create competition with other services that heavily use netlink sockets. At one point, a monitoring alert for another service started firing for high CPU, and a fellow development team went through the incident process only to realize our system was the primary contributor to the problem. They made use of the <code>-terse</code> flag to prevent nft from wasting precious time rendering huge lists of IPs, but degrading another team’s service was a harsh way to learn that lesson.</p>
 <p>We put quite a bit of effort into working around this problem. We tried doing incremental updates of the sets, only adding or deleting the elements that had changed since the last update. It was helpful sometimes, but the complexity ended up not being worth the small savings. Through a lot of profiling, we found that splitting an update across multiple statements improved the situation some. This means we changed</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 192.0.2.0,</span><span class="sk-032f62-99ffe4"> 192.0.2.2,</span><span class="sk-032f62-99ffe4"> …,</span><span class="sk-032f62-99ffe4"> 198.51.100.0,</span><span class="sk-032f62-99ffe4"> 198.51.100.2,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 192.0.2.0,</span><span class="sk-032f62-99ffe4"> 192.0.2.2,</span><span class="sk-032f62-99ffe4"> …,</span><span class="sk-032f62-99ffe4"> 198.51.100.0,</span><span class="sk-032f62-99ffe4"> 198.51.100.2,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>to</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 192.0.2.0,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 198.51.100.0,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 198.51.100.0,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>just to squeeze out a second or two of reduced time that nft took to process our configuration. We were spending a fair amount of development cycles looking for optimizations, and we needed to find a way to turn the tides.</p>
 <h3>One more step with eBPF</h3>
@@ -80,7 +114,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	void</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">val</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> bpf_map_lookup_elem</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">ip_list,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">trie_key</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-032f62-99ffe4"> val</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> BPF_OK</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> BPF_DROP</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>nftables befriends eBPF</h3>
 <p>One of the limitations of our prior work incorporating eBPF into the firewall involves how the program is loaded into the nftables ruleset. Because the nft command-line program does not support calling a BPF program from a rule, we formatted the Netlink messages ourselves. While this allowed us to insert a rule that executes an eBPF program, it came at the cost of losing out on <a href="https://wiki.nftables.org/wiki-nftables/index.php/Atomic_rule_replacement" target="_blank" rel="noopener noreferrer">atomic rule replacements</a>.</p>
@@ -100,7 +138,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       nftnl_expr_set_u8(nle,</span><span class="sk-032f62-99ffe4"> NFTNL_EXPR_MT_REV,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       nftnl_expr_set(nle,</span><span class="sk-032f62-99ffe4"> NFTNL_EXPR_MT_INFO,</span><span class="sk-032f62-99ffe4"> expr</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">bpf.info,</span><span class="sk-032f62-99ffe4"> sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> xt_bpf_info_v1</span><span class="sk-24292e-fff">));</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       nft_rule_add_expr(ctx,</span><span class="sk-032f62-99ffe4"> nle,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">expr-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">location</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the patch finally built, it became possible for us to write configuration like this where we can provide a path to any pinned eBPF program.</p>
 <div class="emdash-code">
@@ -110,7 +152,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    bpf</span><span class="sk-032f62-99ffe4"> pinned</span><span class="sk-032f62-99ffe4"> "/sys/fs/bpf/filter"</span><span class="sk-032f62-99ffe4"> drop</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">EOF</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And now we can mix native nftables matches with eBPF programs without giving up the atomic nature of nft commands. This unlocks the opportunity for us to build even more advanced packet inspection and protocol detection in eBPF.</p>
 <h3>Results</h3>

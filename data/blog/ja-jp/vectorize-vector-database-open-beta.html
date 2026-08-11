@@ -107,8 +107,30 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>実際のアプリケーションでは、最も類似度の高い商品を基に商品の推薦URLを素早く返し、スコア順にソート（最高値から最低値）し、表示を増やす場合はtopK値を増やすことができます。各ベクトルに付随して格納されるメタデータには、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2オブジェクト</a>へのパス、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1データベース</a>の行のUUID、または<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>からのキーと値のペアを埋め込むこともできます。</p>
 <h3>Workers AI + Vectorize：Cloudflare上でのフルスタックベクトル検索</h3>
 <div class="emdash-code">
@@ -163,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>実際のアプリケーションでは、（データベースのシード処理のために）オリジナルのデータセットからベクトル埋め込みを生成し、ユーザーからのクエリーを_素早く_ベクトル埋め込みに変換できる機械学習モデルが必要です。モデルごとに表現する特徴が異なるため、これらは同じモデルである必要があります。</p>
 <p>以下はCloudflareでエンドツーエンドのベクトル検索パイプライン全体を構築するコンパクトな例です：</p>
@@ -232,7 +258,11 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この例は単純「すぎる」ように見えるかもしれませんが、本番アプリケーションでは、ベクトルを1回（または<a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank" rel="noopener noreferrer">Cron Triggers</a>を介して定期的に）挿入する、この3つの例文を、R2、D1データベース、または他のストレージプロバイダに保存された実際のデータに置き換えるといった2つの変更だけで完了します。</p>
 <p>実際、これは私たちがCloudflare Workerに関する質問に答えるAIアシスタント「<a href="https://developers.cloudflare.com/workers/ai" target="_blank" rel="noopener noreferrer">Cursor</a>」の実行方法と非常によく似ています（私たちはCursorをWorkers AIとVectorize上で実行するように移行しました）。組み込みのテキスト埋め込みモデルを使用して開発者向けドキュメントからテキスト埋め込みを生成し、Vectorizeインデックスに挿入し、同じモデルを介してユーザーからのクエリーをその場で変換します。</p>
@@ -244,7 +274,11 @@
 <h2>AIのコストを予測可能にする</h2>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Vectorize has ready-to-go presets that set the dimensions and distance metric for popular embeddings models</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>AIとMLには非常に大きな期待が寄せられている一方で、実験にコストがかかりすぎる、大規模な予測が困難であると言う大きな懸念があります。</p>
 <p>私たちはVectorizeのベクトルデータベースに、よりシンプルな価格モデルを採用したいと考えました。職場で概念実証のアイデアをお持ちですか？当社の設定する無料利用枠に収まります。パフォーマンスと精度を最適化するために埋め込みの次元をスケールアップしたいですか？予約枠を破綻させることはありません。</p>

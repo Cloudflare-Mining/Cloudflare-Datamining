@@ -21,8 +21,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "sessionId"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"565e05fb-4d2a-402b-869b-5b65b1381db7"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">      "startTime"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1711621703808</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>分析和日志</h3>
 <p>可观察性是 Cloudflare 产品的重要组成部分。您可以在仪表板中的账户 Worker &amp; Pages 部分找到Browser Rendering 使用情况的详细分析和日志。</p>
 <p>Browser Rendering 功能现已向所有已付费的 Workers 计划客户开放。 在此期间，每个账户每分钟<a href="https://developers.cloudflare.com/browser-rendering/platform/limits" target="_blank" rel="noopener noreferrer">仅限</a>免费运行两个新浏览器和两个并发浏览器。请查看我们的<a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer">开发人员页面</a>，以便开始使用。</p>

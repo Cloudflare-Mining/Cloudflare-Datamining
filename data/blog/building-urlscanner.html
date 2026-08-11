@@ -18,8 +18,30 @@
 <span class="line"><span>--header "Authorization: Bearer &lt;API_TOKEN&gt;" \</span></span>
 <span class="line"><span>	--data '{</span></span>
 <span class="line"><span>		"url": "https://www.cloudflare.com",</span></span>
-<span class="line"><span>	}'</span></span></code></pre>
+<span class="line"><span>	}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>New features include the option to set custom HTTP headers, like <a href="https://developer.mozilla.org/en-US/docs/Glossary/User_agent" target="_blank" rel="noopener noreferrer">User-Agent</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization" target="_blank" rel="noopener noreferrer">Authorization</a>, request multiple target device screenshots, like mobile and desktop, as well as set the visibility level to “unlisted”. This essentially marks the scan as private and was often requested by developers who wanted to keep their investigations confidential. Public scans, on the other hand, can be found by anyone through search and are useful to share results with the wider community. You can find more details in our <a href="https://developers.cloudflare.com/radar/investigate/url-scanner" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
 <h3>Exploring the scan results</h3>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -90,7 +112,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">		// Keep durable object alive</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.state.storage.</span><span class="sk-6f42c1-ffc799">setAlarm</span><span class="sk-24292e-fff">(Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1000</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Launching a browser (Step 6) and maintaining a connection to it is abstracted away from us thanks to the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a>. This API is responsible for all the infrastructure required to maintain a fleet of Chrome browsers, and led to a much quicker development and release of the URL Scanner. It also allowed us to use a well-known library, <a href="https://pptr.dev" target="_blank" rel="noopener noreferrer">Puppeteer</a>, to communicate with Google Chrome via the <a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer">DevTools</a> protocol.</p>
 <p>The initial report is made up of the network log of all requests, captured in <a href="https://en.wikipedia.org/wiki/HAR_(file_format)" target="_blank" rel="noopener noreferrer">HAR</a> (HTTP Archive) format. HAR files, essentially JSON files, provide a detailed record of all interactions between a web browser and a website. As an established standard in the industry, HAR files can be easily <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan-har" target="_blank" rel="noopener noreferrer">shared</a> and analyzed using specialized <a href="https://toolbox.googleapps.com/apps/har_analyzer" target="_blank" rel="noopener noreferrer">tools</a>. In addition to this network log, we augment our dataset with an array of other metadata, including base64-encoded screenshots which provide a snapshot of the website at the moment of the scan.</p>
@@ -148,7 +174,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  fetch: router.handle,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the example above, the ScanMetadataCreate endpoint will make sure to validate the incoming POST data to match the defined schema before calling the ‘async handle(request,env,context,data)’ function. This way you can be sure that if your code is called, the data argument will always be validated and formatted.</p>
 <p>You can learn more about the project on its <a href="https://github.com/cloudflare/itty-router-openapi" target="_blank" rel="noopener noreferrer">GitHub page</a>.</p>

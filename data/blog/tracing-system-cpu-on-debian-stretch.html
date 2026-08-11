@@ -26,8 +26,30 @@
 <span class="line"><span class="sk-24292e-fff">[ 4909.392659] oom_reaper: reaped process 26861 (</span><span class="sk-6f42c1-ffc799">logfwdr</span><span class="sk-24292e-fff">), now anon-rss:8kB, file-rss:0kB, shmem-rss:0kB</span></span>
 <span class="line"><span class="sk-24292e-fff">[ 4923.462841] INFO: rcu_sched self-detected stall on CPU</span></span>
 <span class="line"><span class="sk-24292e-fff">[ 4923.462843]  13-...: (</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-032f62-99ffe4"> GPs</span><span class="sk-032f62-99ffe4"> behind</span><span class="sk-24292e-fff">) idle</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">ea7/140000000000001/0</span><span class="sk-24292e-fff"> softirq</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1/2</span><span class="sk-24292e-fff"> fqs</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">4198</span></span>
-<span class="line"><span class="sk-24292e-fff">[ 4923.462845]   (t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">8403</span><span class="sk-6f42c1-ffc799"> jiffies</span><span class="sk-032f62-99ffe4"> g=</span><span class="sk-005cc5-ffc799">110722</span><span class="sk-032f62-99ffe4"> c=</span><span class="sk-005cc5-ffc799">110721</span><span class="sk-032f62-99ffe4"> q=</span><span class="sk-005cc5-ffc799">6440</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[ 4923.462845]   (t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">8403</span><span class="sk-6f42c1-ffc799"> jiffies</span><span class="sk-032f62-99ffe4"> g=</span><span class="sk-005cc5-ffc799">110722</span><span class="sk-032f62-99ffe4"> c=</span><span class="sk-005cc5-ffc799">110721</span><span class="sk-032f62-99ffe4"> q=</span><span class="sk-005cc5-ffc799">6440</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We've seen RCU stalls before, and our (suboptimal) solution was to reboot the machine.</p>
 <p>However, one can only handle so many reboots before the problem becomes severe enough to warrant a deep dive. During our deep dive, we noticed in <code>dmesg</code> that we had issues allocating memory, while trying to write errors:</p>
 <div class="emdash-code">
@@ -62,7 +84,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8110756b&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __seccomp_filter+0x1db/0x290</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8104fa5c&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __do_page_fault+0x22c/0x4c0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8104fd10&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> do_page_fault+0x20/0x70</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff819bea02&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> page_fault+0x22/0x30</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff819bea02&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> page_fault+0x22/0x30</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This suggested that we were logging too many errors, and the actual failure may be earlier in the process. Armed with this hypothesis, we looked at the very beginning of the error chain:</p>
 <div class="emdash-code">
@@ -72,11 +98,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811725e2&gt;] shrink_node+0xd2/0x2f0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811728ef&gt;] do_try_to_free_pages+0xef/0x310</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81172be5&gt;] try_to_free_pages+0xd5/0x180</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpath+0x31b/0xb80</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpath+0x31b/0xb80</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As much as <code>shrink_node</code> may scream "NUMA issues", you're looking primarily at:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> systemd-journald[13812]:</span><span class="sk-032f62-99ffe4"> Missed</span><span class="sk-005cc5-ffc799"> 17171</span><span class="sk-032f62-99ffe4"> kernel</span><span class="sk-032f62-99ffe4"> messages</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> systemd-journald[13812]:</span><span class="sk-032f62-99ffe4"> Missed</span><span class="sk-005cc5-ffc799"> 17171</span><span class="sk-032f62-99ffe4"> kernel</span><span class="sk-032f62-99ffe4"> messages</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In addition, we also found memory allocation issues:</p>
 <div class="emdash-code">
@@ -118,11 +152,19 @@
 <span class="line"><span class="sk-24292e-fff">[78972.620165]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff811e747a</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] __pollwait+0x9a/0xe0</span></span>
 <span class="line"><span class="sk-24292e-fff">[78972.620168]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff817c9ec9</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] datagram_poll+0x29/0x100</span></span>
 <span class="line"><span class="sk-24292e-fff">[78972.620170]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff817b9d48</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] sock_poll+0x48/0xa0</span></span>
-<span class="line"><span class="sk-24292e-fff">[78972.620172]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff811e7c35</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] do_select+0x335/0x7b0</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[78972.620172]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff811e7c35</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] do_select+0x335/0x7b0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This specific error message did seem fun:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[78991.546088] systemd-network: page allocation stalls </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> 287000ms, order:0, mode:0x24200ca(</span><span class="sk-6f42c1-ffc799">GFP_HIGHUSER_MOVABLE</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[78991.546088] systemd-network: page allocation stalls </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> 287000ms, order:0, mode:0x24200ca(</span><span class="sk-6f42c1-ffc799">GFP_HIGHUSER_MOVABLE</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You don't want your page allocations to stall for 5 minutes, especially when it's order zero allocation (smallest allocation of one 4 KiB page).</p>
 <p>Comparing to our control nodes, the only two possible explanations were: a kernel upgrade, and the switch from Debian Jessie to Debian Stretch. We suspected the former, since CPU usage implies a kernel issue. However, just to be safe, we rolled both the kernel back to 4.4.55, and downgraded the affected nodes back to Debian Jessie. This was a reasonable compromise, since we needed to minimize downtime on production nodes.</p>
@@ -189,7 +231,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        32</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 63</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-005cc5-ffc799"> 101</span><span class="sk-d73a49-a0a0a0">      |**********</span><span class="sk-d73a49-a0a0a0">                              |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        64</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 127</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-d73a49-a0a0a0">       |**</span><span class="sk-d73a49-a0a0a0">                                      |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       128</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 255</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 50</span><span class="sk-d73a49-a0a0a0">       |*****</span><span class="sk-d73a49-a0a0a0">                                   |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       256</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 511</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       256</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 511</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>Stretch</li>
@@ -212,7 +258,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      1024</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 2047</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 27</span><span class="sk-d73a49-a0a0a0">       |****</span><span class="sk-d73a49-a0a0a0">                                    |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      2048</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 4095</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 28</span><span class="sk-d73a49-a0a0a0">       |****</span><span class="sk-d73a49-a0a0a0">                                    |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      4096</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 8191</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 35</span><span class="sk-d73a49-a0a0a0">       |*****</span><span class="sk-d73a49-a0a0a0">                                   |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      8192</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 16383</span><span class="sk-032f62-99ffe4">      :</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">      8192</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 16383</span><span class="sk-032f62-99ffe4">      :</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the flamegraphs, you can see timers being set at the tip (<code>mod_timer</code> function), with these timers taking locks. On Stretch we installed 3x more timers, resulting in 10x the amount of contention:</p>
 <ul>
@@ -229,7 +279,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                               58263</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">00:33:38</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                               54626</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                               54626</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> lock_timer_base</span></span>
@@ -242,7 +296,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                         16261</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">00:32:38</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                         15806</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                         15806</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>Stretch</li>
@@ -258,7 +316,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                              155994</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">00:33:30</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                              160688</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                              160688</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> lock_timer_base</span></span>
@@ -271,7 +333,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                        196895</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">00:32:34</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                        140085</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                        140085</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Linux kernel includes debugging facilities for timers, which <a href="https://elixir.bootlin.com/linux/v4.9.43/source/kernel/time/timer.c#L1010" target="_blank" rel="noopener noreferrer">call</a> the <code>timer:timer_start</code> <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/trace/events/timer.h#L44" target="_blank" rel="noopener noreferrer">tracepoint</a> on every timer start. This allowed us to pull up timer names:</p>
 <ul>
@@ -291,7 +357,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     36</span><span class="sk-032f62-99ffe4"> reqsk_timer_handler</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   4769</span><span class="sk-032f62-99ffe4"> tcp_delack_timer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    171</span><span class="sk-032f62-99ffe4"> tcp_keepalive_timer</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 168512</span><span class="sk-032f62-99ffe4"> tcp_write_timer</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 168512</span><span class="sk-032f62-99ffe4"> tcp_write_timer</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>Stretch</li>
@@ -311,7 +381,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   4622</span><span class="sk-032f62-99ffe4"> tcp_delack_timer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      1</span><span class="sk-032f62-99ffe4"> tcp_keepalive_timer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1983978</span><span class="sk-032f62-99ffe4"> tcp_write_timer</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      1</span><span class="sk-032f62-99ffe4"> writeout_period</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">      1</span><span class="sk-032f62-99ffe4"> writeout_period</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So basically we install 12x more <code>tcp_write_timer</code> timers, resulting in higher kernel CPU usage.</p>
 <p>Taking specific flamegraphs of the timers revealed the differences in their operation:</p>
@@ -342,7 +416,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             21768</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">03:33:35</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             21712</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             21712</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> tcp_push_one</span></span>
@@ -355,7 +433,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                              432</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">03:37:16</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                              495</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                              495</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/trace</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 23485</span><span class="sk-032f62-99ffe4"> 'tcp_sendmsg "%d", arg3'</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -M</span><span class="sk-005cc5-ffc799"> 100000</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{ print $NF }'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span></span>
@@ -368,7 +450,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   6154</span><span class="sk-005cc5-ffc799"> 40</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   6620</span><span class="sk-005cc5-ffc799"> 38</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  17121</span><span class="sk-005cc5-ffc799"> 51</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  39528</span><span class="sk-005cc5-ffc799"> 44</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  39528</span><span class="sk-005cc5-ffc799"> 44</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>Stretch</li>
@@ -384,7 +470,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             49472</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">03:33:32</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             51221</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             51221</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> tcp_push_one</span></span>
@@ -397,7 +487,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                            65058</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">03:37:12</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                            72394</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                            72394</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/trace</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 3416</span><span class="sk-032f62-99ffe4"> 'tcp_sendmsg "%d", arg3'</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -M</span><span class="sk-005cc5-ffc799"> 100000</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{ print $NF }'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span></span>
@@ -410,7 +504,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   1729</span><span class="sk-005cc5-ffc799"> 8</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   2181</span><span class="sk-005cc5-ffc799"> 38</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  19052</span><span class="sk-005cc5-ffc799"> 44</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  64504</span><span class="sk-005cc5-ffc799"> 4096</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  64504</span><span class="sk-005cc5-ffc799"> 4096</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The traces showed huge variations of <code>tcp_sendmsg</code> and <code>tcp_push_one</code> within <code>sendfile</code>.</p>
 <p>To further introspect, we leveraged a kernel feature available since 4.9: the ability to count stacks. This led us to measuring what hits <code>tcp_push_one</code>:</p>
@@ -447,7 +545,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  sys_sendfile64</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  do_syscall_64</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  return_from_SYSCALL_64</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    4950</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    4950</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>Stretch</li>
@@ -497,7 +599,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  sys_sendfile64</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  do_syscall_64</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  return_from_SYSCALL_64</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    735110</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    735110</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you diff the most popular stacks, you'll get:</p>
 <div class="emdash-code">
@@ -512,7 +618,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+tcp_sendpage</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> inet_sendpage</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> kernel_sendpage</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> sock_sendpage</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> sock_sendpage</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's look closer at <a href="https://elixir.bootlin.com/linux/v4.9.43/source/net/ipv4/tcp.c#L1012" target="_blank" rel="noopener noreferrer"><code>tcp_sendpage</code></a>:</p>
 <div class="emdash-code">
@@ -533,7 +643,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    res</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> do_tcp_sendpages</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">sk,</span><span class="sk-032f62-99ffe4"> page,</span><span class="sk-032f62-99ffe4"> offset,</span><span class="sk-032f62-99ffe4"> size,</span><span class="sk-032f62-99ffe4"> flags</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    release_sock(sk</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> res</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h#L115" target="_blank" rel="noopener noreferrer">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload" target="_blank" rel="noopener noreferrer">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
 <h3>Even deeper, to the crux</h3>
@@ -541,7 +655,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">eth2</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-d73a49-a0a0a0">              |</span><span class="sk-6f42c1-ffc799">--</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">vlan10</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-6f42c1-ffc799">---</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">bond0</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">|</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">eth3</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-d73a49-a0a0a0">              |</span><span class="sk-6f42c1-ffc799">--</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">vlan100</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">eth3</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-d73a49-a0a0a0">              |</span><span class="sk-6f42c1-ffc799">--</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">vlan100</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>The missing piece was that we were missing segmentation offload on VLAN interfaces, where the actual IPs live.</strong></p>
 <p>Here's the diff from <code>ethtook -k vlan10</code>:</p>
@@ -581,11 +699,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+generic-segmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> generic-receive-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> large-receive-offload:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> rx-vlan-offload:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> rx-vlan-offload:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So we entusiastically enabled segmentation offload:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -K</span><span class="sk-032f62-99ffe4"> vlan10</span><span class="sk-032f62-99ffe4"> sg</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -K</span><span class="sk-032f62-99ffe4"> vlan10</span><span class="sk-032f62-99ffe4"> sg</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And it didn't help! Will the suffering ever end? Let's also enable TCP transmission checksumming offload:</p>
 <div class="emdash-code">
@@ -598,7 +724,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-ecn-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-mangleid-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp6-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">udp-fragmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">udp-fragmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nothing. The diff is essentially empty now:</p>
 <div class="emdash-code">
@@ -619,7 +749,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-scatter-gather-fraglist:</span><span class="sk-032f62-99ffe4"> off</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> tcp-segmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-ecn-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-ecn-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The last missing piece we found was that offload changes are applied only during connection initiation, so we restarted Kafka, and we immediately saw a performance improvement (green line):</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

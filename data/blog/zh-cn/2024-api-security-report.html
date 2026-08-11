@@ -35,8 +35,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Get and print CSV string</span></span>
 <span class="line"><span class="sk-24292e-fff">csv_output </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> output.getvalue().strip()</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">print</span><span class="sk-24292e-fff">(csv_output)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">print</span><span class="sk-24292e-fff">(csv_output)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>精确的速率限制可以最大程度减少攻击的可能性</h3>
 <p>在防止滥用方面，大多数从业者的首先会想到<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">速率限制</a>。<strong>在您的 API 上实施限制非常有用，可以控制滥用行为并防止源服务器的意外过载。</strong> 但怎么知道您选择的速率限制方法是否正确呢？方法可能各不相同，但通常归结选择的错误代码，以及限制值本身的依据。</p>
 <p>对于一些 API，从业者将配置速率限制错误以返回 HTTP 403（禁止）响应，而其他则会返回 HTTP 429（请求过多）。使用 HTTP 403 似乎没有问题，直到您意识到其他安全工具也在用 403 代码响应。当您遭受攻击时，要弄清楚哪些工具负责哪些错误/阻止可能会很困难。</p>

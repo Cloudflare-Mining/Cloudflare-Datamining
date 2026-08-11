@@ -10,15 +10,45 @@
 <p>Luego apareció el <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank" rel="noopener noreferrer">truco “AnyIP”</a>. AnyIP nos permite asignar prefijos IP enteros (subredes) a la interfaz de bucle invertido, expandiéndose desde direcciones IP específicas. Ya existe un uso común de AnyIP: su computadora tiene 127.0.0.0/8 asignado a la interfaz de bucle invertido. Desde el punto de vista de su equipo, todas las direcciones IP de 127.0.0.1 a 127.255.255.254 corresponden a la máquina local.</p>
 <p>Este truco es aplicable más allá del bloque 127.0.0.1/8. Para considerar todo el rango de 192.0.2.0/24 como asignado a nivel local, ejecute:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><code>ip route add local 192.0.2.0/24 dev lo</code></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 8080</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 8080</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Luego, puede enlazar sin problemas al puerto 8080 en una de estas direcciones IP:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 2001:db8::/64</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 2001:db8::/64</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>nc -l 192.0.2.1 8080</code></p>
 <p>Lograr que IPv6 funcione resulta un poco más difícil:</p>
@@ -29,7 +59,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       valid_lft</span><span class="sk-032f62-99ffe4"> forever</span><span class="sk-032f62-99ffe4"> preferred_lft</span><span class="sk-032f62-99ffe4"> forever</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    inet</span><span class="sk-032f62-99ffe4"> 104.16.0.0/16</span><span class="sk-032f62-99ffe4"> scope</span><span class="sk-032f62-99ffe4"> global</span><span class="sk-032f62-99ffe4"> lo</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       valid_lft</span><span class="sk-032f62-99ffe4"> forever</span><span class="sk-032f62-99ffe4"> preferred_lft</span><span class="sk-032f62-99ffe4"> forever</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>ip route add local 2001:db8::/64 dev lo</code></p>
 <p>Lamentablemente, no se pueden simplemente enlazar a estas direcciones IP v6 adjuntas como en el ejemplo v4. Para que esto funcione, debe utilizar la opción de <em>socket</em> IP_FREEBIND, que requiere más privilegios. Para completar, también hay un sysctl net.ipv6.ip_nonlocal_bind, pero recomendamos que no se toque.</p>
@@ -38,7 +72,11 @@
 <p>El segundo problema serio es la capacidad de abrir <em>sockets</em> TCP para cualquier número de puerto. En Linux, y por lo general en cualquier sistema compatible con la API de <em>sockets</em> de BSD, solo puede enlazar a un número de puerto TCP específico con una sola llamada al sistema de enlace. No es posible establecer un enlace a varios puertos en una sola operación.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> Yes,</span><span class="sk-032f62-99ffe4"> really,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> need.</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">#define INET_LHTABLE_SIZE       32</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#define INET_LHTABLE_SIZE       32</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Una solución obvia sería establecer 65535 enlaces, uno para cada uno de los 65535 puertos posibles. En realidad, esta podría haber sido una opción, pero con consecuencias terribles:</p>
 <ul>
@@ -70,7 +108,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">called</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> chain.</span><span class="sk-032f62-99ffe4">  It</span><span class="sk-032f62-99ffe4"> redirects</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">socket</span><span class="sk-032f62-99ffe4"> without</span><span class="sk-032f62-99ffe4"> changing</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> header</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> any</span><span class="sk-032f62-99ffe4"> way.</span><span class="sk-032f62-99ffe4"> It</span><span class="sk-032f62-99ffe4"> can</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">also</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> mark</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> which</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> then</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> used</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">advanced</span><span class="sk-032f62-99ffe4"> routing</span><span class="sk-032f62-99ffe4"> rules.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">advanced</span><span class="sk-032f62-99ffe4"> routing</span><span class="sk-032f62-99ffe4"> rules.</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>El polvo mágico</strong></h3>
 <p>Fuente: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank" rel="noopener noreferrer">instantánea de YouTube</a></p>
@@ -87,13 +129,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">				      __tcp_hdrlen(tcph</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">				    saddr,</span><span class="sk-032f62-99ffe4"> sport,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">				    daddr,</span><span class="sk-032f62-99ffe4"> dport,</span></span>
-<span class="line"><span class="sk-24292e-fff">				    in-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">ifindex, 0);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">				    in-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">ifindex, 0);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Entonces... ¿Qué hace en realidad TPROXY?</p>
 <h3><strong>Revelación del truco de magia</strong></h3>
 <p>El código <code>TPROXY</code> es <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank" rel="noopener noreferrer">sorprendentemente trivial</a>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">skb-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">sk</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sk</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">skb-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">sk</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sk</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Permítame leerle esto en voz alta: en un módulo de iptables, que forma parte del firewall, llamaremos a inet_lookup_listener. Esta función toma <em>src/dst port/IP 4-tuple</em> y devuelve el socket de escucha que puede aceptar esa conexión. Esta es una funcionalidad esencial del envío del <em>socket</em> de la pila de red.</p>
 <p>Una vez más: el código de firewall asigna una rutina de envío de <em>socket</em>.</p>
@@ -114,7 +164,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Set the magical TPROXY routing</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">        -d</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">        -j</span><span class="sk-032f62-99ffe4"> TPROXY</span><span class="sk-005cc5-99ffe4"> --on-port=1234</span><span class="sk-005cc5-99ffe4"> --on-ip=127.0.0.1</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">        -j</span><span class="sk-032f62-99ffe4"> TPROXY</span><span class="sk-005cc5-99ffe4"> --on-port=1234</span><span class="sk-005cc5-99ffe4"> --on-ip=127.0.0.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Esta línea asigna un una estructura struct sock de socket a un paquete entrante y completa el envío.</p>
 <div class="emdash-code">
@@ -131,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">the</span><span class="sk-032f62-99ffe4"> CAP_NET_ADMIN</span><span class="sk-032f62-99ffe4"> capability</span><span class="sk-24292e-fff">)</span><span class="sk-005cc5-ffc799">.</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">TProxy</span><span class="sk-032f62-99ffe4"> redirection</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-032f62-99ffe4"> TPROXY</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-032f62-99ffe4"> also</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">requires</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> redirected</span><span class="sk-032f62-99ffe4"> socket.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">requires</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> redirected</span><span class="sk-032f62-99ffe4"> socket.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>Sacar el conejo de la galera</strong></h3>
 <div class="emdash-code">
@@ -151,19 +209,31 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    l_ip,</span><span class="sk-032f62-99ffe4"> l_port</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> c.getsockname</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"[ ] Connection from tcp://%s:%d to tcp://%s:%d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-24292e-fff"> (r_ip, </span><span class="sk-032f62-99ffe4">r_port,</span><span class="sk-032f62-99ffe4"> l_ip,</span><span class="sk-032f62-99ffe4"> l_port</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    c.send(b</span><span class="sk-6f42c1-ffc799">"hello world\n"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    c.close</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    c.close</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank" rel="noopener noreferrer">Imagen</a> de <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank" rel="noopener noreferrer">Angela Boothroyd</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 9999</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Connection</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 9999</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-24292e-fff"> [tcp/*] succeeded</span><span class="sk-d73a49-a0a0a0">!</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">hello</span><span class="sk-032f62-99ffe4"> world</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">hello</span><span class="sk-032f62-99ffe4"> world</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Armado con TPROXY, podemos hacer fácilmente el truco de enlace a todos los puertos. Esta es la configuración:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> python3</span><span class="sk-032f62-99ffe4"> transparent2.py</span></span>
 <span class="line"><span class="sk-24292e-fff">[+] Bound to tcp://127.0.0.1:1234</span></span>
-<span class="line"><span class="sk-24292e-fff">[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Además de poner esto en marcha, debe iniciar un servidor TCP con la opción de socket mágica IP_TRANSPARENT. Nuestro ejemplo a continuación necesita escuchar en tcp://127.0.0.1:1234. La <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer">página man para IP_TRANSPARENT</a> muestra lo siguiente:</p>
 <p>Aquí presentamos un servidor simple en Python:</p>

@@ -107,8 +107,30 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>다음은 값을 포함한 결과입니다. 쿼리 벡터 [54.8, 5.5, 3.1]가 검색 결과에서 반환된 가장 높은 점수를 얻은 일치 항목 [58.799, 6.699, 3.400]와 유사한 것을 시각적으로 확인할 수 있습니다. 이 인덱스는 <a href="https://en.wikipedia.org/wiki/Cosine_similarity" target="_blank" rel="noopener noreferrer">코사인</a> 유사도를 사용하여 벡터 간의 거리를 계산하므로 점수가 1에 가까울 수록 일치 항목이 쿼리 벡터와 더 유사하다는 것을 의미합니다.</p>
 <p>실제 애플리케이션에서는 가장 유사한 제품을 기반으로 제품 추천 URL을 빠르게 반환합니다. 점수의 오름차순 또는 내림차순으로 제품을 정렬할 수도 있고, topK 값을 높여 더 많은 제을 표시할 수도 있습니다. 각 벡터와 함께 저장되는 메타데이터에는 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2 개체</a>의 경로, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">데이터베이스</a>에 있는 행의 UUID, 또는 <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>의 키-값 쌍이 포함될 수도 있습니다.</p>
 <div class="emdash-code">
@@ -163,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Workers AI + Vectorize: Cloudflare의 전체 스택 벡터 검색</h3>
 <p>실제 애플리케이션에서는 원본 데이터세트에서 벡터 임베딩을 생성하고(데이터베이스 시드 목적), 사용자 쿼리를 벡터 임베딩으로 <em>빠르게</em> 변환할 수 있는 머신 러닝 모델이 필요합니다. 각 모델은 특징을 다르게 표현하므로 벡터 임베딩은 같은 모델에서 가져와야 합니다.</p>
@@ -227,7 +253,11 @@
 <span class="line"><span class="sk-24292e-fff">			matches: matches,</span></span>
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>세 문장을 Workers AI의 <a href="https://developers.cloudflare.com/workers-ai/models/embedding" target="_blank" rel="noopener noreferrer">텍스트 임베딩 모델</a>(@cf/baai/bge-base-en-v1.5)에 전달하고 각 문장의 벡터 임베딩을 검색합니다.</li>
@@ -244,7 +274,11 @@
 <p>이는 기존 임베딩 API에 대한 기존 워크플로우가 이미 있거나 사용 사례에 맞는 특정 멀티모달 또는 다국어 임베딩 모델을 검증한 경우 특히 유용할 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Vectorize has ready-to-go presets that set the dimensions and distance metric for popular embeddings models</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> wrangler vectorize create openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">index</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">preset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">openai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">text</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">embedding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ada</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">0</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">02</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>AI의 비용 예측하기</h2>
 <p>AI와 ML에 대한 기대치는 매우 높지만, 규모가 큰 경우 실험하려면 비용이 너무 많이 들고 예측하기 어렵다는 우려도 존재합니다.</p>

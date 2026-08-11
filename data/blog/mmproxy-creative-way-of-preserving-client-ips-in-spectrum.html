@@ -21,8 +21,30 @@
 </figure>
 <p>Finally, there is the last method. HAProxy developers, faced with this problem developed <a href="http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank" rel="noopener noreferrer">the "PROXY protocol"</a>. The premise of this protocol is to prepend client metadata in front of the original data stream. For example, this string could be sent to the origin server in front of proxied data:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP4</span><span class="sk-005cc5-ffc799"> 192.0.2.123</span><span class="sk-005cc5-ffc799"> 104.16.112.25</span><span class="sk-005cc5-ffc799"> 19235</span><span class="sk-005cc5-ffc799"> 80</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">PROXY</span><span class="sk-032f62-99ffe4"> TCP4</span><span class="sk-005cc5-ffc799"> 192.0.2.123</span><span class="sk-005cc5-ffc799"> 104.16.112.25</span><span class="sk-005cc5-ffc799"> 19235</span><span class="sk-005cc5-ffc799"> 80</span><span class="sk-005cc5-a0a0a0">\r\n</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As you can see, the PROXY protocol is rather trivial to implement, and is generally sufficient for most use cases. However, it requires application support. The PROXY protocol (v1) is supported by Cloudflare Spectrum, and we highly encourage using it over other methods of keeping client source IP addresses.</p>
 <h3>Mmproxy to the rescue</h3>
 <p>But sometimes adding PROXY protocol support to the application isn't an option. This can be the case when the application isn’t open source, or when it's hard to edit. A good example is "sshd" - it doesn't support PROXY protocol and adding the support would be far from trivial. For such applications it may just be impossible to use any application level load balancer whatsoever. This is very unfortunate.</p>
@@ -48,7 +70,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/mmproxy.git</span><span class="sk-005cc5-99ffe4"> --recursive</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> mmproxy</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">make</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">make</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://github.com/cloudflare/mmproxy/issues" target="_blank" rel="noopener noreferrer">Please report any issues on GitHub</a>.</p>
 <p>Then set up the needed configuration:</p>
@@ -60,17 +86,29 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> ip6tables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> mark</span><span class="sk-005cc5-99ffe4"> --mark</span><span class="sk-005cc5-ffc799"> 123</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> CONNMARK</span><span class="sk-005cc5-99ffe4"> --save-mark</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> ip6tables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> OUTPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> connmark</span><span class="sk-005cc5-99ffe4"> --mark</span><span class="sk-005cc5-ffc799"> 123</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> CONNMARK</span><span class="sk-005cc5-99ffe4"> --restore-mark</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-005cc5-99ffe4"> -6</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> fwmark</span><span class="sk-005cc5-ffc799"> 123</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-005cc5-ffc799"> 100</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-005cc5-99ffe4"> -6</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> ::/0</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> table</span><span class="sk-005cc5-ffc799"> 100</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-005cc5-99ffe4"> -6</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> ::/0</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> table</span><span class="sk-005cc5-ffc799"> 100</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You will also need <code>route_localnet</code> to be set on your default outbound interface, for example for <code>eth0</code>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /proc/sys/net/ipv4/conf/eth0/route_localnet</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /proc/sys/net/ipv4/conf/eth0/route_localnet</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, verify your IPv6 connectivity:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ping6</span><span class="sk-032f62-99ffe4"> cloudflare.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">PING</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">2400:cb00:2048:1::c629:d6a2</span><span class="sk-24292e-fff">) </span><span class="sk-005cc5-ffc799">56</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> bytes</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">64</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> 2400:cb00:2048:1::c629:d6a2:</span><span class="sk-032f62-99ffe4"> icmp_seq=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-032f62-99ffe4"> ttl=</span><span class="sk-005cc5-ffc799">61</span><span class="sk-032f62-99ffe4"> time=</span><span class="sk-005cc5-ffc799">0.650</span><span class="sk-032f62-99ffe4"> ms</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">64</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> 2400:cb00:2048:1::c629:d6a2:</span><span class="sk-032f62-99ffe4"> icmp_seq=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-032f62-99ffe4"> ttl=</span><span class="sk-005cc5-ffc799">61</span><span class="sk-032f62-99ffe4"> time=</span><span class="sk-005cc5-ffc799">0.650</span><span class="sk-032f62-99ffe4"> ms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, you are ready to run <code>mmproxy</code>. For example, forwarding localhost SSH would look like this:</p>
 <div class="emdash-code">
@@ -92,7 +130,11 @@
 <span class="line"><span class="sk-24292e-fff">[+] OK. Routing to ::1 points to a </span><span class="sk-d73a49-a0a0a0">local</span><span class="sk-24292e-fff"> machine.</span></span>
 <span class="line"><span class="sk-24292e-fff">[+] OK. Target server [::1]:22 is up and reachable using conventional connection.</span></span>
 <span class="line"><span class="sk-24292e-fff">[+] OK. Target server [::1]:22 is up and reachable using spoofed connection.</span></span>
-<span class="line"><span class="sk-24292e-fff">[+] Listening on 0.0.0.0:2222</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[+] Listening on 0.0.0.0:2222</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>On startup, <code>mmproxy</code> performs a number of self checks. Since we prepared the necessary routing and firewall rules, its self check passes with a "VERIFIED" mark. It's important to confirm these pass.</p>
 <p>We're almost ready to go! The last step is to create a Spectrum application that sends PROXY protocol traffic to <code>mmproxy</code>, port 2222. Here is an example configuration<a href="https://blog.cloudflare.com/#fn2">[2]</a>:</p>
@@ -104,18 +146,30 @@
 <p>Now we can see if it works. My testing VPS has IP address 79.1.2.3. Let's see if the whole setup behaves:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">vps$</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-032f62-99ffe4"> ssh.example.org</span><span class="sk-005cc5-ffc799"> 22</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">SSH-2.0-OpenSSH_7.2p2</span><span class="sk-032f62-99ffe4"> Ubuntu-4ubuntu2.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">SSH-2.0-OpenSSH_7.2p2</span><span class="sk-032f62-99ffe4"> Ubuntu-4ubuntu2.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hurray, this worked! The "ssh.example.org" on port 22 is indeed tunneled over Spectrum. Let's see <code>mmproxy</code> logs:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[+] 172.68.136.1:32654 connected, proxy protocol source 79.1.2.3:0,</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        local</span><span class="sk-24292e-fff"> destination 127.0.0.1:22</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        local</span><span class="sk-24292e-fff"> destination 127.0.0.1:22</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The log confirmed what happened - Cloudflare IP 172.68.136.1 has connected, advertised client IP 79.1.2.3 over the PROXY protocol, and established a spoofed connection to 127.0.0.1:22. The ssh daemon logs show:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tail</span><span class="sk-032f62-99ffe4"> /var/log/auth.log</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Apr</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 14:39:09</span><span class="sk-032f62-99ffe4"> ubuntu</span><span class="sk-032f62-99ffe4"> sshd[7703]:</span><span class="sk-032f62-99ffe4"> Did</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> receive</span><span class="sk-032f62-99ffe4"> identification</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        string</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-005cc5-ffc799"> 79.1.2.3</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        string</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-005cc5-ffc799"> 79.1.2.3</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hurray! All works! sshd recorded the real client IP address, and with <code>mmproxy</code>’s help we never saw that it's actually traffic flowing through Cloudflare Spectrum.</p>
 <h3>Under the hood</h3>

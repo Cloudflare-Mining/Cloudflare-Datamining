@@ -41,8 +41,30 @@
 <p>在上傳應用程式之前，您需要將所有用戶端側程式碼繫結至<strong>靜態資產</strong>目錄中。Wrangler 會在您執行 <code>wrangler dev</code> 時繫結並構建您的程式碼，但我們現在亦透過<a href="https://www.npmjs.com/package/@cloudflare/vite-plugin" target="_blank" rel="noopener noreferrer"><u>新的 Vite 外掛程式</u></a>支援 Vite。對於那些已經使用 Vite 構建工具和開發伺服器的人來說，這是一個絕佳的選項 — 您可繼續使用 Vite 的開發伺服器進行開發（並使用 <a href="https://developers.cloudflare.com/workers/testing/vitest-integration" target="_blank" rel="noopener noreferrer"><u>Vitest</u></a> 進行測試），所有操作均使用 Workers 執行階段完成。</p>
 <p>若要開始使用 Cloudflare Vite 外掛程式，您可透過執行下列命令，使用 Vite 和我們的外掛程式來建立一個 React 應用程式：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">react</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">react</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>開啟專案時，您應看到如下所示的目錄結構：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
@@ -56,7 +78,11 @@
 <span class="line"><span class="sk-24292e-fff">├── index</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">html</span></span>
 <span class="line"><span class="sk-24292e-fff">├── package</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">json</span></span>
 <span class="line"><span class="sk-24292e-fff">├── vite</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">config</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">ts</span></span>
-<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果您執行 <code>npm run build</code>，則會看到一個名為 <code>/dist</code> 的新資料夾出現。</p>
 <div class="emdash-code">
@@ -73,7 +99,11 @@
 <span class="line"><span class="sk-24292e-fff">├── index</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">html</span></span>
 <span class="line"><span class="sk-24292e-fff">├── package</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">json</span></span>
 <span class="line"><span class="sk-24292e-fff">├── vite</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">config</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">ts</span></span>
-<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Vite 外掛程式會通知 Wrangler，此 <code>/dist</code> 目錄包含專案的構建靜態資產 — 在本例中，包括用戶端側程式碼、一些 CSS 檔案和影像。</p>
 <p>部署後，此單頁應用程式 (SPA) 架構將如下所示：</p>
@@ -92,7 +122,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "assets"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "directory"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "./dist"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>新增此設定後，您只需構建您的專案並執行 Wrangler 部署。然後，您的整個網站將會上傳，並為 Workers 上的流量做好準備。部署完成且要求開始流入後，您的靜態網站會在 <a href="https://developers.cloudflare.com/workers/static-assets/#caching-behavior" target="_blank" rel="noopener noreferrer"><u>Cloudflare 的網路中進行快取</u></a>。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -100,7 +134,11 @@
 </figure>
 <p>您可執行以下操作，立即嘗試在 Workers 上開始全新的 Astro 專案：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">astro</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">astro</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">astro</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">astro</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>請參閱我們的<a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>架構指南</u></a>，瞭解我們其他受支援的架構以及如何開始使用。</p>
 <h3>單頁應用程式 (SPA)</h3>
@@ -127,7 +165,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "placement"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   "mode"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "smart"</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>啟用此模式後，平台會假定任何導覽要求（包括 <code>Sec-Fetch-Mode:navigation</code> 標頭的要求）都是針對靜態資產的，並且會在找不到相符的靜態資產項目時提供 <code>index.html</code>。對於與靜態資產不相符的非導覽要求（例如資料要求）， Cloudflare 會叫用 Worker 指令碼。透過此設定，您可以使用 React 轉譯前端，使用 Worker 處理後端作業，並使用 Vite 將兩者結合在一起。這是移植使用 <code>create-react-app</code> 構建的較舊 SPA 的絕佳選擇，<a href="https://react.dev/blog/2025/02/14/sunsetting-create-react-app" target="_blank" rel="noopener noreferrer"><u>該 SPA 最近已停用</u></a>。</p>
 <p>在此 Wrangler 設定檔案中需要注意的另一件事：我們已定義 Hyperdrive 繫結並啟用 <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>。Hyperdrive 可讓我們使用現有的資料庫<em>並</em>處理連線集區。這樣一來，將 Workers（在高度分散的無伺服器環境中執行）直接連線至傳統資料庫的長期挑戰就得到了解決。依設計，Workers 會在輕量型 V8 隔離中運作，沒有持續性 TCP 通訊端，並且有嚴格的 CPU/記憶體限制。這種隔離非常適合實現安全性和高速度，但難以保持開啟的資料庫連線。Hyperdrive 藉由充當 Cloudflare 網路和您的資料庫之間的「橋接器」解決了這些限制問題，其負責維護穩定的連線或集區等繁重工作，以便 Workers 可以重複使用。透過開啟 Smart Placement，我們還可確保，如果對 Worker 的要求遠離資料庫（導致延遲），Cloudflare 可選擇將處理資料庫連線的 Worker 和 Hyperdrive「橋接器」重新定位到更近的位置來傳送至資料庫，從而減少往返時間。</p>
@@ -164,7 +206,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">export default {</span></span>
 <span class="line"><span class="sk-24292e-fff"> fetch</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> app</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">fetch,</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>部署後，我們的應用程式架構如下所示：</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -189,14 +235,22 @@
 <p>我們在對 Node.js API 的支援方面亦不斷改善，最近新增了對 <code>crypto</code>、<code>tls</code>、<code>net</code> 和 <code>dns</code> 模組的支援。這允許依賴於這些 Node.js 模組的現有應用程式和程式庫在 Workers 上執行。我們來看一個範例：</p>
 <p>以前，如果您嘗試使用 <code>mongodb</code> 套件，會遇到下列錯誤：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [unenv] dns</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resolveTxt is not implemented </span><span class="sk-6f42c1-ffc799">yet!</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [unenv] dns</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resolveTxt is not implemented </span><span class="sk-6f42c1-ffc799">yet!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>mongodb</code> 使用 <code> node:dns</code> 模組對主機名稱進行 DNS 查詢時，就會發生這種情況。即使您避免了這個問題，若 <code>mongodb</code> 嘗試使用 <code>node:tls</code> 安全地連線至資料庫，您仍會遇到另一個錯誤。</p>
 <p>現在，您可按預期使用 <code>mongodb</code>，因為 <code>node:dns</code> 和 <code>node:tls</code> 都受到支援。對於依賴於 <code>node:crypto</code> 和 <code>node:net</code> 的程式庫來說，情況亦是如此。</p>
 <p>此外，<code>nodejs_compat</code> 相容性旗標開啟，且相容日期設定為 <code>2025-04-01</code> 或更晚時，Workers <a href="https://developers.cloudflare.com/changelog/2025-03-11-process-env-support" target="_blank" rel="noopener noreferrer"><u>現在會在 process.env 物件上公開環境變數和密碼</u></a>。一些程式庫（和開發人員）假設此物件將填入變數，並依賴它來進行頂層設定。如果沒有該調整，程式庫之前可能會遭到非預期損壞，而開發人員必須編寫額外的邏輯，來處理 Cloudflare Workers 上的變數。</p>
 <p>現在，您可以像在 Node.js 中一樣存取變數。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> "info"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> "info"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>額外的 Worker CPU 時間</h3>
 <p>我們還<a href="https://developers.cloudflare.com/changelog/2025-03-25-higher-cpu-limits" target="_blank" rel="noopener noreferrer"><u>將每個 Worker 要求的 CPU 時間上限從 30 秒增加至 5 分鐘</u></a>。這允許運算密集型作業執行更長時間而不會逾時。假設您想要使用新支援的 <code>node:crypto</code> 模組來雜湊處理一個非常大型的檔案，現在可在 Workers 上執行此操作，而不必依賴於外部運算來進行 CPU 密集型操作。</p>

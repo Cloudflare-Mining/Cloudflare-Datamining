@@ -20,8 +20,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> IInterceptor</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  preProcess</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  postProcess</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">res</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>And then run pre and post processing before and after the handler has executed.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">public async </span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(request: Request): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Response</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
@@ -42,7 +64,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> interceptor</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.interceptors) {</span></span>
 <span class="line"><span class="sk-24292e-fff">	  interceptor.</span><span class="sk-6f42c1-ffc799">postProcess</span><span class="sk-24292e-fff">(req, res);</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
 <h3>LogInterceptor</h3>
@@ -80,7 +106,11 @@
 <span class="line"><span class="sk-24292e-fff">    console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(logLine);</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.logLines.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(logLine);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>LogInterceptor</code> is simple enough in post processing, if it detects the X-Debug header or debug query param, it adds all the log lines to the X-Debug response header as a URL-encoded string.</p>
 <div class="emdash-code">
@@ -107,13 +137,21 @@
 <span class="line"><span class="sk-24292e-fff">    logger.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Adding to ${</span><span class="sk-24292e-fff">debugHeader</span><span class="sk-032f62-99ffe4">} header ${</span><span class="sk-24292e-fff">logStr</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-99ffe4">length</span><span class="sk-032f62-99ffe4">} chars`</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">    res.headers.</span><span class="sk-6f42c1-ffc799">append</span><span class="sk-24292e-fff">(debugHeader, logStr);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now it's up to the client to display.</p>
 <h3>Decoding the result</h3>
 <p>urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-d73a49-a0a0a0">*//</span><span class="sk-032f62-99ffe4">+</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-032f62-99ffe4"> }"</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">_</span><span class="sk-d73a49-a0a0a0">//%/</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-24292e-fff">x</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-24292e-fff">; }</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-d73a49-a0a0a0">*//</span><span class="sk-032f62-99ffe4">+</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-032f62-99ffe4"> }"</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">_</span><span class="sk-d73a49-a0a0a0">//%/</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-24292e-fff">x</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-24292e-fff">; }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell" target="_blank" rel="noopener noreferrer">StackOverflow</a></p>
 <p>Using that, we can call curl, extract the headers, grep for our X-Debug header and then invoke the urldecode function.</p>
@@ -129,7 +167,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">INFO:</span><span class="sk-032f62-99ffe4"> GDAX</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> {"trade_id":45329353,"price":"6287.01000000","size":"0.03440000","bid":"6287","ask":"6287.01","volume":"9845.51680796","time":"2018-06-25T18:12:48.282000Z"}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO:</span><span class="sk-032f62-99ffe4"> Bitfinex</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> {"mid":"6283.45","bid":"6283.4","ask":"6283.5","last_price":"6283.5","low":"6068.5","high":"6341.0","volume":"28642.882017660013","timestamp":"1529950365.0694907"}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Evaluating</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> logging</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Executing</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> interceptor</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Executing</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> interceptor</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Boom. Decoded debug info right there in the console. Ship it.</p>
 <p>If you log stack traces in your worker with <code>logger.error(e.stack)</code>, that will also format nicely:</p>
@@ -148,7 +190,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff"> (worker.js:32:23)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> Object.next</span><span class="sk-24292e-fff"> (worker.js:13:53)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Evaluating</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> logging</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Executing</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> interceptor</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Executing</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> interceptor</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Summary</h3>
 <p>In this post we:</p>

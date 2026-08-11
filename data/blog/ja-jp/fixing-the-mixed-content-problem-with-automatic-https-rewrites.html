@@ -52,8 +52,30 @@
 <p><em>the upgrade-insecure-requests CSPディレクティブを自動的に挿入する</em></p>
 <p><a href="https://www.w3.org/TR/upgrade-insecure-requests" target="_blank" rel="noopener noreferrer">upgrade-insecure-requests</a>ディレクティブは<a href="https://www.w3.org/TR/CSP" target="_blank" rel="noopener noreferrer">Content Security Policy</a>ヘッダーに次のように追加されます。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content-Security-Policy:</span><span class="sk-032f62-99ffe4"> upgrade-insecure-requests</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content-Security-Policy:</span><span class="sk-032f62-99ffe4"> upgrade-insecure-requests</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><code>Content-Security-Policy：upgrader-insecure-requests</code></p>
 <p>これは、HTTPリクエストをHTTPSに自動的にアップグレードするようにブラウザに指示します。これは、Webサイトの所有者がすべてのサブリソースが HTTPS 経由で利用可能であることを知っている場合に便利です。Webサイトは実際にWebサイトに埋め込まれている<a href="http://xn--urihttps-ro4g" target="_blank" rel="noopener noreferrer">http://URIをhttps</a>: //に変更する必要はありません。ブラウザが自動的にこれを処理します。</p>
 <p>しかしながら、upgrade-insecure-requestsには大きな欠点があります。ブラウザは、結果として得られるURIが実際にページで動作するかどうかなどはお構いなしで、ひたすらすべてのURIをhttps: //にアップグレードするので、ページが<a href="https://www.w3.org/TR/upgrade-insecure-requests/#example-failed" target="_blank" rel="noopener noreferrer">壊れる</a>可能性があるのです。</p>
@@ -68,7 +90,11 @@
 <p>EFFがこのプロジェクトを手伝ってくれたことにとても感謝しています。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">rule from</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">gstatic\.com/"</span><span class="sk-24292e-fff"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">.gstatic.com/"/</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">gstatic\.com/"</span><span class="sk-24292e-fff"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">.gstatic.com/"/</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>HTTPS Everywhere ルールセットは、<a href="http://xn--u8jwg" target="_blank" rel="noopener noreferrer">http://から</a> <a href="https://xn--uri()-0t3dprzaazxi5n1gjk1code6c1h6dxhc7wlb3bybzn64b4lne6g32ca43dia29904a78ernszw2cyd7bvy2eszyb3w4dh23te1ja.xn--gstatic-xo3fwwfhsdre.xn--comhttp-xe4fa3861izu9f" target="_blank" rel="noopener noreferrer">https://への切り替えに加えて、非常に特殊なURIをターゲットにできるルール（および除外）が含まれています。たとえば、gstatic.comの実際のHTTP</a> Everywhereルールは次のようになります。</p>
 <p>HTTPS Everywhereは、正規表現を使用して、HTTPSを使用するために安全にアップグレードできるgstatic.comのサブドメインを識別します。完全なルールのセットは<a href="https://www.eff.org/https-everywhere/atlas" target="_blank" rel="noopener noreferrer">こちら</a>で参照できます。</p>

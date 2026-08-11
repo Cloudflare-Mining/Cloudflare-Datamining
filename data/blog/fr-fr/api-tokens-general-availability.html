@@ -73,8 +73,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">null</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2><strong>Que va-t-il se passer ensuite</strong></h2>
 <p>Pour tous ceux qui utilisent l’API Cloudflare, nous vous recommandons, à l’avenir, de passer à l'utilisation de jetons API au lieu du système précédent les clés API. Avec cette annonce, notre<a href="https://www.terraform.io/docs/providers/cloudflare" target="_blank" rel="noopener noreferrer">fournisseur Terraform</a>, la <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">bibliothèque Cloudflare-Go</a> et le <a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank" rel="noopener noreferrer">plug-in WordPress</a> sont tous mis à jour pour la compatibilité avec les jetons API. D'autres bibliothèques recevront bientôt des mises à jour. Les jetons API et clés API seront pris en charge pour le moment pour que les clients puissent migrer en toute sécurité. Nous avons d’autres capacités prévues pour les jetons API, afin de mieux protéger comment et quand ces jetons sont utilisés. Alors, restez à l'écoute pour les annonces futures !</p>
 <p>Dites-nous ce que vous pensez et ce que vous aimeriez voir ensuite en ce qui concerne la sécurité de l'API sur la <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Communauté Cloudflare</a>.</p>

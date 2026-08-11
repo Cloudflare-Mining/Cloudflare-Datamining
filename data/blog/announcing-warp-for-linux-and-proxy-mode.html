@@ -22,8 +22,30 @@
 <h2>Using the CLI</h2>
 <p>Once you’ve installed WARP, you can begin using the CLI with a single command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">warp-cli</span><span class="sk-005cc5-99ffe4"> --help</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">warp-cli</span><span class="sk-005cc5-99ffe4"> --help</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The CLI will display the output below.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ warp-cli --help</span></span>
@@ -84,22 +106,38 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    get-device-posture</span><span class="sk-032f62-99ffe4">          Get</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> current</span><span class="sk-032f62-99ffe4"> device</span><span class="sk-032f62-99ffe4"> posture</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    override</span><span class="sk-032f62-99ffe4">                    Temporarily</span><span class="sk-032f62-99ffe4"> override</span><span class="sk-032f62-99ffe4"> MDM</span><span class="sk-032f62-99ffe4"> policies</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> require</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> stay</span><span class="sk-032f62-99ffe4"> enabled</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    set-proxy-port</span><span class="sk-032f62-99ffe4">              Set</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> listening</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> WARP</span><span class="sk-032f62-99ffe4"> proxy</span><span class="sk-24292e-fff"> (127.0.0.1:{</span><span class="sk-6f42c1-ffc799">port}</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    help</span><span class="sk-032f62-99ffe4">                        Prints</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> help</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> given</span><span class="sk-032f62-99ffe4"> subcommand</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    help</span><span class="sk-032f62-99ffe4">                        Prints</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> help</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> given</span><span class="sk-032f62-99ffe4"> subcommand</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can begin connecting to Cloudflare’s network with just two commands. The first command, <code>register</code>, will prompt you to authenticate. The second command, <code>connect</code>, will enable the client, creating a WireGuard tunnel from your device to Cloudflare’s network.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ warp-cli register</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Success</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ warp-cli connect</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once you’ve connected the client, the best way to verify it is working is to run our trace command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ curl https://www.cloudflare.com/cdn-cgi/trace/</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ curl https://www.cloudflare.com/cdn-cgi/trace/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And look for the following output:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">warp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">on</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">warp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">on</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Want to switch from encrypting all traffic in WARP to just using our <a href="https://developers.cloudflare.com/1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1 DNS resolver</a>? Use the <code>warp-cli set-mode</code> command:</p>
 <div class="emdash-code">
@@ -116,7 +154,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ARGS:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-6f42c1-ffc799">mode</span><span class="sk-24292e-fff">&gt;     [possible </span><span class="sk-032f62-99ffe4">values:</span><span class="sk-032f62-99ffe4"> warp,</span><span class="sk-032f62-99ffe4"> doh,</span><span class="sk-032f62-99ffe4"> warp+doh,</span><span class="sk-032f62-99ffe4"> dot,</span><span class="sk-032f62-99ffe4"> warp+dot,</span><span class="sk-032f62-99ffe4"> proxy]</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ warp-cli set-mode doh</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Protecting yourself against <a href="https://blog.cloudflare.com/introducing-1-1-1-1-for-families">malware with 1.1.1.1 for Families</a> is just as easy, and it can be used with either WARP enabled or in straight DNS mode:</p>
 <div class="emdash-code">
@@ -133,14 +175,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ARGS:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-6f42c1-ffc799">mode</span><span class="sk-24292e-fff">&gt;     [possible </span><span class="sk-032f62-99ffe4">values:</span><span class="sk-032f62-99ffe4"> off,</span><span class="sk-032f62-99ffe4"> malware,</span><span class="sk-032f62-99ffe4"> full]</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ warp-cli set-families-mode malware</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Success</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>A note on Cloudflare for Teams support</h2>
 <p>Cloudflare for Teams support is on the way, and just like our other clients, it will ship in the same package. Stay tuned for an in-app update or reach out to your Account Executive to be notified when a beta is available.</p>
 <h2>We need feedback</h2>
 <p>If you encounter an error, send us feedback with the <code>sudo warp-diag feedback</code> command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ sudo warp-diag feedback</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ sudo warp-diag feedback</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For all other functionality check out <code>warp-cli --help</code> or see <a href="https://developers.cloudflare.com/warp-client" target="_blank" rel="noopener noreferrer">our documentation here</a>.</p>
 <h2>WARP as a Local Proxy</h2>

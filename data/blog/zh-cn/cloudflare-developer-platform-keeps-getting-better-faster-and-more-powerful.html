@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-24292e-fff">      headers: { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/plain"</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>在接下来的几周内，我们还将推出一系列更新，使 API 与新名称保持一致。现有的 API 在短期内仍将继续得到支持。请继续关注 AI Search 的 <a href="https://developers.cloudflare.com/changelog/?product=ai-search" target="_blank" rel="noopener noreferrer"><u>Changelog</u></a> 和 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>，获取更多动态！</p>
 <h2>通过远程绑定 (Remote Bindings) 功能，您可以直接从本地开发环境连接至生产服务和资源——该功能现已正式发布</h2>
 <p>用于本地开发的<a href="https://developers.cloudflare.com/workers/development-testing/#remote-bindings" target="_blank" rel="noopener noreferrer"><u>远程绑定</u></a>现已正式发布，<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> v4.37.0、<a href="https://developers.cloudflare.com/workers/vite-plugin" target="_blank" rel="noopener noreferrer"><u>Cloudflare Vite 插件</u></a>以及 <code>@cloudflare/vitest-pool-workers</code> 软件包均支持此功能。远程绑定是指将您的开发环境配置为连接至 Cloudflare 帐户中已部署的实际资源（<em>而非</em>本地模拟资源）的特殊绑定方式。</p>
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "remote"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> true</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-24292e-fff">  ],</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>使用上述配置，所有对 <code>env.MY_BUCKET</code> 的请求都会被代理到远程资源，但 Worker 代码仍会在本地执行。这意味着您可以获得本地开发的所有优势，比如更快的执行速度，而且无需用数据填充本地数据库。</p>
 <p>您可以将远程绑定与<a href="https://developers.cloudflare.com/workers/wrangler/environments" target="_blank" rel="noopener noreferrer"><strong><u>环境</u></strong></a>配对，以便在本地开发期间使用暂存数据，而不改动生产数据。</p>
@@ -89,7 +115,11 @@
 <span class="line"><span class="sk-24292e-fff">      ]</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>更多 Node.js API 和软件包在 Workers 平台上“开箱即用”</h2>
 <p>在过去一年中，我们一直致力于使 Workers 更好地兼容 Node.js 包和 API。</p>
@@ -105,7 +135,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">});</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-032f62-99ffe4">app.listen(3000);</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">export default httpServerHandler({ port: 3000 });</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">export default httpServerHandler({ port: 3000 });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>除此之外，还有更多精彩功能。您现在可以：</p>
 <ul>
@@ -155,7 +189,11 @@
 <span class="line"></span>
 <span class="line"></span>
 <span class="line"><span class="sk-005cc5-fff">EXAMPLE</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">STILL</span><span class="sk-005cc5-fff"> THUMBNAIL</span><span class="sk-d73a49-a0a0a0">:</span></span>
-<span class="line"><span class="sk-24292e-fff">https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/cdn-cgi/media/mode=frame,time=3s,width=120,height=120,fit=cover/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/cdn-cgi/media/mode=frame,time=3s,width=120,height=120,fit=cover/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Media Transformations 功能为所有用户提供免费使用额度，并已包含在媒体平台订阅服务中。如需了解最新功能详情，请查阅<a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>转换视频文档</u></a>，即刻为您的区域启用转换服务！</p>
 <h2>R2 中的 Infrequent Access 现已正式发布</h2>
@@ -175,7 +213,11 @@
 <span class="line"><span class="sk-24292e-fff">      headers: { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/plain"</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您还可以直接在 R2 仪表板中监控每个存储桶的 Infrequent Access 和标准存储空间使用情况。立即开始使用 <a href="https://developers.cloudflare.com/r2/get-started" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 吧！</p>
 <h2>浏览器渲染中的 Playwright 功能现已正式发布</h2>

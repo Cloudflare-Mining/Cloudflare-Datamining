@@ -15,14 +15,40 @@
 <h3>Create the Terraform config file</h3>
 <p>Create a file with any name and give it a <code>.tf</code> file extension. This is where we'll define our Terraform resources. In this file, first we'll need to setup the Cloudflare provider:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">provider</span><span class="sk-032f62-99ffe4"> "cloudflare"</span><span class="sk-032f62-99ffe4"> {}</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">provider</span><span class="sk-032f62-99ffe4"> "cloudflare"</span><span class="sk-032f62-99ffe4"> {}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>You could define your credentials in this file, but in general it's better to use environment variables so that you can check the configuration file into version control without including any private data.</p>
 <p>Next we're going to create a variable named <code>zone</code>. One of the benefits about defining the zone in a variable as opposed to hard-coding it is that you can setup a separate staging domain and use the same Terraform configuration as your production domain. See the <a href="https://www.terraform.io/docs/configuration/variables.html" target="_blank" rel="noopener noreferrer">documentation</a> for more information on working with variables.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">variable</span><span class="sk-032f62-99ffe4"> "zone"</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  default</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "partyparrot.business"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Setting up the worker script</h3>
 <p>Now let's write our worker script. If you're looking for inspiration, check out some <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">Worker recipes</a>. For this example, I'll use <a href="https://gist.github.com/jRiest/7893cf10c550057ce1ff53f270683e1c#file-party_parrot_worker-js" target="_blank" rel="noopener noreferrer">this script</a> and name it <code>party_parrot_worker.js</code>.</p>
@@ -31,7 +57,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_worker_script"</span><span class="sk-032f62-99ffe4"> "main_script"</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  zone</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone</span><span class="sk-032f62-99ffe4">}"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  content</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">file</span><span class="sk-032f62-99ffe4">("party_parrot_worker.js")}"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you're new to Terraform, check out the <a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener noreferrer">Terraform Resource documentation</a> to learn more about this schema. Here we provide 2 parameters, the <code>zone</code> which references the variable we defined earlier and <code>content</code> which references the file we just created.</p>
 <p><strong>NOTE:</strong> The <a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Cloudflare Enterprise plan</a> supports using multiple (named) scripts. To use this, the parameters will be slightly different. Remove the <code>zone</code> parameter since named scripts are not tied to a particular zone and instead add a <code>name</code> parameter to define the name of the script. See <a href="https://www.terraform.io/docs/providers/cloudflare/r/worker_script.html" target="_blank" rel="noopener noreferrer">the cloudflare_worker_script documentation</a> for an example.</p>
@@ -43,7 +73,11 @@
 <span class="line"><span class="sk-24292e-fff">  pattern </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "*${var.zone}/*"</span></span>
 <span class="line"><span class="sk-24292e-fff">  enabled </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> true</span></span>
 <span class="line"><span class="sk-24292e-fff">  depends_on </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"cloudflare_worker_script.main_script"</span><span class="sk-24292e-fff">]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Just like with the script resource, the <code>zone</code> parameter references the variable we defined earlier.</p>
 <p>The <code>pattern</code> parameter defines which requests should be sent to the worker. In this example we use a route pattern like <code>*partyparrot.business*</code> which will match all traffic. If, however, you only want your worker to handle a subset of requests to your zone, you can define a more specific pattern like <code>mysubdomain.example.com/*</code> or <code>*example.com/mypath*</code>. More information on route patterns is available <a href="https://developers.cloudflare.com/workers/api/route-matching" target="_blank" rel="noopener noreferrer">here</a>.</p>
@@ -65,7 +99,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">If you ever set or change modules or backend configuration for Terraform,</span></span>
 <span class="line"><span class="sk-24292e-fff">rerun </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> command to reinitialize your working directory. If you forget, other</span></span>
-<span class="line"><span class="sk-24292e-fff">commands will detect it and remind you to </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-24292e-fff"> so </span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> necessary.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">commands will detect it and remind you to </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-24292e-fff"> so </span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> necessary.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now to deploy the changes, run <code>terraform apply</code>. Terraform will show you a preview of the changes it will make.</p>
 <div class="emdash-code">
@@ -98,7 +136,11 @@
 <span class="line"><span class="sk-24292e-fff">  Terraform will perform the actions described above.</span></span>
 <span class="line"><span class="sk-24292e-fff">  Only 'yes' will be accepted to approve.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">  Enter a value:</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  Enter a value:</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If everything looks good, type <code>yes</code> and press return to apply the changes.</p>
 <div class="emdash-code">
@@ -115,7 +157,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-24292e-fff">:      </span><span class="sk-032f62-99ffe4">""</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-032f62-99ffe4"> "&lt;computed&gt;"</span></span>
 <span class="line"><span class="sk-24292e-fff">cloudflare_worker_route.catch_all_route: Creation complete after 0</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff">: af595c1bb7cd4d1698c4d6cbcb364662)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">Apply complete</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799"> Resources</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> added, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> changed, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">Apply complete</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799"> Resources</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> added, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> changed, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Congratulations, your worker script and route are deployed! You can see the example script running at <a href="https://partyparrot.business" target="_blank" rel="noopener noreferrer">partyparrot.business</a>.</p>
 <p>As you make changes to your script or Terraform config, you can run <code>terraform apply</code> again and Terraform will figure out what's changed and deploy any updates.</p>

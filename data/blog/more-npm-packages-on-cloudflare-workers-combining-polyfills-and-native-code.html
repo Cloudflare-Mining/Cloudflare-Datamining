@@ -17,15 +17,41 @@
 <p>Cloudflare <a href="https://blog.cloudflare.com/introducing-the-wintercg" target="_blank" rel="noopener noreferrer"><u>helped establish</u></a> <a href="https://wintercg.org" target="_blank" rel="noopener noreferrer"><u>WinterCG</u></a>, the Web-interoperable Runtimes Community Group to improve interoperability of JavaScript runtimes, both with each other and with the web platform. You can build many applications using only web-standard APIs, but what about when you want to import dependencies from NPM that rely on Node.js APIs?</p>
 <p>For example, if you attempt to import <a href="https://www.npmjs.com/package/pg" target="_blank" rel="noopener noreferrer"><u>pg</u></a>, a PostgreSQL driver, without Node.js compatibility turned on…</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> pg </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'pg'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> pg </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'pg'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>You will see the following error when you run <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer"><u>wrangler dev</u></a> to build your Worker:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">✘ [</span><span class="sk-005cc5-fff">ERROR</span><span class="sk-24292e-fff">] Could not resolve </span><span class="sk-032f62-99ffe4">"events"</span></span>
 <span class="line"><span class="sk-24292e-fff">    ..</span><span class="sk-032f62-a0a0a0">/node_modules/</span><span class="sk-24292e-fff">.pnpm</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare@</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">node_modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dist</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">index.js:</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">29</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      1</span><span class="sk-24292e-fff"> │ </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { EventEmitter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">        ╵                              </span><span class="sk-d73a49-a0a0a0">~~~~~~~~</span></span>
-<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This happens because the pg package imports the <a href="https://nodejs.org/api/events.html" target="_blank" rel="noopener noreferrer"><u>events module</u></a> from Node.js, which is not provided by workerd by default.</p>
 <p>How can we enable this?</p>
@@ -34,7 +60,11 @@
 <p>In 2022, we <a href="https://github.com/cloudflare/workers-sdk/pull/869" target="_blank" rel="noopener noreferrer"><u>added functionality to Wrangler</u></a> that injected polyfill implementations of some Node.js APIs into your Worker if you set <code>node_compat = true</code> in your wrangler.toml. For instance, the following code would work with this flag, but not without:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> EventEmitter </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { inherits } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'util'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { inherits } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'util'</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>These polyfills are essentially just additional JavaScript code added to your Worker by <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> when deploying the Worker. This behavior is enabled by <a href="https://www.npmjs.com/package/@esbuild-plugins/node-globals-polyfill" target="_blank" rel="noopener noreferrer"><code><u>@esbuild-plugins/node-globals-polyfill</u></code></a> which in itself uses <a href="https://github.com/ionic-team/rollup-plugin-node-polyfills" target="_blank" rel="noopener noreferrer"><code><u>rollup-plugin-node-polyfills</u></code></a>.</p>
 <p>This allows you to import and use some NPM packages, such as pg. However, many modules cannot be polyfilled with fast enough code or cannot be polyfilled at all.</p>
@@ -43,7 +73,11 @@
 <p>In 2023, we <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage" target="_blank" rel="noopener noreferrer"><u>started adding</u></a> a subset of Node.js APIs directly to the Workers runtime. You can enable these APIs by adding the <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>nodejs_compat compatibility flag</u></a> to your Worker, but you cannot use polyfills with <code>node_compat = true</code> at the same time.</p>
 <p>Also, when importing Node.js APIs, you must use the <code>node</code>: prefix:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:buffer'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:buffer'</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Since these Node.js APIs are built directly into the Workers runtime, they can be <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/buffer.c%2B%2B" target="_blank" rel="noopener noreferrer"><u>written in C++</u></a>, which allows them to be faster than JavaScript polyfills. APIs like <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage" target="_blank" rel="noopener noreferrer"><u>AsyncLocalStorage</u></a>, which cannot be polyfilled without safety or performance issues, can be provided natively.</p>
 <p>Requiring the <code>node: </code>prefix made imports more explicit and aligns with modern Node.js conventions. Unfortunately, existing NPM packages may import modules without <code>node:</code>. For instance, revisiting the example above, if you import the popular package <code>pg</code> in a Worker with the <code>nodejs_compat</code> flag, you still see the following error:</p>
@@ -52,7 +86,11 @@
 <span class="line"><span class="sk-24292e-fff">    ..</span><span class="sk-032f62-a0a0a0">/node_modules/</span><span class="sk-24292e-fff">.pnpm</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare@</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">node_modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dist</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">index.js:</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">29</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      1</span><span class="sk-24292e-fff"> │ </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { EventEmitter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">        ╵                              </span><span class="sk-d73a49-a0a0a0">~~~~~~~~</span></span>
-<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Many NPM packages still didn’t work in Workers, even if you enabled the <code>nodejs_compat</code> compatibility flag. You had to choose between a smaller set of performant APIs, exposed in a way that many NPM packages couldn’t access, or a larger set of incomplete and less performant APIs. And APIs like <code>process</code> that are exposed as globals in Node.js could still only be accessed by importing them as modules.</p>
 <h3>The new approach: a hybrid model</h3>
@@ -67,7 +105,11 @@
 <p>Let’s take a look at two lines of code that look similar, but now act differently under the hood when <code>nodejs_compat_v2</code> is enabled:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'buffer'</span><span class="sk-24292e-fff">;  </span><span class="sk-6a737d-8b8b8b94">// natively implemented</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { isIP } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'net'</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// polyfilled</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { isIP } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'net'</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// polyfilled</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The first line imports <code>Buffer</code> from a <a href="https://github.com/cloudflare/workerd/blob/main/src/node/internal/internal_buffer.ts" target="_blank" rel="noopener noreferrer"><u>JavaScript module</u></a> in workerd that is backed by <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/buffer.c%2B%2B" target="_blank" rel="noopener noreferrer"><code><u>C++ code</u></code></a>. Various other Node.js modules are similarly implemented in a combination of Typescript and C++, including <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/async-hooks.h" target="_blank" rel="noopener noreferrer"><code><u>AsyncLocalStorage</u></code></a> and <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/crypto.h" target="_blank" rel="noopener noreferrer"><code><u>Crypto</u></code></a>. This allows for highly performant code that matches Node.js behavior.</p>
 <p>Note that the <code>node:</code> prefix is not needed when importing <code>buffer</code>, but the code would also work with <code>node:buffer</code>.</p>
@@ -89,14 +131,22 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> bar</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> "baz"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { bar } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "my-module"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">bar</span><span class="sk-24292e-fff">(); </span><span class="sk-6a737d-8b8b8b94">// returns "baz"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">foo</span><span class="sk-24292e-fff">(); </span><span class="sk-6a737d-8b8b8b94">// throws readFileSync is not implemented yet!</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Previously, even with the <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>existing nodejs_compat compatibility flag</u></a> enabled, attempting to import my-module would fail at build time, because the <code>fs</code> module could not be resolved. Now, the <code>fs</code> module can be resolved, methods that do not rely on an unimplemented Node.js API work, and methods that do throw a more specific error –&nbsp;a runtime error that a specific Node.js API method is not yet supported, rather than a build-time error that the module could not be resolved.</p>
 <p>This is what enables some packages to transition from “doesn’t even load on Workers” to, “loads, but with some unsupported methods”.</p>
@@ -105,7 +155,11 @@
 <p>For example, let’s say the NPM package you need to work calls <a href="https://nodejs.org/api/fs.html#fsreadfilepath-options-callback" target="_blank" rel="noopener noreferrer"><u>fs.readFile</u></a>. You can alias the fs module by adding the following to your Worker’s wrangler.toml:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[alias]</span></span>
-<span class="line"><span>"fs" = "./fs-polyfill"</span></span></code></pre>
+<span class="line"><span>"fs" = "./fs-polyfill"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then, in the fs-polyfill.js file, you can define your own implementation of any methods of the fs module:</p>
 <div class="emdash-code">
@@ -113,7 +167,11 @@
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"readFile was called"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, the following code, which previously threw the error message “[unenv] readFile is not implemented yet!”, runs without errors:</p>
 <div class="emdash-code">
@@ -125,18 +183,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello World!'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can also use module aliasing to provide an implementation of an NPM package that does not work on Workers, even if you only rely on that NPM package indirectly, as a dependency of one of your Worker's dependencies.</p>
 <p>For example, some NPM packages, such as <a href="https://www.npmjs.com/package/cross-fetch" target="_blank" rel="noopener noreferrer"><u>cross-fetch</u></a>, depend on <a href="https://www.npmjs.com/package/node-fetch" target="_blank" rel="noopener noreferrer"><u>node-fetch</u></a>, a package that provided a polyfill of the <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><u>fetch() API</u></a> before it was built into Node.js. The node-fetch package isn't needed in Workers, because the fetch() API is provided by the Workers runtime. And node-fetch doesn't work on Workers, because it relies on currently unsupported Node.js APIs from the <a href="https://nodejs.org/api/http.html" target="_blank" rel="noopener noreferrer"><u>http</u></a> and <a href="https://nodejs.org/api/https.html" target="_blank" rel="noopener noreferrer"><u>https</u></a> modules.</p>
 <p>You can alias all imports of node-fetch to instead point directly to the fetch() API that is built into the Workers runtime using the popular <a href="https://github.com/SukkaW/nolyfill" target="_blank" rel="noopener noreferrer"><u>nolyfill</u></a> package:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[alias]</span></span>
-<span class="line"><span>"node-fetch" = "./fetch-nolyfill"</span></span></code></pre>
+<span class="line"><span>"node-fetch" = "./fetch-nolyfill"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>All your replacement module needs to do in this case is to re-export the fetch API that is built into the Workers runtime:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> fetch;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> fetch;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Contributing back to unenv</h3>
 <p>Cloudflare is actively contributing to unenv. We think unenv is solving the problem of cross-runtime compatibility the right way —&nbsp;it adds only the necessary polyfills to your application, based on what APIs you use and what runtime you target. The project supports a variety of runtimes beyond workerd and is already used by other popular projects including <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer"><u>Nuxt</u></a> and <a href="https://nitro.unjs.io" target="_blank" rel="noopener noreferrer"><u>Nitro</u></a>. We want to thank <a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer"><u>Pooya Parsa</u></a> and the unenv maintainers and encourage others in the ecosystem to adopt or contribute.</p>

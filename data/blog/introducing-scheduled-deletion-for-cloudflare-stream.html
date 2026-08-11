@@ -23,8 +23,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl -X POST \</span></span>
 <span class="line"><span class="sk-24292e-fff">-H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \</span></span>
 <span class="line"><span class="sk-24292e-fff">-d '{ </span><span class="sk-005cc5-ffc799">"maxDurationSeconds"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"scheduledDeletion"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2023-12-31T12:34:56Z"</span><span class="sk-24292e-fff"> }' \</span></span>
-<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/direct_upload </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/direct_upload </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">the documentation</a>.</p>
 <h2>Getting started with automated deletion for Live Input recordings</h2>
 <p>We love how recordings from live streams allow those who may have missed the stream to catch up, but these recordings aren’t always needed forever. Scheduled recording deletion is a policy that can be configured for new or existing live inputs. Once configured, the recordings of all future streams on that input will have a scheduled deletion date calculated when the recording is available. Setting this retention policy can be done from the Cloudflare dashboard or via API operations to create or edit Live Inputs:</p>
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-24292e-fff">-H 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \</span></span>
 <span class="line"><span class="sk-24292e-fff">-H 'Content-Type: application/json' \</span></span>
 <span class="line"><span class="sk-24292e-fff">-d '{ </span><span class="sk-005cc5-ffc799">"recording"</span><span class="sk-24292e-fff">: {</span><span class="sk-005cc5-ffc799">"mode"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"automatic"</span><span class="sk-24292e-fff">}, </span><span class="sk-005cc5-ffc799">"deleteRecordingAfterDays"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">30</span><span class="sk-24292e-fff"> }' \</span></span>
-<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-6a737d-8b8b8b94">//api.staging.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/live_inputs/</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-6a737d-8b8b8b94">//api.staging.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/stream/live_inputs/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For more information on live inputs and how to configure deletion policies in our API, refer to <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">the documentation</a>.</p>
 <h2>Try out scheduled deletion today</h2>

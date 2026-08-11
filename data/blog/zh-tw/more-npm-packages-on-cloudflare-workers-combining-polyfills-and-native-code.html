@@ -17,15 +17,41 @@
 <p>Cloudflare<a href="https://blog.cloudflare.com/introducing-the-wintercg" target="_blank" rel="noopener noreferrer"> 協助建立了</a> <a href="https://wintercg.org" target="_blank" rel="noopener noreferrer">WinterCG</a> (Web-interoperable Runtimes Community Group)，旨在改進 JavaScript 執行階段的互通性，包括彼此之間以及與 Web 平台的互通性。您可以僅使用 Web 標準 API 建置許多應用程式，但是當您想要從依賴 Node.js API 的 NPM 匯入相依性時，該怎麼辦？</p>
 <p>例如，如果您嘗試在未開啟 Node.js 相容性的情況下匯入 <a href="https://www.npmjs.com/package/pg" target="_blank" rel="noopener noreferrer">pg</a>（一個 PostgreSQL 驅動程式）：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> pg </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'pg'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> pg </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'pg'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>當您執行 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer">wrangler dev</a> 來建置 Worker 時，您將看到以下錯誤：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">✘ [</span><span class="sk-005cc5-fff">ERROR</span><span class="sk-24292e-fff">] Could not resolve </span><span class="sk-032f62-99ffe4">"events"</span></span>
 <span class="line"><span class="sk-24292e-fff">    ..</span><span class="sk-032f62-a0a0a0">/node_modules/</span><span class="sk-24292e-fff">.pnpm</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare@</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">node_modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dist</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">index.js:</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">29</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      1</span><span class="sk-24292e-fff"> │ </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { EventEmitter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">        ╵                              </span><span class="sk-d73a49-a0a0a0">~~~~~~~~</span></span>
-<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>發生這種情況的原因是 pg 套件從 Node.js 匯入了 <a href="https://nodejs.org/api/events.html" target="_blank" rel="noopener noreferrer">events 模組</a>，而 workerd 預設不提供該模組。</p>
 <p>我們如何實現這一點？</p>
@@ -34,7 +60,11 @@
 <p>2022 年，我們<a href="https://github.com/cloudflare/workers-sdk/pull/869" target="_blank" rel="noopener noreferrer">為 Wrangler 新增了功能</a>，如果您在 wrangler.toml 中設定了 <code>node_compat = true</code>，則可以將一些 Node.js API 的 polyfill 實作插入到您的 Worker 中。例如，在具有此標誌時，以下程式碼可以生效，但沒有此標誌則不行：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> EventEmitter </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { inherits } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'util'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { inherits } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'util'</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>這些 polyfill 本質上只是在部署 Worker 時由 <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a> 新增到 Worker 中的額外 JavaScript 程式碼。此行為由 <code><a href="https://www.npmjs.com/package/@esbuild-plugins/node-globals-polyfill" target="_blank" rel="noopener noreferrer">@esbuild-plugins/node-globals-polyfill</a> </code>啟用，後者本身使用<code> <a href="https://github.com/ionic-team/rollup-plugin-node-polyfills" target="_blank" rel="noopener noreferrer">rollup-plugin-node-polyfills</a></code>。</p>
 <p>這允許您匯入和使用一些 NPM 套件，例如 pg。然而，許多模組無法使用足夠快的程式碼進行 polyfill，或者根本無法進行 polyfill。</p>
@@ -43,7 +73,11 @@
 <p>2023 年，我們<a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage" target="_blank" rel="noopener noreferrer">開始</a>將一部分 Node.js API 直接新增到 Workers 執行階段。您可以透過將 <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">nodejs_compat 相容性標誌</a>新增至 Worker 來啟用這些 API，但不能同時使用 <code>node_compat = true</code> 的 polyfill。</p>
 <p>此外，在匯入 Node.js API 時，您必須使用 <code>node:</code> 首碼：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:buffer'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:buffer'</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>由於這些 Node.js API 直接內建在 Workers 執行階段中，因此可以<a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/buffer.c%2B%2B" target="_blank" rel="noopener noreferrer">用 C++ 編寫</a>，從而比 JavaScript polyfill 更快。像 <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage" target="_blank" rel="noopener noreferrer">AsyncLocalStorage</a> 這樣的 API，如果沒有安全性或效能問題就無法進行 polyfill，但可以原生提供。</p>
 <p>需要 <code>node: </code>首碼使匯入更加明確並符合現代 Node.js 約定。不幸的是，現有的 NPM 套件可能會匯入沒有 <code>node:</code> 的模組。例如，回顧上面的範例，如果您在帶有 <code>nodejs_compat</code> 標誌的 Worker 中匯入流行的套件 <code>pg</code>，您仍然會看到以下錯誤：</p>
@@ -52,7 +86,11 @@
 <span class="line"><span class="sk-24292e-fff">    ..</span><span class="sk-032f62-a0a0a0">/node_modules/</span><span class="sk-24292e-fff">.pnpm</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare@</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">node_modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dist</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">index.js:</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">29</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      1</span><span class="sk-24292e-fff"> │ </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { EventEmitter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">        ╵                              </span><span class="sk-d73a49-a0a0a0">~~~~~~~~</span></span>
-<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>即使您啟用了 <code>nodejs_compat </code>相容性標誌，許多 NPM 套件仍然無法在 Workers 中運作。您必須在較小的一組高效能 API（以許多 NPM 套件無法存取的方式公開）或較大的一組不完整且效能較低的 API 之間進行選擇。在 Node.js 中作為全域變數公開的 API（例如 <code>process</code>）仍然只能透過將它們作為模組匯入來存取。</p>
 <h3><strong>新方法：混合模型</strong></h3>
@@ -67,7 +105,11 @@
 <p>讓我們來看看兩行程式碼，它們看起來很相似，但現在在啟用 <code>nodejs_compat_v2</code> 時，其底層行為有所不同：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'buffer'</span><span class="sk-24292e-fff">;  </span><span class="sk-6a737d-8b8b8b94">// natively implemented</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { isIP } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'net'</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// polyfilled</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { isIP } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'net'</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// polyfilled</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>第一行從 workerd 中由<code> <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/buffer.c%2B%2B" target="_blank" rel="noopener noreferrer">C++</a></code><a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/buffer.c%2B%2B" target="_blank" rel="noopener noreferrer"> 程式碼</a>支援的 <a href="https://github.com/cloudflare/workerd/blob/main/src/node/internal/internal_buffer.ts" target="_blank" rel="noopener noreferrer">JavaScript 模組</a>匯入 <code>Buffer</code>。其他各種 Node.js 模組也採用類似的 Typescript 和 C++ 組合方式實作，包括 <code><a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/async-hooks.h" target="_blank" rel="noopener noreferrer">AsyncLocalStorage</a> </code>和 <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/crypto.h" target="_blank" rel="noopener noreferrer"><code>Crypto</code></a>。這允許產生與 Node.js 行為相符的高效能程式碼。</p>
 <p>請注意，匯入 <code>buffer </code>時不需要 <code>node:</code> 首碼，但該程式碼也可以使用 <code>node:buffer</code>。</p>
@@ -89,14 +131,22 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> bar</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> "baz"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { bar } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "my-module"</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">bar</span><span class="sk-24292e-fff">(); </span><span class="sk-6a737d-8b8b8b94">// returns "baz"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">foo</span><span class="sk-24292e-fff">(); </span><span class="sk-6a737d-8b8b8b94">// throws readFileSync is not implemented yet!</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>先前，即使啟用了<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">現有的 nodejs_compat 相容性標誌</a>，嘗試匯入 my-module 也會在建置時失敗，因為無法解析 <code>fs</code> 模組。現在，<code>fs</code> 模組可以被解析，不依賴未實現的 Node.js API 的方法可以生效，且這些方法會拋出更具體的錯誤——一個表明特定 Node.js API 方法尚不受支援的執行階段錯誤，而不是表明模組無法解析的建置時錯誤。</p>
 <p>這使得某些套件能夠從「根本不在 Workers 上載入」轉變為「可載入，但具有一些不受支援的方法」。</p>
@@ -105,7 +155,11 @@
 <p>例如，假設您需要運作的 NPM 套件叫作 <a href="https://nodejs.org/api/fs.html#fsreadfilepath-options-callback" target="_blank" rel="noopener noreferrer">fs.readFile</a>。您可以透過將以下內容新增至 Worker 的 wrangler.toml 來為 fs 模組設定別名：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[alias]</span></span>
-<span class="line"><span>"fs" = "./fs-polyfill"</span></span></code></pre>
+<span class="line"><span>"fs" = "./fs-polyfill"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>然後，在 fs- polyfill.js 檔案中，您可以定義 fs 模組的任何方法的實作：</p>
 <div class="emdash-code">
@@ -113,7 +167,11 @@
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"readFile was called"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>現在，以下程式碼（之前引發了錯誤訊息「[unenv] readFile is not implemented yet!」）可以執行，而不會產生錯誤：</p>
 <div class="emdash-code">
@@ -125,18 +183,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello World!'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您也可以使用模組別名來提供在 Workers 上無法運作的 NPM 套件的實作，即使您只是間接依賴該 NPM 套件（作為 Worker 相依性之一的相依性）。</p>
 <p>例如，一些 NPM 套件（例如 <a href="https://www.npmjs.com/package/cross-fetch" target="_blank" rel="noopener noreferrer">cross-fetch</a>）依賴於 <a href="https://www.npmjs.com/package/node-fetch" target="_blank" rel="noopener noreferrer">node-fetch</a>，後者是一個套件，在 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">fetch() API</a> 建置到 Node.js 之前提供它的 polyfill。Workers 中不需要 node-fetch 套件，因為 fetch() API 是由 Workers 執行時間提供的。並且 node-fetch 不適用於 Workers，因為它依賴 <a href="https://nodejs.org/api/http.html" target="_blank" rel="noopener noreferrer">http</a> 和 <a href="https://nodejs.org/api/https.html" target="_blank" rel="noopener noreferrer">https</a> 模組中目前不受支援的 Node.js API。</p>
 <p>您可以為 node-fetch 的所有匯入設定別名，而不是直接指向使用熱門 <a href="https://github.com/SukkaW/nolyfill" target="_blank" rel="noopener noreferrer">nolyfill</a> 套件內建至 Workers 執行階段的 fetch() API：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[alias]</span></span>
-<span class="line"><span>"node-fetch" = "./fetch-nolyfill"</span></span></code></pre>
+<span class="line"><span>"node-fetch" = "./fetch-nolyfill"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在這種情況下，您的替換模組只需要重新匯出內建到 Workers 執行階段中的 fetch API 即可：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> fetch;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> fetch;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>回饋 unenv</strong></h3>
 <p>Cloudflare 正在積極為 unenv 貢獻自己的一份力量。我們認為 unenv 正在以正確的方式解決跨執行階段相容性問題——它根據您使用的 API 和您的目標執行階段，僅向您的應用程式新增必要的 polyfill。該專案支援 workerd 以外的各種執行階段，並且已經被包括 <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer">Nuxt</a> 和 <a href="https://nitro.unjs.io" target="_blank" rel="noopener noreferrer">Nitro</a> 在內的其他熱門專案使用。我們要感謝 <a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer">Pooya Parsa</a> 和 unenv 維護者，並鼓勵生態系統中的其他人採用或做出貢獻。</p>

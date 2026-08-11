@@ -25,40 +25,90 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-6a737d-8b8b8b94"> #cdn-info</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cdn-info</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> cdn-id</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">OWS</span><span class="sk-032f62-99ffe4"> ";"</span><span class="sk-032f62-99ffe4"> OWS</span><span class="sk-032f62-99ffe4"> parameter</span><span class="sk-24292e-fff"> )</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cdn-id</span><span class="sk-032f62-99ffe4">	=</span><span class="sk-24292e-fff"> ( </span><span class="sk-032f62-99ffe4">uri-host</span><span class="sk-24292e-fff"> [ </span><span class="sk-032f62-99ffe4">":"</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-032f62-99ffe4"> ]</span><span class="sk-24292e-fff"> ) / pseudonym</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">pseudonym</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> token</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">pseudonym</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> token</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This initially seems a lot to unpack. Essentially, <code>cdn-id</code> is a URI host ID for the destination resource, or a <code>pseudonym</code> related to the CDN that has processed the request. In the Cloudflare case, we might choose <code>pseudonym = cloudflare</code>, or use the URI host ID for the origin website that has been requested.</p>
 <p>Then, <code>cdn-info</code> contains the <code>cdn-id</code> in addition to some optional parameters. This is denoted by <code>*( OWS ";" OWS parameter )</code> where `OWS` represents optional whitespace, and <code>parameter</code> represents any CDN-specific information that may be informative for the specific request. If different CDN-specific <code>cdn-info</code> parameters are included in the same header, then these are comma-separated. For example, we may have <code>cdn-info = cdn1; param1, cdn2; param2</code> for two different CDNs that have interacted with the request.</p>
 <p>Concretely, we give some examples to describe how the CDN-Loop header may be used by a CDN to mark requests as being processed.</p>
 <p>If a request arrives at CDN <code>A</code> that has no current CDN-Loop header. Then <code>A</code> processes the request and adds:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>to the request headers.</p>
 <p>If a request arrives at <code>A</code> with the following header:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>for some different CDN <code>B</code>, then <code>A</code> either modifies the header to be:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>or adds a separate header:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If a request arrives at <code>A</code> with:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>this indicates that the request has already been processed. At this point <code>A</code> detects a loop and may implement loop protection in accordance with its own policies. This is an implementation decision that is not defined in the specification. Options may include dropping the request or simply re-marking it, for example:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">); </span><span class="sk-6f42c1-ffc799">cdn-info(A</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">); </span><span class="sk-6f42c1-ffc799">cdn-info(A</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A CDN could also utilise the optional parameters to indicate that a request had been processed:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">); processed</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CDN-Loop:</span><span class="sk-032f62-99ffe4"> cdn-info</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-24292e-fff">); processed</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The ability to use different parameters in the header allows for much more granular loop detection and protection. For example, a CDN could drop requests that had previously looped N&gt;1 times, rather than just once. In addition, the advantage of using the CDN-Loop header is that it does not come with legacy baggage. &nbsp;As we experienced previously, loop detection based on the Via header can conflict with existing usage of the header in web server implementations that eventually lead to compression issues and performance degradation. This makes CDN-Loop a viable and effective solution for detecting loop-protection attacks and applying preventions where needed.</p>
 <h4>Implementing CDN-Loop at Cloudflare</h4>

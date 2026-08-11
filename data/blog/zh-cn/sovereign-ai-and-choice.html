@@ -23,8 +23,30 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "text": ["What is your favourite food?", "I like pizza"],</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "target_language": "guj_Gujr"</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>日本：</strong>日本对 AI 发展有着清晰且宏大的<a href="http://www8.cao.go.jp/cstp/ai/aistratagy2022en.pdf" target="_blank" rel="noopener noreferrer"><u>愿景</u></a>。鉴于日本在 AI 应用普及方面进展缓慢，日本政府致力于通过营造国内外 AI 发展的理想环境，将日本打造成“全球对 AI 最友好的国家”。日本政府的一项重要举措是支持能深入理解日语复杂性及其文化背景的 AI 技术。</p>
 <p>Cloudflare 正在提供由 Preferred Networks, Inc.(PFN) 自主研发的日语文本嵌入模型 <a href="https://huggingface.co/pfnet/plamo-embedding-1b" target="_blank" rel="noopener noreferrer"><u>PLaMo-Embedding-1B</u></a>，该模型现以自由开放的方式对外发布。日本政府通过其<a href="https://www.meti.go.jp/english/policy/mono_info_service/geniac/index.html" target="_blank" rel="noopener noreferrer"><u>生成式 AI 加速器挑战</u></a> (GENIAC) 计划对 PFN 提供了支持，该计划通过补贴训练所需的计算资源访问权限，助力 LLM 的发展。PLaMo 嵌入模型能够帮助用户为日语文本生成高质量的嵌入表示，适用于构建基于 RAG 的应用以及语义搜索等使用场景。</p>
 <p>您可以在 Workers AI 平台上按如下方式使用 <a href="https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b" target="_blank" rel="noopener noreferrer"><u>@cf/pfnet/plamo-embedding-1b</u></a> 模型：</p>
@@ -38,7 +60,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">            "PLaMo-Embedding-1Bは、Preferred Networks, Inc. によって開発された日本語テキスト埋め込みモデルです。",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            "最近は随分と暖かくなりましたね。"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        ]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>东南亚</strong>：<a href="https://www.imda.gov.sg/about-imda/international-relations/asean-working-group-on-ai-governance" target="_blank" rel="noopener noreferrer"><u>作为东南亚国家联盟 (ASEAN) 人工智能治理工作组主席国</u></a>，新加坡雄心勃勃的<a href="https://www.smartnation.gov.sg/initiatives/national-ai-strategy" target="_blank" rel="noopener noreferrer"><u>国家人工智能战略 2.0</u></a> 旨在确保 AI 成为东南亚乃至全球的公共产品。作为该战略的基石，新加坡正在大力推动 SEA-LION 的开发和应用，这是一系列专为东南亚多元语言和文化设计的大型语言模型 (LLM)。该计划旨在将新加坡打造为一个包容性的全球 AI 领导者，确保这项技术既易于获取，又与当地多语言和多元文化的民众息息相关。这些模型适用于多种地区语言，包括印尼语、马来语、泰语、越南语和泰米尔语，从而为亚洲乃至全球相当一部分人口解锁 AI 技术。</p>
 <p><a href="https://huggingface.co/aisingapore/Gemma-SEA-LION-v4-27B-IT-FP8-Dynamic" target="_blank" rel="noopener noreferrer"><u>SEA-LION 模型 v4-27B</u></a> 现已在 Workers AI 平台上发布。SEA-LION v4 在新加坡政府的评测榜单中表现卓越，是目前该国最强大、最高效、支持多模态和多语言的模型。</p>
@@ -55,7 +81,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "content": "แล้วทำผัดไทยอย่างไร"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  ]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>将 AI 模型推向全球</h2>
 <p>新加坡、印度和日本都选择将其众多本土语言模型开源，这一策略彰显了对 AI 主权更宏大愿景的推崇。这种做法体现了一个关键认知：真正的 AI 主权，意味着确保您拥有选择权。</p>

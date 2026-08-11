@@ -73,8 +73,30 @@
 <span class="line"><span class="sk-24292e-fff">	__u64 addr;</span></span>
 <span class="line"><span class="sk-24292e-fff">	__u32 len;</span></span>
 <span class="line"><span class="sk-24292e-fff">	__u32 options;</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here the len member tells us the total size of the packet pointed to by addr in the UMEM frame.</p>
 <p>Our first interaction with the packet content happens in the BPF code attached to the network interfaces.</p>
 <p>There our entrypoint function gets a pointer to a xdp_md C struct with <a href="https://elixir.bootlin.com/linux/v5.15.77/source/include/uapi/linux/bpf.h#L5442" target="_blank" rel="noopener noreferrer">the following definition</a>:</p>
@@ -88,7 +110,11 @@
 <span class="line"><span class="sk-24292e-fff">	__u32 rx_queue_index;</span><span class="sk-6a737d-8b8b8b94">  /* rxq-&gt;queue_index  */</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">	__u32 egress_ifindex;</span><span class="sk-6a737d-8b8b8b94">  /* txq-&gt;dev-&gt;ifindex */</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This context structure contains two pointers (<code>as __u32</code>) referring to start and the end of the packet. Getting the packet length can be done by subtracting data from data_end.</p>
 <p>If we compare that value with the one we get from the descriptors, we would surely find they are the same right?</p>
@@ -108,7 +134,11 @@
 <p>The real key piece of information that these debug prints revealed was that not only were each swapped “pair” sharing a descriptor address, but nearly every corrupt packet on a single server was always using the same descriptor address. Here you can see 49750 corrupt packets that all used descriptor address 69837056:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> flowtrackd.service-2022-11-03.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 87m237</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-005cc5-99ffe4"> -E</span><span class="sk-032f62-99ffe4"> 'desc_addr: [[:digit:]]+'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  49750</span><span class="sk-032f62-99ffe4"> desc_addr:</span><span class="sk-005cc5-ffc799"> 69837056</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  49750</span><span class="sk-032f62-99ffe4"> desc_addr:</span><span class="sk-005cc5-ffc799"> 69837056</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This was the second lightbulb moment. Not only are we trying to copy two packets to the same buffer, but it is always the same buffer. Perhaps the problem is that this descriptor has been inserted into the AF_XDP rings twice? We tested this theory by updating our consumer code to test if a batch of descriptors read from the RX ring ever contained the same descriptor twice. This wouldn’t guarantee that the descriptor isn’t in the ring twice since there is no guarantee that the two descriptors will be in the same read batch, but we were lucky enough that it did catch the same descriptor twice in a single read proving this was our issue. In hindsight the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">linux kernel AF_XDP documentation</a> points out this very issue:</p>
 <blockquote>
@@ -126,7 +156,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 23:49:01</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[45807]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-ZrBh'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 26476800 transitioned from Fill to Tx'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 17</span><span class="sk-032f62-99ffe4"> 02:09:01</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[45926]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-Ay0i'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 18422016 transitioned from Comp to Rx'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 29</span><span class="sk-032f62-99ffe4"> 10:52:08</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[83849]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-5UYF'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 3154176 transitioned from Tx to Rx'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Nov</span><span class="sk-005cc5-ffc799"> 29</span><span class="sk-032f62-99ffe4"> 10:52:08</span><span class="sk-032f62-99ffe4"> fuzzer4</span><span class="sk-032f62-99ffe4"> flowtrackd[83849]:</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> 'flowtrackd-5UYF'</span><span class="sk-032f62-99ffe4"> panicked</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 'descriptor 3154176 transitioned from Tx to Rx'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The first print shows a descriptor was put on the FILL ring and transitioned directly to the TX ring without being read from the RX ring first. This appears to hint at a bug in our application, perhaps indicating that our application duplicates the descriptor putting one copy in the FILL ring and the other copy in the TX ring.</p>
 <p>The second invalid transition happened for a descriptor moving from the COMP ring to the RX ring without being put first on the FILL ring. This appears to hint at a kernel bug, perhaps indicating that the kernel duplicated a descriptor and put it both in the COMP ring and the RX ring.</p>
@@ -161,7 +195,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      8</span><span class="sk-032f62-99ffe4">         if</span><span class="sk-24292e-fff"> (err) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                        xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx_queue_full++</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">                        return</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">                }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">                }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In our case line 7 is the call to xskq_prod_reserve_desc(). At this point in the code the kernel has already removed a descriptor from the FILL queue and copied a packet into that descriptor. The call to xsk_prod_reserve_desc() will ensure that there is space in the RX queue, and if there is space will add that descriptor to the RX queue. It is important to note that while xskq_prod_reserve_desc() will put the descriptor in the RX queue it does not update the producer pointer of the RX ring or notify the XSK that packets are ready to be read because the kernel tries to batch these operations.</p>
 <p>Similarly, we wanted to place a probe in the transmit path on the kernel side and ultimately placed the following probe:</p>
@@ -202,7 +240,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    	ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].len</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    	return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here you can see that the queue’s cached_prod pointer is incremented first before we update the descriptor address and length. As the name implies the cached_prod pointer isn’t the actual producer pointer which means that at some point <code>xsk_flush()</code> must be called to sync the cached_prod pointer and the prod pointer to actually expose the newly received descriptors to user-mode. Perhaps there is a race where <code>xsk_flush()</code> is called after updating the <code>cached_prod</code> pointer, but before the actual descriptor address has been updated in the ring? If this were to occur our application would see the old descriptor address from that slot in the RX queue and would cause us to “duplicate” that descriptor.</p>
 <p>We can test our theory by making two more changes. First we can update our application to write back a known “poisoned” descriptor address to each RX queue slot after we have received a packet. In this case we chose <code>0xdeadbeefdeadbeef</code> as our known invalid address and if we ever receive this value back out of the RX queue we know a race has occurred and exposed an uninitialized descriptor. The second change we can make is to add a kprobe on <code>xsk_flush()</code> to see if we can actually capture the race in the trace.</p>
@@ -231,7 +273,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                                                        //</span><span class="sk-032f62-99ffe4"> flowtrackd</span><span class="sk-032f62-99ffe4"> reads</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> descriptor</span><span class="sk-032f62-99ffe4"> "too soon"</span><span class="sk-032f62-99ffe4"> where</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> addr</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                                                        //</span><span class="sk-032f62-99ffe4"> and/or</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-032f62-99ffe4"> fields</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> yet</span><span class="sk-032f62-99ffe4"> been</span><span class="sk-032f62-99ffe4"> updated.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].addr</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> addr</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].len</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">xs-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">rx-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">ring-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">desc[idx].len</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The AF_XDP documentation states that: <em>“All rings are single-producer/single-consumer, so the user-space application needs explicit synchronization of multiple processes/threads are reading/writing to them.”</em> The explicit synchronization requirement must also apply on the kernel side. How can two operations on the RX ring of a socket run at the same time?</p>
 <p>On Linux, a mechanism called <a href="https://wiki.linuxfoundation.org/networking/napi" target="_blank" rel="noopener noreferrer">NAPI</a> prevents CPU interrupts from occurring every time a packet is received by the network interface. It instructs the network driver to process a certain amount of packets at a frequent interval. For the veth driver that polling function is called <a href="https://elixir.bootlin.com/linux/v5.15.77/source/drivers/net/veth.c#L906" target="_blank" rel="noopener noreferrer">veth_poll</a>, and it is <a href="https://elixir.bootlin.com/linux/v5.15.77/source/drivers/net/veth.c#L1015" target="_blank" rel="noopener noreferrer">registered</a> as the function handler for each queue of the XDP enabled network device. A NAPI-compliant network driver provides the guarantee that the processing of the packets tied to a NAPI context (<code>struct napi_struct *napi</code>) will not be happening at the same time on multiple processors. In our case, a NAPI context exists for each queue of the device which means per AF_XDP socket and their associated set of ring buffers (RX, TX, FILL, COMPLETION).</p>
@@ -267,7 +313,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	xdp_clear_return_frame_no_direct</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-032f62-99ffe4"> done</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>veth_xdp_rcv()</code> processes as many packets as the budget variable is set to, marks the NAPI processing as complete, potentially reschedules a NAPI polling, and <strong>then</strong>, calls <code>xdp_do_flush()</code>, breaking the NAPI guarantee cited above. After the call to <code>napi_complete_done()</code>, any CPU is free to execute the <code>veth_poll()</code> function before all the flush operations of the previous call are complete, allowing the race on the RX ring.</p>
 <p>The race condition can be fixed by completing all the packet processing before signaling the NAPI poll as complete. The patch as well as the discussion on the kernel mailing list that lead to the fix are available here: <a href="https://lore.kernel.org/bpf/20221220185903.1105011-1-sbohrer@cloudflare.com" target="_blank" rel="noopener noreferrer">[PATCH] veth: Fix race with AF_XDP exposing old or uninitialized descriptors</a>. The patch was recently merged upstream.</p>

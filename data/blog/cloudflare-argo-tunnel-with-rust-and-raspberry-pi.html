@@ -29,13 +29,39 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">permitted by applicable law.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Last login: Sun Mar 18 23:24:11 2018 from stevens-air-2.lan</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~ $ </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~ $ </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We're in!</p>
 <p><strong>Pro tip: quick way to figure it out which type you have is</strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pi@raspberrypi:~</span><span class="sk-24292e-fff"> $ </span><span class="sk-032f62-99ffe4">cat</span><span class="sk-032f62-99ffe4"> /proc/cpuinfo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 'Revision'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{print $3}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sed</span><span class="sk-032f62-99ffe4"> 's/^1000//'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">a22082</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">a22082</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory" target="_blank" rel="noopener noreferrer">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
 <h3>Internet connectivity</h3>
@@ -56,7 +82,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">set-cookie:</span><span class="sk-032f62-99ffe4"> __cflb=</span><span class="sk-005cc5-ffc799">3128081942</span><span class="sk-24292e-fff">; path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">/</span><span class="sk-24292e-fff">; expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">Wed,</span><span class="sk-6f42c1-ffc799"> 21-Mar-18</span><span class="sk-032f62-99ffe4"> 21:54:20</span><span class="sk-032f62-99ffe4"> GMT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">expect-ct:</span><span class="sk-032f62-99ffe4"> max-age=604800,</span><span class="sk-032f62-99ffe4"> report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">server:</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cf-ray:</span><span class="sk-032f62-99ffe4"> 3febc2914beb7f06-SFO-DOG</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cf-ray:</span><span class="sk-032f62-99ffe4"> 3febc2914beb7f06-SFO-DOG</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That first line HTTP/2 200 is the OK status code, which is enough to tell us we can connect out to the Internet. Normally this wouldn't be particularly exciting, as it's allowing connections <strong>in</strong> that causes problems. That's the promise of Argo Tunnels however, it says on the tin we don't need to poke any firewall holes or configure any DNS. Big claim, let's test it.</p>
 <h3>Install the Agent</h3>
@@ -68,19 +98,31 @@
 <span class="line"><span class="sk-6f42c1-ffc799">HTTP</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> sent,</span><span class="sk-032f62-99ffe4"> awaiting</span><span class="sk-032f62-99ffe4"> response...</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Length:</span><span class="sk-005cc5-ffc799"> 5293773</span><span class="sk-24292e-fff"> (5.0M) [application/octet-stream]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Saving</span><span class="sk-032f62-99ffe4"> to:</span><span class="sk-032f62-99ffe4"> ‘cloudflared-stable-linux-arm.tgz’</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Untar it</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mkdir</span><span class="sk-032f62-99ffe4"> argo-tunnel</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-005cc5-99ffe4"> -xvzf</span><span class="sk-032f62-99ffe4"> cloudflared-stable-linux-arm.tgz</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> ./argo-tunnel</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> argo-tunnel</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> argo-tunnel</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Check you can execute it.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-005cc5-99ffe4"> --version</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 2018.3.0</span><span class="sk-24292e-fff"> (built </span><span class="sk-032f62-99ffe4">2018-03-02-1820</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 2018.3.0</span><span class="sk-24292e-fff"> (built </span><span class="sk-032f62-99ffe4">2018-03-02-1820</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Looks OK. Now, we're hoping that the agent will magically connect from the Pi out to the nearest Cloudflare POP. We obviously want that to be secure. Furthermore, we're expecting that when a request comes inbound, it magically gets routed through Cloudflare's network and back to my Raspberry Pi.</p>
 <p>Seems unlikely, but let’s have faith. Here is my mental model of what's happening:</p>
@@ -89,7 +131,11 @@
 </figure>
 <p>So let's create that secure tunnel. I guess we need some sort of certificate or credentials...</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> login</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> login</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You'll see output in the command window similar to this:</p>
 <div class="emdash-code">
@@ -97,7 +143,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">https://www.cloudflare.com/a/warp?callback</span><span class="sk-032f62-99ffe4">=</span><span class="sk-24292e-fff">&lt;some </span><span class="sk-032f62-99ffe4">toke</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">If</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> browser</span><span class="sk-032f62-99ffe4"> failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> open,</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> yourself</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> visit</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-032f62-99ffe4"> above.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">If</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> browser</span><span class="sk-032f62-99ffe4"> failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> open,</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> yourself</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> visit</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-032f62-99ffe4"> above.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Our headless Pi doesn't have a web browser, so let's copy the url from the console into the browser on our host dev machine.</p>
 <p>This part assumes you already have a domain on Cloudflare If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank" rel="noopener noreferrer">setup guide</a> to get started.</p>
@@ -115,7 +165,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">You</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> successfully</span><span class="sk-032f62-99ffe4"> logged</span><span class="sk-032f62-99ffe4"> in.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">If</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> wish</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> copy</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> credentials</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> server,</span><span class="sk-032f62-99ffe4"> they</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> been</span><span class="sk-032f62-99ffe4"> saved</span><span class="sk-032f62-99ffe4"> to:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">/home/pi/.cloudflared/cert.pem</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">/home/pi/.cloudflared/cert.pem</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Aha! That answers how the tunnel gets secured. The agent has created a certificate and will use that to secure the connection back to Cloudflare. Now let's create the tunnel and serve some content!</p>
 <p><code>$ cloudflared --hostname [hostname] --hello-world</code></p>
@@ -128,7 +182,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0005]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> LAX</span><span class="sk-24292e-fff">                             </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0010]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> SFO-DOG</span><span class="sk-24292e-fff">                         </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0012]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> LAX</span><span class="sk-24292e-fff">                             </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0012]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> SFO-DOG</span><span class="sk-24292e-fff">  </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">INFO[0012]</span><span class="sk-032f62-99ffe4"> Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> SFO-DOG</span><span class="sk-24292e-fff">  </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki" target="_blank" rel="noopener noreferrer">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -137,7 +195,11 @@
 <p>And back on the Pi</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">INFO[0615]</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> https://127.0.0.1:62627/</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span><span class="sk-032f62-99ffe4"> CF-RAY=4067701b598e8184-LAX</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0615]</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span><span class="sk-032f62-99ffe4">  CF-RAY=4067701b598e8184-LAX</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">INFO[0615]</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span><span class="sk-032f62-99ffe4">  CF-RAY=4067701b598e8184-LAX</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Mind. Blown. So what happened here exactly...</p>
 <ol>
@@ -160,13 +222,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">3</span><span class="sk-24292e-fff">) Cancel installation</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  stable</span><span class="sk-032f62-99ffe4"> installed</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> rustc</span><span class="sk-005cc5-ffc799"> 1.24.1</span><span class="sk-24292e-fff"> (d3ae9a9e0 </span><span class="sk-032f62-99ffe4">2018-02-27</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>OK, Rust is installed. Now clone Gotham and build the hello_world example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/gotham-rs/gotham</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> gotham/examples/hello_world</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>Pro tip:</strong> if cargo is not found, run <code>source $HOME/.cargo/env</code>. It will be automatic in future sessions.</p>
 <p>As cargo does its magic, you can think to yourself about how it's a great package manager, how there really are a lot of dependencies and how OSS really is standing on the shoulders of giants of giants of giants of giants—eventually you'll have the example built.</p>
@@ -177,7 +247,11 @@
 <span class="line"><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> ../../target/debug</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./gotham_examples_hello_world</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Listening</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Listening</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We have a rust web server listening on a local port. Let's connect the tunnel to that.</p>
 <p><code>./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
@@ -186,7 +260,11 @@
 <p>OK, challenge accepted. Rust being fancy and modern is OK with Unicode. Let's serve some of that.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> examples/hello_world/src/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> src/main.rs</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> src/main.rs</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Replace the hello world string:</p>
 <p><code>Some((String::from("Hello World!").into_bytes(), mime::TEXT_PLAIN)),</code></p>
@@ -197,7 +275,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> build</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">./gotham_examples_hello_world</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Listening</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Listening</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>$ ./cloudflared --hostname gotham.pacman.wiki http://127.0.0.1:7878</code></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -210,24 +292,40 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> install</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> copy</span><span class="sk-032f62-99ffe4"> user</span><span class="sk-032f62-99ffe4"> configuration.</span><span class="sk-032f62-99ffe4"> Before</span><span class="sk-032f62-99ffe4"> running</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> service,</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ensure</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> /etc/cloudflared</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-032f62-99ffe4"> two</span><span class="sk-032f62-99ffe4"> files,</span><span class="sk-032f62-99ffe4"> cert.pem</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> config.yml</span><span class="sk-24292e-fff">  </span></span>
-<span class="line"><span class="sk-24292e-fff">error</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"open cert.pem: no such file or directory"</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">error</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"open cert.pem: no such file or directory"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nice error! OK, the product team have helpfully documented what to put in that file <a href="https://developers.cloudflare.com/argo-tunnel/reference/config" target="_blank" rel="noopener noreferrer">here</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> cp</span><span class="sk-032f62-99ffe4"> ~/.cloudflared/cert.pem</span><span class="sk-032f62-99ffe4"> /etc/cloudflared</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/config.yml</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> nano</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/config.yml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#config.yml</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">hostname:</span><span class="sk-032f62-99ffe4"> gotham.pacman.wiki</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">url:</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">url:</span><span class="sk-032f62-99ffe4"> http://127.0.0.1:7878</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Autostart for the Agent</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./cloudflared</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> install</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> Using</span><span class="sk-032f62-99ffe4"> Systemd</span><span class="sk-24292e-fff">                                </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ERRO[0000]</span><span class="sk-032f62-99ffe4"> systemctl:</span><span class="sk-032f62-99ffe4"> Created</span><span class="sk-032f62-99ffe4"> symlink</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> /etc/systemd/system/multi-user.target.wants/cloudflared.service</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> /etc/systemd/system/cloudflared.service.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> systemctl</span><span class="sk-032f62-99ffe4"> daemon-reload</span><span class="sk-24292e-fff">       </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">INFO[0000]</span><span class="sk-032f62-99ffe4"> systemctl</span><span class="sk-032f62-99ffe4"> daemon-reload</span><span class="sk-24292e-fff">       </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Autostart for the Web Server</h4>
 <p>Copy the web server executable somewhere outside the gotham source tree so you can play around with the source code. I copied mine to <code>/home/pi/argo-tunnel/server/bin/</code></p>
@@ -238,6 +336,10 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ps</span><span class="sk-005cc5-99ffe4"> -aux</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> tunnel</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">root</span><span class="sk-005cc5-ffc799">       501</span><span class="sk-005cc5-ffc799">  0.1</span><span class="sk-005cc5-ffc799">  0.2</span><span class="sk-005cc5-ffc799">  37636</span><span class="sk-005cc5-ffc799">  1976</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4">        Sl</span><span class="sk-032f62-99ffe4">   06:30</span><span class="sk-032f62-99ffe4">   0:00</span><span class="sk-032f62-99ffe4"> /home/pi/argo-tunnel/server/bin/gotham_examples_hello_world</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">root</span><span class="sk-005cc5-ffc799">       977</span><span class="sk-005cc5-ffc799"> 15.7</span><span class="sk-005cc5-ffc799">  1.4</span><span class="sk-005cc5-ffc799"> 801292</span><span class="sk-005cc5-ffc799"> 13972</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4">        Ssl</span><span class="sk-032f62-99ffe4">  06:30</span><span class="sk-032f62-99ffe4">   0:01</span><span class="sk-032f62-99ffe4"> /home/pi/argo-tunnel/cloudflared</span><span class="sk-005cc5-99ffe4"> --config</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/config.yml</span><span class="sk-005cc5-99ffe4"> --origincert</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/cert.pem</span><span class="sk-005cc5-99ffe4"> --no-autoupdate</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">root</span><span class="sk-005cc5-ffc799">       977</span><span class="sk-005cc5-ffc799"> 15.7</span><span class="sk-005cc5-ffc799">  1.4</span><span class="sk-005cc5-ffc799"> 801292</span><span class="sk-005cc5-ffc799"> 13972</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4">        Ssl</span><span class="sk-032f62-99ffe4">  06:30</span><span class="sk-032f62-99ffe4">   0:01</span><span class="sk-032f62-99ffe4"> /home/pi/argo-tunnel/cloudflared</span><span class="sk-005cc5-99ffe4"> --config</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/config.yml</span><span class="sk-005cc5-99ffe4"> --origincert</span><span class="sk-032f62-99ffe4"> /etc/cloudflared/cert.pem</span><span class="sk-005cc5-99ffe4"> --no-autoupdate</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Profit.</p>

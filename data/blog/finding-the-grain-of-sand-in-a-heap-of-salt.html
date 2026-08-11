@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-22863a-ffc799">  file.managed</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-22863a-ffc799">source</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">salt://webserver/files/nginx.conf</span></span>
 <span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-22863a-ffc799">require</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-24292e-fff">      - </span><span class="sk-22863a-ffc799">pkg</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">nginx</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">      - </span><span class="sk-22863a-ffc799">pkg</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">nginx</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>States can call <strong>execution modules</strong>, which are Python functions that implement system actions. When applying states, Salt returns a structured result containing whether the state succeeded (<code>result: True/False</code>), a comment, changes made, and duration.</p>
 <h3>Salt at Cloudflare</h3>
 <p>We use Salt to manage our ever-growing fleet of machines, and have previously written about our <a href="https://blog.cloudflare.com/tag/salt" target="_blank" rel="noopener noreferrer"><u>extensive usage</u></a>. The master-minion architecture described above allows us to push configuration in the form of states to thousands of servers, which is essential for maintaining our network. We’ve designed our change propagation to involve blast radius protection. With these protections in place, a <a href="https://docs.saltproject.io/en/3006/ref/states/highstate.html" target="_blank" rel="noopener noreferrer"><u>highstate</u></a> failure becomes a signal, rather than a customer-impacting event.</p>
@@ -39,7 +61,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">URIs:</span><span class="sk-032f62-99ffe4"> mirror+file:/etc/apt/mirrorlists/saltcodebase.txt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Suites:</span><span class="sk-032f62-99ffe4"> stable</span><span class="sk-032f62-99ffe4"> canary</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Components:</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Signed-By:</span><span class="sk-032f62-99ffe4"> /etc/apt/keyrings/cloudflare.gpg</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Signed-By:</span><span class="sk-032f62-99ffe4"> /etc/apt/keyrings/cloudflare.gpg</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This file directs a master to the correct suite for its specific environment. Using that suite, it retrieves the latest package containing the relevant Salt Debian package with the latest changes. It installs that package and begins deploying the included configuration. As it deploys the configuration on machines, the machines report their health using <a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale" target="_blank" rel="noopener noreferrer"><u>Prometheus</u></a>. If a version is healthy, it will be progressed into the next environment. Before it can be progressed, a version has to pass a certain soak threshold to allow a version to develop its errors, making more complex issues become apparent. That is the happy case.</p>
 <p>The unhappy case brings a myriad of complications: As we do progressive deployments, if a version is broken, any subsequent version is also broken. And because broken versions are continuously overtaken by newer versions, we need to stop deployments altogether. In a broken version scenario, it is crucial to get a fix out as soon as possible. This touches upon the core question of this blog post: What if a broken Salt version is propagated across the environment, we are abandoning deployments, and we need to get a fix out as soon as possible?</p>
@@ -74,7 +100,11 @@
 <span class="line"><span class="sk-24292e-fff">Failed:    </span><span class="sk-005cc5-ffc799">1</span></span>
 <span class="line"><span class="sk-24292e-fff">------------</span></span>
 <span class="line"><span class="sk-24292e-fff">Total states run:     </span><span class="sk-005cc5-ffc799">2</span></span>
-<span class="line"><span class="sk-24292e-fff">Total run time: </span><span class="sk-005cc5-ffc799">270.719</span><span class="sk-24292e-fff"> ms</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">Total run time: </span><span class="sk-005cc5-ffc799">270.719</span><span class="sk-24292e-fff"> ms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The return can also be displayed in JSON:</p>
 <div class="emdash-code">
@@ -97,7 +127,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "changes"</span><span class="sk-24292e-fff">: {}</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The flexibility of the output format means that humans can parse them in custom scripts. But more importantly, it can also be consumed by more complex, interconnected automation systems. We knew we could easily parse these outputs to attribute the cause of a Salt failure with an input – e.g. a change in source control, an external service failure, or a software release. But something was missing.</p>
 <h3>The solutions</h3>
@@ -190,7 +224,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      state:</span><span class="sk-032f62-99ffe4"> foo</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      traceback:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">          Full</span><span class="sk-032f62-99ffe4"> stack</span><span class="sk-032f62-99ffe4"> trace</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> failure</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      urls:</span><span class="sk-032f62-99ffe4"> http://url-matching-external-service-if-found</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">      urls:</span><span class="sk-032f62-99ffe4"> http://url-matching-external-service-if-found</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Phase three: automate, automate, automate!</h3>
 <p>Faster triage is always a welcome development, and engineers were comfortable running local commands on minions to triage Salt failures. But in a busy shift, time is of the essence. When failures spanned across multiple datacenters or machines, it easily became cumbersome to run commands across all these minions. This solution also required context-switches between multiple nodes and datacenters. We needed a way to aggregate common failure types using a single command – single minions, pre-production datacenters and production datacenters.</p>

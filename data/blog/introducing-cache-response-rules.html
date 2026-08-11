@@ -56,8 +56,30 @@
 <span class="line"><span>&nbsp;&nbsp;"strip_etags": true,</span></span>
 <span class="line"><span>&nbsp;&nbsp;"strip_set_cookie": true,</span></span>
 <span class="line"><span>&nbsp;&nbsp;"strip_last_modified": true</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This is the fix for the <code>Set-Cookie-on-a-static-asset</code> problem. Origin frameworks frequently attach session cookies to every response (for load balancing or other purposes), including responses for assets that users don't want to be associated with a session. Stripping <code>Set-Cookie</code> in the response phase makes those assets cacheable again without asking the origin, load balancer, or anything else upstream to change anything.</p>
 <p>Cache Response Rules also run on responses that aren't eligible for caching at all. So when you strip Set-Cookie from a dynamic response, for instance, the rule fires whether or not the object is ever stored. This allows you to control what the client sees even when the response is not stored in cache. You can also strip ETag and <code>Last-Modified</code>, which is useful when those headers are misconfigured at the origin and causing thrash. This comes with a tradeoff: stripping both ETag and Last-Modified enables <a href="https://blog.cloudflare.com/introducing-smart-edge-revalidation" target="_blank" rel="noopener noreferrer"><u>Smart Edge Revalidation</u></a> for that response. If Cache Response Rules then <em>add</em> new validators, Cloudflare will not enable a Smart Edge Revalidation for browser conditional requests.</p>
 <p>So stripping and modifying headers, even on dynamic requests, are a powerful new pattern that did not exist before on Cloudflare, but there can be additional configs to be aware of if you make these changes.&nbsp;&nbsp;&nbsp;</p>
@@ -70,14 +92,22 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>"action_parameters": {</span></span>
 <span class="line"><span>&nbsp;&nbsp;"operation": "set",</span></span>
 <span class="line"><span>&nbsp;&nbsp;"values": ["product-catalog", "storefront"]</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Or computed from a response header expression:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>"action_parameters": {</span></span>
 <span class="line"><span>&nbsp;&nbsp;"operation": "add",</span></span>
 <span class="line"><span>&nbsp;&nbsp;"expression": "split(http.response.headers[\"Surrogate-Keys\"][0], \",\", 64)"</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That second form is the one that earns its keep during a CDN migration. If your previous CDN attached surrogate keys to responses using a header like <code>Surrogate-Keys</code> with a comma delimiter, you can translate them into Cloudflare's <code>Cache-Tag</code> format directly in the response phase.</p>
 <p>The third argument to split() is the limit: the maximum number of elements in the resulting array can be between 1 and 128. Use a value comfortably larger than the realistic tag count per response. The value 1 would return the entire header as a single tag. Once tags exist on the response, <a href="https://blog.cloudflare.com/instant-purge" target="_blank" rel="noopener noreferrer"><u>purge-by-tag</u></a> just works (and by “works” we mean usually in <a href="https://blog.cloudflare.com/instant-purge" target="_blank" rel="noopener noreferrer"><u>under 150 ms, globally</u></a>).</p>
@@ -98,7 +128,11 @@
 <span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;"value": 86400,</span></span>
 <span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;"cloudflare_only": true</span></span>
 <span class="line"><span>&nbsp;&nbsp;}</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When <code>cloudflare_only</code> is true, the directive affects how Cloudflare caches the response, but the downstream Cache-Control value sent to the browser is left alone. This is the response-phase version of what <code>CDN-Cache-Control</code> gives you at the origin: cache the asset for 24 hours at Cloudflare, but tell the browser something else. The difference is that you're now doing it from a Rules surface in the Cloudflare dashboard, rather than asking the origin to set a separate header.</p>
 <h2>Examples worth stealing</h2>
@@ -107,7 +141,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Expression:&nbsp; http.request.uri.path.extension in {"js" "css" "woff2" "woff" "ttf" "png" "jpg" "svg"}</span></span>
 <span class="line"><span>Action:&nbsp; &nbsp; &nbsp; set_cache_settings</span></span>
-<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strip_set_cookie: true</span></span></code></pre>
+<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strip_set_cookie: true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Why it works</em>: The most common cause of "this should be cacheable but isn't" is a session middleware on the origin that attaches a <code>Set-Cookie</code> to <em>every</em> response. Stripping it for known-static extensions converts those responses to cacheable without any origin change.</p>
 <p><em>Caveat</em>: Only do this for asset types where the cookie is not semantically required. If your origin uses cookies to drive variant behavior on those URLs (very unusual but possible), strip selectively or scope stripping these headers by path.</p>
@@ -117,7 +155,11 @@
 <span class="line"><span>Action: &nbsp; &nbsp; set_cache_control</span></span>
 <span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s-maxage: set 2592000 (30 days), cloudflare_only=true</span></span>
 <span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;immutable: set</span></span>
-<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max-age: set 86400&nbsp; (1 day), cloudflare_only=false</span></span></code></pre>
+<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max-age: set 86400&nbsp; (1 day), cloudflare_only=false</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Why it works</em>: Cloudflare holds the asset for a month and serves it from cache. Browsers see <code>max-age=86400</code> and re-validate after a day. You decouple the two cache lifetimes without touching the origin.</p>
 <p><em>Caveat</em>: <code>immutable</code> tells browsers not to revalidate even on explicit refresh. Pair it only with versioned/hashed filenames.</p>
@@ -126,7 +168,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Expression: starts_with(http.request.uri.path, "/static/") and http.response.code eq 200</span></span>
 <span class="line"><span>Action: &nbsp; &nbsp; set_cache_control</span></span>
 <span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no-cache:&nbsp; remove</span></span>
-<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s-maxage:&nbsp; set 3600, cloudflare_only=true</span></span></code></pre>
+<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s-maxage:&nbsp; set 3600, cloudflare_only=true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Why it works</em>: Framework defaults sometimes attach <code>no-cache</code> to every response. If you know /static/* is safe to cache, you can strip the directive and impose your own TTL (at Cloudflare only), without changing what the origin or any downstream cache sees.</p>
 <p><em>Caveat</em>: Be honest about what's actually static. If <code>/static/</code> is sometimes used to serve user-specific content, narrow the match (extension, response header signal, content type).</p>
@@ -135,7 +181,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Expression:&nbsp; any(http.response.headers.names[*] == "Surrogate-Keys")</span></span>
 <span class="line"><span>Action: &nbsp; &nbsp; set_cache_tags</span></span>
 <span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;operation:&nbsp; add</span></span>
-<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expression: split(http.response.headers["Surrogate-Keys"][0], ",", 64)</span></span></code></pre>
+<span class="line"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expression: split(http.response.headers["Surrogate-Keys"][0], ",", 64)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>Why it works</em>: A lot of CDN migration pain comes from origin tooling that emits cache-tag headers in another vendor's format. Instead of asking the origin team to ship a release that adds Cloudflare's <code>Cache-Tag</code>, translate the existing header in the response phase. Purge-by-tag on Cloudflare starts working immediately.</p>
 <p><em>Caveat</em>: The third argument to split() is the limit (1–128) on the resulting array size, not anything to do with the separator.&nbsp;</p>
@@ -155,7 +205,11 @@
 <h3><strong>API</strong></h3>
 <p>Rules in this phase live at:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>/zones/{zone_id}/rulesets/phases/http_response_cache_settings/entrypoint</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>/zones/{zone_id}/rulesets/phases/http_response_cache_settings/entrypoint</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For further information about how to use Cache Response Rules including API and terraform examples, please see the <a href="https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api" target="_blank" rel="noopener noreferrer"><u>documentation</u></a>.</p>
 <h2>Use Cache Response Rules today</h2>

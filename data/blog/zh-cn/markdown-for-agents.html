@@ -14,8 +14,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//developers.cloudflare.com/fundamentals/reference/markdown-for-agents/ \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>或者，如果您要使用 Workers 构建 AI 智能体，则可以使用 TypeScript：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> r</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
@@ -28,7 +50,11 @@
 <span class="line"><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> tokenCount</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> r.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x-markdown-tokens"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> markdown</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> r.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们已经看到一些目前最流行的编码智能体（例如 Claude Code 和 OpenCode）将此类 Accept 标头与内容请求一起发送。现在，将以 Markdown 格式返回此请求的响应。就是这么简单。</p>
 <div class="emdash-code">
@@ -48,7 +74,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">The ability to parse and convert </span><span class="sk-005cc5-fff">HTML</span><span class="sk-24292e-fff"> to Markdown has become foundational for </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>请注意，我们在转换后的响应中添加了一个 <code>x-markdown-tokens</code> 标头，用于指明 Markdown 文档中估计的令牌数量。例如，您可以在流程中使用此值，计算上下文窗口的大小或决定分块策略。</p>
 <p>其工作原理如下图所示：</p>
@@ -65,7 +95,11 @@
 <p>立即体验此项功能，使用 <code>Accept: text/markdown</code> 请求获取这篇博客。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//blog.cloudflare.com/markdown-for-agents/ \</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>结果为：</p>
 <div class="emdash-code">
@@ -79,7 +113,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-6f42c1-ffc799"> way</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-6f42c1-ffc799"> and</span><span class="sk-6f42c1-ffc799"> businesses</span><span class="sk-6f42c1-ffc799"> are</span><span class="sk-6f42c1-ffc799"> discovered</span><span class="sk-6f42c1-ffc799"> online</span><span class="sk-6f42c1-ffc799"> is</span><span class="sk-6f42c1-ffc799"> changing</span><span class="sk-6f42c1-ffc799"> rapidly</span><span class="sk-24292e-fff">. </span><span class="sk-6f42c1-ffc799">In</span><span class="sk-6f42c1-ffc799"> the</span><span class="sk-6f42c1-ffc799"> past</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">traffic</span><span class="sk-6f42c1-ffc799"> originated</span><span class="sk-6f42c1-ffc799"> from</span><span class="sk-6f42c1-ffc799"> traditional</span><span class="sk-6f42c1-ffc799"> search</span><span class="sk-6f42c1-ffc799"> engines</span><span class="sk-6f42c1-ffc799"> and</span><span class="sk-6f42c1-ffc799"> SEO</span><span class="sk-6f42c1-ffc799"> determined</span><span class="sk-6f42c1-ffc799"> who</span><span class="sk-6f42c1-ffc799"> got</span><span class="sk-6f42c1-ffc799"> found</span><span class="sk-6f42c1-ffc799"> first</span><span class="sk-24292e-fff">. </span><span class="sk-6f42c1-ffc799">Now</span><span class="sk-6f42c1-ffc799"> the</span><span class="sk-6f42c1-ffc799"> traffic</span><span class="sk-6f42c1-ffc799"> is</span><span class="sk-6f42c1-ffc799"> increasingly</span><span class="sk-6f42c1-ffc799"> coming</span><span class="sk-6f42c1-ffc799"> from</span><span class="sk-6f42c1-ffc799"> AI</span><span class="sk-6f42c1-ffc799"> crawlers</span><span class="sk-6f42c1-ffc799"> and</span><span class="sk-6f42c1-ffc799"> agents</span><span class="sk-6f42c1-ffc799"> that</span><span class="sk-6f42c1-ffc799"> demand</span><span class="sk-6f42c1-ffc799"> structured</span><span class="sk-6f42c1-ffc799"> data</span><span class="sk-6f42c1-ffc799"> within</span><span class="sk-6f42c1-ffc799"> the</span><span class="sk-6f42c1-ffc799"> often</span><span class="sk-24292e-fff">-</span><span class="sk-6f42c1-ffc799">unstructured</span><span class="sk-6f42c1-ffc799"> Web</span><span class="sk-6f42c1-ffc799"> that</span><span class="sk-6f42c1-ffc799"> was</span><span class="sk-6f42c1-ffc799"> built</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-6f42c1-ffc799"> humans</span><span class="sk-24292e-fff">.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>转换为 Markdown 的其他方式</h3>
 <p>如果您要构建的 AI 系统需要从 Cloudflare 外部转换任意文档，或者内容源不支持 Markdown for Agents 功能，我们提供了其他方法，帮助您将文档转换为 Markdown 以供应用：</p>

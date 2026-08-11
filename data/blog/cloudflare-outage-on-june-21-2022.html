@@ -51,8 +51,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> STATIC-ROUTE</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> SITE-LOCAL-ROUTE</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> TLL01</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> EUROPE</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> EUROPE</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This was harmless, and just added some additional information to these prefix advertisements. The change on the spines was the following:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[edit policy-options policy-statement AGGREGATES-OUT]</span></span>
@@ -78,19 +100,31 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> STATIC-ROUTE</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> SITE-LOCAL-ROUTE</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> AMS07</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> EUROPE</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">      community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> EUROPE</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>An initial glance at this diff might give the impression that this change is identical, but unfortunately, that’s not the case. If we focus on one part of the diff, it might become clear why:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">    term</span><span class="sk-032f62-99ffe4"> REJECT-THE-REST</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">    term</span><span class="sk-032f62-99ffe4"> 4-ADV-SITE-LOCALS</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> }</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">    term</span><span class="sk-032f62-99ffe4"> 6-ADV-SITE-LOCALS</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">    term</span><span class="sk-032f62-99ffe4"> 6-ADV-SITE-LOCALS</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this diff format, the exclamation marks in front of the terms indicate a re-ordering of the terms. In this case, multiple terms moved up, and two terms were added to the bottom. Specifically, the 4-ADV-SITE-LOCALS and 6-ADV-SITE-LOCALS terms moved from the top to the bottom. These terms were now behind the REJECT-THE-REST term, and as might be clear from the name, this term is an explicit reject:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">term</span><span class="sk-032f62-99ffe4"> REJECT-THE-REST</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    then</span><span class="sk-6f42c1-ffc799"> reject</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As this term is now before the site-local terms, we immediately stopped advertising our site-local prefixes, removing our direct access to all the impacted locations, as well as removing the ability of our servers to reach origin servers.</p>
 <p>On top of the inability to contact origins, the removal of these site-local prefixes also caused our internal load balancing system Multimog (a variation of our <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog load-balancer</a>) to stop working, as it could no longer forward requests between the servers in our MCPs. This meant that our smaller compute clusters in an MCP received the same amount of traffic as our largest clusters, causing the smaller ones to overload.</p>

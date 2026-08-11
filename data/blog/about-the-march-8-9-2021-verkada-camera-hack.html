@@ -34,8 +34,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2352</span><span class="sk-032f62-99ffe4"> San</span><span class="sk-032f62-99ffe4"> Francisco</span><span class="sk-032f62-99ffe4">   whoami</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1451</span><span class="sk-032f62-99ffe4"> San</span><span class="sk-032f62-99ffe4"> Francisco</span><span class="sk-032f62-99ffe4">   ifconfig</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">1451</span><span class="sk-032f62-99ffe4"> San</span><span class="sk-032f62-99ffe4"> Francisco</span><span class="sk-032f62-99ffe4">   whoami</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">1451</span><span class="sk-032f62-99ffe4"> San</span><span class="sk-032f62-99ffe4"> Francisco</span><span class="sk-032f62-99ffe4">   whoami</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here’s a log of the traffic from the cameras. Let’s start with unusual DNS queries. This shows DNS lookups from two cameras in San Francisco, one in London and one in Singapore. Mostly the attacker was using ifconfig.me to find their external IP address.</p>
 <p>In San Francisco they attempted to access Cloudflare’s main website, an admin panel that doesn’t exist (there is no admin.cloudflare.com) and a specific customer that I have replaced with example.com (the hacker also tried admin.example.com).</p>
 <div class="emdash-code">
@@ -59,7 +81,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2021-03-08T23:58:30.274265Z</span><span class="sk-032f62-99ffe4">	Singapore</span><span class="sk-032f62-99ffe4">	ifconfig.me</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2021-03-08T23:58:30.274155Z</span><span class="sk-032f62-99ffe4">	Singapore</span><span class="sk-032f62-99ffe4">	ifconfig.me</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2021-03-08T23:52:23.145321Z</span><span class="sk-032f62-99ffe4">	San</span><span class="sk-032f62-99ffe4"> Francisco</span><span class="sk-032f62-99ffe4">	ifconfig.me</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2021-03-08T23:52:23.145321Z</span><span class="sk-032f62-99ffe4">	San</span><span class="sk-032f62-99ffe4"> Francisco</span><span class="sk-032f62-99ffe4">	ifconfig.me</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>They made some of their requests using HTTP and we captured those requests</p>
 <div class="emdash-code">
@@ -96,7 +122,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2021-03-08T23:52:23.183201Z</span><span class="sk-032f62-99ffe4"> San</span><span class="sk-032f62-99ffe4"> Francisco</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ifconfig.me</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> /</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">curl/7.64.0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">200</span><span class="sk-032f62-99ffe4"> OK</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">200</span><span class="sk-032f62-99ffe4"> OK</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We also have complete connection logging but in the interests of space I won’t put it all here.</p>
 <h3>The downloaded archived video</h3>

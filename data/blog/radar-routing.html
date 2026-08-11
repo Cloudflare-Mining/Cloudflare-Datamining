@@ -145,8 +145,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl --request GET \</span></span>
 <span class="line"><span>  --url "https://api.cloudflare.com/client/v4/radar/bgp/routes/pfx2as?prefix=1.1.1.0/24" \</span></span>
 <span class="line"><span>  --header 'Content-Type: application/json' \</span></span>
-<span class="line"><span>--header "Authorization: Bearer YOUR_TOKEN"</span></span></code></pre>
+<span class="line"><span>--header "Authorization: Bearer YOUR_TOKEN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The returned JSON result shows that Cloudflare (AS13335) originates the prefix <code>1.1.1.0/24</code> and it is a RPKI valid origin. It also returns the meta information such as the UTC timestamp of the query as well as when the dataset is last updated (<code>data_time</code> field).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>{</span></span>
@@ -167,7 +189,11 @@
 <span class="line"><span>      "total_peers": 82</span></span>
 <span class="line"><span>    }</span></span>
 <span class="line"><span>  }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Example 2: integrate Radar API into command-line tool</h3>
 <p><a href="https://github.com/bgpkit/monocle" target="_blank" rel="noopener noreferrer">BGPKIT monocle</a> is an open-source command-line application that provides multiple utility functions like searching BGP messages on public archives, network lookup by name, RPKI validation status for a given IP prefix, etc.</p>
@@ -189,6 +215,10 @@
 <span class="line"><span>│ prefix     │ origin  │ rpki  │ visibility    │</span></span>
 <span class="line"><span>├────────────┼─────────┼───────┼───────────────┤</span></span>
 <span class="line"><span>│ 1.1.1.0/24 │ as13335 │ valid │ high (98.78%) │</span></span>
-<span class="line"><span>└────────────┴─────────┴───────┴───────────────┘</span></span></code></pre>
+<span class="line"><span>└────────────┴─────────┴───────┴───────────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Visit <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> for additional insights around (Internet disruptions, routing issues, Internet traffic trends, attacks, Internet quality, etc.). Follow us on social media at <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a> (Twitter), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer">radar.cloudflare.com</a> (Bluesky), or contact us via <a href="mailto:radar@cloudflare.com">e-mail</a>.</p>

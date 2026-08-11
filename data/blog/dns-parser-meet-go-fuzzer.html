@@ -17,8 +17,30 @@
 <span class="line"><span class="sk-24292e-fff">	err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> msg.</span><span class="sk-6f42c1-ffc799">Unpack</span><span class="sk-24292e-fff">(buf)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We saw an opportunity to make the library more robust so we wrote this initial simple fuzzing function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> Fuzz</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">rawMsg</span><span class="sk-24292e-fff"> []</span><span class="sk-d73a49-a0a0a0">byte</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff"> {</span></span>
@@ -35,7 +57,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To create a corpus of initial inputs we took our stress and regression test suites and used <code>github.com/miekg/pcap</code> to write a file per packet.</p>
 <div class="emdash-code">
@@ -78,7 +104,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		i++</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jdhancock/11597106396/in/photolist-iENcGh-5GuU8g-4G3SzJ-cybzvf-ej9ytf-5PT2gy-2wCHkp-oTNLKN-4T5TVk-pikg74-64fbtb-64fbny-6iPZrk-6WSbWA-gTwR9P-6JEbMJ-uS5Qoe-p3LoLt-8rTRPb-gzJBbc-6u4Ko7-4uXbz8-bX4rtL-6HoBT8-cybFb7-pDtnkY-doskG2-a9tSqx-3NX4E-978gS2-4iW5fs-4VhKK2-7EpKqc-7EtB6Y-7EtAiN-7EpH54-7EpGgX-poTg8-55WEef-qfzP-dt83Gq-naDJvs-aCKhDG-drR492-aTSFS6-aTSEER-aTSC2t-aTSAUR-qqFXz2-ftsXnd" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/jdhancock" target="_blank" rel="noopener noreferrer">JD Hancock</a></p>
 <p>We then compiled our <code>Fuzz</code> function with go-fuzz, and launched the fuzzer on a lab server. The first thing go-fuzz does is minimize the corpus by throwing away packets that trigger the same code paths, then it starts mutating the inputs and passing them to <code>Fuzz()</code> in a loop. The mutations that don't fail (<code>return 1</code>) and <em>expand code coverage</em> are kept and iterated over. When the program panics, a small report (input and output) is saved and the program restarted. If you want to learn more about go-fuzz watch <a href="https://www.youtube.com/watch?v=a9xrxRsIbSU" target="_blank" rel="noopener noreferrer">the author's GopherCon talk</a> or read <a href="https://github.com/dvyukov/go-fuzz" target="_blank" rel="noopener noreferrer">the README</a>.</p>
@@ -150,7 +180,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I was pretty happy about the robustness gain, but since we used the <code>ParseDNSPacketSafely</code> wrapper in RRDNS I didn't expect to find security vulnerabilities. I was wrong!</p>
 <p>DNS names are made of labels, usually shown separated by dots. In a space saving effort, labels can be replaced by pointers to other names, so that if we know we encoded <code>example.com</code> at offset 15, <code>www.example.com</code> can be packed as <code>www.</code> + <em>PTR(15)</em>. What we found is <a href="https://github.com/FiloSottile/dns/commit/b364f94" target="_blank" rel="noopener noreferrer">a bug in handling of pointers to empty names</a>: when encountering the end of a name (<code>0x00</code>), if no label were read, <code>"."</code> (the empty name) was returned as a special case. Problem is that this special case was unaware of pointers, and it would instruct the parser to resume reading from the end of the pointed-to empty name instead of the end of the original name.</p>
@@ -180,7 +214,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                 --------------------------------</span><span class="sk-24292e-fff">&gt;   </span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">E</span><span class="sk-24292e-fff">) Rinse and repeat</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">E</span><span class="sk-24292e-fff">) Rinse and repeat</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We sent the fixes privately to the library maintainer while we patched our servers and we <a href="https://github.com/miekg/dns/pull/237" target="_blank" rel="noopener noreferrer">opened a PR</a> once done. (Two bugs were independently found and fixed by Miek while we released our RRDNS updates, as it happens.)</p>
 <h3>Not just crashes and hangs</h3>
@@ -188,7 +226,11 @@
 <p>Useful applications range from checking output validation by adding crashing assertions to your <code>Fuzz()</code> function, to comparing the two ends of a unpack-pack chain and even comparing the behavior of two different versions or implementations of the same functionality.</p>
 <p>For example, while preparing our <a href="https://blog.cloudflare.com/tag/dnssec">DNSSEC</a> engine for launch, I faced a weird bug that would happen only on production or under stress tests: <em>NSEC records that were supposed to only have a couple bits set in their types bitmap would sometimes look like this</em></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">deleg.filippo.io.</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  NSEC</span><span class="sk-005cc5-ffc799">    3600</span><span class="sk-005cc5-a0a0a0">    \0</span><span class="sk-032f62-99ffe4">00.deleg.filippo.io.</span><span class="sk-032f62-99ffe4"> NS</span><span class="sk-032f62-99ffe4"> WKS</span><span class="sk-032f62-99ffe4"> HINFO</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> AAAA</span><span class="sk-032f62-99ffe4"> LOC</span><span class="sk-032f62-99ffe4"> SRV</span><span class="sk-032f62-99ffe4"> CERT</span><span class="sk-032f62-99ffe4"> SSHFP</span><span class="sk-032f62-99ffe4"> RRSIG</span><span class="sk-032f62-99ffe4"> NSEC</span><span class="sk-032f62-99ffe4"> TLSA</span><span class="sk-032f62-99ffe4"> HIP</span><span class="sk-032f62-99ffe4"> TYPE60</span><span class="sk-032f62-99ffe4"> TYPE61</span><span class="sk-032f62-99ffe4"> SPF</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">deleg.filippo.io.</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  NSEC</span><span class="sk-005cc5-ffc799">    3600</span><span class="sk-005cc5-a0a0a0">    \0</span><span class="sk-032f62-99ffe4">00.deleg.filippo.io.</span><span class="sk-032f62-99ffe4"> NS</span><span class="sk-032f62-99ffe4"> WKS</span><span class="sk-032f62-99ffe4"> HINFO</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> AAAA</span><span class="sk-032f62-99ffe4"> LOC</span><span class="sk-032f62-99ffe4"> SRV</span><span class="sk-032f62-99ffe4"> CERT</span><span class="sk-032f62-99ffe4"> SSHFP</span><span class="sk-032f62-99ffe4"> RRSIG</span><span class="sk-032f62-99ffe4"> NSEC</span><span class="sk-032f62-99ffe4"> TLSA</span><span class="sk-032f62-99ffe4"> HIP</span><span class="sk-032f62-99ffe4"> TYPE60</span><span class="sk-032f62-99ffe4"> TYPE61</span><span class="sk-032f62-99ffe4"> SPF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The catch was that our "pack and send" code <em>pools <code>[]byte</code> buffers to reduce GC and allocation churn</em>, so buffers passed to <code>dns.msg.PackBuffer(buf []byte)</code> can be "dirty" from previous uses.</p>
 <div class="emdash-code">
@@ -203,7 +245,11 @@
 <span class="line"><span class="sk-24292e-fff">    data </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> bufpool.</span><span class="sk-6f42c1-ffc799">Get</span><span class="sk-24292e-fff">().([]</span><span class="sk-d73a49-a0a0a0">byte</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    defer</span><span class="sk-24292e-fff"> bufpool.</span><span class="sk-6f42c1-ffc799">Put</span><span class="sk-24292e-fff">(data)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> data, err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> r.Response.</span><span class="sk-6f42c1-ffc799">PackBuffer</span><span class="sk-24292e-fff">(data); err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> data, err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> r.Response.</span><span class="sk-6f42c1-ffc799">PackBuffer</span><span class="sk-24292e-fff">(data); err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>However, <code>buf</code> not being an array of zeroes was not handled by some <code>github.com/miekgs/dns</code> packers, including the NSEC rdata one, that would <em>just OR present bits, without clearing ones that are supposed to be absent</em>.</p>
 <div class="emdash-code">
@@ -229,7 +275,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">    off </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff">(length)</span></span>
 <span class="line"><span class="sk-24292e-fff">    off</span><span class="sk-d73a49-a0a0a0">++</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The fix was clear and easy: we benchmarked a few different ways to zero a buffer and updated the code like this</p>
 <div class="emdash-code">
@@ -249,7 +299,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    defer</span><span class="sk-24292e-fff"> bufpool.</span><span class="sk-6f42c1-ffc799">Put</span><span class="sk-24292e-fff">(data)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    copy</span><span class="sk-24292e-fff">(data[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">:</span><span class="sk-6f42c1-ffc799">cap</span><span class="sk-24292e-fff">(data)], zeroBuf)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> data, err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> r.Response.</span><span class="sk-6f42c1-ffc799">PackBuffer</span><span class="sk-24292e-fff">(data); err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> data, err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> r.Response.</span><span class="sk-6f42c1-ffc799">PackBuffer</span><span class="sk-24292e-fff">(data); err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note: <a href="https://github.com/golang/go/commit/f03c9202c43e0abb130669852082117ca50aa9b1" target="_blank" rel="noopener noreferrer">a recent optimization</a> turns zeroing range loops into <code>memclr</code> calls, so once 1.5 lands that will be much faster than <code>copy()</code>.</p>
 <p>But this was a boring fix! Wouldn't it be nicer if we could trust our library to work with any buffer we pass it? Luckily, this is exactly what coverage based fuzzing is good for: <em>making sure all code paths behave in a certain way</em>.</p>
@@ -290,7 +344,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I wish here, too, I could show a PR fixing all the bugs, but go-fuzz did its job even too well and we are still triaging and fixing what it finds.</p>
 <p>Anyway, once the fixes are done and go-fuzz falls silent, we will be free to drop the buffer zeroing step without worry, with no need to audit the whole codebase!</p>

@@ -35,8 +35,30 @@
 <span class="line"><span class="sk-24292e-fff">mnt</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">by</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">         MNT</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">CLOUD14</span></span>
 <span class="line"><span class="sk-24292e-fff">created</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">        2025</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">07</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">29T10</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">52</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">27Z</span></span>
 <span class="line"><span class="sk-24292e-fff">last</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">modified</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">  2025</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">07</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">29T10</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">52</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">27Z</span></span>
-<span class="line"><span class="sk-24292e-fff">source</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">         ARIN</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">source</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">         ARIN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>IRR 기반 유효성 검사 프로세스를 원하지 않는 고객을 위해 또 다른 안전한 확인 방법으로 역방향 DNS(rDNS)가 제공됩니다. 접두사에 대한 rDNS를 관리하려면 PTR 레코드를 만들든 보안 TXT 레코드를 만들든 애초에 IP 차단을 할당한 주체(일반적으로 인터넷 서비스 공급자 또는 RIR)의 권한을 부여받아야 합니다.</p>
 <p>이 권한은 다음 두 가지 방법 중 하나로 표시됩니다.</p>
 <ul>
@@ -64,7 +86,11 @@
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-24292e-fff"> time</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 35</span><span class="sk-24292e-fff"> msec</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">SERVER</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 127.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span><span class="sk-24292e-fff">#</span><span class="sk-005cc5-ffc799">53</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">127.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.2</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">WHEN</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Fri</span><span class="sk-6f42c1-ffc799"> Oct</span><span class="sk-005cc5-ffc799"> 24</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">43</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">52</span><span class="sk-005cc5-fff"> EDT</span><span class="sk-005cc5-ffc799"> 2025</span></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">MSG</span><span class="sk-005cc5-fff"> SIZE</span><span class="sk-24292e-fff">  rcvd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 150</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-005cc5-fff">MSG</span><span class="sk-005cc5-fff"> SIZE</span><span class="sk-24292e-fff">  rcvd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 150</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>그렇다면 이러한 레코드를 정확히 어떻게 수정해야 할까요? 이때 유효성 검사 토큰이 필요합니다. IRR 또는 역방향 DNS 방법을 선택하면 Cloudflare에서 고유한 일회용 유효성 검사 토큰을 제공합니다. 이 토큰을 IRR 또는 DNS의 관련 레코드 내용에 추가해야 합니다. 그런 다음 Cloudflare 시스템은 요청된 내용을 수정할 권한을 가진 사람이 요청을 수행했다는 증거로 토큰이 있는지 찾습니다. 토큰이 있으면 인증이 완료된 것입니다!</p>
 <h3>디지털 여권 🛂</h3>

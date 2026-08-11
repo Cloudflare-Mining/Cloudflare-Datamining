@@ -17,8 +17,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> onRequest</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> MyLogger</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff"> endpoint: </span><span class="sk-032f62-99ffe4">"https://logs.acme.com/new"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff"> secret: </span><span class="sk-032f62-99ffe4">"password"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>You can help grow the Plugins ecosystem by building and sharing your Plugins on <a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">npm</a> and our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/community-plugins" target="_blank" rel="noopener noreferrer">developer documentation</a>, and you can immediately get started by using one of Cloudflare’s official launch partner Plugins today.</p>
 <h2>Introducing our Plugins launch partners</h2>
 <p>With Pages, we’re always working to see how we can best cater to user workflows by integrating directly with users’ preferred tools. We see Plugins as an excellent opportunity to collaborate with popular third-party observability, monitoring, and authentication providers to provide their own Pages Plugins.</p>
@@ -36,7 +58,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> onRequest</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> sentryPlugin</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff"> dsn: </span><span class="sk-032f62-99ffe4">"YOUR_SENTRY_DSN"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><a href="https://www.honeycomb.io" target="_blank" rel="noopener noreferrer">Honeycomb</a></h3>
 <p>Similarly, Honeycomb is also an observability and monitoring platform meant to visualize, analyze and improve application quality and performance to help you find patterns and outliers in your application data. The <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/honeycomb" target="_blank" rel="noopener noreferrer">Honeycomb Plugin</a> creates traces for every request that your Pages application receives and automatically sends that information to Honeycomb for analysis.</p>
@@ -48,7 +74,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> onRequest</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> honeycombPlugin</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff"> apiKey: </span><span class="sk-032f62-99ffe4">"YOUR_HONEYCOMB_API_KEY"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff"> dataset: </span><span class="sk-032f62-99ffe4">"YOUR_HONEYCOMB_DATASET_NAME"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><a href="https://stytch.com/?utm_source=cloudflare&amp;utm_medium=blog" target="_blank" rel="noopener noreferrer">Stytch</a></h3>
 <p>Observability is just one use case of how Pages Plugins can help you build a more powerful app. Stytch is an API-first platform that improves security and promotes a better user experience with <a href="https://www.cloudflare.com/learning/security/threats/what-is-passwordless-authentication" target="_blank" rel="noopener noreferrer">passwordless authentication</a>. Our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/stytch" target="_blank" rel="noopener noreferrer">Stytch Plugin</a> transparently validates user sessions, allowing you to easily protect parts of your application behind a Stytch login.</p>
@@ -62,7 +92,11 @@
 <span class="line"><span class="sk-24292e-fff">  project_id: </span><span class="sk-032f62-99ffe4">"YOUR_STYTCH_PROJECT_ID"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  secret: </span><span class="sk-032f62-99ffe4">"YOUR_STYTCH_PROJECT_SECRET"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  env: envs.live</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>More Plugins, more fun!</h2>
 <p>As a developer platform, it’s crucial to build relationships with the creators of the tooling and frameworks you use alongside Pages, and we look forward to growing our partnership ecosystem even more in the future. However, beyond partnerships, we realize there are some more extremely useful Plugins that we built out to get you started!</p>

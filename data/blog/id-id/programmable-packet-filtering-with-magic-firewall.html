@@ -12,8 +12,30 @@
 <p>Jika nftables dapat memanfaatkan eBPF secara alami, cerita ini akan jauh lebih pendek; sayangnya, kami harus melanjutkan pencarian kami. Untuk memulai pencarian, kami tahu bahwa iptables terintegrasi dengan eBPF. Misalnya, seseorang dapat menggunakan iptables dan program eBPF yang disematkan untuk menjatuhkan paket dengan perintah berikut:</p>
 <p>Petunjuk ini membantu menempatkan kami di jalan yang benar. Iptables menggunakan ekstensi <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank" rel="noopener noreferrer">xt_bpf</a> untuk dicocokkan dengan program eBPF. Ekstensi ini menggunakan jenis program eBPF BPF_PROG_TYPE_SOCKET_FILTER, yang memungkinkan kita memuat informasi paket dari buffer soket dan mengembalikan nilai berdasarkan kode kami.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Karena kami tahu <em>iptables</em> dapat menggunakan eBPF, mengapa tidak menggunakannya saja? Magic Firewall saat ini memanfaatkan nftables, yang merupakan pilihan tepat untuk kasus penggunaan kami karena fleksibilitasnya dalam sintaks dan antarmuka yang dapat diprogram. Jadi, kita perlu menemukan cara untuk menggunakan ekstensi xt_bpf dengan nftables.</p>
 <p>Diagram <a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank" rel="noopener noreferrer">ini</a> membantu menjelaskan hubungan antara iptables, nftables dan kernel. nftables API dapat digunakan oleh program iptables dan nft userspace, dan dapat mengonfigurasi kecocokan xtables (termasuk xt_bpf) dan kecocokan nftables normal.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -30,7 +52,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		NLA_F_NESTED</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> NFTA_EXPR_DATA</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_NAME</span><span class="sk-032f62-99ffe4"> "bpf"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_REV</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Format byte dapat ditemukan dalam definisi header kernel dari <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank" rel="noopener noreferrer">struct xt_bpf_info_v1</a>. Contoh kode di atas menunjukkan bagian yang relevan dari struktur.</p>
 <div class="emdash-code">
@@ -42,7 +68,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		struct</span><span class="sk-032f62-99ffe4"> sock_filter</span><span class="sk-032f62-99ffe4"> bpf_program[XT_BPF_MAX_NUM_INSTR]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		char</span><span class="sk-032f62-99ffe4"> path[XT_BPF_PATH_MAX]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">	};</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Modul xt_bpf mendukung bytecode mentah, serta jalur ke program ebpf yang disematkan. Modus selanjutnya adalah teknik yang kami gunakan untuk menggabungkan program ebpf dengan nftables.</p>
 <p>Dengan informasi ini kami dapat menulis kode yang dapat membuat pesan netlink dan membuat serial dengan benar dari setiap bidang data yang relevan. Pendekatan ini hanyalah langkah pertama, kami juga sedang mempertimbangkan untuk memasukkan ini ke dalam alat yang tepat daripada mengirim pesan netfilter kustom.</p>
@@ -75,7 +105,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> BPF_OK</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Setelah kami memiliki program, langkah selanjutnya adalah mengintegrasikannya ke dalam alat kami. Kami mencoba beberapa teknologi untuk memuat program, seperti BCC, libbpf, dan kami bahkan membuat pemuat khusus. Pada akhirnya, kami menggunakan <a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">pustaka ebpf cilium</a>, karena kami menggunakan Golang untuk program bidang kontrol dan pustaka memudahkan untuk menghasilkan, menyematkan, dan memuat program eBPF.</p>
 <p>Setelah program dikompilasi dan disematkan, kami dapat menambahkan kecocokan ke dalam nftables menggunakan perintah netlink. Daftar aturan menunjukkan bahwa terdapat kecocokan. Ini luar biasa! Kami sekarang dapat memberlakukan program C khusus untuk menyediakan pencocokan tingkat lanjut di dalam kumpulan aturan Magic Firewall!</p>
@@ -85,7 +119,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	chain</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">		#match bpf pinned /sys/fs/bpf/mfw/match drop</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>Lebih Banyak Keajaiban</strong></h3>
 <p>Dengan tambahan eBPF ke toolkit kami, Magic Firewall adalah cara yang lebih fleksibel dan kuat untuk melindungi jaringan Anda dari aktor jahat. Kami sekarang dapat melihat lebih dalam ke dalam paket dan menerapkan logika pencocokan yang lebih kompleks daripada yang dapat disediakan oleh nftables saja. Karena firewall kami berjalan sebagai perangkat lunak di semua server Cloudflare, kami dapat dengan cepat mengulangi dan memperbarui fitur.</p>

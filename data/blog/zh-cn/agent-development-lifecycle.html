@@ -1,0 +1,171 @@
+<p>过去几十年里，工程经理一直致力于解决一个问题：如何让许多程序员在同一共享代码库中协同工作。这项工作最早追溯到“系统开发生命周期” (<a href="https://www.rand.org/pubs/reports/R1855.html" target="_blank" rel="noopener noreferrer"><u>RAND, 1975</u></a>)——今天通常称为“软件开发生命周期” （SDLC），其中定义了以下阶段：</p>
+<ul>
+	<li>计划</li>
+	<li>设计</li>
+	<li>实现</li>
+	<li>测试</li>
+	<li>部署</li>
+	<li>维护</li>
+	<li>停用</li>
+</ul>
+<p>AI 将之前最慢且成本最高的环节—实现——变得最快且最便宜。这进一步影响了后续环节：负责 SDLC 中其他所有步骤的人员不堪重负。例如，开源维护者受到成千上万的拉取请求和问题轰炸，生产工程师需要竭力避免生产环境在软件交付速度提升多个数量级的情况下崩溃。</p>
+<p>我们都在努力让我们的系统、客户以及自己脱离混乱、低质量的困境。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/j89/T67Ov04uTy3+Pz4OT04OLw397p/fr69/X46ujz3dvv2Nfu29nt3tzq4N3l//76+ff46ebz2tXu1M3p2NHn39nl5N/j///8/v377ur23tjw2dDr3tTn5t7m6+bm////////9/T86+X36ODz7OXw8ezu9PDt////////////+vj/+vf+/fv9//37/vz3////////////////////////////////////////////////////////////////" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=640&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=750&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=828&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1080&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1280&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1430&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ6A6DRX3WD507M2ZM4JJ353.png&amp;w=1920&amp;h=903&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="903" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="336" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>矛盾的是，解决办法在于赋予智能体更大的能力。这样才合情合理！您绝不会让团队某位工程师编写代码，却期待别人负责验证、合并、部署、在生产环境中值守，并对传入的缺陷进行分类处理。但目前，大多数公司在使用智能体时都是这么做的。模型的性能已显著提升，且智能体能够在更长的时间跨度内运行，从而承担更大规模的任务。但它们尚未在整个软件开发生命周期中均衡使用。</p>
+<p>Cloudflare 将智能体视为我们的客户。它们可以<a href="https://blog.cloudflare.com/agents-stripe-projects" target="_blank" rel="noopener noreferrer"><u>购买域名</u></a>，创建<a href="https://blog.cloudflare.com/temporary-accounts" target="_blank" rel="noopener noreferrer"><u>临时账户</u></a>并<a href="https://blog.cloudflare.com/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>使用完整的 Cloudflare API</u></a>。我们知道，智能体需要 API 和工具来代表客户管理完整的软件开发生命周期，而不仅仅是开始阶段。</p>
+<p>因此，今天我们推出一套新工具，让智能体不仅能生成代码，还能在软件开发生命周期中承担更多工作。我们将分享我们的成果、以及在试图为自己解决这个问题时获得的经验：</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><strong><u>@cloudflare/ci</u></strong></a> — 基于Cloudflare Workflows 构建，提供跨百万代码库运行 CI/CD 的全新方式，具备自我修复能力，并可生成智能体以执行更复杂的任务。</li>
+	<li><a href="https://blog.cloudflare.com/local-tracing" target="_blank" rel="noopener noreferrer"><strong><u>本地开发中的 OpenTelemetry 跟踪</u></strong></a> —— 内置于 Wrangler 和 Cloudflare Vite 插件中， 赋予智能体与生产环境相同的可观测性。</li>
+	<li><a href="http://blog.cloudflare.com/agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><strong><u>推出：Cloudflare Agents 和 Agent Traces</u></strong></a> ——观察、维护和改进智能体的全新平台，以 OpenTelemetry 跟踪为核心。</li>
+	<li><a href="http://blog.cloudflare.com/engineering-standards-enforcement" target="_blank" rel="noopener noreferrer"><strong><u>Cloudflare 如何使用 AI 执行工程标准</u></strong></a> ——在我们所有产品与系统的代码仓库以及规格说明落实最佳实践的亲身经验。</li>
+	<li><a href="https://blog.cloudflare.com/astro-issue-triage" target="_blank" rel="noopener noreferrer"><strong><u>我们如何打造一个软件工厂，将 Astro 的 GitHub 问题数归零</u></strong></a>——我们建立系统，为一个不断增长的大型开源项目进行问题自动分类、重现、验证并修复的经验。</li>
+</ul>
+<p>不过，这里还有更重要的事。对于 SDLC 而言，即使拥有最佳自动化，它的前提/假设也无法随着智能体所能编写代码的规模以及软件团队为保持竞争所必须达到的推进速度而扩展。我们认为是时候用 ADLC —— 智能体开发生命周期——来取代 SDLC 了。</p>
+<h2>SDLC 是为软件团队准备的。ADLC 适用于软件工厂。</h2>
+<p>现在，<u><a href="https://x.com/zachlloydtweets/status/2069789929073262945" target="_blank" rel="noopener noreferrer">所有人</a><a href="https://x.com/matanSF/status/2066578088184680920" target="_blank" rel="noopener noreferrer">都在</a><a href="https://x.com/dexhorthy/status/2081797628552270027" target="_blank" rel="noopener noreferrer">谈论</a><a href="https://x.com/gokulr/status/2032271386161684665" target="_blank" rel="noopener noreferrer">构建</a></u>“软件工厂”——这是一种由智能体驱动的系统，它们接收输入，并能够自主地构建、改进、部署以及管理软件。它们会接收输入，无论是生产错误、客户提交的错误报告还是关于新功能的想法，然后将其完全委派给一个智能体。</p>
+<p>即使使用了智能体，大多数软件项目依然受到人类参与步骤的约束。人类对智能体发出提示，告诉它们继续推进，指示智能体将来自代码审查的反馈应用到代码中；持续照顾多个智能体并下达指令。在大多数软件团队中，人类仍然管理 SDLC 模型的每个步骤——唯一的变化是，他们在每个步骤中将任务委派给一个智能体。</p>
+<p>因此，软件工厂背后的想法是：如果我们重新想象这种方法，并为构建软件的整个过程打造一座“工厂”，结果会如何？我们该如何把更多的人类时间投入到那些真正需要人类灵感、品味与判断的事情上呢？这样我们就会有更多时间投入到设计、客户交流以及更大胆的憧憬之中。</p>
+<p>软件工厂必须管理 SDLC 中的相同步骤，但它对其所依赖的平台提出了更高要求。因为当您交出控制权并让智能体接管工作时，先前每一个依赖人类的手动步骤都必须调整为：</p>
+<ul>
+	<li><strong>程序化</strong>——“ClickOps” 对人类来说是不好的做法，而对智能体则完全不可行。每一个操作都需要可供智能体调用、调试和依赖的 API。</li>
+	<li><strong>可横向扩展</strong>—— 预览部署只是一个锦上添花的选项，由人类在构建过程中盯着屏幕，或在上线前手动接管预发服务器以捕捉问题。要让智能体驱动这个过程，每个智能体都必须拥有与生产环境一致的预览。</li>
+	<li><strong>可重现</strong>——如果出现一个在 iPhone 15 上模拟 4G 或在某个国家的 IP 下才能重现的错误会如何？普通的单元测试和集成测试工具这些情况下派不上用场。</li>
+	<li><strong>实时推送</strong> ——依赖人去盯着合适的仪表板来判断系统是否正常工作，一直都不是好办法，对智能体而言则完全失效。您需要一个事件来触发智能体去执行任务。</li>
+	<li><strong>原子性</strong> ——每一项变更都需要能够独立测试、独立发布，并且可观测，可在不影响无关行为的前提下回滚。</li>
+	<li><strong>授权</strong> —— 您知道您也许不应该这么做，但今天您会把通过 SSH 连接生产环境的特权交给少数几位受信任的工程师，以防系统发生灾难性事故时及时处理。您当然不会允许智能体那样做；然而，如果它没有升级并获得更多权限的能力，它怎能完成工作呢？</li>
+	<li><strong>自我改进</strong> ——人们会从经验中学习。在首周交付上线或首次值班轮换时，人们反应缓慢，需要跟随他人学习，但随后会变得更好、更快。智能体也需要从经验中学习的方法。</li>
+</ul>
+<p>如果我们打算让软件工厂安全可靠地用于实际生产软件，我们就需要一些新的措施。软件工厂面临与其他自治系统（如自动驾驶汽车）相同的挑战——即从 80% 时间成功运行提升到超过 99% 的可用性。</p>
+<h2>要让智能体自主掌控 SDLC，我们不能给它们一辆为人类设计的车</h2>
+<p>自动驾驶车辆配备了普通汽车所没有的传感器和技术。激光雷达传感器、摄像头、强大的计算能力用于推理，以及与中央指挥系统的连接，必要时可以远程接管。</p>
+<p>对于一辆自动驾驶汽车来说，要达到人类驾驶能力的 80%，我们可能并不需要所有这些。自动驾驶在 10 年前就已经达到了接近人类 80% 的水平。但这并不是我们达到的标准——标准是要比人类驾驶员更好、更安全。这就是我们把钥匙交给机器时的期望，以便在以每小时 60 英里的速度沿 101 公路行驶时，可以安心小憩。这就是为什么自动驾驶汽车会配备专门为自主驾驶设计的技术——正是这些技术建立起信任，并处理那些无法预先设计应对的边界情况。</p>
+<p>自动驾驶软件也是如此。问下自己——您为什么还<em>没有</em>让您的智能体自动批准并把它自己的 PR 合并到您的生产服务中？您构建的东西越重要，所列出的理由几乎肯定就越多。</p>
+<p>当你开始解构不仅是这一过程中可能出现的所有灾难性错误，还包括为客户构建合适产品所需的内容时，会发现这是极其复杂的。这套流程无法简单地写入 GitHub Actions YAML 配置的线性步骤中，并远远超越常规自动化测试的范畴。即便是仪表板的微小改动，也可能涉及多个角色、专业领域和组织结构，而主观性的变更最难测试和授权委派。这些工作中的大部分，现在可能根本没有纳入您的 CI/CD 流水线。不过，如果您想让这些工作持续进行，同时赋予智能体完全控制以运行软件工厂，那么这些工作就必须被纳入流水线。</p>
+<p>为了让智能体驱动整个流程，我们需要一个更好的方式来协调这些动态的步骤序列。我们认为这是一个能够生成容器、智能体和浏览器的 <a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><u>Workflow</u></a>。一个能够设置功能开关并支持为测试用户启用、调查日志和追踪数据、观察生产指标随着变更逐步推出而变化，以及执行安全发布所需的所有其他操作的工作流。</p>
+<h2>CI/CD 管道只是一个工作流。但工作流可以实现远超 CI/CD 管道的功能。</h2>
+<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> 使您可以将多个步骤串联在一起，自动重试失败的任务，还可以在几分钟、几小时甚至几周内保持状态。它们被设计用来将复杂且动态的业务流程编码为逻辑清晰、易于理解的程序。<a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><u>这篇博客文章</u></a>详细解析了为什么与 <a href="https://blog.cloudflare.com/artifacts-git-for-agents-beta" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a> 结合使用，Workflows 能从根本上简化 CI/CD 管道的定义和触发。例如：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { CIWorkflow } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> `@cloudflare/ci`</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> deps</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> CiRunnerResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ci.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      name: </span><span class="sk-032f62-99ffe4">'install'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      command: </span><span class="sk-032f62-99ffe4">'bun install --frozen-lockfile'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      cache: { inputs: [</span><span class="sk-032f62-99ffe4">'package.json'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'bun.lock'</span><span class="sk-24292e-fff">] },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'lint'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run lint'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'test'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run test'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'typecheck'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run typecheck'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">'build'</span><span class="sk-24292e-fff">, command: </span><span class="sk-032f62-99ffe4">'bun run build'</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> deps.</span><span class="sk-6f42c1-ffc799">runner</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      name: </span><span class="sk-032f62-99ffe4">'deploy'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      command: </span><span class="sk-032f62-99ffe4">'bun wrangler deploy'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      cloudflareCredentials: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        accountId: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">CLOUDFLARE_DEPLOY_ACCOUNT_ID</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>然而，Workflows 的能力远不止于执行一系列线性步骤。它们可以<a href="https://blog.cloudflare.com/dynamic-workflows" target="_blank" rel="noopener noreferrer"><u>动态定义</u></a>，并且可以生成智能体或其他工作流。<a href="https://flueframework.com/docs/guide/workflows/#example-cloudflare-workflows" target="_blank" rel="noopener noreferrer"><u>此示例</u></a>显示了一个审查过去一天新数据的工作流。该工作流完全控制对智能体发出提示词的时机和方式，并可在各步骤间传递上下文信息：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> WorkflowEvent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> WorkflowStep } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { init } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@flue/runtime'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Reviewer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './agents/reviewer.ts'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { collectFindings } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './shared/nightly.ts'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> Params</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> NightlyReview</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> findings</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'collect findings'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> collectFindings</span><span class="sk-24292e-fff">(event.payload.date));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> agent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">(Reviewer, { id: </span><span class="sk-032f62-99ffe4">`nightly-${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">date</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> receipt</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'dispatch review'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">      agent.</span><span class="sk-6f42c1-ffc799">dispatch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Review these findings:</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">${</span><span class="sk-24292e-fff">findings</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> review</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'read review'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> reply</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> agent.</span><span class="sk-6f42c1-ffc799">read</span><span class="sk-24292e-fff">(receipt);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> { text: reply.text, data: reply.data };</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>一旦您看到这种模式，并像 Cloudflare 那样对工作流“深度认可”，您就会开始思考：还有哪些事务可以由工作流为我处理？我还能将哪些存在人类操作瓶颈的步骤委派给此 Workflow + <a href="https://flueframework.com" target="_blank" rel="noopener noreferrer"><u>Flue 智能体</u></a>组合执行？</p>
+<h2>基于 Cloudflare 堆栈的完整 ADLC</h2>
+<p>鉴于 <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> 能够编排复杂步骤，<a href="https://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>Artifacts</u></a> 作为代码的存储层，纵观 SDLC 的各个阶段，Cloudflare 已具备智能体构建、发布和维护软件全过程所需的所有工具：</p>
+<div id="html-block-d2igxqkhu" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>SDLC 阶段</th>
+				<th>Cloudflare</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>计划<br>
+					设计<br>
+					实现</td>
+				<td><a href="https://developers.cloudflare.com/workers/vite-plugin">Vite</a>, <a href="https://rolldown.rs">Rolldown</a> 和 <a href="https://oxc.rs">Oxc</a> — 最快的智能体工具链<br>
+					<a href="https://developers.cloudflare.com/workers/local-development">全栈本地开发</a> — 智能体在本地拥有与生产完全一致的运行时和环境<br>
+					<a href="https://developers.cloudflare.com/workers/local-development/local-explorer">Local Explorer</a>，<a href="https://blog.cloudflare.com/local-tracing">Local Traces</a> — 智能体调用与生产一致的 API 在本地进行调试<br><a href="https://developers.cloudflare.com/changelog/post/2025-09-16-remote-bindings-ga">远程绑定</a> — 让智能体在本地运行代码，同时使用 Cloudflare 上运行的真实生产资源<br><a href="https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls">预览 URL</a> — 为每个拉取请求提供预览环境，供智能体验证和使用
+				</td>
+			</tr>
+			<tr>
+				<td>测试</td>
+				<td><a href="https://developers.cloudflare.com/browser-run">Browser Run</a> — 云端运行的可编程无头浏览器<br><a href="https://developers.cloudflare.com/workers/testing/vitest-integration">Vitest</a> — 在 Workers 运行时中运行测试</td>
+			</tr>
+			<tr>
+				<td>部署</td>
+				<td><a href="https://blog.cloudflare.com/flagship">Flagship</a> — 每项变更都有自己的功能开关<br><a href="https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments">渐进式部署</a> — 将代码变更灰度发布到部分流量，逐步扩大范围</td>
+			</tr>
+			<tr>
+				<td>维护<br>停用</td>
+				<td><a href="https://developers.cloudflare.com/workers/observability/logs">Workers Logs</a> — 让智能体实时跟踪日志或进行临时查询，以识别问题并自动修复<br><a href="http://blog.cloudflare.com/agents-on-cloudflare">Agent Traces</a> — 捕获每个智能体会话，用于持续改进<br><a href="https://blog.cloudflare.com/code-mode-mcp">Cloudflare MCP Server</a> - 由 Code Mode 和 <a href="https://blog.cloudflare.com/dynamic-workers">Dynamic Workers 驱动</a><br>
+					<a href="https://developers.cloudflare.com/analytics/analytics-engine">Analytics Engine</a> — 基于 Clickhouse 构建的高基数分析，让智能体查询谁在使用什么资源
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>构建软件工厂的原语</h2>
+<p>当下，走在最前沿的人正在构建未来的软件工厂。最终，软件工厂将与智能体和 AI 一样，成为人们构建软件的常规方式。但对于大多数人和组织来说，我们还没有达到那个阶段。</p>
+<p>我们希望改变这一现状。</p>
+<p>为此，我们问自己：如何简化和提高可访问性，以便互联网上的每个人都能从这样的范式转变中受益？我们应该开放哪些基础层原语，使得从小型创业公司到全球最大的平台都能够使用？</p>
+<p>就此而言，我们认为这些原语已经到位。连接这些原语、持续迭代我们的软件工厂并不断优化仍需时日，但现在，我们已准备就绪，欢迎您在 Cloudflare 上构建能够构建机器的机器。开始使用 <a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><u>@cloudflare/ci</u></a>，<a href="http://blog.cloudflare.com/agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>构建一个智能体</u></a>，看看您能够将 SDLC 中的多少实现自主运行。</p>

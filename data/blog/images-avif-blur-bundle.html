@@ -48,8 +48,30 @@
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(resizingReq);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Based on the Accept header, the logic in the Worker detects if WebP or AVIF format can be served. The request is passed to Image Resizing. If the image is available in the Cloudflare cache it will be served immediately, otherwise the image will be resized, transformed, and cached. This approach ensures that for clients without AVIF format support we deliver images in WebP or JPEG formats.</p>
 <p>The benefit of Cloudflare Images product is that we added AVIF support without a need for customers to change a single line of code from their side.</p>
 <p>The transformation of an image to AVIF is compute-intensive but leads to a significant benefit in file-size. We are always weighing the cost and benefits in the decision which format to serve.</p>
@@ -61,7 +83,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>One of the use cases for using blur with Cloudflare Images is to control access to the premium content.</p>
 <p>The customer will upload the image that requires an access token:</p>
@@ -69,7 +95,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     --form</span><span class="sk-032f62-99ffe4"> 'file=@./&lt;file_name&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     --form</span><span class="sk-032f62-99ffe4"> 'requireSignedURLs=true'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     --form</span><span class="sk-032f62-99ffe4"> 'requireSignedURLs=true'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Using the variant we defined via API we can fetch the image without providing a signature:</p>
 <div id="html-block-k2u" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps"></div>
@@ -95,11 +125,19 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> destinationURL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> IMAGE_DELIVERY_HOST</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> pathname</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> search</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-032f62-99ffe4"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">destinationURL</span><span class="sk-24292e-fff">));</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For simplicity, the Workers script makes the redirect from the domain where it’s deployed to the imagedelivery.net. We assume the same format as for Cloudflare Images URLs:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/&lt;encoded </span><span class="sk-032f62-99ffe4">account</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">image</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">variant</span><span class="sk-032f62-99ffe4"> nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/&lt;encoded </span><span class="sk-032f62-99ffe4">account</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">image</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">variant</span><span class="sk-032f62-99ffe4"> nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Worker could be adjusted to fit customer needs like:</p>
 <ul>
@@ -109,7 +147,11 @@
 </ul>
 <p>For customers who just want the simplicity of serving Cloudflare Images from their domains on Cloudflare we will be adding the ability to serve Cloudflare Images using the following format:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Image delivery will be supported from all customer domains under the same Cloudflare account where Cloudflare Images subscription is activated. This will be available to all Cloudflare Images customers before the holidays.</p>
 <h3>Images and Stream Bundle</h3>

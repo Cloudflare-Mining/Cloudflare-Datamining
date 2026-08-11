@@ -7,12 +7,38 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest pipelines create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">r2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>… and then write your first record(s):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{"payload": [],"id":"abc-def"}]'</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>However, the true power comes from the processing of data streams between ingestion and when they’re written to sinks like R2. Being able to write SQL that acts on windows of data <em>as it’s being ingested</em>, that can transform &amp; aggregate it, and even extract insights from the data in real-time, turns out to be extremely powerful.</p>
 <p>This is where Arroyo comes in, and we’re going to be bringing the best parts of Arroyo into Pipelines and deeply integrate it with Workers, R2, and the rest of our Developer Platform.</p>
@@ -56,7 +82,11 @@
 <span class="line"><span class="sk-24292e-fff">🎉 </span><span class="sk-6f42c1-ffc799">You</span><span class="sk-24292e-fff"> can now send data to your </span><span class="sk-6f42c1-ffc799">pipeline!</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff"> data to your pipeline'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-005cc5-fff"> HTTP</span><span class="sk-24292e-fff"> endpoint</span><span class="sk-d73a49-a0a0a0">:</span></span>
-<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>By default, a pipeline can ingest data from two sources – Workers and an HTTP endpoint – and load batched events into an R2 bucket. This gives you an out-of-the-box solution for streaming raw event data into object storage. If the defaults don’t work, you can configure pipelines during creation or anytime after. Options include: adding authentication to the HTTP endpoint, configuring CORS to allow browsers to make cross-origin requests, and specifying output file compression and batch settings.</p>
 <p>We’ve built Pipelines for high ingestion volumes from day 1. Each pipeline can scale to ~100,000 records per second (and we’re just getting started here). Once records are written to a Pipeline, they are then durably stored, batched, and written out as files in an R2 bucket. Batching is critical here: if you’re going to act on and query that data, you don’t want your query engine querying millions (or tens of millions) of tiny files. It’s slow (per-file &amp; request overheads), inefficient (more files to read), and costly (more operations). Instead, you want to find the right balance between batch size for your query engine and latency (not waiting too long for a batch): Pipelines allows you to configure this.</p>
@@ -138,5 +168,9 @@
 <p>… or deploy the example project directly:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> pipelines</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>

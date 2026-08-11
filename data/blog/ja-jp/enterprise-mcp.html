@@ -46,8 +46,30 @@
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">filter</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">t</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> t.name.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"jira"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> t.name.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"drive"</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">t</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> ({ name: t.name, params: Object.</span><span class="sk-6f42c1-ffc799">keys</span><span class="sk-24292e-fff">(t.inputSchema.properties </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> {}) }));</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p> モデルは、ツールの完全なスキーマがそのコンテキストに入力されることなく、必要な正確なツール名とパラメータを把握できるようになりました。そして、操作を連鎖させるために、単一の<code>実行</code>呼び出しを書き込みます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// portal_codemode_execute</span></span>
@@ -65,7 +87,11 @@
 <span class="line"><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-24292e-fff"> { updated: tickets[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">].key };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これは2つのツール呼び出しです。1人が利用可能なものを発見し、2人が作業を行います。コードモードがなければ、この同じワークフローでモデルは両方のMCPサーバーから全ツールの完全なスキーマを受け取り、3つの個別のツール呼び出しを行う必要があったでしょう。</p>
 <p>節約効果を見てみましょう。内部MCPサーバーポータルが4つの内部MCPサーバーに接続されている場合、定義のためだけで約9,400トークンのコンテキストを消費する52のツールが公開されることになります。コードモードを有効にすると、この52個のツールが2つのポータルツールに崩壊し、約600トークンが消費されます。これは94%削減されます。そして重要なことに、このコストは固定されています。ポータルに接続するMCPサーバーが増えても、コードモードのトークンコストは増えません。</p>
@@ -130,7 +156,11 @@
 <span class="line"><span class="sk-24292e-fff">    regex: </span><span class="sk-032f62-99ffe4">'"method"</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">s{0,5}:</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">s{0,5}"roots/list"'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-24292e-fff">];</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Gateway APIは、追加の自動化をサポートしています。たとえば、上記で定義したカスタムDLPプロファイルを使用して、トラフィックをブロックしたり、リダイレクトしたり、MCPペイロードをログに記録して検査することができます。これらの機能を組み合わせることで、Gatewayは、企業ネットワーク経由でアクセスされる不正なリモートMCPサーバーを包括的に検出することができます。</p>
 <p>構築方法の詳細については、この<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs" target="_blank" rel="noopener noreferrer"><u>チュートリアル</u></a>を参照してください。</p>

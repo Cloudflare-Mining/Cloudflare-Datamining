@@ -107,8 +107,30 @@
 <p>以下是來自清理子任務的 API 查詢：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"> resp, </span><span class="sk-6f42c1-ffc799">err</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> d.</span><span class="sk-6f42c1-ffc799">doRequest</span><span class="sk-24292e-fff">(ctx, http.MethodGet, </span><span class="sk-032f62-99ffe4">`/v1/prefixes?pending_delete`</span><span class="sk-24292e-fff">, nil)</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>以下是 API 實作的相關部分：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-6f42c1-ffc799"> v</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req.</span><span class="sk-005cc5-fff">URL</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">Get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"pending_delete"</span><span class="sk-24292e-fff">); v </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff"> {</span></span>
@@ -122,7 +144,11 @@
 <span class="line"><span class="sk-24292e-fff">		api.</span><span class="sk-6f42c1-ffc799">Render</span><span class="sk-24292e-fff">(ctx, w, http.StatusOK, </span><span class="sk-6f42c1-ffc799">renderIPPrefixAPIResponse</span><span class="sk-24292e-fff">(prefixes, nil))</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">		return</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>由於用戶端傳遞的 pending_delete 沒有帶值，這裡 Query().Get("pending_delete") 的結果會是一個空字串 (“”)，因此 API 伺服器將此解讀為請求所有 BYOIP 首碼，而非僅僅那些應該被移除的首碼。系統因此認為所有回傳的首碼都已排入佇列等待刪除。這個新的子任務於是開始系統性地刪除所有 BYOIP 首碼及其所有相關的依賴物件（包括<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>服務繫結</u></a>），直到有人注意到影響，工程師找出該子任務並將其關閉為止。</p>
 <h3>為什麼 Cloudflare 沒有在暫存環境或測試中發現這個錯誤？</h3>

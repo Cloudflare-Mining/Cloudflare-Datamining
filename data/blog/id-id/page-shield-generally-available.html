@@ -22,8 +22,30 @@
 <p>Dalam istilah HTTP, ini adalah header respons HTTP yang ditambahkan ke sampel respons halaman dari server asal ke browser. Header CSP terlihat seperti ini:</p>
 <p>Header di atas memberi tahu browser bahwa skrip tidak boleh dimuat &nbsp;<code>(script-src 'none')</code> dan melaporkan pelanggaran apa pun ke titik akhir yang disediakan <code>(report-uri /cdn-cgi/script_monitor/report)</code>. Perlu diperhatikan juga bahwa titik akhir laporan pelanggaran diarahkan ke <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">jaringan Cloudflare</a> dan diproses di sana, jadi tidak ada lalu lintas tambahan yang mencapai server asal.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">content-security-policy-report-only:</span><span class="sk-032f62-99ffe4"> script-src</span><span class="sk-032f62-99ffe4"> 'none'</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">report-uri</span><span class="sk-032f62-99ffe4"> /cdn-cgi/script_monitor/report</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">content-security-policy-report-only:</span><span class="sk-032f62-99ffe4"> script-src</span><span class="sk-032f62-99ffe4"> 'none'</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">report-uri</span><span class="sk-032f62-99ffe4"> /cdn-cgi/script_monitor/report</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Setiap laporan pelanggaran yang dikirim oleh browser dan diterapkan sebagai permintaan HTTP POST memberi kami informasi seputar skrip. Berikut contohnya:</p>
 <p>Laporan ini memberi tahu kita bahwa:</p>
 <div class="emdash-code">
@@ -39,7 +61,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      "status-code"</span><span class="sk-6f42c1-ffc799">:200,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      "script-sample"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">""</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Salin kode" data-copy-label="Salin kode" data-copied-label="Kode disalin!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li>Halaman asal skrip dimuat (document-uri)</li>

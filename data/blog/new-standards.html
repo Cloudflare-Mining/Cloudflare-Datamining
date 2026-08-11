@@ -128,15 +128,41 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (r-&gt;headers_out.content_length_n </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span></span>
 <span class="line"><span class="sk-24292e-fff">    r-&gt;headers_out.content_length_n </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> conf-&gt;min_length) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> ngx_http_next_header_filter</span><span class="sk-24292e-fff">(r);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here, we check the "Content-Length" header. If the content length is less than our minimum threshold, we skip compression and let Nginx execute the next module.</p>
 <p>We also need to ensure the content is not already compressed by checking the "Content-Encoding" header:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (r-&gt;headers_out.content_encoding </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span></span>
 <span class="line"><span class="sk-24292e-fff">    r-&gt;headers_out.content_encoding-&gt;value.len) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> ngx_http_next_header_filter</span><span class="sk-24292e-fff">(r);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If the content is already compressed, the module is bypassed, and Nginx proceeds to the next header filter.</p>
 <h4>Body filter</h4>
@@ -146,7 +172,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">ZSTDLIB_API </span><span class="sk-d73a49-a0a0a0">size_t</span><span class="sk-6f42c1-ffc799"> ZSTD_compressStream2</span><span class="sk-24292e-fff">(ZSTD_CCtx</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> cctx,</span></span>
 <span class="line"><span class="sk-24292e-fff">                                        ZSTD_outBuffer</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> output,</span></span>
 <span class="line"><span class="sk-24292e-fff">                                        ZSTD_inBuffer</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> input,</span></span>
-<span class="line"><span class="sk-24292e-fff">                                        ZSTD_EndDirective endOp);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">                                        ZSTD_EndDirective endOp);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This function can be called repeatedly with chunks of input data to be compressed. It accepts input and output buffers and an "operation" parameter (<code>ZSTD_EndDirective endOp</code>) that controls whether to continue feeding data, flush the data, or finalize the compression process.</p>
 <p>Nginx uses a "flush" flag on memory buffers to indicate when data can be sent. Our module uses this flag to set the appropriate Zstandard operation:</p>
@@ -158,7 +188,11 @@
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This logic allows us to switch from the "ZSTD_e_continue" operation, which feeds more input data into the encoder, to "ZSTD_e_flush", which extracts compressed data from the encoder.</p>
 <h4>Compression cycle</h4>
@@ -181,7 +215,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // No free buffers and can't allocate more</span></span>
 <span class="line"><span class="sk-24292e-fff">    err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> no_memory;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Handling backpressure</h4>
 <p>If no buffers are available, it can lead to backpressure — a situation where the Zstandard module generates compressed data faster than the client can receive it. This causes data to become "stuck" inside Nginx, halting further compression due to memory constraints. In such cases, we stop compression and send an empty buffer to the next Nginx module, allowing Nginx to attempt to send the data to the client again. When successful, this frees up memory buffers that our module can reuse, enabling continued streaming of the compressed response without buffering the entire response in memory.</p>
@@ -348,15 +386,27 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">dig cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ech.com https </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">short</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> . alpn</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"h3,h2"</span><span class="sk-24292e-fff"> ipv4hint</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">104.18</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">10.118</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">104.18</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">11.118</span><span class="sk-24292e-fff"> ech</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff">AEX</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">DQBB2gAgACD1W1B</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">GxY3nZ53Rigpsp0xlL6</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">80qcvZtgwjsIs4YoOwAEAAEAAQASY2xvdWRmbGFyZS1lY2guY29tAAA</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ipv6hint</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">2606</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">4700</span><span class="sk-24292e-fff">::</span><span class="sk-005cc5-ffc799">6812</span><span class="sk-24292e-fff">:a76,</span><span class="sk-005cc5-ffc799">2606</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">4700</span><span class="sk-24292e-fff">::</span><span class="sk-005cc5-ffc799">6812</span><span class="sk-24292e-fff">:b76</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> . alpn</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"h3,h2"</span><span class="sk-24292e-fff"> ipv4hint</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">104.18</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">10.118</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">104.18</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">11.118</span><span class="sk-24292e-fff"> ech</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff">AEX</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">DQBB2gAgACD1W1B</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">GxY3nZ53Rigpsp0xlL6</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">80qcvZtgwjsIs4YoOwAEAAEAAQASY2xvdWRmbGFyZS1lY2guY29tAAA</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ipv6hint</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">2606</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">4700</span><span class="sk-24292e-fff">::</span><span class="sk-005cc5-ffc799">6812</span><span class="sk-24292e-fff">:a76,</span><span class="sk-005cc5-ffc799">2606</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">4700</span><span class="sk-24292e-fff">::</span><span class="sk-005cc5-ffc799">6812</span><span class="sk-24292e-fff">:b76</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Aside from the public key used by the client to encrypt ClientHelloInner and other <a href="https://www.ietf.org/archive/id/draft-ietf-tls-esni-20.html#name-encrypted-clienthello-confi" target="_blank" rel="noopener noreferrer"><u>parameters</u></a> that specify the ECH configuration, the configured public name is also present.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">Y2xvdWRmbGFyZS1lY2guY29t</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">Y2xvdWRmbGFyZS1lY2guY29t</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When the string is decoded it reveals:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ech.com</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ech.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This public name is then used by the client in the ClientHelloOuter.</p>
 <h3>Practical implications</h3>
@@ -382,7 +432,11 @@
 <p>Over the last three months we have developed the capability to include valuable information in Server-Timing response headers. When a page that uses Cloudflare Web Analytics is loaded in a browser, the privacy-first client-side script from Web Analytics collects browser metrics and server-timing headers, then sends back this performance data. This data is ingested, aggregated, and made available for querying. The server-timing header includes Layer 4 information, such as Round-Trip Time (RTT) and protocol type (TCP or QUIC). Combined with Core Web Vitals data, this allows us to determine whether an optimization has positively impacted a request compared to a control sample. This capability enables us to release large-scale changes such as HTTP/3 Prioritization or BBR with a clear understanding of their impact across our global network.</p>
 <p>An example of this header contains several key properties that provide valuable information about the network performance as observed by the server:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">server</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">timing</span><span class="sk-24292e-fff">: cfL4;desc</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"?proto=TCP&amp;rtt=7337&amp;sent=8&amp;recv=8&amp;lost=0&amp;retrans=0&amp;sent_bytes=3419&amp;recv_bytes=832&amp;delivery_rate=548023&amp;cwnd=25&amp;unsent_bytes=0&amp;cid=94dae6b578f91145&amp;ts=22</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">5</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">server</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">timing</span><span class="sk-24292e-fff">: cfL4;desc</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"?proto=TCP&amp;rtt=7337&amp;sent=8&amp;recv=8&amp;lost=0&amp;retrans=0&amp;sent_bytes=3419&amp;recv_bytes=832&amp;delivery_rate=548023&amp;cwnd=25&amp;unsent_bytes=0&amp;cid=94dae6b578f91145&amp;ts=22</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ul>
 	<li><strong>proto</strong>: Indicates the transport protocol used</li>

@@ -72,8 +72,30 @@
 <p>Si está ejecutando macOS, también facilitamos la instalación de una versión de curl que cuenta con HTTP/3 a través de Homebrew:</p>
 <p>Para realizar una solicitud HTTP/3, lo único que debe hacer es agregar el indicador de línea de comando "--http3" a un comando curl normal:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --HEAD</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/homebrew-cloudflare/master/curl.rb</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --HEAD</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/homebrew-cloudflare/master/curl.rb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3><strong>Uso del cliente http3 de quiche</strong></h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> ./curl</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> https://blog.cloudflare.com/</span><span class="sk-005cc5-99ffe4"> --http3</span></span>
@@ -90,21 +112,37 @@
 <span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h3-23=":443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">expect-ct:</span><span class="sk-032f62-99ffe4"> max-age=604800,</span><span class="sk-032f62-99ffe4"> report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">server:</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cf-ray:</span><span class="sk-032f62-99ffe4"> 517b128df871bfe3-MAN</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cf-ray:</span><span class="sk-032f62-99ffe4"> 517b128df871bfe3-MAN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finalmente, también proporcionamos un ejemplo de <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-client.rs" target="_blank" rel="noopener noreferrer">cliente de línea de comandos HTTP/3</a> (así como un servidor de línea de comandos) creado sobre quiche, que puede usar para experimentar con HTTP/3.</p>
 <p>Para que funcione, primero clone el repositorio GitHub de quiche:</p>
 <p>Luego, créelo. Para que esto se realice correctamente, necesita una instalación de Rust y Cargo en funcionamiento (recomendamos usar <a href="https://rustup.rs" target="_blank" rel="noopener noreferrer">Rustup</a> para configurar fácilmente un entorno de desarrollo de Rust en funcionamiento).</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ git clone </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">recursive </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//github.com/cloudflare/quiche</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ git clone </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">recursive </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//github.com/cloudflare/quiche</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Y finalmente puede ejecutar una solicitud HTTP/3:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ cargo build </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">examples</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ cargo build </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">examples</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2><strong>¿Qué sigue?</strong></h2>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ RUST_LOG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">info target</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">debug</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">examples</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http3</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">client https:</span><span class="sk-6a737d-8b8b8b94">//blog.cloudflare.com/</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ RUST_LOG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">info target</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">debug</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">examples</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http3</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">client https:</span><span class="sk-6a737d-8b8b8b94">//blog.cloudflare.com/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>En los próximos meses estaremos trabajando para mejorar y optimizar nuestra implementación de QUIC y HTTP/3, y eventualmente permitiremos que todos habiliten esta nueva función sin tener que pasar por una lista de espera. Continuaremos actualizando nuestra implementación a medida que evolucionen los estándares, lo que puede resultar en cambios importantes entre las versiones preliminares de las estándares.</p>
 <p>Estas son algunas de las características nuevas en nuestra hoja de ruta que nos entusiasman en particular:</p>

@@ -21,8 +21,30 @@
 <p>When a user clicks on the register button, it calls an API that adds a key in Workers KV:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">key:</span><span class="sk-032f62-99ffe4"> register:ID</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">value:</span><span class="sk-032f62-99ffe4"> {"name":"Sven Sauleau","picture":"picture.jpg","email":"example@cloudflare.com"}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">value:</span><span class="sk-032f62-99ffe4"> {"name":"Sven Sauleau","picture":"picture.jpg","email":"example@cloudflare.com"}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>User information is stored in Workers KV and displayed in the interface to create the list of participants. The user information gets deleted during pairing so the list is ready for the next round of chats. We require weekly sign-ups from participants who want to participate in the chats to confirm their availability.</p>
 <p>The code for the interface can be found <a href="https://github.com/cloudflare/random-employee-chat/tree/master/src/workers/randengchat/public" target="_blank" rel="noopener noreferrer">here</a> and the API is <a href="https://github.com/cloudflare/random-employee-chat/blob/master/src/workers/randengchat/server/index.js" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <h3>Forming the pairs</h3>
@@ -38,11 +60,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">kv_namespaces</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [...]</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">[triggers]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">crons</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"0 8 * * 2"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">crons</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"0 8 * * 2"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The pairing script is the most intricate part of the application, so let’s run through its code. First, we list the users that are currently registered. This is done using the <a href="https://developers.cloudflare.com/workers/runtime-apis/kv#listing-by-prefix" target="_blank" rel="noopener noreferrer">list</a> function in Workers KV extracting keys with the prefix <code>register:</code>.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> list</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> KV_NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({ prefix: </span><span class="sk-032f62-99ffe4">"register:"</span><span class="sk-24292e-fff"> });</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> list</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> KV_NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">list</span><span class="sk-24292e-fff">({ prefix: </span><span class="sk-032f62-99ffe4">"register:"</span><span class="sk-24292e-fff"> });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we don’t have an even number of participants, we remove one person from the list (David!).</p>
 <p>Then, we create all possible pairs and attach a weight to them.</p>
@@ -56,7 +86,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> pairs;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For example, suppose four people have registered (Tom, Edie, Ivie and Ada), that’s 6 possible pairs (<a href="https://www.wolframalpha.com/input/?i=4+choose+2" target="_blank" rel="noopener noreferrer">4 choose 2</a>). We might end up with the following pairs and their associated weights:</p>
 <div class="emdash-code">
@@ -65,7 +99,11 @@
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Tom,</span><span class="sk-032f62-99ffe4"> Ada,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Edie,</span><span class="sk-032f62-99ffe4"> Ivie,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Edie,</span><span class="sk-032f62-99ffe4"> Ada,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Ivie,</span><span class="sk-032f62-99ffe4"> Ada,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Ivie,</span><span class="sk-032f62-99ffe4"> Ada,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The weight is calculated using the number of times a pair matched in the past to avoid scheduling chats between people that already met. More sophisticated factors could be taken into account, such as the same office or timezone, when they last met, and etc.</p>
 <p>We keep track of how many times the pair matched using a count kept in KV:</p>
@@ -76,7 +114,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> v.count;</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The people form a complete graph with people as nodes and the edges weighted by the number of times the two people connected by the edge have met.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -90,7 +132,11 @@
 <p>The pairs are recorded in Workers KV with their updated matching count to refine the weights at future sessions:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">key:</span><span class="sk-032f62-99ffe4"> paired:ID</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">value:</span><span class="sk-032f62-99ffe4"> {"emails":["left@cloudflare.com","right@cloudflare.com",</span><span class="sk-032f62-99ffe4"> "count":</span><span class="sk-032f62-99ffe4"> 1]}</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">value:</span><span class="sk-032f62-99ffe4"> {"emails":["left@cloudflare.com","right@cloudflare.com",</span><span class="sk-032f62-99ffe4"> "count":</span><span class="sk-032f62-99ffe4"> 1]}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A notification is sent to each pair of users to notify them that they matched.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -102,7 +148,11 @@
 <p>The application sends users a reminder to sign up every week. For the reminder, we use another Workers cron job that runs every Thursday at 1300 UTC. The schedule in Wrangler is</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[triggers]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">crons</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"0 13 * * 5"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">crons</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"0 13 * * 5"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This script is much simpler than the pairing script. It simply sends a message to a room in our company messaging platform that notifies all members of the channel.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

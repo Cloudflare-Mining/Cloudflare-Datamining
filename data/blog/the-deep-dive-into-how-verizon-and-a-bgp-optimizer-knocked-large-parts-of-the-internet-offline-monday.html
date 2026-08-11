@@ -27,15 +27,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -sS</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">URL</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 13335-routes.json</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> 13335-routes.json</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799">  1</span><span class="sk-032f62-99ffe4"> martin</span><span class="sk-032f62-99ffe4">  staff</span><span class="sk-005cc5-ffc799">  339363899</span><span class="sk-032f62-99ffe4"> Jun</span><span class="sk-005cc5-ffc799"> 25</span><span class="sk-032f62-99ffe4"> 08:47</span><span class="sk-032f62-99ffe4"> 13335-routes.json</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>That’s 340MB of data - which seems like a lot, but it contains plenty of white space and plenty of data we just don’t need. Our second task is to reduce this raw data down to just the required data - that’s timestamps, actual routes, and AS-PATH. The third item will be very useful. Note we are using <a href="https://stedolan.github.io/jq" target="_blank" rel="noopener noreferrer">jq</a>, which can be installed on macOS with the &nbsp;<a href="https://brew.sh" target="_blank" rel="noopener noreferrer">brew package manager</a>.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-6a737d-8b8b8b94"> # Extract just the times, routes, and AS-PATH</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> jq</span><span class="sk-005cc5-99ffe4"> -rc</span><span class="sk-032f62-99ffe4"> '.data.updates[]|.timestamp,.attrs.target_prefix,.attrs.path'</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> 13335-routes.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> paste</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 13335-listing-a.txt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> 13335-listing-a.txt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">691318</span><span class="sk-032f62-99ffe4"> 13335-listing-a.txt</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We are down to just below seven hundred thousand routing events, however, that’s not a leak, that’s everything that includes Cloudflare’s ASN (the number 13335 above). For that we need to go back to Monday’s blog and realize it was AS396531 (Allegheny Technologies) that showed up with 701 (Verizon) in the leak. Now we reduce the data further:</p>
 <div class="emdash-code">
@@ -44,7 +70,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> egrep</span><span class="sk-032f62-99ffe4"> '701,396531'</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> 13335-listing-a.txt</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 13335-listing-b.txt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> 13335-listing-b.txt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">204568</span><span class="sk-032f62-99ffe4"> 13335-listing-b.txt</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At 204 thousand data points, we are looking better. It’s still a lot of data because BGP can be very chatty if topology is changing. A route leak will cause exactly that. Now let’s see how many routes were affected:</p>
 <div class="emdash-code">
@@ -52,7 +82,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cut</span><span class="sk-005cc5-99ffe4"> -f2</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> 13335-listing-b.txt</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-005cc5-99ffe4"> -V</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 13335-listing-c.txt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> 13335-listing-c.txt</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">101</span><span class="sk-032f62-99ffe4"> 13335-listing-c.txt</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It’s a much smaller number. We now have a listing of at least 101 routes that were leaked via Verizon. This may not be the full list because route collectors like RIPEstat don’t have direct feeds from Verizon, so this data is a blended view with Verizon’s path and other paths. We can see that if we look at the AS-PATH in the above files. Please note that I had a typo in this script when this blog was first published and only 20 routes showed up because the -n vs -V option was used on sort. Now the list is correct with 101 affected routes. Please see this short article from <a href="https://stackoverflow.com/questions/42526860/bash-sort-nu-results-in-unexpected-behaviour" target="_blank" rel="noopener noreferrer">stackoverflow</a> to see the issue.</p>
 <p>Here’s a partial listing of affected routes.</p>
@@ -80,13 +114,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">172.68.60.0/22</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">172.69.116.0/22</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is an interesting list, as some of these routes do not originate from Cloudflare’s network, however, they show up with AS13335 (our ASN) as the originator. For example, the 104.26.0.0/21 route is not announced from our network, but we do announce 104.26.0.0/20 (which covers that route). More importantly, we have an IRR (Internet Routing Registries) route object plus an RPKI ROA for that block. Here’s the IRR object:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">route:</span><span class="sk-032f62-99ffe4">          104.26.0.0/20</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">origin:</span><span class="sk-032f62-99ffe4">         AS13335</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">         ARIN</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">         ARIN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And here’s the RPKI ROA. This ROA has Max Length set to 20, so no smaller route should be accepted.</p>
 <div class="emdash-code">
@@ -99,7 +141,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Name:</span><span class="sk-032f62-99ffe4">         535ad55d-dd30-40f9-8434-c17fc413aa99</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Key:</span><span class="sk-032f62-99ffe4">          4a75b5de16143adbeaa987d6d91e0519106d086e</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Parent</span><span class="sk-032f62-99ffe4"> Key:</span><span class="sk-032f62-99ffe4">   a6e7a6b44019cf4e388766d940677599d0c492dc</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Path:</span><span class="sk-032f62-99ffe4">         rsync://rpki.arin.net/repository/arin-rpki-ta/5e4a23ea-...</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Path:</span><span class="sk-032f62-99ffe4">         rsync://rpki.arin.net/repository/arin-rpki-ta/5e4a23ea-...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Max Length field in an ROA says what the minimum size of an acceptable announcement is. The fact that this is a /20 route with a /20 Max Length says that a /21 (or /22 or /23 or /24) within this IP space isn’t allowed. Looking further at the route list above we get the following listing:</p>
 <div class="emdash-code">
@@ -116,7 +162,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">104.26.0.0/21</span><span class="sk-24292e-fff">     -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">  104.26.0.0/20</span><span class="sk-032f62-99ffe4">           /20</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">104.27.160.0/21</span><span class="sk-24292e-fff">   -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">  104.27.160.0/20</span><span class="sk-032f62-99ffe4">         /20</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">104.28.16.0/21</span><span class="sk-24292e-fff">    -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">  104.28.16.0/20</span><span class="sk-032f62-99ffe4">          /20</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">104.31.0.0/21</span><span class="sk-24292e-fff">     -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">  104.31.0.0/20</span><span class="sk-032f62-99ffe4">           /20</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">104.31.0.0/21</span><span class="sk-24292e-fff">     -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">  104.31.0.0/20</span><span class="sk-032f62-99ffe4">           /20</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>So how did all these /21’s show up? That’s where we dive into the world of BGP route optimization systems and their propensity to synthesize routes that should not exist. If those routes leak (and it’s very clear after this week that they can), all hell breaks loose. That can be compounded when not one, but two ISPs allow invalid routes to be propagated outside their autonomous network. We will explore the AS-PATH further down this blog.</p>
 <p>More than 20 years ago, <a href="https://tools.ietf.org/html/rfc1997" target="_blank" rel="noopener noreferrer">RFC1997</a> added the concept of <em>communities</em> to BGP. Communities are a way of tagging or grouping route advertisements. Communities are often used to label routes so that specific handling policies can be applied. RFC1997 includes a small number of universal <em>well-known communities</em>. One of these is the NO_EXPORT community, which has the following specification:</p>
@@ -125,7 +175,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    containing</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> MUST</span><span class="sk-032f62-99ffe4"> NOT</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> advertised</span><span class="sk-032f62-99ffe4"> outside</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> BGP</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    confederation</span><span class="sk-032f62-99ffe4"> boundary</span><span class="sk-24292e-fff"> (a </span><span class="sk-032f62-99ffe4">stand-alone</span><span class="sk-032f62-99ffe4"> autonomous</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> that</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    is</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> part</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> confederation</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> considered</span><span class="sk-032f62-99ffe4"> a</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    confederation</span><span class="sk-032f62-99ffe4"> itself</span><span class="sk-24292e-fff">).</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    confederation</span><span class="sk-032f62-99ffe4"> itself</span><span class="sk-24292e-fff">).</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The use of the NO_EXPORT community is very common within BGP enabled networks and is a community tag that would have helped alleviate this route leak immensely.</p>
 <p>How BGP route optimization systems work (or don’t work in this case) can be a subject for a whole other blog entry.</p>
@@ -162,7 +216,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">104.16.80.0/21</span><span class="sk-032f62-99ffe4">    12:00:13</span><span class="sk-032f62-99ffe4">  12:30:00</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">104.19.168.0/21</span><span class="sk-032f62-99ffe4">   12:09:39</span><span class="sk-032f62-99ffe4">  12:29:34</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we know the times. The route leak started at 10:34:25 UTC (just before lunchtime London time) on 2019-06-24 and ended at 12:38:54 UTC. That’s a hair over two hours. Here’s that same time data in a graphical form showing the near-instant start of the event and the duration of each route leaked:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -209,7 +267,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> 12956_701_396531_33154_3356_13335</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 17639_701_396531_33154_3356_13335</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 23148_701_396531_33154_3356_13335</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This script clearly shows the AS-PATH of the leaked routes. It’s very consistent. Reading from the back of the line to the front, we have 13335 (Cloudflare), 3356 or 174 (Level3/CenturyLink or Cogent - both tier 1 transit providers for Cloudflare). So far, so good. Then we have 33154 (DQE Communications) and 396531 (Allegheny Technologies Inc) which is still technically not a leak, but trending that way. The reason why we can state this is still technically not a leak is because we don’t know the relationship between those two ASs. It’s possible they have a mutual transit agreement between them. That’s up to them.</p>
 <p>Back to the AS-PATH’s. Still reading leftwards, we see 701 (Verizon), which is very very bad and clear evidence of a leak. It’s a leak for two reasons. First, this matches the path when a transit is leaking a non-customer route from a customer. This Verizon customer does not have 13335 (Cloudflare) listed as a customer. Second, the route contains within its path a tier 1 ASN. This is the point where a route leak should have been absolutely squashed by filtering on the customer BGP session. Beyond this point there be dragons.</p>
@@ -228,7 +290,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4">  No</span><span class="sk-032f62-99ffe4"> entries</span><span class="sk-032f62-99ffe4"> found</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> selected</span><span class="sk-032f62-99ffe4"> source</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> whois</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-032f62-99ffe4"> whois.radb.net</span><span class="sk-032f62-99ffe4"> AS33154</span><span class="sk-24292e-fff">  ; </span><span class="sk-6f42c1-ffc799">the</span><span class="sk-032f62-99ffe4"> downstream</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> customer</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4">  No</span><span class="sk-032f62-99ffe4"> entries</span><span class="sk-032f62-99ffe4"> found</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> selected</span><span class="sk-032f62-99ffe4"> source</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That’s enough to say that we should not be seeing this ASN anywhere on the Internet, however, we should go further into checking this. As we know the ASN of the network, we can search for any routes that are listed for that ASN. We find one:</p>
 <div class="emdash-code">
@@ -237,7 +303,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">origin:</span><span class="sk-032f62-99ffe4">         AS396531</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">         MNT-DCNSL</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">         ARIN</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>More importantly, now we have a maintainer (the owner of the routing registry entries). We can see what else is there for that network and we are specifically looking for this:</p>
 <div class="emdash-code">
@@ -252,7 +322,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                AS13659,</span><span class="sk-032f62-99ffe4"> AS54934,</span><span class="sk-032f62-99ffe4"> AS18572,</span><span class="sk-032f62-99ffe4"> AS397284</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">         MNT-DCNSL</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">source</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4">         ARIN</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This object is important. It lists all the downstream ASNs that this network is expected to announce to the world. It does not contain Cloudflare’s ASN (or any of the leaked ASNs). Clearly this as-set was not used for any BGP filtering.</p>
 <p>Just for completeness the same exercise can be done for the other ASN (the downstream of the customer of Verizon). In this case, we just searched for the maintainer object (as there are plenty of route and route6 objects listed).</p>
@@ -261,7 +335,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">         MNT-DCNSL</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">     MAINT-AS3257</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mnt-by:</span><span class="sk-032f62-99ffe4">     MAINT-AS5050</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>None of these maintainers are directly related to 33154 (DQE Communications). They have been created by other parties and hence they become a dead-end in that search.</p>
 <p>It’s worth doing a secondary search to see if any as-set object exists with 33154 or 396531 included. We turned to the most excellent <a href="http://irrexplorer.nlnog.net" target="_blank" rel="noopener noreferrer">IRR Explorer</a> website run by NLNOG. It provides deep insight into the routing registry data. We did a simple search for 33154 using <a href="http://irrexplorer.nlnog.net/search/33154" target="_blank" rel="noopener noreferrer">http://irrexplorer.nlnog.net/search/33154</a> and we found these as-set objects.</p>

@@ -44,15 +44,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--</span><span class="sk-d73a49-a0a0a0">|</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                     RDATA</span><span class="sk-032f62-99ffe4">                     /</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                                               /</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>El motivo por el que static_zone no admitió el nuevo registro ZONEMD es porque hasta ahora habíamos optado por distribuir la zona raíz internamente en su formato de presentación, en lugar de en formato binario. Si miramos la representación de texto de algunos registros de recursos, podemos ver que hay mucha variación en cómo se presentan los distintos recursos.</p>
 <p>Registros de ejemplo obtenidos en <a href="https://www.internic.net/domain/root.zone" target="_blank" rel="noopener noreferrer">https://www.internic.net/domain/root.zone</a></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span><span class="sk-032f62-99ffe4"> nstld.verisign-grs.com.</span><span class="sk-005cc5-ffc799"> 2023100400</span><span class="sk-005cc5-ffc799"> 1800</span><span class="sk-005cc5-ffc799"> 900</span><span class="sk-005cc5-ffc799"> 604800</span><span class="sk-005cc5-ffc799"> 86400</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	RRSIG</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799"> 86400</span><span class="sk-005cc5-ffc799"> 20231017050000</span><span class="sk-005cc5-ffc799"> 20231004040000</span><span class="sk-005cc5-ffc799"> 46780</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-032f62-99ffe4"> J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			518400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cuando nos encontramos con un registro de recurso desconocido, no siempre es fácil saber cómo gestionarlo. Por este motivo, la biblioteca que utilizamos para analizar la zona raíz en el perímetro no intenta hacer esto, y en su lugar devuelve un error del analizador.</p>
 <h3>Por qué se utilizó una versión obsoleta de la zona raíz</h3>
@@ -64,7 +90,11 @@
 <p>En un principio, intentamos desactivar la aplicación static_zone mediante reglas de anulación, un mecanismo que nos permite modificar mediante programación determinados comportamientos de 1.1.1.1. La regla que implementamos fue la siguiente:</p>
 <p>Para toda solicitud entrante, esta regla añade la etiqueta rec_disable_static a la solicitud. En la aplicación static_zone, buscamos esta etiqueta y, si está establecida, no devolvemos una respuesta desde la zona raíz estática en caché. No obstante, <a href="https://blog.cloudflare.com/big-pineapple-intro">a fin de mejorar el rendimiento de la caché</a> las consultas a veces se reenvían a otro nodo en el caso de que el nodo actual no pueda encontrar la respuesta en su propia caché. Lamentablemente, la etiqueta rec_disable_static no está incluida en las consultas que se reenvían a otros nodos, por lo que la aplicación static_zone continuó respondiendo con información obsoleta hasta que finalmente desactivamos la aplicación por completo.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Por qué el impacto fue parcial</h3>
 <p>Cloudflare realiza periódicamente reinicios secuenciales de los servidores que alojan nuestros servicios a fin de realizar tareas como las actualizaciones de kernel, que requieren un reinicio completo del sistema para entrar en vigor. Cuando se produjo esta interrupción, las instancias de servidor de solucionador que se habían reiniciado entre el cambio de ZONEMD y la invalidación de DNSSEC no contribuyeron al impacto. Si se hubieran reiniciado durante este plazo de dos semanas, no habrían podido cargar la zona raíz al iniciarse y habrían recurrido para la resolución a enviar las consultas DNS a los servidores raíz. Además, el solucionador utiliza una técnica denominada serve-stale (<a href="https://datatracker.ietf.org/doc/html/rfc8767" target="_blank" rel="noopener noreferrer">RFC 8767</a>) con la finalidad de poder continuar entregando registros populares desde una caché potencialmente obsoleta a fin de limitar el impacto. Se considera que un registro está obsoleto cuando ha transcurrido el número de segundos de TTL desde la recuperación del registro de los niveles superiores. Esto evitó una interrupción total; los afectados fueron principalmente nuestros centros de datos más grandes, donde había muchos servidores que no habían reiniciado el servicio 1.1.1.1 en ese periodo.</p>

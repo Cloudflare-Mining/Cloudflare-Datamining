@@ -110,8 +110,30 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "fin_stream"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> true</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>h3i logs can be replayed using the <code>--qlog-input</code> option. You can change the target server host and port, and keep all the same actions. However, most servers will validate the :authority pseudo-header or Host header contained in a HEADERS frame. The --replay-host-override option allows changing these fields without needing to modify the file by hand.</p>
 <p>And yes, qlog files are human-readable text in the JSON-SEQ format. So you can also just write these by hand in the first place if you like! However, if you're going to start writing things, maybe Rust is your preferred option…</p>
 <h2>Using the h3i library to send a malformed request with Rust</h2>
@@ -128,7 +150,11 @@
 <p>To follow along at home, clone a copy of the quiche repository, start a packet capture on the appropriate network interface and then run:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">cd quiche</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">h3i</span></span>
-<span class="line"><span class="sk-005cc5-fff">SSLKEYLOGFILE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"h3i-example.keys"</span><span class="sk-24292e-fff"> cargo run </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">example content_length_mismatch</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-fff">SSLKEYLOGFILE</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"h3i-example.keys"</span><span class="sk-24292e-fff"> cargo run </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">example content_length_mismatch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In our decrypted capture, we see the expected sequence of handshake, request, response, and then closure.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -142,7 +168,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">with_host_port</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"cloudflare-quic.com"</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">to_string</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">with_idle_timeout</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2000</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">build</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">unwrap</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">unwrap</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The idle timeout is a QUIC concept which tells each endpoint when it should close the connection if the connection has been idle. This prevents endpoints from spinning idly if the peer hasn’t closed the connection. h3i’s default is 30 seconds, which can be too long for tests, so we set ours to 2 seconds here.</p>
 <p>Next, we define a set of request headers and encode them with QPACK compression, ready to put in a HEADERS frame. Note that h3i does provide a <a href="https://docs.rs/h3i/latest/h3i/actions/h3/fn.send_headers_frame.html" target="_blank" rel="noopener noreferrer"><u>send_headers_frame</u></a> helper method which does this for you, but the example does it manually for clarity:</p>
@@ -156,7 +186,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        Header</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">b"content-length"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">b"5"</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-24292e-fff">    ];</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> header_block </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> encode_header_block</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">headers)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">unwrap</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> header_block </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> encode_header_block</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">headers)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">unwrap</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then, we define the set of h3i actions that we want to execute in order: send HEADERS, send a too-short DATA frame, wait for the server's HEADERS, then close the connection.</p>
 <div class="emdash-code">
@@ -190,7 +224,11 @@
 <span class="line"><span class="sk-24292e-fff">                reason</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span>
 <span class="line"><span class="sk-24292e-fff">            },</span></span>
 <span class="line"><span class="sk-24292e-fff">        },</span></span>
-<span class="line"><span class="sk-24292e-fff">    ];</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    ];</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we'll set things in motion with <code>connect()</code>, which sets up the QUIC connection, executes the actions list and collects the summary.</p>
 <div class="emdash-code">
@@ -200,7 +238,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    println!</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        "=== received connection summary! ===</span><span class="sk-005cc5-a0a0a0">\n\n</span><span class="sk-032f62-99ffe4">{}"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        serde_json</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">to_string_pretty</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">summary)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">unwrap_or_else</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> e</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">to_string</span><span class="sk-24292e-fff">())</span></span>
-<span class="line"><span class="sk-24292e-fff">    );</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    );</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://docs.rs/h3i/latest/h3i/client/connection_summary/struct.ConnectionSummary.html" target="_blank" rel="noopener noreferrer"><u>ConnectionSummary</u></a>&nbsp; provides data about the connection, including the frames h3i received, details about why the connection closed, and connection statistics. The example prints the summary out. However, you can programmatically check it. We do this to write our own internal automation tests.</p>
 <p>If you're running the example, it should print something like the following:</p>
@@ -311,7 +353,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "timed_out"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> false</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let’s walk through the output. Up first is the <a href="https://docs.rs/h3i/latest/h3i/client/connection_summary/struct.StreamMap.html" target="_blank" rel="noopener noreferrer"><u>StreamMap</u></a>, which is a record of all frames received on each stream. We can see that we received 5 frames on stream 0: 2 UNKNOWNs, one <a href="https://docs.rs/h3i/latest/h3i/frame/struct.EnrichedHeaders.html" target="_blank" rel="noopener noreferrer"><u>EnrichedHeaders</u></a> frame, and two DATA frames.</p>
 <p>The UNKNOWN frames are extension frames that are unknown to h3i; the server under test is sending what are known as <a href="https://datatracker.ietf.org/doc/draft-edm-protocol-greasing" target="_blank" rel="noopener noreferrer"><u>GREASE</u></a> frames to help exercise the protocol and ensure clients are not erroring when they receive something unexpected per <a href="https://datatracker.ietf.org/doc/html/rfc9114#extensions" target="_blank" rel="noopener noreferrer"><u>RFC 9114 requirements</u></a>.</p>

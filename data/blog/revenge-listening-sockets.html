@@ -19,8 +19,30 @@
 </figure>
 <p>The latency is created at this specific line in <code>tcp_v4_rcv</code> function:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>sk = __inet_lookup_skb(&amp;tcp_hashinfo, skb, th-&gt;source, th-&gt;dest);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>sk = __inet_lookup_skb(&amp;tcp_hashinfo, skb, th-&gt;source, th-&gt;dest);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The numbers shown above indicate that the function usually terminated quickly, in under 2us, but sometimes it hit a slow path and took 1-2ms to finish.</p>
 <p>The <a href="http://lxr.free-electrons.com/source/include/net/inet_hashtables.h?v=3.18#L343" target="_blank" rel="noopener noreferrer"><code>__inet_lookup_skb</code></a> is inlined which makes it tricky to accurately measure. Fortunately the function is simple - all it does is to call <code>__inet_lookup_established</code> and <code>__inet_lookup_listener</code>. It's the latter function that was causing the trouble:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -42,7 +64,11 @@
 <p>As mentioned above, Linux maintains a listening hash table containing the listening TCP sockets - the <code>LHTABLE</code>. It has a fixed size of <a href="http://lxr.free-electrons.com/source/include/net/inet_hashtables.h?v=3.18#L117" target="_blank" rel="noopener noreferrer">32 buckets</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>/* Yes, really, this is all you need. */</span></span>
-<span class="line"><span>#define INET_LHTABLE_SIZE       32</span></span></code></pre>
+<span class="line"><span>#define INET_LHTABLE_SIZE       32</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To recap:</p>
 <ul>
@@ -58,13 +84,21 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> netstat</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-005cc5-99ffe4"> --udp</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Udp:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    43957575</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> receive</span><span class="sk-032f62-99ffe4"> errors</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    43957575</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> receive</span><span class="sk-032f62-99ffe4"> errors</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With that number increasing we can see the affected IP addresses by listing the UDP sockets with non-empty receive queues:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> netstat</span><span class="sk-005cc5-99ffe4"> -ep4ln</span><span class="sk-005cc5-99ffe4"> --udp</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">grep</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">egrep</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> "^udp *0"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">udp</span><span class="sk-005cc5-ffc799">   524293</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-032f62-99ffe4"> 173.245.1.1:53</span><span class="sk-032f62-99ffe4">  0.0.0.0:</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-005cc5-ffc799">   0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">udp</span><span class="sk-005cc5-ffc799">   524288</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-032f62-99ffe4"> 173.245.2.3:53</span><span class="sk-032f62-99ffe4">  0.0.0.0:</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-005cc5-ffc799">   0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">udp</span><span class="sk-005cc5-ffc799">   524288</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-032f62-99ffe4"> 173.245.2.3:53</span><span class="sk-032f62-99ffe4">  0.0.0.0:</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-005cc5-ffc799">   0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this case two IP addresses received heavy UDP traffic. It was more than the DNS server could handle, the receive queues built up and eventually overflowed. Fortunately, because we are binding to specific IP addresses, overflowing some UDP receive queues won't affect any other IP addresses.</p>
 <p>Binding to specific IP addresses is critical to keep our DNS infrastructure online. With this setup even if other mitigation techniques fail and the DNS server is left exposed to the packet flood, we are certain the attack will not affect handling DNS on other IP addresses.</p>

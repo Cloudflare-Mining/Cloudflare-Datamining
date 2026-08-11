@@ -47,8 +47,30 @@
 <p>审计日志始终与帐户相关联，一些操作还包括相关的用户和区域信息。操作部分概述了更改的内容和时间，而执行者部分则提供了有关更改执行者以及执行方式的背景信息，包括更改是通过 API 还是通过 UI 完成的。</p>
 <p>还包括有关资源的信息，以便您能够轻松识别更改的内容（在本例中，更新了<a href="https://developers.cloudflare.com/waf/reference/alerts" target="_blank" rel="noopener noreferrer"><u>高级安全事件警报</u></a>）。此外，还提供原始 API 请求详细信息，让用户能通过审计日志追溯到特定的 API 调用。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> PUT</span><span class="sk-6f42c1-ffc799"> https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt; --data-raw '{...'}</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> PUT</span><span class="sk-6f42c1-ffc799"> https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt; --data-raw '{...'}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">       {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            "account"</span><span class="sk-24292e-fff">: {</span></span>
@@ -100,7 +122,11 @@
 <span class="line"><span class="sk-24292e-fff">                },</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">                "scope"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"accounts"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"policies"</span></span>
-<span class="line"><span class="sk-24292e-fff">            }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">            }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>即将推出的增强功能</h2>
 <p>对于普遍可用 (GA) 版本，我们专注于在 Automatic Audit Logs 仪表板中开发新的用户界面，为审计日志提取更多的可审计字段（包括系统发起的操作和用户级操作，如登录事件），并允许通过 <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a> 导出审计日志。而在长期发展方面，我们计划为审计日志引入仪表板、趋势分析和警报功能，以进一步提高其实用性和易用性。通过增强我们的审计日志系统，Cloudflare 正在努力践行承诺，让用户能够以更高的透明度、安全性和效率管理其环境。</p>

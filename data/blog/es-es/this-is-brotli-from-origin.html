@@ -29,8 +29,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">brotli_static</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">brotli_types</span><span class="sk-032f62-99ffe4"> text/plain</span><span class="sk-032f62-99ffe4"> text/css</span><span class="sk-032f62-99ffe4"> application/javascript</span><span class="sk-032f62-99ffe4"> application/x-javascript</span><span class="sk-032f62-99ffe4"> text/xml</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">application/xml</span><span class="sk-032f62-99ffe4"> application/xml+rss</span><span class="sk-032f62-99ffe4"> text/javascript</span><span class="sk-032f62-99ffe4"> image/x-icon</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">image/vnd.microsoft.icon</span><span class="sk-032f62-99ffe4"> image/bmp</span><span class="sk-032f62-99ffe4"> image/svg+xml</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">image/vnd.microsoft.icon</span><span class="sk-032f62-99ffe4"> image/bmp</span><span class="sk-032f62-99ffe4"> image/svg+xml</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Pruebas</h3>
 <p>Aplicamos la compresión a un archivo CSS sencillo, midiendo el impacto de varios algoritmos y niveles de compresión. Nuestro objetivo era identificar las posibles mejoras que podrían experimentar los usuarios optimizando las técnicas de compresión. Puedes ver estos resultados en la siguiente tabla:</p>
 <p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-stvh{color:#172B4D;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>

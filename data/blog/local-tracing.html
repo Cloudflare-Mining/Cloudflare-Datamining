@@ -1,8 +1,30 @@
 <p>Starting today, <code>wrangler dev</code> and <code>vite dev</code> automatically capture <a href="https://developers.cloudflare.com/workers/observability/traces" target="_blank" rel="noopener noreferrer"><u>OpenTelemetry traces</u></a> for local Worker invocations. When Cloudflare's tooling detects an agent session, it points the agent to the <a href="https://developers.cloudflare.com/workers/local-development/local-explorer/#use-with-ai-coding-agents" target="_blank" rel="noopener noreferrer"><u>Local Explorer API</u></a>, a local debugging API where it can query those traces. You do not need to install an SDK, enable tracing, configure your agent, or even mention observability in the prompt.</p>
 <p>A prompt can be as simple as:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>POST /api/orders is returning 500. Find the cause, fix it, and verify the fix locally.</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>POST /api/orders is returning 500. Find the cause, fix it, and verify the fix locally.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This builds on years of investment in local development, from introducing <a href="https://blog.cloudflare.com/miniflare" target="_blank" rel="noopener noreferrer"><u>Miniflare</u></a> to making local mode the default in <a href="https://blog.cloudflare.com/wrangler3" target="_blank" rel="noopener noreferrer"><u>Wrangler 3</u></a>. Local traces give coding agents structured feedback from that development environment before code is deployed.</p>
 <p></p>
 <div id="html-block-5b2pl8805" class="html-block">
@@ -22,7 +44,11 @@
 <span class="line"><span>... </span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>Debug with traces:</span></span>
-<span class="line"><span>POST /cdn-cgi/explorer/api/local/observability/query -- query traces and logs with SQL</span></span></code></pre>
+<span class="line"><span>POST /cdn-cgi/explorer/api/local/observability/query -- query traces and logs with SQL</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <a href="http://developers.cloudflare.com/workers/local-development/local-explorer" target="_blank" rel="noopener noreferrer"><u>Local Explorer</u></a> is a browser-based interface and REST API for viewing and editing local resource data and querying observability data during development. The API root serves an OpenAPI schema, so agents can discover available endpoints at runtime without hardcoded instructions.</p>
 <p>The automatically captured traces are available through a read-only observability endpoint in that API, together with their correlated console logs. The agent can query this telemetry, then use the API's other operations to inspect local Workers and bindings or examine state in D1, KV, R2, Durable Objects, and Workflows.&nbsp;</p>
@@ -61,6 +87,10 @@
 <span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-032f62-99ffe4"> wrangler@latest</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Cloudflare Vite plugin</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-032f62-99ffe4"> @cloudflare/vite-plugin@latest</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-032f62-99ffe4"> @cloudflare/vite-plugin@latest</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then ask your agent to debug locally as you normally would. Your agent can already write and run your Worker locally — now it can see what happened, fix what failed, and verify the result before you deploy. Check out the <a href="http://developers.cloudflare.com/workers/local-development/local-explorer/#api" target="_blank" rel="noopener noreferrer"><u>docs</u></a> to learn more!</p>

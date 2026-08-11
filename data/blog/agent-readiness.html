@@ -46,8 +46,30 @@
 <p>Beyond sitemaps, agents can also discover important resources directly from HTTP response headers, specifically, using the Link response header (<a href="https://www.rfc-editor.org/rfc/rfc8288" target="_blank" rel="noopener noreferrer"><u>RFC 8288</u></a>). Unlike links buried inside HTML, the Link header is part of the HTTP response itself, which means an agent can find links to resources without having to parse any markup:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-005cc5-fff"> OK</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Content accessibility</h3>
 <p>Getting an agent onto your site is one thing. Making sure it can actually read your content is another.</p>
 <p>Back in September 2024, which feels like a lifetime ago given how fast AI is moving, <a href="http://llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> was proposed as a way to provide a LLM-friendly representation of a website, and fit within the model’s context window. <a href="https://llmstxt.org" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> is a plain text file at the root of your site that gives agents a structured reading list: what the site is, what's on it, and where the important content lives. Think of it as a sitemap written for an LLM to read rather than a crawler to index:</p>
@@ -58,7 +80,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Getting</span><span class="sk-6f42c1-ffc799"> Started</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/start.md)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">API</span><span class="sk-6f42c1-ffc799"> Reference</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/api.md)</span></span>
 <span class="line"><span class="sk-24292e-fff">## </span><span class="sk-6f42c1-ffc799">Changelog</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>Markdown content negotiation</u></a> goes even further. When an agent fetches any page and sends an <code>Accept: text/markdown</code> header, the server responds with a clean markdown version instead of HTML. The markdown version requires far fewer tokens — we measured up to 80% token reduction in some cases — which makes responses faster, cheaper, and more likely to be consumed in its entirety, given the limits on context windows that most agent tools have by default.</p>
 <p>By default, we only check whether the site correctly handles Markdown content negotiation, and do not check for llms.txt. You can customize the scan to include llms.txt if you choose to.</p>
@@ -68,7 +94,11 @@
 <p><a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>Content Signals</u></a> let you be more specific. Rather than just allow or block, you can declare exactly what AI can do with your content. Using a <code>Content-Signal</code> directive in your <code>robots.txt</code>, you can independently control three things: whether your content can be used for AI training (<code>ai-train</code>), whether it can be used as AI input for inference and grounding (<code>ai-input</code>), and whether it should appear in search results (<code>search</code>):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Inversely, the <a href="https://blog.cloudflare.com/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a> IETF draft standard allows friendly bots to authenticate themselves, and allows websites receiving requests from bots to identify them. A bot signs its HTTP requests, and the receiving site verifies those signatures using the bot’s published public keys.</p>
 <p>Those public keys live at a well-known endpoint, <code>/.well-known/http-message-signatures-directory</code>, which we check as part of the scan.</p>
@@ -110,7 +140,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Agents work best when they have <a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a> that help them perform specific tasks — but how can agents discover what skills a site provides? We’ve proposed that sites can make this information available at <a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><code><u>.well-known/agent-skills/index.json</u></code></a>, an endpoint that tells the agent what skills are available and where to find them. You might notice that the <code>.well-known</code> standard (<a href="https://datatracker.ietf.org/doc/html/rfc8615" target="_blank" rel="noopener noreferrer"><u>RFC 8615</u></a>) is used by many other agent and authorization standards — thank you to Cloudflare’s own Mark Nottingham who authored the standard, and other IETF contributors!</p>
 <p>Many sites require you to sign in first in order to access them. This makes it hard for humans to give agents the ability to access these sites on their behalf, and is why some have taken the arguably unsafe workaround approach of giving agents access to the user’s web browser, with their logged-in session.</p>
@@ -136,7 +170,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "url": "https://www.example.com",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "options": {"agentReadiness": true}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Leading by example: upgrading Cloudflare Docs</h2>
 <p>As we built the tools to measure the Web’s readiness, we knew we had to ensure our own house was in order. Our docs must be easily digestible by the agents our customers use.</p>

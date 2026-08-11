@@ -43,8 +43,30 @@
 <span class="line"><span class="sk-24292e-fff">      raw: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">//skip applying the default chat template</span></span>
 <span class="line"><span class="sk-24292e-fff">      lora: </span><span class="sk-032f62-99ffe4">"00000000-0000-0000-0000-000000000"</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">//the finetune id OR name </span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>BYO LoRAs is in open beta as of today for Gemma 2B and 7B, Llama 2 7B and Mistral 7B models with LoRA adapters up to 100MB in size and max rank of 8, and up to 30 total LoRAs per account. As always, we expect you to use Workers AI and our new BYO LoRA feature with our <a href="https://www.cloudflare.com/service-specific-terms-developer-platform/#developer-platform-terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> in mind, including any model-specific restrictions on use contained in the models’ license terms.</p>
 <p>Read the technical deep dive blog post on <a href="https://blog.cloudflare.com/fine-tuned-inference-with-loras">fine-tuning with LoRA</a> and <a href="https://developers.cloudflare.com/workers-ai/fine-tunes" target="_blank" rel="noopener noreferrer">developer docs</a> to get started.</p>
 <h3>Write Workers in Python</h3>
@@ -55,14 +77,22 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">from js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Response</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">async def on_fetch(request, env):</span></span>
-<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>…and are configured by simply pointing at a .py file in your <code>wrangler.toml</code>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "hello-world-python-worker"</span></span>
 <span class="line"><span class="sk-24292e-fff">main </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "src/entry.py"</span></span>
 <span class="line"><span class="sk-24292e-fff">compatibility_date </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "2024-03-18"</span></span>
-<span class="line"><span class="sk-24292e-fff">compatibility_flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"python_workers"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">compatibility_flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"python_workers"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are no extra toolchain or precompilation steps needed. The <a href="https://pyodide.org/en/stable" target="_blank" rel="noopener noreferrer">Pyodide</a> Python execution environment is provided for you, directly by the Workers runtime, mirroring how Workers written in JavaScript already work.</p>
 <p>There’s lots more to dive into — take a look at the <a href="https://ggu-python.cloudflare-docs-7ou.pages.dev/workers/languages/python" target="_blank" rel="noopener noreferrer">docs</a>, and check out our <a href="https://blog.cloudflare.com/python-workers">companion blog post</a> for details about how Python Workers work behind the scenes.</p>
@@ -96,7 +126,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> upserted </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">YOUR_INDEX</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">upsert</span><span class="sk-24292e-fff">(vectors);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Query with metadata filtering</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> metadataMatches </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">YOUR_INDEX</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">query</span><span class="sk-24292e-fff">(</span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">queryVector</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">, </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> filter: { streaming_platform: </span><span class="sk-032f62-99ffe4">"netflix"</span><span class="sk-24292e-fff"> }</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> )</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> metadataMatches </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">YOUR_INDEX</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">query</span><span class="sk-24292e-fff">(</span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">queryVector</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">, </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> filter: { streaming_platform: </span><span class="sk-032f62-99ffe4">"netflix"</span><span class="sk-24292e-fff"> }</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>The most comprehensive Developer Platform to build AI applications</h3>
 <p>On Cloudflare’s Developer Platform, we believe that all developers should be able to quickly build and ship full-stack applications &nbsp;– and that includes AI experiences as well. With our GA of Workers AI, announcements for Python support in Workers, AI Gateway, and Vectorize, and our partnership with Hugging Face, we’ve expanded the world of possibilities for what you can build with AI on our platform. We hope you are as excited as we are – take a look at all our <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">Developer Docs</a> to get started, and <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">let us know</a> what you build.</p>

@@ -16,8 +16,30 @@
 <p>要立即开始使用 Remix 和 Cloudflare Pages，请在终端中运行以下命令，并在询问 “您要在哪里部署？” 时选择 “Cloudflare Pages”：</p>
 <p>然后在 <a href="https://developers.cloudflare.com/pages/platform/github-integration" target="_blank" rel="noopener noreferrer">GitHub</a> 或 <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab">GitLab</a> 上创建一个存储库，git 提交，git 推送新创建的文件夹。最后，导航到 Cloudflare Pages，选择您的存储库，然后从框架预设的下拉列表中选择“Remix”。您的新应用程序将在您的 pages.dev 子域上可用，或者您可以<a href="https://developers.cloudflare.com/pages/get-started#adding-a-custom-domain" target="_blank" rel="noopener noreferrer">将其连接到任何自定义域</a>。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> create-remix@latest</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> create-remix@latest</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>您的文件夹将有一个 functions/[[path]].ts 文件。这是我们在您网站的所有路径上为您的 Remix 应用程序提供服务的<a href="https://developers.cloudflare.com/pages/platform/functions" target="_blank" rel="noopener noreferrer">功能集成</a>。<a href="https://remix.run/docs/en/v1/api/conventions#file-name-conventions" target="_blank" rel="noopener noreferrer">应用文件夹</a>是 Remix 应用程序的大部分逻辑所在的位置。借助 Pages 对<a href="https://developers.cloudflare.com/pages/platform/rollbacks" target="_blank" rel="noopener noreferrer">回滚</a>和<a href="https://developers.cloudflare.com/pages/platform/preview-deployments" target="_blank" rel="noopener noreferrer">预览部署</a>的支持，您可以安全地测试对应用程序的任何更改，并且使用 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn">Wrangler 2.0 beta</a>，本地测试只是 npm run dev 的一个简单案例。</p>
 <h3>Cloudflare Pages 上框架的未来</h3>
 <p>Remix 是继 <a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">SvelteKit</a> 之后第二个与全栈 Cloudflare Pages 原生集成的框架<a href="https://kit.svelte.dev" target="_blank" rel="noopener noreferrer">，</a>该框架在发布时可用。但这仅仅是开始！ 我们还有很多东西可以与 Remix 和其他框架集成。请继续关注 Pages 的构建时间和开发人员体验的其他方面的改进，以及平台的新功能。</p>

@@ -25,13 +25,39 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> add10</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-e36209-fff"> num</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> num </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Our source file contains only 2 functions, <code>add5</code> and <code>add10</code>, which adds 5 or 10 respectively to the only input parameter. It's a small but fully functional piece of code, and we can easily compile it into an object file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> obj.c</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">obj.c</span><span class="sk-032f62-99ffe4">  obj.o</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">obj.c</span><span class="sk-032f62-99ffe4">  obj.o</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Loading an object file into the process memory</h3>
 <p>Now we will try to import the <code>add5</code> and <code>add10</code> functions from the object file and execute them. When we talk about executing an object file, we mean using an object file as some sort of a library. As we learned above, when we have an executable that utilises external shared libraries, the <em>dynamic loader</em> loads these libraries into the process address space for us. With object files, however, we have to do this manually, because ultimately we can't execute machine code that doesn't reside in the operating system's RAM. So, to execute object files we still need some kind of a wrapper program:</p>
@@ -64,7 +90,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    execute_funcs</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Above is a self-contained object loader program with some functions as placeholders. We will be implementing these functions (and adding more) in the course of this post.</p>
 <p>First, as we established already, we need to load our object file into the process address space. We could just read the whole file into a buffer, but that would not be very efficient. Real-world object files might be big, but as we will see later, we don't need all of the object's file contents. So it is better to <a href="https://man7.org/linux/man-pages/man2/mmap.2.html" target="_blank" rel="noopener noreferrer"><code>mmap</code></a> the file instead: this way the operating system will lazily read the parts from the file we need at the time we need them. Let's implement the <code>load_obj</code> function:</p>
@@ -120,7 +150,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    close</span><span class="sk-24292e-fff">(fd);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we don't encounter any errors, after <code>load_obj</code> executes we should get the memory address, which points to the beginning of our <code>obj.o</code> in the <code>obj</code> global variable. It is worth noting we have created a special union type for the <code>obj</code> variable: we will be parsing <code>obj.o</code> later (and peeking ahead - object files are actually <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF files</a>), so will be referring to the address both as <code>Elf64_Ehdr</code> (ELF header structure in C) and a byte pointer (parsing ELF files involves calculations of byte offsets from the beginning of the file).</p>
 <h3>A peek inside an object file</h3>
@@ -134,7 +168,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --segments</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> program</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> file.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> program</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> file.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Object file sections</h4>
 <p>The same <a href="https://man7.org/linux/man-pages/man1/readelf.1.html" target="_blank" rel="noopener noreferrer">readelf command</a> can be used to get all the sections from our object file:</p>
@@ -171,7 +209,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  W</span><span class="sk-24292e-fff"> (write), A (</span><span class="sk-6f42c1-ffc799">alloc</span><span class="sk-24292e-fff">), X (</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-24292e-fff">), M (</span><span class="sk-6f42c1-ffc799">merge</span><span class="sk-24292e-fff">), S (</span><span class="sk-6f42c1-ffc799">strings</span><span class="sk-24292e-fff">), I (</span><span class="sk-6f42c1-ffc799">info</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  L</span><span class="sk-24292e-fff"> (link </span><span class="sk-032f62-99ffe4">order</span><span class="sk-24292e-fff">), O (</span><span class="sk-6f42c1-ffc799">extra</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> processing</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-24292e-fff">), G (</span><span class="sk-6f42c1-ffc799">group</span><span class="sk-24292e-fff">), T (</span><span class="sk-6f42c1-ffc799">TLS</span><span class="sk-24292e-fff">),</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  C</span><span class="sk-24292e-fff"> (compressed), x (</span><span class="sk-6f42c1-ffc799">unknown</span><span class="sk-24292e-fff">), o (</span><span class="sk-6f42c1-ffc799">OS</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">), E (</span><span class="sk-6f42c1-ffc799">exclude</span><span class="sk-24292e-fff">),</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  l</span><span class="sk-24292e-fff"> (large), p (</span><span class="sk-6f42c1-ffc799">processor</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  l</span><span class="sk-24292e-fff"> (large), p (</span><span class="sk-6f42c1-ffc799">processor</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are different tutorials online describing the most popular ELF sections in detail. Another great reference is the <a href="https://man7.org/linux/man-pages/man5/elf.5.html" target="_blank" rel="noopener noreferrer">Linux manpages project</a>. It is handy because it describes both sections’ purpose as well as C structure definitions from <code>elf.h</code>, which makes it a one-stop shop for parsing ELF files. However, for completeness, below is a short description of the most popular sections one may encounter in an ELF file:</p>
 <ul>
@@ -197,7 +239,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     6:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    6</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     7:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    4</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     8:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">    15</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> add5</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     9:</span><span class="sk-032f62-99ffe4"> 000000000000000f</span><span class="sk-005cc5-ffc799">    15</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> add10</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     9:</span><span class="sk-032f62-99ffe4"> 000000000000000f</span><span class="sk-005cc5-ffc799">    15</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> add10</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's ignore the other entries for now and just focus on the last two lines, because they conveniently have <code>add5</code> and <code>add10</code> as their symbol names. And indeed, this is the info about our functions. Apart from the names, the symbol table provides us with some additional metadata:</p>
 <ul>
@@ -245,7 +291,11 @@
 <span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now that we have references to both the sections table and the <code>.shstrtab</code> section, we can lookup other sections by their name. Let's create a helper function for that:</p>
 <p><em>loader.c</em>:</p>
@@ -275,7 +325,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Using our new helper function, we can now find the <code>.symtab</code> and <code>.strtab</code> sections:</p>
 <p><em>loader.c</em>:</p>
@@ -309,7 +363,11 @@
 <span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next, let's focus on the <code>.text</code> section. We noted earlier in our plan that it is not enough to just locate the <code>.text</code> section in the object file, like we did with other sections. We would need to copy it over to a different location in RAM with executable permissions. There are several reasons for that, but these are the main ones:</p>
 <ul>
@@ -341,7 +399,11 @@
 <span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice, we have also added a convenience function <code>page_align</code>, which will round up the passed in number to the next page aligned boundary. Next, back to the <code>.text</code> section. As a reminder, we need to:</p>
 <ol>
@@ -388,7 +450,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we have all the pieces we need to locate the address of a function. Let's write a helper for it:</p>
 <p><em>loader.c</em>:</p>
@@ -422,7 +488,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And finally we can implement the <code>execute_funcs</code> function to import and execute code from an object file:</p>
 <p><em>loader.c</em>:</p>
@@ -454,7 +524,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"add10(</span><span class="sk-005cc5-fff">%d</span><span class="sk-032f62-99ffe4">) = </span><span class="sk-005cc5-fff">%d</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">42</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">add10</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">42</span><span class="sk-24292e-fff">));</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's compile our loader and make sure it works as expected:</p>
 <div class="emdash-code">
@@ -463,7 +537,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Voila! We have successfully imported code from <code>obj.o</code> and executed it. Of course, the example above is simplified: the code in the object file is self-contained, does not reference any global variables or constants, and does not have any external dependencies. In future posts we will look into more complex code and how to handle such cases.</p>
 <h4>Security considerations</h4>

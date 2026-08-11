@@ -30,15 +30,41 @@
 <span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">finally</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Finally, we release the lock on the stream</span></span>
 <span class="line"><span class="sk-24292e-fff">  reader.</span><span class="sk-6f42c1-ffc799">releaseLock</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>このパターンは、ストリーミング固有のものだと思うかもしれません。しかし、そうではありません。リーダーの取得、ロック管理、<code>{ value, done }</code>プロトコルはすべて設計上の選択肢に過ぎず、要件ではありません。これらは、Webストリーム仕様がいつ、どのように書かれたかを示す人工知能です。非同期反復は、時間の経過とともに到着するシーケンスを処理するために正確に存在しますが、Streamの仕様が書かれた時点では、非同期反復はまだ存在していませんでした。ここでの複雑さは、純粋なAPIのオーバーヘッドであり、根本的な必要性ではありません。</p>
 <p>Webストリームが<code>for await...of</code>をサポートするようになったので、代替アプローチを検討してください。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  chunks.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(chunk);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>定型文がはるかに少ないという点では優れていますが、すべてを解決するわけではありません。非同期イテレーションは、想定外のAPIに後付けされ、その結果を示しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB（独自のバッファの使用）</u></a>読み取りのような機能は、イテレーションを通じてアクセスできません。リーダー、ロック、コントローラーなど、根本にある複雑さは依然あり、隠れているだけです。何か問題が発生した場合、またはAPIの追加機能が必要になる場合、開発者は元のAPIの雑草に戻り、なぜストリームが「ロック」されているのか、なぜ<code>releaseLock()</code>が期待していたことをしなかったのかを理解しようとしたり、制御できないコードのボトルネックを探し出したりすることになります。</p>
 <h4>ロックの問題</h4>
@@ -55,7 +81,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> first</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> peekFirstChunk</span><span class="sk-24292e-fff">(stream);</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// TypeError: Cannot obtain lock — stream is permanently locked</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) { </span><span class="sk-6a737d-8b8b8b94">/* never runs */</span><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) { </span><span class="sk-6a737d-8b8b8b94">/* never runs */</span><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock" target="_blank" rel="noopener noreferrer"><code><u>releaseLock()</u></code></a>を忘れるとストリームは恒久的に中断されます。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked" target="_blank" rel="noopener noreferrer"><code><u>locked</u></code></a>プロパティは、ストリームがロックされていることを示しますが、なぜ、誰が、ロックがまだ使用可能かどうかは示しません。<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo" target="_blank" rel="noopener noreferrer"><u>パイプ処理</u></a>は内部的にロックを取得し、パイプの操作中、明らかではない方法でストリームを使用できないようにします。</p>
 <p>また、読み取り保留中のロックを解除することに関する意味も長年不明瞭でした。read()を呼び出したのが待っていず、releaseLock()を呼び出した場合、どうなるのでしょうか？この仕様は、最近、ロックリリース時に保留中読み取りをキャンセルするように明確化されましたが、実装にはさまざまなものがあり、以前の特定されていない動作に依存したコードは壊れる可能性があります。</p>
@@ -73,7 +103,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// 'view' should now be detached and unusable</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// (it isn't always in every impl)</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// result.value is a NEW view, possibly over different memory</span></span>
-<span class="line"><span class="sk-24292e-fff">view </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> result.value; </span><span class="sk-6a737d-8b8b8b94">// Must reassign</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">view </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> result.value; </span><span class="sk-6a737d-8b8b8b94">// Must reassign</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>また、BYOBは非同期イテレーションやTransformStreamsでは使用できないため、ゼロコピーでの読み取りを望む開発者は手動のリーダーループに戻されます。</p>
 <p>実装者にとって、BYOBはかなり複雑さを増します。ストリームは、保留中のBYOBリクエストを追跡し、部分的なフィルを処理し、バッファ分離を正しく管理し、BYOBリーダーと基盤となるソースの間で調整する必要があります。<a href="https://github.com/web-platform-tests/wpt/tree/master/streams/readable-byte-streams" target="_blank" rel="noopener noreferrer"><u>読み取り可能なバイトストリームのWebプラットフォームテスト</u></a>には、BYOBエッジケース専用のテストファイルが含まれます。デタッチされたバッファ、不正なビュー、エンキュー後の応答順序などです。</p>
@@ -137,7 +171,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    cancel</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">reason</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Stream canceled:'</span><span class="sk-24292e-fff">, reason);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ホストランタイムが、例えばフェッチ<code>Response</code>の<code>body</code>として、ランタイム自体からバイト指向のReadableStreamを提供する場合、ランタイム自体がBYOB読み取りの最適化された実装を提供する方がはるかに簡単であるものの、それらは依然としてデフォルトとBYOBの両方の読み取りパターンを処理できる必要があり、その要件はかなりの複雑さをもたらします。</p>
 <h4>バックプレッシャー：理論的には良いが、実際には壊れる</h4>
@@ -151,7 +189,11 @@
 <span class="line"><span class="sk-24292e-fff">      controller.</span><span class="sk-6f42c1-ffc799">enqueue</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">generateData</span><span class="sk-24292e-fff">()); </span><span class="sk-6a737d-8b8b8b94">// desiredSize: -999999</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Streamの実装は、バックプレッシャーを無視できます。また、一部の仕様定義された機能は、バックプレッシャーを明示的に破壊します。例えば、<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><code><u>tee()</u></code></a>は、1つのストリームから2つの分岐を作成します。一方のブランチの読み取り速度が他のブランチより速い場合、データは内部バッファに制限なく蓄積されます。速いコンシューマーは、遅いコンシューマーが追いつく間に無限のメモリ増加を引き起こす可能性があります。これを設定する方法も、遅いブランチをキャンセルする以外にオプトアウトする方法もありません。</p>
 <p>Webストリームは、<code>highWaterMark</code>オプションとカスタマイズ可能なサイズ計算の形で、バックプレッシャーの動作を調整するための明確なメカニズムを提供しますが、これらは<code>desiredSize</code>と同様に無視されやすく、多くのアプリケーションはこれらに注意を払うことができません。</p>
@@ -165,7 +207,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// the writables internal backpressure is cleared and</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// it is ok to write more data</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.ready;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>実装者にとっては、バックプレッシャーは保証はせずに複雑さを増大させます。Queue Consumerのサイズを追跡し、<code>望ましいサイズ</code>を計算し、適切なタイミングで<code>pull()</code>を呼び出す機械はすべて正しく実装されなければなりません。しかし、これらのシグナルは助言であるため、すべての機能が、バックプレッシャーが解決できるはずの問題を実際に防ぐことはできません。</p>
 <h4>約束の隠れたコスト</h4>
@@ -193,7 +239,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// In a loop, this can exhaust connection pools</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> urls) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> checkEndpoint</span><span class="sk-24292e-fff">(url);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このパターンは、<a href="https://nodejs.org/api/globals.html#fetch" target="_blank" rel="noopener noreferrer"><u>undici</u></a>（Node.jsに組み込まれた<code>fetch()</code>実装）を使用するNode.jsアプリケーションで接続プールを枯渇させる原因となっていました。同様の問題が他のランタイムでも発生しています。ストリームは基盤となる接続への参照を保持するため、明示的な消費またはキャンセルを行わなければ、接続はガベージコレクションまで続く可能性があります。</p>
 <p>問題は、暗黙的にStreamブランチを作成するAPIによってさらに悪化しています。<a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" target="_blank" rel="noopener noreferrer"><code><u>Request.clone()</u></code></a>と<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone" target="_blank" rel="noopener noreferrer"><code><u>Response.clone()</u></code></a>ボディストリーム上で暗黙の<code>tee()</code>を実行します。これは見落としがちな詳細です。ロギングまたはリトライのロジックをクローンするコードは、無意識のうちに独立した消費を必要とする支社的なストリームを作成し、リソース管理の負担を増大させる可能性があります。</p>
@@ -209,7 +259,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Storage write is slow — meanwhile, the entire stream</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// may be buffered in memory waiting for this branch</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> writeToStorage</span><span class="sk-24292e-fff">(forStorage);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> writeToStorage</span><span class="sk-24292e-fff">(forStorage);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>仕様では、<code>tee()</code> のバッファ制限を義務付けていません。公平に言えば、この仕様は、仕様の観測可能な規範的要件が満たされる限り、実装が<code>tee()</code>やその他のAPIの実際の内部メカニズムを、適切と考える方法で実装することを許可しています。しかし、実装がStreamの仕様で記述された特定の方法で<code>tee()</code>を実装することを選択した場合、<code>tee()</code>には回避が困難な組み込み型のメモリ管理の問題が生じます。</p>
 <p>実装部門は、これに対処するための独自の戦略を策定する必要がありました。Firefoxは当初リンクリスト方式を使っており、消費率の差に比例してO<code>(n)</code>メモリ増加が発生しました。Cloudflare Workersでは、バックプレッシャーが最速ではなく、最も遅いコンシューマーによって示される共有バッファモデルを実装することを選択しました。</p>
@@ -231,7 +285,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Pipe a fast source through the transform to a slow sink</span></span>
 <span class="line"><span class="sk-24292e-fff">fastSource</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(fastTransform)</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(slowSink);  </span><span class="sk-6a737d-8b8b8b94">// Buffer grows without bound</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(slowSink);  </span><span class="sk-6a737d-8b8b8b94">// Buffer grows without bound</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>TransformStreamsは、コントローラーのバックプレッシャーをチェックし、それをライターに伝えるために、約束を使用します。</p>
 <div class="emdash-code">
@@ -243,7 +301,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">    controller.</span><span class="sk-6f42c1-ffc799">enqueue</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">processChunk</span><span class="sk-24292e-fff">(chunk));</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>しかし、ここでの難しさとして、<code>TransformStreamDefaultController</code>には Writers のような ready promise メカニズムがありません。そのため、<code>TransformStream</code>の実装では、<code>controller.desiredSize</code>が再び正の値になる時期を定期的にチェックするためのポーリングメカニズムを実装する必要があります。</p>
 <p>パイプラインでは、問題がさらに悪化します。複数の変換（解析、変換、シリアル化など）を連鎖させる場合、各<code>TransformStream</code>には独自の内部読み取り可能および書き込み可能なバッファがあります。実装者が仕様に厳密に従う場合、データはプッシュ指向の方法でこれらのバッファを通過します。ソースはAの変換をプッシュし、Bの変換をプッシュし、Cの変換をプッシュし、それぞれが最終的なコンシューマーが転送する前に、中間バッファにデータを蓄積します削除し始めました3つの変換を使用して、6つの内部バッファを同時に満たすことができます。</p>
@@ -253,7 +315,11 @@
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(parse)      </span><span class="sk-6a737d-8b8b8b94">// buffers filling...</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(transform)  </span><span class="sk-6a737d-8b8b8b94">// more buffers filling...</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(serialize)  </span><span class="sk-6a737d-8b8b8b94">// even more buffers...</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(destination);    </span><span class="sk-6a737d-8b8b8b94">// consumer hasn't started yet</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(destination);    </span><span class="sk-6a737d-8b8b8b94">// consumer hasn't started yet</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>実装では、ID変換を崩壊させたり、観測できないパスを短縮したり、バッファ割り当てを遅らせたり、JavaScriptをまったく実行しないネイティブコードに戻るなどして、変換パイプラインを最適化する方法が見つかりました。Deno、Bun、Cloudflare Workersはすべて、オーバーヘッドの多くを排除するのに役立つ「ネイティブパス」最適化の実装に成功しています。Vercelの最近の<a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>fast-webstreams</u></a>研究は、Node.jsの同様の最適化に取り組んでいます。しかし、最適化自体もかなりの複雑さを増し、TransformStreamが用いる本質的なプッシュ指向モデルから完全に脱却することはできません。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -271,7 +337,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Each one triggers promise machinery internally</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> component</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> components) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  renderComponent</span><span class="sk-24292e-fff">(controller);  </span><span class="sk-6a737d-8b8b8b94">// Promises created, objects allocated</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>すべてのフラグメントは、<code>read()</code>呼び出し用に作成されたプロミス、バックプレッシャー調整のプロミス、中間バッファ割り当て、および<code>{ value, done } </code>結果オブジェクトを意味します。これらのほとんどは、ほぼ即座にガベージになります。</p>
 <p>負荷がかかると、スループットを破壊する可能性のあるGC圧力が生じます。JavaScriptエンジンは、有益な作業をする代わりに、短期間のオブジェクトを収集するのに多大な時間を費やしてしまいます。GCが中断リクエスト処理を一時停止すると、遅延は予測不可能になります。私がSSRのワークロードでは、ガベージコレクションがリクエストあたりの総CPU時間のかなりの部分（最大50％を超える）を占めていることが分かりました。その時間を、実際にコンテンツのレンダリングに費やすことができます。</p>
@@ -304,7 +374,11 @@
 <p>本質的には、ストリームは時間とともに到着するデータのシーケンスです。すべてを一度に行うことはできません。利用可能になるにつれて、徐々に処理していきます。</p>
 <p>Unixパイプは、おそらくこのアイディアを最も純粋に表現したものです。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> access.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "error"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> access.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "error"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><br>データは左から右に流れます。各ステージは入力を読み取り、作業を行い、出力を書き込みます。パイプリーダーの取得も、コントローラーロックの管理も必要ありません。下流段階が遅いと、当然ながら上流段階も遅くなります。バックプレッシャーはモデル内で暗黙的であり、学習する（または無視する）ための別個のメカニズムではありません。</p>
 <p>JavaScriptでは、「時間とともに到着する一連のモノ」の自然なプリミティブはすでに言語にあります：非同期反復可能です。<code>for await...of</code>で消費します。反復を中止することで、消費を停止します。</p>
@@ -345,7 +419,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> readable) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">(chunk, { stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この比較的クリーンなバージョンでも、<code>TransformStream</code>、手動の<code>TextEncoder</code>と<code>TextDecoder</code>、および明示的なロックのリリースが必要です。</p>
 <p>以下は、新しいAPIに対応するものです。</p>
@@ -360,7 +438,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Consume as text</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(readable);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(readable);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>読み取り可能は、単に非同期の反復可能です。ストリーム全体を収集してデコードする<code>Stream.text()</code>など、任意の関数に渡すことができます。</p>
 <p>ライターにはシンプルなインターフェースがあります: バッチ書き込み用の <code>write()、writev()</code>、完了を通知する <code>end()</code>、エラー用の <code>abort()</code>。これが本質的にこれだけです。</p>
@@ -400,7 +482,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Use it</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createBufferWriter</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(source, writer);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> allData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">getChunks</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> allData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">getChunks</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>拡張すべきベースクラスも、実装すべき抽象メソッドも、調整すべきコントローラーもありません。正しい形のオブジェクトというだけです。</p>
 <h4>プルスルー変換</h4>
@@ -414,7 +500,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> chunks) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    process</span><span class="sk-24292e-fff">(chunk);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>Stream.pull()</code>は、レイジーパイプラインを作成します。<code>圧縮</code>と<code>暗号化</code>の変換は、出力の反復を始めるまで実行されません。各イテレーションでは、オンデマンドでパイプラインを介してデータがプルされます。</p>
 <p>これは、パイプがセットアップされるとすぐに、ソースから変換にデータを積極的にポンピングし始めるWebストリームの<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough" target="_blank" rel="noopener noreferrer"><code><u>pipeThrough()</u></code></a>とは根本的に異なります。プルセマンティックスは、処理が行われるタイミングを制御し、イテレーションを停止すると処理を停止することを意味します。</p>
@@ -431,7 +521,11 @@
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Use it directly</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, toUpperCase);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, toUpperCase);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ステートフル変換は、呼び出し間で状態を維持するメンバー関数を持つ単純なオブジェクトです。</p>
 <div class="emdash-code">
@@ -475,7 +569,11 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, </span><span class="sk-6f42c1-ffc799">createLineParser</span><span class="sk-24292e-fff">());</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, </span><span class="sk-6f42c1-ffc799">createLineParser</span><span class="sk-24292e-fff">());</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Abort時にクリーンアップが必要な変換には、Abortハンドラーを追加します。</p>
 <div class="emdash-code">
@@ -503,7 +601,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">      // Clean up compressor resources on error/cancellation</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>実装者にとって、<code>start()</code>、<code>transform()</code>、<code>flush()</code> メソッドとコントローラーの調整が、独自の隠れたステートマシンとバッファリングメカニズムを持つ <code>TransformStream</code> クラスに渡される Transformer プロトコルはありません。変換は単なる関数または単純なオブジェクト：実装とテストははるかに簡単です。</p>
 <h4>明示的なバックプレッシャーポリシー</h4>
@@ -529,7 +631,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">writer</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">readable</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  highWaterMark: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  backpressure: </span><span class="sk-032f62-99ffe4">'strict'</span><span class="sk-6a737d-8b8b8b94"> // or 'block', 'drop-oldest', 'drop-newest'</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>プロデューサーの協力を期待することはもうありません。選択したポリシーによって、バッファが満杯になったときに何が起こるかが決定されます。</p>
 <p>プロデューサーの書き込みがコンシューマーの読み取りより速い場合の、各ポリシーの動作は次のようになります。</p>
@@ -560,7 +666,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> dropNew</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({ highWaterMark: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, backpressure: </span><span class="sk-032f62-99ffe4">'drop-newest'</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk1);  </span><span class="sk-6a737d-8b8b8b94">// ok</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk2);  </span><span class="sk-6a737d-8b8b8b94">// ok</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk3);  </span><span class="sk-6a737d-8b8b8b94">// silently dropped</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk3);  </span><span class="sk-6a737d-8b8b8b94">// silently dropped</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>マルチコンシューマーのパターンを顕著に</h4>
 <div class="emdash-code">
@@ -571,7 +681,11 @@
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer1</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(decompress);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(decompress);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>隠れた制限のないバッファを持つ<code>tee()</code>の代わりに、明示的なマルチコンシューマープリミティブが得られます。<code>Stream.share()</code>はプルベースです。コンシューマーは共有ソースからプルし、バッファ制限とバックプレッシャーポリシーを事前に設定します。</p>
 <p>また、プッシュベースのマルチコンシューマーシナリオ用の<code>Stream.broadcast()</code>もあります。どちらも、コンシューマーが異なる速度で動作する場合にどうなるかについて考えなければなりません。なぜなら、それは隠れるべき問題ではない現実的な懸念だからです。</p>
@@ -583,7 +697,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textAsync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(source);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Sync — when all components are synchronous</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textSync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">textSync</span><span class="sk-24292e-fff">(source);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textSync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">textSync</span><span class="sk-24292e-fff">(source);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>以下は、圧縮、変換、消費を含む完全な同期パイプラインで、非同期オーバーヘッドがゼロです：</p>
 <div class="emdash-code">
@@ -595,7 +713,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> encrypted</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pullSync</span><span class="sk-24292e-fff">(compressed, aesEncryptSync);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Synchronous consumption — no promises, no event loop trips</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">bytesSync</span><span class="sk-24292e-fff">(encrypted);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">bytesSync</span><span class="sk-24292e-fff">(encrypted);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>パイプライン全体が単一のコールスタックで実行されます。約束は作成されず、マイクロタスクキュースケジューリングも発生せず、短時間の非同期処理マシンによるGC圧力も発生しません。解析、圧縮、またはメモリ内データの変換など、CPUに依存するワークロードの場合、これは同等のWebストリームコードよりも大幅に高速化できます。これにより、すべてのコンポーネントが同期である場合でも、非同期境界が強制されます。</p>
 <p>Webストリームには同期経路がありません。たとえソースにデータの準備ができていて、変換が純粋な関数だとしても、すべての操作でプロミスの作成とマイクロタスクのスケジューリングに対する支払いが発生します。Promisは、待ち時間が実際的に必要な場合に素晴らしいのですが、必ずしも待ち時間が必要ではありません。新しいAPIを使用すると、必要なときに同期ランドの状態に維持することができます。</p>
@@ -606,7 +728,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(readable, transform1, transform2);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> input) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // process chunks</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>別のアプローチではチャンクのバッチが発生するため、ReadableStreamに適応する場合、もう少し作業が必要になりますが、適応層は簡単です。</p>
 <div class="emdash-code">
@@ -619,7 +745,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, transform1, transform2);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">adapt</span><span class="sk-24292e-fff">(input));</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">adapt</span><span class="sk-24292e-fff">(input));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>現実世界における従来からの障害への対処方法</h4>
 <ul>

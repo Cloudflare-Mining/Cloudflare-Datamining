@@ -13,14 +13,40 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">from js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Response</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">async def on_fetch(request, env):</span></span>
-<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>… und wenn Sie <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer">npx wrangler@latest dev</a> ausführen, tut die Workers-Laufzeitumgebung Folgendes:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "hello-world-python-worker"</span></span>
 <span class="line"><span class="sk-24292e-fff">main </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "src/entry.py"</span></span>
 <span class="line"><span class="sk-24292e-fff">compatibility_date </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "2024-03-18"</span></span>
-<span class="line"><span class="sk-24292e-fff">compatibility_flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"python_workers"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">compatibility_flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"python_workers"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>Die erforderliche <a href="https://developers.cloudflare.com/workers/languages/python/packages" target="_blank" rel="noopener noreferrer">Pyodide-Version</a> anhand Ihres <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer">Kompatibilitätsdatums</a> ermitteln</li>
@@ -60,7 +86,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">from js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Response</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">async def on_fetch(request, env):</span></span>
-<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Die meisten Worker sind in JavaScript geschrieben, und der größte Teil unseres technischen Aufwands für die Workers-Laufzeitumgebung fließt in die Verbesserung von JavaScript-Workern. Wird eine zweite Sprache hinzugefügt, besteht das Risiko, dass sie niemals Feature-Parität mit der ersten Sprache erreicht und immer stiefmütterlich behandelt wird. Das Foreign Function Interface (FFI) von Pyodide ist entscheidend, um dies zu vermeiden. Es bietet von Python aus Zugriff auf alle JavaScript-Funktionen. Dies kann vom Autor des Worker direkt genutzt werden und wird auch verwendet, damit Pakete wie <a href="https://developers.cloudflare.com/workers/languages/python/packages/fastapi" target="_blank" rel="noopener noreferrer">FastAPI</a> und <a href="https://developers.cloudflare.com/workers/languages/python/packages/langchain" target="_blank" rel="noopener noreferrer">Langchain</a> sofort funktionieren, wie wir in diesem Beitrag noch zeigen werden.</p>
 <p>Ein FFI ist ein System zum Aufrufen von Funktionen in einer Sprache, die in einer anderen Sprache implementiert sind. In den meisten Fällen wird ein FFI durch eine übergeordnete Sprache definiert, um Funktionen aufzurufen, die in einer Systemsprache, häufig C, implementiert sind. Das <a href="https://docs.python.org/3/library/ctypes.html#module-ctypes" target="_blank" rel="noopener noreferrer">ctypes-Modul</a> von Python ist ein solches System. Diese Art von FFI sind aufgrund der Natur von C-API oft schwer zu verwenden.</p>
@@ -73,7 +103,11 @@
 <span class="line"><span class="sk-24292e-fff">js_array = JSON.parse(</span><span class="sk-032f62-99ffe4">"[1,2,3]"</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">for entry in js_array:</span></span>
-<span class="line"><span class="sk-24292e-fff">   print(entry)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   print(entry)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Warum dynamische Verlinkungen unverzichtbar sind und statische Verlinkungen nicht ausreichen</h2>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -105,7 +139,11 @@
 <span class="line"><span class="sk-24292e-fff">  js_request = py_request_to_js_request(py_request)</span></span>
 <span class="line"><span class="sk-24292e-fff">    js_response = await fetch(js_request)</span></span>
 <span class="line"><span class="sk-24292e-fff">    py_response = js_response_to_py_response(js_response)</span></span>
-<span class="line"><span class="sk-24292e-fff">    return py_response</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return py_response</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Eine weitere Herausforderung bei der Unterstützung von HTTP-Client-Bibliotheken in Python besteht darin, dass viele Python-API synchron sind. Für diese Bibliotheken kann die <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">Fetch-API</a> also nicht direkt verwendet werden, da sie asynchron ist.</p>
 <p>Glücklicherweise hat Joe Marshall kürzlich <a href="https://urllib3.readthedocs.io/en/stable/reference/contrib/emscripten.html" target="_blank" rel="noopener noreferrer">einen Beitrag zu urllib3 geleistet</a>, der die Unterstützung von Pyodide in Webbrowsern folgendermaßen ermöglicht:</p>
@@ -124,7 +162,11 @@
 <span class="line"><span class="sk-24292e-fff">def sync_fetch(py_request):</span></span>
 <span class="line"><span class="sk-24292e-fff">   js_request = py_request_to_js_request(py_request)</span></span>
 <span class="line"><span class="sk-24292e-fff">   js_response  = run_sync(fetch(js_request))</span></span>
-<span class="line"><span class="sk-24292e-fff">   return js_response_to_py_response(js_response)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   return js_response_to_py_response(js_response)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer">FastAPI</a> ist eine der beliebtesten Bibliotheken zur Definition von Python-Servern. FastAPI-Anwendungen verwenden ein Protokoll namens <a href="https://asgi.readthedocs.io/en/latest" target="_blank" rel="noopener noreferrer">Asynchronous Server Gateway Interface</a> (ASGI). Das bedeutet, dass FastAPI selbst niemals von einem Socket liest oder in ihn schreibt. Eine ASGI-Anwendung erwartet, mit einem ASGI-Server verbunden zu sein, und zwar normalerweise mit <a href="https://www.uvicorn.org" target="_blank" rel="noopener noreferrer">uvicorn</a>. Der ASGI-Server verwaltet alle Raw Sockets für die Anwendung.</p>
 <p>Praktisch bedeutet dies für uns, dass FastAPI in Cloudflare Workers ohne Patch oder Änderungen an FastAPI selbst funktioniert. Wir müssen lediglich <a href="https://www.uvicorn.org" target="_blank" rel="noopener noreferrer">uvicorn</a> durch einen geeigneten ASGI-Server ersetzen, der innerhalb eines Worker ausgeführt werden kann. Unsere erste Implementierung befindet sich <a href="https://github.com/cloudflare/workerd/blob/main/src/pyodide/internal/asgi.py" target="_blank" rel="noopener noreferrer">hier</a> in dem von uns unterhaltenen <a href="https://github.com/cloudflare/pyodide" target="_blank" rel="noopener noreferrer">Fork von Pyodide</a>. Wir hoffen, dass wir einen umfassenderen Funktionsumfang und eine Testabdeckung hinzufügen und diese Implementierung dann in Pyodide einbinden können.</p>
@@ -176,7 +218,11 @@
 <span class="line"><span class="sk-24292e-fff">async def on_fetch(request, env):</span></span>
 <span class="line"><span class="sk-24292e-fff">    await env.FOO.put(</span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"baz"</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    bar = await env.FOO.get(</span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">    return Response.new(bar) # returns </span><span class="sk-032f62-99ffe4">"baz"</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return Response.new(bar) # returns </span><span class="sk-032f62-99ffe4">"baz"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Holen Sie dieses JavaScript aus meinem Python!</h2>
 <p>Sie lesen diesen Beitrag wahrscheinlich, weil Sie nicht in Javascript, sondern <em>stattdessen</em> in Python schreiben wollen. <code>from js import Response</code> passt einfach nicht zu Python. Uns ist das bewusst und wir haben diese Herausforderung bereits bei einer anderen Sprache (<a href="https://blog.cloudflare.com/workers-rust-sdk">Rust</a>) gemeistert. Wir glauben, dass wir es für Python noch besser machen können.</p>

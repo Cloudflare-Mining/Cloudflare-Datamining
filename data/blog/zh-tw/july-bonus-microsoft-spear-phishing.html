@@ -76,8 +76,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">created:       2009-09-13T20:00:00Z</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">paid-till:     2021-09-13T21:00:00Z</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">free-date:     2021-10-15</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">source:        TCI</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">source:        TCI</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>這波持續的攻擊以大量的 Area 1 Security 為目標，旨在收集使用者認證。乍一看，這個訊息似乎足夠良性。電子郵件會顯示針對目標公司客製化的 Microsoft SharePoint 通知，並包含收件者的電子郵件地址。訊息正文中的連結偽裝成一個簡單的「開啟」按鈕，指向一個 AppSpot URL：hxxps://useryxijxui99[.]an[.]r[.]appspot.com/#@.com。攻擊者每隔幾天就會變更子網域，試圖逃避偵測。</p>
 <p>AppSpot.com 是一個雲端運算平台，用於在 Google 管理的資料中心中開發和託管 Web 應用程式。儘管 AppSpot 具有合法用途，但它仍是一個常被濫用的平台，能讓攻擊者巧妙地繞過傳統的垃圾郵件和網路釣魚篩選器。點按這個 AppSpot 連結後，隨即會顯示一個極具說服力的 Microsoft 登入入口網站，如下圖所示。</p>
 <p>惡名昭彰的層級 8 錯誤（使用者錯誤，<a href="https://www.lifewire.com/have-you-been-the-butt-of-a-tech-joke-2619218" target="_blank" rel="noopener noreferrer">對於非技術人員而言</a>）導致這些活動取得成功。在其他技術中，發現登入入口網站是否為偽造內容的一種簡單方法就是驗證 URL。若該網站是 Microsoft 的登入網站，則相應的連結應將瀏覽器導向至合法的 Microsoft 網域，而不是 appspot.com。諺語「好得令人難以置信」也適用大多數網路釣魚騙局。在回應未經要求的憑證或登入要求之前，最好先與主管核實，尤其是在這些要求與公司財務事項有關時。</p>
@@ -117,7 +139,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	else</span><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		$</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'.alert_msg_yxq'</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">html</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Your account or password is incorrect. If you don't remember your password"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		$</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'.alert_email_sect'</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">show</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">	}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>上面詳述的 SharePoint 網路釣魚的衍生品對公司的收件匣造成嚴重破壞。此變體可能由同一攻擊者執行，並再次以「夏季獎金」為藉口，但是這次，試圖偽造 Microsoft Planner 電子郵件通知。</p>
 <p>這種魚叉式網路釣魚是另一個很好的範例，說明攻擊者如何巧妙地製作網路釣魚訊息來引誘他們的目標。文字、影像和格式與真實的 Microsoft Planner 通知幾乎完全相同。這表明，即使員工接受過網路安全訓練，也不能讓公司有效緩解其威脅面。</p>

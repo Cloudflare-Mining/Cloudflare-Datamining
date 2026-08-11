@@ -161,15 +161,41 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">agent</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">*</span></span>
 <span class="line"><span class="sk-24292e-fff">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-24292e-fff">: search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes,ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><sup><em>기존 Content Signals 값이 포함된 Cloudflare 관리형 robots.txt의 내용 </em></sup></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># Cloudflare Managed content </span><span class="sk-d73a49-a0a0a0">with</span><span class="sk-24292e-fff"> the </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">use signal</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">agent</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">*</span></span>
 <span class="line"><span class="sk-24292e-fff">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-24292e-fff">: search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes,ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no,use</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">reference</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><sup><em>새로운 매개변수가 추가된 Cloudflare 관리형 robots.txt의 내용</em></sup></p>
 <p>또한 Cloudflare는 BotBase에서 모든 봇의 콘텐츠 사용 방식을 추적하기 시작합니다. 이러한 신호를 악용하는 봇이 확인되면 해당 봇은 Verified(검증) 상태를 잃게 되며, 더 이상 허용되지 않습니다. 현재 콘텐츠를 전체 그대로 재생산하는 봇은 Verified 상태를 받을 수 없습니다.</p>

@@ -12,8 +12,30 @@
 <p>ログは、ルールが一致することが予想されたトラフィックで期待通りに機能することを検証するのには優れているものの、特にルール式が多くのコードパスを取ることができる場合、ルールの一致を示すのは十分ではありません。<br><br>擬似コードでは、式は次のようになります：</p>
 <p><code>いずれかのHTTPリクエストヘッダーに「authorization」キーが含まれている場合、またはhttpホストヘッダーの小文字での表現が「cloudflare」で始まる場合、</code><br><br>THENログのルール言語構文は次のようになります：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">any</span><span class="sk-24292e-fff">(http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers[</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">] contains </span><span class="sk-032f62-99ffe4">"authorization"</span><span class="sk-24292e-fff">) or </span><span class="sk-6f42c1-ffc799">starts_with</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">lower</span><span class="sk-24292e-fff">(http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">host), </span><span class="sk-032f62-99ffe4">"cloudflare"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">any</span><span class="sk-24292e-fff">(http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers[</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">] contains </span><span class="sk-032f62-99ffe4">"authorization"</span><span class="sk-24292e-fff">) or </span><span class="sk-6f42c1-ffc799">starts_with</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">lower</span><span class="sk-24292e-fff">(http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">host), </span><span class="sk-032f62-99ffe4">"cloudflare"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>この表現のデバッグでは、いくつかの問題が発生します。上記のOR式の左側（LHS）と右側（RHS）のどちらが一致するのか？<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#decode_base64" target="_blank" rel="noopener noreferrer"><u>Base64デコーディング</u></a>、<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#url_decode" target="_blank" rel="noopener noreferrer"><u>URLデコーディング</u></a>、そしてこの場合は<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower" target="_blank" rel="noopener noreferrer"><u>小文字化</u></a>などの機能は、これらのフィールドの元の表現に変換を適用することができ、リクエストのどの特性が一致につながったのか、さらに不明確になります。</p>
 <p>さらに複雑なことに、1つの<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank" rel="noopener noreferrer"><u>ルールセット</u></a>内の多くの<a href="https://developers.cloudflare.com/ruleset-engine/about/rules" target="_blank" rel="noopener noreferrer"><u>ルール</u></a>が一致を登録することが可能です。<a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset" target="_blank" rel="noopener noreferrer"><u>Cloudflare OWASP</u></a>のようなルールセットは、異なるルールの累積スコアを使用し、スコアが<a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold" target="_blank" rel="noopener noreferrer"><u>設定しきい値</u></a>を超えた時にアクションをトリガーします。</p>
 <p>さらに、Cloudflare Managed、OWASPルールの表現はプライベートです。これにより、セキュリティ体制は強化されますが、お客様は、タイトル、タグ、説明から、これらのルールが何をするのかを推測することしかできないということにもなります。例えば、「SonicWall SMA - Remote Code Execution - CVE:CVE-2025-32819」というラベルの付いたものがあります。</p>
@@ -40,7 +62,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">		// ...</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ルールセットエンジンは式を実行し、それが true と評価された場合、式とその <a href="https://github.com/cloudflare/wirefilter/blob/72e3954622ff7f30c4171f45461c2274656ee1e3/engine/src/execution_context.rs#L38" target="_blank" rel="noopener noreferrer"><u>実行コンテキスト</u></a> がペイロード ログ コンパイラに送信され、再評価されます。実行コンテキストは、式を評価するのに必要なすべてのランタイム値を提供します。</p>
 <p>再評価が行われると、true と評価された式の支店に関係するフィールドが記録されます。</p>
@@ -52,7 +78,11 @@
 <span class="line"><span class="sk-24292e-fff">	“http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">method”</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> “get”,</span></span>
 <span class="line"><span class="sk-24292e-fff">	“http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">user_agent”</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> “mozilla”</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>注：<a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke" target="_blank" rel="noopener noreferrer"><u>これらのログは、お客様が提供するパブリックキーで暗号化されます。</u></a></p>
 <p>これらのログは、ロギングパイプラインを通過し、さまざまな方法で読み取ることができます。お客様は、Logpushジョブを構成して、お客様のプライベートキーを使用してこれらのログを自動的に復号化するカスタムWorkerに書き込むことができます。悪意のあるペイロード Logging <a href="https://github.com/cloudflare/matched-data-cli" target="_blank" rel="noopener noreferrer"><u>CLIツール</u></a>、<a href="https://github.com/cloudflare/matched-data-worker" target="_blank" rel="noopener noreferrer"><u>Worker</u></a>、またはCloudflareダッシュボードも復号化に使用できます。</p>
@@ -63,23 +93,39 @@
 <h3>どのような改善が出荷されたか？</h3>
 <p>Wirefilterでは、一部のフィールドは配列タイプです。フィールド<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.names" target="_blank" rel="noopener noreferrer"><u>http.request.headers.names</u></a>は、リクエストのすべてのヘッダー名の配列です。たとえば：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[“content</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff">”, “content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">length”, “authorization”, </span><span class="sk-032f62-99ffe4">"host"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[“content</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff">”, “content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">length”, “authorization”, </span><span class="sk-032f62-99ffe4">"host"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>少なくとも1つのヘッダーが「c」という文字を含むため、<code>any(http.request.headers.names[*] contains “c”が含まれる)</code>は、trueと評価されます。以前のバージョンの悪意のあるペイロードロギングコンパイラでは、「http.request.headers.names」のすべてのヘッダーがフィールドは、true と評価する式の一部であるため、ログに記録されます。</p>
 <p><strong>悪意のあるペイロードログ（旧）</strong></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">names[</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [“content</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff">”, “content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">length”, “authorization”, </span><span class="sk-032f62-99ffe4">"host"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">names[</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [“content</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff">”, “content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">length”, “authorization”, </span><span class="sk-032f62-99ffe4">"host"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここでは、配列フィールドを部分的に評価し、制約式に一致するインデックスをログに記録します。この場合は、"c"を含むヘッダーだけです。</p>
 <p><strong>悪意のあるペイロードログ（新規）</strong></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">names[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [“content</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff">”, “content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">length”]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">names[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [“content</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff">”, “content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">length”]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>オペレーター</h3>
 <p>これにより、wirefilterのオペレーターが可能になります。「eq」のような一部の演算子は完全一致になります。例：<code>http.host eq “a.com”</code>.「in」、「contains」、「matches」など、「部分的」一致を実現する他の演算子も正規表現と並行して動作します。<br><br>この例の式：`<code>any(http.request.headers[*] contains “c”)`</code> は、部分一致を生成する「contains」演算子を使っています。また、「<code>any</code>」関数を使用していますが、これは部分一致を生成すると言えます。なぜなら、少なくとも1つのヘッダーに「c」が含まれている場合、<em>その</em>ヘッダーをログに記録する必要があるからです。以前のバージョンで行ったように、<em>すべて</em>のヘッダーをログに記録するのではありません。</p>
 <p>悪意のあるペイロードロギングコンパイラーの改善により、これらの表現が評価される際に、部分的な一致だけを記録します。この場合、新しいペイロードロギングコンパイラは、<a href="https://doc.rust-lang.org/std/string/struct.String.html#method.find" target="_blank" rel="noopener noreferrer"><u>Rust標準ライブラリのバイトの「find」メソッド</u></a>と同様に、「contains」演算子を処理します。これにより、悪意のあるペイロードログが改善されます：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">names[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [“c”, “c”]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">headers</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">names[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [“c”, “c”]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これにより、物事がより明確になりました。また、ロギングパイプラインが数百万バイトを処理するようになるため、節約できます。例えば、よく分析されるフィールドは、リクエスト本文（<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw" target="_blank" rel="noopener noreferrer"><u>http.request.body.raw</u></a>）で、サイズが数十キロバイトになることもあります。表現が、3つの文字と一致する正規表現パターンをチェックしている場合があります。この場合は、キロバイトではなく3バイトをログに記録します。</p>
 <h3>コンテキスト</h3>
@@ -96,7 +142,11 @@
 <span class="line"><span class="sk-24292e-fff">        content</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> “c”, </span></span>
 <span class="line"><span class="sk-24292e-fff">        after</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">”ontent</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff">”</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>悪意のあるペイロードログの例（旧）</strong></p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

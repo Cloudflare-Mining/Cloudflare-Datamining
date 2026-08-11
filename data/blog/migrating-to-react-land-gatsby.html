@@ -85,8 +85,30 @@
 <span class="line"><span class="sk-24292e-fff">  {{ end }}</span></span>
 <span class="line"><span class="sk-24292e-fff"> {{ end }}</span></span>
 <span class="line"><span class="sk-24292e-fff">{{ end }}</span></span>
-<span class="line"><span class="sk-24292e-fff">{{ end }}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{{ end }}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Whoa. I may be exceptionally oblivious, but I had to squint at the snippet above for an hour before I realized this was the code for a sidebar item (the <code>li</code> element was the eventual giveaway, but took some parsing to discover where the logic actually started).</p>
 <p>(Disclaimer: I am in no way a pro at Hugo and in any situation there are always several ways to code a solution; thus I am in no way claiming this was the only way to write the template nor am I chastising the author of the code. I am just displaying the differences in pieces of code I came across)</p>
 <p>Now, here is what the TSX (I will get into the JS later in the article) for the Gatsby project using the exact same styling would look like:</p>
@@ -114,7 +136,11 @@
 <span class="line"><span class="sk-24292e-fff">   ) </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> (</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">     ''</span></span>
 <span class="line"><span class="sk-24292e-fff">   )</span><span class="sk-24292e-a0a0a0">}</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0"> &lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0"> &lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code is clean and compact because Gatsby is a static content generation tool based on React. It’s loved for a myriad of reasons, but my honest main reason to migrate to it was to make the Hugo code above much less ugly.</p>
 <p>For our purposes, less ugly was important because we had dreams of redesigning our docs to be interactive with support for multiple coding languages and other features.</p>
@@ -155,7 +181,11 @@
 <span class="line"><span class="sk-24292e-fff">       extensions: [</span><span class="sk-032f62-99ffe4">`.mdx`</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">`.md`</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">     },</span></span>
 <span class="line"><span class="sk-24292e-fff">   }, </span></span>
-<span class="line"><span class="sk-24292e-fff">]}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now that Gatsby knows about these files as nodes, we can create pages for them. In <code>gatsby-node.js</code>, I tell Gatsby to grab these MDX pages and use a template <code>markdownTemplate.tsx</code> to create pages for them:</p>
 <div class="emdash-code">
@@ -238,7 +268,11 @@
 <span class="line"><span class="sk-24292e-fff">     value: originalPath,</span></span>
 <span class="line"><span class="sk-24292e-fff">   })</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now every time Gatsby runs, it starts running through each node on <code>onCreateNode</code>. If the node is MDX, it passes the node’s content (the markdown, <code>fileAbsolutePath</code>, etc.) and all the node fields (<code>filePath</code>, <code>parent</code> and <code>pathToServe</code>) to the <code>markdownTemplate.tsx</code> component so that the component can render the appropriate information for that markdown file.</p>
 <p>The barebone component for a page that renders a React component from the MDX node looks like this:</p>
@@ -267,7 +301,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">     }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> }</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">`</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">`</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>A Complex Component: Sidebar</h3>
 <p>Now let’s get into where I wasted the most time, but learned hard lessons upfront: turning the Hugo template into a React component. At the beginning of this article, I showed that scary sidebar.</p>
@@ -284,7 +322,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">        {{ if eq .UniqueID $currentNode.UniqueID}}active{{ end }}</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        {{ if .Params.alwaysopen}}parent{{ end }}</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        {{ if .Params.alwaysopen}}always-open{{ end }}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        "</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">        "</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I see that the code is defining some <code>section-tree-nav</code> component-like thing and taking in some <code>currentNode</code>. To be honest, I still don’t know exactly what the variables <code>.sect</code>, <code>IsSection</code>, <code>Params.head</code>, <code>Params.Hidden</code> mean. Although I can take a wild guess, they're not that important for understanding what the logic is doing. The logic is setting the classes on the <code>li</code> element which is all I really care about: parent, always-open and active.</p>
 <p>When focusing on those three classes, we can port them to React in a much more readable way by defining a variable string <code>ddClass</code>:</p>
@@ -305,7 +347,11 @@
 <span class="line"><span class="sk-24292e-fff">         ddClass </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-032f62-99ffe4"> ' active'</span></span>
 <span class="line"><span class="sk-24292e-fff">       }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-24292e-fff"> (</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">         &lt;</span><span class="sk-22863a-ffc799">li</span><span class="sk-6f42c1-a0a0a0"> data-nav-id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">pathToServe</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-6f42c1-a0a0a0"> className</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-032f62-99ffe4">'dd-item '</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> ddClass</span><span class="sk-24292e-a0a0a0">}&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">         &lt;</span><span class="sk-22863a-ffc799">li</span><span class="sk-6f42c1-a0a0a0"> data-nav-id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">pathToServe</span><span class="sk-24292e-a0a0a0">}</span><span class="sk-6f42c1-a0a0a0"> className</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-032f62-99ffe4">'dd-item '</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> ddClass</span><span class="sk-24292e-a0a0a0">}&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are actually a few nice things about the Hugo code, I admit. Using the Location component in React was probably less intuitive than Hugo’s ability to access <code>currentNode</code> to get the active page. Also <code>isAncestor</code> is predefined in Hugo as <code>Whether the current page is an ancestor of the given page.</code> For me though, having to track down the definitions of the predefined variables was frustrating and I appreciate the local explicitness of the definition, but I admit I’m a bit jaded.</p>
 <h4>Children</h4>
@@ -365,7 +411,11 @@
 <span class="line"><span class="sk-24292e-fff">  {{ end }}</span></span>
 <span class="line"><span class="sk-24292e-fff"> {{ end }}</span></span>
 <span class="line"><span class="sk-24292e-fff">{{ end }}</span></span>
-<span class="line"><span class="sk-24292e-fff">{{ end }}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{{ end }}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is just the first layer of children. No grandbabies, sorry. And I won’t even get into all that is going on there exactly. When I started porting this over, I realized a lot of that logic was not even being used.</p>
 <p>In React, we grab all the markdown pages and see which have parents that match the current page:</p>
@@ -404,7 +454,11 @@
 <span class="line"><span class="sk-24292e-fff">   .</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">child</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> child.node)</span></span>
 <span class="line"><span class="sk-24292e-fff">   .</span><span class="sk-6f42c1-ffc799">filter</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">child</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">child.frontmatter.hidden)</span></span>
 <span class="line"><span class="sk-24292e-fff">   .</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-24292e-fff">(sortByWeight)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> numberOfPages</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> myChildren.</span><span class="sk-005cc5-fff">length</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> numberOfPages</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> myChildren.</span><span class="sk-005cc5-fff">length</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And then we render the children, so the full JSX becomes:</p>
 <div class="emdash-code">
@@ -439,7 +493,11 @@
 <span class="line"><span class="sk-24292e-fff">   ) </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> (</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">     ''</span></span>
 <span class="line"><span class="sk-24292e-fff">   )</span><span class="sk-24292e-a0a0a0">}</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0"> &lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0"> &lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ok now that we have a component, and we have Gatsby creating the pages off the markdown, I can go back to my <code>PageTemplate</code> component and render the sidebar:</p>
 <div class="emdash-code">
@@ -452,7 +510,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">     &lt;</span><span class="sk-005cc5-ffc799">MDXRenderer</span><span class="sk-24292e-a0a0a0">&gt;{</span><span class="sk-24292e-fff">mdx.body</span><span class="sk-24292e-a0a0a0">}&lt;/</span><span class="sk-005cc5-ffc799">MDXRenderer</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">   &lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff"> )</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I don’t have to pass any props to <code>Sidebar</code> because the GraphQL static query in <code>Sidebar.tsx</code> gets all the data about all the pages that I need. I don’t even maintain state because <code>Location</code> is used to determine which path is active. Gatsby generates pages using the above component for each page that’s a markdown MDX node.</p>
 <h2>Wrapping up</h2>

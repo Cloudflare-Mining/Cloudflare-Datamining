@@ -14,8 +14,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> --init</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -v</span><span class="sk-032f62-99ffe4"> /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  -p</span><span class="sk-032f62-99ffe4"> 4010:4010</span><span class="sk-032f62-99ffe4"> stoplight/prism:4</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">  mock</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> /tmp/openapi.yaml</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">  mock</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> /tmp/openapi.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Cela se traduit par un développement plus rapide et des tests exécutés plus rapidement, tandis que les problèmes concernant le contrat d'API sont repérés de manière précoce, avant la fusion et le déploiement.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -sX</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-032f62-99ffe4"> localhost:4010/zones/f00/activation_check</span><span class="sk-005cc5-a0a0a0"> \</span></span>
@@ -27,7 +49,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "023e105f4ecef8ad9ca31a8372d0c353"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Génération de bibliothèques</h3>
 <p>Cloudflare possède des bibliothèques dans de nombreux langages de programmation tels que <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank" rel="noopener noreferrer">Terraform</a> et <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>, mais il existe des langages de programmation que nous ne prenons pas en charge. Heureusement, en ayant recours à un outil tel que <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank" rel="noopener noreferrer">openapi generator</a>, vous pouvez charger des schémas d'API de Cloudflare et générer une bibliothèque avec une large game de langages à utiliser dans votre code pour communiquer avec l'API de Cloudflare. Par exemple, vous pouvez générer une bibliothèque Java à l'aide des commandes suivantes :</p>
@@ -39,7 +65,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">java</span><span class="sk-005cc5-99ffe4"> -jar</span><span class="sk-032f62-99ffe4"> modules/openapi-generator-cli/target/openapi-generator-cli.jar</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   -i</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   -g</span><span class="sk-032f62-99ffe4"> java</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">   -o</span><span class="sk-032f62-99ffe4"> /var/tmp/java_api_client</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">   -o</span><span class="sk-032f62-99ffe4"> /var/tmp/java_api_client</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Comment Cloudflare est passé à OpenAPI</h2>
 <p>Comme il a été mentionné précédemment, avant, nous utilisions JSON Hyper-Schema pour définir nos API. Nous avons environ 600 points de terminaison qui ont été définis dans les schémas. Voici un fragment de ce à quoi ressemble un point de terminaison dans JSON Hyper-Schema :</p>
@@ -69,7 +99,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">          "#zone:read"</span></span>
 <span class="line"><span class="sk-24292e-fff">        ]</span></span>
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
-<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Comme vous pouvez le voir, les deux sont en apparence assez semblables et, en grande majorité, les informations contenues dans chacune des méthodes sont les mêmes à savoir une description, et des définitions de requête et de réponse (bien que celles-ci soient intégrées dans un lien $refs). Ce n'est pas dans le changement de la manière de définir les schémas eux-mêmes que se trouve l'intérêt à migrer de l'un vers l'autre, mais dans ce que nous pouvons faire avec ces schémas. De nombreux outils permettent d'analyser les schémas OpenAPI alors qu'ils sont beaucoup moins nombreux à le permettre pour JSON Hyper-Schema.</p>
 <div class="emdash-code">
@@ -105,7 +139,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        business:</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        enterprise:</span><span class="sk-005cc5-99ffe4"> true</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        free:</span><span class="sk-005cc5-99ffe4"> true</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        pro:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        pro:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Si l'API Cloudflare n'était formée que de cette API, il serait facile de se contenter de convertir le JSON Hyper-Schema en schéma OpenAPI à la main et de s'arrêter là. Cependant, lorsqu'il s'agit de le faire 600 fois de suite, la tâche aurait été considérable. N'oublions pas que les équipes ajoutent constamment de nouveaux points de terminaison, le rythme était donc impossible à tenir. Par ailleurs, nos documents API existants utilisaient l'hyper-schéma JSON existant, ce qui signifiait que nous devions maintenir les deux schémas à jour pendant toute période de transition. Il devait exister un meilleur moyen.</p>
 <h3>Conversion automatique</h3>

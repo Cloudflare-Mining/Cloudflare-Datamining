@@ -1,0 +1,395 @@
+<p>Today, we’re excited to announce a few developer experience improvements to <a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Search</u></a> to make it easy to manage a search solution out of the box. Previously, you had to stitch together components of the Cloudflare primitives (Workers AI, AI Gateway, Vectorize, R2, Browser Run) but now, AI Search can do this automatically, and better. Our goal is to give your agents their own search engine, where they can easily find data to provide better answers for themselves and their humans.&nbsp;</p>
+<p>We’re also sharing an early preview of pricing for customers of AI Search so you can learn how this scales. We modeled pricing in a way that makes it predictable and scalable: embedding and reranking are free when you use the default models, so no need to worry about predicting token count.</p>
+<p>In AI Search, users can now:</p>
+<ul>
+	<li><strong>Index a collection of data for your agent: </strong>Make structured and unstructured data easily accessible for your agent to build with, from individual files to websites you own. (Today, it must be a zone on your Cloudflare account, but with more ways to verify ownership coming soon.)</li>
+	<li><strong>Skip the sitemap for your websites: </strong>Previously, AI Search required that websites have a sitemap to use the website integration. Now you can select the “Discover” parsing option to add a website without a sitemap as a source.</li>
+	<li><strong>Get a single public endpoint for searching across a namespace:</strong> When you enable public URLs on your namespace, you can get a <code>/search</code> and <code>/mcp</code> endpoint that can search through multiple instances or websites at once without authentication, so you can share easily with your customers.</li>
+	<li><strong>Put your own custom domain over public endpoints:</strong> You can now add your own domains over your public URLs, so you can brand your <code>/search</code> and<code> /mcp</code> endpoints (e.g., <code>search.example.com/mcp</code>). You can also add <a href="https://www.cloudflare.com/products/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> to create private search instances.</li>
+	<li><strong>Add semantic search to your sites built on EmDash with AI Search plugin:</strong> If your site runs on <a href="https://github.com/emdash-cms/emdash" target="_blank" rel="noopener noreferrer"><u>EmDash</u></a>, our open-source CMS, the <a href="https://docs.emdashcms.com/deployment/cloudflare/#cloudflare-ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search plugin</u></a> adds semantic search over your content.</li>
+	<li><strong>Preview the new pricing model for AI Search: </strong>We want pricing to be predictable and to scale with you, so we built in the cost of embedding and reranking: they’re free when you use select models from the Workers AI catalog.</li>
+</ul>
+<p>Finally, we will also share examples of how AI Search is used across our own platform including <a href="http://cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare.com</a>, our Developer Docs, with EmDash, in Cloudflare Dev Stack MCP — and even the blog post you’re reading right now (try cmd+K).</p>
+<h2>AI Search in action: powering the new Cloudflare Dev Stack MCP</h2>
+<p>One of the ways we use AI Search is in our new <strong>Cloudflare Dev Stack MCP</strong>, which you can try today in our <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>AI Playground</u></a>. It gives coding agents current, cited docs from across the Cloudflare developer ecosystem, so they build on the latest features and fixes instead of stale training data.</p>
+<p>Here's how we built it using the features available today in AI Search:</p>
+<h3>1. Index each surface</h3>
+<p>We created one AI Search instance per Cloudflare-owned surface: Docs, Blog, API Docs, Community, Astro, Vite, Vitest, Hono, Replicate, OpenNext. (Each of these is Cloudflare-owned.)&nbsp;</p>
+<p>They span different domains, but, because Cloudflare owns the website data, AI Search is able to treat them as a single set and ingest them all the same way. Point AI Search at a site, or set of sites, and it handles crawling, ingestion, embedding, and retrieval. Creating an instance is a single command, and for a site without a sitemap you add --parse-type discover to find pages by following links (powered by /crawl from Browser Run):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npx wrangler ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">search create cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">community \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">namespace dev</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">stack \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">source https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//community.cloudflare.com \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --type</span><span class="sk-24292e-fff"> web</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">crawler \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">parse</span><span class="sk-d73a49-a0a0a0">-type</span><span class="sk-24292e-fff"> discover</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<h3>2. Combine the instances into one search</h3>
+<p>Now the interesting part: answering a single query across all 10 instances. There are two ways to do it.</p>
+<p><strong>Option A: in a Worker (what we did for Cloudflare Stack MCP)</strong></p>
+<p>We bound the namespace to a Worker to create a <a href="https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>remote MCP server</u></a> and made one multi-instance call across all 10 instances. We took this path because we're adding the stack search into <a href="https://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer"><u>Cloudflare's MCP server</u></a>, so it ships as a tool alongside the Cloudflare tools agents already connect to.</p>
+<p>The binding, in <code>wrangler.jsonc:</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ai_search_namespaces"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI_SEARCH"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"namespace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"cloudflare-stack"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Then a single tool makes one call that fans out across the instances you name:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// One tool, one call that searches every surface in the namespace at once.</span></span>
+<span class="line"><span class="sk-24292e-fff">context.</span><span class="sk-6f42c1-ffc799">registerTool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  'search_dev_stack'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-24292e-fff">    description: </span><span class="sk-032f62-99ffe4">'Search current docs across the Cloudflare stack.'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    inputSchema: z.</span><span class="sk-6f42c1-ffc799">object</span><span class="sk-24292e-fff">({ query: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">() }),</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">query</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> context.env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      query,</span></span>
+<span class="line"><span class="sk-24292e-fff">      ai_search_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        instance_ids: [</span><span class="sk-032f62-99ffe4">'developers-cloudflare-com'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'astro'</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">/* ...every surface */</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">        retrieval: { max_num_results: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">        reranking: { enabled: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // res.chunks come back cited and tagged with the instance they came from.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> { content: [{ type: </span><span class="sk-032f62-99ffe4">'text'</span><span class="sk-24292e-fff">, text: </span><span class="sk-6f42c1-ffc799">format</span><span class="sk-24292e-fff">(res.chunks) }] }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p><strong>Option B: flip on public endpoints (no code)</strong></p>
+<p>If you'd rather not write a Worker at all, enable public URLs on the namespace. You immediately get /search and /mcp endpoints that query every instance, with no auth and nothing to deploy.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAzMzLzc/O0tTU19nZ2trZ2dfV09DPy8rJ1NXT19jW3d/e5OXk5+fm5ePi3dva1NPR3d3c4eHg6eno8fHw9fTz8e/u6OXl3tzb4+Lh5+bl8O/u+fj3/fv6+fb27+zr5eHh5OPi6Obl8e/u+fj2/fr6+fb18Ozs5uLh4d/e5eLh7erp9PLx9/Tz9PDv7ejn5N/e3drZ4N3d5+Tk7uvq8e3s7uno6OLh4dva3NjX3tva5eLh6+jn7uno6+bl5eDe39nY" alt="" width="715" height="501" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=715&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=640&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=715&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=750&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=828&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=1080&amp;h=757&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=1280&amp;h=897&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=1430&amp;h=1002&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3390 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9C19KKHFFAPKSBVY6Q2.png&amp;w=1920&amp;h=1346&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1346" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="501" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Reach for the Worker when you're folding search into an existing app or MCP server, as we are. Or reach for the public endpoint when you just want a shareable search endpoint in one click.</p>
+<h3>3. Brand it and lock it down</h3>
+<p>Public endpoints come with a default public URL, but you can put your own <strong>custom domain</strong> over them to brand the endpoint (e.g., <code>search.example.com/mcp</code>).</p>
+<p>If the search should be private, add <strong>Cloudflare Access</strong> in front of the domain. The endpoint now requires a login, so only authorized people (or agents) can query it.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAAy8vNzc3P0tLU19fZ2tvb2dna1NPVzc3P09LT1dXW29vc4uHj5eXm5OPl3d3e1dTW29ra3t3d5eTk7Ovt8fDx7+7v5+bn3t3d4d/e5OLh6+np8/Hy+Pb39vT17uzs5OLh4uDe5eLh7Ono8/Hx+PX19vPz7uzr5eLh4N3c49/e6OXk7+zq8+/u8e7t6+fm4+De3drZ39zb5ODf6ubj7enm6+fl5uLg4Nzb3NjY3trZ4t7c5+Pg6ubi6eTi5ODe3trZ" alt="" width="715" height="531" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=715&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=640&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=715&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=750&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=828&amp;h=615&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=1080&amp;h=802&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=1280&amp;h=951&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=1430&amp;h=1062&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3390 3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XV4EAC6SEBKG5WH0JG.png&amp;w=1920&amp;h=1425&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1425" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="531" class="pt-portable-image-media"></div>
+</figure>
+<h2>Try it yourself: use the Dev Stack MCP</h2>
+<p>With the Cloudflare Dev Stack MCP Server, you can ask about any tool, or describe an app you want to build, and you'll get back current, cited answers on how best to build it on the Cloudflare stack.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA0M/P0dHR1dXW2trb3Nzd2trb1dTVz8/P2NfX2tnZ397f5OTk5+bn5eTk3t3d1tXV4d/f4+Lh6ejn7+7u8vHx8O7u5+bm3dzb5uXk6efm7+3s9vTz+fj39vX07evq4uDf5+Xj6ufm8O3r9vTy+vf29/Tz7uzq5OHg5eHg5+Ph7Onm8u/s9fLv8vDt6+jm4t/d4d3b49/d5+Ph7Ojm7+vo7ern5+Ph4NzZ39vZ4d3a5eHe6ubj7Onl6ufk5eHe3trY" alt="" width="715" height="531" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=715&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=640&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=715&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=750&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=828&amp;h=615&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=1080&amp;h=802&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=1280&amp;h=951&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=1430&amp;h=1062&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3390 4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA4N9XD3VNB63VGZ3AFE6TR.png&amp;w=1920&amp;h=1425&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1425" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="531" class="pt-portable-image-media"></div>
+</figure>
+<p>The <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>AI Playground</u></a> is worth checking out, but the real magic is wiring the MCP into your coding agent, so the stack's current docs are one tool call away. That replaces the usual fallback (web search then fetching full pages), which is slow, token-heavy, and often lands on the wrong or stale source. To use with your agent of choice, drop the Dev Stack MCP URL into your MCP configuration. For example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "mcpServers"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "dev-stack"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"url"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://stack.mcp.cloudflare.com/mcp"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2>Powering search on our Blog, Developer Docs, and <a href="http://cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare.com</a></h2>
+<p>We build with AI Search the same way our customers would: Cloudflare Blog's search already runs on it, and today Developer Docs and <a href="http://cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare.com</a> join it. All of it uses hybrid search, semantic and keyword together in one query, so it handles both open-ended "what does this do" questions and exact lookups of names or keywords. We recently rebuilt the Blog on EmDash, our new open-source CMS, and our new</p>
+<p><a href="https://docs.emdashcms.com/deployment/cloudflare/#cloudflare-ai-search" target="_blank" rel="noopener noreferrer"><u>EmDash AI Search integration</u></a> is what powers that search now. You can also add it to your own EmDash site and get the same search over your content out of the box.</p>
+<h2>AI Search respects all bot policies</h2>
+<p>AI Search is powered by Browser Run <code>/crawl</code> in the background, but goes a step further to identify itself with its own bot identity: <code>Cloudflare-AI-Search</code>. Just like Browser Run, it follows robots.txt, identifies itself with an immutable, public user agent, and will respect whatever bot controls a site has in place.&nbsp;</p>
+<h2>Preview pricing: pricing you can predict</h2>
+<p>AI Search is currently free while in beta, and billing is not yet enabled; we'll email you with plenty of notice before it starts. As we move toward general availability, here's a preview of pricing across ingestion, storage, and queries, plus embedding and reranking (<em>preview prices are subject to change before billing begins)</em>:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Preview usage price</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Free monthly allotment (all Workers plans)</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Ingestion</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Base Ingestion</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0.75 / 1M tokens</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5M tokens †</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Image processing (add-on)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+$0.50 / 1M tokens</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5M tokens †</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Storage</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Stored data</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$2.00 / GB-month</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10 GB</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Query</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Semantic (hybrid and vector search)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0.75 / 1k queries</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,000 queries ‡</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Full-text</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0.10 / 1k queries</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,000 queries ‡</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Embedding and Reranking&nbsp;</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Ingestion and query</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Free with select Workers AI models; third-party billed separately</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>N/A</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><em>† A single pool of 5M ingestion tokens per month, covering any file type currently supported (e.g., text, images). ‡ A single pool of 2,000 queries per month, shared across both query types.&nbsp;</em></p>
+<p>Our goal is to provide pricing you can predict, starting with the models your search leans on. Embedding turns your text into the vectors that search matches on, and reranking reorders results so the most relevant come first. Both run free with AI Search defaults or when using select models from the Workers AI catalog, so the models behind indexing and every search are not a cost you have to worry about. Answer generation and query rewriting are optional steps that run on a model you choose, billed as Workers AI usage, or you can use AI Gateway credits with any model/provider.</p>
+<h3>Example bill with preview pricing</h3>
+<p>Here's a sample monthly bill on the Workers Paid plan for creating a new AI Search instance for a 20,000-document data source (about 20M tokens of text) plus 1,000 images (assume about 1,000 tokens each), with 30,000 semantic queries a month using the default AI Search embedding and reranking model. Ingestion is chunked with roughly 10% overlap, which shows up as the × 1.1 below:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Line item</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Usage</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Price</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>This month</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Base ingestion</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(20M tokens of text + 1M tokens of images) × 1.1 - 5M free = 18.1M tokens</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0.75 / 1M tokens</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$13.58</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Image add-on</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1M tokens of images × 1.1 = 1.1M tokens</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0.50 / 1M tokens</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0.55</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Storage</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>~1.2 GB (within 10 GB free)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$2 / GB-mo</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Queries (semantic)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30,000 - 2,000 free = 28K</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0.75 / 1k</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$21.00</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Embedding (Workers AI)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Usage included with selected Workers AI model</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Reranking (Workers AI)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Usage included with selected Workers AI model</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$0</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Total</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>~$35</strong></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Images count toward base ingestion and also incur the image add-on cost. Storage assumes about 10 KB per document and 1 MB per image. Indexing is largely a one-time cost, so later months are mostly queries, closer to $21.</p>
+<h2>Get started today</h2>
+<p>AI Search is available to enable and use today. Point it at your site, turn on hybrid search for both semantic and keyword matching, and you have a search engine for your own data, ready for your agents. Spin one up with one command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npx wrangler ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">search create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">search \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">namespace my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">namespace \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">source https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//my-website.com \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --type</span><span class="sk-24292e-fff"> web</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">crawler \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  --</span><span class="sk-24292e-fff">hybrid</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">search</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>From there, query it, wire it into an agent over <code>/mcp</code>, or put a custom domain on a public <code>/search</code> endpoint to share it with your users. Check out the <a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search docs</u></a> for more information.</p>

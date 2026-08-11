@@ -23,15 +23,41 @@
 <span class="line"><span class="sk-24292e-fff">     -H </span><span class="sk-032f62-99ffe4">"X-Auth-Email: user@example.com"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">     -H </span><span class="sk-032f62-99ffe4">"X-Auth-Key: auth-key"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">     -H </span><span class="sk-032f62-99ffe4">"Content-Type: application/json"</span><span class="sk-24292e-fff"> \</span></span>
-<span class="line"><span class="sk-24292e-fff">     --data '{</span><span class="sk-005cc5-ffc799">"certificate"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"certificate"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"private_key"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"private_key"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"policy"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"(country: US) or (region: EU)"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sni_custom"</span><span class="sk-24292e-fff">}'</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">     --data '{</span><span class="sk-005cc5-ffc799">"certificate"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"certificate"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"private_key"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"private_key"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"policy"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"(country: US) or (region: EU)"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sni_custom"</span><span class="sk-24292e-fff">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Geo Key Manager 现在可以支持 30 多个国家和地区。但这还不是全部。Geo Key Manager 技术的强大之处在于，它不一定基于“地理位置”，而是基于属性。未来，我们将提供一条策略，允许客户根据合规标准(例如 FedRAMP 或 ISO 27001)定义私钥存储的位置。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl -X POST </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/zones/zone_id/custom_certificates"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">     -H </span><span class="sk-032f62-99ffe4">"X-Auth-Email: user@example.com"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">     -H </span><span class="sk-032f62-99ffe4">"X-Auth-Key: auth-key"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">     -H </span><span class="sk-032f62-99ffe4">"Content-Type: application/json"</span><span class="sk-24292e-fff"> \</span></span>
-<span class="line"><span class="sk-24292e-fff">     --data '{</span><span class="sk-005cc5-ffc799">"certificate"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"certificate"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"private_key"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"private_key"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"policy"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"region: EU and (not country: FR)"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sni_custom"</span><span class="sk-24292e-fff">}'</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">     --data '{</span><span class="sk-005cc5-ffc799">"certificate"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"certificate"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"private_key"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"private_key"</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">"policy"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"region: EU and (not country: FR)"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sni_custom"</span><span class="sk-24292e-fff">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>可靠性、韧性和冗余</h3>
 <p>通过向客户提供对 Geo Key Manager 的远程控制，我们希望确保客户能够理解它们对冗冗和延迟的影响。</p>

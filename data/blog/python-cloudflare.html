@@ -18,14 +18,40 @@
 <span class="line"><span class="sk-005cc5-ffc799">        print</span><span class="sk-24292e-fff"> zone_id, ipv6_on, zone_name</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    exit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-005cc5-fff"> __name__</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-032f62-99ffe4"> '__main__'</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-24292e-fff">    main()</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    main()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The structure of the CloudFlare class matches the API documentation. The <code>CloudFlare.zones.get()</code> method returns information about the zones as per the <a href="https://api.cloudflare.com/#zone-list-zones" target="_blank" rel="noopener noreferrer">list zones</a> documentation. The same for <code>CloudFlare.zones.settings.ipv6.get()</code> and its <a href="https://api.cloudflare.com/#zone-settings-get-ipv6-setting" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
 <p>Data is passed into the methods via standard Python structures and they are returned in Python structures that match the API documentation. That means if you see an API call in the documentation, then you can translate it into the Python code in a one-to-one manner.</p>
 <p>For example, take a look at the <a href="https://api.cloudflare.com/#waf-rules-list-rules" target="_blank" rel="noopener noreferrer">WAF list rules</a> API call.</p>
 <p>This codes into <code>CloudFlare.zones.dns_records.post()</code> method with the <code>zone_id</code> as the first argument, the <code>package_id</code> as the second argument and the optional parameters passed last (or if there aren’t any; then just drop the third argument for the call). Because this is a <code>GET</code> call there’s a <code>.get()</code> as part of the method name.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cf.zones.firewall.waf.packages.rules.get(zone_id, package_id, </span><span class="sk-e36209-fff">params</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">params)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cf.zones.firewall.waf.packages.rules.get(zone_id, package_id, </span><span class="sk-e36209-fff">params</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">params)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here’s the much simpler <a href="https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record" target="_blank" rel="noopener noreferrer">Create DNS record</a> API call.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -34,7 +60,11 @@
 <script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
 <p>This would be coded into the Python method <code>CloudFlare.zones.dns_records.post()</code> with the <code>zone_id</code> as the first argument and the required parameters passed as data. Because this is a <code>POST</code> call there’s a <code>.post()</code> as part of the method name.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cf.zones.dns_records.post(zone_id, </span><span class="sk-e36209-fff">data</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">dns_record)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cf.zones.dns_records.post(zone_id, </span><span class="sk-e36209-fff">data</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">dns_record)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here’s an example of that Create DNS record call in action. In this code, we add two records to an existing zone. We also show how the error is handled (in classic Python style).</p>
 <div class="emdash-code">
@@ -55,7 +85,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        try</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">            r </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cf.zones.dns_records.post(zone_id, </span><span class="sk-e36209-fff">data</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">dns_record)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        except</span><span class="sk-24292e-fff"> CloudFlare.CloudFlareAPIError </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> e:</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">            exit</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/zones.dns_records.post </span><span class="sk-005cc5-ffc799">%s</span><span class="sk-032f62-99ffe4"> - </span><span class="sk-005cc5-ffc799">%d</span><span class="sk-005cc5-ffc799"> %s</span><span class="sk-032f62-99ffe4">'</span><span class="sk-d73a49-a0a0a0"> %</span><span class="sk-24292e-fff"> (record[</span><span class="sk-032f62-99ffe4">'name'</span><span class="sk-24292e-fff">], e, e))</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">            exit</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/zones.dns_records.post </span><span class="sk-005cc5-ffc799">%s</span><span class="sk-032f62-99ffe4"> - </span><span class="sk-005cc5-ffc799">%d</span><span class="sk-005cc5-ffc799"> %s</span><span class="sk-032f62-99ffe4">'</span><span class="sk-d73a49-a0a0a0"> %</span><span class="sk-24292e-fff"> (record[</span><span class="sk-032f62-99ffe4">'name'</span><span class="sk-24292e-fff">], e, e))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There’s a whole folder of example code available on the GitHub repository.</p>
 <h2>All on GitHub for anyone to use</h2>
@@ -64,7 +98,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/python-cloudflare</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> python-cloudflare</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./setup.py</span><span class="sk-032f62-99ffe4"> build</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./setup.py</span><span class="sk-032f62-99ffe4"> install</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./setup.py</span><span class="sk-032f62-99ffe4"> install</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>But wait; there’s more!</h2>
 <p>Not only do you get the python API calls, you also get a fully functioning CLI (command line interface) that allows quick creation of scripts that interface with CloudFlare.</p>
@@ -77,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    "bob.ns.cloudflare.com"</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The CLI command will convert on-the-fly zone names into zone identifiers. For example; if you want to check the <a href="https://blog.cloudflare.com/dnssec-an-introduction">DNSSEC</a> status on a zone your operate on CloudFlare; then use this command.</p>
 <div class="emdash-code">
@@ -86,7 +128,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "active",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "ds"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "example.com. 3600 IN DS 2371 13 2 00000000000000000000000000000 ..."</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can issue <code>GET</code> <code>PUT</code> <code>POST</code> <code>PATCH</code> or <code>DELETE</code> calls into the API. You can pass data into a CloudFlare API call with the CLI command. All documented via the <code>README.md</code> and wiki examples in GitHub.</p>
 <p>Here’s a useful command for customers that need to flush their cache files.</p>
@@ -95,7 +141,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"d8afaec3dd2b7f8c1b470e594a21a01d"</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>See how the commands arguments match the <a href="https://api.cloudflare.com/#zone-purge-all-files" target="_blank" rel="noopener noreferrer">purge_cache</a> API documentation.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -105,7 +155,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cli4</span><span class="sk-005cc5-99ffe4"> --patch</span><span class="sk-032f62-99ffe4"> status=active</span><span class="sk-032f62-99ffe4"> /zones/:example.com/dnssec</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> '{"status":.status}'</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"pending"</span><span class="sk-6f42c1-ffc799">}</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are plenty more examples available within the GitHub repo.</p>
 <h3>CloudFlare API via other languages also available</h3>

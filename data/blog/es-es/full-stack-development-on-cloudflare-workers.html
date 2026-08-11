@@ -41,8 +41,30 @@
 <p>Antes de cargar tu aplicación, debes agrupar todo tu código del lado del cliente en un directorio de <strong>activos estáticos</strong>. Wrangler agrupa y compila tu código cuando ejecutas <code>wrangler dev</code>, pero ahora también admitimos Vite con nuestro <a href="https://www.npmjs.com/package/@cloudflare/vite-plugin" target="_blank" rel="noopener noreferrer"><u>nuevo complemento para Vite</u></a>. Esta es una estupenda opción para aquellos que ya utilizan las herramientas de compilación y el servidor de desarrollo de Vite. Puedes seguir desarrollando (y probando con <a href="https://developers.cloudflare.com/workers/testing/vitest-integration" target="_blank" rel="noopener noreferrer"><u>Vitest</u></a>) utilizando el servidor de desarrollo de Vite, todo ello en el entorno de ejecución de Workers.&nbsp;</p>
 <p>Para empezar a utilizar nuestro complemento para Vite, puedes crear una aplicación React utilizando Vite y nuestro complemento. Para ello, ejecuta:&nbsp;</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">react</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">react</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">react</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Cuando abras el proyecto, deberías ver una estructura de directorios de este tipo:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
@@ -56,7 +78,11 @@
 <span class="line"><span class="sk-24292e-fff">├── index</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">html</span></span>
 <span class="line"><span class="sk-24292e-fff">├── package</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">json</span></span>
 <span class="line"><span class="sk-24292e-fff">├── vite</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">config</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">ts</span></span>
-<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Si ejecutas <code>npm run build</code>, verás que aparece una nueva carpeta, <code>/dist</code>.&nbsp;</p>
 <div class="emdash-code">
@@ -73,7 +99,11 @@
 <span class="line"><span class="sk-24292e-fff">├── index</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">html</span></span>
 <span class="line"><span class="sk-24292e-fff">├── package</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">json</span></span>
 <span class="line"><span class="sk-24292e-fff">├── vite</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">config</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">ts</span></span>
-<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└── wrangler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">jsonc</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>El complemento para Vite informa a Wrangler de que este directorio <code>/dist</code> contiene los activos estáticos compilados del proyecto que, en este caso, incluye el código del lado del cliente, algunos archivos CSS e imágenes.&nbsp;</p>
 <p>Una vez implementada, esta arquitectura de aplicación de una sola página (SPA) tendrá un aspecto similar al siguiente:&nbsp;</p>
@@ -92,7 +122,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "assets"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "directory"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "./dist"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Una vez que hayas añadido esta configuración, lo único que tienes que hacer es crear tu proyecto y ejecutar <em>wrangler deploy</em>.&nbsp; Todo tu sitio se cargará y estará listo para el tráfico en Workers. Una vez que tu sitio estático se haya implementado y empiecen a llegar las solicitudes, este se almacenará en <a href="https://developers.cloudflare.com/workers/static-assets/#caching-behavior" target="_blank" rel="noopener noreferrer"><u>caché en la red de Cloudflare</u></a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -100,7 +134,11 @@
 </figure>
 <p>Prueba iniciar hoy mismo un nuevo proyecto de Astro en Workers ejecutando:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">astro</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">astro</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">astro</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">framework</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">astro</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Puedes ver nuestros otros marcos compatibles y cómo empezar en nuestras <a href="https://developers.cloudflare.com/workers/frameworks" target="_blank" rel="noopener noreferrer"><u>guías sobre los marcos</u></a>.&nbsp;</p>
 <h3>Aplicaciones de una sola página (SPA)&nbsp;</h3>
@@ -127,7 +165,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "placement"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   "mode"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "smart"</span></span>
 <span class="line"><span class="sk-24292e-fff"> }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Al activar este modo, la plataforma asume que cualquier solicitud de navegación (las solicitudes con un encabezado <code>Sec-Fetch-Mode: navigate</code>) está destinada a activos estáticos y entregará <code>index.html</code> cuando no se pueda encontrar ningún activo estático coincidente. En el caso de las solicitudes que no sean de navegación (como las solicitudes de datos) que no coincidan con ningún activo estático, Cloudflare invocará el script de Worker. Con esta configuración, puedes representar el frontend con React, utilizar Worker para gestionar las operaciones de backend y usar Vite para la integración de ambos. Esta es una estupenda opción para traer las SPA más antiguas creadas con <code>create-react-app</code>, <a href="https://react.dev/blog/2025/02/14/sunsetting-create-react-app" target="_blank" rel="noopener noreferrer"><u>que se eliminó recientemente</u></a>.&nbsp;</p>
 <p>Otro aspecto a tener en cuenta en este archivo de configuración de Wrangler: hemos definido un enlace Hyperdrive y activado <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>. Hyperdrive nos permite utilizar una base de datos existente<em> y</em> gestionar la agrupación de conexiones. Esto resuelve el continuo desafío que suponía conectar Workers (que se ejecuta en un entorno muy distribuido y sin servidor) directamente a las bases de datos tradicionales. Por diseño, Workers funciona en aislamientos V8 ligeros sin sockets TCP persistentes y con un límite estricto de CPU/memoria. Este aislamiento es excelente a efectos de la seguridad y la velocidad, pero dificulta mantener abiertas las conexiones a las bases de datos. Hyperdrive resuelve estas limitaciones, ya que funciona como "puente" entre la red de Cloudflare y tu base de datos, encargándose del trabajo más complejo de garantizar la estabilidad de las conexiones o agrupaciones para que Workers pueda reutilizarlas.&nbsp; Al activar Smart Placement, también garantizamos que si las solicitudes a nuestro Worker se originan lejos de la base de datos (lo que causa latencia), Cloudflare puede optar por reubicar tanto el Worker, que se encarga de la conexión a la base de datos, como el "puente" de Hyperdrive a una ubicación más cercana. a la base de datos, ​​reduciendo los tiempos de ida y vuelta.&nbsp;</p>
@@ -164,7 +206,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">export default {</span></span>
 <span class="line"><span class="sk-24292e-fff"> fetch</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> app</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">fetch,</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cuando se implementa, la arquitectura de nuestra aplicación tiene el siguiente aspecto:&nbsp;</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -189,14 +235,22 @@
 <p>También hemos seguido avanzando en la compatibilidad con las API de Node.js, y hemos añadido recientemente compatibilidad con los módulos <code>crypto</code>, <code>tls</code>, <code>net</code> y <code>dns</code>. Esto permite que las aplicaciones y las bibliotecas existentes que dependen de estos módulos de Node.js se ejecuten en Workers. Veamos un ejemplo:</p>
 <p>Anteriormente, si intentabas utilizar el paquete <code>mongodb</code>, te encontrabas con el siguiente error:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [unenv] dns</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resolveTxt is not implemented </span><span class="sk-6f42c1-ffc799">yet!</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Error</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [unenv] dns</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resolveTxt is not implemented </span><span class="sk-6f42c1-ffc799">yet!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Esto sucedía cuando <code>mongodb</code> utilizaba el módulo <code>node:dns</code> para realizar una búsqueda de DNS de un nombre de host. Incluso si hubieras evitado ese problema, te habrías encontrado otro error cuando <code>mongodb</code> intentara utilizar <code>node:tls</code> para conectarse de forma segura a una base de datos.</p>
 <p>Ahora, puedes utilizar <code>mongodb</code> de la forma prevista porque <code>node:dns</code> y <code>node:tls</code> son compatibles. Lo mismo puede decirse en el caso de las bibliotecas que dependen de <code>node:crypto</code> y <code>node:net</code>.</p>
 <p>Además, Workers <a href="https://developers.cloudflare.com/changelog/2025-03-11-process-env-support" target="_blank" rel="noopener noreferrer"><u>ahora expone las variables de entorno y los secretos en el objeto process.env</u></a> cuando el indicador de compatibilidad <code>nodejs_compat</code> está activado y la fecha de compatibilidad está establecida en <code>01-04-2025</code> o una fecha posterior. Algunas bibliotecas (y algunos desarrolladores) asumen que este objeto se rellenará con variables, y se basan en él para la configuración de nivel superior. Sin la modificación, es posible que las bibliotecas se vieran dañadas de forma inesperada y que los desarrolladores tuvieran que escribir lógica adicional para gestionar las variables en Cloudflare Workers.</p>
 <p>Ahora puedes acceder a tus variables de la misma forma que en Node.js.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> "info"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">LOG_LEVEL</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> "info"</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Tiempo adicional de CPU de Worker</h3>
 <p>También hemos <a href="https://developers.cloudflare.com/changelog/2025-03-25-higher-cpu-limits" target="_blank" rel="noopener noreferrer"><u>aumentado el tiempo máximo de CPU por solicitud de Worker</u></a> (de 30 segundos a 5 minutos). Esto permite que las operaciones que requieren muchos recursos informáticos se ejecuten durante más tiempo sin que se agote el tiempo de espera. Supongamos que quieres utilizar el módulo <code>node:crypto</code>, ahora compatible, para aplicar hash a un archivo muy grande. Ahora puedes hacerlo en Workers sin tener que depender de procesos externos para aquellas operaciones que consumen mucha CPU.</p>

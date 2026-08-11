@@ -15,18 +15,48 @@
 <h4>Confirm the customer's CNAME is in place</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> CNAME</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-032f62-99ffe4"> support.yourcustomer.site</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">whitelabel.yourcompany.ltd.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">whitelabel.yourcompany.ltd.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Alternatively, you can add the CNAME after requesting certificate issuance, but it’s faster if you have it in place to begin with. If you need the certificates issued and live prior to your customer pointing their hostname over, consider using email-based validation.</p>
 <h4>Demonstrate basic HTTP connectivity (and show expected HTTPS error)</h4>
 <p>With the CNAME in place, we show that HTTP connectivity to our origin is returned as expected and that HTTPS fails (again, expected) due to a certificate error. The reason the connection fails is that Cloudflare is serving the wildcard certificate for *.yourcompany.ltd, as you haven’t yet told us to get a certificate for app.yourcustomer.site.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> http://support.yourcustomer.site</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> support.yourcustomer.site!</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> being</span><span class="sk-032f62-99ffe4"> served</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> whitelabel.yourcompany.ltd.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> support.yourcustomer.site!</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> being</span><span class="sk-032f62-99ffe4"> served</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> whitelabel.yourcompany.ltd.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://support.yourcustomer.site</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1|</span><span class="sk-6f42c1-ffc799">grep</span><span class="sk-032f62-99ffe4"> chain</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">curl:</span><span class="sk-24292e-fff"> (60) SSL certificate problem: Invalid certificate chain</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">curl:</span><span class="sk-24292e-fff"> (60) SSL certificate problem: Invalid certificate chain</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Make single API call to request SSL certificate issuance</h4>
 <p>Now that the customer CNAME is in place, all you need to do is send us a single API call with the custom hostname to let us know we should expect to terminate TLS traffic there. We’ll take care of the rest.</p>
@@ -38,13 +68,21 @@
 <span class="line"><span class="sk-032f62-99ffe4">        "method":"http",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        "type":"dv"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">      }</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>Demonstrate your customer’s site is accessible over HTTPS</h4>
 <p>That’s it! Within a couple of minutes we’ll have validated that hostname with our CA partner, requested two types of certificates be issued—SHA-2/ECDSA signed for modern browsers that support elliptic curve cryptography and SHA-2/RSA <a href="https://blog.cloudflare.com/tls-certificate-optimization-technical-details">to maintain compatibility</a> with older browsers—and pushed it to all <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">110+ PoPs</a> that comprise our edge.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://app.yourcustomer.site</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> app.yourcustomer.site!</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> being</span><span class="sk-032f62-99ffe4"> served</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> whitelabel.yourcompany.ltd.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> app.yourcustomer.site!</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> being</span><span class="sk-032f62-99ffe4"> served</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> whitelabel.yourcompany.ltd.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Your customer’s customers can now securely access their white labeled version of your application over HTTPS and take advantage of all the benefits it enables, such as <a href="https://blog.cloudflare.com/introducing-http2">the HTTP/2 protocol</a>. These certificates and their keys are issued uniquely to your customer’s hostname (i.e., not co-located with any other customers), and served globally from a PoP close to your customer’s visitors.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -55,7 +93,11 @@
 <h3>How long does it take to issue a certificate and have it ready for use?</h3>
 <p>Certificates are typically validated, issued, and pushed to our edge within a few minutes. You are able to monitor progress through the various states—Initializing, Pending Validation, Pending Issuance, Pending Deployment, Active—by making a GET call.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -sXGET</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: [YOUR KEY]"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: [YOUR EMAIL]"</span><span class="sk-032f62-99ffe4"> https://www.cloudflare.com/api/v4/zones/[ZONE</span><span class="sk-032f62-99ffe4"> ID]/custom_hostnames?hostname=support.yourcustomer.site</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -sXGET</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: [YOUR KEY]"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: [YOUR EMAIL]"</span><span class="sk-032f62-99ffe4"> https://www.cloudflare.com/api/v4/zones/[ZONE</span><span class="sk-032f62-99ffe4"> ID]/custom_hostnames?hostname=support.yourcustomer.site</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -70,7 +112,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>What about renewals or reissuances? Do I or my customers have to do anything?</h3>
 <p>No, we take care of all of this for you. The certificates we issue are valid for one full year (365 days) and will be renewed automatically at least 30 days prior to expiration. These certificates are uniquely issued in your customer’s hostname and, so as long as the CNAME is still in place, we can continue to easily renew by demonstrating “domain validation control” of that hostname. If the customer has churned, we encourage you to send us a DELETE request so we can pull the certificate from the edge and not attempt to renew.</p>

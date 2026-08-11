@@ -14,8 +14,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> noreplysecurityservices@</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">targeted</span><span class="sk-032f62-99ffe4"> company’s</span><span class="sk-032f62-99ffe4"> domai</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">public-facing</span><span class="sk-032f62-99ffe4"> targeted</span><span class="sk-032f62-99ffe4"> company’s</span><span class="sk-032f62-99ffe4"> email</span><span class="sk-032f62-99ffe4"> accoun</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Subject:</span><span class="sk-032f62-99ffe4"> User</span><span class="sk-032f62-99ffe4"> account</span><span class="sk-032f62-99ffe4"> security</span><span class="sk-032f62-99ffe4"> alert</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-005cc5-ffc799"> 31</span><span class="sk-032f62-99ffe4"> Aug</span><span class="sk-005cc5-ffc799"> 2020</span><span class="sk-032f62-99ffe4"> 22:17:43</span><span class="sk-032f62-99ffe4"> +0700</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-005cc5-ffc799"> 31</span><span class="sk-032f62-99ffe4"> Aug</span><span class="sk-005cc5-ffc799"> 2020</span><span class="sk-032f62-99ffe4"> 22:17:43</span><span class="sk-032f62-99ffe4"> +0700</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This mistake is quickly rectified in subsequent phishing messages, where the attacker successfully spoofs not only the visible From address but also the envelope MAIL FROM domain of the targeted companies. However, these “stealthier” messages expose yet another blunder, as evidenced by the presence of a “Disposition-Notification-To” header. &nbsp;This header indicates that read-receipts are enabled, meaning the attacker will be notified when a target opens the malicious email. &nbsp;This once again discloses the sender account, which happens to be the same Gmail address as identified in the first wave of the campaign.</p>
 <p>On the second day of the campaign (September 1st) the attacker began inserting SMTP HELO commands to tell receiving email servers that the phishing message originated from the target company’s domain, when in fact it came from an entirely different origin. This is a common tactic used by malicious actors to spoof legitimate domains and easily bypass legacy email security solutions. Shown in the following headers, the true origin of the email is the IP address 196[.]53[.]250[.]243:</p>
 <div class="emdash-code">
@@ -27,7 +49,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> noreplysecurityservices@</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">targeted</span><span class="sk-032f62-99ffe4"> company’s</span><span class="sk-032f62-99ffe4"> domai</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">email</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> employee</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> targeted</span><span class="sk-032f62-99ffe4"> compan</span><span class="sk-24292e-fff">y</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Subject:</span><span class="sk-032f62-99ffe4"> Email</span><span class="sk-032f62-99ffe4"> User</span><span class="sk-032f62-99ffe4"> security</span><span class="sk-032f62-99ffe4"> alert</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> Sep</span><span class="sk-005cc5-ffc799"> 2020</span><span class="sk-032f62-99ffe4"> 16:19:07</span><span class="sk-032f62-99ffe4"> +0700</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> Sep</span><span class="sk-005cc5-ffc799"> 2020</span><span class="sk-032f62-99ffe4"> 16:19:07</span><span class="sk-032f62-99ffe4"> +0700</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The attacker switched to this IP address to launch the second wave of the campaign. Depicted below is a screenshot of a vulnerable and shoddy gaming site, Ran Smok, which is directly accessible via this IP (i.e., hxxp://196[.]53[.]250[.]243). The site links to various web pages that result in “Access denied,” and the IP address has been associated with numerous suspicious websites over the years. An analysis of available services running on the IP address reveals that port 25 (used by the Simple Mail Transfer Protocol, or SMTP) is running in a filtered state, and is most likely how the attacker is sending the phishing messages. A closer look at the list of open ports on the IP address reveals a number of additional services that should never be open to the internet, thus leaving the host at this IP exceedingly vulnerable, and all-the-more enticing to an attacker.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

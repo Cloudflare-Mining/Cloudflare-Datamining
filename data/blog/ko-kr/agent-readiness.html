@@ -46,8 +46,30 @@
 <p>사이트맵 외에도, 에이전트는 HTTP 응답 헤더를 통해 중요한 리소스를 직접 발견할 수 있으며, 특히 Link 응답 헤더(<a href="https://www.rfc-editor.org/rfc/rfc8288" target="_blank" rel="noopener noreferrer"><u>RFC 8288</u></a>)를 사용합니다. HTML 내부에 묻혀 있는 링크와 달리, Link 헤더는 HTTP 응답 자체의 일부이므로 에이전트는 어떤 마크업도 파싱할 필요 없이 리소스에 대한 링크를 찾을 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-005cc5-fff"> OK</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>콘텐츠 접근성</h3>
 <p>에이전트를 사이트로 유입시키는 것은 한 가지 문제일 뿐, 실제로 콘텐츠를 읽을 수 있도록 만드는 것은 또 다른 문제입니다.</p>
 <p>AI 발전 속도를 감안하면 이미 한참 전처럼 느껴지는 2024년 9월, <a href="http://llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a>가 웹사이트를 LLM 친화적인 형태로 제공하고 모델의 컨텍스트 윈도우에 맞출 수 있는 방법으로 제안되었습니다. <a href="https://llmstxt.org" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a>는 사이트 루트에 위치한 일반 텍스트 파일로, 에이전트에게 구조화된 읽기 목록을 제공하여, 사이트가 무엇인지, 어떤 콘텐츠가 있는지, 그리고 중요한 콘텐츠가 어디에 위치하는지를 알려줍니다. 크롤러가 색인하기 위한 사이트맵이 아니라, LLM이 읽도록 작성된 사이트맵이라고 생각하면 됩니다.</p>
@@ -58,7 +80,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Getting</span><span class="sk-6f42c1-ffc799"> Started</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/start.md)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">API</span><span class="sk-6f42c1-ffc799"> Reference</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/api.md)</span></span>
 <span class="line"><span class="sk-24292e-fff">## </span><span class="sk-6f42c1-ffc799">Changelog</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>Markdown 콘텐츠 협상</u></a>은 한 단계 더 나아갑니다. 에이전트가 어떤 페이지를 요청하면서 <code>Accept: text/markdown</code> 헤더를 보내면, 서버는 HTML 대신 깔끔한 Markdown 버전으로 응답합니다. Markdown 버전은 훨씬 적은 토큰을 사용합니다(일부 경우 최대 80%까지 토큰이 줄어드는 것을 확인했습니다). 이는 대부분의 에이전트 도구가 기본적으로 갖는 컨텍스트 윈도우 제한을 고려할 때, 응답을 더 빠르고 저렴하게 만들고 전체 내용을 끝까지 활용할 가능성을 높여줍니다.</p>
 <p>기본적으로는 사이트가 Markdown 콘텐츠 협상을 올바르게 처리하는지만 확인하며, llms.txt는 확인하지 않습니다. 필요에 따라 스캔 설정을 변경하여 llms.txt를 포함하도록 할 수 있습니다.</p>
@@ -68,7 +94,11 @@
 <p><a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>콘텐츠 신호</u></a>를 사용하면 더 세밀하게 제어할 수 있습니다. 단순히 허용하거나 차단하는 것을 넘어, AI가 콘텐츠로 무엇을 할 수 있는지 정확히 선언할 수 있습니다. <code>robots.txt</code>에서 <code>Content-Signal</code> 지시자를 사용하면 세 가지를 각각 독립적으로 제어할 수 있습니다. 콘텐츠를 AI 학습에 사용할 수 있는지(<code>ai-train</code>), 추론 및 그라운딩을 위한 AI 입력으로 사용할 수 있는지(<code>ai-input</code>), 그리고 검색 결과에 노출될 수 있는지(<code>search</code>)입니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>반대로, <a href="https://blog.cloudflare.com/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a> IETF 초안 표준은 신뢰할 수 있는 봇이 스스로를 인증할 수 있도록 하고, 봇으로부터 요청을 받는 웹사이트가 이를 식별할 수 있도록 합니다. 봇은 자신의 HTTP 요청에 서명을 추가하고, 요청을 받는 사이트는 봇이 공개한 공개 키를 사용해 해당 서명을 검증합니다.</p>
 <p>해당 공개 키는 well-known 엔드포인트인 <code>/.well-known/http-message-signatures-directory</code>에 위치하며, 우리는 스캔 과정에서 이를 확인합니다.</p>
@@ -110,7 +140,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>에이전트는 특정 작업을 수행하는 데 도움이 되는 <a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u>Agent Skills</u></a>를 갖추고 있을 때 가장 잘 작동합니다. 하지만 에이전트는 사이트가 어떤 스킬을 제공하는지 어떻게 발견할 수 있을까요? 우리는 사이트가 이 정보를 <a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><code><u>.well-known/agent-skills/index.json</u></code></a>에서 제공할 수 있도록 제안했습니다. 이 엔드포인트는 어떤 스킬을 사용할 수 있는지와 이를 어디에서 찾을 수 있는지를 에이전트에 알려줍니다. <code>.well-known</code> 표준(<a href="https://datatracker.ietf.org/doc/html/rfc8615" target="_blank" rel="noopener noreferrer"><u>RFC 8615</u></a>)이 다른 많은 에이전트 및 인증 표준에서도 사용된다는 점을 눈치채셨을 수 있습니다. 이 표준을 작성한 Mark Nottingham과 Cloudflare, 그리고 다른 IETF 기여자들에게 감사드립니다!</p>
 <p>많은 사이트는 접근하기 위해 먼저 로그인해야 합니다. 이로 인해 사용자가 에이전트에게 자신을 대신해 해당 사이트에 접근할 권한을 부여하기가 어려워지며, 일부에서는 다소 안전하지 않은 우회 방식으로 로그인된 세션이 유지된 사용자의 웹 브라우저에 에이전트 접근 권한을 부여하기도 합니다.</p>
@@ -136,7 +170,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "url": "https://www.example.com",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "options": {"agentReadiness": true}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>솔선수범: Cloudflare Docs 업그레이드</h2>
 <p>웹의 준비도를 측정하는 도구를 구축하면서, 우리 스스로도 준비가 되어 있어야 한다는 점을 분명히 인식했습니다. 고객이 사용하는 에이전트가 쉽게 이해할 수 있도록 문서를 구성해야 합니다.</p>

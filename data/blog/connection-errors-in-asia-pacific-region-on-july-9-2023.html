@@ -12,14 +12,40 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> blog.cloudflare.com.</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">104.18.28.7</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">104.18.29.7</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">104.18.29.7</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>(Your computer doesn’t actually use the dig command internally; we’ve used it to illustrate the process) Then when the next closest Cloudflare data center receives the HTTPS request for blog.cloudflare.com, it needs to fetch the content from the origin server (assuming it is not cached).</p>
 <p>There are two ways Cloudflare can reach the origin server. If the DNS settings in Cloudflare contain IP addresses then we can connect directly to the origin. In some cases, our customers use a CNAME which means Cloudflare has to perform another DNS query to get the IP addresses associated with the CNAME. In the example above, <code>blog.cloudflare.com</code> has a CNAME record instructing us to look at <code>origin.example</code> for IP addresses. During the incident, only customers with CNAME records like this going to .com and .net domain names may have been affected.</p>
 <p>The domain <code>origin.example</code> needs to be resolved by Cloudflare as part of the upstream or origin DNS resolution. This time, the Cloudflare data center needs to perform an outbound DNS query that looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> origin.example.</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">192.0.2.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>DNS is a hierarchical protocol, so the recursive DNS resolver, which usually handles DNS resolution for whoever wants to resolve a <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name" target="_blank" rel="noopener noreferrer">domain name</a>, needs to talk to several involved nameservers until it finally gets an answer from the authoritative nameservers of the domain (assuming no DNS responses are cached). This is the same process during the external DNS resolution and the origin DNS resolution. Here is an example for the origin DNS resolution:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

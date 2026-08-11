@@ -11,29 +11,67 @@
 <h3>Bootstrap the D1 Database</h3>
 <p>First off, we’re going to need a D1 database set up, with a schema for our todo application to run on. If you’re not familiar with D1, it’s <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">Cloudflare’s serverless database offering</a> - explained in more detail <a href="https://blog.cloudflare.com/introducing-d1">here</a>. To get started, we use the <code>wrangler d1</code> command to create a new database:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">todo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> custom-database-name</span><span class="sk-24292e-fff">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">todo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> custom-database-name</span><span class="sk-24292e-fff">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>After executing this command, you will be asked to add a snippet of code to your <strong><code>wrangler.toml</code></strong> file that looks something like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[ d1_databases ]]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "db"</span><span class="sk-6a737d-8b8b8b94"> # i.e. available in your Worker on env.db</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;todo | custom-database-name&gt;"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;UUID&gt;"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;UUID&gt;"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let’s save that for now, and we’ll put these into each of our private microservices in a few moments. Next, we’re going to create our database schema. It’s a simple todo application, so it’ll look something like this, with some seeded data:</p>
 <p><strong><em>db/schema.sql</em></strong></p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">DROP</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-d73a49-ffc799"> IF</span><span class="sk-d73a49-ffc799"> EXISTS</span><span class="sk-24292e-fff"> todos;</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-6f42c1-ffc799"> todos</span><span class="sk-24292e-fff"> (id </span><span class="sk-d73a49-a0a0a0">INTEGER</span><span class="sk-d73a49-a0a0a0"> PRIMARY KEY</span><span class="sk-24292e-fff">, todo </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">, todoStatus </span><span class="sk-d73a49-a0a0a0">BOOLEAN</span><span class="sk-d73a49-ffc799"> NOT NULL</span><span class="sk-d73a49-a0a0a0"> CHECK</span><span class="sk-24292e-fff"> (todoStatus </span><span class="sk-d73a49-ffc799">IN</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)));</span></span>
-<span class="line"><span class="sk-d73a49-ffc799">INSERT INTO</span><span class="sk-24292e-fff"> todos (todo, todoStatus) </span><span class="sk-d73a49-ffc799">VALUES</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"Fold my laundry"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">),(</span><span class="sk-032f62-99ffe4">"Get flowers for mum’s birthday"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">),(</span><span class="sk-032f62-99ffe4">"Find Nemo"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">),(</span><span class="sk-032f62-99ffe4">"Water the monstera"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-ffc799">INSERT INTO</span><span class="sk-24292e-fff"> todos (todo, todoStatus) </span><span class="sk-d73a49-ffc799">VALUES</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"Fold my laundry"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">),(</span><span class="sk-032f62-99ffe4">"Get flowers for mum’s birthday"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">),(</span><span class="sk-032f62-99ffe4">"Find Nemo"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">),(</span><span class="sk-032f62-99ffe4">"Water the monstera"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can bootstrap your new D1 database by running:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">todo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> custom-database-name</span><span class="sk-24292e-fff">&gt; </span><span class="sk-005cc5-99ffe4">--file=./schema.sql</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">todo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> custom-database-name</span><span class="sk-24292e-fff">&gt; </span><span class="sk-005cc5-99ffe4">--file=./schema.sql</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then validate your new data by running a query through Wrangler using the following command:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">todo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> custom-database-name</span><span class="sk-24292e-fff">&gt; </span><span class="sk-005cc5-99ffe4">--command=</span><span class="sk-032f62-99ffe4">'SELECT * FROM todos'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">todo</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> custom-database-name</span><span class="sk-24292e-fff">&gt; </span><span class="sk-005cc5-99ffe4">--command=</span><span class="sk-032f62-99ffe4">'SELECT * FROM todos'</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Great! We’ve now got a database running entirely on Cloudflare’s global network.</p>
 <h3>Build the endpoint Workers</h3>
@@ -47,7 +85,11 @@
 <span class="line"><span class="sk-24292e-fff">     ).</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(results);</span></span>
 <span class="line"><span class="sk-24292e-fff">   },</span></span>
-<span class="line"><span class="sk-24292e-fff"> };</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> };</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Worker ‘todo-list’ needs to be able to access D1 from the environment variable <code>db</code>. To do this, we’ll define the D1 binding in our <code>wrangler.toml</code> file. We also specify that workers_dev is false, preventing a preview from being generated via workers.dev (we want this to be a <em>private</em> microservice).</p>
 <p><strong><em>list/wrangler.toml</em></strong></p>
@@ -61,7 +103,11 @@
 <span class="line"><span>[[ d1_databases ]]</span></span>
 <span class="line"><span>binding = "db" # i.e. available in your Worker on env.db</span></span>
 <span class="line"><span>database_name = "&lt;todo | custom-database-name&gt;"</span></span>
-<span class="line"><span>database_id = "UUID"</span></span></code></pre>
+<span class="line"><span>database_id = "UUID"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, use wrangler publish to deploy this microservice.</p>
 <div class="emdash-code">
@@ -75,7 +121,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  -</span><span class="sk-032f62-99ffe4"> db:</span><span class="sk-032f62-99ffe4"> todo</span><span class="sk-24292e-fff"> (UUID)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-032f62-99ffe4"> Upload:</span><span class="sk-005cc5-ffc799"> 4.71</span><span class="sk-032f62-99ffe4"> KiB</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-032f62-99ffe4"> gzip:</span><span class="sk-005cc5-ffc799"> 1.60</span><span class="sk-032f62-99ffe4"> KiB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Uploaded</span><span class="sk-032f62-99ffe4"> todo-list</span><span class="sk-24292e-fff"> (0.96 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> publish</span><span class="sk-032f62-99ffe4"> targets</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> todo-list</span><span class="sk-24292e-fff"> (0.00 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> publish</span><span class="sk-032f62-99ffe4"> targets</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> todo-list</span><span class="sk-24292e-fff"> (0.00 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice that wrangler mentions there are no ‘publish targets’ for todo-list. That’s because we haven’t hooked todo-list up to any HTTP endpoints. That’s fine! We’re going to use Service Bindings to route requests through a gateway worker, as described in the architecture diagram above.</p>
 <p>Next, reuse these steps to create similar microservices for each of our create, read, update, and delete endpoints. The source code is available to <a href="https://github.com/kabirsikand/worker-todos-api" target="_blank" rel="noopener noreferrer">follow along</a>.</p>
@@ -114,7 +164,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(e, {status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff">})</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
 <span class="line"><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With our API gateway all set, we just need to expose our application to the Internet using a Custom Domain, and hook up our Service Bindings, so the gateway Worker can access each appropriate microservice. We’ll set this up in a <code>wrangler.toml</code>.</p>
 <p><strong><em>gateway/wrangler.toml</em></strong></p>
@@ -135,7 +189,11 @@
 <span class="line"><span>   {binding = "create",service = "todo-create"},</span></span>
 <span class="line"><span>   {binding = "update",service = "todo-update"},</span></span>
 <span class="line"><span>   {binding = "list",service = "todo-list"}</span></span>
-<span class="line"><span>]</span></span></code></pre>
+<span class="line"><span>]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next, use <code>wrangler publish</code> to deploy your application to the Cloudflare network. Seconds later, you’ll have a simple, functioning todo API built entirely on Cloudflare’s Developer Platform!</p>
 <div class="emdash-code">
@@ -153,7 +211,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-032f62-99ffe4"> Upload:</span><span class="sk-005cc5-ffc799"> 1.21</span><span class="sk-032f62-99ffe4"> KiB</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-032f62-99ffe4"> gzip:</span><span class="sk-005cc5-ffc799"> 0.42</span><span class="sk-032f62-99ffe4"> KiB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Uploaded</span><span class="sk-032f62-99ffe4"> todo-gateway</span><span class="sk-24292e-fff"> (0.62 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Published</span><span class="sk-032f62-99ffe4"> todo-gateway</span><span class="sk-24292e-fff"> (0.51 </span><span class="sk-032f62-99ffe4">sec</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  todos.radiobox.tv</span><span class="sk-24292e-fff"> (custom </span><span class="sk-032f62-99ffe4">domain</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> zone</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> radiobox.tv</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  todos.radiobox.tv</span><span class="sk-24292e-fff"> (custom </span><span class="sk-032f62-99ffe4">domain</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> zone</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> radiobox.tv</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Natively Global</h3>
 <p>Since it’s built natively on Cloudflare, you can also include Cloudflare’s security suite in front of the application. If we want to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank" rel="noopener noreferrer">prevent SQL Injection attacks</a> for this endpoint, we can enable the appropriate Managed WAF rules on our todos API endpoint. Alternatively, if we wanted to prevent global access to our API (only allowing privileged clients to access the application), we can simply put Cloudflare Access in front, with custom Access Rules.</p>

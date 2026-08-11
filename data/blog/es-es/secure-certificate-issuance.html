@@ -29,14 +29,40 @@
 <span class="line"><span class="sk-6f42c1-ffc799">HTTP/1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Content-Type:</span><span class="sk-032f62-99ffe4"> application/octet-stream</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">YnV0dHNz.TEST_CLIENT_KEY</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">YnV0dHNz.TEST_CLIENT_KEY</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>La CA les indica que utilicen el <em>token</em> Base64 YnV0dHNz. TEST_CLIENT_KEY en una clave vinculada a la cuenta que solo conocen el solicitante del certificado y la CA. La CA utiliza esta combinación de campos para verificar que el solicitante del certificado posee realmente el dominio. ¡Finalmente, Alice puede obtener el certificado para su sitio web!</p>
 <h3><strong>Validación del sistema de nombres de dominio (DNS,</strong> <strong><em>Domain Name System</em>)</strong></h3>
 <p>Para validar la propiedad del dominio, los usuarios también pueden añadir un registro DNS TXT que contenga una cadena de verificación o <em>token</em> de la CA para los registros de recursos de su dominio. Por ejemplo, este es un dominio para una empresa que se valida en Google:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> aliceswonderland.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">aliceswonderland.com.</span><span class="sk-005cc5-ffc799">	 28</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">aliceswonderland.com.</span><span class="sk-005cc5-ffc799">	 28</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Aquí, Alice opta por crear un registro de recursos DNS TXT con un valor de <em>token</em> específico. Una CA de Google puede verificar la presencia de este <em>token</em> para validar que Alice realmente es propietaria de su sitio web.</p>
 <h3><strong>Tipos de ataques de secuestro de datos BGP</strong></h3>

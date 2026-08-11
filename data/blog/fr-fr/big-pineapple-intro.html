@@ -55,8 +55,30 @@
 <p>La bibliothèque récursive est le « cerveau DNS » de BigPineapple, car elle sait comment trouver la réponse à la question contenue dans la requête. En partant de la racine, elle décompose la requête du client en sous-requêtes, puis utilise celles-ci pour collecter des informations de manière récursive auprès de différents serveurs de noms de référence sur Internet. Le produit de ce processus est la réponse. Grâce à async/await, elle peut être simplifiée sous la forme d'une fonction telle que :</p>
 <p>La fonction contient toute la logique nécessaire pour générer une réponse à une demande donnée, mais elle ne traite en elle-même aucune E/S. Au lieu de cela, nous transmettons un trait de l'échangeur (interface Rust) qui sait comment échanger de manière asynchrone des messages DNS avec les serveurs de noms de référence en amont. L'échangeur est généralement appelé à différents points de la fonction await. Par exemple, au début d'une récursion, l'une des premières tâches qu'il exécute consiste à rechercher la délégation mise en cache la plus proche pour le domaine. S'il ne trouve pas la délégation finale dans le cache, il doit demander quels sont les serveurs de noms responsables de ce domaine, puis attendre la réponse avant de poursuivre.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Grâce à cette approche, qui dissocie la partie « attente de réponses » de la logique DNS récursive, il est beaucoup plus facile d'effectuer des tests en fournissant une implémentation fictive de l'échangeur. En outre, le code d'itération récursive (et la logique de validation DNSSEC, en particulier) devient beaucoup plus lisible, car il est écrit de manière séquentielle, au lieu d'être disséminé dans une multitude de fonctions de rappel.</p>
 <p>Vous allez rire, mais écrire un résolveur récursif DNS en partant de rien, ça n'a vraiment rien d'amusant !</p>
 <p>Cela n'est pas seulement dû à la complexité de la validation DNSSEC, mais également aux « solutions de contournement » devant être mises en œuvre pour les serveurs incompatibles avec différentes RFC, les redirecteurs, les pare-feu, etc. Nous avons donc converti deckard en langage Rust, afin de faciliter les tests. Par ailleurs, lorsque nous avons commencé la migration vers cette nouvelle bibliothèque récursive asynchrone, nous l'avons d'abord exécutée en mode « shadow », c'est-à-dire en traitant des échantillons de requêtes réelles issues du service de production, puis en comparant les différences. Nous avons précédemment adopté cette approche pour le service DNS de référence de Cloudflare. Cela s'avère un peu plus difficile pour un service récursif, car il doit rechercher toutes les données sur l'ensemble de l'Internet ; or, les serveurs de noms de référence fournissent souvent des réponses différentes à une même requête, en raison de la localisation, de l'équilibrage de la charge et d'autres facteurs, ce qui entraîne un grand nombre de faux positifs.</p>
@@ -93,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostOk</span><span class="sk-24292e-fff">  =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Ready,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostEof</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Pending,</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Toutes ces fonctions compliquées sont encapsulées dans notre runtime asynchrone invité, avec une API simple d'utilisation, permettant aux applications invité d'accéder aux fonctions async normales sans se préoccuper des détails sous-jacents.</p>
 <h2>(Pas) La fin</h2>

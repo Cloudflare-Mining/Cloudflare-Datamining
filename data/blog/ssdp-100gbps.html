@@ -27,8 +27,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  10824</span><span class="sk-032f62-99ffe4"> KR</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  10334</span><span class="sk-032f62-99ffe4"> UA</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   9103</span><span class="sk-032f62-99ffe4"> IT</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">   ...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">   ...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The reflector IP distribution across ASNs is typical. It pretty much follows the world’s largest residential ISPs:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ips-nf-asn.txt</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">uniq</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cut</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">sort</span><span class="sk-005cc5-99ffe4"> -nr</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">head</span></span>
@@ -44,7 +66,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   6840</span><span class="sk-005cc5-ffc799"> 8402</span><span class="sk-6a737d-8b8b8b94">   # RU OJSC "Vimpelcom"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   6604</span><span class="sk-005cc5-ffc799"> 3269</span><span class="sk-6a737d-8b8b8b94">   # IT Telecom Italia</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   6377</span><span class="sk-005cc5-ffc799"> 12768</span><span class="sk-6a737d-8b8b8b94">  # RU JSC "ER-Telecom Holding"</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">   ...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">   ...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>What's SSDP anyway?</h3>
 <p>The attack was composed of UDP packets with source port 1900. This port is used by the <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol" target="_blank" rel="noopener noreferrer">SSDP</a> and is used by the UPnP protocols. UPnP is one of the <a href="https://en.wikipedia.org/wiki/Zero-configuration_networking#UPnP" target="_blank" rel="noopener noreferrer">zero-configuration networking</a> protocols. Most likely your home devices support it, allowing them to be easily discovered by your computer or phone. When a new device (like your laptop) joins the network, it can query the local network for specific devices, like internet gateways, audio systems, TVs, or printers. Read more on <a href="http://www.zeroconf.org/zeroconfandupnp.html" target="_blank" rel="noopener noreferrer">how UPnP compares to Bonjour</a>.</p>
@@ -61,7 +87,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">MAN:</span><span class="sk-032f62-99ffe4"> "ssdp:discover"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">MX:</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ST:</span><span class="sk-032f62-99ffe4"> urn:dial-multiscreen-org:service:dial:1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">USER-AGENT:</span><span class="sk-032f62-99ffe4"> Google</span><span class="sk-032f62-99ffe4"> Chrome/58.0.3029.110</span><span class="sk-032f62-99ffe4"> Windows</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">USER-AGENT:</span><span class="sk-032f62-99ffe4"> Google</span><span class="sk-032f62-99ffe4"> Chrome/58.0.3029.110</span><span class="sk-032f62-99ffe4"> Windows</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This frame is sent to a multicast IP address. Other devices listening on that address and supporting this specific <code>ST</code> (search-target) multiscreen type are supposed to answer.</p>
 <p>Apart from queries for specific device types, there are two "generic" <code>ST</code> query types:</p>
@@ -99,7 +129,11 @@
 <span class="line"><span>        data, addr = s.recvfrom(32*1024)</span></span>
 <span class="line"><span>    except socket.timeout:</span></span>
 <span class="line"><span>        break</span></span>
-<span class="line"><span>    print "[+] %s\n%s" % (addr, data)</span></span></code></pre>
+<span class="line"><span>    print "[+] %s\n%s" % (addr, data)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>On my home network two devices show up:</p>
 <div class="emdash-code">
@@ -121,7 +155,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Server:</span><span class="sk-032f62-99ffe4"> Linux/3.2</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> Network_Module/1.0</span><span class="sk-24292e-fff"> (RX-S601D)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">EXT:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ST:</span><span class="sk-032f62-99ffe4"> upnp:rootdevice</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">USN:</span><span class="sk-032f62-99ffe4"> uuid:9ab0c000-f668-11de-9976-000adedd7411::upnp:rootdevice</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">USN:</span><span class="sk-032f62-99ffe4"> uuid:9ab0c000-f668-11de-9976-000adedd7411::upnp:rootdevice</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>The firewall</h3>
 <p>Now that we understand the basics of SSDP, understanding the reflection attack should be easy. You see, there are in fact two ways of delivering the <code>M-SEARCH</code> frame:</p>
@@ -139,7 +177,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">LOCATION:</span><span class="sk-032f62-99ffe4"> http://192.168.1.71:5200/Printer.xml</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> Network</span><span class="sk-032f62-99ffe4"> Printer</span><span class="sk-032f62-99ffe4"> Server</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-005cc5-ffc799"> 1.29.00.44</span><span class="sk-032f62-99ffe4"> 06-17-2009</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ST:</span><span class="sk-032f62-99ffe4"> upnp:rootdevice</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">USN:</span><span class="sk-032f62-99ffe4"> uuid:Samsung-Printer-1_0-mrgutenberg::upnp:rootdevice</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">USN:</span><span class="sk-032f62-99ffe4"> uuid:Samsung-Printer-1_0-mrgutenberg::upnp:rootdevice</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now the problem is easily seen: the SSDP protocol does not check whether the querying party is in the same network as the device. It will happily respond to an <code>M-SEARCH</code> delivered over the public Internet. All it takes is a tiny misconfiguration in a firewall - port 1900 UDP open to the world - and a perfect target for UDP amplification will be available.</p>
 <p>Given a misconfigured target our script will happily work over the internet:</p>
@@ -152,7 +194,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">USN:</span><span class="sk-032f62-99ffe4"> uuid:3e55ade9-c344-4baa-841b-826bda77dcb2::upnp:rootdevice</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">EXT:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> TBS/R2</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> MiniUPnPd/1.2</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LOCATION:</span><span class="sk-032f62-99ffe4"> http://192.168.2.1:40464/rootDesc.xml</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">LOCATION:</span><span class="sk-032f62-99ffe4"> http://192.168.2.1:40464/rootDesc.xml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>The amplification</h3>
 <p>The real damage is done by the <code>ssdp:all</code> <code>ST</code> type though. These responses are <em>much</em> larger:</p>
@@ -176,7 +222,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> TBS/R2</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> MiniUPnPd/1.2</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">LOCATION:</span><span class="sk-032f62-99ffe4"> http://192.168.2.1:40464/rootDesc.xml</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> packets....</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> packets....</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this particular case, a single SSDP <code>M-SEARCH</code> packet triggered 8 response packets. tcpdump view:</p>
 <div class="emdash-code">
@@ -189,7 +239,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> 00:00:00.209496</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> 100.42.x.x.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 192.168.1.200.61794:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 307</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 00:00:00.212795</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> 100.42.x.x.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 192.168.1.200.61794:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 289</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 00:00:00.215522</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> 100.42.x.x.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 192.168.1.200.61794:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 291</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 00:00:00.219190</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> 100.42.x.x.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 192.168.1.200.61794:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 291</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 00:00:00.219190</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> 100.42.x.x.1900</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 192.168.1.200.61794:</span><span class="sk-032f62-99ffe4"> UDP,</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-ffc799"> 291</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That target exposes 8x packet count amplification and 26x bandwidth amplification. Sadly, this is typical for SSDP.</p>
 <h3>IP Spoofing</h3>
@@ -209,7 +263,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    16</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                               ***</span><span class="sk-032f62-99ffe4">  2.88%</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                    0.01%</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    64</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                    0.00%</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   128</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                    0.00%</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   128</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">                                                    0.00%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The response packets had 321 bytes (+/- 29 bytes) on average. Our request packets had 110 bytes.</p>
 <p>According to our measurements with the <code>ssdp:all</code> <code>M-SEARCH</code> attacker would be able to achieve:</p>
@@ -253,7 +311,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    372</span><span class="sk-032f62-99ffe4"> Tenda</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> miniupnpd/1.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    346</span><span class="sk-032f62-99ffe4"> Ubuntu/10.10</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> miniupnpd/1.0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    330</span><span class="sk-032f62-99ffe4"> MF60/1.0</span><span class="sk-032f62-99ffe4"> UPnP/1.0</span><span class="sk-032f62-99ffe4"> miniupnpd/1.0</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    ...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">    ...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The most common <code>ST</code> header values we saw:</p>
 <div class="emdash-code">
@@ -278,7 +340,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   9822</span><span class="sk-032f62-99ffe4"> urn:schemas-upnp-org:service:WANEthernetLinkConfig:1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   7737</span><span class="sk-032f62-99ffe4"> uuid:WAN{84807575-251b-4c02-954b-e8e2ba7216a9}000000000000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   6063</span><span class="sk-032f62-99ffe4"> urn:schemas-microsoft-com:service:OSInfo:1</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    ...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">    ...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The vulnerable IPs are seem to be mostly unprotected home routers.</p>
 <h3>Open SSDP is a vulnerability</h3>

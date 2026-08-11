@@ -16,15 +16,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Lee</span><span class="sk-6f42c1-ffc799"> Holloway</span><span class="sk-24292e-fff"> &lt;q</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">t60</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">(none)&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Wed</span><span class="sk-6f42c1-ffc799"> Jan</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-005cc5-ffc799"> 09</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">57</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">55</span><span class="sk-005cc5-ffc799"> 2010</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">0800</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">    nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl initial configuration</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl initial configuration</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>初回コミットのタイミングからお察しの通り、FLの最初のバージョンはNGINXウェブサーバーをベースに実装され、製品ロジックはPHPで実装されました。3年後、システムは複雑になりすぎて効果的な管理が難しくなり、応答が遅くなったため、稼働中のシステムのほぼ完全な書き換えが行われました。これにより再び重要なコミットが、今度は現CTOのDane Knechtによって行われました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">commit bedf6e7080391683e46ab698aacdfa9b3126a75f</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Dane</span><span class="sk-6f42c1-ffc799"> Knecht</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Thu</span><span class="sk-6f42c1-ffc799"> Sep</span><span class="sk-005cc5-ffc799"> 19</span><span class="sk-005cc5-ffc799"> 19</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">31</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 2013</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">0700</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">    remove </span><span class="sk-005cc5-fff">PHP</span><span class="sk-d73a49-a0a0a0">.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    remove </span><span class="sk-005cc5-fff">PHP</span><span class="sk-d73a49-a0a0a0">.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この時から、FLの実装ではNGINX、<a href="https://openresty.org/en" target="_blank" rel="noopener noreferrer"><u>OpenResty</u></a>フレームワーク、<a href="https://luajit.org" target="_blank" rel="noopener noreferrer"><u>LuaJIT</u></a>が用いられました。これは長い間うまく機能していましたが、ここ数年で古さが感じられるようになりました。LuaJITの不明瞭なバグの修正や回避に費やす時間が増加しました。当社のLuaコードの非常に動的かつ非構造的な性質は、当初ロジックを迅速に実装する際には利点でしたが、多くの複雑な製品ロジックを統合しようとする際はエラーと遅延の原因になりました。新製品が導入されるたびに、すべての既存製品を調べて、新しいロジックの影響を受けるかどうかを確認する必要がありました。</p>
 <p>見直しが必要なのは明らかでした。そこで2024年7月に、初回コミットを全く新しい根本的に異なる実装に置き換えました。新たな名称について合意する時間を省くために単に「FL2」と名付け、元のFLを「FL1」と呼ぶようになったのです。</p>
@@ -33,7 +59,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Maciej</span><span class="sk-6f42c1-ffc799"> Lechowski</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Wed</span><span class="sk-6f42c1-ffc799"> Jul</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">19</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">28</span><span class="sk-005cc5-ffc799"> 2024</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799">0100</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Create</span><span class="sk-24292e-fff"> fl2 project</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Create</span><span class="sk-24292e-fff"> fl2 project</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Rustと厳格なモジュール化</h2>
 <p>私たちはゼロから始めたのではありません。以前、当社のレガシーシステムの1つをPingoraにリプレースしたことについて<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet" target="_blank" rel="noopener noreferrer"><u>ブログ</u></a>投稿しましたが、Pingoraは<a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer"><u>Rust</u></a>プログラミング言語で、<a href="https://tokio.rs" target="_blank" rel="noopener noreferrer"><u>Tokio</u></a>ランタイムを使って構築されています。また、Rustでプロキシを構築するための社内フレームワークである<a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Oxy</u></a>についてもブログを投稿しています。当社はRustをよく使い、十分に使いこなしています。</p>
@@ -79,7 +109,11 @@
 <span class="line"><span class="sk-24292e-fff">    outputs</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">OutputValue</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">ServeResponse</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span>
 <span class="line"><span class="sk-24292e-fff">    func</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> phase_serve_error_page</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">callback,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このフェーズは、当社のカスタムエラーページ製品に関するものです。訪問者のIPアドレス、ヘッダーなどのHTTP情報、「モジュール値」といったいくつかの情報の入力が必要です。モジュール値は、あるモジュールから別のモジュールに情報を渡すことを可能にし、モジュールシステムの厳密な特性を機能させる上で重要です。たとえば、このモジュールには、ルールセットベースの当社カスタムエラー製品の出力によって生成された情報（"<code>MODULE_VALUE_RULESETS_CUSTOM_ERRORS_OUTPUT</code>"の入力）が必要です。これらの入出力定義はコンパイル時に適用されます。</p>
 <p>これらのルールは厳格ですが、このフレームワーク内で当社の製品ロジックをすべて実装できることがわかりました。そうすることで、互いに影響を与える可能性のある他の製品をすぐに特定できます。</p>
@@ -124,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">            }));</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>各モジュールの内部ロジックはデータ処理から明確に分離されており、Rust言語の設計により、非常に明確かつ明示的なエラー処理が推奨されています。</p>
 <p>当社で最も活発に開発されているモジュールの多くはこの方法で処理され、チームは移行期間中も変更のベロシティを維持できました。</p>
@@ -147,7 +185,11 @@
 <h2>FL2の効果</h2>
 <p>この記事の冒頭で説明したように、FL2はFL1よりずっと高速です。最大の理由は、単純にFL2の処理負荷が少ないからです。モジュール定義の例で、ある行にお気づきになったかもしれません：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>各モジュールは、実行するか否かを制御する一連のフィルターを提供できます。つまり、すべてのリクエストに対してすべての製品のロジックを実行するのではなく、必要なモジュールだけを簡単に選択できるということです。新製品を開発するたびにかかっていた増分費用はなくなりました。</p>
 <p>パフォーマンスが向上するもう1つの大きな理由は、FL2が単一のコードベースであり、パフォーマンスを重視した言語で実装されている点です。それに比べ、FL1はNGINX（C言語で記述）をベースにLuaJIT（LuaとCのインターフェースレイヤー）を組み合わせて使っており、多くのRustモジュールも含んでいました。FL1では、ある言語で必要とされる表現形式から別の言語で必要とされる表現形式へデータを変換するために、多くの時間とメモリを費やしていました。</p>

@@ -42,8 +42,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Decompress a 32 bit offset to a 64 bit pointer by adding a base address.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">void*</span><span class="sk-6f42c1-ffc799"> Decompress</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-e36209-fff"> offset</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> offset; }</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Compress a 64 bit pointer to a 32 bit offset by discarding the high bits.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-6f42c1-ffc799"> Compress</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void*</span><span class="sk-e36209-fff"> pointer</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">intptr_t</span><span class="sk-24292e-fff">)pointer </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ffffffff</span><span class="sk-24292e-fff">; }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-6f42c1-ffc799"> Compress</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void*</span><span class="sk-e36209-fff"> pointer</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">intptr_t</span><span class="sk-24292e-fff">)pointer </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ffffffff</span><span class="sk-24292e-fff">; }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This pointer compression feature, originally primarily designed to save memory, can be used as the basis of a sandbox.</p>
 <h3>From compressed pointers to the sandbox</h3>
 <p>The biggest 32-bit unsigned integer is about 4 billion, so the <code>Decompress()</code> function cannot generate any pointer that is outside the range [base, base + 4&nbsp;GiB]. You could say the pointers are trapped in this area, so it is sometimes called the <em>pointer cage</em>. V8 can reserve 4 GiB of virtual address space for the pointer cage so that only V8 objects appear in this range. By eliminating <em>all</em> pointers from this range, and following some other strict rules, V8 can contain any memory corruption by an attacker to this cage. Even if an attacker corrupts a 32 bit offset within the cage, it is still only a 32 bit offset and can only be used to create new pointers that are still trapped within the pointer cage.</p>

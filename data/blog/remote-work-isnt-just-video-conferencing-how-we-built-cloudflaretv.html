@@ -21,8 +21,30 @@
 <p>Once locked down in this way videos can’t be accessed directly. Instead, they can only be accessed using a temporary token.</p>
 <p>In order to create signed tokens, we must first make an <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys#12345682" target="_blank" rel="noopener noreferrer">API call</a> to create a key:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {</span><span class="sk-24292e-fff">$EMAIL</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {</span><span class="sk-24292e-fff">$AUTH_KEY</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-032f62-99ffe4">  "https://api.cloudflare.com/client/v4/accounts/{</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">}/media/keys"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {</span><span class="sk-24292e-fff">$EMAIL</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {</span><span class="sk-24292e-fff">$AUTH_KEY</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-032f62-99ffe4">  "https://api.cloudflare.com/client/v4/accounts/{</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">}/media/keys"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The API call will return a JSON object similar to this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -35,7 +57,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "errors"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "messages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> []</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can use the <strong>id</strong> and <strong>pem</strong> values in a Workers script that takes a video ID and returns a signed token that expires after 1 hour:</p>
 <div class="emdash-code">
@@ -54,21 +80,37 @@
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> token_value</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> response.text</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> token_value</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The returned signed token should look something like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Stream provides an embed code for each video. The “src” attribute of the embed code typically contains the video ID. But if the video is private, instead of setting the “src” attribute to the video ID, you set it to the signed token value:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">stream src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh"</span><span class="sk-6f42c1-ffc799"> controls</span><span class="sk-24292e-fff">&gt;&lt;/stream&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script data-cfasync</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"false"</span><span class="sk-6f42c1-ffc799"> defer</span><span class="sk-032f62-99ffe4"> type="text/javascript"</span><span class="sk-032f62-99ffe4"> src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/scrip</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script data-cfasync</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"false"</span><span class="sk-6f42c1-ffc799"> defer</span><span class="sk-032f62-99ffe4"> type="text/javascript"</span><span class="sk-032f62-99ffe4"> src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/scrip</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Tagging videos</h3>
 <p>We would like to categorize videos uploaded to Stream by tagging them. This can be done by updating the video object’s meta field and passing it arbitrary JSON data. To categorize a video, we simply update the meta field with a comma-delimited list of tags:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> '{"uid": "VIDEO_ID", "meta": {"tags": "All Hands,Stream"}}'</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/{</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">}/stream/{</span><span class="sk-24292e-fff">$VIDEO_ID</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {</span><span class="sk-24292e-fff">$EMAIL</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {</span><span class="sk-24292e-fff">$ACCOUNT_KEY</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> '{"uid": "VIDEO_ID", "meta": {"tags": "All Hands,Stream"}}'</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/{</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">}/stream/{</span><span class="sk-24292e-fff">$VIDEO_ID</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {</span><span class="sk-24292e-fff">$EMAIL</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {</span><span class="sk-24292e-fff">$ACCOUNT_KEY</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Later, we will create a <strong>getVideos</strong> Worker function to fetch a list of videos and all associated data so we can render the UI. The tagging data we just set for this video will be included in the video data returned by the Worker.</p>
 <h3>Fetching Video Data using Workers</h3>
@@ -90,7 +132,11 @@
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> video_list</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> response.text</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> video_list</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Lastly, we set up a zone and within the zone, we set up a Worker routes pointing to our Workers script. This can be done from the Workers tab:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

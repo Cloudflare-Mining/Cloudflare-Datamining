@@ -12,8 +12,30 @@
 <blockquote>When a router is unable to forward a datagram because it exceeds theMTU of the next-hop network and its Don't Fragment bit is set, therouter is required to return an ICMP Destination Unreachable messageto the source of the datagram, with the Code indicating"fragmentation needed and DF set".</blockquote>
 <p>So a router must send <a href="http://www.networksorcery.com/enp/protocol/icmp/msg3.htm" target="_blank" rel="noopener noreferrer">ICMP type 3 code 4 message</a>. If you want to see one type:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcpdump</span><span class="sk-005cc5-99ffe4"> -s0</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> eth0</span><span class="sk-032f62-99ffe4"> 'icmp and icmp[0] == 3 and icmp[1] == 4'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcpdump</span><span class="sk-005cc5-99ffe4"> -s0</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> eth0</span><span class="sk-032f62-99ffe4"> 'icmp and icmp[0] == 3 and icmp[1] == 4'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This ICMP message is supposed to be delivered to the originating host, which in turn should adjust the MTU setting for that particular connection. This mechanism is called <a href="http://en.wikipedia.org/wiki/Path_MTU_Discovery" target="_blank" rel="noopener noreferrer">Path MTU Discovery</a>.</p>
 <p>In theory, it's great but unfortunately many things can go wrong when delivering ICMP packets. The most common problems are caused by misconfigured firewalls that drop ICMP packets.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -29,18 +51,30 @@
 <p>The network stack hints its MTU in SYN packets when it opens a TCP/IP connection. This is called the MSS TCP option. You can see it in tcpdump, for example on my host (notice "mss 1460"):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -s0</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> eth0</span><span class="sk-032f62-99ffe4"> '(ip and ip[20+13] &amp; tcp-syn != 0)'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">10:24:13.920656</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 192.168.97.138.55991</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 212.77.100.83.23:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [S], seq 711738977, win 29200, options [mss 1460,sackOK,TS val </span><span class="sk-005cc5-ffc799">6279040</span><span class="sk-24292e-fff"> ecr 0,nop,wscale 7], length 0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">10:24:13.920656</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 192.168.97.138.55991</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 212.77.100.83.23:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [S], seq 711738977, win 29200, options [mss 1460,sackOK,TS val </span><span class="sk-005cc5-ffc799">6279040</span><span class="sk-24292e-fff"> ecr 0,nop,wscale 7], length 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you know you are behind a tunnel you might consider advising your operating system to reduce the advertised MTUs. In Linux it's as simple as (notice the <code>advmss 1400</code>):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-032f62-99ffe4"> default</span><span class="sk-032f62-99ffe4"> via</span><span class="sk-d73a49-a0a0a0"> &lt;&gt;</span><span class="sk-032f62-99ffe4"> advmss</span><span class="sk-005cc5-ffc799"> 1400</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -s0</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> eth0</span><span class="sk-032f62-99ffe4"> '(ip and ip[20+13] &amp; tcp-syn != 0)'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">10:25:48.791956</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 192.168.97.138.55992</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 212.77.100.83.23:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [S], seq 389206299, win 28000, options [mss 1400,sackOK,TS val </span><span class="sk-005cc5-ffc799">6302758</span><span class="sk-24292e-fff"> ecr 0,nop,wscale 7], length 0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">10:25:48.791956</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 192.168.97.138.55992</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 212.77.100.83.23:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [S], seq 389206299, win 28000, options [mss 1400,sackOK,TS val </span><span class="sk-005cc5-ffc799">6302758</span><span class="sk-24292e-fff"> ecr 0,nop,wscale 7], length 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>2) Reduce the MTU of all connections to the minimal value on the server side.</em></p>
 <p>It's a much harder problem to solve on the server side. A server can encounter clients with many different MTUs, and if you can't rely on Path MTU Discovery, you have a real problem. One commonly used workaround is to reduce the MTU for all of the outgoing packets. The minimal required <a href="https://www.ietf.org/rfc/rfc2460.txt" target="_blank" rel="noopener noreferrer">MTU for all IPv6 hosts is 1,280</a>, which is fair. Unfortunately for IPv4 the <a href="http://www.ietf.org/rfc/rfc791.txt" target="_blank" rel="noopener noreferrer">value is 576 bytes</a>. On the other hand <a href="http://www.ietf.org/rfc/rfc4821.txt" target="_blank" rel="noopener noreferrer">RFC4821</a> suggests that it's "probably safe enough" to assume minimal MTU of 1,024. To change the MTU setting you can type:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-032f62-99ffe4"> inet6</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-d73a49-a0a0a0"> &lt;&gt;</span><span class="sk-032f62-99ffe4"> mtu</span><span class="sk-005cc5-ffc799"> 1280</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-005cc5-99ffe4"> -f</span><span class="sk-032f62-99ffe4"> inet6</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-d73a49-a0a0a0"> &lt;&gt;</span><span class="sk-032f62-99ffe4"> mtu</span><span class="sk-005cc5-ffc799"> 1280</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>(As a side note you could use <code>advmss</code> instead. The <code>mtu</code> setting is stronger, applying to all the packets, not only TCP. While <code>advmss</code> affects only the Path MTU hints given on TCP layer.)</p>
 <p>Forcing a reduced packet size is not an optimal solution though.</p>
@@ -48,7 +82,11 @@
 <p><a href="http://www.ietf.org/rfc/rfc4821.txt" target="_blank" rel="noopener noreferrer">RFC4821</a> proposes a mechanism to detect ICMP black holes and tries to adjust the path MTU in a smart way. To enable this on Linux type:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /proc/sys/net/ipv4/tcp_mtu_probing</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /proc/sys/net/ipv4/tcp_base_mss</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /proc/sys/net/ipv4/tcp_base_mss</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The second setting bumps the starting MSS used in discovery from a miserable default of 512 bytes to an RFC4821 suggested 1,024.</p>
 <h3>CloudFlare Architecture</h3>
@@ -91,7 +129,11 @@
 <h4>Appendix</h4>
 <p>To simulate a black hole we used this iptables rule:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">src_i</span><span class="sk-24292e-fff">p</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-99ffe4"> --length</span><span class="sk-032f62-99ffe4"> 1400:1500</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">src_i</span><span class="sk-24292e-fff">p</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-005cc5-99ffe4"> --length</span><span class="sk-032f62-99ffe4"> 1400:1500</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And this <a href="http://www.secdev.org/projects/scapy" target="_blank" rel="noopener noreferrer">Scapy</a> snippet to simulate MTU ICMP messages:</p>
 <div class="emdash-code">
@@ -108,5 +150,9 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-005cc5-fff"> __name__</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-032f62-99ffe4"> '__main__'</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-24292e-fff">    sniff(</span><span class="sk-e36209-fff">prn</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">callback,</span></span>
 <span class="line"><span class="sk-e36209-fff">          store</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-e36209-fff">          filter</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ip and src &lt;src_ip&gt; and greater 1400"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-e36209-fff">          filter</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ip and src &lt;src_ip&gt; and greater 1400"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>

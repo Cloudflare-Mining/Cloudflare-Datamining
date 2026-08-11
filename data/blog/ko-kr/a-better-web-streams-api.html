@@ -30,15 +30,41 @@
 <span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">finally</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Finally, we release the lock on the stream</span></span>
 <span class="line"><span class="sk-24292e-fff">  reader.</span><span class="sk-6f42c1-ffc799">releaseLock</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>이 패턴이 스트리밍에 내재되어 있다고 가정할 수도 있습니다. 그렇지 않습니다. 리더 획득, 잠금 관리, <code>{ value, done }</code> 프로토콜은 모두 요구 사항이 아닌 단순한 설계 선택 사항일 뿐입니다. 이는 웹 스트림 사양이 언제 어떻게 작성되었는지에 따른 아티팩트입니다. 비동기 반복은 시간이 지남에 따라 도착하는 시퀀스를 처리하기 위해 존재하지만, 스트림 사양이 작성되었을 때는 아직 비동기 반복이 존재하지 않았습니다. 여기서 복잡성은 근본적인 필요성이 아니라 순수한 API 오버헤드 때문입니다.</p>
 <p>웹 스트림이 <code>for await...of</code>를 지원하므로, 이제 다른 접근법을 고려해 보세요:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  chunks.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(chunk);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이렇게 하면 표준 방식이 훨씬 적다는 점에서 더 좋지만 모든 것이 해결되지는 않습니다. 비동기 반복이 이에 맞게 설계되지 않은 API를 개조하여 다시 장착되었습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" target="_blank" rel="noopener noreferrer"><u>BYOB(Bring Your Own 버퍼)</u></a> 읽기와 같은 기능은 반복을 통해 액세스할 수 없습니다. 리더, 잠금, 컨트롤러의 근본적인 복잡성은 여전히 존재하며 숨겨져 있습니다. 문제가 발생하거나 API의 추가 기능이 필요할 때 개발자는 <code>스트림이</code> '잠긴' 이유나 릴리스락()이 예상대로 작동하지 않는 이유를 파악하면서 원래 API의 잔해로 되돌아가게 됩니다. 제어하지 않는 코드에서 병목 현상을 찾아낼 수 있습니다.</p>
 <h4>잠금 문제</h4>
@@ -55,7 +81,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> first</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> peekFirstChunk</span><span class="sk-24292e-fff">(stream);</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// TypeError: Cannot obtain lock — stream is permanently locked</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) { </span><span class="sk-6a737d-8b8b8b94">/* never runs */</span><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> stream) { </span><span class="sk-6a737d-8b8b8b94">/* never runs */</span><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock" target="_blank" rel="noopener noreferrer"><code><u>releaseLock()</u></code></a> 를 잊으면 스트림이 영구적으로 중단됩니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked" target="_blank" rel="noopener noreferrer"><code><u>잠김</u></code></a> 속성은 스트림이 잠겨 있다는 것은 알려줄 수 있지만, 왜, 누구에 의해, 또는 잠금을 여전히 사용할 수 있는지 여부는 알 수 없습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo" target="_blank" rel="noopener noreferrer"><u>파이핑</u></a> 은 내부적으로 잠금을 획득하므로 파이프 작업 중에 명확하지 않은 방식으로 스트림을 사용할 수 없게 됩니다.</p>
 <p>읽기 보류가 포함된 잠금 해제의 의미도 여러 해 동안 명확하지 않았습니다. 읽기()를 호출했지만 기다리지 않고 릴리스락()을 호출했다면, 무슨 일이 일어났을까요? 이 사양은 잠금이 해제될 때 보류 중인 읽기를 취소하도록 최근에 명시되어 있었습니다. 하지만 다양한 구현이 있었으며, 이전에 지정하지 않은 동작에 의존했던 코드는 손상될 수 있습니다.</p>
@@ -73,7 +103,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// 'view' should now be detached and unusable</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// (it isn't always in every impl)</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// result.value is a NEW view, possibly over different memory</span></span>
-<span class="line"><span class="sk-24292e-fff">view </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> result.value; </span><span class="sk-6a737d-8b8b8b94">// Must reassign</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">view </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> result.value; </span><span class="sk-6a737d-8b8b8b94">// Must reassign</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>또한 BYOB는 비동기 반복 또는 TransformStream과 함께 사용할 수 없으므로, 카피 없는 읽기를 원하는 개발자는 어쩔 수 없이 수동 리더 루프로 다시 들어가야 합니다.</p>
 <p>BYOB는 구현자에게 상당한 복잡성을 더합니다. 스트림은 보류 중인 BYOB 요청을 추적하고, 부분 채우기를 처리하며, 버퍼 분리를 올바르게 관리하고, BYOB 리더와 기본 소스 사이를 조정해야 합니다. <a href="https://github.com/web-platform-tests/wpt/tree/master/streams/readable-byte-streams" target="_blank" rel="noopener noreferrer"><u>가독성 있는 바이트 스트림을 위한 웹 플랫폼 테스트</u></a> 에는 분리된 버퍼, 잘못된 뷰, 대기열에 든 후 응답 순서 지정 등 BYOB 엣지 케이스를 위한 전용 테스트 파일이 포함되어 있습니다.</p>
@@ -137,7 +171,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    cancel</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">reason</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Stream canceled:'</span><span class="sk-24292e-fff">, reason);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>예를 들어 호스트 런타임이 런타임 <code>자체의 바이트 지향 읽기 </code> <code>가능한 스트림을 가져오기 응답의 본문과</code> 같이 제공하는 경우, 런타임 자체가 최적화된 BYOB 읽기 구현을 제공하는 것이 훨씬 쉬운 경우가 많지만, 여전히 다음과 같아야 합니다. 기본 읽기 패턴과 BYOB 읽기 패턴을 모두 처리할 수 있는 시스템인데도 불구하고 상당히 복잡해졌습니다.</p>
 <h4>백프레셔: 이론상으로는 훌륭하지만 실제로는 한계가 있음</h4>
@@ -151,7 +189,11 @@
 <span class="line"><span class="sk-24292e-fff">      controller.</span><span class="sk-6f42c1-ffc799">enqueue</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">generateData</span><span class="sk-24292e-fff">()); </span><span class="sk-6a737d-8b8b8b94">// desiredSize: -999999</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Stream 구현은 백 프레셔를 무시할 수 있고, 무시할 수 있습니다. 일부 사양 정의 기능은 명시적으로 배압을 해제합니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee" target="_blank" rel="noopener noreferrer"><code><u>tee()</u></code></a>는 예를 들어 단일 스트림에서 두 개의 분기를 생성합니다. 한 분기가 다른 분기보다 빨리 읽히면 내부 버퍼에 제한 없이 데이터가 누적됩니다. 소비자의 속도가 빠르면 메모리가 무제한으로 증가하는 반면 느린 소비자는 메모리가 따라잡을 수 있으며, 이를 구성하거나 느린 분기를 취소하는 것 외에는 옵트아웃할 방법이 없습니다.</p>
 <p>웹 스트림은 <code>하이워터마크</code> 옵션 및 사용자 지정 가능한 크기 계산의 형태로 배압 동작을 조정하는 명확한 메커니즘을 제공하지만, <code>원하는 크기만큼</code> 무시하기 쉽고 많은 애플리케이션에서 주의를 기울이지 않습니다.</p>
@@ -165,7 +207,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// the writables internal backpressure is cleared and</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// it is ok to write more data</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.ready;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>백프레셔는 구현자에게 아무런 보장도 없이 복잡성을 가중시킵니다. 대기열 크기를 추적하고, <code>desiredSize</code>를 계산하며, 적시에 <code>pull()</code> 을 호출하는 장치는 모두 올바르게 구현되어야 합니다. 그러나 이러한 신호는 권고 사항일 뿐이므로 배압으로 해결해야 할 문제를 실제로 방지하지는 못합니다.</p>
 <h4>Promise의 숨겨진 비용</h4>
@@ -193,7 +239,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// In a loop, this can exhaust connection pools</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> urls) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> checkEndpoint</span><span class="sk-24292e-fff">(url);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 패턴으로 인해 <a href="https://nodejs.org/api/globals.html#fetch" target="_blank" rel="noopener noreferrer"><u>undici</u></a> (Node.js에 내장된 <code>fetch() </code>구현)를 사용하는 Node.js 애플리케이션에서 연결 풀이 고갈되고 다른 런타임에서도 비슷한 문제가 발생한 적이 있습니다. 스트림은 기본 연결에 대한 참조를 보유하며, 명시적으로 사용하거나 취소하지 않으면 연결이 가비지 컬렉션까지 지속될 수 있습니다.</p>
 <p>암묵적으로 스트림 분기를 생성하는 API 때문에 문제가 더욱 복잡해집니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" target="_blank" rel="noopener noreferrer"><code><u>Request.clone()</u></code></a> 및 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone" target="_blank" rel="noopener noreferrer"><code><u>Response.clone()</u></code></a> 암시적인 <code>tee()</code> 작업을 수행하는 데 적합합니다. 세부 사항을 놓치기 쉽습니다. 로깅 또는 재시도 논리에 대한 요청을 복제하는 코드는 자신도 모르게 독립적으로 소비되어야 하는 분기된 스트림을 생성하여 리소스 관리 부담이 가중될 수 있습니다.</p>
@@ -209,7 +259,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Storage write is slow — meanwhile, the entire stream</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// may be buffered in memory waiting for this branch</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> writeToStorage</span><span class="sk-24292e-fff">(forStorage);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> writeToStorage</span><span class="sk-24292e-fff">(forStorage);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 사양에서는 <code>tee()</code>에 대한 버퍼 제한을 의무화하지 않습니다. 공정하게 말하자면, 사양은 사양에서 준수할 수 있는 규범적 요구 사항이 충족되는 한 적합하다고 생각하는 모든 방식으로 tee() 및 기타 API에 대한 실제 내부 메커니즘을 구현할 수 <code>있습니다.</code> 그러나 구현 시 스트림 사양에 설명된 특정 방식으로 <code>tee()</code> 를 구현하기로 선택하면 <code>tee()</code> 에는 해결하기 어려운 내장 메모리 관리 문제가 함께 발생합니다.</p>
 <p>이를 처리하기 위한 구현에서는 자체 전략을 개발해야 했습니다. Firefox는 처음에 소비율 차이에 비례하여 O<code>(n)</code> 메모리 증가를 유발하는 연결 목록 접근 방식을 사용했습니다. Cloudflare Workers에서 우리는 공유 버퍼 모델을 구현하기로 결정했는데, 이때 가장 빠른 소비자가 아니라 가장 느린 소비자가 배압을 알리는 신호를 보냅니다.</p>
@@ -231,7 +285,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Pipe a fast source through the transform to a slow sink</span></span>
 <span class="line"><span class="sk-24292e-fff">fastSource</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(fastTransform)</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(slowSink);  </span><span class="sk-6a737d-8b8b8b94">// Buffer grows without bound</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(slowSink);  </span><span class="sk-6a737d-8b8b8b94">// Buffer grows without bound</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>TransformStreams가 해야만 하는 일은 컨트롤러에 가해지는 배압을 확인하고 프라미스를 사용하여 이를 작성기에 다시 전달하는 것입니다.</p>
 <div class="emdash-code">
@@ -243,7 +301,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">    controller.</span><span class="sk-6f42c1-ffc799">enqueue</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">processChunk</span><span class="sk-24292e-fff">(chunk));</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>하지만 여기서 문제가 되는 것은 <code>TransformStreamDefaultController</code> 에는 라이터와 같은 준비된 프라미스 메커니즘이 없다는 것입니다. 따라서 <code>TransformStream</code> 구현은 <code>controller.desiredSize</code>&nbsp;가 다시 양수가 되는 시기를 주기적으로 확인하는 폴링 메커니즘을 구현해야 합니다.</p>
 <p>문제는 파이프라인에서 더 악화됩니다. 구문 분석, 변환, 직렬화와 같이 여러 변환을 연결하는 경우 각 <code>TransformStream</code> 에는 자체 내부 읽기 및 쓰기 버퍼가 있습니다. 구현자가 사양을 엄격하게 준수하면 데이터는 푸시 지향 방식으로 이러한 버퍼를 통해 캐스케이딩됩니다. 소스가 트랜스폼 A로 푸시하고, 트랜스폼 B로 푸시하고, 트랜스폼 C로 푸시하여 최종 소비자가 다음과 같은 작업을 하기 전에 각각 중간 버퍼에 데이터가 축적됩니다 끌어오기 시작했습니다. 세 번의 변환으로 6개의 내부 버퍼를 동시에 채울 수 있습니다.</p>
@@ -253,7 +315,11 @@
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(parse)      </span><span class="sk-6a737d-8b8b8b94">// buffers filling...</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(transform)  </span><span class="sk-6a737d-8b8b8b94">// more buffers filling...</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeThrough</span><span class="sk-24292e-fff">(serialize)  </span><span class="sk-6a737d-8b8b8b94">// even more buffers...</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(destination);    </span><span class="sk-6a737d-8b8b8b94">// consumer hasn't started yet</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(destination);    </span><span class="sk-6a737d-8b8b8b94">// consumer hasn't started yet</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>구현 방식은 ID 변환을 축소하거나, 관찰할 수 없는 경로를 단락시키며, 버퍼 할당을 지연하거나, JavaScript를 전혀 실행하지 않는 네이티브 코드로 폴백하여 변환 파이프라인을 최적화하는 방법을 찾았습니다. Deno, Bun, Cloudflare Workers에서는 모두 오버헤드의 상당 부분을 제거하는 데 도움이 되는 '네이티브 경로' 최적화를 성공적으로 구현했으며, Vercel의 최근 <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster" target="_blank" rel="noopener noreferrer"><u>fast-webstreams</u></a> 연구에서는 Node.js를 위한 유사한 최적화 작업이 진행되고 있습니다. 그러나 최적화 자체가 상당한 복잡성을 더하며, 여전히 TransformStream이 사용하는 본질적으로 푸시 지향적인 모델을 완전히 벗어날 수 없습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -271,7 +337,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Each one triggers promise machinery internally</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> component</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> components) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  renderComponent</span><span class="sk-24292e-fff">(controller);  </span><span class="sk-6a737d-8b8b8b94">// Promises created, objects allocated</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>모든 프래그먼트는 <code>read()</code> 호출을 위해 생성된 프라미스, 배압 조정에 대한 프라미스, 중간 버퍼 할당, <code>{ value, done } </code>개의 결과 개체를 의미하며, 대부분 즉시 쓰레기가 됩니다.</p>
 <p>이는 부하 상태에서 GC 압력이 발생하여 처리량이 저하될 수 있습니다. JavaScript 엔진은 유용한 작업을 수행하는 대신 수명이 짧은 개체를 수집하는 데 상당한 시간을 할애합니다. GC가 중단 요청 처리를 일시 중지하므로 대기 시간을 예측할 수 없게 됩니다. 저는 가비지 수집이 요청당 총 CPU 시간의 상당한 부분(최대 50% 이상)을 차지하는 SSR 워크로드를 본 적이 있습니다. 그 시간이 실제로 콘텐츠를 렌더링하는 데 쓸 수 있는 시간입니다.</p>
@@ -304,7 +374,11 @@
 <p>기본적으로 스트림은 시간이 지남에 따라 도착하는 데이터의 시퀀스일 뿐입니다. 모든 것을 한 번에 가질 수는 없습니다. 정보가 입수되면 점진적으로 처리해야 합니다.</p>
 <p>Unix 파이프는 이 아이디어를 다음과 같이 표현한 가장 순수한 표현일 것입니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> access.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "error"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> access.log</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "error"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><br>데이터는 왼쪽에서 오른쪽으로 흐릅니다. 각 단계에서는 입력을 읽고, 작업을 수행하고, 출력을 씁니다. 파이프 리더를 얻을 필요도 없고, 관리해야 할 컨트롤러 잠금도 없습니다. 다운스트림 단계가 느리면 업스트림 단계도 자연스럽게 느려집니다. 배압은 모델에 암시적이며, 학습하거나 무시해야 하는 별도의 메커니즘이 아닙니다.</p>
 <p>JavaScript에서 "시간이 지남에 따라 도착하는 일련의 시퀀스"에 대한 기본적인 기본 요소는 비동기 이터러블(async iterable)이라는 언어에 이미 있습니다. <code>for await...of</code>와 함께 사용합니다. 반복을 중단하면 사용을 중단합니다.</p>
@@ -345,7 +419,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> readable) {</span></span>
 <span class="line"><span class="sk-24292e-fff">  text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">(chunk, { stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">text </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> dec.</span><span class="sk-6f42c1-ffc799">decode</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>비교적 깨끗한 이 버전도 <code>TransformStream</code>, 수동 <code>TextEncoder</code> 및 <code>TextDecoder</code>, 명시적 잠금 해제가 필요합니다.</p>
 <p>다음은 새로운 API와 동일한 기능입니다.</p>
@@ -360,7 +438,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Consume as text</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(readable);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(readable);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>가독성은 비동기 이터러블일 뿐입니다. 전체 스트림을 수집하고 디코딩하는 <code>Stream.text()</code> 를 포함하여, 문자열을 예상하는 모든 함수에 이 스트림을 전달할 수 있습니다.</p>
 <p>이 라이터에는 단순한 인터페이스가 있습니다. <code>쓰기(), 일괄 쓰기용 쓰기v()</code>, <code>완료를 알리는 end()</code>, <code>오류용 abort()</code> 를 사용합니다. 여기까지입니다.</p>
@@ -400,7 +482,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Use it</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createBufferWriter</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pipeTo</span><span class="sk-24292e-fff">(source, writer);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> allData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">getChunks</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> allData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">getChunks</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>확장할 기본 클래스, 구현할 추상 메서드, 조정할 컨트롤러가 없습니다. 올바른 모양을 가진 개체일 뿐입니다.</p>
 <h4>풀스루 변환</h4>
@@ -414,7 +500,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> chunks) {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    process</span><span class="sk-24292e-fff">(chunk);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>Stream.pull()</code> 은 지연 파이프라인을 생성합니다. 출력 반복을 시작할 때까지 <code>압축</code> 및 <code>암호화</code> 변환이 실행되지 않습니다. 반복할 때마다 필요에 따라 파이프라인을 통해 데이터를 가져옵니다.</p>
 <p>이는 파이프를 설정하자마자 소스에서 변환으로 데이터를 적극적으로 펌핑하기 시작하는 웹 스트림의 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough" target="_blank" rel="noopener noreferrer"><code><u>pipeThrough()</u></code></a>와는 근본적으로 다릅니다. 풀 시맨틱은 처리가 발생하고 반복을 중지하면 처리가 중지되는 시기를 제어할 수 있음을 의미합니다.</p>
@@ -431,7 +521,11 @@
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Use it directly</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, toUpperCase);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, toUpperCase);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>상태 저장 변환은 호출에 걸쳐 상태를 유지하는 멤버 함수가 있는 간단한 개체입니다.</p>
 <div class="emdash-code">
@@ -475,7 +569,11 @@
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, </span><span class="sk-6f42c1-ffc799">createLineParser</span><span class="sk-24292e-fff">());</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, </span><span class="sk-6f42c1-ffc799">createLineParser</span><span class="sk-24292e-fff">());</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>중단 시 정리가 필요한 변환의 경우 중단 처리기를 추가하세요.</p>
 <div class="emdash-code">
@@ -503,7 +601,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">      // Clean up compressor resources on error/cancellation</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>구현자에게는 자체 숨겨진 상태 머신과 버퍼링 메커니즘을 가진 <code>TransformStream</code> 클래스에 전달되는 <code>start(),</code> <code>transform()</code>, <code>flush()</code> 메서드와 컨트롤러 조정 기능이 있는 트랜스포머 프로토콜이 없습니다. 변환은 함수 또는 단순한 개체이므로, 구현과 테스트가 훨씬 간단합니다.</p>
 <h4>명시적 백프레셔 정책</h4>
@@ -529,7 +631,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">writer</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">readable</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({</span></span>
 <span class="line"><span class="sk-24292e-fff">  highWaterMark: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  backpressure: </span><span class="sk-032f62-99ffe4">'strict'</span><span class="sk-6a737d-8b8b8b94"> // or 'block', 'drop-oldest', 'drop-newest'</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>희망을 가진 제작자는 더 이상 협력할 필요가 없습니다. 어떤 정책을 선택하느냐에 따라 버퍼가 가득 찰 때 어떤 일이 발생하는지 결정됩니다.</p>
 <p>제작자가 소비자가 읽는 것보다 더 빨리 쓸 때 각 정책이 작동하는 방식은 다음과 같습니다.</p>
@@ -560,7 +666,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> dropNew</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({ highWaterMark: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, backpressure: </span><span class="sk-032f62-99ffe4">'drop-newest'</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk1);  </span><span class="sk-6a737d-8b8b8b94">// ok</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk2);  </span><span class="sk-6a737d-8b8b8b94">// ok</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk3);  </span><span class="sk-6a737d-8b8b8b94">// silently dropped</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> dropNew.writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(chunk3);  </span><span class="sk-6a737d-8b8b8b94">// silently dropped</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>노골적인 다중 소비자 패턴</h4>
 <div class="emdash-code">
@@ -571,7 +681,11 @@
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer1</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(decompress);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> consumer2</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> shared.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(decompress);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>무제한 버퍼가 숨겨진 <code>tee()</code> 대신 명시적인 다중 소비자 기본 요소를 얻을 수 있습니다. <code>Stream.share()</code> 는 풀 기반입니다. 소비자는 공유 소스에서 데이터를 가져오고, 버퍼 제한과 백프레셔 정책을 미리 구성합니다.</p>
 <p>푸시 기반 다중 소비자 시나리오를 위한 <code>Stream.broadcast()</code> 도 있습니다. 두 가지 모두 소비자의 속도로 실행할 때 어떤 일이 발생하는지에 대해 생각해야 합니다. 이는 실제적인 우려 사항이므로 숨겨져서는 안 됩니다.</p>
@@ -583,7 +697,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textAsync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(source);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Sync — when all components are synchronous</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textSync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">textSync</span><span class="sk-24292e-fff">(source);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> textSync</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">textSync</span><span class="sk-24292e-fff">(source);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이렇게 압축, 변환, 소비하여 비동기식 오버헤드가 없는 완전한 동기식 파이프라인을 구축했습니다.</p>
 <div class="emdash-code">
@@ -595,7 +713,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> encrypted</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pullSync</span><span class="sk-24292e-fff">(compressed, aesEncryptSync);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Synchronous consumption — no promises, no event loop trips</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">bytesSync</span><span class="sk-24292e-fff">(encrypted);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">bytesSync</span><span class="sk-24292e-fff">(encrypted);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>전체 파이프라인은 단일 호출 스택에서 실행됩니다. 프로미스가 생성되지 않고, 마이크로태스크 대기열 예약이 발생하지 않으며, 수명이 짧은 비동기 기계로 인한 GC 압력이 없습니다. 인메모리 데이터의 구문 분석, 압축, 변환 등 CPU 집약적인 워크로드의 경우 이는 모든 구성 요소가 동기식인 경우에도 비동기식 경계를 강제로 적용하는 해당 웹 스트림 코드보다 훨씬 빠를 수 있습니다.</p>
 <p>웹 스트림에는 동기 경로가 없습니다. 소스에 데이터가 준비되어 있고 변환이 순수 함수인 경우에도 여전히 모든 작업의 프라미스 생성과 마이크로태스킹 예약에 대한 비용을 지불해야 합니다. 기다림이 실제로 필요한 경우에는 프라미스가 환상적이지만, 항상 필요한 것은 아닙니다. 새로운 API를 사용하면 필요할 때 동기화 상태를 유지할 수 있습니다.</p>
@@ -606,7 +728,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(readable, transform1, transform2);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> input) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // process chunks</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>읽기/쓰기 스트림에 적응할 때는 다른 접근 방식이 청크 배치를 생성하기 때문에 조금 더 많은 작업이 필요하지만, 적응 계층은 그만큼 간단합니다.</p>
 <div class="emdash-code">
@@ -619,7 +745,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Stream.</span><span class="sk-6f42c1-ffc799">pull</span><span class="sk-24292e-fff">(source, transform1, transform2);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">adapt</span><span class="sk-24292e-fff">(input));</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">adapt</span><span class="sk-24292e-fff">(input));</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>이를 통해 이전의 실제 문제를 해결하는 방법</h4>
 <ul>

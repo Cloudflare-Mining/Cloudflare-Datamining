@@ -43,8 +43,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    -r,</span><span class="sk-005cc5-99ffe4"> --rings</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">num-ring</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">                Number</span><span class="sk-032f62-99ffe4"> io_ring</span><span class="sk-032f62-99ffe4"> instances</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> per</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-24292e-fff"> [default: </span><span class="sk-032f62-99ffe4">1]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    -t,</span><span class="sk-005cc5-99ffe4"> --threads</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">num-thread</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">            Number</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> threads</span><span class="sk-032f62-99ffe4"> creating</span><span class="sk-032f62-99ffe4"> io_uring</span><span class="sk-032f62-99ffe4"> instances</span><span class="sk-24292e-fff"> [default: </span><span class="sk-032f62-99ffe4">1]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    -s,</span><span class="sk-005cc5-99ffe4"> --sqes</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">sqe</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">                      Number</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> requests</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> submit</span><span class="sk-032f62-99ffe4"> per</span><span class="sk-032f62-99ffe4"> io_uring</span><span class="sk-24292e-fff"> (0 </span><span class="sk-032f62-99ffe4">-</span><span class="sk-032f62-99ffe4"> fill</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> whole</span><span class="sk-032f62-99ffe4"> queue</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">                                           [default: 0]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">                                           [default: 0]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>While it is parametrized for easy experimentation, at its core it doesn’t do much. We fill the submission queue with read requests from a UDP socket and then wait for them to complete. But because data doesn’t arrive on the socket out of nowhere, and there are no timeouts set up, nothing happens. As a bonus, we have complete control over when requests complete, which will come in handy later.</p>
 <p>Let’s run the test workload to convince ourselves that things are working as expected. <code>strace</code> won’t be very helpful when using <code>io_uring</code>. We won’t be able to tie I/O requests to system calls. Instead, we will have to turn to in-kernel tracing.</p>
 <p>Thankfully, <code>io_uring</code> comes with a set of ready to use static tracepoints, which save us the trouble of digging through the source code to decide where to hook up dynamic tracepoints, known as <a href="https://docs.kernel.org/trace/kprobes.html" target="_blank" rel="noopener noreferrer">kprobes</a>.</p>
@@ -67,7 +89,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  io_uring:io_uring_register</span><span class="sk-24292e-fff">                         [Tracepoint </span><span class="sk-032f62-99ffe4">event]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  io_uring:io_uring_submit_sqe</span><span class="sk-24292e-fff">                       [Tracepoint </span><span class="sk-032f62-99ffe4">event]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  io_uring:io_uring_task_add</span><span class="sk-24292e-fff">                         [Tracepoint </span><span class="sk-032f62-99ffe4">event]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  io_uring:io_uring_task_run</span><span class="sk-24292e-fff">                         [Tracepoint </span><span class="sk-032f62-99ffe4">event]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  io_uring:io_uring_task_run</span><span class="sk-24292e-fff">                         [Tracepoint </span><span class="sk-032f62-99ffe4">event]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Judging by the number of tracepoints to choose from, <code>io_uring</code> takes visibility seriously. To help us get our bearings, here is a diagram that maps out paths an I/O request can take inside io_uring code annotated with tracepoint names – not all of them, just those which will be useful to us.</p>
 <p>Starting on the left, we expect our toy workload to push entries onto the submission queue. When we publish submitted entries by calling <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_enter.2.en.html" target="_blank" rel="noopener noreferrer"><code>io_uring_enter()</code></a>, the kernel consumes the submission queue and constructs internal request objects. A side effect we can observe is a hit on the <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L7193" target="_blank" rel="noopener noreferrer"><code>io_uring:io_uring_submit_sqe</code></a> tracepoint.</p>
@@ -81,7 +107,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">       1.049016083</span><span class="sk-032f62-99ffe4"> seconds</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-032f62-99ffe4"> elapsed</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       0.003747000</span><span class="sk-032f62-99ffe4"> seconds</span><span class="sk-032f62-99ffe4"> user</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       0.013720000</span><span class="sk-032f62-99ffe4"> seconds</span><span class="sk-032f62-99ffe4"> sys</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       0.013720000</span><span class="sk-032f62-99ffe4"> seconds</span><span class="sk-032f62-99ffe4"> sys</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But, as it turns out, submitting entries is not enough to make <code>io_uring</code> spawn worker threads. Our process remains single-threaded:</p>
 <div class="emdash-code">
@@ -89,7 +119,11 @@
 <span class="line"><span class="sk-24292e-fff">[1] 25229</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">THCNT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    1</span></span>
-<span class="line"><span class="sk-24292e-fff">[1]+  Terminated              ./udp-read</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[1]+  Terminated              ./udp-read</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This shows that <code>io_uring</code> is smart. It knows that sockets support non-blocking I/O, and they <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L2837" target="_blank" rel="noopener noreferrer">can be polled for readiness to read</a>.</p>
 <p>So, by default, <code>io_uring</code> performs a non-blocking read on sockets. This is bound to fail with <code>-EAGAIN</code> in our case. What follows is that <code>io_uring</code> registers a wake-up call (<a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L5570" target="_blank" rel="noopener noreferrer"><code>io_async_wake()</code></a>) for when the socket becomes readable. There is no need to perform a blocking read, when we can wait to be notified.</p>
@@ -112,7 +146,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">@[tracepoint:io_uring:io_uring_poll_arm,</span><span class="sk-032f62-99ffe4"> 22]:</span><span class="sk-005cc5-ffc799"> 4096</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftool</span><span class="sk-032f62-99ffe4"> btf</span><span class="sk-032f62-99ffe4"> dump</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-032f62-99ffe4"> c</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> 'IORING_OP_.*22'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        IORING_OP_READ</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 22,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To make <code>io_uring</code> spawn worker threads, we have to force the read requests to be processed concurrently in a blocking fashion. We can do this by marking the I/O requests as asynchronous. As <a href="https://manpages.debian.org/bullseye/liburing-dev/io_uring_enter.2.en.html" target="_blank" rel="noopener noreferrer"><code>io_uring_enter(2) man-page</code></a> says:</p>
 <div class="emdash-code">
@@ -123,7 +161,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">         lapped</span><span class="sk-032f62-99ffe4">  operation</span><span class="sk-032f62-99ffe4">  of</span><span class="sk-032f62-99ffe4">  requests</span><span class="sk-032f62-99ffe4">  that</span><span class="sk-032f62-99ffe4">  the</span><span class="sk-032f62-99ffe4"> application</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         knows/assumes</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> always</span><span class="sk-24292e-fff"> (or </span><span class="sk-032f62-99ffe4">most</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-24292e-fff">) block,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">         the</span><span class="sk-032f62-99ffe4">  application</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> ask</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> sqe</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> issued</span><span class="sk-032f62-99ffe4"> async</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">         from</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> start.</span><span class="sk-032f62-99ffe4"> Available</span><span class="sk-032f62-99ffe4"> since</span><span class="sk-032f62-99ffe4"> 5.6.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">         from</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> start.</span><span class="sk-032f62-99ffe4"> Available</span><span class="sk-032f62-99ffe4"> since</span><span class="sk-032f62-99ffe4"> 5.6.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This will trigger a call to <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L1482" target="_blank" rel="noopener noreferrer"><code>io_queue_sqe() → io_queue_async_work()</code></a>, which deep down invokes <a href="https://elixir.bootlin.com/linux/v5.15.16/source/kernel/fork.c#L2520" target="_blank" rel="noopener noreferrer"><code>create_io_worker() → create_io_thread()</code></a> to spawn a new task to process work. Remember that last function, <code>create_io_thread()</code> – it will come up again later.</p>
 <p>Our toy program sets the <code>IOSQE_ASYNC</code> flag on requests when we pass the <code>--async</code> command line option to it. Let’s give it a try:</p>
@@ -133,7 +175,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    PID</span><span class="sk-032f62-99ffe4"> THCNT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">3457597</span><span class="sk-005cc5-ffc799">  4097</span></span>
 <span class="line"><span class="sk-24292e-fff">[2]+  Terminated              ./udp-read --async</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The thread count went up by the number of submitted I/O requests (4,096). And there is one extra thread - the main thread. <code>io_uring</code> has spawned workers.</p>
 <p>If we trace it again, we see that requests are now taking the blocking-read path, and we are hitting the <code>io_uring:io_uring_queue_async_work</code> tracepoint on the way.</p>
@@ -148,7 +194,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       1.335559294</span><span class="sk-032f62-99ffe4"> seconds</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-032f62-99ffe4"> elapsed</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the code, the fork happens in the <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L7046" target="_blank" rel="noopener noreferrer"><code>io_queue_sqe()</code> function</a>, where we are now branching off to <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io_uring.c#L1482" target="_blank" rel="noopener noreferrer"><code>io_queue_async_work()</code></a>, which contains the corresponding tracepoint.</p>
 <p>We got what we wanted. We are now using the worker thread pool.</p>
@@ -172,7 +222,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">?</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">THCNT</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    8</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After sending one packet, the run queue length shrinks by one, and the thread count soon follows.</p>
 <p>This works, but we can do better.</p>
@@ -199,7 +253,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">         and</span><span class="sk-032f62-99ffe4"> doesn't modify the current setting.  nr_args  must</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">         be set to 2, as the command takes two values.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-032f62-99ffe4">         Available since 5.15.</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">         Available since 5.15.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>By the way, if you would like to grep through the <code>io_uring</code> man pages, they live in the <a href="https://github.com/axboe/liburing" target="_blank" rel="noopener noreferrer">liburing</a> repo maintained by <a href="https://twitter.com/axboe" target="_blank" rel="noopener noreferrer">Jens Axboe</a> – not the go-to repo for Linux API <a href="https://github.com/mkerrisk/man-pages" target="_blank" rel="noopener noreferrer">man-pages</a> maintained by <a href="https://twitter.com/mkerrisk" target="_blank" rel="noopener noreferrer">Michael Kerrisk</a>.</p>
 <p>Since it is a fresh addition to the <code>io_uring</code> API, the <a href="https://docs.rs/io-uring/latest/io_uring" target="_blank" rel="noopener noreferrer"><code>io-uring</code></a> Rust library we are using has not caught up yet. But with <a href="https://github.com/tokio-rs/io-uring/pull/121" target="_blank" rel="noopener noreferrer">a bit of patching</a>, we can make it work.</p>
@@ -218,7 +276,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                                    └─</span><span class="sk-032f62-99ffe4">{iou-wrk-3555380}</span><span class="sk-6f42c1-ffc799">(3555388</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> strace.out</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">io_uring_register(4,</span><span class="sk-005cc5-ffc799"> 0x13</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4"> IORING_REGISTER_???</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/,</span><span class="sk-032f62-99ffe4"> 0x7ffd9b2e3048,</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">) = 0</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This works perfectly. We have spawned just eight <code>io_uring</code> worker threads to handle 4k of submitted read requests.</p>
 <p>Question remains - is the set limit per io_uring instance? Per thread? Per process? Per UID? Read on to find out.</p>
@@ -248,7 +310,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">02:52:48</span><span class="sk-032f62-99ffe4">     all</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   25.13</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   74.87</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">02:52:49</span><span class="sk-032f62-99ffe4">     all</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   25.30</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   74.70</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Average:</span><span class="sk-032f62-99ffe4">     all</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   25.14</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   74.86</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We are hogging one core trying to spawn new workers. This is not the best use of CPU time.</p>
 <p>So, if you want to use <code>RLIMIT_NPROC</code> as a safety cap over the <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> limit, you better use a “fresh” UID or a throw-away user namespace:</p>
@@ -257,7 +323,11 @@
 <span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">3555870</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ps</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> thcount</span><span class="sk-005cc5-a0a0a0"> $!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">THCNT</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    9</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    9</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Anti-Method 4 - cgroup process limit - pids.max file</h3>
 <p>There is also one other way to cap the worker pool size – <a href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html#pid-interface-files" target="_blank" rel="noopener noreferrer">limit the number of tasks</a> (that is, processes and their threads) in a control group.</p>
@@ -282,7 +352,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">@[-11]:</span><span class="sk-005cc5-ffc799"> 76680</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> systemctl</span><span class="sk-005cc5-99ffe4"> --user</span><span class="sk-032f62-99ffe4"> stop</span><span class="sk-032f62-99ffe4"> run-ra0336ff405f54ad29726f1e48d6a3237.service</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here, we again see <code>io_uring</code> wasting time trying to spawn more workers without success. The kernel does not let the number of tasks within the service’s control group go over the limit.</p>
 <p>Okay, so we know what is the best and the worst way to put a limit on the number of <code>io_uring</code> workers. But is the limit per <code>io_uring</code> instance? Per user? Or something else?</p>
@@ -307,7 +381,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 03:32</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /dev/pts/0</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 03:32</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'socket:[279241]'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 03:32</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'anon_inode:[io_uring]'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 03:32</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'anon_inode:[io_uring]'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 03:32</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'anon_inode:[io_uring]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>… a total of two worker threads will be spawned.</p>
 <p>While in the case of a multithreaded program, where two threads create one <code>io_uring</code> each, with a maximum of two unbound workers per ring:</p>
@@ -329,7 +407,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 02:53</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'socket:[279160]'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 02:53</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'socket:[279819]'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 02:53</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'anon_inode:[io_uring]'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 02:53</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'anon_inode:[io_uring]'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">lrwx------</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-032f62-99ffe4"> vagrant</span><span class="sk-005cc5-ffc799"> 64</span><span class="sk-032f62-99ffe4"> Dec</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 02:53</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> 'anon_inode:[io_uring]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>… four workers will be spawned in total – two for each of the program threads. This is reflected by the owner thread ID present in the worker’s name (<code>iou-wrk-&lt;tid&gt;</code>).</p>
 <p>So you might think - “It makes sense! Each thread has their own dedicated pool of I/O workers, which service all the <code>io_uring</code> instances operated by that thread.”</p>
@@ -366,7 +448,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">02:23:25</span><span class="sk-032f62-99ffe4">     all</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   50.25</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   49.75</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">02:23:26</span><span class="sk-032f62-99ffe4">     all</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   49.87</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.50</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   49.62</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Average:</span><span class="sk-032f62-99ffe4">     all</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   50.08</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.17</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">    0.00</span><span class="sk-005cc5-ffc799">   49.75</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>NUMA, NUMA, yay <a href="https://en.wikipedia.org/wiki/Numa_Numa_(video)" target="_blank" rel="noopener noreferrer">?</a></h2>
 <p>Lastly, there’s the case of NUMA systems with more than one memory node. <code>io_uring</code> documentation clearly says that <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> configures the maximum number of workers per NUMA node.</p>
@@ -377,7 +463,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    libvirt.numa_nodes</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span></span>
 <span class="line"><span class="sk-24292e-fff">      {</span><span class="sk-6f42c1-ffc799">:cpus</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "0-1",</span><span class="sk-032f62-99ffe4"> :memory</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "2048"},</span></span>
 <span class="line"><span class="sk-24292e-fff">      {</span><span class="sk-6f42c1-ffc799">:cpus</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "2-3",</span><span class="sk-032f62-99ffe4"> :memory</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "2048"}</span></span>
-<span class="line"><span class="sk-24292e-fff">    ]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let’s confirm how io_uring behaves on a NUMA system.Here’s our NUMA layout with two vCPUs per node ready for experimentation:</p>
 <div class="emdash-code">
@@ -392,7 +482,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">node</span><span class="sk-032f62-99ffe4"> distances:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">node</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">   1</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  0:</span><span class="sk-005cc5-ffc799">  10</span><span class="sk-005cc5-ffc799">  20</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  1:</span><span class="sk-005cc5-ffc799">  20</span><span class="sk-005cc5-ffc799">  10</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  1:</span><span class="sk-005cc5-ffc799">  20</span><span class="sk-005cc5-ffc799">  10</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we once again run our test workload and ask it to create a single <code>io_uring</code> with a maximum of two workers per NUMA node, then:</p>
 <div class="emdash-code">
@@ -400,7 +494,11 @@
 <span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">693</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pstree</span><span class="sk-005cc5-99ffe4"> -pt</span><span class="sk-005cc5-a0a0a0"> $!</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">udp-read(693</span><span class="sk-24292e-fff">)─┬─{</span><span class="sk-6f42c1-ffc799">iou-wrk-693}(696</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">              └─</span><span class="sk-032f62-99ffe4">{iou-wrk-693}</span><span class="sk-6f42c1-ffc799">(697</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">              └─</span><span class="sk-032f62-99ffe4">{iou-wrk-693}</span><span class="sk-6f42c1-ffc799">(697</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>… we get just two workers on a machine with two NUMA nodes. Not the outcome we were hoping for.</p>
 <p>Why are we not reaching the expected pool size of <code>&lt;max workers&gt; × &lt;# NUMA nodes&gt;</code> = 2 × 2 = 4 workers? And is it possible to make it happen?</p>
@@ -420,7 +518,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">                              ├─</span><span class="sk-032f62-99ffe4">{iou-wrk-6953}</span><span class="sk-6f42c1-ffc799">(6955</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                              ├─</span><span class="sk-032f62-99ffe4">{iou-wrk-6953}</span><span class="sk-6f42c1-ffc799">(6956</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                              └─</span><span class="sk-032f62-99ffe4">{iou-wrk-6953}</span><span class="sk-6f42c1-ffc799">(6957</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Voilà. We have reached the said limit of <code>&lt;max workers&gt; x &lt;# NUMA nodes&gt;</code>.</p>
 <h2>Outro</h2>

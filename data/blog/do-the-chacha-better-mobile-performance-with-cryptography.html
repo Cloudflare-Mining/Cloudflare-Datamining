@@ -37,8 +37,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> ChaCha20</span><span class="sk-032f62-99ffe4"> cipher</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> designed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> provide</span><span class="sk-032f62-99ffe4"> 256-bit</span><span class="sk-032f62-99ffe4"> security.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> Poly1305</span><span class="sk-032f62-99ffe4"> authenticator</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> designed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> ensure</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> forged</span><span class="sk-032f62-99ffe4"> messages</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> rejected</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> probability</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> 1-</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n/(2^102</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> a 16n-byte message, even after sending 2^64 legitimate messages, so it is SUF-CMA in the terminology of [AE](</span><span class="sk-6f42c1-ffc799">http://cseweb.ucsd.edu/~mihir/papers/oem.html</span><span class="sk-24292e-fff">).</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> Poly1305</span><span class="sk-032f62-99ffe4"> authenticator</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> designed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> ensure</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> forged</span><span class="sk-032f62-99ffe4"> messages</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> rejected</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> probability</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> 1-</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n/(2^102</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> a 16n-byte message, even after sending 2^64 legitimate messages, so it is SUF-CMA in the terminology of [AE](</span><span class="sk-6f42c1-ffc799">http://cseweb.ucsd.edu/~mihir/papers/oem.html</span><span class="sk-24292e-fff">).</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In sum, the security level is more than sufficient for HTTPS. CloudFlare’s AES-GCM cipher provides around 128 bits of security, which is considered more than enough to future-proof communication. ChaCha20 goes far beyond that, providing 256 bits of security.</p>
 <p>Poly1305 provides authentication, protecting TLS against attackers inserting fake messages into a secure stream. Poly1305’s key strength is considered strong enough to stop this attack, providing around 100 bits of security. Authentication in TLS is slightly less important than encryption because even if an attacker can add a fake message to the stream, they can’t read the information inside without breaking the encryption key.</p>
 <p>ChaCha20-Poly1305 also uses the current recommended construction for combining encryption and authentication. It’s built using an Authenticated Encryption with Associated Data (AEAD) construction. AEAD is a way of combining a cipher and an authenticator together to get the combined properties of encryption and authentication. This would be done previously with two different algorithms, typically a block cipher and an HMAC. Authenticated encryption makes it impossible to decrypt a ciphertext out of order which helps rule out a whole class of problems including <a href="https://code.google.com/p/go/source/detail?r=3ac4616250ed" target="_blank" rel="noopener noreferrer">BEAST</a>, <a href="http://www.isg.rhul.ac.uk/tls/Lucky13.html" target="_blank" rel="noopener noreferrer">Lucky 13</a> and <a href="https://blog.cloudflare.com/sslv3-support-disabled-by-default-due-to-vulnerability">POODLE</a>. AEAD also makes the age-old discussion of <a href="http://crypto.stackexchange.com/questions/202/should-we-mac-then-encrypt-or-encrypt-then-mac" target="_blank" rel="noopener noreferrer">MAC-then-encrypt vs encrypt-then-MAC</a> obsolete by combining the two in the same operation. Our other preferred TLS 1.2 encryption algorithm, AES-GCM, is also an AEAD.</p>
@@ -47,7 +69,11 @@
 <p>For example: decrypting a 1MB file on the Galaxy Nexus (OMAP 4460 chip):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">AES-128-GCM:</span><span class="sk-032f62-99ffe4"> 		41.6ms</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ChaCha20-Poly1305:</span><span class="sk-032f62-99ffe4"> 	13.2ms</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ChaCha20-Poly1305:</span><span class="sk-032f62-99ffe4"> 	13.2ms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The difference is more dramatic on less powerful Android phones and old iPhones running Chrome. There is also a comparable difference on pre-Sandy Bridge and low-powered Intel CPUs. With ChaCha/Poly, older computers and mobile devices spend less time and computational power on decryption.</p>
 <p>On desktop computers with hardware AES support, AES-128-GCM is still the faster choice. CloudFlare is able to intelligently choose whether to choose AES or ChaCha/Poly for different clients based on the client’s advertised cipher preference. For recent Intel processors, we use the standard AES-GCM algorithm. For browsers on machines that do not have a hardware AES chip, we prefer the ChaCha20-Poly1305.</p>

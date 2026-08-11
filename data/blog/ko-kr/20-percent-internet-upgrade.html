@@ -16,15 +16,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Lee</span><span class="sk-6f42c1-ffc799"> Holloway</span><span class="sk-24292e-fff"> &lt;q</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">t60</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">(none)&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Wed</span><span class="sk-6f42c1-ffc799"> Jan</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-005cc5-ffc799"> 09</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">57</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">55</span><span class="sk-005cc5-ffc799"> 2010</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">0800</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">    nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl initial configuration</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl initial configuration</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>커밋에서 알 수 있듯이, FL의 첫 번째 버전은 NGINX 웹 서버를 기반으로 구현되었고, 제품 로직은 PHP로 구현되었습니다.&nbsp; 3년 후, 시스템이 너무 복잡해져서 효과적으로 관리하기 어려워졌고, 응답 속도도 너무 느려져서 실행 중인 시스템을 거의 완전히 재작성해야 했습니다. 이로 인해 또 다른 중요한 커밋이 발생했으며, 이번 커밋은 현재 CTO인 Dane Knecht의 손에서 이루어졌습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">commit bedf6e7080391683e46ab698aacdfa9b3126a75f</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Dane</span><span class="sk-6f42c1-ffc799"> Knecht</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Thu</span><span class="sk-6f42c1-ffc799"> Sep</span><span class="sk-005cc5-ffc799"> 19</span><span class="sk-005cc5-ffc799"> 19</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">31</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 2013</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">0700</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">    remove </span><span class="sk-005cc5-fff">PHP</span><span class="sk-d73a49-a0a0a0">.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    remove </span><span class="sk-005cc5-fff">PHP</span><span class="sk-d73a49-a0a0a0">.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 시점부터 FL은 NGINX, <a href="https://openresty.org/en" target="_blank" rel="noopener noreferrer"><u>OpenResty</u></a> 프레임워크, <a href="https://luajit.org" target="_blank" rel="noopener noreferrer"><u>LuaJIT</u></a>를 사용하여 구현되었습니다.&nbsp; 이후 오랫동안 훌륭하게 버텨줬지만, 지난 몇 년 동안은 서서히 한계와 노후화가 드러나기 시작했습니다. LuaJIT의 모호한 버그를 수정하거나 해결하는 데 점점 더 많은 시간을 쏟아야 했습니다. Lua 코드의 매우 동적이고 비정형적인 특성은 로직을 빠르게 구현하려 할 때는 축복이었지만, 많은 양의 복잡한 제품 로직을 통합하려 할 때는 오류와 지연의 원인이 되었습니다. 새로운 제품이 출시될 때마다 기존 제품들이 새로운 로직에 영향을 받는지 확인해야 했습니다.</p>
 <p>다시 생각할 때가 되었다는 점은 분명했습니다. 그래서 2024년 7월, 우리는 완전히 새롭고 기존과는 근본적으로 다른 구현의 첫 커밋을 올렸습니다. 새로운 이름에 합의하는 데 시간을 낭비하지 않기 위해, 그냥 "FL2"라고 부르기로 하고, 원래 FL을 "FL1"이라고 부르기 시작했습니다.</p>
@@ -33,7 +59,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Maciej</span><span class="sk-6f42c1-ffc799"> Lechowski</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Wed</span><span class="sk-6f42c1-ffc799"> Jul</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">19</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">28</span><span class="sk-005cc5-ffc799"> 2024</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799">0100</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Create</span><span class="sk-24292e-fff"> fl2 project</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Create</span><span class="sk-24292e-fff"> fl2 project</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Rust 및 경직된 모듈화</h2>
 <p>아예 처음부터 시작하는 것은 아니었습니다. 우리는 <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet" target="_blank" rel="noopener noreferrer"><u>이전에 블로그</u></a>에서 다른 하나의 레거시 시스템을 <a href="https://tokio.rs" target="_blank" rel="noopener noreferrer"><u>Tokio</u></a> 런타임을 사용하여 <a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer"><u>Rust</u></a> 프로그래밍 언어로 구축된 Pingora로 대체한 방법에 대해 설명한 적이 있습니다. 우리는 Rust에서 프록시를 구축하기 위한 내부 프레임워크인 <a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Oxy에 대한 블로그</u></a> 게시물도 작성했습니다. 우리는 Rust를 많이 사용하며, 꽤 능숙해졌습니다.</p>
@@ -79,7 +109,11 @@
 <span class="line"><span class="sk-24292e-fff">    outputs</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">OutputValue</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">ServeResponse</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span>
 <span class="line"><span class="sk-24292e-fff">    func</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> phase_serve_error_page</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">callback,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 단계는 우리의 맞춤형 오류 페이지 제품을 위한 것입니다.&nbsp; 입력값으로는 방문자 IP 정보, 일부 헤더 및 기타 HTTP 정보, 그리고 몇 가지 '모듈 값'이 주어집니다. 모듈 값은 한 모듈이 다른 모듈에 정보를 전달할 수 있게 해주며, 모듈 시스템의 엄격한 규칙을 현실적으로 적용할 수 있게 하는 핵심 요소입니다. 예를 들어, 이 모듈은 규칙 기반 맞춤 오류 제품의 출력("<code>MODULE_VALUE_RULESETS_CUSTOM_ERRORS_OUTPUT</code>" 입력)에서 생성되는 일부 정보를 필요로 합니다. 이러한 입력과 출력 정의는 컴파일 시점에 강제 적용됩니다.</p>
 <p>규칙이 엄격하지만, 우리는 이 프레임워크 내에서 모든 제품 로직을 구현할 수 있다는 사실을 확인했습니다. 그렇게 하면 어떤 제품이 서로에게 영향을 줄 수 있는지 즉시 파악할 수 있다는 이점이 있습니다.</p>
@@ -124,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">            }));</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>각 모듈 내부의 로직은 데이터 처리와 깔끔하게 분리되어 있으며, Rust 언어 설계 덕분에 명확하고 명시적인 오류 처리가 장려됩니다.</p>
 <p>가장 활발히 개발되는 모듈들 중 다수가 이 방식으로 처리되어, 팀들이 마이그레이션 동안에도 변경 속도를 유지할 수 있었습니다.</p>
@@ -147,7 +185,11 @@
 <h2>FL2의 영향</h2>
 <p>이 글의 초반에 설명한 바와 같이, FL2는 FL1보다 상당히 빠릅니다. 가장 큰 이유는 단순히 FL2가 처리해야 할 작업량이 적기 때문입니다. 모듈 정의 예시에서 한 줄을 눈치채셨을지도 모릅니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>각 모듈은 실행 여부를 제어하는 필터 세트를 제공할 수 있습니다. 즉, 모든 요청에 대해 모든 제품의 로직을 실행하는 것이 아니라, 필요한 모듈 세트만 쉽게 선택해서 실행할 수 있다는 뜻입니다. 우리가 새 제품을 개발할 때 발생하는 추가 비용이 사라졌습니다.</p>
 <p>또 다른 큰 성능 향상의 이유는 FL2가 성능에 최적화된 언어로 구현된 단일 코드베이스이기 때문입니다. 이에 비해, FL1은 NGINX(C로 작성됨) 기반에 LuaJIT(Lua 및 C 인터페이스 계층)을 결합하고, 많은 Rust 모듈도 포함하고 있었습니다.&nbsp; FL1에서는 한 언어가 필요로 하는 데이터 표현을 다른 언어가 필요로 하는 표현으로 변환하는 데 많은 시간과 메모리를 소모했습니다.</p>

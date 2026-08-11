@@ -16,15 +16,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Lee</span><span class="sk-6f42c1-ffc799"> Holloway</span><span class="sk-24292e-fff"> &lt;q</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">t60</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">(none)&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Wed</span><span class="sk-6f42c1-ffc799"> Jan</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-005cc5-ffc799"> 09</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">57</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">55</span><span class="sk-005cc5-ffc799"> 2010</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">0800</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">    nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl initial configuration</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl initial configuration</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Wie der Commit impliziert, wurde die erste Version von FL auf Basis des NGINX-Webservers implementiert, wobei die Produktlogik in PHP umgesetzt wurde.&nbsp; Nach drei Jahren wurde das System zu komplex für eine effektive Verwaltung und reagierte zu langsam. Daher wurde das laufende System fast vollständig neu geschrieben. Dies führte zu einem weiteren wichtigen Commit, der diesmal von Dane Knecht, unserem jetzigen CTO, erfolgte.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">commit bedf6e7080391683e46ab698aacdfa9b3126a75f</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Dane</span><span class="sk-6f42c1-ffc799"> Knecht</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Thu</span><span class="sk-6f42c1-ffc799"> Sep</span><span class="sk-005cc5-ffc799"> 19</span><span class="sk-005cc5-ffc799"> 19</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">31</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">15</span><span class="sk-005cc5-ffc799"> 2013</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">0700</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">    remove </span><span class="sk-005cc5-fff">PHP</span><span class="sk-d73a49-a0a0a0">.</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    remove </span><span class="sk-005cc5-fff">PHP</span><span class="sk-d73a49-a0a0a0">.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ab diesem Zeitpunkt wurde FL mit NGINX, dem <a href="https://openresty.org/en" target="_blank" rel="noopener noreferrer"><u>OpenResty</u></a>-Framework und <a href="https://luajit.org" target="_blank" rel="noopener noreferrer"><u>LuaJIT</u></a> implementiert.&nbsp; Das funktionierte lange Zeit sehr gut, doch in den letzten Jahren zeigten sich zunehmend Alterserscheinungen. Wir mussten immer mehr Zeit darauf verwenden, obskure Fehler in LuaJIT zu beheben oder zu umgehen. Die stark dynamische und unstrukturierte Natur unseres Lua-Codes, die anfangs ein Segen war, um schnell Logik zu implementieren, entwickelte sich zu einer Fehlerquelle und führte zu Verzögerungen bei der Integration komplexer Produktlogik. Mit jeder neuen Produkteinführung mussten wir prüfen, ob bestehende Produkte durch die neuen Logiken beeinträchtigt werden könnten.</p>
 <p>Es war klar, dass wir ein Umdenken brauchten. Daher legten wir im Juli 2024 den ersten Commit für eine völlig neue und grundlegend andere Implementierung an. Um keine Zeit mit der Namensfindung zu verlieren, nannten wir sie einfach „FL2“ – und begannen selbstverständlich, das ursprüngliche System als „FL1“ zu bezeichnen.</p>
@@ -33,7 +59,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Maciej</span><span class="sk-6f42c1-ffc799"> Lechowski</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">   Wed</span><span class="sk-6f42c1-ffc799"> Jul</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">19</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">28</span><span class="sk-005cc5-ffc799"> 2024</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799">0100</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    Create</span><span class="sk-24292e-fff"> fl2 project</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    Create</span><span class="sk-24292e-fff"> fl2 project</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Rust und starre Modularisierung</h2>
 <p>Wir haben nicht bei null angefangen. Wir haben <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet" target="_blank" rel="noopener noreferrer"><u>bereits in einem Blogbeitrag darüber berichtet</u></a>, wie wir ein anderes unserer Altsysteme durch Pingora ersetzt haben. Pingora ist in der Programmiersprache <u><a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer">Rust</a><a href="https://tokio.rs" target="_blank" rel="noopener noreferrer"> mit der Tokio-Laufzeitumgebung aufgebaut.</a></u> Wir haben auch <a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>über Oxy gebloggt</u></a>, unser internes Framework zum Aufbau von Proxys in Rust. Wir schreiben viel Rust-Code und sind darin ziemlich gut geworden.</p>
@@ -79,7 +109,11 @@
 <span class="line"><span class="sk-24292e-fff">    outputs</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">OutputValue</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">ServeResponse</span><span class="sk-24292e-fff">],</span></span>
 <span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span>
 <span class="line"><span class="sk-24292e-fff">    func</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> phase_serve_error_page</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">callback,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Diese Phase ist für unser Produkt für benutzerdefinierte Fehlerseiten.&nbsp; Es sind einige Eingaben erforderlich – Informationen über die IP-Adresse des Besuchers, einige Header- und andere HTTP-Informationen sowie einige „Modulwerte“. Modulwerte ermöglichen es einem Modul, Informationen an ein anderes zu übermitteln, und sie sind entscheidend dafür, dass die strikten Eigenschaften des Modulsystems funktionieren. Dieses Modul benötigt beispielsweise einige Informationen, die von der Ausgabe unseres regelsatzbasierten Produkts für benutzerdefinierte Fehler (der Eingabe <code>„MODULE_VALUE_RULESETS_CUSTOM_ERRORS_OUTPUT“)</code> erzeugt werden. Diese Eingabe- und Ausgabedefinitionen werden zur Kompilierzeit durchgesetzt.</p>
 <p>Obwohl diese Regeln streng sind, haben wir festgestellt, dass wir unsere gesamte Produktlogik innerhalb dieses Frameworks implementieren können. Der Vorteil dabei ist, dass wir sofort erkennen können, welche anderen Produkte sich gegenseitig beeinflussen könnten.</p>
@@ -124,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">            }));</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Die interne Logik in jedem Modul ist recht sauber von der Datenverarbeitung getrennt, wobei das Design der Programmiersprache Rust eine sehr klare und explizite Fehlerbehandlung fördert.</p>
 <p>Viele unserer aktivsten Entwicklungsmodule wurden auf diese Weise gehandhabt, wodurch die Teams ihre Änderungsgeschwindigkeit während unserer Migration beibehalten konnten.</p>
@@ -147,7 +185,11 @@
 <h2>Auswirkungen von FL2</h2>
 <p>Wie wir zu Beginn dieses Beitrags beschrieben haben, ist FL2 deutlich schneller als FL1. Der Hauptgrund dafür ist schlicht, dass FL2 weniger Aufwand erfordert. Vielleicht ist Ihnen in dem Beispiel zur Moduldefinition eine Zeile aufgefallen</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    filters</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> vec!</span><span class="sk-24292e-fff">[],</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Jedes Modul kann eine Reihe von Filtern bereitstellen, die steuern, ob es ausgeführt wird oder nicht. Das bedeutet, dass wir nicht für jede Anfrage eine Logik für jedes Produkt ausführen&nbsp;– wir können sehr einfach genau die erforderlichen Module auswählen. Die inkrementellen Kosten für jedes neue Produkt, das wir entwickeln, sind entfallen.</p>
 <p>Ein weiterer wichtiger Grund für eine bessere Performance ist, dass FL2 eine einzige Codebasis ist, die in einer performanceorientierten Sprache implementiert ist. Im Vergleich dazu basierte FL1 auf NGINX (welches in C geschrieben ist), kombiniert mit LuaJIT (Lua- und C-Schnittstellenschichten) und enthielt außerdem zahlreiche Rust-Module.&nbsp; In FL1 investierten wir viel Zeit und Speicherressourcen in die Umwandlung von Daten zwischen den unterschiedlichen Darstellungsformaten einzelner Programmiersprachen.</p>

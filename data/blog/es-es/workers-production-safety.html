@@ -40,8 +40,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Unexpected</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> null</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> parseBytes</span><span class="sk-24292e-fff"> (src/down.ts:30:8)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> down_default</span><span class="sk-24292e-fff"> (src/down.ts:10:19)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> Object.fetch</span><span class="sk-24292e-fff"> (src/index.ts:11:12)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> Object.fetch</span><span class="sk-24292e-fff"> (src/index.ts:11:12)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <ol>
 	<li>Si estableces upload_source_maps = true en tu <a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer">wrangler.toml</a>, Wrangler generará y cargará automáticamente los archivos de correlación de código fuente cuando ejecutes <a href="https://developers.cloudflare.com/workers/wrangler/commands/#deploy" target="_blank" rel="noopener noreferrer">wrangler deploy</a> o <a href="https://developers.cloudflare.com/workers/wrangler/commands/#versions" target="_blank" rel="noopener noreferrer">wrangler versions upload</a>.</li>
 	<li>Cuando tu Worker emite una excepción no detectada, recuperamos la correlación de código fuente y la utilizamos para correlacionar el stack trace de la excepción con las líneas del código fuente original de tu Worker.</li>
@@ -61,7 +83,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Limit: the number of tokens allowed within a given period, in a single Cloudflare location</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Period: the duration of the period, in seconds. Must be either 60 or 10</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">simple</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> limit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 100,</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">simple</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> limit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 100,</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ahora que Workers puede conectarse directamente a un almacén de datos como memcached, ¿qué más podríamos proporcionar? ¿Contadores? ¿Bloqueos? ¿Una <a href="https://github.com/cloudflare/workerd/pull/1666" target="_blank" rel="noopener noreferrer">caché en memoria</a>? La limitación de velocidad es la primera de muchas primitivas que estamos estudiando ofrecer en Workers y que responden a las preguntas que llevamos años escuchando acerca de dónde se debería encontrar un estado compartido temporal que abarque muchos <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">aislamientos</a> de Worker. Si actualmente dependes de poner el estado en el ámbito global de tu Worker, estamos trabajando en mejores primitivas creadas específicamente para casos de uso concretos.</p>
 <div class="emdash-code">
@@ -76,7 +102,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Success!`</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>La API de limitación de velocidad en Workers está en la versión beta abierta. Para empezar a utilizarla, <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit" target="_blank" rel="noopener noreferrer">lee la documentación</a>.</p>
 <h3>Nuevos SDK generados automáticamente para la API de Cloudflare</h3>
@@ -94,7 +124,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">pip</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Go</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cloudflare-go/v2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cloudflare-go/v2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>El nuevo SDK de Go generado automáticamente abre el camino para una compatibilidad más completa con Terraform en todos los productos de Cloudflare, ya que ofrece un conjunto básico de herramientas que te garantizan que son correctos y que están actualizados con los últimos cambios de la API. Estamos trabajando para que, en el futuro, cada vez que un equipo de producto de Cloudflare desarrolle una nueva función que esté disponible mediante la API de Cloudflare, esta función sea automáticamente compatible con los SDK. Verás más novedades sobre esto a lo largo de 2024.</p>
 <h3>Disponibilidad general del análisis del espacio de nombres de Durable Objetcs y WebSocket Hibernation</h3>

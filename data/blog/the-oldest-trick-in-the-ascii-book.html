@@ -5,8 +5,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    +--------------------------------</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">0x20</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-6f42c1-ffc799">"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">0x40|@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">0x60|</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">abcdefghijklmnopqrstuvwxyz</span><span class="sk-032f62-99ffe4">{</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-99ffe4">}~</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">0x60|</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">abcdefghijklmnopqrstuvwxyz</span><span class="sk-032f62-99ffe4">{</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-99ffe4">}~</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>It's immediately obvious that each lowercase letter has an ASCII code 0x20 more than the corresponding uppercase letter. For example, lowercase m is 0x6D and uppercase M is 0x4D. And since 0x20 is a single bit then it's possible to uppercase an ASCII letter by taking its code and applying <code>AND 0xDF</code> (masking out the 0x20 bit).</p>
 <p>Performing <code>AND 0xDF</code> has no effect on the first two rows above: they, including the uppercase letters, are unchanged. Only the third row is affected. There the lowercase letters get uppercased but there's some collateral damage: `` { | } ~<code>change to</code>@ [ \ ] ^`.</p>
 <p>But if you know that a string has a limited character set then this trick can come in handy. Lots of old protocols (SMTP, POP3, ...) use USASCII characters for their commands. DNS names are typically restricted to letters, numbers and -. Even HTTP recommends that use of USASCII for the HTTP header.</p>
@@ -20,6 +42,10 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> (*x </span><span class="sk-032f62-99ffe4">==</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) &amp;&amp; (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">y == 0);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And that sort of low-level trickery turns out to matter when you are being hit by millions of DNS packets per second and need to make very, very fast filtering decisions.</p>

@@ -24,8 +24,30 @@
 <p>当计算机上的浏览器开始游戏后，它要求我们的 Cloudflare Worker API 为当前游戏会话创建房间。该 API 请求是一个简单的 POST 请求，服务器使用四个字符的房间代码来响应，该房间代码唯一标识创建的房间。我们希望房间代码简短的原因是，当用户无法扫描 QR 码时，他们可能需要复制此代码并输入到智能手机中。</p>
 <p>众所周知，人们并不擅长复写随机字符串，因为不同的字符看起来很相似，因此我们使用了有限的字符集，排除了最容易混淆的字符：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> DICTIONARY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "2345679ADEFGHJKLMNPQRSTUVWXYZ"</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// 29 chars (no 0, O, I, 1, B, 8)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> DICTIONARY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "2345679ADEFGHJKLMNPQRSTUVWXYZ"</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// 29 chars (no 0, O, I, 1, B, 8)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>四个字符的代码让我们能够唯一标识大约 700,000 个不同的房间，这样一来，即使我们的游戏变得十分流行，看起来也已经足够！更何况，这些游戏会话并不会永远持续。在过去一段时间后（比如说 24 小时），我们可以确定该游戏会话已经结束，然后重新使用该房间代码。</p>
 <h3><strong>房间代码协调</strong></h3>
 <p>在您的 Cloudflare Worker 脚本中，有两种方法来创建 Durable Object：我们可以要求创建的 Durable Object 具有依据名称生成的 ID，也可以要求创建具有随机唯一 ID 的 Durable Object。最简朴的解决方案是，创建一个 Durable Object，使其具有依据房间代码生成的 ID。然而，在这里，这并不是一个好的想法，因为 Durable Object 在地理上靠近最终用户的数据中心中创建。</p>
@@ -72,7 +94,11 @@
 <span class="line"><span class="sk-24292e-fff">        room: roomData</span></span>
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
 <span class="line"><span class="sk-24292e-fff">    ctx.response.status </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> HttpStatus.Created;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>简而言之，我们生成几个房间代码，直到找到一个从未用过或在足够长的时间内未使用的房间代码。</p>
 <p>这段代码中有一个很微妙但很重要的玄妙之处：Durable Object 在与房间中心通信的 Cloudflare Worker 中创建，而不是在房间中心本身中创建。我们的房间中心将在 Cloudflare 网络上某个位置的单个数据中心中运行。如果我们从这里创建游戏房间，则可能仍然距离最终用户十分遥远！</p>
@@ -99,7 +125,11 @@
 <span class="line"><span class="sk-24292e-fff">    ctx.response.body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">        room: roomData</span></span>
 <span class="line"><span class="sk-24292e-fff">    };</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>智能手机浏览器需要连接到该相同房间。为了方便用户，我们生成四个字符的房间代码，指向该特定“游戏房间”Durable Object。这样，用户可以使用他们的智能手机导航到网站地址 <code>https://ld49.pages.dev</code>，并输入代码“ABCD”（或更为常用的是，他们可以扫描含有链接 <code>https://ld49.pages.dev?room=ABCD</code> 的 QR 码）。</p>
 <h3><strong>游戏房间 Durable Object</strong></h3>

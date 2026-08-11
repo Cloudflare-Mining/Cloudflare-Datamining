@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // Steps here</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The <code>run</code> method, as illustrated above, provides a <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowstep" target="_blank" rel="noopener noreferrer"><u>WorkflowStep</u></a> parameter that implements the durable execution APIs. This is what users rely on for at-most-once execution. These APIs are implemented in JavaScript and need to be accessed in the context of the Python Worker.</p>
 <p>A <code>WorkflowStep</code> must cross the RPC barrier, meaning the engine (caller) exposes it as an <code>RpcTarget</code>. This setup allows the user's Workflow (callee) to substitute the parameter with a stub. This stub then enables the use of durable execution APIs for Workflows by RPCing back to the engine. To read more about RPC serialization and how functions can be passed from caller and callee, read the <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>Remote-Procedure call documentation</u></a>.</p>
 <p>All of this is true for both Python and JavaScript Workflows, since we don’t really change how the user Worker is called from the Workflows side. However, in the Python case, there is another barrier – language bridging between Python and the JavaScript module. When an RPC request targets a Python Worker, there is a Javascript entrypoint module responsible for proxying the request to be handled by the Python script, and then returned to the caller. This process typically involves type translation before and after handling the request.</p>
@@ -52,7 +74,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   	 const</span><span class="sk-005cc5-fff"> developerWeek</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Date.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"22 Sept 2025 13:00:00 UTC"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">sleepUntil</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"sleep until X times out"</span><span class="sk-24292e-fff">, developerWeek)</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Python implementation of the workflows API requires modification of the do method. Unlike other languages, Python does not easily support anonymous callbacks. This behavior is typically achieved through the use of <a href="https://www.w3schools.com/python/python_decorators.asp" target="_blank" rel="noopener noreferrer"><u>decorators</u></a>, which in this case allow us to intercept the method and expose it idiomatically. In other words, all parameters maintain their original order, with the decorated method serving as the callback.</p>
 <p>The methods <code>waitForEvent</code>, <code>sleep</code>, and <code>sleepUntil</code> can retain their original signatures, as long as their names are converted to snake case.</p>
@@ -82,7 +108,11 @@
 <span class="line"><span class="sk-24292e-fff">        )</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff">        developer_week </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> datetime(</span><span class="sk-005cc5-ffc799">2024</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">13</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">tzinfo</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">timezone.utc)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> step.sleep_until(</span><span class="sk-032f62-99ffe4">"sleep until X times out"</span><span class="sk-24292e-fff">, developer_week)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> step.sleep_until(</span><span class="sk-032f62-99ffe4">"sleep until X times out"</span><span class="sk-24292e-fff">, developer_week)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>DAG Workflows</h4>
 <p>When designing Workflows, we’re often managing dependencies between steps even when some of these tasks can be handled concurrently. Even though we’re not thinking about it, many Workflows have a directed acyclic graph (DAG) execution flow. Concurrency is achievable in the first iteration of Python Workflows (i.e.: minimal port to Python Workers) because Pyodide captures Javascript thenables and proxies them into Python awaitables. </p>
@@ -109,7 +139,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">            # does stuff</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">            print</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'something'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> final_step()</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> final_step()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This kind of approach makes the Workflow declaration much cleaner, leaving state management to the Workflows engine data plane, as well as the Python workers Workflow wrapper. Note that even though multiple steps can run with the same name, the engine will slightly modify the name of each step to ensure uniqueness. In Python Workflows, a dependency is considered resolved once the initial step involving it has been successfully completed.</p>
 <h3>Try it out</h3>

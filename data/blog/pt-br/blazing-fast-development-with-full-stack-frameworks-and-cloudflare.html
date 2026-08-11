@@ -17,13 +17,39 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[d1_databases]]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "blog-products-db"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "XXXXXXXXXXXXXXXX"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "XXXXXXXXXXXXXXXX"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Isso mesmo. Agora você pode configurar seus <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">recursos vinculados</a> por meio do <a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration" target="_blank" rel="noopener noreferrer">arquivo wrangler.toml</a>, mesmo para aplicativos full stack implantados no Pages. Vamos falar muito mais sobre as melhorias de configuração do Pages em um <a href="https://blog.cloudflare.com/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">anúncio específico</a>.</p>
 <p>Agora vamos criar um arquivo schema.sql simples representando o esquema do nosso banco de dados:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CREATE</span><span class="sk-032f62-99ffe4"> TABLE</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">product_id</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-032f62-99ffe4"> PRIMARY</span><span class="sk-032f62-99ffe4"> KEY,</span><span class="sk-032f62-99ffe4"> name</span><span class="sk-032f62-99ffe4"> TEXT,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff"> (product_id, </span><span class="sk-032f62-99ffe4">name,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">1,</span><span class="sk-032f62-99ffe4"> 'Apple',</span><span class="sk-005cc5-ffc799"> 250</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">2,</span><span class="sk-032f62-99ffe4"> 'Banana',</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">3,</span><span class="sk-032f62-99ffe4"> 'Cherry',</span><span class="sk-005cc5-ffc799"> 375</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff"> (product_id, </span><span class="sk-032f62-99ffe4">name,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">1,</span><span class="sk-032f62-99ffe4"> 'Apple',</span><span class="sk-005cc5-ffc799"> 250</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">2,</span><span class="sk-032f62-99ffe4"> 'Banana',</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">3,</span><span class="sk-032f62-99ffe4"> 'Cherry',</span><span class="sk-005cc5-ffc799"> 375</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>E inicializar nosso banco de dados:</p>
 <p><code>$ npx wrangler d1 execute blog-products-db --local --file schema.sql</code></p>
@@ -38,7 +64,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> getRequestContext</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.env.DB</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> Response.json</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> Response.json</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ou, em um aplicativo Nuxt, podemos criar um arquivo <code>server/api/hello.ts</code> e preenchê-lo com:</p>
 <div class="emdash-code">
@@ -46,7 +76,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> context.cloudflare.env.DB</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-032f62-99ffe4"> productsResults.results</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff"> });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Supondo que o dev server do framework esteja sendo executado na porta 3000, você pode testar a nova rota da API em qualquer um dos frameworks navegando para <a href="http://localhost:3000/api/hello" target="_blank" rel="noopener noreferrer">http://localhost:3000/api/hello</a>. Para simplificar, escolhemos as rotas de API nesses exemplos, mas o mesmo se aplica a qualquer rota de geração de IU.</p>
 <p>Cada framework da web tem sua própria maneira de definir rotas e passar informações contextuais sobre a solicitação em todo o aplicativo, portanto, a forma como você acessa seus bancos de dados, armazenamentos de objetos e outros recursos dependerá de seu framework. Você pode ler nossos guias sobre framework full stack atualizados para saber mais:</p>
@@ -80,7 +114,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> //</span><span class="sk-032f62-99ffe4"> Now</span><span class="sk-032f62-99ffe4"> let’s</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> DB</span><span class="sk-032f62-99ffe4"> query</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> runs</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> D1</span><span class="sk-032f62-99ffe4"> db</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> //</span><span class="sk-032f62-99ffe4"> powered</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> miniflare/workerd</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> result</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> Node.js</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> console.log(productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> console.log(productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Com a API <code>getPlatformProxy()</code> disponível, o trabalho restante foi atualizar todos os adaptadores de framework, plug-ins e, em alguns casos, os próprios framework para fazer uso dessa API. Agradecemos o apoio que recebemos das equipes de framework nessa jornada, especialmente o <a href="https://github.com/alexanderniebuhr" target="_blank" rel="noopener noreferrer">Alex</a> da Astro, <a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer">o pi0</a> da Nuxt, o <a href="https://github.com/pcattori" target="_blank" rel="noopener noreferrer">Pedro</a> da Remix, o <a href="https://github.com/ryansolid" target="_blank" rel="noopener noreferrer">Ryan</a> da Solid, o <a href="https://github.com/benmccann" target="_blank" rel="noopener noreferrer">Ben</a> e <a href="https://github.com/Rich-Harris" target="_blank" rel="noopener noreferrer">o Rich</a> da Svelte, além do nosso colaborador do projeto <a href="https://github.com/cloudflare/next-on-pages" target="_blank" rel="noopener noreferrer">next-on-pages</a>, <a href="https://github.com/james-elicx" target="_blank" rel="noopener noreferrer">James Anderson</a>.</p>
 <h3>Melhorias futuras nos fluxos de trabalho de desenvolvimento com o Vite</h3>

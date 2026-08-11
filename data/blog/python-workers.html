@@ -12,14 +12,40 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">from js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Response</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">async def on_fetch(request, env):</span></span>
-<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>...with a wrangler.toml file that points to a .py file:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "hello-world-python-worker"</span></span>
 <span class="line"><span class="sk-24292e-fff">main </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "src/entry.py"</span></span>
 <span class="line"><span class="sk-24292e-fff">compatibility_date </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "2024-03-18"</span></span>
-<span class="line"><span class="sk-24292e-fff">compatibility_flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"python_workers"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">compatibility_flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"python_workers"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>…and when you run <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer">npx wrangler@latest dev</a>, the Workers runtime will:</p>
 <ol>
@@ -59,7 +85,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">from js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Response</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">async def on_fetch(request, env):</span></span>
-<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return Response.new(</span><span class="sk-032f62-99ffe4">"Hello world!"</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Why is that?</p>
 <p>Most Workers are written in JavaScript, and most of our engineering effort on the Workers runtime goes into improving JavaScript Workers. There is a risk in adding a second language that it might never reach feature parity with the first language and always be a second class citizen. Pyodide’s foreign function interface (FFI) is critical to avoiding this by providing access to all JavaScript functionality from Python. This can be used by the Worker author directly, and it is also used to make packages like <a href="https://developers.cloudflare.com/workers/languages/python/packages/fastapi" target="_blank" rel="noopener noreferrer">FastAPI</a> and <a href="https://developers.cloudflare.com/workers/languages/python/packages/langchain" target="_blank" rel="noopener noreferrer">Langchain</a> work out-of-the-box, as we’ll show later in this post.</p>
@@ -72,7 +102,11 @@
 <span class="line"><span class="sk-24292e-fff">js_array = JSON.parse(</span><span class="sk-032f62-99ffe4">"[1,2,3]"</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">for entry in js_array:</span></span>
-<span class="line"><span class="sk-24292e-fff">   print(entry)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   print(entry)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The lifecycle of a request to a Python Worker makes use of Pyodide’s FFI, wrapping the incoming JavaScript <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">Request</a> object in a <a href="https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.JsProxy" target="_blank" rel="noopener noreferrer">JsProxy</a> object that is accessible in your Python code. It then converts the value returned by the Python Worker’s <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers" target="_blank" rel="noopener noreferrer">handler</a> into a JavaScript <a href="https://developers.cloudflare.com/workers/runtime-apis/response" target="_blank" rel="noopener noreferrer">Response</a> object that can be delivered back to the client:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -104,7 +138,11 @@
 <span class="line"><span class="sk-24292e-fff">  js_request = py_request_to_js_request(py_request)</span></span>
 <span class="line"><span class="sk-24292e-fff">    js_response = await fetch(js_request)</span></span>
 <span class="line"><span class="sk-24292e-fff">    py_response = js_response_to_py_response(js_response)</span></span>
-<span class="line"><span class="sk-24292e-fff">    return py_response</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return py_response</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Synchronous Client libraries</h3>
 <p>Another challenge in supporting Python HTTP client libraries is that many Python APIs are synchronous. For these libraries, we cannot use the <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">fetch API</a> directly because it is asynchronous.</p>
@@ -128,7 +166,11 @@
 <span class="line"><span class="sk-24292e-fff">def sync_fetch(py_request):</span></span>
 <span class="line"><span class="sk-24292e-fff">   js_request = py_request_to_js_request(py_request)</span></span>
 <span class="line"><span class="sk-24292e-fff">   js_response  = run_sync(fetch(js_request))</span></span>
-<span class="line"><span class="sk-24292e-fff">   return js_response_to_py_response(js_response)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">   return js_response_to_py_response(js_response)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>FastAPI and Python’s Asynchronous Server Gateway Interface</h3>
 <p><a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer">FastAPI</a> is one of the most popular libraries for defining Python servers. FastAPI applications use a protocol called the <a href="https://asgi.readthedocs.io/en/latest" target="_blank" rel="noopener noreferrer">Asynchronous Server Gateway Interface</a> (ASGI). This means that FastAPI never reads from or writes to a socket itself. An ASGI application expects to be hooked up to an ASGI server, typically <a href="https://www.uvicorn.org" target="_blank" rel="noopener noreferrer">uvicorn</a>. The ASGI server handles all of the raw sockets on the application’s behalf.</p>
@@ -180,7 +222,11 @@
 <span class="line"><span class="sk-24292e-fff">async def on_fetch(request, env):</span></span>
 <span class="line"><span class="sk-24292e-fff">    await env.FOO.put(</span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"baz"</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">    bar = await env.FOO.get(</span><span class="sk-032f62-99ffe4">"bar"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">    return Response.new(bar) # returns </span><span class="sk-032f62-99ffe4">"baz"</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    return Response.new(bar) # returns </span><span class="sk-032f62-99ffe4">"baz"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This works for Web APIs too — see how Response is imported from the js module? You can import any global from JavaScript this way.</p>
 <h2>Get this JavaScript out of my Python!</h2>

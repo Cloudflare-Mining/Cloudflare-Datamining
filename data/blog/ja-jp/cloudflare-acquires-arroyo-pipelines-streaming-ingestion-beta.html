@@ -7,12 +7,38 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest pipelines create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">r2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>...そして、最初のレコードを書きます：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{"payload": [],"id":"abc-def"}]'</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>しかし、真のパワーは、取り込みとR2のようなシンクに書き込まれるときの間のデータストリームの処理から来ます。<em>取り込み ているデータのウィンドウに作用する</em>SQLを書き、変換・集約し、さらにはデータからリアルタイムでインサイトを抽出することもできるため、非常に強力であることが判明します。</p>
 <p>ここでArroyoが登場します。Arroyoの優れた部分をPipelinesに取り込み、 Workers、R2、および他の開発者プラットフォームと深く統合することになります。</p>
@@ -56,7 +82,11 @@
 <span class="line"><span class="sk-24292e-fff">🎉 </span><span class="sk-6f42c1-ffc799">You</span><span class="sk-24292e-fff"> can now send data to your </span><span class="sk-6f42c1-ffc799">pipeline!</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff"> data to your pipeline'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-005cc5-fff"> HTTP</span><span class="sk-24292e-fff"> endpoint</span><span class="sk-d73a49-a0a0a0">:</span></span>
-<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>デフォルトでは、パイプラインはWorkersとHTTPエンドポイントの2つのソースからデータを取り込み、バッチ処理されたイベントを R2バケットにロードできます。これにより、未加工のイベントデータをオブジェクトストレージにストリーミングするための、すぐに使えるソリューションが提供されます。デフォルトが機能しない場合は、作成中、または作成後いつでもパイプラインを設定できます。HTTPエンドポイントへの認証の追加、ブラウザがオリジン間リクエストを行えるようにCORSの設定、出力ファイルの圧縮とバッチ設定の指定などがあります。</p>
 <p>初日から大量の取り込みのためのパイプラインを構築しました。各パイプラインは毎秒100,000レコードまで拡張できます（ここではまだ始まったばかりです）。レコードがパイプラインに書き込まれると、耐久性のある格納、バッチ処理、および R2バケット内のファイルとしての書き込みが行われます。ここではバッチ処理が重要になります。もしデータに基づいてクエリーを実行するのであれば、クエリーエンジンに何百万もの（あるいは何千万もの）小さなファイルをクエリーさせる必要はありません。低速（ファイル単位およびリクエストのオーバーヘッド）、非効率性（読み込むファイルの数が増える）、コストがかかる（より多くの操作）。その代わり、クエリエンジンのバッチサイズと遅延の適正なバランスを見つける必要があります。パイプラインでは、これを設定することができます。</p>
@@ -138,5 +168,9 @@
 <p>...または、サンプルプロジェクトを直接デプロイする：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> pipelines</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>

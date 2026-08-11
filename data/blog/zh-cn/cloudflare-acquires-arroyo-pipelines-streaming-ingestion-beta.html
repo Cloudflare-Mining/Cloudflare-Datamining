@@ -7,12 +7,38 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest pipelines create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">r2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>…… 然后撰写您的第一条记录：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{"payload": [],"id":"abc-def"}]'</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>然而，真正的力量来自于在摄取数据和将数据写入 R2 等接收器之间对数据流的处理。能够编写 SQL 在<em>获取数据时</em>作用于数据窗口，可以转换和聚合数据，甚至从数据中实时提取见解，这将是非常强大的。</p>
 <p>这就是 Arroyo 的用武之地，我们将把 Arroyo 最好的部分引入管道，并与Workers、 R2 和我们开发人员平台的其他部分深度集成。</p>
@@ -56,7 +82,11 @@
 <span class="line"><span class="sk-24292e-fff">🎉 </span><span class="sk-6f42c1-ffc799">You</span><span class="sk-24292e-fff"> can now send data to your </span><span class="sk-6f42c1-ffc799">pipeline!</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff"> data to your pipeline'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-005cc5-fff"> HTTP</span><span class="sk-24292e-fff"> endpoint</span><span class="sk-d73a49-a0a0a0">:</span></span>
-<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>默认情况下，管道可以从两个源获取数据（ Workers和一个 HTTP端点），并将成批事件加载到一个 R2存储桶中。对于将原始事件数据流式传输到对象存储，这是一个开箱即用的解决方案。如果默认值不起作用，您可以在创建管道时或创建后的任何时间进行配置。选项包括：向 HTTP端点添加 验证 ，配置 CORS 以允许浏览器发出跨源请求，以及指定输出文件压缩和 批量 设置。</p>
 <p>我们从第一天就开始构建可用于高摄取量的管道。每个管道可以扩展到约 100,000 条记录/秒（这只是我们的开端）。将记录写入管道后，就会在 R2存储桶中作为文件进行持久存储、批量并写出。批处理在这里至关重要：如果您要对这些数据采取行动，就应该让查询引擎查询数百万（或数千万）个小文件。速度慢（每个文件和请求的开销）、效率低（需要读取更多文件）和成本高昂（更多操作）。相反，您希望在查询引擎的批量大小和延迟（批处理不会等待太长时间）之间找到适当的平衡： Pipelines 允许您进行配置。</p>
@@ -138,5 +168,9 @@
 <p>或者直接部署示例项目：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> pipelines</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>

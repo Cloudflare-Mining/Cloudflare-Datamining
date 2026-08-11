@@ -121,8 +121,30 @@
 <p>We mentioned previously that VOPRFs (or simply OPRFs) are susceptible to small amounts of possible leakage in the key. Here we will give a brief description of the actual attacks themselves, along with further details on our plans for implementing higher security ciphersuites to mitigate the leakage.</p>
 <p>Specifically, malicious clients can interact with a VOPRF for creating something known as a <a href="https://eprint.iacr.org/2010/215.pdf" target="_blank" rel="noopener noreferrer">q-Strong-Diffie-Hellman</a> (q-sDH) sample. Such samples are created in mathematical groups (usually in the elliptic curve setting). For any group there is a public element <code>g</code> that is central to all <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener noreferrer">Diffie-Hellman</a> type operations, along with the server key <code>K</code>, which is usually just interpreted as a randomly generated number from this group. A q-sDH sample takes the form:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">g,</span><span class="sk-032f62-99ffe4"> g^K,</span><span class="sk-032f62-99ffe4"> g^</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">K^2</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> ,</span><span class="sk-032f62-99ffe4"> g^</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">K^q</span><span class="sk-24292e-fff">) )</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">g,</span><span class="sk-032f62-99ffe4"> g^K,</span><span class="sk-032f62-99ffe4"> g^</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">K^2</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> ,</span><span class="sk-032f62-99ffe4"> g^</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">K^q</span><span class="sk-24292e-fff">) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>and asks the malicious adversary to create a pair of elements satisfying <code>(g^(1/(s+K)),s)</code>. It is possible for a client in the VOPRF protocol to create a q-SDH sample by just submitting the result of the previous VOPRF evaluation back to the server.</p>
 <p>While this problem is believed to be hard to break, there are a number of past works that show that the problem is somewhat easier than the size of the group suggests (for example, see <a href="https://eprint.iacr.org/2004/306" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://www.iacr.org/archive/eurocrypt2006/40040001/40040001.pdf" target="_blank" rel="noopener noreferrer">here</a>). Concretely speaking, the bit security implied by the group can be reduced by up to log<sub>2</sub>(q) bits. While this is not immediately fatal, even to groups that should provide 128 bits of security, it can lead to a loss of security that means that the setting is no longer future-proof. As a result, any group providing VOPRF functionality that is instantiated using an elliptic curve such as P-256 or Curve25519 provides weaker than advised security guarantees.</p>
 <p>With this in mind, we have taken the recent decision to upgrade the ciphersuites that we recommend for OPRF usage to only those that provide &gt; 128 bits of security, as standard. For example, Curve448 provides 192 bits of security. To launch an attack that reduced security to an amount lower than 128 bits would require making 2^(68) client OPRF queries. This is a significant barrier to entry for any attacker, and so we regard these ciphersuites as safe for instantiating the OPRF functionality.</p>
@@ -143,7 +165,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">  "H"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg="</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "expiry"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-01-11T10:29:10.658286752Z"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "sig"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"MEUCIQDu9xeF1q89bQuIMtGm0g8KS2srOPv+4hHjMWNVzJ92kAIgYrDKNkg3GRs9Jq5bkE/4mM7/QZInAVvwmIyg6lQZGE0="</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>First, the version of the server key is <code>2.00</code>, the server must inform the client which version it intends to use in the response to a client containing issued tokens. This is so that the client can always use the correct commitments when verifying the zero-knowledge proof that the server sends.</p>
 <p>The value of the member <code>H</code> is the public key commitment to the secret key used by the server. This is base64-encoded elliptic curve point of the form <code>H=kG</code> where <code>G</code> is the fixed generator of the curve, and <code>k</code> is the secret key of the server. Since the discrete-log problem is believed to be hard to solve, deriving k from H is believed to be difficult. The value of the member <code>expiry</code> is an expiry date for the commitment that is used. The value of the member <code>sig</code> is an ECDSA signature evaluated using a long-term signing key associated with the server, and over the values of <code>H</code> and <code>expiry</code>.</p>
@@ -168,7 +194,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "compressed"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"false"</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "id"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the above: <code>params.data[0]</code> is the client input data used to generate a token in the issuance phase; <code>params.data[1]</code> is the HMAC tag that the server uses to verify a redemption; and <code>params.data[2]</code> is a stringified, base64-encoded JSON object that specifies the hash-to-curve parameters used by the client. For example, the last element in the array corresponds to the object:</p>
 <div class="emdash-code">
@@ -176,7 +206,11 @@
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    curve</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"p256"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    hash</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sha256"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    method</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"swu"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Which specifies that the client has used the curve P-256, with hash function SHA-256, and the SSWU method for hashing to curve. This allows the server to verify the transaction with the correct ciphersuite. The client must bind the redemption request to some fixed information, which it stores as multiple strings in the array <code>params.bindings</code>. For example, it could send the Host header of the HTTP request, and the HTTP path that was used (this is what is used in the Privacy Pass browser extension). Finally, <code>params.compressed</code> is an optional boolean value (defaulting to false) that indicates whether the HMAC tag was computed over compressed or uncompressed point encodings.</p>
 <p>Currently the only supported ciphersuites are the example above, or the same except with <code>method</code> equal to <code>increment</code> for the hash-and-increment method of hashing to a curve. This is the original method used in v1.0 of Privacy Pass, and is supported for backwards-compatibility only. See the <a href="https://privacypass.github.io/api-redeem" target="_blank" rel="noopener noreferrer">provided documentation</a> for more details.</p>
@@ -187,7 +221,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">  "jsonrpc"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2.0"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"success"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "id"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When an error occurs something similar to the following will be returned.</p>
 <div class="emdash-code">
@@ -198,6 +236,10 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "code"</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">&lt;error-code&gt;</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "id"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The error codes that we provide are specified as JSON-RPC 2.0 codes, we document the types of errors that we provide in the <a href="https://privacypass.github.io/api-redeem" target="_blank" rel="noopener noreferrer">API documentation</a>.</p>

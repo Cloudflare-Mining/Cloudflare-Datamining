@@ -4,8 +4,30 @@
 <p><a href="https://local-uploads.r2-demo.workers.dev" target="_blank" rel="noopener noreferrer"><u>このデモでは</u></a>、ローカルアップロードの利点を詳しくご紹介しています。</p>
 <p>試されますか？バケット設定の下にある<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>で、または既存のバケットで単一のWranglerコマンドを使用して、ローカルアップロードを有効化します。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>グローバルアップロードの総リクエスト時間を75%短縮</h2>
 <p><a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>ローカルアップロード</u></a>は、アップロード要求（つまりputObject、アップロード部など）をより高速化できるようになりました。お客様とのプライベートベータテストと総合ベンチマークの両方で、バケットとは異なる地域でアップロードリクエストが行われた場合、TTLB（Time To Last Byte）が最大75%短縮されることが確認されました。これらの結果では、TTLBは、R2がアップロード要求を受信した時点から、R2が200レスポンスを返すまでの時間を測定しています。</p>
 <p>総合テストでは、合成ワークロードを使用してリージョンをまたがるアップロードワークフローをシミュレートすることで、ローカルアップロードの影響を測定しました。西北米にテストクライアントをデプロイし、アジア太平洋地域の<a href="https://developers.cloudflare.com/r2/reference/data-location" target="_blank" rel="noopener noreferrer"><u>ロケーションヒント</u></a>でR2バケットを設定しました。クライアントは30分以上、1秒あたり約20回のPutObjectリクエストを行い、5MBのオブジェクトをアップロードしました。 </p>
@@ -86,7 +108,11 @@
 <p>ローカルアップロードは、オープンベータ版で利用可能になりました。ローカルアップロードを有効にするための<strong>追加費用はかかりません</strong>。この機能を有効にして作成されたアップロードリクエストには、ローカルアップロードなしで行われたアップロードリクエストと同じく、標準的な<a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>クラスA操作コスト</u></a>がかかります。</p>
 <p>開始するには、バケット設定の下にある<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2%2Foverview" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>にアクセスして、ローカルアップロードカードを探して有効にするか、Wranglerを使って次のコマンドを実行するだけでバケットのローカルアップロードを有効にします。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> bucket</span><span class="sk-032f62-99ffe4"> local-uploads</span><span class="sk-032f62-99ffe4"> enable</span><span class="sk-24292e-fff"> [BUCKET]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>バケットでローカルアップロードを有効にするのはシームレスです。既存のアップロードは期待通りに完了し、トラフィックを中断することはありません。</p>
 <p>詳細については、<a href="https://developers.cloudflare.com/r2/buckets/local-uploads" target="_blank" rel="noopener noreferrer"><u>ローカルアップロードのドキュメント</u></a>を参照してください。ご質問がある場合やフィードバックを共有したい場合は、<a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>開発者Discord</u></a>のディスカッションにご参加ください。</p>

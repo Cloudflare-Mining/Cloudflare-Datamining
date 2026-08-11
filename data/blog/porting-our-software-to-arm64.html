@@ -23,8 +23,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">x86_64</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">host$</span><span class="sk-032f62-99ffe4"> docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-99ffe4"> -it</span><span class="sk-032f62-99ffe4"> stretch-arm64/master:latest</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">guest#</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-005cc5-99ffe4"> -m</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">aarch64</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">aarch64</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Fortunately, we were not the first ones to come up with this idea: folks over at resin.io have <a href="https://resin.io/blog/building-arm-containers-on-any-x86-machine-even-dockerhub" target="_blank" rel="noopener noreferrer">solved this problem already</a>! They’ve also submitted a <a href="https://patchwork.ozlabs.org/patch/582756" target="_blank" rel="noopener noreferrer">patch to <code>qemu-user</code></a> that prepends the emulator into every <code>execve</code> call, similar to how <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank" rel="noopener noreferrer"><code>binfmt_misc</code> is implemented</a><a href="https://blog.cloudflare.com/#fn2">[2]</a>. By prepending the emulator, you’re essentially forcing every new process to also be emulated, resulting in a nice self-contained environment.</p>
 <p>With the <code>execve</code> patch in built into <code>qemu-user</code>, all we had to do was copy the emulator into an ARM64 container, and set the appropriate entrypoint:</p>
 <div class="emdash-code">
@@ -46,7 +68,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    rm</span><span class="sk-005cc5-99ffe4"> -rf</span><span class="sk-032f62-99ffe4"> /var/lib/apt/lists/</span><span class="sk-005cc5-a0a0a0">*</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ENTRYPOINT</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"/qemu-aarch64"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"--execve",</span><span class="sk-032f62-99ffe4"> "/qemu-aarch64"]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">CMD</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"/bin/bash"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">CMD</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"/bin/bash"</span><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This Dockerfile resulted in the cross-architecture output we were looking for earlier.</p>
 <p>Now that we had a self-contained ARM64 environment, we could build and test most of our code relatively smoothly.</p>
@@ -83,7 +109,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /etc/ld.so.conf.d/x86_64-linux-gnu.conf</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Multiarch support</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">/lib/x86_64-linux-gnu</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">/usr/lib/x86_64-linux-gnu</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">/usr/lib/x86_64-linux-gnu</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With an <code>arm64</code> machine:</p>
 <div class="emdash-code">
@@ -97,7 +127,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">/usr/lib/aarch64-linux-gnu</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /etc/ld.so.conf.d/libc.conf</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># libc default configuration</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">/usr/local/lib</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">/usr/local/lib</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>By traversing <code>/etc/ld.so.conf.d/</code> in alphabetical order, shared libraries in <code>/usr/local/lib</code> would be loaded before <code>/usr/lib/$(uname -m)-linux-gnu</code> on <code>x86_64</code>, while the opposite is true for <code>arm64</code>!</p>
 <p>Internal discussion resulted in us not changing the system default search order, but instead use the <a href="https://en.wikipedia.org/wiki/Rpath" target="_blank" rel="noopener noreferrer">linker flag <code>--rpath</code></a> to request the runtime loader to explicitly search our <code>/usr/local/lib</code> location first.</p>

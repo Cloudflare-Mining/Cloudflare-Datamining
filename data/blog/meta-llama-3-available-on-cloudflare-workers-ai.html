@@ -21,8 +21,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(response));</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>Built with Meta Llama 3</h2>
 <p>Llama 3 offers leading performance on a wide range of industry benchmarks. You can learn more about the architecture and improvements on Meta’s <a href="https://ai.meta.com/blog/meta-llama-3" target="_blank" rel="noopener noreferrer">blog post</a>. Cloudflare Workers AI supports <a href="https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct" target="_blank" rel="noopener noreferrer">Llama 3 8B</a>, including the instruction fine-tuned model.</p>
 <p>Meta’s testing shows that Llama 3 is the most advanced open LLM today on <a href="https://github.com/meta-llama/llama3/blob/main/eval_details.md?cf_target_id=1F7E4663A460CE17F25CF8ADDF6AB9F1" target="_blank" rel="noopener noreferrer">evaluation benchmarks</a> such as MMLU, GPQA, HumanEval, GSM-8K, and MATH. Llama 3 was trained on an increased number of training tokens (15T), allowing the model to have a better grasp on language intricacies. Larger context windows doubles the capacity of Llama 2, and allows the model to better understand lengthy passages with rich contextual data. Although the model supports a context window of 8k, we currently only support 2.8k but are looking to support 8k context windows through quantized models soon. As well, the new model introduces an efficient new <a href="https://github.com/openai/tiktoken" target="_blank" rel="noopener noreferrer">tiktoken</a>-based tokenizer with a vocabulary of 128k tokens, encoding more characters per token, and achieving better performance on English and multilingual benchmarks. This means that there are 4 times as many parameters in the embedding and output layers, making the model larger than the previous Llama 2 generation of models.</p>

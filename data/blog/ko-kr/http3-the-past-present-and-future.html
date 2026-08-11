@@ -72,8 +72,30 @@
 <p>curl 명령행 도구도 <a href="https://daniel.haxx.se/blog/2019/09/11/curl-7-66-0-the-parallel-http-3-future-is-here" target="_blank" rel="noopener noreferrer">HTTP/3을 실험적 기능으로 지원</a>하고 있습니다. <a href="https://github.com/curl/curl" target="_blank" rel="noopener noreferrer">최신 버전을 git</a> 에서 받아서 <a href="https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version" target="_blank" rel="noopener noreferrer">HTTP/3 지원을 설정하도록 하는 빌드 순서</a>를 따라 하면 됩니다.</p>
 <p>MacOS를 사용 한다면 Homebrew 를 통해서 HTTP/3을 지원하는 curl 버전을 설치하기 쉽도록 하였습니다:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --HEAD</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/homebrew-cloudflare/master/curl.rb</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --HEAD</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/homebrew-cloudflare/master/curl.rb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>HTTP/3 요청을 보내기 위해서 필요한 것은 curl 명령에 "--http3" 명령행 인수를 주는 것으로 충분합니다:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> ./curl</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> https://blog.cloudflare.com/</span><span class="sk-005cc5-99ffe4"> --http3</span></span>
@@ -90,21 +112,37 @@
 <span class="line"><span class="sk-6f42c1-ffc799">alt-svc:</span><span class="sk-032f62-99ffe4"> h3-23=":443"</span><span class="sk-24292e-fff">; ma</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">86400</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">expect-ct:</span><span class="sk-032f62-99ffe4"> max-age=604800,</span><span class="sk-032f62-99ffe4"> report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">server:</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cf-ray:</span><span class="sk-032f62-99ffe4"> 517b128df871bfe3-MAN</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cf-ray:</span><span class="sk-032f62-99ffe4"> 517b128df871bfe3-MAN</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>quiche의 http3-client 사용시</h3>
 <p>마지막으로, HTTP/3를 테스트해 볼 때 사용할 수 있도록 quiche에서도 <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-client.rs" target="_blank" rel="noopener noreferrer">HTTP/3 명령행 클라이언트</a> (명령행 서버도 있음) 예제를 제공 합니다.</p>
 <p>테스트해 보기 위해서는 먼저 quiche 의 Github 리포지토리를 복제 합니다:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ git clone </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">recursive </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//github.com/cloudflare/quiche</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ git clone </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">recursive </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//github.com/cloudflare/quiche</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>그리고 빌드해 주세요. 빌드를 위해서는 Rust와 Cargo 를 설치해야 합니다 (Rust 개발 환경을 쉽게 설치하기 위해서는 <a href="https://rustup.rs" target="_blank" rel="noopener noreferrer">rustup</a> 을 사용하기를 권장 합니다).</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ cargo build </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">examples</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ cargo build </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">examples</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제 HTTP/3 요청을 다음과 같이 해 볼 수 있습니다:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ RUST_LOG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">info target</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">debug</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">examples</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http3</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">client https:</span><span class="sk-6a737d-8b8b8b94">//blog.cloudflare.com/</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ RUST_LOG</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">info target</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">debug</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">examples</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http3</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">client https:</span><span class="sk-6a737d-8b8b8b94">//blog.cloudflare.com/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>남은 과제</h2>
 <p>추후 저희는 현재의 QUIC과 HTTP/3 구현을 최적화하고 개선하는 작업을 계속할 것이며, 최종적으로 모든 사람이 대기 목록에 등록할 필요 없이 바로 이 새로운 기능을 이용할 수 있도록 할 것입니다. 표준이 발전해 감에 따라 구현 내용도 계속 갱신할 예정이라, 표준 초안의 갱신에 따라 <strong>하위 호환을 보장되지 않을 수 있습니다</strong>.</p>

@@ -21,8 +21,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">scheme </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> https</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">path </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> /.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">masque</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">ip</span><span class="sk-6a737d-8b8b8b94">/*/*/</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">:authority = example.org</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">capsule-protocol = ?1</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">capsule-protocol = ?1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The benefit these protocols have for the quality and security of everyone’s Internet browsing experience is real. Earlier transport protocols were built before the advent of smartphones and mobile networks, so QUIC was designed to support a mobile world, maintaining connections even in poorly connected networks, and minimizing disruptions as people switch rapidly between networks as they move through their day. Leveraging HTTP/3 as the application layer means that MASQUE is more like “normal” HTTP traffic on the Internet, meaning that it is easier to support, is compatible with existing firewall and security rules, and that it supports cryptographic agility (i.e. support for <a href="https://blog.cloudflare.com/post-quantum-for-all" target="_blank" rel="noopener noreferrer"><u>post-quantum crypto</u></a>), making this traffic more secure and resilient in the long term.</p>
 <h3>Get started now&nbsp;</h3>
 <p>All new installations of our 1.1.1.1 &amp; WARP apps support MASQUE, including iOS, Android, macOS, Windows, and Linux, and we’ve started to roll it out as the preferred protocol over WireGuard. <a href="https://developers.cloudflare.com/warp-client/get-started" target="_blank" rel="noopener noreferrer"><u>On mobile</u></a>, to check if your connection is already secured over MASQUE, or change your device’s default option, you can toggle this setting via <em>Advanced &gt; Connection options &gt; Tunnel protocol:</em></p>
@@ -39,7 +61,11 @@
 <p>On <a href="https://developers.cloudflare.com/warp-client/get-started/linux" target="_blank" rel="noopener noreferrer"><u>desktop</u></a> versions, you can switch the protocol by using the WARP command-line interface. For example:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">warp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cli tunnel protocol set </span><span class="sk-6f42c1-ffc799">WireGuard</span></span>
-<span class="line"><span class="sk-24292e-fff">warp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cli tunnel protocol set </span><span class="sk-005cc5-fff">MASQUE</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">warp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cli tunnel protocol set </span><span class="sk-005cc5-fff">MASQUE</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With this rollout, we're excited to see MASQUE deliver increased performance and stability to millions of users. Download <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>one of the WARP apps</u></a> today!</p>
 <h2>DEX now Generally Available: Announcing detailed device visibility with DEX Remote Captures</h2>

@@ -33,15 +33,41 @@
 <p>In the era before the Internet, the general method of communication between computers was with a direct point-to-point dial up connection. For example, if you wanted to send me a file, you would have your modem call my modem, and we would transfer the file. To craft this into a network of sorts, UUCP was born.</p>
 <p>In this system, each computer has a file which lists the hosts its aware of, their phone number, and a username and password on that host. You then craft a ‘path’, from your current machine to your destination, through hosts which each know how to connect to the next:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>sw-hosts!digital-lobby!zack</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>sw-hosts!digital-lobby!zack</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This address would form not just a method of sending me files or connecting with my computer directly, but also would be my email address. In this era before ‘mail servers’, if my computer was off you weren’t sending me an email.</p>
 <p>While use of ARPANET was restricted to top-tier universities, UUCP created a bootleg Internet for the rest of us. It formed the basis for both <a href="https://en.wikipedia.org/wiki/Usenet" target="_blank" rel="noopener noreferrer">Usenet</a> and the <a href="https://en.wikipedia.org/wiki/Bulletin_board_system" target="_blank" rel="noopener noreferrer">BBS</a> system.</p>
 <h3>DNS</h3>
 <p>Ultimately, the <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS system</a> we still use today would be <a href="https://www.rfc-editor.org/rfc/rfc882.txt" target="_blank" rel="noopener noreferrer">proposed</a> in 1983. If you run a DNS query today, for example using the <code>dig</code> tool, you’ll likely see a response which looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>;; ANSWER SECTION:</span></span>
-<span class="line"><span>google.com.   299 IN  A 172.217.4.206</span></span></code></pre>
+<span class="line"><span>google.com.   299 IN  A 172.217.4.206</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is informing us that google.com is reachable at <code>172.217.4.206</code>. As you might know, the <code>A</code> is informing us that this is an ‘address’ record, mapping a domain to an IPv4 address. The <code>299</code> is the ‘time to live’, letting us know how many more seconds this value will be valid for, before it should be queried again. But what does the <code>IN</code> mean?</p>
 <p><code>IN</code> stands for ‘Internet’. Like so much of this, the field dates back to an era when there were several competing computer networks which needed to interoperate. Other potential values were <code>CH</code> for the <a href="https://en.wikipedia.org/wiki/Chaosnet" target="_blank" rel="noopener noreferrer">CHAOSNET</a> or <code>HS</code> for Hesiod which was the name service of the <a href="https://en.wikipedia.org/wiki/Project_Athena" target="_blank" rel="noopener noreferrer">Athena system</a>. CHAOSNET is long dead, but a much evolved version of Athena is still used by students at MIT to this day. You can find the list of <a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml" target="_blank" rel="noopener noreferrer">DNS classes</a> on the IANA website, but it’s no surprise only one potential value is in common use today.</p>
@@ -143,7 +169,11 @@
 <span class="line"><span>.                        3600000      NS    M.ROOT-SERVERS.NET.</span></span>
 <span class="line"><span>M.ROOT-SERVERS.NET.      3600000      A     202.12.27.33</span></span>
 <span class="line"><span>M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35</span></span>
-<span class="line"><span>; End of file</span></span></code></pre>
+<span class="line"><span>; End of file</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Root DNS servers operate in safes, inside locked cages. A clock sits on the safe to ensure the camera feed hasn’t been looped. Particularly given how slow <a href="https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a> implementation has been, an attack on one of those servers could allow an attacker to redirect all of the Internet traffic for a portion of Internet users. This, of course, makes for the most fantastic heist movie to have never been made.</p>
 <p>Unsurprisingly, the nameservers for top-level TLDs don’t actually change all that often. <a href="http://dns.measurement-factory.com/writings/wessels-pam2003-paper.pdf" target="_blank" rel="noopener noreferrer">98%</a> of the requests root DNS servers receive are in error, most often because of broken and toy clients which don’t properly cache their results. This became such a problem that several root DNS operators had to <a href="https://www.as112.net" target="_blank" rel="noopener noreferrer">spin up</a> special servers just to return ‘go away’ to all the people asking for reverse DNS lookups on their local IP addresses.</p>
@@ -173,7 +203,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>1Chevy Camaro             /Archives/cars/cc     gopher.cars.com     70</span></span>
 <span class="line"><span>iThe Camaro is a classic  fake                  (NULL)              0</span></span>
 <span class="line"><span>iAmerican Muscle car      fake                  (NULL)              0</span></span>
-<span class="line"><span>1Ferrari 451              /Factbook/ferrari/451  gopher.ferrari.net 70</span></span></code></pre>
+<span class="line"><span>1Ferrari 451              /Factbook/ferrari/451  gopher.ferrari.net 70</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>which identifies two cars, along with some metadata about them and where you can connect to for more information. The understanding was your client would parse this information into a usable form which linked the entries with the destination pages.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -185,7 +219,11 @@
 <p>A request:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>GET /index.html HTTP/1.1</span></span>
-<span class="line"><span>Host: www.example.com</span></span></code></pre>
+<span class="line"><span>Host: www.example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Might respond:</p>
 <div class="emdash-code">
@@ -207,7 +245,11 @@
 <span class="line"><span>    &lt;body&gt;</span></span>
 <span class="line"><span>        Hello World, this is a very simple HTML document.</span></span>
 <span class="line"><span>    &lt;/body&gt;</span></span>
-<span class="line"><span>&lt;/html&gt;</span></span></code></pre>
+<span class="line"><span>&lt;/html&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To put this in context, you can think of the networking system the Internet uses as starting with IP, the Internet Protocol. IP is responsible for getting a small packet of data (around 1500 bytes) from one computer to another. On top of that we have TCP, which is responsible for taking larger blocks of data like entire documents and files and sending them via many IP packets reliably. On top of that, we then implement a protocol like HTTP or FTP, which specifies what format should be used to make the data we send via TCP (or UDP, etc.) understandable and meaningful.</p>
 <p>In other words, TCP/IP sends a whole bunch of bytes to another computer, the protocol says what those bytes should be and what they mean.</p>
@@ -221,15 +263,27 @@
 <h3>The Bit In-between</h3>
 <p>As you probably know, the URL syntax places a double slash (<code>//</code>) between the protocol and the rest of the URL:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://cloudflare.com</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://cloudflare.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That double slash was inherited from the <a href="https://en.wikipedia.org/wiki/Apollo/Domain" target="_blank" rel="noopener noreferrer">Apollo</a> computer system which was one of the first networked workstations. The Apollo team had a similar problem to Tim Berners-Lee: they needed a way to separate a path from the machine that path is on. Their solution was to create a special path format:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>//computername/file/path/as/usual</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>//computername/file/path/as/usual</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And TBL copied that scheme. Incidentally, he now <a href="https://www.w3.org/People/Berners-Lee/FAQ.html#etc" target="_blank" rel="noopener noreferrer">regrets</a> that decision, wishing the domain (in this case <code>example.com</code>) was the first portion of the path:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http:com/example/foo/bar/baz</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http:com/example/foo/bar/baz</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <blockquote>
 	<p>URLs were never intended to be what they’ve become: an arcane way for a user to identify a site on the Web. Unfortunately, we’ve never been able to standardize URNs, which would give us a more useful naming system. Arguing that the current URL system is sufficient is like praising the DOS command line, and stating that most people should simply learn to use command line syntax. The reason we have windowing systems is to make computers easier to use, and more widely used. The same thinking should lead us to a superior way of locating specific sites on the Web.</p>
@@ -246,14 +300,22 @@
 <span class="line"><span> </span></span>
 <span class="line"><span>PR:aftp/xx.yy.edu/pub/doc/README</span></span>
 <span class="line"><span> </span></span>
-<span class="line"><span>/aftp/xx.yy.edu/pub/doc/README</span></span></code></pre>
+<span class="line"><span>/aftp/xx.yy.edu/pub/doc/README</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This document also explains why spaces must be encoded in URLs (%20):</p>
 <p>&gt; The use of white space characters has been avoided in UDIs: spaces<br>&gt; are not legal characters. This was done because of the frequent<br>&gt; introduction of extraneous white space when lines are wrapped by<br>&gt; systems such as mail, or sheer necessity of narrow column width, and<br>&gt; because of the inter-conversion of various forms of white space<br>&gt; which occurs during character code conversion and the transfer of<br>&gt; text between applications.</p>
 <p>What’s most important to understand is that the URL was fundamentally just an abbreviated way of refering to the combination of scheme, domain, port, credentials and path which previously had to be understood contextually for each different communication system.</p>
 <p>It was first officially defined in an <a href="https://www.ietf.org/rfc/rfc1738.txt" target="_blank" rel="noopener noreferrer">RFC</a> published in 1994.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>scheme:[//[user:password@]host[:port]][/]path[?query][#fragment]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This system made it possible to refer to different systems from within Hypertext, but now that virtually all content is hosted over HTTP, may not be as necessary anymore. As early as <a href="https://lists.w3.org/Archives/Public/www-talk/1996JanFeb/0075.html" target="_blank" rel="noopener noreferrer">1996</a> browsers were already inserting the <code>http://</code> and <code>www.</code> for users automatically (rendering any advertisement which still contains them truly ridiculous).</p>
 <h3>Path</h3>
@@ -264,7 +326,11 @@
 <p>The slash separated path component of a URL should be familiar to any user of any computer built in the last fifty years. The hierarchal filesystem itself was introduced by the <a href="http://www.multicians.org" target="_blank" rel="noopener noreferrer">MULTICS</a> system. Its creator, in turn, attributes it to <a href="http://www.csl.sri.com/users/neumann" target="_blank" rel="noopener noreferrer">a two hour conversation with Albert Einstein</a> he had in 1952.</p>
 <p>MULTICS used the greater than symbol (<code>&gt;</code>) to separated file path components. For example:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&gt;usr&gt;bin&gt;local&gt;awk</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&gt;usr&gt;bin&gt;local&gt;awk</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>That was perfectly logical, but unfortunately the Unix folks <a href="https://www.bell-labs.com/usr/dmr/www/cacm.html" target="_blank" rel="noopener noreferrer">decided</a> to use <code>&gt;</code> to represent redirection, delegating path separation to the forward slash (<code>/</code>).</p>
 <h3>Snapchat the Supreme Court</h3>
@@ -286,7 +352,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;!-- On http://zack.is/history --&gt;</span></span>
 <span class="line"><span>&lt;link rel="past-url" href="http://zackbloom.com/history.html"&gt;</span></span>
-<span class="line"><span>&lt;link rel="past-url" href="http://zack.is/history.html"&gt;</span></span></code></pre>
+<span class="line"><span>&lt;link rel="past-url" href="http://zack.is/history.html"&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Query Params</h3>
 <blockquote>
@@ -299,20 +369,36 @@
 <p>In any case, these ‘physicists’ needed a way of encoding and linking to information, and a way of searching that information. To provide that, Tim Berners-Lee created the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/isindex" target="_blank" rel="noopener noreferrer"><code>&lt;ISINDEX&gt;</code></a> tag. If <code>&lt;ISINDEX&gt;</code> appeared on a page, it would inform the browser that this is a page which can be searched. The browser should show a search field, and allow the user to send a query to the server.</p>
 <p>That <a href="https://www.w3.org/History/19921103-hypertext/hypertext/WWW/Addressing/Search.html" target="_blank" rel="noopener noreferrer">query</a> was formatted as keywords separated by plus characters (<code>+</code>):</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://cernvm/FIND/?sgml+cms</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://cernvm/FIND/?sgml+cms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In fantastic Internet fashion, this tag was quickly abused to do all manner of things including providing an input to calculate square roots. It was <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0042.html" target="_blank" rel="noopener noreferrer">quickly proposed</a> that perhaps this was too specific, and we really needed a general purpose <code>&lt;input&gt;</code> tag.</p>
 <p>That particular proposal actually uses plus signs to separate the components of what otherwise looks like a modern GET query:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://somehost.somewhere/some/path?x=xxxx+y=yyyy+z=zzzz</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://somehost.somewhere/some/path?x=xxxx+y=yyyy+z=zzzz</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This was far from universally acclaimed. <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0032.html" target="_blank" rel="noopener noreferrer">Some believed</a> we needed a way of saying that the content on the other side of links should be searchable:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;a HREF="wais://quake.think.com/INFO" INDEX=1&gt;search&lt;/a&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;a HREF="wais://quake.think.com/INFO" INDEX=1&gt;search&lt;/a&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Tim Berners-Lee <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0044.html" target="_blank" rel="noopener noreferrer">thought</a> we should have a way of defining strongly-typed queries:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;ISINDEX TYPE="iana:/www/classes/query/personalinfo"&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;ISINDEX TYPE="iana:/www/classes/query/personalinfo"&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I can be somewhat confident in saying, in retrospect, I am glad the more generic solution won out.</p>
 <p>The real work on <code>&lt;INPUT&gt;</code> <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0079.html" target="_blank" rel="noopener noreferrer">began</a> in January of 1993 based on an older SGML type. It was (perhaps unfortunately), <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0085.html" target="_blank" rel="noopener noreferrer">decided</a> that <code>&lt;SELECT&gt;</code> inputs needed a separate, richer, structure:</p>
@@ -321,7 +407,11 @@
 <span class="line"><span>    &lt;choice&gt;item 1</span></span>
 <span class="line"><span>    &lt;choice&gt;item 2</span></span>
 <span class="line"><span>    &lt;choice&gt;item 3</span></span>
-<span class="line"><span>&lt;/select&gt;</span></span></code></pre>
+<span class="line"><span>&lt;/select&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you’re curious, reusing <code>&lt;li&gt;</code>, rather than introducing the <code>&lt;option&gt;</code> element was <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0188.html" target="_blank" rel="noopener noreferrer">absolutely</a> considered. There were, of course, alternative form proposals. <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0168.html" target="_blank" rel="noopener noreferrer">One</a> included some variable substituion evocative of what Angular might do today:</p>
 <div class="emdash-code">
@@ -330,34 +420,62 @@
 <span class="line"><span>&lt;CHOICE DEFAULT=default VAR=lval&gt;</span></span>
 <span class="line"><span>    &lt;ALTERNATIVE VAL=value1&gt;Prompt1 ...</span></span>
 <span class="line"><span>    &lt;ALTERNATIVE VAL=valuen&gt;Promptn</span></span>
-<span class="line"><span>&lt;/CHOICE&gt;</span></span></code></pre>
+<span class="line"><span>&lt;/CHOICE&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this example the inputs are checked against the type specified in <code>type</code>, and the <code>VAR</code> values are available on the page for use in <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0150.html" target="_blank" rel="noopener noreferrer">string substitution</a> in URLs, à la:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://cloudflare.com/apps/$appId</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://cloudflare.com/apps/$appId</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Additional <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0188.html" target="_blank" rel="noopener noreferrer">proposals</a> actually used <code>@</code>, rather than <code>=</code>, to separate query components:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name@value+name@(value&amp;value)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name@value+name@(value&amp;value)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It was Marc Andreessen who <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0812.html" target="_blank" rel="noopener noreferrer">suggested</a> our current method based on what he had already implemented in Mosaic:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name=value&amp;name=value&amp;name=value</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name=value&amp;name=value&amp;name=value</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Just <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0437.html" target="_blank" rel="noopener noreferrer">two months later</a> Mosaic would add support for <code>method=POST</code> forms, and ‘modern’ HTML forms were born.</p>
 <p>Of course, it was also Marc Andreessen’s company <a href="https://web.archive.org/web/19990421025406/http://home.mcom.com/newsref/std/cookie_spec.html" target="_blank" rel="noopener noreferrer">Netscape</a> who would create the cookie format (using a different separator). Their proposal was itself painfully shortsighted, led to the attempt to introduce a <a href="https://www.ietf.org/rfc/rfc2965.txt" target="_blank" rel="noopener noreferrer"><code>Set-Cookie2</code></a> header, and introduced fundamental structural issues we still deal with at Cloudflare to this day.</p>
 <h3>Fragments</h3>
 <p>The portion of the URL following the ‘#’ is known as the fragment. Fragments were a part of URLs since their <a href="https://www.w3.org/History/19921103-hypertext/hypertext/WWW/Addressing/Addressing.html" target="_blank" rel="noopener noreferrer">initial specification</a>, used to link to a specific location on the page being loaded. For example, if I have an anchor on my site:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;a name="bio"&gt;&lt;/a&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;a name="bio"&gt;&lt;/a&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I can link to it:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://zack.is/#bio</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://zack.is/#bio</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This concept was gradually extended to any element (rather than just anchors), and moved to the <code>id</code> attribute rather than <code>name</code>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;h1 id="bio"&gt;Bio&lt;/h1&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&lt;h1 id="bio"&gt;Bio&lt;/h1&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Tim Berners-Lee decided to use this character based on its connection to addresses in the United States (despite the fact that he’s British by birth). In <a href="https://www.w3.org/People/Berners-Lee/FAQ.html#etc" target="_blank" rel="noopener noreferrer">his words</a>:</p>
 <blockquote>In a snail mail address in the US at least, it is common to use the number sign for an apartment number or suite number within a building. So 12 Acacia Av #12 means “The building at 12 Acacia Av, and then within that the unit known numbered 12”. It seemed to be a natural character for the task. Now, http://www.example.com/foo#bar means “Within resource http://www.example.com/foo, the particular view of it known as bar”.</blockquote>
@@ -379,11 +497,19 @@
 <h3>Auth</h3>
 <p>As you may know, you can include a username and password in URLs:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://zack:shhhhhh@zack.is</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>http://zack:shhhhhh@zack.is</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The browser then encodes this authentication data into <a href="https://en.wikipedia.org/wiki/Base64" target="_blank" rel="noopener noreferrer">Base64</a>, and sends it as a header:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Authentication: Basic emFjazpzaGhoaGho</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Authentication: Basic emFjazpzaGhoaGho</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The only reason for the Base64 encoding is to allow characters which might not be valid in a header, it provides no obscurity to the username and password values.</p>
 <p>Particularily over the pre-SSL internet, this was very problematic. Anyone who could snoop on your connection could easily see your password. <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0297.html" target="_blank" rel="noopener noreferrer">Many alternatives</a> were proposed including <a href="https://en.wikipedia.org/wiki/Kerberos_(protocol)" target="_blank" rel="noopener noreferrer">Kerberos</a> which is a widely used security protocol both then and now.</p>

@@ -12,12 +12,38 @@
 <p>Before matching these variables against specific malicious request signatures, some transformations are applied. These transformations are functions that range from simple modifications like lowercasing strings to complex tokenizers and parsers looking to fingerprint certain malicious payloads.</p>
 <p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org" target="_blank" rel="noopener noreferrer">ModSecurity</a> syntax, this is what a rule might look like:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SecRule</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-032f62-99ffe4"> "@rx /\x00+evil"</span><span class="sk-032f62-99ffe4"> "drop, t:urlDecode, t:lowercase"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SecRule</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-032f62-99ffe4"> "@rx /\x00+evil"</span><span class="sk-032f62-99ffe4"> "drop, t:urlDecode, t:lowercase"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>It takes the request body stored in the <code>REQUEST_BODY</code> variable, applies the <code>urlDecode()</code> and <code>lowercase()</code> functions to it and then compares the result with the regular expression signature <code>\x00+evil</code>.</p>
 <p>In pseudo-code, we can represent it as:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Which in turn would match a request whose body contained <a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener noreferrer">percent encoded</a> NULL bytes followed by the word "evil", e.g.:</p>
 <div class="emdash-code">
@@ -26,7 +52,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Content-Type:</span><span class="sk-032f62-99ffe4"> text/plain</span><span class="sk-24292e-fff">; charset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">utf-8</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Content-Length:</span><span class="sk-005cc5-ffc799"> 16</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">thiSis%2F%00eVil</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">thiSis%2F%00eVil</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The WAF contains thousands of these rules and its objective is to execute them as quickly as possible to minimize any added latency to a request. And to make things harder, it needs to run most of the rules on nearly every request. That’s because almost all HTTP requests are non-malicious and no rules are going to match. So we have to optimize for the worst case: execute everything!</p>
 <p>To help mitigate this problem, one of the first matching steps executed for many rules is pre-filtering. By checking if a request contains certain bytes or sets of strings we are able to potentially skip a considerable number of expressions.</p>
@@ -34,7 +64,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">contains(</span><span class="sk-032f62-99ffe4"> "\x00",</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> )</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">and</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Since most requests don’t match any rule and these checks are quick to execute, overall we aren’t doing more operations by adding them.</p>
 <p>Other steps can also be used to scan through and combine several regular expressions and avoid execution of rule expressions. As usual, doing less work is often the simplest way to make a system faster.</p>
@@ -45,7 +79,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">1.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+EVIL"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> remove_spaces</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">3.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-24292e-fff"> ) ) )</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">4.</span><span class="sk-032f62-99ffe4"> streq</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">4.</span><span class="sk-032f62-99ffe4"> streq</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this case, we can reuse the result of the nested function calls (1) as they’re the same in (4). By saving intermediate results we are also able to take advantage of the result of <code>url_decode( body )</code> from (1) and use it in (2) and (4). Sometimes it is also possible to swap the order functions are applied to improve caching, though in this case we would get different results.</p>
 <p>A naive implementation of this system can simply be a hash table with each entry having the function(s) name(s) and arguments as the key and its output as the value.</p>
@@ -88,7 +126,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">100215</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> t:lowercase</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-24292e-fff"> (?i)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">100300</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> consider</span><span class="sk-032f62-99ffe4"> REQUEST_URI</span><span class="sk-032f62-99ffe4"> over</span><span class="sk-032f62-99ffe4"> REQUEST_FILENAME</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">100137D</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> invert</span><span class="sk-032f62-99ffe4"> order</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> t:replaceNulls,t:lowercase</span></span>
-<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After identifying more than 40 rules, we rewrote them to take full advantage of memoization and added pre-filter checks where possible. Many of these changes were not immediately obvious, which is why we’re also creating tools to aid analysts in creating even more efficient rules. This also helps ensure they run in accordance with the latency budgets the team has set.</p>
 <p>This change resulted in an increase of the cache hit percentage from 56% to <strong>74%</strong>, which crucially included the most expensive transformations.</p>

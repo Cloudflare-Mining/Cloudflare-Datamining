@@ -7,8 +7,30 @@
 <span class="line"><span class="sk-24292e-fff">go get </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">u github.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">go</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">v2</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Python</span></span>
-<span class="line"><span class="sk-24292e-fff">pip install cloudflare</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">pip install cloudflare</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Instead of using a tool like <code>curl</code> or Postman to create a new zone in your account, you can use one of the SDKs in a language that you’re already comfortable with or that integrates directly into your existing codebase.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Cloudflare </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare'</span><span class="sk-24292e-fff">;</span></span>
@@ -21,7 +43,11 @@
 <span class="line"><span class="sk-24292e-fff">  account: { id: </span><span class="sk-032f62-99ffe4">'023e105f4ecef8ad9ca31a8372d0c353'</span><span class="sk-24292e-fff"> },</span></span>
 <span class="line"><span class="sk-24292e-fff">  name: </span><span class="sk-032f62-99ffe4">'example.com'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  type: </span><span class="sk-032f62-99ffe4">'full'</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Since their inception, our SDKs have been manually maintained by one or more dedicated individuals. For every product addition or improvement, we needed to orchestrate a series of manually created pull requests to get those changes into customer hands. This, unfortunately, created an imbalance in the frequency and quality of changes that made it into the SDKs. Even though the product teams would drive some of these changes, not all languages were covered and the SDKs fell to either community-driven contributions or to the maintainers of the libraries to cover the remaining languages. Internally, we too felt this pain when using our own services and, instead of covering all languages, decided to rally our efforts behind the primary SDK (Go) to ensure that at least one of these libraries was in a good state.</p>
 <p>This plan worked for newer products and additions to the Go SDK, which in turn helped tools like our <a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">Terraform Provider</a> stay mostly up to date, but even this focused improvement was still very taxing and time-consuming for internal teams to maintain. On top of this, the process didn’t provide any guarantees on coverage, parity, or correctness because the changes were still manually maintained and susceptible to human error. Regardless of the size of contribution, a team member would still need to coordinate a minimum of 4 pull requests (shown in more depth below) before a change was considered shipped and needed deep knowledge of the relationship between the dependencies in order to get it just right.</p>
@@ -36,13 +62,21 @@
 <p>This was important for us because too often companies build SDKs using automation. Not only do you end up with SDKs that are flavored based on generator language, but the SDKs then lack the language nuances or patterns that are noticeable to users familiar with the language.</p>
 <p>For example, a Rubyist may use the following <code>if</code> expression:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">do_something </span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> bar?</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">do_something </span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> bar?</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Whereas most generators do not have this context and would instead default to the standard case where <code>if/else</code> expressions are spread over multiple lines.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> bar?</span></span>
 <span class="line"><span class="sk-24292e-fff">  do_something</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">end</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">end</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Despite being a simple and non-material example, it demonstrates a nuance that a machine cannot decipher on its own. This is terrible for developers because you’re then no longer only thinking about how to solve the original task at hand, but you also end up tailoring your code to match how the generator has built the SDK and potentially lose out on the language features you would normally use. The problem is made significantly worse if you’re using a strongly typed language to generate a language without types, since it will be structuring and building code in a way that types are expected but never used.</p>
 <h3>Lowering the mean time to uniform support</h3>
@@ -56,7 +90,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">client.dns.records.list(...</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Python</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">client.dns.records.list(...</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">client.dns.records.list(...</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This leads to less time digging through documentation to find what invocation you need and more time using the tools you’re already familiar with.</p>
 <h3>Fast feedback loops, clear conventions</h3>
@@ -84,7 +122,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> [];</span></span>
 <span class="line"><span class="sk-24292e-fff">        },</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And the rule configuration:</p>
 <div class="emdash-code">
@@ -101,7 +143,11 @@
 <span class="line"><span class="sk-22863a-ffc799">      defined</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  assertions</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">    local/apiTokenAuthSupported</span><span class="sk-24292e-fff">: {}</span></span>
-<span class="line"><span class="sk-22863a-ffc799">    local/apiTokenAuthDefinedFirst</span><span class="sk-24292e-fff">: {}</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">    local/apiTokenAuthDefinedFirst</span><span class="sk-24292e-fff">: {}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this example, should a team forget to put the API token authentication scheme first, or define it at all, the CI run will fail. Teams are provided a helpful failure message with a link to the conventions to discover more if they need to understand why the change is recommended.</p>
 <p>These lints can be used for style conventions, too. For our documentation descriptions, we like descriptions to start with a capital letter and end in a period. Again, we can add a lint to enforce this requirement.</p>
@@ -119,7 +165,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> [{message: </span><span class="sk-032f62-99ffe4">'Descriptions should start with a capital and end in a period.'</span><span class="sk-24292e-fff">, location}];</span></span>
 <span class="line"><span class="sk-24292e-fff">        },</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">rule/security-options-defined</span><span class="sk-24292e-fff">:</span></span>
@@ -128,7 +178,11 @@
 <span class="line"><span class="sk-22863a-ffc799">    type</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">Schema</span></span>
 <span class="line"><span class="sk-22863a-ffc799">    property</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">description</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  assertions</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-22863a-ffc799">    local/descriptionIsFormatted</span><span class="sk-24292e-fff">: {}</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">    local/descriptionIsFormatted</span><span class="sk-24292e-fff">: {}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This makes shipping endpoints of the same quality much easier and prevents teams needing to sort through all the API design or resiliency patterns we may have introduced over the years – possibly even before they joined Cloudflare.</p>
 <h2>Building the generation machine</h2>
@@ -139,7 +193,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">resources</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  zones</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">    methods</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-22863a-ffc799">      list</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">get /zones</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">      list</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">get /zones</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The configuration above would allow you to generate various <code>client.zones.list()</code> operations across your SDKs.</p>
 <p>This approach means we can do the majority of our changes using the existing API schemas, but if there is an SDK-specific issue, we can modify that behavior on a per-SDK basis using the configuration file.</p>
@@ -178,14 +236,22 @@
 <span class="line"><span></span></span>
 <span class="line"><span>[property-identifier-to-id]</span></span>
 <span class="line"><span>match = 'name: :[topic]_identifier'</span></span>
-<span class="line"><span>rewrite = 'name: :[topic]_id'</span></span></code></pre>
+<span class="line"><span>rewrite = 'name: :[topic]_id'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For an interactive version of this configuration, check out the comby playground.</p>
 <p>This approach worked for the majority of our internal changes. However, knowing how difficult migrations can be, we also wanted a tool that we could provide to customers to use for their own SDK migrations. In the past we’ve used <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-3-upgrade" target="_blank" rel="noopener noreferrer">comby for upgrades in the Terraform Provider</a> with great feedback. While comby is powerful, once you start using more complex expressions, the syntax can be difficult to understand unless you are familiar with it.</p>
 <p>After looking around, we eventually found <a href="https://www.grit.io" target="_blank" rel="noopener noreferrer">Grit</a>. It is a tool that does everything we need (including the custom CLI) while being very familiar to anyone that understands basic Javascript through a query language, known as <a href="https://docs.grit.io/tutorials/gritql" target="_blank" rel="noopener noreferrer">GritQL</a>. An added bonus here is that we are able to contribute to the <a href="https://docs.grit.io/patterns" target="_blank" rel="noopener noreferrer">Grit Pattern Library</a>, so our migrations are <a href="https://app.grit.io/studio?preset=cloudflare_go_v2&amp;key=nt_BGTed1mbXzuvxZ9n2q" target="_blank" rel="noopener noreferrer">only ever a single CLI invocation away</a> for anyone to use once they have the CLI installed.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Migrate</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Golang</span><span class="sk-032f62-99ffe4"> v2</span><span class="sk-032f62-99ffe4"> library</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">grit</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-032f62-99ffe4"> cloudflare_go_v2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">grit</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-032f62-99ffe4"> cloudflare_go_v2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Consistency, consistency, consistency</h3>
 <p>Did I mention consistency is important? Before attempting to feed your OpenAPI schemas into any system (especially a homegrown one), get them consistent with the practices, structures, and how you intend to represent them. This makes determining what is a bug in your generation pipeline vs a bug in your schema much easier. If it’s broken everywhere, it’s the generation pipeline, otherwise it’s an isolated bug to track down in your schema.</p>
@@ -220,7 +286,11 @@
 <span class="line"><span class="sk-22863a-ffc799">thing_id</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  type</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">string</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  description</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">Unique identifier of the resource.</span></span>
-<span class="line"><span class="sk-22863a-ffc799">  example</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2014-01-01T05:20:00Z"</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">  example</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2014-01-01T05:20:00Z"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Did you spot the bug? Have another look at the <code>created_at</code> value. You likely didn’t catch it at first glance, but this is a common issue when needing to reference reusable values. Here, it is a minor annoyance as the documentation would be incorrect (<code>created_at</code> would have the description of <code>updated_at</code>), but in other cases, it could be a completely incorrect schema representation.</p>
 <p>For us, the correct usage of <code>$ref</code> values is predominantly where you have potential for multiple component schemas that may be used as part of a <code>oneOf</code>, <code>allOf</code> or <code>anyOf</code> directive.</p>
@@ -255,7 +325,11 @@
 <span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-032f62-99ffe4">content</span></span>
 <span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-032f62-99ffe4">proxiable</span></span>
 <span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-032f62-99ffe4">created_on</span></span>
-<span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-032f62-99ffe4">modified_on</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-032f62-99ffe4">modified_on</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When in doubt, consider the <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it" target="_blank" rel="noopener noreferrer">YAGNI principle</a> instead. You can always refactor and extract this later once you have enough uses to determine the correct abstraction.</p>
 <h3>Design your ideal usage and work backwards</h3>

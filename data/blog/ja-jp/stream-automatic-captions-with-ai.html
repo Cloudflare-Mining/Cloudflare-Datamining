@@ -62,8 +62,30 @@
 <span class="line"><span class="sk-24292e-fff">     })</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
 <span class="line"><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Streamチームはこの機能を大規模動画に対して高速かつ高性能にしたいと考えていました。これを実現するために、大量の動画を再生時間に関係なく処理できるようにするためのエンジニアリング作業が必要でした。</p>
 <p>まず、わたしたちのチームは、入力がWhisperの入力フォーマットと要件に適合することを確認するために、<a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer">AI推論</a>を実行する前に音声を事前処理する必要がありました。</p>
 <p>動画コンテンツには、携帯電話で撮影された短時間の粒度の粗い動画から、ハリウッドで制作された数時間にわたる高画質の映画まで、幅広いバリエーションが存在します。動画には無音のものや、アクションによって生じた雑音が含まれているものもあります。また、Streamのオンデマンド動画にはライブストリームの録画が含まれますが、ファイル全体としてアップロードされた動画とはパッケージ化が異なるものになっています。この可変性により、音声入力はさまざまなコンテナフォーマットで様々な持続時間、様々なファイルサイズで保存されます。私たちは、私たちの音声ファイルがWhisperの要件に適合する適切な形式にフォーマットされていることを確認しました。</p>

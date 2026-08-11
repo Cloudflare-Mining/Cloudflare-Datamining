@@ -28,8 +28,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">service HelloWorldHandler {</span></span>
 <span class="line"><span class="sk-24292e-fff">   rpc </span><span class="sk-6f42c1-ffc799">SayHello</span><span class="sk-24292e-fff">(Hello) </span><span class="sk-6f42c1-ffc799">returns</span><span class="sk-24292e-fff"> (HelloResponse){}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Once we run our <em>protoc</em> command, we are ready to write the server-side code. In order to implement the <em>HelloWorldHandler</em>, we must define a struct that implements all of the RPC functions specified in the protobuf schema above_._ In this case, the struct <em>Server</em> defines a function <em>SayHello</em> that takes in two parameters, context and <em>*pb.Hello</em>. <em>*pb.Hello</em> was previously specified in the schema and contains one field, <em>Name. SayHello</em> must also return the <em>*pbHelloResponse</em> which has been defined without fields for simplicity.</p>
 <p>Inside the main function, we create a TCP listener, create a new gRPC server, and then register our handler as a <em>HelloWorldHandlerServer</em>. After calling <em>Serve</em> on our gRPC server, clients will be able to communicate with the server through the function <em>SayHello</em>.</p>
 <p>Simple Server:</p>
@@ -52,7 +74,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-6f42c1-ffc799"> err</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> gRPCServer.</span><span class="sk-6f42c1-ffc799">Serve</span><span class="sk-24292e-fff">(lis); err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> nil {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        panic</span><span class="sk-24292e-fff">(err)</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we need to implement the gRPC Client. First, we establish a TCP connection with the server. Then, we create a new <em>pb.HandlerClient</em>. The client is able to call the server's <em>SayHello</em> function by passing in a *<em>pb.Hello</em> object.</p>
 <p>Simple Client:</p>
@@ -62,7 +88,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    panic</span><span class="sk-24292e-fff">(err)</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">client</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> pb.</span><span class="sk-6f42c1-ffc799">NewHelloWorldHandlerClient</span><span class="sk-24292e-fff">(conn)</span></span>
-<span class="line"><span class="sk-24292e-fff">client.</span><span class="sk-6f42c1-ffc799">SayHello</span><span class="sk-24292e-fff">(context.</span><span class="sk-6f42c1-ffc799">Background</span><span class="sk-24292e-fff">(), </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">pb.Hello{Name: </span><span class="sk-032f62-99ffe4">"alex"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">client.</span><span class="sk-6f42c1-ffc799">SayHello</span><span class="sk-24292e-fff">(context.</span><span class="sk-6f42c1-ffc799">Background</span><span class="sk-24292e-fff">(), </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">pb.Hello{Name: </span><span class="sk-032f62-99ffe4">"alex"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Though I have removed some code for simplicity, these <em>services</em> and <em>messages</em> can become quite complex if needed. The most important thing to understand is that when a server attempts to announce itself as a <em>HelloWorldHandlerServer</em>, it is required to implement the RPC functions as specified within the protobuf schema. This agreement between the client and server makes cross-language network calls feel like regular function calls.</p>
 <p>In addition to the basic Unary server described above, gRPC lets you decide between four types of service methods:</p>
@@ -120,7 +150,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        cidr</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">10.0</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">0.0</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">24</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ports</span><span class="sk-24292e-fff">:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    -</span><span class="sk-6f42c1-ffc799"> protocol</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">TCP</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">      port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5978</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">      port</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5978</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this example, taken from the <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies" target="_blank" rel="noopener noreferrer">Kubernetes docs</a>, we can see that this will create a network policy called test-network-policy. This policy controls both ingress and egress communication to or from any pod that matches the role <em>db</em> and enforces the following rules:</p>
 <p>Ingress connections allowed:</p>
@@ -149,7 +183,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // Verified</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> handler</span><span class="sk-24292e-fff">(ctx, req)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this example code snippet, we are grabbing the username, password, and requested function from the info object. We then authenticate against the client to make sure that it has correct rights to call that function. This interceptor will run before any of the other functions get called, which means one implementation protects all functions. The client would initialize its secure connection and send credentials like so:</p>
 <div class="emdash-code">
@@ -163,7 +201,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> nil, err</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">client</span><span class="sk-24292e-fff">:</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> pb.</span><span class="sk-6f42c1-ffc799">NewRecordHandlerClient</span><span class="sk-24292e-fff">(conn)</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// Can now start using the client</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Can now start using the client</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here the client first verifies that the server matches with the certFile. This step ensures that the client does not accidentally send its password to a bad actor. Next, the client initializes the <em>perRPCCreds</em> struct with its username and password and dials the server with that information. Any time the client makes a call to an rpc defined function, its credentials will be verified by the server.</p>
 <h3>Next Steps</h3>

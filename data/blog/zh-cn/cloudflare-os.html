@@ -1,0 +1,169 @@
+<p>每个组织都有其使命和存在意义。组织将其使命，连同其术语、流程、系统、标准及工作方式，一并传递给员工。员工进而结合这些上下文与自身经验，为实现使命而努力工作。</p>
+<p>工作的形式多种多样，涵盖代码、文档与幻灯片、人际关系，乃至物理世界中的实际成果。</p>
+<p>其中一些简单明了：代码要么能运行，要么不能。过去几年来，智能体一直利用这一反馈循环，为开发者生成“可用”的代码。那么我们其他人呢？</p>
+<p>将这种优势扩展到组织中的其他部门是一个更具挑战性的问题。智能体需要理解公司的业务背景，并能够访问员工完成工作所使用的系统。它们这一背景知识和系统访问转化为促进组织达成业务目标的具体行动。</p>
+<p>为此我们打造了 Cloudflare One。它为每个人配备基于企业自身情况构建的智能体与工作区：包括企业的运作方式、掌握的知识以及所依赖的各类系统。</p>
+<p>今年 5 月，我们向 Cloudflare 的每位员工开放了 Cloudflare OS 的首个版本访问权限。来自各个职能部门的数千名人员（其中多数并非工程技术岗位）每天都在使用它撰写文档、制作幻灯片、自动化处理重复性任务，以及构建小型应用以实现数据可视化，帮助他们开展日常工作。</p>
+<p>Cloudflare OS 还为每个人提供了由 Cloudflare 团队打造的上下文与技能共享库。它记录我们的术语、流程以及执行重复工作时的最佳方法，作为智能代理可执行的指令。当有人摸索出更优的做事方式时，其他人都可以直接复用该方案。</p>
+<p><strong>今天，我们正式开源 <a href="https://os.cloudflare.app" target="_blank" rel="noopener noreferrer">&nbsp;<u>Cloudflare OS</u></a> 的一个新版本。</strong>任何组织都可以部署它，将其连接到内部系统，使其成为自己的平台。</p>
+<h2><strong>我们从首个版本获取的经验</strong></h2>
+<p>我们今日开源的 Cloudflare OS，基于内部运行的首个版本所积累的经验，我们的首席信息官 Sam Rhea 在其<a href="https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os" target="_blank" rel="noopener noreferrer">​<u>博客文章</u></a>中介绍了这一历程。</p>
+<p>首个版本的核心是让个人通过私有工作区与智能体协同工作。应用均为静态，并非连接内部系统的实时软件；而且基本为确定性的任务，仍需重新运行智能体技能，消耗更多模型 token。</p>
+<p>协作暴露出一个更根本性的挑战。访问<a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"> <u>MCP 服务器</u></a>告诉我们智能体可以调用哪些工具，但无法告知智能体观察到了哪些底层资源。一旦人们开始共享工作区、应用和输出，我们就需要确保协作不会泄露任何不被允许查看的信息。</p>
+<p>我们在新的基础上重建了 Cloudflare OS，以解决这些问题。安全必须成为平台的一部分，而不能只是每个正在构建应用或使用智能体的人都必须正确实现的东西。</p>
+<p>最终打造出的这一平台归属于运营它的企业。您可以自定义界面、接入自有工具，并添加能够体现您的组织运作模式的技能与上下文。</p>
+<h2><strong>隆重推出 Cloudflare OS</strong></h2>
+<p>Cloudflare OS 从您浏览器中的一段对话开始，就像许多其他 AI 工具一样。不同之处在于：每一段对话都立足于您的组织所精心整理的上下文及技能。给您的工作区设定一个目标，它就可以利用这些知识，并结合您的组织已经使用的工具和数据来实现该目标。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAApqrhqa3asrTNu73MwcTZv8TjuLzfrrDQq7PmsbjiwMTaz9Lc19ro1NjvyMvpubvZsLvtucLqzdTo4OXt6u/35ur81trzw8Xjsr/zvMjy0tvx5+748ff/7fP/2+H7x8vrsL73ucb2zdf14en66vL/5u7/1t/+w8vuq7n6sr73wcvz0Nn21+L/1OD/x9X9ucfuprP7qrb2s73vvcfwws/5wND/t8r6rsHspLD7prL2rbfttL/tuMb3tsj+sMX5qb/r" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 2.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY68A0TND85MN4AZCF3G.png&amp;w=1536&amp;h=1024&amp;f=webp" data-lightbox-width="1536" data-lightbox-height="1024" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare OS 包含三个部分：</p>
+<ul>
+	<li><strong>一个智能体工作区</strong>，基于贵公司精心整理的上下文与技能，提供隔离运行时（isolated runtime），以便智能体能够编写并运行代码。</li>
+	<li><strong>一个新的安全和治理框架</strong>，用于安全访问内部数据和服务。</li>
+	<li><strong>一个面向个人、可修改应用的平台</strong>，用户可在其中构建、分享并继续更改。</li>
+</ul>
+<p>对话的结果可以是一份文档、一个应用或一个继续执行工作的工作流。</p>
+<h2><strong>一个面向贵公司每个人的智能体工作区</strong></h2>
+<p>智能体工作区旨在供组织内的每个人使用。您在浏览器中与它们进行交互，不必成为开发人员，也无需知道如何使用终端。&nbsp;</p>
+<p>工作区整合了智能体会话、持久状态、输出和文件、资源访问以及一个供智能体编写和运行代码的隔离运行环境。</p>
+<p>它们预先加载了团队或公司收集并精心整理的背景知识和技能。不必为每一项任务重新“发明轮子”。如果您团队中的某个人已经找到了完成某件事的最佳方法，那么大家都会从中受益。人们不再需要在每次开始任务时都向模型解释同一过程、术语以及最佳实践。</p>
+<p>您可以做的几件事：</p>
+<h3><strong>研究和提问</strong></h3>
+<p>请求智能体工作区就某个主题开展研究，结合公司的背景信息，并使用您向其提供的资源。智能体可以编写代码来搜索、筛选、关联并分析信息，而不是将整个数据集拉入模型的上下文窗口。</p>
+<div id="html-block-bgd190jjv" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/14e59c9739c9a30ebf84533ffe89bce1/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F14e59c9739c9a30ebf84533ffe89bce1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h3><strong>创建文档、幻灯片和电子表格</strong></h3>
+<p>智能体工作区可以将其研究成果整理成文档、演示文稿或电子表格，供您继续编辑。这些输出不一定是静态文件。它们可以保持与实时数据的连接，随着其来源的变化而更新，并仍然可以导出到熟悉的格式或服务，例如 Google Drive。</p>
+<div id="html-block-lcmboila5" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/fe42a895850f5a3e09ea315cc967b9c2/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Ffe42a895850f5a3e09ea315cc967b9c2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h3><strong>为您的团队打造协作、互联应用</strong></h3>
+<p>当文档或电子表格不足以满足需求时，智能体可以构建一个带有自身界面、逻辑和状态的应用。该应用可以使用已连接的公司资源，并支持多人协作。</p>
+<div id="html-block-rstfgst9v" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/590a675011b831acca6e39a3808a547d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F590a675011b831acca6e39a3808a547d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h3><strong>执行确定性工作流&nbsp;</strong></h3>
+<p>并非每个任务都需要完整的智能体会话。其中很多是已知的一系列步骤，仅在一两处需要进行判断。工作区可以将这些任务转换为以确定性为主的工作流：用代码实现可预测的环节，仅在能够产生实际价值的场景下调用模型。工作流可以按需运行、按计划运行，或在连接系统中发生某个事件时触发。</p>
+<div id="html-block-gkq7xrb9p" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3422a15e3cb34c8817b0741e0e025054/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F3422a15e3cb34c8817b0741e0e025054%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>Cloudflare OS 通过 Gatekeepers 为智能体与应用提供对记录系统的受控访问权限（更多相关内容请参阅下文安全部分）。它还可通过 <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer">​<u>MCP Server Portals</u></a> 支持您的组织已在使用的现有<a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro" target="_blank" rel="noopener noreferrer">​</a> <a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol (MCP) </u></a>服务器。</p>
+<h2><strong>一个全新的安全和治理框架——用于安全访问内部数据和服务</strong></h2>
+<p>随着人们开始在工作中尝试使用 AI，他们最初的请求之一通常是获取公司系统的 API 密钥。这一点不难理解：如果 AI 无法访问人们在工作中用来完成工作所使用的系统，那么它在工作场景下就不会有多大用处。</p>
+<p>但把 API 密钥交给人和智能体存在风险，而且也不具备可扩展性。密钥通常提供广泛且长期的访问权限，这种访问难以约束、安全共享和进行审计。</p>
+<p>MCP 为智能体提供了一种使用这些系统的更好方式。MCP 服务器可保管凭证并对外公开一组已定义工具，而不是将密钥直接交付给智能体。但管控智能体可调用的工具仅是第一步。仅依靠 MCP 无法告知我们智能体访问过哪些底层资源。智能体可聚合来自多个系统的信息，将其发送至管控力度较弱的位置，或是通过应用及输出结果向原本无权查看原始资源的人员泄露该信息。授权机制必须考虑数据后续可流转至哪些位置。</p>
+<h3><strong>智能体最初没有任何访问权限</strong></h3>
+<p><a href="https://developers.cloudflare.com/cloudflare-one/access-controls" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> 控制谁可以进入 Cloudflare OS。在内部，每一个智能体与应用初始均不具备任何访问权限。智能体可请求访问特定资源，您可以批准或拒绝。生成的代码以类型化绑定方式接收该资源：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> issues</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">PROJECT</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">listIssues</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  teamId: </span><span class="sk-032f62-99ffe4">"ENG"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  state: </span><span class="sk-032f62-99ffe4">"open"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p><code>env.PROJECT</code> 是一项能力，代表按照特定策略使用某一特定资源的权限。凭据与智能体以及所有生成代码完全相互隔离。</p>
+<p>服务器代码在一个 Dynamic Worker 中运行，且全局出站网络已禁用。客户端代码在浏览器中的沙盒框架中运行。除非通过您显式提供的能力，否则两者均无法访问互联网。</p>
+<h3><strong>Gatekeepers 治理资源和操作</strong></h3>
+<p>Gatekeeper 是一种服务特定的 <a href="https://developers.cloudflare.com/workers/?_gl=1*1pzndf6*_gcl_au*MzM2MDkxNTQzLjE3ODQ4NDczOTM.*_ga*MWVkZWU3OTctMzJjNC00YWE1LWI2ZDUtZTJkNTY1NzYxYWQ0*_ga_SQCRB0TXZW*czE3ODUyMTk3NjMkbzckZzAkdDE3ODUyMTk3NjMkajYwJGwwJGgwJGRQeHAyTUEtdzgtVUFETUEzOGwtVFVhajVDd2laRWYxSC1R" target="_blank" rel="noopener noreferrer">&nbsp;<u>Worker</u></a>，位于 Cloudflare OS 和外部服务之间。它理解该服务的 API、资源以及可以执行的操作。</p>
+<p>向智能体授予对您整个 GitHub 账号的访问权限，很可能过于宽泛。Gatekeeper 可向智能体授予访问单个代码仓库的权限，允许其读取问题但禁止访问源代码，对特定字段进行脱敏屏蔽、施加速率限制，并要求在合并 pull request 之前必须经过审批。</p>
+<p>智能体及其应用看到一个小型 TypeScript API。Gatekeeper 处理<a href="https://www.cloudflare.com/learning/access-management/what-is-oauth" target="_blank" rel="noopener noreferrer"> <u>OAuth</u></a>，持有凭据，执行策略，记录读取内容，并调解任何具有外部可见副作用的操作。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+/z99vf57O3v6Ons7e7x8vP17+/w5ubm9/v/8PX55Onv3+Xs5evx7vL27fDz5efo9Pv/7PX83efx1+Lt4Orz6/P67fL25ens9v//7vj/3ur11+Xx4e347vf+8Pf76e3x////+P//6fP84+747PX+9v7/9/3/8PT2////////+f7/9Pr/+v//////////+fr7////////////////////////////////////////////////////////////////" alt="" width="715" height="413" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=640&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=750&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=828&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1080&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1280&amp;h=739&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1430&amp;h=826&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 3.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXZJ8CW8K5Y8DBCBACM7.png&amp;w=1920&amp;h=1109&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1109" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="413" class="pt-portable-image-media"></div>
+</figure>
+<h3><strong>策略跟随智能体所访问的内容</strong></h3>
+<p>仅控制初始读取操作并不足够。例如，智能体读取数据仓库内的敏感数据表，并利用该数据生成实时仪表板。共享该看板绝不能成为向原本无法直接访问该数据表的人员分享的途径。</p>
+<p>Cloudflare OS 记录智能体访问的每一项资源。这些观测记录会持续关联至智能体及其工作任务。当另一个人尝试打开工作区、与智能体交互或查看其产生的内容时，Gatekeepers 会验证该人员对所观测资源的访问权限。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA////+vv77/Hy6e3u7fHy8vX37/Lz5+jp/////f798fPz6u3v7vHz8/X38fP06uvq////////9PX27O/x7vH09Pb48/X27e7t////////9vj57vH08PP39vj79vj58PLx////////+Pv98PT48vb79/v/+Pv88vT0////////+f3/8vf89Pr/+f7/+f3/8/b4////////+f//8/n+9vz/+///+v//8/f6////////+f//8/r/9v3/+///+v//8/f7" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 4.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDY5GTDXQJPAWC065WH87.png&amp;w=1920&amp;h=1244&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1244" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<p>该同一观测日志用于为策略提供依据，这些策略决定智能体何时可以发起外部请求。智能体读取敏感数据后，就会被禁止向特定数据源写入数据、邀请新协作者、将工作转交其他智能体，或发起出站请求。</p>
+<p>使用智能体或构建应用的人无需担心犯这些错误。现在可以使用该平台来处理此类问题。</p>
+<h2><strong>一个用于构建和共享个人、可修改应用的平台</strong></h2>
+<p>大多数生产力套件会为您提供一套固定的应用：文档、电子表格以及演示文稿。在 Cloudflare OS 中，每个“文件”都可以是自己的应用，由智能体为一个人、一个项目或一个团队编写。</p>
+<p>这些不是您需要导出和部署到其他地方的原型。每个都是一个全栈应用，包括客户端代码、服务器代码、API 和持久状态。应用程序默认是私密的，但可以像文档一样共享。</p>
+<h3><strong>每个应用都是一个 Worker</strong></h3>
+<p>当您要求工作区构建应用时，智能体会生成两个部分：</p>
+<ul>
+	<li>客户端代码——用于在浏览器中渲染该应用的用户界面</li>
+	<li>客户端代码——存储状态并实现应用的行为</li>
+</ul>
+<p>服务器作为 <a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer">&nbsp;<u>Dynamic Worker</u></a> 动态加载，并实例化为<a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"> <u>Durable Object Facet</u></a>（均为我们为该项目开发的功能）。该分面赋予应用程序其独立的 SQLite 数据库，与管理它的 Cloudflare OS 运行时分开。Dynamic Workers 使用轻量级的 V8 隔离环境，因此每个应用都可以拥有自己的独立运行时，而无需配置专用服务器或容器。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA//////778/Lx7Ozr7+/u9PTz8/Lw7Ovo////+vv77e/x5ejr6Ovv7fDz7e7w5+jo/P7/9vj86Ozy3+Xt4efw5+z05+vx4uXp/P//9fn/5+323ubx4Oj05u345+z14ubt////+v7/7PL74+v35e366/L+7PH75+vy////////9fn/7PL87/X/9fv/9fn/7/L4/////////P//9Pn/+Pz//v///f//9vj9////////////+Pv/+///////////+fv/" alt="" width="715" height="421" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=715&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=640&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=715&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=750&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=828&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1080&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1280&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1430&amp;h=842&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 5.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTESRQTCERH9MDPVGC3.png&amp;w=1920&amp;h=1131&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1131" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="421" class="pt-portable-image-media"></div>
+</figure>
+<p>浏览器客户端通过<a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"> <u>Cap’n Web</u></a>—— Cloudflare 的开源对象能力远程过程调用（RPC）系统——与服务器通信。可以像调用普通 JavaScript 函数一样从客户端调用一个服务器方法：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> issues</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> app.</span><span class="sk-6f42c1-ffc799">listIssues</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff"> status: </span><span class="sk-032f62-99ffe4">"done"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>特别之处在于智能体也可以调用同一方法。</p>
+<p><strong>因此，如果您能够自己构建一个工具来完成某项工作，那么当您不在时，智能体可以使用您的工具来完成这项工作。</strong></p>
+<h3><strong>分享应用或其构建方式</strong></h3>
+<p>在 Cloudflare OS 中构建应用时，您可以通过两种方式分享：</p>
+<ul>
+	<li>分享您的应用本身允许其他人使用相同的状态实时协作。</li>
+	<li>共享应用蓝图，其他用户可以创建属于他们自己的应用副本。</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA9Pb57/Hz5efn4eLi5ebo6ert5efp3N3d+fv+9Pb56u3t5efo5+rt6+3y6Oru4OLj////+/3/8fT06+7v7O/z7/H47O/05unq////////+fz88/b38/b79fj/8/b87fDy////////////+v3++v3//P//+v3/9fj4/////////////////////////////P7+////////////////////////////////////////////////////////////////" alt="" width="715" height="284" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=640&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=750&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=828&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1080&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1280&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1430&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 6.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXN0ZTW8DZZ0VC98Z0AP.png&amp;w=1920&amp;h=764&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="764" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="284" class="pt-portable-image-media"></div>
+</figure>
+<p>一个从蓝图实例化的应用包含原始应用的代码。但它不包含其 SQLite 数据、对话历史记录、凭据或连接的资源。每个新应用都从独立的状态和资源开始。</p>
+<p>这意味着当您与团队共享应用时，他们可以使用 AI 自行修改这些应用，而无需提交功能请求并分配给您。</p>
+<h2><strong>使用任何模型，并控制其成本</strong></h2>
+<p>Cloudflare OS 可以与任何模型搭配使用。每次推理调用都会通过<a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"> <u>Cloudflare AI Gateway</u></a>，让您的组织可以轻松决定哪些模型可用以及哪个模型应该处理每项任务。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA+fv79Pb26evu4+bp5uns6+7v6uzs5OXk/f7/9/n66+7x4+js5erv6+/y6+7v5efn/////P7/7/L15evw5u3z6/L37PH06Ovr////////9Pj76/H26/L47/b88PX57O/w////////+///8vj88vn+9vz/9vr98fP1////////////+///+////v///P//9vj5////////////////////////////+fr8////////////////////////////+vv8" alt="" width="715" height="332" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=640&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=750&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=828&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1080&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1280&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1430&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3379 7.png" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ7PDXTSXP67QP4M7F21B9V1.png&amp;w=1920&amp;h=891&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="891" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="332" class="pt-portable-image-media"></div>
+</figure>
+<p>并不是每个任务都需要最昂贵的模型。您可能不想每天早上都用最昂贵的前沿模型来总结未读电子邮件。AI Gateway 为您提供必要的控制，确保昂贵的模型仅用于最困难的工作。</p>
+<p>每个请求都归功于发出请求的个人、团队或工作空间。管理员可查看推理开销的去向、设置预算与速率限制，并决定达到限制时的处理方式。</p>
+<h2><strong>开源，以便您定制为自己的平台</strong></h2>
+<p>Cloudflare OS 现已正式发布并开源。查看 <a href="https://github.com/cloudflare/cloudflare-os" target="_blank" rel="noopener noreferrer">​<u>cloudflare-os GitHub 仓库</u></a>。您可以将其部署到您自己的 Cloudflare 账户，并使用您自己的访问策略、AI Gateway 配置、数据和集成。</p>
+<p>我们的内部部署反映了 Cloudflare 的系统、术语、政策和工作方式。您的版本应反映出您的组织的实际情况。</p>
+<p>Cloudflare OS 的设计支持您自定义界面、添加内部 Gatekeepers，并构建组织专属功能，且无需修改核心产品。</p>
+<p>我们将发布两个库：<a href="https://github.com/cloudflare/cloudflare-os" target="_blank" rel="noopener noreferrer"> <u>Cloudflare OS 核心</u></a>和一个基于我们在 Cloudflare 内部运行方式的<a href="https://github.com/cloudflare/cloudflare-os-starter" target="_blank" rel="noopener noreferrer"> <u>示例部署</u></a>。部署库消耗核心而不进行补丁操作，提供一个用于配置、定制 UI、内部集成、分析和部署管道的场所。</p>
+<h2><strong>由我们的合作伙伴共同交付</strong></h2>
+<p>源代码只是起点。Cloudflare OS 的上下文、技能、工作流、内部系统和策略使其对您的组织更有用。</p>
+<p>Cloudflare 的战略合作伙伴 Presidio 和 Happy Cog 将与您携手合作，根据贵组织的运作方式定制 Cloudflare OS，并在您的全体员工中推广部署。</p>
+<p>合作伙伴可以帮助贵组织整理共享技能和机构背景，构建自定义界面，通过 Gatekeepers 和 MCP 服务器门户连接内部系统，并配置安全、模型和成本管控措施。</p>
+<p>您将获得具有自有品牌标识的 Cloudflare OS，连接到您的系统，运行在 Cloudflare 平台上，并适配公司员工的实际工作方式。</p>
+<h2><strong>开始使用</strong></h2>
+<p>Cloudflare OS 今日已在 <a href="https://github.com/cloudflare/cloudflare-os" target="_blank" rel="noopener noreferrer">&nbsp;<u>GitHub</u></a> 上提供。您可以浏览源代码，尝试演示，或者使用我们的<a href="https://github.com/cloudflare/cloudflare-os-starter" target="_blank" rel="noopener noreferrer"> <u>入门存储库</u></a>，几分钟内将其部署到您自己的 Cloudflare 账户。</p>
+<p>我们的工作才刚刚开始。我们正致力于将 Cloudflare OS 作为全托管产品接入 Cloudflare 仪表板，为开发工作流新增容器能力，并将工作区集成至 Slack 及其他聊天工具。</p>
+<p>欢迎与我们的团队开展交流。请使用<a href="https://www.cloudflare.com/resource/cloudflare-os-interest-landing-page" target="_blank" rel="noopener noreferrer">​<u>此表单</u></a>与我们联系！</p>

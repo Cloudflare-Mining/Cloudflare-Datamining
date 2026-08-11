@@ -29,14 +29,40 @@
 <span class="line"><span class="sk-6f42c1-ffc799">HTTP/1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Content-Type:</span><span class="sk-032f62-99ffe4"> application/octet-stream</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">YnV0dHNz.TEST_CLIENT_KEY</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">YnV0dHNz.TEST_CLIENT_KEY</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>L'AC leur indique d'utiliser le jeton YnV0dHNz Base64. TEST_CLIENT_KEY dans une clé liée au compte que seuls le demandeur du certificat et l'autorité de certification connaissent. L'autorité de certification utilise cette combinaison de champs pour vérifier que le demandeur de certificat est réellement propriétaire du domaine. Ensuite, Alice peut obtenir son certificat pour son site Web !</p>
 <h3><strong>Validation DNS</strong></h3>
 <p>Les utilisateurs peuvent également valider la propriété d'un domaine en ajoutant un dossier DNS TXT contenant une chaîne de vérification ou un <em>jeton</em> de l'autorité de certification aux dossiers de ressources de leur domaine. Par exemple, voici un domaine pour une entreprise qui se valide auprès de Google :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> aliceswonderland.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">aliceswonderland.com.</span><span class="sk-005cc5-ffc799">	 28</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">aliceswonderland.com.</span><span class="sk-005cc5-ffc799">	 28</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ici, Alice choisit de créer un dossier de ressource TXT DNS avec une valeur de jeton spécifique. Une autorité de certification Google peut vérifier la présence de ce jeton pour approuver qu'Alice est réellement propriétaire de son site Web.</p>
 <h3><strong>Types de détournements de session BGP</strong></h3>

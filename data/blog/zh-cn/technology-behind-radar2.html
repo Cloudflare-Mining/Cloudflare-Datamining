@@ -67,8 +67,30 @@
 <span class="line"><span class="sk-24292e-fff">      data: </span><span class="sk-005cc5-fff">undefined</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>由于 Remix 同时在服务器和客户端运行，它可以变得很智能，知道哪些可以在服务器端预先抓取和计算，哪些必须通过网络连接，从而一一优化，提升性能和响应。</p>
 <p>以下为一个 Radar 路由的示例。为了便于阅读，对<a href="https://radar.cloudflare.com/outage-center" target="_blank" rel="noopener noreferrer">中断中心</a>页面进行了简化。</p>
 <p>该路由产生的结果如下：</p>
@@ -108,7 +130,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">      &lt;/</span><span class="sk-005cc5-ffc799">Grid</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    &lt;/</span><span class="sk-005cc5-ffc799">Page</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Remix 和 SSR 还可以帮助您提高 <a href="https://developer.chrome.com/docs/lighthouse/overview" target="_blank" rel="noopener noreferrer">Lighthouse</a> 评分和搜索引擎优化 (SEO)。它可以减少抓取次数和从服务器向浏览器传输的信息，对 DOM 进行预渲染，从而显著改善某些指标，例如<a href="https://web.dev/cls" target="_blank" rel="noopener noreferrer">累积布局偏移</a>、<a href="https://web.dev/fcp" target="_blank" rel="noopener noreferrer">首次内容绘制</a>和<a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer">最大内容绘制</a>。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -188,7 +214,11 @@
 <span class="line"><span class="sk-6f42c1-a0a0a0">      height</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-005cc5-ffc799">400</span><span class="sk-24292e-a0a0a0">}</span></span>
 <span class="line"><span class="sk-6f42c1-a0a0a0">      direction</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff">attacksDirection</span><span class="sk-24292e-a0a0a0">}</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    /&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-005cc5-ffc799">Card.Section</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-005cc5-ffc799">Card.Section</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我们对 Radar 的另一项更改是将我们的图像和图形资产换成了 <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank" rel="noopener noreferrer">可缩放矢量图形</a> (SVG)。SVG 非常好用，因为它们本质上是一种声明式图形语言。它们是含有矢量信息的 XML 文本文件，因此可以轻松地操作、转换、存储或索引。当然，它们也可以以任何尺寸呈现，在任何设备、任何分辨率的情况下均能得到漂亮清晰的图像。</p>
 <p>与位图格式相比，SVG 的尺寸非常小，生成效率高，并且支持<a href="https://www.w3.org/TR/SVGTiny12/i18n.html" target="_blank" rel="noopener noreferrer">国际化</a>，更容易翻译成其他语言（本地化），因而<a href="https://www.a11yproject.com" target="_blank" rel="noopener noreferrer">可访问性</a>更高。</p>
@@ -253,7 +283,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">  "card.about.cloudflare.p1"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cloudflare, Inc. ({website} / {twitter}) is on a mission to help build a better Internet. Cloudflare's suite of products protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine's Top Company Cultures 2018 list and ranked among the World's Most Innovative Companies by Fast Company in 2019."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "card.about.cloudflare.p2"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Headquartered in San Francisco, CA, Cloudflare has offices in Austin, TX, Champaign, IL, New York, NY, San Jose, CA, Seattle, WA, Washington, D.C., Toronto, Dubai, Lisbon, London, Munich, Paris, Beijing, Singapore, Sydney, and Tokyo."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "card.about.cloudflare.title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"About Cloudflare"</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">...</span></span></code></pre>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Radar 报告和 Jupyter 笔记本</h2>
 <p><a href="https://radar.cloudflare.com/reports" target="_blank" rel="noopener noreferrer">Radar 报告</a>利用数据探索和讲故事来深入分析某一特定主题。有些报告往往会不时更新。Radar 报告示例包括我们每季度发布的 <a href="https://radar.cloudflare.com/reports/ddos-2022-q3" target="_blank" rel="noopener noreferrer">DDoS 攻击趋势</a>或 <a href="https://radar.cloudflare.com/reports/ipv6" target="_blank" rel="noopener noreferrer">IPv6 采用情况</a>。</p>

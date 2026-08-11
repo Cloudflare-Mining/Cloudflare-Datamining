@@ -3,12 +3,38 @@
 <h3>The Problem</h3>
 <p>At some point in one of our cluster we started seeing errors like this (an NXDOMAIN for an existing domain on our internal DNS):</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">lookup</span><span class="sk-032f62-99ffe4"> some.existing.internal.host</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> such</span><span class="sk-032f62-99ffe4"> host</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">lookup</span><span class="sk-032f62-99ffe4"> some.existing.internal.host</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> such</span><span class="sk-032f62-99ffe4"> host</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This seemed very weird, since the domain did indeed exist. It was one of our internal domains! Engineers had mentioned that they'd seen this behaviour, so we decided to investigate deeper. Queries triggering this error were varied and ranged from dynamic SRV records managed by mesos-dns to external domains looked up from inside the cluster.</p>
 <p>Our first naive attempt was to run the following in a loop:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> dig</span><span class="sk-032f62-99ffe4"> some.existing.internal.host</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /tmp/dig.txt</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> break</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> dig</span><span class="sk-032f62-99ffe4"> some.existing.internal.host</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /tmp/dig.txt</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> break</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for “no such host” and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
 <h3>Into the rabbit hole</h3>
@@ -43,7 +69,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">		time.Sleep(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">p)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com" target="_blank" rel="noopener noreferrer">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org" target="_blank" rel="noopener noreferrer">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana" target="_blank" rel="noopener noreferrer">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
 <p>We saw no strong correlation to racks or specific machines. Errors happened on many hosts, but not on all of them and in different time windows errors happen on different machines. Putting time on X axis and number of errors on Y axis showed the following:</p>
@@ -56,21 +86,37 @@
 <h3>The Missing</h3>
 <p>To test the hypothesis that losing packets can lead to a “no such host” error, we first tried blocking outgoing traffic on port 53:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> OUTPUT</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> OUTPUT</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-005cc5-99ffe4"> --dport</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this case, dig and similar tools just time out, but don’t return “no such host”:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> DiG</span><span class="sk-032f62-99ffe4"> 9.9.5-9+deb8u3-Debian</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> cloudflare.com</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; global options: +cmd</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; connection timed out; no servers could be reached</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; connection timed out; no servers could be reached</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Go is a bit smarter and tells you more about what’s going on, but doesn't return “no such host” either:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> 10.1.14.20:47442</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> write:</span><span class="sk-032f62-99ffe4"> operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> 10.1.14.20:47442</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">10.1.0.9:53:</span><span class="sk-032f62-99ffe4"> write:</span><span class="sk-032f62-99ffe4"> operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Since the Linux kernel tells the sender that it dropped packets, we had to point the nameserver to some black hole in the network that does nothing with packets to mimic packet loss. Still no luck:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.2.9:53:</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> 10.1.14.20:39046</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">10.1.2.9:53:</span><span class="sk-032f62-99ffe4"> i/o</span><span class="sk-032f62-99ffe4"> timeout</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">error:</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> 10.1.2.9:53:</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> udp</span><span class="sk-032f62-99ffe4"> 10.1.14.20:39046</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">10.1.2.9:53:</span><span class="sk-032f62-99ffe4"> i/o</span><span class="sk-032f62-99ffe4"> timeout</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To continue <em>blaming the network</em> we had to support our assumptions somehow, so we added timing information to our lookups:</p>
 <div class="emdash-code">
@@ -81,26 +127,42 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    log.Printf(</span><span class="sk-6f42c1-ffc799">"error after %.4fs: %s"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> e,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">} else if e &gt; 1 {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    log.Printf(</span><span class="sk-6f42c1-ffc799">"success after %.4fs"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> e</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To be honest, we started by timing errors and added success timing later. Errors were happening after 10s, comparatively many successful responses were coming after 5s. It does look like packet loss, but still does not tell us why “no such host” happens.</p>
 <p>Since now we were in a place when we knew which hosts were more likely to be affected by this, we ran the following two commands in parallel in two <code>screen</code> sessions:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> dig</span><span class="sk-032f62-99ffe4"> cloudflare.com</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /tmp/dig.log</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> break</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">date</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> killall</span><span class="sk-032f62-99ffe4"> tcpdump</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> /state/wtf.cap</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 53</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> /state/wtf.cap</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 53</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The point was to get a network dump with failed resolves. In there, we saw the following queries:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">00.00s</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> cloudflare.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">05.00s</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> cloudflare.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">10.00s</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> cloudflare.com.in.our.internal.domain</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">10.00s</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> cloudflare.com.in.our.internal.domain</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Two queries time out without any answer, but the third one gets lucky and succeeds. Naturally, we don’t have cloudflare.com in our internal domain, so Unbound rightfully gives NXDOMAIN in reply, 10s after the lookup was initiated.</p>
 <h3>Bingo</h3>
 <p>Let’s look at /etc/resolv.conf to understand more:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nameserver</span><span class="sk-005cc5-ffc799"> 10.1.0.9</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">search</span><span class="sk-032f62-99ffe4"> in.our.internal.domain</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">search</span><span class="sk-032f62-99ffe4"> in.our.internal.domain</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Using the search keyword allows us to use short hostnames instead of FQDN, making <code>myhost</code> transparently equivalent to <code>myhost.in.our.internal.domain</code>.</p>
 <p>For the DNS resolver it means the following: for any DNS query ask the nameserver 10.1.0.9, if this fails, append <code>.in.our.internal.domain</code> to the query and retry. It doesn’t matter what failure occurs for the original DNS query. Usually it is NXDOMAIN, but in our case it’s a read timeout due to packet loss.</p>
@@ -145,7 +207,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-6f42c1-ffc799"> err</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> server.ListenAndServe</span><span class="sk-24292e-fff">(); </span><span class="sk-6f42c1-ffc799">err</span><span class="sk-032f62-99ffe4"> !=</span><span class="sk-032f62-99ffe4"> nil</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		log.Fatalf(</span><span class="sk-6f42c1-ffc799">"error listening: %s"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we found what was going on and had a way of reliably replicating that behaviour.</p>
 <h3>Solutions</h3>

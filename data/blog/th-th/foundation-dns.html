@@ -41,15 +41,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-2028.awsdns-61.co.uk.</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">205.251.199.236</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> ns-917.awsdns-50.net.</span><span class="sk-032f62-99ffe4"> +short</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">205.251.195.149</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>บางสิ่งเกิดขึ้นโดยไม่มีการบอกกล่าวว่า Cloudflare ได้ลงนามรับรองเส้นทางทั้งหมดของเราและ<a href="https://isbgpsafeyet.com" target="_blank" rel="noopener noreferrer">กำลังผลักดันส่วนที่เหลือของอินเทอร์เน็ต</a> เพื่อลดผลกระทบของการรั่วไหลของเส้นทาง แต่เราจะทำอะไรได้อีกเพื่อให้มั่นใจว่าระบบ DNS ยังคงมีความยืดหยุ่นผ่านการรั่วไหลของเส้นทางในขณะที่เรารอให้ปรับใช้ RPKI ได้ในทุกหนแห่ง</p>
 <p>วันนี้ เมื่อคุณใช้ Cloudflare DNS บนแผน Free, Pro, Business หรือ Enterprise โดเมนของคุณจะได้รับเนมเซิร์ฟเวอร์สองเนมเซิร์ฟเวอร์ของโครงสร้าง .ns.cloudflare.com โดยที่ เป็นชื่อต้นใดๆ ก็ได้</p>
 <p>อย่างที่เราได้เรียนรู้ก่อนหน้านี้ โดเมนจะพร้อมใช้งาน เมื่อเนมเซิร์ฟเวอร์ของโดเมนนั้นพร้อมใช้งาน นี่คือสาเหตุที่เนมเซิร์ฟเวอร์เหล่านี้แปลงเป็นที่อยู่ anycast IPv4 รวม 3 ที่อยู่ และที่อยู่ anycast IPv6 รวม 3 ที่อยู่</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> isbgpsafeyet.com</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tom.ns.cloudflare.com.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">kami.ns.cloudflare.com.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>รายละเอียดสำคัญที่ควรสังเกตที่นี่คือแต่ละที่อยู่ IPv4 รวม 3 ที่อยู่ และแต่ละที่อยู่ IPv6 รวม 3 ที่อยู่มาจากบล็อก /8 IPv4 (/45 สำหรับ IPv6) ที่แตกต่างกัน ดังนั้นเพื่อให้เนมเซิร์ฟเวอร์ของคุณไม่พร้อมใช้งานผ่าน IPv4 การรั่วไหลของเส้นทางจะต้องส่งผลกระทบกับซับเน็ตที่เกี่ยวข้องในบล็อก /8 IPv4 ทั้งสามบล็อกนั้น เหตุการณ์ลักษณะนี้แม้ในทางทฤษฎีจะเป็นไปได้ แต่ในทางปฏิบัติแทบจะเป็นไปไม่ได้เลย</p>
 <div class="emdash-code">
@@ -61,7 +87,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> tom.ns.cloudflare.com</span><span class="sk-032f62-99ffe4"> aaaa</span><span class="sk-032f62-99ffe4"> +short</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2606:4700:58::adf5:3b93</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2803:f800:50::6ca2:c193</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2a06:98c1:50::ac40:2193</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>เราจะปรับปรุงให้ดีกว่านี้ได้อย่างไร</strong></h3>
 <p>ลูกค้าที่ใช้ Foundation DNS จะได้รับเนมเซิร์ฟเวอร์ขั้นสูงชุดใหม่ที่โฮสต์บน foundationdns.com และ foundationdns.net เนมเซิร์ฟเวอร์เหล่านี้จะมีความยืดหยุ่นมากกว่าเนมเซิร์ฟเวอร์ Cloudflare ที่เป็นค่าเริ่มต้น เราจะประกาศรายละเอียดเพิ่มเติมว่าเราจะทำอย่างไรกับเรื่องนี้เพื่อให้ประสบผลสำเร็จในช่วงต้นปีหน้า โปรดคอยติดตาม โดเมน Cloudflare ภายนอกทั้งหมด (เช่น cloudflare.com) จะเปลี่ยนไปใช้เนมเซิร์ฟเวอร์เหล่านี้ในปีใหม่</p>

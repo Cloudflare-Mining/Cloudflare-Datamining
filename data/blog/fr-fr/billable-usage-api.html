@@ -1,0 +1,229 @@
+<p>L’Agents Week est dédiée à l’évolution qui est déjà en cours&nbsp;: les agents écrivent du code, déploient des instances Workers et provisionnent l’infrastructure en votre nom. Or, cette évolution modifie ce que vous devez voir. Si un programme entraîne des dépenses sur votre compte Cloudflare, vous devez pouvoir examiner ces dépenses&nbsp;: au fil de la journée, par produit, sous une forme exploitable par un autre programme. Le tableau de bord est la solution idéale pour les humains, mais il n’est pas la solution idéale pour l’automatisation.</p>
+<p>C’est pourquoi nous lançons la nouvelle <strong>API Billable&nbsp;Usage</strong> pour les comptes en libre-service&nbsp;: un point de terminaison unique qui renvoie l’utilisation et le coût de votre compte, répartis par produit et par période de service. Elle couvre tous les produits Cloudflare facturés à l’utilisation associés au compte, notamment Workers, R2, D1, Workers&nbsp;AI, Vectorize, Images et Stream&nbsp;– et tout cela, avec un seul appel. Et si vous utilisez déjà une chaîne d’outils FinOps, les intitulés des colonnes devraient vous sembler familiers.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable-usage?from=2026-02-01&amp;to=2026-02-15"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>Vous obtiendrez une réponse <code>HTTP 200 OK</code> avec <code>Content-Type: application</code>/<code>json</code> et les lignes décrivant l’utilisation dans le corps de la réponse. Actuellement, les données relatives à l’utilisation et aux coûts sont mises à jour quotidiennement, pendant que nous nous employons à fournir davantage de données en temps réel.</p>
+<h2><strong>Ce qui revient</strong></h2>
+<p>Chaque ligne de la réponse correspond à une période de facturation pour un produit associé à votre compte.</p>
+<ul>
+	<li><code>ServiceName</code> et <code>ServiceFamilyName</code> – le produit («&nbsp;Workers Standard&nbsp;» sous la famille «&nbsp;Workers&nbsp;», «&nbsp;R2&nbsp;Storage&nbsp;» sous «&nbsp;R2&nbsp;», et ainsi de suite).</li>
+	<li><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code> – la période couverte par cette ligne.</li>
+	<li><code>PricingQuantity</code> et <code>ConsumedUnit</code> – la quantité consommée, exprimée dans l’unité de mesure utilisée pour la facturation (Go-mois, Go-secondes, requêtes, etc.).</li>
+	<li><code>ContractedCost</code> – le coût de cette période, en <code>BillingCurrency</code>.</li>
+	<li><code>CumulatedPricingQuantity</code> et <code>CumulatedContractedCost</code> – les totaux cumulés pour la période de facturation.</li>
+	<li><code>ZoneId</code> / <code>ZoneName</code> – lorsque l’utilisation est attribuée à une zone spécifique.</li>
+</ul>
+<p>La plupart de ces intitulés correspondent directement aux colonnes de la spécification <a href="https://focus.finops.org" target="_blank" rel="noopener noreferrer">​<u>FinOps Open Cost and Usage&nbsp;(FOCUS)</u></a>. Ainsi, si votre équipe importe déjà des données FOCUS depuis un autre fournisseur, les noms et la sémantique devraient vous paraître familiers&nbsp;:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Champ Cloudflare</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Colonne FOCUS</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>Remarques</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingCurrency</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Correspondance exacte.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>BillingPeriodStart</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Correspondance exacte.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ChargePeriodStart</code> / <code>ChargePeriodEnd</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Correspondance exacte.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Correspondance exacte.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ConsumedQuantity</code> / <code>ConsumedUnit</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Correspondance exacte.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>PricingQuantity</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Correspondance exacte.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Correspondance exacte.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ServiceFamilyName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(proche de <code>ServiceCategory</code>)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Regroupement propre à Cloudflare&nbsp;; FOCUS emploie un vocabulaire normalisé.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>CumulatedContractedCost</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(dérivé)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Champ de commodité – FOCUS considère le cumul comme une problématique liée aux requêtes.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ZoneId</code> / <code>ZoneName</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(proche de <code>ResourceId</code> / <code>ResourceName</code>)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Identifiant défini au niveau de la zone, le cas échéant.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Les réponses utilisent l’enveloppe standard de l’API Cloudflare&nbsp;: <code>result</code> est un tableau de lignes (à raison d’une ligne par produit et par période de facturation), conjointement à <code>success</code>, <code>errors</code> et <code>messages</code>.</p>
+<p></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "result"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingCurrency"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"USD"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "BillingPeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodStart"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ChargePeriodEnd"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-02-28T23:59:59Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers Standard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ServiceFamilyName"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Workers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedQuantity"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">150000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ConsumedUnit"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GB-months"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "ContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0.75</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "CumulatedContractedCost"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2.25</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "messages"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<h2><strong>Où en sommes-nous avec FOCUS&nbsp;?</strong></h2>
+<p>La conformité aux dénominations FOCUS est un choix délibéré. AWS, Azure, Google&nbsp;Cloud, Oracle et un nombre croissant de fournisseurs de solutions SaaS publient déjà des exportations au format FOCUS, et tous les outils de gestion des coûts dignes de ce nom prennent en charge ce format. Cela dit, nous ne prétendons pas encore proposer une conformité totale&nbsp;: à l’heure actuelle, quelques colonnes requises par la spécification ne sont pas encore incluses dans les données. Leur ajout est prévu dans notre feuille de route. Considérez cela comme une première étape&nbsp;: une forme familière pour l’instant, une conformité totale ensuite.</p>
+<h2><strong>Vos dépenses dans Cloudflare, intégrées au reste de vos dépenses liées au cloud&nbsp;: notre partenariat avec Vantage</strong></h2>
+<p>Nous avons établi un partenariat avec <a href="https://www.vantage.sh" target="_blank" rel="noopener noreferrer">​<u>Vantage</u></a> pour mettre en place une intégration native avec Cloudflare. Vantage est une plateforme de gestion des coûts d’infrastructure qui collecte les données relatives aux coûts et à l’utilisation auprès de plus de 30&nbsp;fournisseurs, parmi lesquels des fournisseurs de solutions&nbsp;IA, cloud et SaaS, et les regroupe dans une vue unique à des fins de publication de rapports, d’affectation et d’optimisation. Grâce à cette intégration, vos données d’utilisation sont automatiquement renseignées dans les services Cost&nbsp;Reports, Budgets et Cost&nbsp;Alerts que vous utilisez déjà pour le reste de votre infrastructure.</p>
+<p>Vantage se connecte à Cloudflare via un jeton d’API en lecture seule avec l’autorisation d’accès Billing&nbsp;Read. Une fois connecté, Vantage récupère quotidiennement vos données d’utilisation facturable et les répartit par produit (Workers et R2, par exemple), par zone et par compte, vous permettant ainsi d’identifier les produits à l’origine de vos dépenses et de les imputer aux équipes et aux services concernés.</p>
+<p>Voici quelques exemples de flux de travail pris en charge par cette intégration&nbsp;:</p>
+<ul>
+	<li><strong>Répartition entre fournisseurs.</strong> Regroupez les dépenses liées à Cloudflare par produit, par zone et par compte, puis utilisez les balises virtuelles pour les répartir par équipe ou par gamme de produits, parallèlement à vos coûts liés à AWS, Azure et d’autres fournisseurs&nbsp;– et tout cela, dans un rapport unique.</li>
+	<li><strong>Détection des anomalies.</strong> Le service Vantage Cost Alerts surveille tous les fournisseurs connectés et vous notifie via Slack ou par e-mail lorsque les dépenses s’écartent de leur niveau de référence. Ainsi, toute variation des dépenses liées à Workers ou à R2 est signalée de la même manière que pour n’importe quel autre fournisseur.</li>
+	<li><strong>Agents FinOps et MCP.</strong> Posez une question à l’agent Vantage FinOps intégré à la console, par exemple&nbsp;: «&nbsp;Quel a été notre principal facteur de coût la semaine dernière, tous fournisseurs confondus&nbsp;?&nbsp;», ou interrogez Claude ou ChatGPT sur ces mêmes données via le serveur MCP hébergé par Vantage. Les dépenses liées à Cloudflare sont regroupées avec celles de vos autres fournisseurs connectés.</li>
+</ul>
+<p>Connectez votre compte Cloudflare dans la <a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer">​<u>console Vantage</u></a>, et vos coûts sont affichés à côté de tous les autres services que vous utilisez. Il n’y a pas d’exportations manuelles, ni de téléchargements de factures, ni de tableau de bord distinct à gérer.&nbsp;</p>
+<p>Cette API normalisée FOCUS est également compatible avec d’autres outils Fintech.</p>
+<h2><strong>Pourquoi l’avons-nous créée&nbsp;?</strong></h2>
+<p>Les agents ne se contentent pas d’écrire du code. Ils déploient des instances Workers, créent des compartiments&nbsp;R2 et gèrent des bases de données&nbsp;D1. Lorsque vous accordez un accès programmatique à votre compte Cloudflare, vous devez bénéficier d’une visibilité programmatique des coûts qu’il entraîne&nbsp;– pas à la fin du mois, mais tout au long de la journée, par produit, sous une forme réellement exploitable par un programme.</p>
+<p>L’API Billable&nbsp;Usage incarne cette forme, et cela fait des années que nos clients nous demandent de mettre en œuvre un accès programmatique à ces données. Les équipes financières souhaitent intégrer les dépenses dans leurs propres systèmes et imputer les coûts à leurs différents projets internes, à leurs équipes, et même à leurs clients finaux. Les développeurs, quant à eux, veulent une commande curl qu’ils puissent intégrer directement dans un script. Chacun de ces flux de travail nécessitait auparavant une capture d’écran ou une exportation manuelle. Désormais, il suffit d’un appel HTTP ou d’une configuration dans Vantage.</p>
+<h2><strong>Les prochaines évolutions</strong></h2>
+<ul>
+	<li><strong>Fenêtres temporelles plus précises.</strong> Actuellement, l’API renvoie des lignes correspondant à la période de facturation, qui est quotidienne pour la plupart des produits. Nous envisageons d’intégrer davantage de répartitions en temps réel pour les produits, si cela s’avère pertinent.</li>
+	<li><strong>Prévisions. </strong><code>CumulatedContractedCost</code> vous indique l’état de vos dépenses dans le cycle de facturation en cours. Nous voulons vous aider à anticiper votre situation future&nbsp;– et pas seulement au niveau du compte, mais également au niveau des produits.</li>
+	<li><strong>Intégration à l’offre Enterprise.</strong> Cette première version est accessible uniquement en libre-service. Une expérience équivalente pour les contrats Enterprise est en cours de développement.Try it</li>
+</ul>
+<h2><strong>Essayez-le</strong></h2>
+<p>Le point de terminaison est disponible dès maintenant pour tous les comptes en libre-service. Sélectionnez un jeton d’API avec l’autorisation d’accès <em>Billing&nbsp;Read</em>, renvoyez votre commande curl vers celui-ci et vous obtiendrez votre période de facturation actuelle, répartie par produit. Des informations complètes sont disponibles dans la documentation de l’API Cloudflare. Pour consulter ces informations parallèlement au reste de vos dépenses liées au cloud, connectez votre compte Cloudflare à la <a href="https://console.vantage.sh" target="_blank" rel="noopener noreferrer">​<u>console Vantage</u></a>.</p>
+<p>Depuis des années, Cloudflare s’engage à vous permettre d’exécuter plus facilement une plus grande partie de votre infrastructure sur notre réseau. Il est temps pour nous de vous permettre de voir tout aussi facilement ce que cela vous coûte&nbsp;– sur Cloudflare, mais également sur toutes les autres plateformes.</p>

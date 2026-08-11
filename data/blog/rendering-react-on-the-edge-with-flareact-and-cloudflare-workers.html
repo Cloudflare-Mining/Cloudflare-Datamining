@@ -26,8 +26,30 @@
 <p>To get started manually, install the latest wrangler, and use the handy <code>wrangler generate</code> command below to create your first project:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-032f62-99ffe4"> @cloudflare/wrangler</span><span class="sk-005cc5-99ffe4"> -g</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> my-project</span><span class="sk-032f62-99ffe4"> https://github.com/flareact/flareact-template</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> my-project</span><span class="sk-032f62-99ffe4"> https://github.com/flareact/flareact-template</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>What’s the big deal?</h2>
 <p>Hosting React apps on Cloudflare Workers Sites is <em>not a new concept</em>. In fact, you’ve always been able to <a href="https://developers.cloudflare.com/workers/tutorials/deploy-a-react-app-with-create-react-app" target="_blank" rel="noopener noreferrer">deploy a create-react-app project to Workers Sites</a> in addition to static versions of other frameworks like <a href="https://www.gatsbyjs.com/docs/deploying-to-cloudflare-workers" target="_blank" rel="noopener noreferrer">Gatsby</a> and Next.js.</p>
 <p>However, Flareact renders your React application at the edge. This allows you to provide an initial server response with HTML markup — which can be helpful for search engine crawlers. You can also cache the response at the edge and optionally invalidate that cache on a timed basis — meaning your static markup will be regenerated if you need it to be fresh.</p>
@@ -80,7 +102,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">      &lt;</span><span class="sk-6f42c1-ffc799">/Link</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-6f42c1-ffc799">/div</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I also set out to build a custom version of <a href="https://nextjs.org/docs/api-reference/next/head" target="_blank" rel="noopener noreferrer">next/head</a> for Flareact. As it turns out, this was non-trivial! With lots of interesting stuff going on behind the scenes to support SSR and client-side routing events, I decided to make <a href="https://flareact.com/docs/flareact-head" target="_blank" rel="noopener noreferrer">flareact/head</a> a simple wrapper around <a href="https://github.com/nfl/react-helmet" target="_blank" rel="noopener noreferrer">react-helmet</a> instead:</p>
 <div class="emdash-code">
@@ -95,7 +121,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">      &lt;</span><span class="sk-6f42c1-ffc799">h1</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">Hello,</span><span class="sk-032f62-99ffe4"> world.</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">/h</span><span class="sk-d73a49-a0a0a0">1&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-6f42c1-ffc799">/div</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  );</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Local Development</h3>
 <p>The local developer experience of Flareact leverages the new <code>wrangler dev</code> command, sending server requests through a local tunnel to the Cloudflare edge and back to your machine.</p>

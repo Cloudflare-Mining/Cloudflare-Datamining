@@ -33,8 +33,30 @@
 <p>O ESNI contou com outro protocolo crítico para a distribuição de chaves: <em>o Domain Name Service</em> (DNS). Para poder usar o ESNI para estabelecer ligação a um site, o cliente pesquisaria nas suas consultas padrão A/AAAA por uma solicitação para um registo TXT contendo a chave pública ESNI. Por exemplo, para obter a chave para crypto.dance, o cliente solicitaria o registo TXT _esni.crypto.dance:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ dig _esni.crypto.dance TXT +short</span></span>
-<span class="line"><span>"/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="</span></span></code></pre>
+<span class="line"><span>"/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>O blob codificado de base 64 contém uma chave pública ESNI e parâmetros relacionados, tais como o algoritmo de encriptação.</p>
 <p>Mas para quê encriptar o SNI, se só vamos revelar o nome do servidor a observadores de rede e através de uma consulta DNS em texto por encriptar? Implementar o ESNI desta forma tornou-se viável com a introdução do <a href="https://blog.cloudflare.com/dns-encryption-explained"><em>DNS-over-HTTPS</em></a> (DoH), que permite a encriptação de consultas DNS aos resolvedores que fornecem o serviço DoH (1.1.1.1 é um exemplo de tal serviço). Uma outra característica crucial do DoH é que este fornece um canal encriptado e autenticado para transmitir a chave pública ESNI do servidor DoH ao cliente. Isso evita <a href="https://blog.cloudflare.com/sad-dns-explained">ataques de corrupção da cache</a>, cuja origem seja a rede local do cliente: na ausência de DoH, um invasor local pode impedir que o cliente ofereça a extensão ESNI devolvendo um registo TXT vazio, ou coagir o cliente a usar a ESNI com uma chave controlada por ele.</p>
 <p>Apesar do ESNI ser um significativo passo em frente, fica aquém do nosso objetivo de alcançar a encriptação completa do handshake. Além de ser incompleto — uma vez que só protege a extensão SNI — é vulnerável a <a href="https://tools.ietf.org/html/draft-ietf-tls-esni-08#section-10.10" target="_blank" rel="noopener noreferrer">um punhado ataques sofisticados</a>, que, embora difíceis de conseguir, visam as fraquezas teóricas no desenho do protocolo, com as quais temos de lidar.</p>

@@ -25,8 +25,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // Steps here</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>위에 설명된 것처럼, <code>run</code> 메서드는 내구성 실행 API를 구현하는 <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowstep" target="_blank" rel="noopener noreferrer"><u>WorkflowStep</u></a> 매개변수를 제공합니다. 이는 사용자가 최대 한 번 실행에 의존하는 것입니다. 이러한 APIs는 JavaScript로 구현되며 Python Worker의 컨텍스트에서 액세스해야 합니다.</p>
 <p><code>WorkflowStep은</code> RPC 장벽을 통과해야 하며, 이는 엔진(호출자)이 이를 <code>RpcTarget으로</code> 노출함을 의미합니다. 이 설정을 통해 사용자의 Workflow(수신 수신자)가 매개변수를 스텁으로 대체할 수 있습니다. 그런 다음 이 스텁을 통해 엔진으로 다시 RPCing하여 Workflows에 지속형 실행 APIs를 사용할 수 있습니다. RPC 직렬화와 호출자 및 수신자 간에 함수를 전달하는 방법에 대해 자세히 알아보려면 <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>원격 프로시저 호출 문서</u></a>를 읽어보세요.</p>
 <p>Workflows 측에서 사용자 Worker를 호출하는 방식은 실제로 변경되지 않으므로 이 모든 것은 Python과 JavaScript Workflows 모두에 해당됩니다. 하지만 Python의 경우 Python과 JavaScript 모듈 사이를 연결하는 언어라는 또 다른 장벽이 있습니다. RPC 요청이 Python Worker를 대상으로 하는 경우, Python 스크립트가 요청을 처리한 다음 호출자에게 반환하도록 요청을 프록시 설정하는 Javascript 진입점 모듈이 있습니다. 이 프로세스에는 일반적으로 요청 처리 전과 후에 유형 변환이 포함됩니다.</p>
@@ -53,7 +75,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   	 const</span><span class="sk-005cc5-fff"> developerWeek</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Date.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"22 Sept 2025 13:00:00 UTC"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">sleepUntil</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"sleep until X times out"</span><span class="sk-24292e-fff">, developerWeek)</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Python에서 워크플로 API를 구현하려면 do 메서드를 수정해야 합니다. 다른 언어와 달리 Python은 익명 콜백을 쉽게 지원하지 않습니다. 이러한 동작은 일반적으로 <a href="https://www.w3schools.com/python/python_decorators.asp" target="_blank" rel="noopener noreferrer"><u>데코레이터</u></a>를 사용하여 이루어지며, 이 경우 데코레이터를 사용하면 메서드를 가로채서 관용적 방식으로 노출할 수 있습니다. 즉, 장식된 메서드가 콜백 역할을 하여 모든 매개변수가 원래 순서를 유지합니다.</p>
 <p><code>waitForEvent,</code> <code>절전</code> <code>모드</code> 및 절전 모드로 전환하는 메서드는 이름을 뱀의 대/소문자로 변환하는 한 원래 서명을 유지할 수 있습니다.</p>
@@ -83,7 +109,11 @@
 <span class="line"><span class="sk-24292e-fff">        )</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff">        developer_week </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> datetime(</span><span class="sk-005cc5-ffc799">2024</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">13</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">tzinfo</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">timezone.utc)</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> step.sleep_until(</span><span class="sk-032f62-99ffe4">"sleep until X times out"</span><span class="sk-24292e-fff">, developer_week)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> step.sleep_until(</span><span class="sk-032f62-99ffe4">"sleep until X times out"</span><span class="sk-24292e-fff">, developer_week)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>DAG Workflows</h4>
 <p>Workflows를 설계할 때는 이러한 작업 중 일부가 동시에 처리될 수 있는 경우에도 단계 간의 종속성을 관리하는 경우가 많습니다. 별도로 생각하고 있지는 않지만, 많은 Workflows에는 유방향 비순환 그래프(DAG) 실행 흐름이 있습니다. Python Workflows의 첫 번째 반복에서는 Pyodide가 Javascript theable을 캡처하고 이를 Python awaitable로 프록시하기 때문에 동시성이 달성 가능합니다(즉: Python Workers로 최소한의 포트). </p>
@@ -110,7 +140,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">            # does stuff</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">            print</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'something'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> final_step()</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> final_step()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이러한 종류의 접근 방식을 사용하면 Workflow 선언이 훨씬 명확해지며, 상태 관리는 Workflows 엔진 데이터 영역과 Python Workers Workflow 래퍼에 맡겨집니다. 여러 단계를 동일한 이름으로 실행할 수 있더라도 엔진은 고유성을 보장하기 위해 각 단계의 이름을 약간 수정합니다. Python Workflows에서는 종속성과 관련된 초기 단계가 성공적으로 완료되면 종속성이 해결된 것으로 간주됩니다.</p>
 <h3>사용해 보기</h3>

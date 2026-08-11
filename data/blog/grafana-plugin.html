@@ -20,12 +20,38 @@
 <p><a href="https://www.cloudflare.com/virtual-dns" target="_blank" rel="noopener noreferrer">Virtual DNS customers</a> can also take advantage of the Grafana plugin. There is a custom Grafana dashboard that comes installed with the plugin to show traffic distribution and <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">RTT</a> from different Virtual DNS origins, as well as the top queries that uncached or are returning SERVFAIL.</p>
 <p>The Grafana plugin is just one step to install once you have Grafana up and running:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">grafana-cli</span><span class="sk-032f62-99ffe4"> plugins</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare-app</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">grafana-cli</span><span class="sk-032f62-99ffe4"> plugins</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare-app</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Once you sign in using your user email and API key, the plugin will automatically discover domains and Virtual DNS clusters you have access to.</p>
 <p>The Grafana plugin is built on our new <a href="https://developers.cloudflare.com/api/#dns-analytics-properties" target="_blank" rel="noopener noreferrer">DNS analytics API</a>. If you want to explore your DNS traffic but Grafana isn’t your tool of choice, our DNS analytics API is very easy to get started with. Here’s a curl to get you started:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key:####'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email:####'</span><span class="sk-032f62-99ffe4"> 'https://api.cloudflare.com/client/v4/zones/####/dns_analytics/report?metrics=queryCount’</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key:####'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email:####'</span><span class="sk-032f62-99ffe4"> 'https://api.cloudflare.com/client/v4/zones/####/dns_analytics/report?metrics=queryCount’</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To make all of this work, Cloudflare DNS is answering and logging millions of queries each second. Having high resolution data at this scale enables us to quickly pinpoint and resolve problems, and we’re excited to share this with you. More on this in a follow up deep dive blog post on improvements in our new data pipeline.</p>
 <p>Instructions for how to get started with Grafana are <a href="https://support.cloudflare.com/hc/en-us/articles/115002722267" target="_blank" rel="noopener noreferrer">here</a> and DNS analytics API documentation is <a href="https://api.cloudflare.com/#dns-analytics-properties" target="_blank" rel="noopener noreferrer">here</a>. Enjoy!</p>

@@ -26,8 +26,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> update</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> upgrade</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> apt</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> autoconf</span><span class="sk-032f62-99ffe4"> automake</span><span class="sk-032f62-99ffe4"> build-essential</span><span class="sk-032f62-99ffe4"> pkgconf</span><span class="sk-032f62-99ffe4"> libtool</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> libzip-dev</span><span class="sk-032f62-99ffe4"> libjpeg-dev</span><span class="sk-032f62-99ffe4"> gettext</span><span class="sk-032f62-99ffe4"> libmicrohttpd-dev</span><span class="sk-032f62-99ffe4"> libavformat-dev</span><span class="sk-032f62-99ffe4"> libavcodec-dev</span><span class="sk-032f62-99ffe4"> libavutil-dev</span><span class="sk-032f62-99ffe4"> libswscale-dev</span><span class="sk-032f62-99ffe4"> libavdevice-dev</span><span class="sk-032f62-99ffe4"> default-libmysqlclient-dev</span><span class="sk-032f62-99ffe4"> libpq-dev</span><span class="sk-032f62-99ffe4"> libsqlite3-dev</span><span class="sk-032f62-99ffe4"> libwebp-dev</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> wget</span><span class="sk-032f62-99ffe4"> https://github.com/Motion-Project/motion/releases/download/release-4.3.1/pi_buster_motion_4.3.1-1_armhf.deb</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> dpkg</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> pi_buster_motion_4.3.1-1_armhf.deb</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> dpkg</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> pi_buster_motion_4.3.1-1_armhf.deb</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The above commands will update the local packages with new versions from the repositories and then install that version of Motion from Motion’s GitHub project.</p>
 <p>Next, we need to configure Motion using:</p>
 <div class="emdash-code">
@@ -35,7 +57,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Find the following lines and update them to following:</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># daemon on</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># stream_localhost off</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># save and exit</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># save and exit</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After that, we need to set Motion up as a daemon, so it runs whenever the system is restarted:</p>
 <div class="emdash-code">
@@ -43,7 +69,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94"># and change the following line </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># start_motion_daemon=yes</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># save and exit and run the next command</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> motion</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> motion</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Great. Now that we have Motion set up, we can see the live feed from our camera in a browser on Raspberry Pi module at the default URL: <a href="http://0.0.0.0:8081" target="_blank" rel="noopener noreferrer"><strong>http://localhost:8081</strong></a> (the port can be changed in the config edit step above). Alternatively, we can open it on another machine within the same network by replacing 0.0.0.0 with the IP of the Raspberry Pi in the network.</p>
 <p>For now, the camera web server is available only within our local network. However, I wanted to keep an eye on Ziggy no matter where I am, as long as I have Internet access and a browser. This is perfect for <a href="https://www.cloudflare.com/products/tunnel" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a>. An alternative would be to open a port in the firewall on the router in my home network, but I hate that idea of having to mess with the router configuration. I am not really an expert at that, and if I leave a backdoor open to my internal network, it can get scary quickly!</p>
@@ -52,14 +82,22 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wget</span><span class="sk-032f62-99ffe4"> https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># a quick check of version shall confirm if it installed correctly</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 2021.5.10</span><span class="sk-24292e-fff"> (built </span><span class="sk-032f62-99ffe4">2021-05-26-1355</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 2021.5.10</span><span class="sk-24292e-fff"> (built </span><span class="sk-032f62-99ffe4">2021-05-26-1355</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let’s set up our Tunnel now:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> camera</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Tunnel</span><span class="sk-032f62-99ffe4"> credentials</span><span class="sk-032f62-99ffe4"> written</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> /home/pi/.cloudflared/5f8182ba-906c-4910-98c3-7d042bda0594.json.</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> chose</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> based</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> where</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> origin</span><span class="sk-032f62-99ffe4"> certificate</span><span class="sk-032f62-99ffe4"> was</span><span class="sk-032f62-99ffe4"> found.</span><span class="sk-032f62-99ffe4"> Keep</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> secret.</span><span class="sk-032f62-99ffe4"> To</span><span class="sk-032f62-99ffe4"> revoke</span><span class="sk-032f62-99ffe4"> these</span><span class="sk-032f62-99ffe4"> credentials,</span><span class="sk-032f62-99ffe4"> delete</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> tunnel.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Created</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> camera</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> 5f8182ba-906c-4910-98c3-7d042bda0594</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Created</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> camera</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> 5f8182ba-906c-4910-98c3-7d042bda0594</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we need to configure the Tunnel to forward the traffic to the Motion webcam server:</p>
 <div class="emdash-code">
@@ -71,12 +109,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ingress:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> camera.imohak.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    service:</span><span class="sk-032f62-99ffe4"> http://0.0.0.0:9095</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The Tunnel uuid should be the one created with the command above and so should the path of the credential file. The ingress should have the domain we want to use. In my case I have set up camera.imohak.com as my domain and 404 as the fallback rule.</p>
 <p>Next, we need to route the DNS to this Tunnel:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> dns</span><span class="sk-032f62-99ffe4"> 5f8182ba-906c-4910-98c3-7d042bda0594</span><span class="sk-032f62-99ffe4"> camera.imohak.com</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> dns</span><span class="sk-032f62-99ffe4"> 5f8182ba-906c-4910-98c3-7d042bda0594</span><span class="sk-032f62-99ffe4"> camera.imohak.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This adds a DNS CNAME record, which can be verified from the Cloudflare dashboard as shown here:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -96,7 +142,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2021-06-15T21:44:42Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> 6e7e0168-22a4-4804-968d-0674e4c3b4b1</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-032f62-99ffe4"> location=DUB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2021-06-15T21:44:43Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> fc83017d-46f9-4cee-8fc6-e4ee75c973f5</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-032f62-99ffe4"> location=LHR</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2021-06-15T21:44:44Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> 62d28eee-3a1e-46ef-a4ba-050ae6e80aba</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> location=DUB</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2021-06-15T21:44:44Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> 564164b1-7d8b-4c83-a920-79b279659491</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> location=LHR</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2021-06-15T21:44:44Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> 564164b1-7d8b-4c83-a920-79b279659491</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> location=LHR</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next, we go to the browser and open the URL camera.imohak.com.</p>
 <p><strong>Voilà.</strong> Or, not quite yet.</p>

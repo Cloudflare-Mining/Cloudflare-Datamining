@@ -26,8 +26,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">               return</span><span class="sk-24292e-fff"> math.MaxUint32</span></span>
 <span class="line"><span class="sk-24292e-fff">       }</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799">24</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799">16</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799">8</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">])</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>And then <em>pass the IPv4-as-uint32 to the listening goroutine as an <code>_</code> parameter</em>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier" target="_blank" rel="noopener noreferrer">blank identifier</a> in Go.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// PacketUDPRead is a goroutine that listens on a specific UDP socket and reads</span></span>
@@ -36,7 +58,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// and it's passed just so it will appear in stack traces</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> PacketUDPRead</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">_</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">conn</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">UDPConn</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">go</span><span class="sk-6f42c1-ffc799"> PacketUDPRead</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">addrToUint32</span><span class="sk-24292e-fff">(conn.</span><span class="sk-6f42c1-ffc799">LocalAddr</span><span class="sk-24292e-fff">()), conn, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">go</span><span class="sk-6f42c1-ffc799"> PacketUDPRead</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">addrToUint32</span><span class="sk-24292e-fff">(conn.</span><span class="sk-6f42c1-ffc799">LocalAddr</span><span class="sk-24292e-fff">()), conn, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now when we get a stack trace, we can just look at the first bytes, convert them back to dotted notation, and know on what IP the goroutine was listening.</p>
 <div class="emdash-code">
@@ -46,7 +72,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">rrdns/core.PacketUDPRead(0xc27f000001,</span><span class="sk-032f62-99ffe4"> 0x2b6328113ad8,</span><span class="sk-032f62-99ffe4"> 0xc20801ecc0,</span><span class="sk-032f62-99ffe4"> 0xc208044308,</span><span class="sk-032f62-99ffe4"> 0xc208e99280,</span><span class="sk-032f62-99ffe4"> 0xc208ad8180,</span><span class="sk-005cc5-ffc799"> 0x12a05f200</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	/.../server.go:119</span><span class="sk-032f62-99ffe4"> +0x35a</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">created</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> rrdns/core.PacketIO</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">	/.../server.go:230</span><span class="sk-032f62-99ffe4"> +0x8be</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">	/.../server.go:230</span><span class="sk-032f62-99ffe4"> +0x8be</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>0xc27f000001</code> -&gt; remove alignment byte -&gt; <code>0x7f000001</code> -&gt; <code>127.0.0.1</code></p>
 <p>Obviously you can do the same with any piece of information you can represent as an <code>int</code>.</p>

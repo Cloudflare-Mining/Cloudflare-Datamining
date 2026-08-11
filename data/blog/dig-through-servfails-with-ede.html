@@ -19,8 +19,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">;; Query time: 23 msec</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Thu Mar 17 10:12:57 PDT 2022</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 35</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 35</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In the output above, we tried to do DNSSEC validation on <code>dnssec-failed.org</code>. It returns a <code>SERVFAIL</code>, but we don’t have context as to why.</p>
 <p>Now let’s try that again with 1.1.1.1’s EDE support.</p>
 <div class="emdash-code">
@@ -42,7 +64,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">;; Query time: 15 msec</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Fri Mar 04 12:53:45 PST 2022</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 103</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 103</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can see there is still a <code>SERVFAIL</code>. However, this time there is also an EDE Code 9 which stands for “DNSKey Missing”. Accompanying that, we also have additional information saying “no SEP matching the DS found” for <code>dnssec-failed.org</code>. That’s better!</p>
 <p>Another nifty feature is that we will return multiple errors when appropriate, so you can debug each one separately. In the example below, we returned a <code>SERVFAIL</code> with three different error codes: “Unsupported DNSKEY Algorithm”, “No Reachable Authority”, and “Network Error”.</p>
@@ -67,7 +93,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">;; Query time: 1197 msec</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Wed Mar 02 13:41:30 PST 2022</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 202</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 202</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here’s a list of the additional codes we now support:</p>
 <div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">

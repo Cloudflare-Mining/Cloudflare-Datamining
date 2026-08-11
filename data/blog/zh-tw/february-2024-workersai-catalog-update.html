@@ -89,7 +89,29 @@
 <span class="line"><span class="sk-24292e-fff">		});</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(response);</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>在 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai" target="_blank" rel="noopener noreferrer">Cloudflare 儀表板</a>的 AI 部分試用我們的新模型，或查看我們的<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">開發人員文件</a>以開始使用。藉助 Workers AI 平台，您可以使用 Workers 和 Pages 構建應用程式，使用 R2、D1、Workers KV 或 Vectorize 儲存資料，並使用 Workers AI 執行模型推斷——所有這些都在一個地方完成。擁有更多模型讓開發人員能夠構建各種不同類型的應用程式，我們計劃不斷更新我們的模型目錄，為您帶來最好的開放原始碼產品。</p>
 <p>我們很期待看到您構建的內容！如果您正在尋找靈感，請查看我們的<a href="https://workers.cloudflare.com/built-with/collections/ai-workers" target="_blank" rel="noopener noreferrer">「Built-with」故事集</a>，其中重點介紹了其他人在 Cloudflare 開發人員平台上構建的內容。敬請期待未來幾周的定價公告和更高的使用限制，以及即將推出的更多模型。<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">在 Discord 上加入我們</a>，分享您正在著手構建的產品以及您可能有的任何意見反應。</p>

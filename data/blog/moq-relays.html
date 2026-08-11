@@ -36,8 +36,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/moq/relays"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $API_TOKEN"</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-24292e-fff"> \</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"name": "Production Relay"}'</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"name": "Production Relay"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Cloudflare returns a relay ID and the two default tokens:<br>The first token can publish and subscribe, and the second can only subscribe.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -63,7 +85,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To give a client narrower access, add more tokens. This one is a subscribe-only token for viewers that expires at the start of 2027:<br></p>
 <h3>In the Cloudflare dashboard</h3>
@@ -71,7 +97,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">X</span><span class="sk-005cc5-fff"> POST</span><span class="sk-24292e-fff"> \</span></span>
 <span class="line"><span class="sk-24292e-fff">  https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/moq/relays/$RELAY_ID/tokens \</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer $API_TOKEN"</span><span class="sk-24292e-fff"> \</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"operations": ["subscribe"], "label": "viewers", "expires_at": "2027-01-01T00:00:00Z"}'</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"operations": ["subscribe"], "label": "viewers", "expires_at": "2027-01-01T00:00:00Z"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can also create a relay in the dashboard:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -83,11 +113,19 @@
 <p>The token travels in the URL path. For example, with the open-source <a href="https://github.com/cloudflare/moq-rs" target="_blank" rel="noopener noreferrer"><u>moq-rs</u></a> tools, a broadcaster can publish a fragmented MP4 stream from ffmpeg:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">ffmpeg </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">stream_loop </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">re </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">i input</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">mp4 </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">f mp4 </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">movflags empty_moov</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">frag_every_frame</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">separate_moof</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">omit_tfhd_offset </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> \</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-24292e-fff"> moq</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">name my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">namespace </span><span class="sk-032f62-99ffe4">"https://draft-16.cloudflare.mediaoverquic.com/&lt;publish_subscribe_token&gt;"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-24292e-fff"> moq</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">name my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">namespace </span><span class="sk-032f62-99ffe4">"https://draft-16.cloudflare.mediaoverquic.com/&lt;publish_subscribe_token&gt;"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A viewer connects with moq-sub:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">moq</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">sub </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">name my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">namespace </span><span class="sk-032f62-99ffe4">"https://draft-16.cloudflare.mediaoverquic.com/&lt;subscribe_token&gt;"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> ffplay </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">hide_banner </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">an </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> </span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">moq</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">sub </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">name my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">namespace </span><span class="sk-032f62-99ffe4">"https://draft-16.cloudflare.mediaoverquic.com/&lt;subscribe_token&gt;"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> ffplay </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">hide_banner </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">an </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The relay reads the token when the session opens and checks whether the requested operation is allowed.</p>
 <h2>What we changed to support draft-16&nbsp;</h2>

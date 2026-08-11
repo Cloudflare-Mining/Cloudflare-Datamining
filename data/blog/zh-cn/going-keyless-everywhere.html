@@ -56,12 +56,38 @@
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015231 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015271 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
 <span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:49.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:49 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015280 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span>
-<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:50.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:50 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015289 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:50.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:50 [error] 4525</span><span class="sk-6a737d-8b8b8b94">#0: *1015289 Keyless SSL request/response timed out while waiting for Keyless SSL response, keyserver: 127.0.0.1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>您可以看到第一个记录超时的请求的id是1015157。同样有趣的是，第一个日志行是“在读取时超时”，而其他所有日志行都是“在等待时超时”，后面的消息将一直持续下去。下面是gokeyless日志中的匹配请求：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">➜ ~ </span><span class="sk-d73a49-a0a0a0">grep</span><span class="sk-032f62-99ffe4"> 'id=1015157 '</span><span class="sk-24292e-fff"> gokeyless.log | head -1</span></span>
-<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:39.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:39 [DEBUG] connection 127.0.0.1:30520: worker=ecdsa-29 opcode=OpECDSASignSHA256 id=1015157 sni=announce.php?info_hash=%a8%9e%9dc%cc%3b1%c8%23%e4%93%21r%0f%92mc%0c%15%89&amp;peer_id=-ut353s-%ce%ad%5e%b1%99%06%24e%d5d%9a%08&amp;port=42596&amp;uploaded=65536&amp;downloaded=0&amp;left=0&amp;corrupt=0&amp;key=04a184b7&amp;event=started&amp;numwant=200&amp;compact=1&amp;no_peer_id=1 ip=104.20.33.147</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">2018-07-25T05:30:39.</span><span class="sk-d73a49-a0a0a0">000</span><span class="sk-24292e-fff"> 29m41 2018/07/25 05:30:39 [DEBUG] connection 127.0.0.1:30520: worker=ecdsa-29 opcode=OpECDSASignSHA256 id=1015157 sni=announce.php?info_hash=%a8%9e%9dc%cc%3b1%c8%23%e4%93%21r%0f%92mc%0c%15%89&amp;peer_id=-ut353s-%ce%ad%5e%b1%99%06%24e%d5d%9a%08&amp;port=42596&amp;uploaded=65536&amp;downloaded=0&amp;left=0&amp;corrupt=0&amp;key=04a184b7&amp;event=started&amp;numwant=200&amp;compact=1&amp;no_peer_id=1 ip=104.20.33.147</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>啊哈！该SNI值显然是无效的（SNI类似于主机请求头，即它们是域，而不是URL路径），并且它也很长。我们的存储系统基于两个指标对证书进行索引：对应哪个SNI，对应哪个IP地址（对于不支持SNI的老客户端）。我们的存储接口使用memcached协议，而gokeyless-internal使用的客户端库拒绝长度超过250个字符（memcached的最大密钥长度）的密钥请求，而nginx逻辑只是简单地忽略无效的SNI，把请求当作只有一个IP。我们在新版本中的更改将这个条件从ErrKeyNotFound转移到了ErrInternal，这在nginx中引发了级联问题。它遇到的“超时”实际上是由于丢弃了所有在一个连接上执行多路复用的运行中的请求，而该连接恰好返回了单个请求的ErrInternal。这些请求被重试，但是一旦触发这个条件，nginx就会因为重试请求的数量以及带有坏SNI的连续的新请求流而超载，并且无法恢复。这解释了为什么回滚gokeyless-internal无法解决问题。</p>
 <p>这一发现最终将我们的注意力引向了nginx，由于多年来nginx一直可靠地与客户密钥服务器一起工作，所以到目前为止它还没有受到指责。然而，通过本地主机与多租户密钥服务器进行通信，和通过公共互联网与客户的密钥服务器进行通信是完全不同的，我们必须进行以下更改：</p>

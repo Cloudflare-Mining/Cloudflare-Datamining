@@ -16,8 +16,30 @@
 <p>Cloudflareでは2025年までに、自社ネットワークへの電力供給に伴う過去の排出量をすべて除去または相殺することを目指しています。この目標を達成するために、Cloudflareはまず、2010年から2019年までにネットワークを運用した結果、どれだけの炭素が排出されたかを正確に把握し、その排出量に見合ったカーボンオフセットや除去に投資する必要があります。</p>
 <p>購入した電力量から炭素排出量を導き出す手法は、比較的簡単な計算です。実際のところ、次に示すように、基本的にはただ単位を変換するのみです。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Energy</span><span class="sk-24292e-fff"> (KWH) x Emissions Factor (</span><span class="sk-6f42c1-ffc799">gC02e/KWH</span><span class="sk-24292e-fff">) = Carbon emissions (</span><span class="sk-6f42c1-ffc799">gC02e</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Energy</span><span class="sk-24292e-fff"> (KWH) x Emissions Factor (</span><span class="sk-6f42c1-ffc799">gC02e/KWH</span><span class="sk-24292e-fff">) = Carbon emissions (</span><span class="sk-6f42c1-ffc799">gC02e</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>エネルギー（KWH）×排出係数（gC02e/KWH）＝炭素排出量（gC02e)</p>
 <p>正確な結果を得るための鍵となるのが、排出係数です。排出係数とは、基本的に、特定の電力供給会社（例：サンフランシスコの発電所Xなど）から単位エネルギーあたりに排出されるGHGの量を測定します。ここでは、1992年に <a href="https://unfccc.int/process-and-meetings/the-kyoto-protocol/what-is-the-kyoto-protocol/kyoto-protocol-targets-for-the-first-commitment-period" target="_blank" rel="noopener noreferrer">京都議定書</a>で策定されたGHG（二酸化炭素、メタン、一酸化二窒素、ハイドロフルオロカーボン、パーフルオロカーボン、六フッ化硫黄）を対象としています。報告を簡略化するために、6つのGHGは、各ガスの地球温暖化係数（GWP）に基づいて、単一の単位「算定割当量」または「CO2e」で表記されることがよくあります。また、個々の電源からの排出係数を合算して平均化し、都市、地域、国のグリッド平均排出係数を算出する手法もよく見られます。GHGプロトコルでは、Cloudflareは米国EPA、英国DEFRA、IEAの排出係数を使用しています。</p>
 <p><a href="https://assets.ctfassets.net/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf" target="_blank" rel="noopener noreferrer">年次インベントリーレポート</a>（本日公開）では、Cloudflareはネットワーク上のすべてのデータセンターの炭素排出スコアを計算しています。Cloudflareは、機器で使用された実際のエネルギーに、機器を設置している100以上の国のそれぞれに適用されるグリッド平均排出係数を乗じています。</p>

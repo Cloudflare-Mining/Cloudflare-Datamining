@@ -40,8 +40,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Unexpected</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> null</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> parseBytes</span><span class="sk-24292e-fff"> (src/down.ts:30:8)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> down_default</span><span class="sk-24292e-fff"> (src/down.ts:10:19)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> Object.fetch</span><span class="sk-24292e-fff"> (src/index.ts:11:12)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> Object.fetch</span><span class="sk-24292e-fff"> (src/index.ts:11:12)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <ol>
 	<li>wrangler.toml에서 upload_<a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer">source_maps = true</a>를 설정하면 Wrangler는 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#deploy" target="_blank" rel="noopener noreferrer">Wrangler 배포</a> 또는 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#versions" target="_blank" rel="noopener noreferrer">Wrangler 버전 업로드</a>를 실행할 때 모든 소스 맵 파일을 자동으로 생성하고 업로드합니다.</li>
 	<li>Worker에서 잡히지 않은 예외가 발생하면 소스 맵을 가져와서 예외의 스택 추적을 Worker의 원본 소스 코드 줄에 다시 매핑하는 데 사용합니다.</li>
@@ -61,7 +83,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Limit: the number of tokens allowed within a given period, in a single Cloudflare location</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Period: the duration of the period, in seconds. Must be either 60 or 10</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">simple</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> limit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 100,</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">simple</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> limit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 100,</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제 Workers 멤캐시드 같은 데이터 저장소에 직접 연결할 수 있게 되었으니, 저희가 또 무엇을 제공할 수 있을까요? 카운터? 잠금? <a href="https://github.com/cloudflare/workerd/pull/1666" target="_blank" rel="noopener noreferrer">인메모리 캐시</a>? 레이트 리미팅은 많은 Worker <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">격리</a>에 걸쳐 있는 임시 공유 상태가 어디에 있어야 하는지에 대해 저희가 수년 동안 받은 질문을 해결하기 위해 Workers에서 제공하는 많은 기본 기능 중 첫 번째입니다. 귀하가 현재 Worker의 글로벌 범위에 상태를 넣는 데 의존하고 있다면, 저희는 특정 사용 사례를 위해 특별히 제작된 더 나은 기본 기능을 개발 중입니다.</p>
 <div class="emdash-code">
@@ -76,7 +102,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Success!`</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Workers의 레이트 리미팅 API는 오픈 베타 버전이며, <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit" target="_blank" rel="noopener noreferrer">문서를 읽고서</a> 시작할 수 있습니다.</p>
 <h3>Cloudflare의 API를 위한 새로운 자동 생성 SDK</h3>
@@ -94,7 +124,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">pip</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Go</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cloudflare-go/v2</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cloudflare-go/v2</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>자동 생성되는 새로운 Go SDK는 모든 Cloudflare 제품에 대하여 보다 포괄적인 Terraform 지원을 위한 길을 열어주며, 최신 API 변경 사항을 정확하고 최신 상태로 유지할 수 있는 기본 도구 세트를 제공합니다. 저희는 Cloudflare의 제품팀에서 Cloudflare API를 통해 노출되는 새로운 기능을 개발할 때마다 SDK에서 자동으로 지원되는 미래를 향해 나아가고 있습니다. 2024년 내내 이와 관련된 더 많은 업데이트를 기대하세요.</p>
 <h3>Durable Object 네임스페이스 분석 및 WebSocket Hibernation GA</h3>

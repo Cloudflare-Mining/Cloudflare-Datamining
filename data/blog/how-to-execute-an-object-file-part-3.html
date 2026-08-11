@@ -9,8 +9,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">void</span><span class="sk-6f42c1-ffc799"> say_hello</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In the above scenario our <code>say_hello</code> function now depends on the <code>puts</code> <a href="https://man7.org/linux/man-pages/man3/puts.3.html" target="_blank" rel="noopener noreferrer">function from the C standard library</a>. To try it out we also need to modify our <code>loader</code> to import the new function and execute it:</p>
 <p><em>loader.c</em>:</p>
 <div class="emdash-code">
@@ -37,14 +59,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Executing say_hello..."</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    say_hello</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's run it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> obj.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> runtime</span><span class="sk-032f62-99ffe4"> base</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> section</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> runtime</span><span class="sk-032f62-99ffe4"> base</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> section</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Seems something went wrong when the <code>loader</code> tried to process relocations, so let's check the relocations table:</p>
 <div class="emdash-code">
@@ -59,7 +89,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">000000000058</span><span class="sk-005cc5-ffc799">  000300000002</span><span class="sk-032f62-99ffe4"> R_X86_64_PC32</span><span class="sk-005cc5-ffc799">     0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">000000000066</span><span class="sk-005cc5-ffc799">  000500000002</span><span class="sk-032f62-99ffe4"> R_X86_64_PC32</span><span class="sk-005cc5-ffc799">     0000000000000000</span><span class="sk-032f62-99ffe4"> .rodata</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">00000000006b</span><span class="sk-005cc5-ffc799">  001100000004</span><span class="sk-032f62-99ffe4"> R_X86_64_PLT32</span><span class="sk-005cc5-ffc799">    0000000000000000</span><span class="sk-032f62-99ffe4"> puts</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The compiler generated a relocation for the <code>puts</code> invocation. The relocation type is <code>R_X86_64_PLT32</code> and our <code>loader</code> already knows how to process these, so the problem is elsewhere. The above entry shows that the relocation references 17th entry (<code>0x11</code> in hex) in the symbol table, so let's check that:</p>
 <div class="emdash-code">
@@ -84,7 +118,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    14:</span><span class="sk-032f62-99ffe4"> 000000000000004c</span><span class="sk-005cc5-ffc799">    19</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> set_var</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    15:</span><span class="sk-032f62-99ffe4"> 000000000000005f</span><span class="sk-005cc5-ffc799">    19</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> say_hello</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    16:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> NOTYPE</span><span class="sk-032f62-99ffe4">  GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4">  UND</span><span class="sk-032f62-99ffe4"> _GLOBAL_OFFSET_TABLE_</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    17:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> NOTYPE</span><span class="sk-032f62-99ffe4">  GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4">  UND</span><span class="sk-032f62-99ffe4"> puts</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    17:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> NOTYPE</span><span class="sk-032f62-99ffe4">  GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4">  UND</span><span class="sk-032f62-99ffe4"> puts</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Oh! The section index for the <code>puts</code> function is <code>UND</code> (essentially <code>0</code> in the code), which makes total sense: unlike previous symbols, <code>puts</code> is an external dependency, and it is not implemented in our <code>obj.o</code> file. Therefore, it can't be a part of any section within <code>obj.o</code>.So how do we resolve this relocation? We need to somehow point the code to jump to a <code>puts</code> implementation. Our <code>loader</code> actually already has access to the C library <code>puts</code> function (because it is written in C and we've used <code>puts</code> in the <code>loader</code> code itself already), but technically it doesn't have to be the C library <code>puts</code>, just some <code>puts</code> implementation. For completeness, let's implement our own custom <code>puts</code> function in the <code>loader</code>, which is just a decorator around the C library <code>puts</code>:</p>
 <p><em>loader.c</em>:</p>
@@ -97,7 +135,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my_puts executed"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> puts</span><span class="sk-24292e-fff">(s);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now that we have a <code>puts</code> implementation (and thus its runtime address) we should just write logic in the <code>loader</code> to resolve the relocation by instructing the code to jump to the correct function. However, there is one complication: in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2" target="_blank" rel="noopener noreferrer">part 2 of our series</a>, when we processed relocations for constants and global variables, we learned we're mostly dealing with 32-bit relative relocations and that the code or data we're referencing needs to be no more than 2147483647 (<code>0x7fffffff</code> in hex) bytes away from the relocation itself. <code>R_X86_64_PLT32</code> is also a 32-bit relative relocation, so it has the same requirements, but unfortunately we can't reuse the trick from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2" target="_blank" rel="noopener noreferrer">part 2</a> as our <code>my_puts</code> function is part of the <code>loader</code> itself and we don't have control over where in the address space the operating system places the <code>loader</code> code.</p>
 <p>Luckily, we don't have to come up with any new solutions and can just borrow the approach used in shared libraries.</p>
@@ -138,7 +180,11 @@
 <span class="line"><span class="sk-24292e-fff">            num_ext_symbols</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This function is very similar to our <code>do_text_relocations</code> function. Only instead of actually performing relocations it just counts the number of external symbol references.</p>
 <p>Next we need to decide the actual size in bytes for our jumptable. <code>num_ext_symbols</code> has the number of external symbol references in the object file, but how many bytes per symbol to allocate? To figure this out we need to design our jumptable format. As we established above, in its simple form our jumptable should be just a collection of unconditional CPU jump instructions — one for each external symbol. However, unfortunately modern x64 CPU architecture <a href="https://www.felixcloutier.com/x86/jmp" target="_blank" rel="noopener noreferrer">does not provide a jump instruction</a>, where an address pointer can be a direct operand. Instead, the jump address needs to be stored in memory somewhere "close" — that is within 32-bit offset — and the offset is the actual operand. So, for each external symbol we need to store the jump address (64 bits or 8 bytes on a 64-bit CPU system) and the actual jump instruction with an offset operand (<a href="https://www.felixcloutier.com/x86/jmp" target="_blank" rel="noopener noreferrer">6 bytes for x64 architecture</a>). We can represent an entry in our jumptable with the following C structure:</p>
@@ -156,7 +202,11 @@
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> ext_jump </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">jumptable;</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We've also added a global variable to store the base address of the jumptable, which will be allocated later. Notice that with the above approach the actual jump instruction will always be constant for every external symbol. Since we allocate a dedicated entry for each external symbol with this structure, the <code>addr</code> member would always be at the same offset from the end of the jump instruction in <code>instr</code>: <code>-14</code> bytes or <code>0xfffffff2</code> in hex for a 32-bit operand. So <code>instr</code> will always be <code>{0xff, 0x25, 0xf2, 0xff, 0xff, 0xff}</code>: <code>0xff</code> and <code>0x25</code> is the encoding of the x64 jump instruction and its modifier and <code>0xfffffff2</code> is the operand offset in little-endian format.</p>
 <p>Now that we have defined the entry format for our jumptable, we can allocate and populate it when parsing the object file. First of all, let's not forget to call our new <code>count_external_symbols</code> function from the <code>parse_obj</code> to populate <code>num_ext_symbols</code> (it has to be done before we allocate the jumptable):</p>
@@ -173,7 +223,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    /* allocate memory for `.text`, `.data` and `.rodata` copies rounding up each section to whole pages */</span></span>
 <span class="line"><span class="sk-24292e-fff">    text_runtime_base </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> mmap</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">page_align</span><span class="sk-24292e-fff">(text_hdr-&gt;sh_size)...</span></span>
 <span class="line"><span class="sk-24292e-fff">...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next we need to allocate memory for the jumptable and store the pointer in the <code>jumptable</code> global variable for later use. Just a reminder that in order to resolve 32-bit relocations from the <code>.text</code> section to this table, it has to be "close" in memory to the main code. So we need to allocate it in the same <code>mmap</code> call as the rest of the object sections. Since we defined the table's entry format in <code>struct ext_jump</code> and have <code>num_ext_symbols</code>, the size of the table would simply be <code>sizeof(struct ext_jump) * num_ext_symbols</code>:</p>
 <p><em>loader.c</em>:</p>
@@ -204,7 +258,11 @@
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, because the CPU will actually be executing the jump instructions from our <code>instr</code> fields from the jumptable, we need to mark this memory readonly and executable (after <code>do_text_relocations</code> earlier in this function has completed):</p>
 <p><em>loader.c</em>:</p>
@@ -225,7 +283,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(errno);</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>At this stage we have our jumptable allocated and usable — all is left to do is to populate it properly. We’ll do this by improving the <code>do_text_relocations</code> implementation to handle the case of external symbols. The <code>No runtime base address for section</code> error from the beginning of this post is actually caused by this line in <code>do_text_relocations</code>:</p>
 <p><em>loader.c</em>:</p>
@@ -241,7 +303,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        uint8_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">symbol_address </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> section_runtime_base</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">sections</span><span class="sk-24292e-fff">[</span><span class="sk-e36209-fff">symbols</span><span class="sk-24292e-fff">[symbol_idx].st_shndx]) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-e36209-fff"> symbols</span><span class="sk-24292e-fff">[symbol_idx].st_value;</span></span>
 <span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Currently we try to determine the runtime symbol address for the relocation by looking up the symbol's section runtime address and adding the symbol's offset. But we have established above that external symbols do not have an associated section, so their handling needs to be a special case. Let's update the implementation to reflect this:</p>
 <p><em>loader.c</em>:</p>
@@ -281,7 +347,11 @@
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If a relocation symbol does not have an associated section, we consider it external and call a helper function to lookup the symbol's runtime address by its name. We store this address in the next available jumptable entry, populate the x64 jump instruction with our fixed operand and store the address of the instruction in the <code>symbol_address</code> variable. Later, the existing code in <code>do_text_relocations</code> will resolve the <code>.text</code> relocation with respect to the address in <code>symbol_address</code> in the same way it does for local symbols in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2" target="_blank" rel="noopener noreferrer">part 2 of our series</a>.</p>
 <p>The only missing bit here now is the implementation of the newly introduced <code>lookup_ext_function</code> helper. Real world loaders may have complicated logic on how to find and resolve symbols in memory at runtime. But for the purposes of this article we'll provide a simple naive implementation, which can only resolve the <code>puts</code> function:</p>
@@ -299,7 +369,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    fprintf</span><span class="sk-24292e-fff">(stderr, </span><span class="sk-032f62-99ffe4">"No address for function </span><span class="sk-005cc5-fff">%s</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    exit</span><span class="sk-24292e-fff">(ENOENT);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice though that because we control the <code>loader</code> logic we are free to implement resolution as we please. In the above case we actually "divert" the object file to use our own "custom" <code>my_puts</code> function instead of the C library one. Let's recompile the <code>loader</code> and see if it works:</p>
 <div class="emdash-code">
@@ -318,7 +392,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 42</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> say_hello...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">my_puts</span><span class="sk-032f62-99ffe4"> executed</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hooray! We not only fixed our <code>loader</code> to handle external references in object files — we have also learned how to "hook" any such external function call and divert the code to a custom implementation, which might be useful in some cases, like malware research.</p>
 <p>As in the previous posts, the complete source code from this post is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/3" target="_blank" rel="noopener noreferrer">available on GitHub</a>.</p>

@@ -52,8 +52,30 @@
 <p><em>Automatisches Einfügen der CSP-Anweisung upgrade-insecure-requests</em></p>
 <p>Die Anweisung <a href="https://www.w3.org/TR/upgrade-insecure-requests" target="_blank" rel="noopener noreferrer">upgrade-insecure-requests</a> kann wie folgt in einem <a href="https://www.w3.org/TR/CSP" target="_blank" rel="noopener noreferrer">Content Security Policy</a>-Header eingefügt werden:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content-Security-Policy:</span><span class="sk-032f62-99ffe4"> upgrade-insecure-requests</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Content-Security-Policy:</span><span class="sk-032f62-99ffe4"> upgrade-insecure-requests</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Dadurch wird der Browser angewiesen, jede HTTP-Anfrage automatisch auf HTTPS zu aktualisieren. Dies kann nützlich sein, wenn der Website-Besitzer weiß, dass jede Subressource über HTTPS verfügbar ist. Die Website muss die in sie eingebetteten http://-URIs nicht wirklich in https:// ändern, der Browser kümmert sich automatisch darum.</p>
 <p>Leider gibt es einen großen Nachteil mit upgrade-insecure-requests. Da der Browser blind jeden URI auf https:// aktualisiert, unabhängig davon, ob der resultierende URI tatsächlich funktioniert, kann es zur <a href="https://www.w3.org/TR/upgrade-insecure-requests/#example-failed" target="_blank" rel="noopener noreferrer">fehlerhaften</a> Darstellung von Seiten kommen.</p>
 <p><em>Änderung aller Links in https://</em></p>
@@ -68,7 +90,11 @@
 <p>Der HTTPS-Everywhere-Regelsatz geht weit über den einfachen Wechsel von http:// zu https://: hinaus und enthält Regeln (und Ausschlüsse), mit denen es (und wir) sehr spezifische URIs ansprechen können. Hier ist zum Beispiel eine echte HTTPS-Everywhere-Regel für gstatic.com:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">rule from</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">gstatic\.com/"</span><span class="sk-24292e-fff"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">.gstatic.com/"/</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">gstatic\.com/"</span><span class="sk-24292e-fff"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">.gstatic.com/"/</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Sie verwendet einen regulären Ausdruck, um spezifische Subdomains von gstatic.com zu identifizieren, die sicher für die Verwendung von HTTPS aktualisiert werden können. Den kompletten Regelsatz können Sie <a href="https://www.eff.org/https-everywhere/atlas" target="_blank" rel="noopener noreferrer">hier</a> einsehen.</p>
 <p>Da wir eine große Anzahl von URIs, die in Webseiten eingebettet sind, aktualisieren müssen (wir schätzen etwa fünf Millionen pro Sekunde), haben wir bestehende HTML-Parser (einschließlich unserer eigenen) verglichen und beschlossen, einen neuen für diese Art von Umschreibe-Aufgabe zu entwickeln. Wir werden in einem späteren Beitrag mehr über Design, Test und Leistung des Parsers berichten.</p>

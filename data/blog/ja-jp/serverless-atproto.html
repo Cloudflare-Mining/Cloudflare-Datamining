@@ -38,8 +38,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "createdAt"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> { </span><span class="sk-032f62-99ffe4">"type"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "string"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"format"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "datetime"</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>辞書は厳密に型付けされているため、アプリ間の相互運用性が容易です。</p>
 <h2>構築の仕組み</h2>
 <p>このセクションでは、認証からリポジトリの読み込みおよび書き込み、リアルタイム更新まで、Statusphere内のデータの流れをたどり、サーバーレスインフラストラクチャ上でライブイベントストリームの処理方法を紹介します。</p>
@@ -65,12 +87,20 @@
 <h3>4. ステータスとプロファイルデータの取得</h3>
 <p>セッションCookieに保存されたDIDを使用して、ユーザーのOAuthセッションを復元し、<a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L111-L118" target="_blank" rel="noopener noreferrer"><u>認証されたエージェントをスピンアップします</u></a>。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> agent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">oauth</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">restore_session</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">did)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> agent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">oauth</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">restore_session</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">did)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>エージェントの準備が完了すると、<a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L120-L140" target="_blank" rel="noopener noreferrer"><u>ユーザーの最新のStatusphe投稿とBlueskyプロファイルを取得します</u></a>。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> current_status </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">current_status</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> profile </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">bsky_profile</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> profile </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">bsky_profile</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>従業員のステータスとプロフィール情報が手元にあるので、<a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L142-L150" target="_blank" rel="noopener noreferrer"><u>ホームページをレンダリング</u></a>できます：</p>
 <div class="emdash-code">
@@ -81,25 +111,41 @@
 <span class="line"><span class="sk-24292e-fff">        display_name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Some</span><span class="sk-24292e-fff">(username),</span></span>
 <span class="line"><span class="sk-24292e-fff">    }),</span></span>
 <span class="line"><span class="sk-24292e-fff">    my_status</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> current_status,</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>5. アップデートの公開</h3>
 <p>ユーザーが新しいe品ステータスを投稿すると、個人リポジトリに新しいレコードを作成します。データの取得に使用したのと同じ認証済みエージェントを使用します。今回は、読み取りの代わりに、<a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L183" target="_blank" rel="noopener noreferrer"><u>レコードの<strong>作成操作</strong>を実行</u></a>します。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> uri </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">create_status</span><span class="sk-24292e-fff">(form</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">status</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">clone</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">.await?.</span><span class="sk-24292e-fff">uri;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> uri </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> agent</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">create_status</span><span class="sk-24292e-fff">(form</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">status</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">clone</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">.await?.</span><span class="sk-24292e-fff">uri;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この操作は、新しいレコードの正規の識別子であるURIを返します。</p>
 <p>そして、ステータスアップデートをD1に書き、すぐにUIに反映できるようにします。</p>
 <h3>6. Durable Objectsを使用して更新を送信</h3>
 <p>アクティブなホームページは全て、Durable ObjectへのWebSocket接続を維持し、Durable Objectは軽量のリアルタイムメッセージブローカーとして機能します。アイドル状態では、Durable Objectは<a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>ハイバネーション</u></a>し、WebSocket 接続を維持しながらリソースを節約します。Durable Objectにメッセージを送信して、<a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/frontend_worker/endpoints.rs#L192" target="_blank" rel="noopener noreferrer"><u>それを起動し、新しい更新をブロードキャストします</u></a>。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">durable_object</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">broadcast</span><span class="sk-24292e-fff">(status)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">durable_object</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">broadcast</span><span class="sk-24292e-fff">(status)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>その後、Durable Objectが<a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/durable_object/server.rs#L88-L92" target="_blank" rel="noopener noreferrer"><u>接続されているすべてのホームページに新しい更新をブロードキャストします</u></a>。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> ws </span><span class="sk-d73a49-ffc799">in</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">state</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">get_websockets</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-24292e-fff">    ws</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">status);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>その後、すべてのライブWebSocketを反復処理して、更新を送信します。</p>
 <p>実際の実用的注意点：Durable Objectsは<strong>インスタンス間でシャーディングされた場合</strong>にパフォーマンスが向上します。 簡単にするために、すべてが<strong>1つのDurable Object</strong>を介してすべてを実行するケースを説明しました。</p>
@@ -113,7 +159,11 @@
 <p>これを解決するために、私たちはリッスンロジックを<a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank" rel="noopener noreferrer"><strong><u>Cron Trigger</u></strong></a>に移動しました。ライブソケットを開いておくのではなく、この機能を使用して、定期的なジョブを使用して、小さなバッチで更新を読み取ります。</p>
 <p>スケジュールされたworker呼び出しが開始されると、永続ストレージから最後に確認されたカーソルがロードされます。次に、<a href="https://github.com/inanna-malick/statusphere-serverless/blob/ca6e5ecd3a81dcfc80d9a9d976bac6efdad3a312/worker/src/services/jetstream.rs#L98-L101" target="_blank" rel="noopener noreferrer"><u>接続</u></a>して、<a href="https://github.com/bluesky-social/jetstream" target="_blank" rel="noopener noreferrer"><u>Jetstream</u></a>（ATProtoレポジトリイベントのストリーミングサービス）に接続します。xyz.statusphere.statusコレクションでフィルタリングされ、最後に確認されたカーソルが始まります。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> ws </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WebSocket</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"wss://jetstream1.us-east.bsky.network/subscribe?wantedCollections=xyz.statusphere.status&amp;cursor={cursor}"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> ws </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WebSocket</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"wss://jetstream1.us-east.bsky.network/subscribe?wantedCollections=xyz.statusphere.status&amp;cursor={cursor}"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.await?</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>カーソル</strong>（マイクロ秒のタイムスタンプ）をDurable Objectの永続ストレージに保存するため、オブジェクトが再起動しても、再開場所が正確に把握できます。開始時間より新しいイベントを処理するとすぐに、WebSocket 接続を閉じ、Durable Objectをスリープ状態に戻します。</p>
 <p>トレードオフ：更新は最大で1分も遅れる可能性がありますが、システムは完全にサーバーレスのままです。これは、インフラストラクチャの複雑さを最小限に抑えることが、完璧なリアルタイム配信を実現することよりも重要な、初期段階のアプリやプロトタイプに最適です。</p>

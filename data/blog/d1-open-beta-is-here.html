@@ -22,12 +22,38 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>OK, great. Now what if we wanted to make a change to a specific set of orders: an address change or freight company change?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">I</span><span class="sk-24292e-fff"> think we might be forgetting something here</span><span class="sk-d73a49-a0a0a0">...</span></span>
-<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wait: we’ve made a mistake that many, many folks have before: we forgot the WHERE clause on our UPDATE query. Instead of updating a specific order Id, we’ve instead updated the ShipAddress for every order in our table.</p>
 <div class="emdash-code">
@@ -37,7 +63,11 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">        │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Panic sets in. Did we remember to make a backup before we did this? How long ago was it? Did we turn on point-in-time recovery? It seemed potentially expensive at the time…</p>
 <p>It’s OK. We’re using D1. We can Time Travel. It’s on by default: let’s fix this and travel back a few minutes.</p>
@@ -50,7 +80,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">⚡️ Time travel </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> progress</span><span class="sk-d73a49-a0a0a0">...</span></span>
 <span class="line"><span class="sk-24292e-fff">✅ Database dash</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">db restored back to bookmark </span><span class="sk-005cc5-ffc799">00000000</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">00000004</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">97a8857d35583887de16219c766c0785</span></span>
-<span class="line"><span class="sk-24292e-fff">↩️ To undo </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> operation, you can restore to the previous </span><span class="sk-6f42c1-ffc799">bookmark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">00000013</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ffffffff</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">90b029f26ab5bd88843c55c87b26f497</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">↩️ To undo </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> operation, you can restore to the previous </span><span class="sk-6f42c1-ffc799">bookmark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">00000013</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ffffffff</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">90b029f26ab5bd88843c55c87b26f497</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's check if it worked:</p>
 <div class="emdash-code">
@@ -60,7 +94,11 @@
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
 <span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
 <span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
-<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We think that Time Travel becomes even more powerful when you have many smaller databases, too: the downsides of any restore operation is reduced further and scoped to a single user or tenant.</p>
 <p>This is also just the beginning for Time Travel: we’re working to support not just only restoring a database, but also the ability to fork from and overwrite existing databases. If you can fork a database with a single command and/or test migrations and schema changes against real data, you can de-risk a lot of the traditional challenges that working with databases has historically implied.</p>
@@ -90,12 +128,20 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The unindexed query above scans 16,800 rows. Even if we don’t optimize it, D1 includes 25 billion queries per month for free, meaning we could make this query 1.4 million times for a whole month before having to worry about extra costs.</p>
 <p>But we can do better with an index:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> INDEX</span><span class="sk-005cc5-fff"> IF</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> EXISTS</span><span class="sk-24292e-fff"> idx_orders_date </span><span class="sk-005cc5-fff">ON</span><span class="sk-24292e-fff"> [Order](ShippedDate)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> INDEX</span><span class="sk-005cc5-fff"> IF</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> EXISTS</span><span class="sk-24292e-fff"> idx_orders_date </span><span class="sk-005cc5-fff">ON</span><span class="sk-24292e-fff"> [Order](ShippedDate)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the index created, let’s see how many rows our query needs to read now:</p>
 <div class="emdash-code">
@@ -112,7 +158,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The same query with an index on the ShippedDate column reads just 417 rows: not only it is faster (duration is in milliseconds!), but it costs us less: we could run this query 59 million times per month before we’d have to pay any more than what the $5 Workers plan gives us.</p>
 <p>D1 also <a href="https://developers.cloudflare.com/d1/platform/metrics-analytics/#metrics" target="_blank" rel="noopener noreferrer">exposes row counts</a> via both the Cloudflare dashboard and our GraphQL analytics API: so not only can you look at this per-query when you’re tuning performance, but also break down query patterns across all of your databases.</p>

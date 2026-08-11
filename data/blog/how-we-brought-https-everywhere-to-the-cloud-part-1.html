@@ -37,15 +37,41 @@
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  &lt;!-- Rewrite rules --&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">rule</span><span class="sk-6f42c1-a0a0a0"> from</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"^http://(www\.)?example\.org/"</span><span class="sk-6f42c1-a0a0a0"> to</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://$1example.org/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">ruleset</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">ruleset</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>At the moment of writing, the HTTPS Everywhere database consists of ~22K such rulesets covering ~113K domain wildcards with ~32K rewrite rules and exclusions.</p>
 <p>For performance reasons, we can't keep all those ruleset XMLs in memory, go through nodes, check each wildcard, perform replacements based on specific string format and so on. All that work would introduce significant delays in page processing and increase memory consumption on our servers. That's why we had to perform some compile-time tricks for each type of node to ensure that rewriting is smooth and fast for any user from the very first request.</p>
 <p>Let's walk through those nodes and see what can be done in each specific case.</p>
 <h3>Target domains</h3>
 <p>First of all, we get target elements which describe domain wildcards that current ruleset potentially covers.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">target</span><span class="sk-6f42c1-a0a0a0"> host</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"*.example.org"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">target</span><span class="sk-6f42c1-a0a0a0"> host</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"*.example.org"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If a wildcard is used, it can be <a href="https://www.eff.org/https-everywhere/rulesets#wildcard-targets" target="_blank" rel="noopener noreferrer">either left-side or right-side</a>.</p>
 <p>Left-side wildcard like <code>*.example.org</code> covers any hostname which has example.org as a suffix - no matter how many subdomain levels you have.</p>
@@ -65,7 +91,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">target</span><span class="sk-6f42c1-a0a0a0"> host</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"*.google.co.uk"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">target</span><span class="sk-6f42c1-a0a0a0"> host</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"*.google.es"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">target</span><span class="sk-6f42c1-a0a0a0"> host</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"google.*"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">target</span><span class="sk-6f42c1-a0a0a0"> host</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"google.com"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">target</span><span class="sk-6f42c1-a0a0a0"> host</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"google.com"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we build Ragel state machine directly from those:</p>
 <div class="emdash-code">
@@ -81,7 +111,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        'google.'</span><span class="sk-032f62-99ffe4"> host_part</span><span class="sk-d73a49-a0a0a0"> |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        'google.com.ua'</span></span>
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
-<span class="line"><span class="sk-24292e-fff">}%%</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}%%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We will get the following state graph:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -102,7 +136,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        host_part</span><span class="sk-032f62-99ffe4"> '.elgoog'</span><span class="sk-d73a49-a0a0a0"> |</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        'au.moc.elgoog'</span></span>
 <span class="line"><span class="sk-24292e-fff">    );</span></span>
-<span class="line"><span class="sk-24292e-fff">}%%</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}%%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>we can get much simpler graph and, consequently, significantly reduced graph build and matching times:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -118,20 +156,32 @@
 <p>Exclusion elements serve exactly this goal.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">exclusion</span><span class="sk-6f42c1-a0a0a0"> pattern</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"^http://(www\.)?google\.com/analytics/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">exclusion</span><span class="sk-6f42c1-a0a0a0"> pattern</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"^http://(www\.)?google\.com/imgres/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">exclusion</span><span class="sk-6f42c1-a0a0a0"> pattern</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"^http://(www\.)?google\.com/imgres/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The rewriter needs to test against all the exclusion patterns before applying any actual rules. Otherwise, paths that have issues or can't be served over HTTPS will be incorrectly rewritten and will potentially break the website.</p>
 <p>We don't care about matched groups nor do we care even which particular regular expression was matched, so as an extra optimization, instead of going through them one-by-one, we merge all the exclusion patterns in the ruleset into one regular expression that can be internally optimized by a regexp engine.</p>
 <p>For example, for the exclusions above we can create the following regular expression, common parts of which can be merged internally by a regexp engine:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(^http://(www\.)?google\.com/analytics/)|(^http://(www\.)?google\.com/imgres/)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(^http://(www\.)?google\.com/analytics/)|(^http://(www\.)?google\.com/imgres/)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After that, in our action we just need to call <code>pcre_exec</code> without a match data destination – we don't care about matched groups, but only about completion status. If a URL matches a regular expression, we bail out of this action as following rewrites shouldn't be applied. After this, Ragel will automatically call another matched action (another ruleset) on its own until one is found.</p>
 <p>Finally, after we both matched the host name and ensured that our URL is not covered by any exclusion patterns, we can go to the actual rewrite rules.</p>
 <h3>Rewrite rules</h3>
 <p>These rules are presented as JavaScript regular expressions and replacement patterns. The rewriter matches the URL against each of those regular expressions as soon as a host matches and a URL is not an exclusion.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">rule</span><span class="sk-6f42c1-a0a0a0"> from</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"^http://(\w{2})\.wikipedia\.org/wiki/"</span><span class="sk-6f42c1-a0a0a0"> to</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://secure.wikimedia.org/wikipedia/$1/wiki/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">rule</span><span class="sk-6f42c1-a0a0a0"> from</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"^http://(\w{2})\.wikipedia\.org/wiki/"</span><span class="sk-6f42c1-a0a0a0"> to</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://secure.wikimedia.org/wikipedia/$1/wiki/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As soon as a match is found, the replacement is performed and the search can be stopped. Note: while exclusions cover dangerous replacements, it's totally possible and valid for the URL to not match any of actual rules - in that case it should be just left intact.</p>
 <p>After the previous steps we are usually reduced only to couple of rules, so unlike in the case with exclusions, we don't apply any clever merging techniques for them. It turned out to be easier to go through them one-by-one rather than create a regexp engine specifically optimized for the case of multi-regexp replacements.</p>
@@ -147,7 +197,11 @@
 <p>Glad you asked.</p>
 <p>The HTTPS Everywhere extension uses an automated checker that checks the validity of rewritten URLs on any change in ruleset. In order to do that, rulesets are required to contain special test elements that cover all the rewrite rules.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">test</span><span class="sk-6f42c1-a0a0a0"> url</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"http://maps.google.com/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">test</span><span class="sk-6f42c1-a0a0a0"> url</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"http://maps.google.com/"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What we need to do on our side is to collect those test URLs, combined with our own auto-generated tests from wildcards, and to invoke both the HTTPS Everywhere built-in JavaScript rewriter and our own side-by-side to ensure that we're getting same results — URLs that should be left intact, are left intact with our implementation and URLs that are rewritten, are rewritten identically.</p>
 <h2>Can we fix even more mixed content?</h2>

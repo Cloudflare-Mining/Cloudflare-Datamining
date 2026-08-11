@@ -19,8 +19,30 @@
 <span class="line"><span class="sk-24292e-fff">[[d1_databases]]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span><span class="sk-6a737d-8b8b8b94"> # i.e. available in your Worker on env.DB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "prod-prisma-d1-app"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;unique-ID-for-your-database&gt;"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;unique-ID-for-your-database&gt;"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The section starting with <code>[[d1_databases]]</code> is the binding configuration needed in your <code>wrangler.toml</code> for your Worker to communicate with D1. Add that now:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> wrangler.toml</span></span>
@@ -32,7 +54,11 @@
 <span class="line"><span class="sk-24292e-fff">[[d1_databases]]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span><span class="sk-6a737d-8b8b8b94"> # i.e. available in your Worker on env.DB</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "prod-prisma-d1-app"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;unique-ID-for-your-database&gt;"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;unique-ID-for-your-database&gt;"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Your application now has D1 available! Next, add Prisma ORM to manage your queries, schema and migrations! To add Prisma ORM, first make sure the latest version is installed. Prisma ORM versions 5.12.0 and up support Cloudflare Workers and D1.</p>
 <p><code>npm install prisma@latest @prisma/client@latest @prisma/adapter-d1</code></p>
@@ -51,7 +77,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">datasource</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "sqlite"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  url</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"DATABASE_URL"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Before you can create any models, first enable the <code>driverAdapters</code> Preview feature. This will allow the Prisma Client to use an adapter to communicate with D1.</p>
 <div class="emdash-code">
@@ -67,7 +97,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">datasource</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "sqlite"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  url</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"DATABASE_URL"</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now you are ready to create your first model! In this app, you will be creating a “ticker”, a mainstay of many classic Internet sites.</p>
 <p>Add a new model to your schema, <code>Visit</code>, which will track that an individual visited your site. A <code>Visit</code> is a simple model that will have a unique ID and the time at which an individual visited your site.</p>
@@ -89,7 +123,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">   id</span><span class="sk-032f62-99ffe4">        Int</span><span class="sk-032f62-99ffe4">      @id</span><span class="sk-032f62-99ffe4"> @default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">autoincrement</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">   visitTime</span><span class="sk-032f62-99ffe4"> DateTime</span><span class="sk-032f62-99ffe4"> @default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> }</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now that you have a schema and a model, let’s create a migration. First use <code>wrangler</code> to generate an empty migration file and <code>prisma migrate</code> to fill it. If prompted, select “yes” to create a migrations folder at the root of your project.</p>
 <div class="emdash-code">
@@ -101,10 +139,18 @@
 <span class="line"><span class="sk-6f42c1-ffc799">✅</span><span class="sk-032f62-99ffe4"> Successfully</span><span class="sk-032f62-99ffe4"> created</span><span class="sk-032f62-99ffe4"> Migration</span><span class="sk-032f62-99ffe4"> '0001_init.sql'!</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> migration</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> available</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> editing</span><span class="sk-032f62-99ffe4"> here</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">/path/to/your/project/my-d1-prisma-app/migrations/0001_init.sql</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">/path/to/your/project/my-d1-prisma-app/migrations/0001_init.sql</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> prisma</span><span class="sk-032f62-99ffe4"> migrate</span><span class="sk-032f62-99ffe4"> diff</span><span class="sk-005cc5-99ffe4"> --script</span><span class="sk-005cc5-99ffe4"> --from-empty</span><span class="sk-005cc5-99ffe4"> --to-schema-datamodel</span><span class="sk-032f62-99ffe4"> ./prisma/schema.prisma</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> migrations/0001_init.sql</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> prisma</span><span class="sk-032f62-99ffe4"> migrate</span><span class="sk-032f62-99ffe4"> diff</span><span class="sk-005cc5-99ffe4"> --script</span><span class="sk-005cc5-99ffe4"> --from-empty</span><span class="sk-005cc5-99ffe4"> --to-schema-datamodel</span><span class="sk-032f62-99ffe4"> ./prisma/schema.prisma</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> migrations/0001_init.sql</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>npx prisma migrate diff</code> command takes the difference between your database (which is currently empty) and the Prisma schema. It then saves this difference to a new file in the migrations directory.</p>
 <div class="emdash-code">
@@ -113,13 +159,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">--</span><span class="sk-032f62-99ffe4"> CreateTable</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">CREATE</span><span class="sk-032f62-99ffe4"> TABLE</span><span class="sk-032f62-99ffe4"> "Visit"</span><span class="sk-24292e-fff"> (</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-032f62-99ffe4"> NOT</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-032f62-99ffe4"> PRIMARY</span><span class="sk-032f62-99ffe4"> KEY</span><span class="sk-032f62-99ffe4"> AUTOINCREMENT,</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    "visitTime"</span><span class="sk-032f62-99ffe4"> DATETIME</span><span class="sk-032f62-99ffe4"> NOT</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4"> CURRENT_TIMESTAMP</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    "visitTime"</span><span class="sk-032f62-99ffe4"> DATETIME</span><span class="sk-032f62-99ffe4"> NOT</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4"> CURRENT_TIMESTAMP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now you can migrate your local and remote D1 database instances using <code>wrangler</code> and re-generate your Prisma Client to begin making queries.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-032f62-99ffe4"> prod-prisma-d1-app</span><span class="sk-005cc5-99ffe4"> --local</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-032f62-99ffe4"> prod-prisma-d1-app</span><span class="sk-005cc5-99ffe4"> --remote</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> prisma</span><span class="sk-032f62-99ffe4"> generate</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> prisma</span><span class="sk-032f62-99ffe4"> generate</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Make sure to import <code>PrismaClient</code> and <code>PrismaD1</code>, define the binding for your D1 database, and you’re ready to use Prisma in your application.</p>
 <div class="emdash-code">
@@ -146,7 +200,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You may notice that there’s always 0 visitors. Add another route to create a new visitor whenever someone visits the <code>/visit</code> route</p>
 <div class="emdash-code">
@@ -178,7 +236,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Your app is now set up to record visits and report how many visitors you have had!</p>
 <h2>Summary and further reading</h2>

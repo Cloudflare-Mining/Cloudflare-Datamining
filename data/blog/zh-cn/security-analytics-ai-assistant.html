@@ -40,8 +40,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">  {“name”: “Attack Traffic on /api”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/api”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]},</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  {“name”: “Attack Traffic on /admin”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/admin”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]}</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">```</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">```</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>通过这种方法，我们能够保持客户信息的私密性，避免将任何安全分析数据暴露给 AI 模型本身，人们依然能够轻松查询他们的数据。这确保您的查询永远不会被用来训练模型。而且，由于 Workers AI 在 Cloudflare 自己的网络上托管了 LLM 的本地实例，您的查询和生成的数据永远不会离开 Cloudflare 的网络。</p>
 <h2>未来发展</h2>
 <p>我们正在开发这一能力的早期阶段，并计划迅速扩展安全分析 AI 助手的能力。最初，如果我们无法处理您的一些请求，请不要感到意外。这个功能发布时，我们能够支持可在时间序列图表中绘制的基本查询，例如“为我显示”或“比较”任何当前可过滤的字段。</p>

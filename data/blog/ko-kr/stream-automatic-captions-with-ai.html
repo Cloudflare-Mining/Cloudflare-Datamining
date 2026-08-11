@@ -62,8 +62,30 @@
 <span class="line"><span class="sk-24292e-fff">     })</span></span>
 <span class="line"><span class="sk-24292e-fff">   }</span></span>
 <span class="line"><span class="sk-24292e-fff"> },</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Stream 팀은 이 기능이 대규모 작업에서도 빠르고 효과적으로 작동하기를 원했기 때문에 동영상 길이에 관계없이 대용량의 동영상을 처리하기 위한 엔지니어링 작업을 수행해야 했습니다.</p>
 <p>먼저, 우리 팀은 <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer">AI 추론</a>을 실행하기 전에 오디오를 전처리하여 입력이 Whisper의 입력 형식 및 요구 사항과 호환되는지 확인해야 했습니다.</p>
 <p>우리가 확인한 동영상 콘텐츠는 휴대폰으로 촬영한 짧고 화질이 낮은 동영상부터 몇 시간 분량의 고화질 할리우드 제작 영화까지 다양했습니다. 동영상은 무음일 수도 있고 액션 위주의 잡음이 포함될 수 있습니다. 게다가 Stream의 온디맨드 비디오에는 전체 파일로 업로드된 동영상과 달리 패키징된 라이브 스트림 녹화본이 포함되어 있습니다. 이러한 가변성을 고려하여 오디오 입력은 다양한 컨테이너 형식에 다양한 길이와 파일 크기로 저장됩니다. 우리는 오디오 파일의 형식이 Whisper의 요구 사항과 호환되도록 올바르게 설정되었는지 확인했습니다.</p>

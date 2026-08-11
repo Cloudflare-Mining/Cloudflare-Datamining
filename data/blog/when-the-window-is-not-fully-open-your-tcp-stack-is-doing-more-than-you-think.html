@@ -27,8 +27,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ssd,</span><span class="sk-032f62-99ffe4"> _</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sd.accept</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-032f62-99ffe4">:</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">    cd</span><span class="sk-032f62-99ffe4">.send</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">b</span><span class="sk-6f42c1-ffc799">'a'</span><span class="sk-6f42c1-ffc799">*128*1024</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">    cd</span><span class="sk-032f62-99ffe4">.send</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">b</span><span class="sk-6f42c1-ffc799">'a'</span><span class="sk-6f42c1-ffc799">*128*1024</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We're interested in basic questions:</p>
 <ul>
 	<li>How much data can fit in the server’s receive buffer? It turns out it's not exactly the same as the default read buffer size on Linux; we'll get there.</li>
@@ -39,13 +61,21 @@
 <p>First, there is the buffer budget limit. <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank" rel="noopener noreferrer"><code>ss</code> manpage</a> calls it <strong>skmem_rb</strong>, in the kernel it's named <strong>sk_rcvbuf</strong>. This value is most often controlled by the Linux autotune mechanism using the <code>net.ipv4.tcp_rmem</code> setting:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_rmem</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_rmem</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 4096</span><span class="sk-005cc5-ffc799"> 131072</span><span class="sk-005cc5-ffc799"> 6291456</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_rmem</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 4096</span><span class="sk-005cc5-ffc799"> 131072</span><span class="sk-005cc5-ffc799"> 6291456</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Alternatively it can be manually set with <code>setsockopt(SO_RCVBUF)</code> on a socket. Note that the kernel doubles the value given to this setsockopt. For example SO_RCVBUF=16384 will result in skmem_rb=32768. The max value allowed to this setsockopt is limited to meager 208KiB by default:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.core.rmem_max</span><span class="sk-032f62-99ffe4"> net.core.wmem_max</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">net.core.rmem_max</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 212992</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.core.wmem_max</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 212992</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.core.wmem_max</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 212992</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">The aforementioned blog post</a> discusses why manual buffer size management is problematic - relying on autotuning is generally preferable.</p>
 <p>Here’s a diagram showing how <strong>skmem_rb</strong> budget is being divided:</p>
@@ -90,12 +120,20 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -m</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Netid</span><span class="sk-032f62-99ffe4">  State</span><span class="sk-032f62-99ffe4">  Recv-Q</span><span class="sk-032f62-99ffe4">  Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">  Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-24292e-fff">   </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tcp</span><span class="sk-032f62-99ffe4">    ESTAB</span><span class="sk-005cc5-ffc799">  62464</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-032f62-99ffe4">       127.0.0.3:1234</span><span class="sk-032f62-99ffe4">      127.0.0.2:1235</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     skmem:(r73984,rb65536,...</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     skmem:(r73984,rb65536,...</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you can see, skmem_rb is 65536 and skmem_r is 73984, which is 8448 bytes over! When this happens we have an even bigger issue on our hands. At around the 62nd packet we have an advertised window of 3072 bytes, but while packets are being sent, the receiver is unable to process them! This is easily verifiable by inspecting an nstat TcpExtTCPRcvQDrop counter:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nstat</span><span class="sk-005cc5-99ffe4"> -az</span><span class="sk-032f62-99ffe4"> TcpExtTCPRcvQDrop</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">TcpExtTCPRcvQDrop</span><span class="sk-005cc5-ffc799">    13</span><span class="sk-005cc5-ffc799">    0.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">TcpExtTCPRcvQDrop</span><span class="sk-005cc5-ffc799">    13</span><span class="sk-005cc5-ffc799">    0.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In our run 13 packets were dropped. This variable counts a number of packets dropped due to either system-wide or per-socket memory pressure - we know we hit the latter. In our case, soon after the socket memory limit was crossed, new packets were prevented from being enqueued to the socket. This happened even though the TCP advertised window was still open.</p>
 <p>This results in an interesting situation. The receiver's window is open which might indicate it has resources to handle the data. But that's not always the case, like in our example when it runs out of the memory budget.</p>
@@ -140,7 +178,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> The scheme does not work when sender sends good segments opening</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> window and </span><span class="sk-d73a49-a0a0a0">then</span><span class="sk-6f42c1-ffc799"> starts</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> feed</span><span class="sk-032f62-99ffe4"> us</span><span class="sk-032f62-99ffe4"> spaghetti.</span><span class="sk-032f62-99ffe4"> But</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> work</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> in common situations. Otherwise, we have to rely on queue collapsing.</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> in common situations. Otherwise, we have to rely on queue collapsing.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice that the <strong>rcv_ssthresh</strong> line dropped down on the TCP collapse. This variable is an internal limit to the advertised window. By dropping it the kernel effectively says: hold on, I mispredicted the packet cost, next time I'm given an opportunity I'm going to open a smaller window. Kernel will advertise a smaller window and be more careful - all of this dance is done to avoid the collapse.</p>
 <h3>Normal run - continuously updated window</h3>
@@ -161,7 +203,11 @@
 <blockquote>Stack is conservative about RWIN increase, it wants to receive packets to have an idea of the skb-&gt;len/skb-&gt;truesize ratio to convert a memory budget to &nbsp;RWIN.Some drivers have to allocate 16K buffers (or even 32K buffers) just to hold one segment (of less than 1500 bytes of payload), while others are able to pack memory more efficiently.</blockquote>
 <p>This behavior of slow window opening is fixed, and not configurable in vanilla kernel. <a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/#r" target="_blank" rel="noopener noreferrer">We prepared a kernel patch that allows to start up with higher rcv_ssthresh</a> based on per-route option <code>initrwnd</code>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 127.0.0.0/8</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> initrwnd</span><span class="sk-005cc5-ffc799"> 1000</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 127.0.0.0/8</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> initrwnd</span><span class="sk-005cc5-ffc799"> 1000</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With the patch and the route change deployed, this is how the buffers look:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

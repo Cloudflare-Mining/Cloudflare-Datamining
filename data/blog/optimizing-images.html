@@ -26,8 +26,30 @@
 </ul>
 <p>When embedding an image on a webpage, traditionally the author would simply pass a <code>src</code> attribute on an <code>img</code> tag:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"hello_world_12000.jpg"</span><span class="sk-6f42c1-ffc799"> alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"hello_world_12000.jpg"</span><span class="sk-6f42c1-ffc799"> alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><a href="https://caniuse.com/srcset" target="_blank" rel="noopener noreferrer">Since 2017, all modern browsers have supported the more dynamic <code>srcset</code> attribute</a>. This allows authors to set multiple image sources, depending on the matching media condition of the visitor’s browser:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-ffc799"> srcset</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"hello_world_1500.jpg 1500w,</span></span>
@@ -37,7 +59,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">            (max-width: 2000px) 2000px,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            12000px"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"hello_world_12000.jpg"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here, with the <code>srcset</code> attribute, we're informing the browser that there are three variants of the image, each with a different intrinsic width: 1,500 pixels, 2,000 pixels and the original 12,000 pixels. The browser then evaluates the media conditions in the <code>sizes</code> attribute ( <code>(max-width: 1500px)</code> and <code>(max-width: 2000px)</code>) in order to select the appropriate image variant from the <code>srcset</code> attribute. If the browser's viewport width is less than 1500px, the <code>hello_world_1500.jpg</code> image variant will be loaded; if the browser's viewport width is between 1500px and 2000px, the <code>hello_world_2000.jpg</code> image variant will be loaded; and finally, if the browser's viewport width is larger than 2000px, the browser will fallback to loading the <code>hello_world_12000.jpg</code> image variant.</p>
 <p>Similar behavior is also possible with a <code>picture</code> element, using the <code>source</code> child element which supports a variety of other selectors.</p>
@@ -47,11 +73,19 @@
 <p>Client Hints are a standard that some browsers are choosing to implement, and some not. They are a set of HTTP request headers which tell the server about the client's device. For example, the browser can attach a <code>Viewport-Width</code> header when requesting an image which informs the server of the width of that particular browser's viewport (note this header is currently in the process of <a href="https://wicg.github.io/responsive-image-client-hints/#sec-ch-viewport-width" target="_blank" rel="noopener noreferrer">being renamed</a> to <code>Sec-CH-Viewport-Width</code>).</p>
 <p>This simplifies the markup in the previous example greatly — in fact, no changes are required from the original simple HTML:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"hello_world_12000.jpg"</span><span class="sk-6f42c1-ffc799"> alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"hello_world_12000.jpg"</span><span class="sk-6f42c1-ffc799"> alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If Client Hints are supported, when the browser makes a request for <code>hello_world_12000.jpg</code>, it might attach the following header:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Viewport-Width: 1440</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Viewport-Width: 1440</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The server could then automatically serve a smaller image variant (e.g. <code>hello_world_1500.jpg</code>), despite the request originally asking for <code>hello_world_12000.jpg</code> image.</p>
 <p>By enabling browsers to request an image with appropriate dimensions, we save bandwidth and time for both your server and for your visitors.</p>
@@ -80,11 +114,19 @@ At the bottom, a progressive JPEG loading with incrementally more detail at the 
 <span class="line"><span class="sk-032f62-99ffe4">            (max-width: 2000px) 2000px,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            12000px"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"hello_world_12000.jpg"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">     alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">     alt</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, lazy-loading is a technique which reduces the work that the browser has to perform right at the onset of page loading. By deferring image loads to only just before they're needed, the browser can prioritize more critical assets such as fonts, styles and JavaScript. By setting the <code>loading</code> property on an image to <code>lazy</code>, you instruct the browser to only load the image as it enters the viewport. For example, on an e-commerce site which renders a grid of products, this would mean that the page loads faster for visitors, and seamlessly fetches images below the fold, as a user scrolls down. This is <a href="https://caniuse.com/loading-lazy-attr" target="_blank" rel="noopener noreferrer">supported by all major browsers except Safari</a> which currently has this feature hidden behind an experimental flag.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-ffc799"> loading</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"lazy"</span><span class="sk-6f42c1-ffc799"> …</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-ffc799"> loading</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"lazy"</span><span class="sk-6f42c1-ffc799"> …</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Hosting</h3>
 <p>Finally, you can improve image loading by hosting all of a page's images together on the same first-party domain. If each image was hosted on a different domain, the browser would have to perform a DNS lookup, create a TCP connection and perform the TLS handshake for every single image. When they are all co-located on a single domain (especially so if that is the same domain as the page itself), the browser can re-use the connection which improves the speed it can load those images.</p>

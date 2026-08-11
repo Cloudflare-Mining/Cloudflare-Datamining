@@ -18,8 +18,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">8.8.8.0/24</span><span class="sk-005cc5-a0a0a0">         *</span><span class="sk-032f62-99ffe4">[BGP/170]</span><span class="sk-032f62-99ffe4"> 15:29:05,</span><span class="sk-032f62-99ffe4"> MED</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> localpref</span><span class="sk-032f62-99ffe4"> 200,</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-005cc5-ffc799"> 80.249.208.247</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                     AS</span><span class="sk-032f62-99ffe4"> path:</span><span class="sk-005cc5-ffc799"> 15169</span><span class="sk-032f62-99ffe4"> I,</span><span class="sk-032f62-99ffe4"> validation-state:</span><span class="sk-032f62-99ffe4"> unverified</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">                     to</span><span class="sk-005cc5-ffc799"> 80.249.208.247</span><span class="sk-032f62-99ffe4"> via</span><span class="sk-032f62-99ffe4"> ae3.0</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">                   &gt;</span><span class="sk-6f42c1-ffc799"> to</span><span class="sk-005cc5-ffc799"> 80.249.209.100</span><span class="sk-032f62-99ffe4"> via</span><span class="sk-032f62-99ffe4"> ae3.0</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">                   &gt;</span><span class="sk-6f42c1-ffc799"> to</span><span class="sk-005cc5-ffc799"> 80.249.209.100</span><span class="sk-032f62-99ffe4"> via</span><span class="sk-032f62-99ffe4"> ae3.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>CloudFlare can see this route within its network because our network peers directly with the source of that specific CIDR block. What’s going on here is the other ISP’s router (aka our peering partner) is telling our router that our network can send traffic towards 8.8.8.0/24 (the network block that encompasses Google’s 8.8.8.8 DNS resolver service) to the IXP fabric. Our router sends traffic to the IP addresses of 80.249.208.247 or 80.249.209.100 as the next hop on the exchange fabric. (Fabric is a fancy word for Ethernet switch). The AS path shows that it’s a direct hop to AS15169/Google, meaning we have direct connectivity to Google over this specific Internet Exchange Point without an intermediary network. In reality, CloudFlare and Google interconnect via peering points in every continent (nearly 65+ locations globally).</p>
 <p>This single example is repeated again-and-again with 1,000s of other networks across all of CloudFlare’s locations. Each peering session and peering point are dedicated to improve CloudFlare’s network offering towards its customers.</p>
 <h3>Why does all of this matter?</h3>

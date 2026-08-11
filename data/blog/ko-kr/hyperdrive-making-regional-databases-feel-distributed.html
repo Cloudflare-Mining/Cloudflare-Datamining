@@ -28,8 +28,30 @@
 <p>이 간소한 데이터베이스 연결 문자열은 데이터베이스 드라이버의 공통 언어이며 일반적으로 다음과 같은 형식을 가집니다.</p>
 <p>Hyperdrive에 숨겨진 마법은 기존 Workers 애플리케이션에서 기존 쿼리로 사용을 시작할 수 있다는 것입니다. 기존 연결 문자열을 Hyperdrive에서 생성하는 문자열로 바꾸기만 하면 됩니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">postgres://user:password@some.database.host.example.com:5432/postgres</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">postgres://user:password@some.database.host.example.com:5432/postgres</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Hyperdrive 생성</h3>
 <p>이 예시에서는 기존 데이터베이스가 준비되어 있으니 <a href="https://neon.tech" target="_blank" rel="noopener noreferrer">Neon</a>의 Postgres 데이터베이스를 사용하겠습니다. Hyperdrive를 실행하는 데 1분도 걸리지 않습니다(예, 시간을 직접 측정해 봤습니다).</p>
 <p>기존 Cloudflare Workers 프로젝트가 없더라도, 빠르게 프로젝트를 생성할 수 있습니다.</p>
@@ -37,20 +59,32 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Call the application "hyperdrive-demo"</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># Choose "Hello World Worker" as your template</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Choose "Hello World Worker" as your template</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cludflare의 Worker를 위해 <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">wrangler.toml configuration</a> 파일에 Hyperdrive를 추가합니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Using wrangler v3.10.0 or above</span></span>
 <span class="line"><span class="sk-24292e-fff">wrangler hyperdrive create a</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">faster</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">database </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">--</span><span class="sk-24292e-fff">connection</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">string</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"postgres://user:password@neon.tech:5432/neondb"</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94"># This will return an ID: we'll use this in the next step</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># This will return an ID: we'll use this in the next step</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제 <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Worker</a>를 작성하거나 기존 Worker 스크립트를 사용할 수 있습니다. 그리고 Hyperdrive를 사용하여 기존 데이터베이스에 대한 연결과 쿼리 속도를 단축할 수 있습니다. 여기에서는 <a href="https://node-postgres.com" target="_blank" rel="noopener noreferrer">node-postgres</a>를 사용하지만, <a href="https://orm.drizzle.team" target="_blank" rel="noopener noreferrer">Drizzle ORM</a>을 사용하여 똑같이 쉽게 속도를 단축할 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[hyperdrive]]</span></span>
 <span class="line"><span class="sk-24292e-fff">binding </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "HYPERDRIVE"</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">id</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "cdb28782-0dfc-4aca-a445-a2c318fb26fd"</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">id</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "cdb28782-0dfc-4aca-a445-a2c318fb26fd"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위에 있는 코드는 의도적으로 단순하게 작성되었지만, 이를 통해 Hyperdrive에 숨겨진 마법을 확인할 수 있으셨기를 바랍니다. Cloudflare 데이터베이스 드라이버는 Hyperdrive에서 연결 문자열을 가져오며 이를 이해하지 못합니다. 데이터베이스 드라이버는 Hyperdrive에 대한 모든 것을 알 필요가 없고, 사용자는 좋아하는 쿼리 빌더 라이브러리의 사용을 중단할 필요가 없습니다. 그리고 쿼리를 작성할 때 속도가 선사하는 이점을 즉각적으로 느낄 수 있습니다.</p>
 <div class="emdash-code">
@@ -84,7 +118,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> Response.json({ error: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.stringify(e) }, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
 <span class="line"><span class="sk-24292e-fff">		}</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>연결은 자동으로 풀링되고 언제든지 사용할 수 있도록 유지됩니다. 이렇게 하면 가장 인기 있는 쿼리가 캐시되고 전체 애플리케이션이 빨라집니다.</p>
 <p>Cloudflare에서는 <a href="https://developers.cloudflare.com/hyperdrive/examples" target="_blank" rel="noopener noreferrer">모든 대규모 데이터베이스 공급자에 대한 가이드</a>를 작성하여 이러한 데이터베이스에 필요한 것(연결 문자열)을 쉽게 Hyperdrive로 가져올 수 있게 했습니다.</p>

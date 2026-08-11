@@ -16,8 +16,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        PROCEDURE</span><span class="sk-032f62-99ffe4"> DIVISION.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            CALL</span><span class="sk-032f62-99ffe4"> "set_http_status"</span><span class="sk-032f62-99ffe4"> USING</span><span class="sk-032f62-99ffe4"> HTTP_OK.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">            CALL</span><span class="sk-032f62-99ffe4"> "append_http_body"</span><span class="sk-032f62-99ffe4"> USING</span><span class="sk-032f62-99ffe4"> OUTPUT_TEXT.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        STOP</span><span class="sk-032f62-99ffe4"> RUN.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        STOP</span><span class="sk-032f62-99ffe4"> RUN.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>If you’ve never seen a COBOL program before, it might look very odd. The language emerged in 1960 from the work of a committee designing a language for business (COBOL = COmmon Business Oriented Language) and was intended to be easy to read and understand (hence the verbose syntax). It was partly based on an early language called <a href="https://en.wikipedia.org/wiki/FLOW-MATIC" target="_blank" rel="noopener noreferrer">FLOW-MATIC</a> created by Grace Hopper.</p>
 <h3>IDENTIFICATION DIVISION.</h3>
 <p>To put COBOL in context: FORTRAN arrived in 1957, LISP and ALGOL in 1958, APL in 1962 and BASIC in 1964. The C language didn’t arrive on scene until 1972. The late 1950s and early 1960s saw a huge amount of work on programming languages, some coming from industry (such as FORTRAN and COBOL) and others from academia (such as LISP and ALGOL).</p>
@@ -42,14 +64,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">           STOP</span><span class="sk-032f62-99ffe4"> RUN.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">       ADD-PAR.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">           COMPUTE</span><span class="sk-032f62-99ffe4"> SUMX</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> SUMX</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> IDX.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">           ADD</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> TO</span><span class="sk-032f62-99ffe4"> IDX.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">           ADD</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> TO</span><span class="sk-032f62-99ffe4"> IDX.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can compile it and run it using GNUCobol like this (I put this in a file called <code>terminator.cob</code>)</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cobc</span><span class="sk-005cc5-99ffe4"> -x</span><span class="sk-032f62-99ffe4"> terminator.cob</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./terminator</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">500500</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>cobc</code> compiles the COBOL program to an executable file. It can also output a C file containing C code to implement the COBOL program:</p>
 <p><code>$ cobc -C -o terminator.c -x terminator.cob</code></p>
@@ -197,7 +227,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	       MOVE</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> TO</span><span class="sk-032f62-99ffe4"> DREW</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">               CALL</span><span class="sk-032f62-99ffe4"> "append_http_body"</span><span class="sk-032f62-99ffe4"> USING</span><span class="sk-032f62-99ffe4"> "&lt;td bgcolor=blue&gt;&lt;/td&gt;".</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">           IF</span><span class="sk-032f62-99ffe4"> CELL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "0"</span><span class="sk-032f62-99ffe4"> THEN</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">               CALL</span><span class="sk-032f62-99ffe4"> "append_http_body"</span><span class="sk-032f62-99ffe4"> USING</span><span class="sk-032f62-99ffe4"> "&lt;td&gt;&lt;/td&gt;".</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">               CALL</span><span class="sk-032f62-99ffe4"> "append_http_body"</span><span class="sk-032f62-99ffe4"> USING</span><span class="sk-032f62-99ffe4"> "&lt;td&gt;&lt;/td&gt;".</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you want to run your own simulation you can do an HTTP POST with 30 parameters that when concatenated form the layout of the 15x20 world simulated in COBOL.</p>
 <p>If you want to install this yourself, take the following steps:</p>
@@ -208,7 +242,11 @@
 	<li>Create a new COBOL Worker using the template</li>
 </ol>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> cobol-worker</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/cobol-worker-template</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> cobol-worker</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/cobol-worker-template</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>Configure <code>wrangler.toml</code> to point to your account and set a name for this project, let’s say <code>my-first-cobol</code>.</li>

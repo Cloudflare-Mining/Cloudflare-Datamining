@@ -14,8 +14,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> 10.1.0.0/16</span><span class="sk-032f62-99ffe4"> dc-2-tunnel</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">API</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> Failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> route:</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-032f62-99ffe4"> 1014,</span><span class="sk-032f62-99ffe4"> reason:</span><span class="sk-032f62-99ffe4"> You</span><span class="sk-032f62-99ffe4"> already</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> defined</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> exact</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> subnet</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">API</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> Failed</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> route:</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-032f62-99ffe4"> 1014,</span><span class="sk-032f62-99ffe4"> reason:</span><span class="sk-032f62-99ffe4"> You</span><span class="sk-032f62-99ffe4"> already</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> defined</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> exact</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> subnet</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>开始使用新的虚拟网络</h3>
 <p>现在您可以通过创建唯一的虚拟网络，从逻辑上隔离您的重叠 IP 路由，从而解决上述问题。您可以把一个虚拟网络看成一组 IP 子空间。这将有效帮助您将整体基础设施组合成独立的（虚拟化）专用网络，您的 Cloudflare Zero Trust 组织可通过 Cloudflare WARP 访问这些专用网络。</p>
 <p>我们来设定一下这个场景。</p>
@@ -32,7 +54,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> vnet</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> vnet-sydney</span><span class="sk-032f62-99ffe4"> "For APAC employees primarily"</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-032f62-99ffe4"> added</span><span class="sk-032f62-99ffe4"> virtual</span><span class="sk-032f62-99ffe4"> network</span><span class="sk-032f62-99ffe4"> vnet-sydney</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> ID:</span><span class="sk-032f62-99ffe4"> e436a40f-46c4-496e-80a2-b8c9401feac7</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-032f62-99ffe4"> added</span><span class="sk-032f62-99ffe4"> virtual</span><span class="sk-032f62-99ffe4"> network</span><span class="sk-032f62-99ffe4"> vnet-sydney</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> ID:</span><span class="sk-032f62-99ffe4"> e436a40f-46c4-496e-80a2-b8c9401feac7</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>这样就完成了！现在，您的两个隧道均可运行，它们将您的专用数据中心与 Cloudflare 连接起来，尽管存在重叠的 IP。</p>
 <div class="emdash-code">
@@ -50,7 +76,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-005cc5-99ffe4"> --vnet</span><span class="sk-032f62-99ffe4"> vnet-sydney</span><span class="sk-032f62-99ffe4"> 10.1.0.0/16</span><span class="sk-032f62-99ffe4"> tunnel-syd</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-032f62-99ffe4"> added</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> 10.1.0.0/16</span><span class="sk-032f62-99ffe4"> over</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> 150ef29f-2fb0-43f8-b56f-de0baa7ab9d8</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-032f62-99ffe4"> added</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> 10.1.0.0/16</span><span class="sk-032f62-99ffe4"> over</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> 150ef29f-2fb0-43f8-b56f-de0baa7ab9d8</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您的用户现在将默认通过虚拟网络 <em>vnet-frankfurt</em> 路由流量。如有任何用户不想这样，他们可以在 WARP 客户端界面设置中选择，例如选择通过 <em>vnet-sydney</em>。</p>
 <p>用户改变虚拟网络选择时，会向 Cloudflare 的网络通知该路由决定。只需几秒钟时间，这个决定便会通过 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> 传播到我们所有的数据中心。然后，WARP 客户端会重新与我们的网络连接，断开现有的 TCP 连接，因为这些连接是路由到之前选择的虚拟网络。就像您断开并重新连接 WARP 客户端一样。</p>

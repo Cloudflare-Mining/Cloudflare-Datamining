@@ -7,13 +7,39 @@
 <p>La forma más sencilla de empezar a probar tus Workers a través de Vitest es iniciar un nuevo proyecto Workers mediante nuestra herramienta create-cloudflare:</p>
 <p>Cuando ejecutes este comando se creará un nuevo proyecto para ti con la integración Workers Vitest ya configurada. También se incluyen una prueba unitaria y una prueba de integración de ejemplo.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-032f62-99ffe4"> hello-world</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --type=hello-world</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-032f62-99ffe4"> hello-world</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --type=hello-world</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Instrucciones manuales de instalación y configuración</h3>
 <p>Si prefieres instalar y configurar manualmente la integración Workers Vitest, empieza por instalar el paquete <code>@cloudflare/vitest-pool-workers</code> desde npm:</p>
 <p>El paquete <code>@cloudflare/vitest-pool-workers</code> tiene una dependencia de emparejamiento con una versión específica de `vitest`. Las versiones modernas de `npm` la instalarán de forma automática, pero te recomendamos que tú también la instales explícitamente. Consulta la <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/get-started/write-your-first-test" target="_blank" rel="noopener noreferrer">guía de inicio</a> para conocer la versión actual compatible. Si utilizas TypeScript, añade <code>@cloudflare/vitest-pool-workers</code> al <code>types</code> de tu <code>tsconfig.json</code> para obtener tipos para el módulo <code>cloudflare:test</code>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-032f62-99ffe4"> @cloudflare/vitest-pool-workers</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-032f62-99ffe4"> @cloudflare/vitest-pool-workers</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Después, habilita el pool en tu archivo de configuración de Vitest:</p>
 <div class="emdash-code">
@@ -27,7 +53,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "@cloudflare/vitest-pool-workers"</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A continuación, define una fecha de compatibilidad posterior a "31-10-2022" y activa el <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer"><code>nodejs_compat</code> compatibility flag</a> en tu <code>wrangler.toml</code>:</p>
 <div class="emdash-code">
@@ -42,14 +72,22 @@
 <span class="line"><span class="sk-24292e-fff">      },</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Prueba cualquier recurso exportado desde un Worker</h2>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># wrangler.toml</span></span>
 <span class="line"><span>main = "src/index.ts"</span></span>
 <span class="line"><span>compatibility_date = "2024-01-01"</span></span>
-<span class="line"><span>compatibility_flags = ["nodejs_compat"]</span></span></code></pre>
+<span class="line"><span>compatibility_flags = ["nodejs_compat"]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Con la nueva integración de Workers Vitest, puedes probar cualquier recurso desde tu Worker tanto en pruebas unitarias como de integración. Dentro de estas pruebas, también puedes probar recursos conectados como R2, KV y DO, así como aplicaciones que impliquen numerosos Workers.</p>
 <h3>Escribe pruebas unitarias</h3>
@@ -67,7 +105,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> b</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> parseInt</span><span class="sk-24292e-fff">(url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"b"</span><span class="sk-24292e-fff">));</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">add</span><span class="sk-24292e-fff">(a, b));</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Con la integración Workers Vitest, puedes escribir pruebas unitarias como estas para cualquiera de tus Workers.</p>
 <div class="emdash-code">
@@ -86,7 +128,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-6f42c1-ffc799"> waitOnExecutionContext</span><span class="sk-24292e-fff">(ctx);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">toMatchInlineSnapshot</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`"7"`</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Escribe pruebas de integración</h3>
 <p>Mientras que las pruebas unitarias son ideales para probar partes individuales de tu aplicación, las pruebas de integración evalúan diversas unidades de funcionalidad, garantizando que los flujos de trabajo y las funciones operan según lo previsto. Suelen ser más complejas que las pruebas unitarias, pero proporcionan mayor confianza sobre el funcionamiento previsto de tu aplicación. En el contexto de Workers, una prueba de integración envía solicitudes HTTP a tu Worker y realiza afirmaciones sobre las respuestas HTTP.</p>
@@ -102,7 +148,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"sends request (integration style)"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> SELF</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"http://example.com/?a=3&amp;b=4"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">toMatchInlineSnapshot</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`"7"`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Prueba distintos escenarios</h3>
 <p>Tanto si escribes pruebas unitarias como de integración, si tu aplicación utiliza productos de la plataforma para desarrolladores de Cloudflare (por ejemplo, KV, R2, D1, Queues o Durable Objects), puedes probarlos. Para demostrarlo, hemos creado una serie de <a href="https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples" target="_blank" rel="noopener noreferrer">ejemplos</a> que te ayudarán a empezar a realizar pruebas.</p>
@@ -136,7 +186,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  newFunction</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">script</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">name</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-e36209-fff">args</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">[])</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Function</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  newAsyncFunction</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">script</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">name</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-e36209-fff">args</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">[])</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AsyncFunction</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  newWasmModule</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">src</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> BufferSource</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WebAssembly</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Module</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Por <a href="https://developers.cloudflare.com/workers/runtime-apis/web-standards/#javascript-standards" target="_blank" rel="noopener noreferrer">razones de seguridad</a>, el entorno de ejecución de Cloudflare Workers no permite la evaluación de código dinámico mediante <code>eval()</code> o <code>new Function()</code>. También requiere que todos los módulos se definan con antelación antes de que comience la ejecución. El ejecutor de pruebas no sabe qué código ejecutar hasta que empezamos a ejecutar las pruebas, así que sin eliminar estas restricciones, no tenemos forma de ejecutar el código JavaScript sin procesar transformado por Vite ni de importar módulos arbitrarios desde el disco. Afortunadamente, el código que solo se ejecuta localmente, como las pruebas, tiene un modelo de seguridad mucho más moderado que el código implementado. Para admitir las pruebas locales y otros casos de uso específicos del desarrollo, como <a href="https://vitejs.dev/guide/api-vite-runtime" target="_blank" rel="noopener noreferrer">la nueva API de tiempo de ejecución de Vite</a>, hemos añadido <a href="https://github.com/cloudflare/workerd/pull/1338" target="_blank" rel="noopener noreferrer">"unsafe-eval bindings"</a> y <a href="https://github.com/cloudflare/workerd/pull/1423" target="_blank" rel="noopener noreferrer">"module-fallback services"</a> a <code>workerd</code>.</p>
 <p>El método "unsafe-eval bindings" solo proporciona acceso local a la función <code>eval()</code> y a los constructores <code>new Function()</code>/<code>new AsyncFunction()</code>/<code>new WebAssembly.Module()</code> . Cuando los exponemos a través de un enlace, mantenemos el control sobre qué código tiene acceso a estas funciones.</p>
@@ -157,7 +211,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"sends request"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> SELF</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">toMatchInlineSnapshot</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`"body"`</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Además de las pruebas unitarias, admitimos las pruebas de integración con un enlace de servicio especial <code>SELF</code> en el módulo <code>cloudflare:test</code>. Esto apunta a un controlador especial <code>export default { fetch(...) {...} }</code> que utiliza Vite para importar el módulo <code>main</code> de tu Worker.</p>
 <p>El uso de la canalización de transformación de Vite significa que tu controlador obtiene la recarga en caliente de módulos ¡gratis! Cuando se actualiza el código, se invalida la caché del módulo, se vuelven a ejecutar las pruebas y las solicitudes posteriores se ejecutarán con el nuevo código. El mismo enfoque para ajustar los controladores de código de usuario se aplica también a Durable Objects, proporcionando las mismas ventajas de HMR.</p>
@@ -175,7 +233,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> get</span><span class="sk-24292e-fff">(env, key);</span></span>
 <span class="line"><span class="sk-24292e-fff">  value.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(item);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(key, </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(value));</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Las pruebas de integración se pueden escribir llamando a <code>SELF.fetch()</code>, que enviará un evento <code>fetch()</code> a tu código de usuario en el mismo ámbito global que tu prueba, pero bajo un contexto de solicitud diferente. Esto significa que los simuladores globales se aplican a la ejecución de tu Worker, al igual que las restricciones de duración del contexto de solicitud. En particular, si olvidas llamar a <code>ctx.waitUntil()</code>, recibirás un mensaje de error apropiado. Esto no ocurriría si llamaras directamente a tu controlador Worker en una prueba unitaria, ya que estarías ejecutando bajo el contexto de solicitud Durable Objects del singleton ejecutor, cuya duración se amplía automáticamente.</p>
 <div class="emdash-code">
@@ -219,7 +281,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> append</span><span class="sk-24292e-fff">(env, </span><span class="sk-032f62-99ffe4">"list 2"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"four"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> get</span><span class="sk-24292e-fff">(env, </span><span class="sk-032f62-99ffe4">"list 1"</span><span class="sk-24292e-fff">)).</span><span class="sk-6f42c1-ffc799">toStrictEqual</span><span class="sk-24292e-fff">([</span><span class="sk-032f62-99ffe4">"one"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"three"</span><span class="sk-24292e-fff">]);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> get</span><span class="sk-24292e-fff">(env, </span><span class="sk-032f62-99ffe4">"list 2"</span><span class="sk-24292e-fff">)).</span><span class="sk-6f42c1-ffc799">toStrictEqual</span><span class="sk-24292e-fff">([</span><span class="sk-032f62-99ffe4">"four"</span><span class="sk-24292e-fff">]);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Almacenamiento aislado por prueba</h2>
 <p>La mayoría de las aplicaciones Workers tendrán al menos un enlace a un servicio de almacenamiento de Cloudflare, como KV, R2 o D1. Lo ideal es que las pruebas sean autónomas y se puedan ejecutar en cualquier orden o por sí solas. Para que esto sea posible, las escrituras en el almacenamiento se deben anular al final de cada prueba, para que las lecturas de otras pruebas no se vean afectadas. Aunque es posible hacerlo manualmente, puede ser complicado llevar la cuenta de todas las escrituras y anularlas en el orden correcto. Por ejemplo, observa las dos funciones siguientes:</p>
@@ -251,7 +317,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com/"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">toBe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"body"</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><em>(Marcos de pila de almacenamiento creados con el almacenamiento aislado activado)</em></p>
 <p>Miniflare implementa simuladores para servicios de almacenamiento, <a href="https://github.com/cloudflare/miniflare/pull/656" target="_blank" rel="noopener noreferrer">además de Durable Objects</a>, con <a href="https://github.com/cloudflare/miniflare/discussions/525" target="_blank" rel="noopener noreferrer">un almacén de blobs independiente</a>. Cuando se ejecuta localmente, <code>workerd</code> utiliza SQLite para el almacenamiento de Durable Objects. Para implementar el almacenamiento aislado, aplicamos una pila almacenada en un disco de archivos de bases de datos <code>.sqlite</code> a través de copias de seguridad en operaciones "push", y restauración de copias de seguridad en operaciones "pop". Los blobs almacenados en el almacén separado se conservan mediante operaciones de pila, y se limpian al final de cada ejecución de prueba. Aunque esto funciona, implica copiar un volumen importante de archivos <code>.sqlite</code>. De cara al futuro, nos gustaría explorar el uso de <a href="https://www.sqlite.org/lang_savepoint.html" target="_blank" rel="noopener noreferrer"><code>SAVEPOINTS</code></a> de SQLite para conseguir una solución más eficaz.</p>

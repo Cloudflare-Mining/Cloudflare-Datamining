@@ -19,15 +19,45 @@
 <p>First, an administrator can create a <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">TLS certificate</a> that Cloudflare will use and match based on the SHA-256 hash of the certificate. You can leverage existing infrastructure or create a new TLS endpoint via the following example:</p>
 <p>1. Create a local certificate you can use</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> req</span><span class="sk-005cc5-99ffe4"> -x509</span><span class="sk-005cc5-99ffe4"> -newkey</span><span class="sk-032f62-99ffe4"> rsa:4096</span><span class="sk-005cc5-99ffe4"> -sha256</span><span class="sk-005cc5-99ffe4"> -days</span><span class="sk-005cc5-ffc799"> 3650</span><span class="sk-005cc5-99ffe4"> -nodes</span><span class="sk-005cc5-99ffe4"> -keyout</span><span class="sk-032f62-99ffe4"> example.key</span><span class="sk-005cc5-99ffe4"> -out</span><span class="sk-032f62-99ffe4"> example.pem</span><span class="sk-005cc5-99ffe4"> -subj</span><span class="sk-032f62-99ffe4"> "/CN=example.com"</span><span class="sk-005cc5-99ffe4"> -addext</span><span class="sk-032f62-99ffe4"> "subjectAltName=DNS:example.com"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> req</span><span class="sk-005cc5-99ffe4"> -x509</span><span class="sk-005cc5-99ffe4"> -newkey</span><span class="sk-032f62-99ffe4"> rsa:4096</span><span class="sk-005cc5-99ffe4"> -sha256</span><span class="sk-005cc5-99ffe4"> -days</span><span class="sk-005cc5-ffc799"> 3650</span><span class="sk-005cc5-99ffe4"> -nodes</span><span class="sk-005cc5-99ffe4"> -keyout</span><span class="sk-032f62-99ffe4"> example.key</span><span class="sk-005cc5-99ffe4"> -out</span><span class="sk-032f62-99ffe4"> example.pem</span><span class="sk-005cc5-99ffe4"> -subj</span><span class="sk-032f62-99ffe4"> "/CN=example.com"</span><span class="sk-005cc5-99ffe4"> -addext</span><span class="sk-032f62-99ffe4"> "subjectAltName=DNS:example.com"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>2. Extract the sha256 thumbprint of that certificate</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -noout</span><span class="sk-005cc5-99ffe4"> -fingerprint</span><span class="sk-005cc5-99ffe4"> -sha256</span><span class="sk-005cc5-99ffe4"> -inform</span><span class="sk-032f62-99ffe4"> pem</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> example.pem</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tr</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> :</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">openssl</span><span class="sk-032f62-99ffe4"> x509</span><span class="sk-005cc5-99ffe4"> -noout</span><span class="sk-005cc5-99ffe4"> -fingerprint</span><span class="sk-005cc5-99ffe4"> -sha256</span><span class="sk-005cc5-99ffe4"> -inform</span><span class="sk-032f62-99ffe4"> pem</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> example.pem</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tr</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> :</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Which will output something like this:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SHA256</span><span class="sk-032f62-99ffe4"> Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SHA256</span><span class="sk-032f62-99ffe4"> Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next, the Cloudflare agent running on the device needs to be able to reach that certificate to validate that it is connected to a network you manage. We recommend running a simple HTTP server inside your network which the device can reach to validate the certificate.</p>
 <p>3. Create a python3 script and save as <code>myserver.py</code> as part of setting up a simple <a href="https://gist.github.com/dergachev/7028596" target="_blank" rel="noopener noreferrer">HTTP server</a>.</p>
@@ -46,11 +76,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sslcontext</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ssl.create_default_context</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">ssl.Purpose.CLIENT_AUTH</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sslcontext.load_cert_chain(certfile</span><span class="sk-032f62-99ffe4">=</span><span class="sk-6f42c1-ffc799">'./example.pem'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> keyfile='./example.key'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">server.socket</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sslcontext.wrap_socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">server.socket,</span><span class="sk-032f62-99ffe4"> server_side=True</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">server.serve_forever</span><span class="sk-24292e-fff">()</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">server.serve_forever</span><span class="sk-24292e-fff">()</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Run the server</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">python3</span><span class="sk-032f62-99ffe4"> myserver.py</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">python3</span><span class="sk-032f62-99ffe4"> myserver.py</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Configure the network location in Zero Trust dashboard</h3>
 <p>Once you’ve created the example TLS endpoint above, provide the fingerprint to Cloudflare to define a managed network.</p>

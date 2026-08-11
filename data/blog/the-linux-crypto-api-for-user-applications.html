@@ -55,8 +55,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">max</span><span class="sk-032f62-99ffe4"> keysize</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 32</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ivsize</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 16</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">chunksize</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-005cc5-ffc799"> 16</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">walksize</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 16</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">walksize</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 16</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In the output above, there are three config blocks. The kernel may provide several implementations of the same algorithm depending on the CPU architecture, available hardware, presence of crypto accelerators etc.</p>
 <p>We can pick the implementation based on the algorithm name or the driver name. The algorithm name is not unique, but the driver name is. If we use the algorithm name, the driver with the highest priority will be chosen for us, which in theory should provide the best cryptographic performance in this context. Let’s see the performance of different implementations of AES-CTR encryption. I use the <a href="https://github.com/smuellerDD/libkcapi" target="_blank" rel="noopener noreferrer">libkcapi library</a>: it’s a lightweight wrapper for the kernel crypto API which also provides built-in speed tests. We will examine <a href="https://github.com/smuellerDD/libkcapi/blob/master/speed-test/cryptoperf-skcipher.c#L228-L238" target="_blank" rel="noopener noreferrer">these tests</a>.</p>
 <div class="emdash-code">
@@ -70,7 +92,11 @@
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> kcapi-speed</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "AES(AESNI) CTR(G) 128"</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-005cc5-ffc799"> 10</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">AES(AESNI</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">G</span><span class="sk-24292e-fff">) 128   </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">d</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	155.37</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">159088</span><span class="sk-032f62-99ffe4"> ops/s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">AES(AESNI</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">G</span><span class="sk-24292e-fff">) 128   </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	172.94</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">177054</span><span class="sk-032f62-99ffe4"> ops/s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">AES(AESNI</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">G</span><span class="sk-24292e-fff">) 128   </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	172.94</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">177054</span><span class="sk-032f62-99ffe4"> ops/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here and later ignore the absolute numbers, as they depend on the environment where the tests were running. Rather look at the relationship between the numbers.</p>
 <p>The <a href="https://en.wikipedia.org/wiki/AES_instruction_set" target="_blank" rel="noopener noreferrer">x86 AES instructions</a> showed the best results, twice as fast vs the generic portable C implementation. As expected, this implementation has the highest priority in the <code>/proc/crypto</code>. We will use only this one later.</p>
@@ -202,13 +228,21 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Kernel: </span><span class="sk-005cc5-fff">%.02f</span><span class="sk-032f62-99ffe4"> Mb/s</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, tput_krn </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">1024</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">));</span></span>
 <span class="line"><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Compile and run:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> kernel</span><span class="sk-032f62-99ffe4"> kernel.c</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./kernel</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 2112.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 2112.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Implementing AES-CTR-128 with OpenSSL</h3>
 <p>With OpenSSL everything is straight forward, we just repeated an example from the <a href="https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption#Encrypting_the_message" target="_blank" rel="noopener noreferrer">official documentation</a>.</p>
@@ -272,23 +306,39 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"OpenSSL: </span><span class="sk-005cc5-fff">%.02f</span><span class="sk-032f62-99ffe4"> Mb/s</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, tput_ossl </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">1024</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">));</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Compile and run:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> openssl.c</span><span class="sk-005cc5-99ffe4"> -lcrypto</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./openssl</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 3758.60</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 3758.60</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Results of OpenSSL vs Crypto API</h3>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 3758.60</span><span class="sk-032f62-99ffe4"> Mb/s</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 2112.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 2112.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Don’t pay attention to the absolute values, look at the relationship.</p>
 <p>The numbers look pessimistic. But why? Can't the kernel implement AES-CTR similar to OpenSSL? We used <a href="https://github.com/iovisor/bpftrace/blob/master/docs/tutorial_one_liners.md" target="_blank" rel="noopener noreferrer">bpftrace</a> to understand this better. The encryption function is called on the <code>read()</code> system call. Trying to be as close to the encryption code as possible, we put a probe on the <a href="https://elixir.bootlin.com/linux/v5.15.90/source/arch/x86/crypto/aesni-intel_glue.c#L1027" target="_blank" rel="noopener noreferrer">ctr_crypt function</a> instead of the whole <code>read</code> call.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftrace</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> 'kprobe:ctr_crypt { @start=nsecs; @count+=1; } kretprobe:ctr_crypt /@start!=0/ { @total+=nsecs-@start; }'</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftrace</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> 'kprobe:ctr_crypt { @start=nsecs; @count+=1; } kretprobe:ctr_crypt /@start!=0/ { @total+=nsecs-@start; }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We took the same plaintext, encrypted it in chunks of 63KB and measured how much time it took for both cases to encrypt it with <code>bpftrace</code> attached to the kernel:</p>
 <div class="emdash-code">
@@ -297,7 +347,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 3727.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 1971.63</span><span class="sk-032f62-99ffe4"> Mb/s</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">@total:</span><span class="sk-005cc5-ffc799"> 2031169756</span><span class="sk-032f62-99ffe4">     //</span><span class="sk-005cc5-ffc799">  2031169756</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-ffc799"> 3120442931</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0.6509235390339526</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">@total:</span><span class="sk-005cc5-ffc799"> 2031169756</span><span class="sk-032f62-99ffe4">     //</span><span class="sk-005cc5-ffc799">  2031169756</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-ffc799"> 3120442931</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0.6509235390339526</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The <code>@total</code> number is output from bpftrace, which tells us how much time the kernel spent in the encryption function. To compare plain kernel encryption vs OpenSSL we need to say how many Mb/s kernel would have done if only encryption had been involved (excluding all system calls and data copy/ manipulation). We need to apply some math:</p>
 <ol>

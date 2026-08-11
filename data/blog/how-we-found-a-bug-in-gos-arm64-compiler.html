@@ -48,8 +48,30 @@
 <span class="line"><span>runtime stack:</span></span>
 <span class="line"><span>fatal error: traceback did not unwind completely</span></span>
 <span class="line"><span>       stack=[0x4015d6a000-0x4015d8a000</span></span>
-<span class="line"><span>runtime: g8221077: frame.sp=0x4015d784c0 top=0x4015d89fd0</span></span></code></pre>
+<span class="line"><span>runtime: g8221077: frame.sp=0x4015d784c0 top=0x4015d89fd0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h4>Segmentation fault</h4>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>goroutine 187 gp=0x40003aea80 m=13 mp=0x40003ca008 [GC worker (active)]:</span></span>
@@ -71,7 +93,11 @@
 <span class="line"><span>runtime.(*unwinder).next(0x7fff2afde5b0)</span></span>
 <span class="line"><span>goroutine 0 gp=0x40003af880 m=13 mp=0x40003ca008 [idle]:</span></span>
 <span class="line"><span>PC=0x55557e2bea58 m=13 sigcode=1 addr=0x118</span></span>
-<span class="line"><span>SIGSEGV: segmentation violation</span></span></code></pre>
+<span class="line"><span>SIGSEGV: segmentation violation</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we could observe some clear patterns. Both errors occur when unwinding the stack in <code>(*unwinder).next</code>. In one case we saw an intentional<a href="https://github.com/golang/go/blob/b3251514531123d7fd007682389bce7428d159a0/src/runtime/traceback.go#L566" target="_blank" rel="noopener noreferrer"> <u>fatal error</u></a> as the runtime identified that unwinding could not complete and the stack was in a bad state. In the other case there was a direct memory access error that happened while trying to unwind the stack. The segfault was discussed in the <a href="https://github.com/golang/go/issues/73259#issuecomment-2786818812" target="_blank" rel="noopener noreferrer"><u>GitHub issue</u></a> and a Go engineer identified it as dereference of a go scheduler struct, <a href="https://github.com/golang/go/blob/924fe98902cdebf20825ab5d1e4edfc0fed2966f/src/runtime/runtime2.go#L536" target="_blank" rel="noopener noreferrer"><u>m</u></a>, when<a href="https://github.com/golang/go/blob/b3251514531123d7fd007682389bce7428d159a0/src/runtime/traceback.go#L458" target="_blank" rel="noopener noreferrer"> <u>unwinding</u></a>.&nbsp; </p>
 <h3>A review of Go scheduler structs</h3>
@@ -87,7 +113,11 @@
 <span class="line"><span>        /usr/local/go/src/runtime/preempt_arm64.s:47 +0x9c fp=0x4004cec6b0 sp=0x4004cec4c0 pc=0x4a6a8c</span></span>
 <span class="line"><span>github.com/vishvananda/netlink/nl.(*NetlinkSocket).Receive(0x14360300000000?)</span></span>
 <span class="line"><span>        /go/pkg/mod/github.com/!data!dog/netlink@v1.0.1-0.20240223195320-c7a4f832a3d1/nl/nl_linux.go:803 +0x130 fp=0x4004cfc710 sp=0x4004cec6c0 pc=0xf95de0</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We spot-checked a few stack traces and confirmed the presence of this Netlink library. Querying our logs showed that not only did we share a library – every single segmentation fault we observed had happened while preempting<a href="https://github.com/vishvananda/netlink/blob/e1e260214862392fb28ff72c9b11adc84df73e2c/nl/nl_linux.go#L880" target="_blank" rel="noopener noreferrer"> <code><u>NetlinkSocket.Receive</u></code></a>.</p>
 <h3>What’s (async) preemption?</h3>
@@ -124,7 +154,11 @@
 <span class="line"><span>        nl_linux.go:779 0x555577cb287c  ff430191        ADD $80, RSP, RSP</span></span>
 <span class="line"><span>        nl_linux.go:779 0x555577cb2880  ff434091        ADD $(16&lt;&lt;12), RSP, RSP</span></span>
 <span class="line"><span>        nl_linux.go:779 0x555577cb2884  c0035fd6        RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The goroutine was paused between two opcodes in the function epilogue. Since the process of unwinding a stack relies on the stack frame being in a consistent state, it felt immediately suspicious that we preempted in the middle of adjusting the stack pointer. The goroutine had been paused at 0x555577cb2880, between<code> ADD $80, RSP, RSP and ADD $(16&lt;&lt;12), RSP, RSP</code>.&nbsp;</p>
 <p>We queried the service logs to confirm our theory. This wasn’t isolated – the majority of stack traces showed that this same opcode was preempted. This was no longer a weird production crash we couldn’t reproduce. A crash happened when the Go runtime preempted between these two stack pointer adjustments. We had our smoking gun.&nbsp;</p>
@@ -167,7 +201,11 @@
 <span class="line"><span class="sk-24292e-fff">		_ </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> big_stack</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This function ends up with a stack frame slightly larger than can be represented in 16 bits, and so on arm64 the Go compiler will split the stack pointer adjustment into two opcodes. If the runtime preempts between these opcodes then the stack unwinder will read an invalid stack pointer and crash.&nbsp;</p>
 <div class="emdash-code">
@@ -178,7 +216,11 @@
 <span class="line"><span>; preemption is problematic between these opcodes</span></span>
 <span class="line"><span>ADD $(16&lt;&lt;12), RSP, RSP</span></span>
 <span class="line"><span>RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After running this for a few minutes the program panicked as expected!</p>
 <div class="emdash-code">
@@ -204,7 +246,11 @@
 <span class="line"><span></span></span>
 <span class="line"><span>real    1m29.165s</span></span>
 <span class="line"><span>user    4m4.987s</span></span>
-<span class="line"><span>sys     0m43.212s</span></span></code></pre>
+<span class="line"><span>sys     0m43.212s</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A reproducible crash with standard library only? This felt like conclusive evidence that our problem was a runtime bug.</p>
 <p>This was an extremely particular reproducer! Even now with a good understanding of the bug and its fix, some of the behavior is still puzzling. It's a one-instruction race condition, so it’s unsurprising that small changes could have large impact. For example, this reproducer was originally written and tested on Go 1.23.4, but did not crash when compiled with 1.23.9 (the version in production), even though we could objdump the binary and see the split ADD still present! We don’t have a definite explanation for this behavior – even with the bug present there remain a few unknown variables which affect the likelihood of hitting the race condition.&nbsp;</p>
@@ -223,7 +269,11 @@
 <span class="line"><span class="sk-24292e-fff">p.To.Type </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> obj.TYPE_REG</span></span>
 <span class="line"><span class="sk-24292e-fff">p.To.Reg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> REGSP</span></span>
 <span class="line"><span class="sk-24292e-fff">p.Spadj </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">c.autosize</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notably, this IR is not aware of immediate length limitations. Instead, this happens in<a href="https://github.com/golang/go/blob/2f653a5a9e9112ff64f1392ff6e1d404aaf23e8c/src/cmd/internal/obj/arm64/asm7.go" target="_blank" rel="noopener noreferrer"> <u>asm7.go</u></a> when Go's internal intermediate representation is translated into arm64 machine code. The assembler will classify an immediate in <a href="https://github.com/golang/go/blob/2f653a5a9e9112ff64f1392ff6e1d404aaf23e8c/src/cmd/internal/obj/arm64/asm7.go#L1905" target="_blank" rel="noopener noreferrer"><u>conclass</u></a> based on bit size and then use that when emitting instructions – extra if needed.</p>
 <p>The Go assembler uses a combination of (<code>mov, add</code>) opcodes for some adds that fit in 16-bit immediates, and prefers (<code>add, add + lsl 12</code>) opcodes for 16-bit+ immediates.&nbsp; </p>
@@ -239,7 +289,11 @@
 <span class="line"><span>MOVD $32784, R27</span></span>
 <span class="line"><span>ADD R27, RSP, RSP</span></span>
 <span class="line"><span>RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With a stack of <code>1&lt;&lt;16</code>:</p>
 <div class="emdash-code">
@@ -253,7 +307,11 @@
 <span class="line"><span>ADD $16, RSP, RSP</span></span>
 <span class="line"><span>ADD $(16&lt;&lt;12), RSP, RSP</span></span>
 <span class="line"><span>RET</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the larger stack case, there is a point between <code>ADD x, RSP, RSP</code> opcodes where the stack pointer is not pointing to the tip of a stack frame. We thought at first that this was a matter of memory corruption – that in handling async preemption the runtime would push a function call on the stack and corrupt the middle of the stack. However, this goroutine is already in the function epilogue – any data we corrupt is actively in the process of being thrown away. What's the issue then? </p>
 <p>The Go runtime often needs to <strong>unwind</strong> the stack, which means walking backwards through the chain of function calls. For example: garbage collection uses it to find live references on the stack, panicking relies on it to evaluate <code>defer</code> functions, and generating stack traces needs to print the call stack. For this to work the stack pointer <strong>must be accurate during unwinding</strong> because of how golang dereferences sp to determine the calling function. If the stack pointer is partially modified, the unwinder will look for the calling function in the middle of the stack. The underlying data is meaningless when interpreted as directions to a parent stack frame and then the runtime will likely crash.&nbsp;</p>
@@ -264,7 +322,11 @@
 <span class="line"><span class="sk-24292e-fff">    lrPtr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> frame.sp</span></span>
 <span class="line"><span class="sk-24292e-fff">    frame.lr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*uintptr</span><span class="sk-24292e-fff">)(unsafe.</span><span class="sk-6f42c1-ffc799">Pointer</span><span class="sk-24292e-fff">(lrPtr))</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When async preemption happens it will push a function call onto the stack but the parent stack frame is no longer correct because sp was only partially adjusted when the preemption happened. The crash flow looks something like this: </p>
 <ol>
@@ -287,7 +349,11 @@
 <span class="line"><span>/usr/local/go/src/runtime/preempt_arm64.s:47 +0x9c fp=0x40060a27c0 sp=0x40060a25d0 pc=0x55557e2dc94c</span></span>
 <span class="line"><span>github.com/vishvananda/netlink/nl.(*NetlinkSocket).Receive(0xff48ce6e060b2848?)</span></span>
 <span class="line"><span>/vendor/github.com/vishvananda/netlink/nl/nl_linux.go:779 +0x130 fp=0x40060b2820 sp=0x40060a27d0 pc=0x55557e9d2880</span></span>
-<span class="line"><span></span></span></code></pre>
+<span class="line"><span></span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once we discovered the root cause we reported it with a reproducer and the bug was quickly fixed. This bug is fixed in <a href="https://github.com/golang/go/commit/e8794e650e05fad07a33fb6e3266a9e677d13fa8" target="_blank" rel="noopener noreferrer"><u>go1.23.12</u></a>, <a href="https://github.com/golang/go/commit/6e1c4529e4e00ab58572deceab74cc4057e6f0b6" target="_blank" rel="noopener noreferrer"><u>go1.24.6</u></a>, and <a href="https://github.com/golang/go/commit/f7cc61e7d7f77521e073137c6045ba73f66ef902" target="_blank" rel="noopener noreferrer"><u>go1.25.0</u></a>. Previously, the go compiler emitted a single <code>add x, rsp</code> instruction and relied on the assembler to split immediates into multiple opcodes as necessary. After this change, stacks larger than 1&lt;&lt;12 will build the offset in a temporary register and then add that to <code>rsp</code> in a single, indivisible opcode. A goroutine can be preempted before or after the stack pointer modification, but never during. This means that the stack pointer is always valid and there is no race condition.</p>
 <div class="emdash-code">
@@ -295,7 +361,11 @@
 <span class="line"><span>MOVD $32, R27</span></span>
 <span class="line"><span>MOVK $(1&lt;&lt;16), R27</span></span>
 <span class="line"><span>ADD R27, RSP, RSP</span></span>
-<span class="line"><span>RET</span></span></code></pre>
+<span class="line"><span>RET</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This was a very fun problem to debug. We don’t often see bugs where you can accurately blame the compiler. Debugging it took weeks and we had to learn about areas of the Go runtime that people don’t usually need to think about. It’s a nice example of a rare race condition, the sort of bug that can only really be quantified at a large scale.</p>
 <p>We’re always looking for people who enjoy this kind of detective work. <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer"><u>Our engineering teams are hiring</u></a>. </p>

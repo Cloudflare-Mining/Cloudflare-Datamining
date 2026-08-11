@@ -45,11 +45,37 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">opkg</span><span class="sk-032f62-99ffe4"> update</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">opkg</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> unbound</span><span class="sk-032f62-99ffe4"> odhcpd</span><span class="sk-032f62-99ffe4"> unbound-control</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">opkg</span><span class="sk-032f62-99ffe4"> remove</span><span class="sk-032f62-99ffe4"> dnsmasq</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">opkg</span><span class="sk-032f62-99ffe4"> remove</span><span class="sk-032f62-99ffe4"> dnsmasq</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Note that you can additionally install the Luci app for Unbound should you wish to control it with the standard user interface.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">opkg</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> luci-app-unbound</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">opkg</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> luci-app-unbound</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As my router isn't currently running vanilla LEDE, it's user interface won't be altered if I was to install this and I haven't tested this module myself.</p>
 <p>With Unbound in place, we can add some configuration to ensure Unbound uses <code>1.1.1.1</code>, <code>1.0.0.1</code>, <code>2606:4700:4700::1111</code> and<code>2606:4700:4700::1001</code> as the DNS resolvers with TLS encryption. I've done this by appending some configuration to <code>/etc/unbound/unbound_ext.conf</code> using Vim:</p>
@@ -60,7 +86,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  forward-addr:</span><span class="sk-032f62-99ffe4"> 1.0.0.1@853</span><span class="sk-24292e-fff">                             </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  forward-addr:</span><span class="sk-032f62-99ffe4"> 2606:4700:4700::1111@853</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  forward-addr:</span><span class="sk-032f62-99ffe4"> 2606:4700:4700::1001@853</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  forward-ssl-upstream:</span><span class="sk-032f62-99ffe4"> yes</span><span class="sk-24292e-fff">   </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  forward-ssl-upstream:</span><span class="sk-032f62-99ffe4"> yes</span><span class="sk-24292e-fff">   </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the Unbound configuration file at <code>/etc/config/unbound</code>, I've added some required configuration parameters as outlined in the package documentation. In my case, I backed up the configuration file and simply used the following:</p>
 <div class="emdash-code">
@@ -73,7 +103,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  option</span><span class="sk-032f62-99ffe4"> domain_type</span><span class="sk-032f62-99ffe4"> 'static'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  option</span><span class="sk-032f62-99ffe4"> listen_port</span><span class="sk-032f62-99ffe4"> '53'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  option</span><span class="sk-032f62-99ffe4"> rebind_protection</span><span class="sk-032f62-99ffe4"> '1'</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  option</span><span class="sk-032f62-99ffe4"> unbound_control</span><span class="sk-032f62-99ffe4"> '1'</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  option</span><span class="sk-032f62-99ffe4"> unbound_control</span><span class="sk-032f62-99ffe4"> '1'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you do have additional parameters in the file, ensure that nothing overrides the parameters set - being especially cautious about the <code>unbound_control</code> parameter.</p>
 <p>I've also merged the following configuration with <code>/etc/config/dhcp</code> (leaving some existing entries alone):</p>
@@ -90,12 +124,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        option</span><span class="sk-032f62-99ffe4"> maindhcp</span><span class="sk-032f62-99ffe4"> '1'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        option</span><span class="sk-032f62-99ffe4"> leasefile</span><span class="sk-032f62-99ffe4"> '/var/lib/odhcpd/dhcp.leases'</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        option</span><span class="sk-032f62-99ffe4"> leasetrigger</span><span class="sk-032f62-99ffe4"> '/usr/lib/unbound/odhcpd.sh'</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we can enable autostart on Unbound and start it:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">service</span><span class="sk-032f62-99ffe4"> unbound</span><span class="sk-032f62-99ffe4"> enable</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">service</span><span class="sk-032f62-99ffe4"> unbound</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">service</span><span class="sk-032f62-99ffe4"> unbound</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here's the proof of the pudding; when we intercept DNS queries between our router and the wider internet, we'll notice they are encrypted with TLS v1.2:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

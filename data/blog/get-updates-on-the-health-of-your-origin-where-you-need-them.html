@@ -44,13 +44,39 @@
 <p>We’ve got our Health Check set up, and we’re ready to write our worker and durable object. To get started, we first need to <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank" rel="noopener noreferrer">install</a> wrangler, our CLI tool for testing and deploying more complex worker setups.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-005cc5-99ffe4"> -V</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-005cc5-ffc799"> 1.19.8</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-005cc5-ffc799"> 1.19.8</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The examples in this blog were tested in this wrangler version.</p>
 <p>Then, to speed up writing our worker, we will use a template to generate a project:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> status-page</span><span class="sk-24292e-fff"> [https://github.com/cloudflare/durable-objects-template](</span><span class="sk-6f42c1-ffc799">https://github.com/cloudflare/durable-objects-template</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> status-page</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> status-page</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The template has a Durable Object with the name <code>Counter</code>. We’ll rename that to <code>Status</code>, as it will store and update the current state of the page.</p>
 <p>For that, we update <code>wrangler.toml</code> to use the correct name and type, and rename the <code>Counter</code> class in <code>index.mjs</code>.</p>
@@ -72,7 +98,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">main</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "./index.mjs"</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff">[durable_objects]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">bindings</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [{</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "status",</span><span class="sk-032f62-99ffe4"> class_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Status"}]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">bindings</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [{</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "status",</span><span class="sk-032f62-99ffe4"> class_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Status"}]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, we’re ready to fill in our logic. We want to serve two different kinds of requests: one at <code>/webhook</code> that we will pass to the Notification system for updating the status, and another at <code>/</code> for a rendered status page.</p>
 <p>First, let’s write the <code>/webhook</code> logic. We will receive a JSON object with a <code>data</code> and a <code>text</code> field. The `data` object contains the following fields:</p>
@@ -83,7 +113,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> name.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">expected_codes</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> expecting.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">actual_code</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> actual</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> received</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> origin.</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">health_check_id</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> pushing</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> webhook</span><span class="sk-032f62-99ffe4"> notification.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">health_check_id</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> pushing</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> webhook</span><span class="sk-032f62-99ffe4"> notification.</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>For the status page we are using the Health Check <code>name</code>, <code>status</code>, and <code>reason</code> (the reason a Health Check became unhealthy, if any) fields. The <code>text</code> field contains a user-friendly version of this data, but it is more complex to parse.</p>
 <div class="emdash-code">
@@ -99,7 +133,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    failureReason:</span><span class="sk-032f62-99ffe4"> json.data?.reason</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> "Unknown"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  await</span><span class="sk-032f62-99ffe4"> this.state.storage.put</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">healthCheckName,</span><span class="sk-032f62-99ffe4"> details</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now that we can store status changes, we can use our state to render a status page:</p>
 <div class="emdash-code">
@@ -147,7 +185,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">     'Content-Type'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "text/html"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">   })</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then, we can direct requests to our two paths while also returning an error for invalid paths within our durable object with a <code>fetch</code> method:</p>
 <div class="emdash-code">
@@ -162,7 +204,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   default:</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'Path not found'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-005cc5-ffc799"> 404</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we can call that <code>fetch</code> method from our worker, allowing the external world to access our durable object.</p>
 <div class="emdash-code">
@@ -176,7 +222,11 @@
 <span class="line"><span class="sk-005cc5-ffc799"> let</span><span class="sk-032f62-99ffe4"> obj</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> env.status.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">id</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> obj.fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Testing and deploying our worker</h3>
 <p>When we’re ready to deploy, it’s as simple as running the following command:</p>
@@ -213,7 +263,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> python3</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;&gt;&gt;</span><span class="sk-d73a49-a0a0a0"> import</span><span class="sk-24292e-fff"> uuid</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&gt;&gt;&gt;</span><span class="sk-24292e-fff"> uuid.uuid4()</span></span>
-<span class="line"><span class="sk-24292e-fff">UUID(</span><span class="sk-032f62-99ffe4">'4de28cf2-4a1f-4abd-b62e-c8d69569a4d2'</span><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">UUID(</span><span class="sk-032f62-99ffe4">'4de28cf2-4a1f-4abd-b62e-c8d69569a4d2'</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we create a new webhook with the secret.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -226,7 +280,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Enter</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> text</span><span class="sk-032f62-99ffe4"> you'd like assigned to the variable WEBHOOK_SECRET on the script named status-page:</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">4de28cf2-4a1f-4abd-b62e-c8d69569a4d2</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">? Creating the secret for script name status-page</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">✨ Success! Uploaded secret WEBHOOK_SECRET.</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">✨ Success! Uploaded secret WEBHOOK_SECRET.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wrangler will prompt us for the secret, then provide it to our worker. Now we can check for the token upon every webhook notification, as the secret is provided by the header <code>cf-webhook-auth</code>. By checking the header’s value against our secret, we can authenticate incoming webhook notifications as genuine. To do that, we modify <code>handleWebhook</code>:</p>
 <div class="emdash-code">
@@ -237,7 +295,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    return</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  ...old code here</span></span>
-<span class="line"><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This origin health status page is just one example of the versatility of webhooks, which allowed us to leverage Cloudflare Workers and Durable Objects to support a custom Health Checks application. From highly custom use cases such as this to more straightforward, out-of-the-box solutions, pairing webhooks and Health Checks empowers users to respond to critical origin health updates effectively by delivering that information where it will be most impactful.</p>
 <h2>Migrating to the Notifications Dashboard</h2>

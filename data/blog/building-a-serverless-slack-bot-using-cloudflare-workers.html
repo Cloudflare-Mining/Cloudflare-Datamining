@@ -100,8 +100,30 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Our handler is fairly straightforward:</p>
 <ol>
 	<li>If the incoming request was not a POST request (i.e. what the Slack webhook is), we return some useful information.</li>
@@ -128,7 +150,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">    stock: message.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toUpperCase</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Let's step through what we're doing:</p>
 <ol>
@@ -147,13 +173,21 @@
 <span class="line"><span class="sk-24292e-fff">      endpoint,</span></span>
 <span class="line"><span class="sk-24292e-fff">      { cf: { cacheTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">} } </span><span class="sk-6a737d-8b8b8b94">// Cache our responses for 60s.</span></span>
 <span class="line"><span class="sk-24292e-fff">    )</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The API output provides us with two things: the metadata and a line per time interval. For the purposes of our bot, we are going to keep the latest interval provided by the API and discard the rest. On future iterations, we may also call the monthly endpoint, and provide information on monthly highs and lows for comparison, but we will keep it simple for now.</p>
 <p>We are going to be using the intradaily intervals API endpoint provided by Alpha Vantage. This will allow us to cache the response for each individual stock lookup, such that the next person to make a call to our bot may receive a cached version faster (and help us avoid getting rate limited by the API). Here, we will be choosing to optimize for having the latest data, rather than caching for longer periods of time.</p>
 <p>You can see that we will be asking the API for a 1min interval.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&amp;symbol=MSFT&amp;interval=1min&amp;apikey=KEY"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&amp;symbol=MSFT&amp;interval=1min&amp;apikey=KEY"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A single output block looks like this:</p>
 <div class="emdash-code">
@@ -163,7 +197,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      "3. low"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "99.8300",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      "4. close"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "99.8750",</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      "5. volume"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "34542"</span></span>
-<span class="line"><span class="sk-24292e-fff">    },</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    },</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To only get the last 1 minute interval, we will grab the last value that is provided to us by the API, and get the currently open price for it.</p>
 <div class="emdash-code">
@@ -212,7 +250,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    throw</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">could</span><span class="sk-032f62-99ffe4"> not fetch the selected symbol: ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We build an object representing our reply. We're also careful to handle any errors should we get a bad response back from the API: be it a non-HTTP 200 response, or a non-JSON response body. When relying on a third-party service/API, any assumptions you make about the format or correctness of a response that could cause an exception to be thrown if broken—such as calling <code>resp.json()</code> on HTML body—must be accounted for.</p>
 <p>Additionally, note that subrequests will respect the SSL Mode you have for your entire zone. Thus, if the SSL mode is set to flexible, Cloudflare will try to connect to the API over port 80 and over HTTP, and the request will fail (you will see a 525 error).</p>
@@ -237,14 +279,22 @@
 <span class="line"><span class="sk-24292e-fff">    status: </span><span class="sk-005cc5-ffc799">200</span></span>
 <span class="line"><span class="sk-24292e-fff">  })</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The corresponding part of our <code>slackWebhookHandler</code> deals with taking our reply object and passing it to <code>slackResponse</code> -</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> reply </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> stockRequest</span><span class="sk-24292e-fff">(parsed.stock)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> line </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> `Current price (*${</span><span class="sk-24292e-fff">parsed</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">stock</span><span class="sk-032f62-99ffe4">}*): ? USD $${</span><span class="sk-24292e-fff">reply</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-fff">USD</span><span class="sk-032f62-99ffe4">} (Last updated on ${</span><span class="sk-24292e-fff">reply</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">updated</span><span class="sk-032f62-99ffe4">}).`</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> slackResponse</span><span class="sk-24292e-fff">(line)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> slackResponse</span><span class="sk-24292e-fff">(line)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This returns a response to Slack that looks like this:</p>
 <div class="emdash-code">
@@ -252,7 +302,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">  "response_type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"in_channel"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "text"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Current price (*MSFT*): ? USD $101.8300 (Last updated on 2018-06-20 11:52:00)."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "attachments"</span><span class="sk-24292e-fff">: []</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Configuring Slack &amp; Testing Our Bot</h3>
 <p>With our bot ready, let's configure Slack to talk to it for our chosen slash-command. First, log into Slack and head to the <a href="https://api.slack.com/apps" target="_blank" rel="noopener noreferrer">app management</a> dashboard.</p>
@@ -277,24 +331,40 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// SLACK_TOKEN is used to authenticate requests are from Slack.</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Keep this value secret.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-005cc5-fff"> SLACK_TOKEN</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "PUTYOURTOKENHERE"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-005cc5-fff"> SLACK_TOKEN</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "PUTYOURTOKENHERE"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Before hooking our bot up to Slack, we can test to make sure it responds correctly. We can emulate a request from Slack by making a POST request with token and message text via <code>curl</code> -</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Replace with the hostname/route your Worker is running on</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4">  ~</span><span class="sk-032f62-99ffe4">  curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> "token=SLACKTOKENGOESHERE"</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> "text=MSFT"</span><span class="sk-032f62-99ffe4"> "https://bots.example.com/stockbot/stock"</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"response_type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"in_channel"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"text"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"Current price (MSFT): ? USD </span><span class="sk-24292e-fff">$101</span><span class="sk-6f42c1-ffc799">.7300"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"attachments"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4">[]}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"response_type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"in_channel"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"text"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"Current price (MSFT): ? USD </span><span class="sk-24292e-fff">$101</span><span class="sk-6f42c1-ffc799">.7300"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"attachments"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4">[]}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A correct response should net us the expected reply. If we intentionally send an invalid token instead, our bot should reply accordingly:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4">  ~</span><span class="sk-032f62-99ffe4">  curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://bots.example.com/stockbot/stock</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> -F</span><span class="sk-032f62-99ffe4"> "token=OBVIOUSLYINCORRECTTOKEN"</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> "text=MSFT"</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"invalid Slack verification token"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"status"</span><span class="sk-6f42c1-ffc799">:403}%</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"invalid Slack verification token"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"status"</span><span class="sk-6f42c1-ffc799">:403}%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>... or an invalid symbol:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4">  ~</span><span class="sk-032f62-99ffe4">  curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://bots.example.com/stockbot/stock</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> "token=SLACKTOKENGOESHERE"</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> "text=BADSYMBOL"</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"Sorry, I had an issue retrieving anything for that symbol: Error: could not fetch the selected symbol: Error: bad status code from Alpha Vantage: HTTP 404"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"status"</span><span class="sk-6f42c1-ffc799">:200}%</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"Sorry, I had an issue retrieving anything for that symbol: Error: could not fetch the selected symbol: Error: bad status code from Alpha Vantage: HTTP 404"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"status"</span><span class="sk-6f42c1-ffc799">:200}%</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you're running into issues, make sure your token is correct (case-sensitive), and that the stock you're after exists on Alpha Vantage. Beyond that however, we can now install the app to our Workspace (Slack will ask you to authorize the bot):</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

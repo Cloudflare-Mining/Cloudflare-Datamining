@@ -128,8 +128,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
 <span class="line"><span class="sk-24292e-fff">&lt; </span><span class="sk-005cc5-ffc799">0023</span><span class="sk-005cc5-fff"> SET</span><span class="sk-24292e-fff"> “hello” “world”</span></span>
 <span class="line"><span class="sk-24292e-fff">&lt; </span><span class="sk-005cc5-ffc799">0024</span><span class="sk-005cc5-fff"> SET</span><span class="sk-24292e-fff"> “lorem” “ipsum”</span></span>
-<span class="line"><span class="sk-24292e-fff">&lt; </span><span class="sk-005cc5-ffc799">0025</span><span class="sk-005cc5-fff"> DEL</span><span class="sk-24292e-fff"> “</span><span class="sk-005cc5-ffc799">42</span><span class="sk-24292e-fff">”…</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">&lt; </span><span class="sk-005cc5-ffc799">0025</span><span class="sk-005cc5-fff"> DEL</span><span class="sk-24292e-fff"> “</span><span class="sk-005cc5-ffc799">42</span><span class="sk-24292e-fff">”…</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>It is now easily possible to detect whether an update was lost, by comparing the sequence number and making sure it is exactly one higher than the last message we have seen. The astute reader will notice that this is simply <a href="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying" target="_blank" rel="noopener noreferrer">a log</a>. This process is pleasantly simple because our system does not need to support global writes, only reads. As writes are relatively infrequent and it is easy for us to elect a single data center to aggregate writes and ensure the monotonicity of our counter.</p>
 <p>One of the most common failure modes of a distributed system are configuration errors. An analysis of how things could go wrong led us to realize that we had missed a simple failure case: since we are running separate Quicksilver instances for different kinds of data, we could corrupt a database by misconfiguring it. For example, nothing would prevent the DNS database from being updated with changes for the Page Rules database. The solution was to add unique IDs for each database and to require these IDs when initiating the replication protocol.</p>
 <p>Through our experience with our legacy system, KT, we knew that replication does not always scale as easily as we would like. With KT it was common for us to saturate IO on our machines, slowing down reads as we tried to replay the replication log. To solve this with Quicksilver we decided to engineer a batch mode where many updates can be combined into a single write, allowing them all to be committed to disk at once. This significantly improved replication performance by reducing the number of disk writes we have to make. Today, we are batching all updates which occur in a 500ms window, and this has made highly-durable writes manageable.</p>
@@ -157,7 +179,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	NewestOnly</span><span class="sk-6f42c1-ffc799"> bool</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">	// Called by Update when a new entry is applied to the db.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	Metrics</span><span class="sk-6f42c1-ffc799"> func</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">logentry</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">LogEntry</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Each Quicksilver instance has a list of primary servers and secondary servers. It will always try to replicate from a primary node which is often another QS node near it. There are a variety of reasons why this replication may not work, however. For example, if the target machine’s database is too old it will need a larger changeset than exists on the source machine. To handle this, our secondary mains store a significantly longer history to allow machines to be offline for a full week and still be correctly resynchronized on startup.</p>
 <h3>Upgrades</h3>

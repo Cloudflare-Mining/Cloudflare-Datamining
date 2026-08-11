@@ -85,8 +85,30 @@
 <span class="line"><span>  email_address = "${each.key}@cloudflare.com"</span></span>
 <span class="line"><span>  role_ids  	= each.value.roles</span></span>
 <span class="line"><span>  status            = "accepted"</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>Defining Auto-Refreshing Access Service Tokens</h3>
 <p>The <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1866" target="_blank" rel="noopener noreferrer">GitHub issue</a> and <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1872" target="_blank" rel="noopener noreferrer">provider change</a> that enabled automatic Access service token refreshes actually came from a need inside Cloudflare. Here's how we ended up implementing it. We begin by defining a set of services that need to connect to our hostnames that are protected by Access. Each of these <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_service_token" target="_blank" rel="noopener noreferrer">tokens</a> are created and stored in a secret key value store. Next, we reference those access tokens by ID in the target <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy" target="_blank" rel="noopener noreferrer">Access policies</a>. Once this has run, the service owner or the service itself can retrieve the credentials from the data store. (Note: we're using Vault here, but any storage provider could be used in its place).</p>
 <div class="emdash-code">
@@ -136,7 +158,11 @@
 <span class="line"><span>  include {</span></span>
 <span class="line"><span>	service_token = [cloudflare_access_service_token.token["room-service"].id]</span></span>
 <span class="line"><span>  }</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>mTLS (Authenticated Origin Pulls) certificate creation and rotation</h3>
 <p>To further defense-in-depth objectives, we've been rolling out mTLS throughout our internal systems. One of the places where we can take advantage of our Terraform provider is in defining <a href="https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls">AOP (Authenticated Origin Pulls)</a> certificates to lock down the Cloudflare-edge-to-origin connection. Anyone who has <a href="https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management" target="_blank" rel="noopener noreferrer">managed certificates</a> of any kind can speak to the headaches they can cause. Having certificate configurations in Terraform takes out the manual work of rotation and expiration.</p>
@@ -177,7 +203,11 @@
 <span class="line"><span>  authenticated_origin_pulls_certificate = cloudflare_authenticated_origin_pulls_certificate.aop_cert["${each.key}"].id</span></span>
 <span class="line"><span>  hostname                           	= "${each.key}"</span></span>
 <span class="line"><span>  enabled                            	= true</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Terraform recommendations</h3>
 <p>The comfortable automation that we've achieved thus far did not come without some hair-pulling. Below are a few of the learnings that have allowed us to maintain the repository as a side project run by two engineers (shoutout <a href="https://github.com/dhaynespls" target="_blank" rel="noopener noreferrer">David</a>).</p>

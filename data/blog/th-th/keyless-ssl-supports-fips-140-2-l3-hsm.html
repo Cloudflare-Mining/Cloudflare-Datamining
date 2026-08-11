@@ -24,8 +24,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LOCATION=southcentralus</span><span class="sk-24292e-fff">; GROUPNAME</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">”HSMgroup”</span><span class="sk-24292e-fff">; HSMNAME</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">”KeylessHSM”</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> login</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-24292e-fff"> $GROUPNAME </span><span class="sk-005cc5-99ffe4">--location</span><span class="sk-24292e-fff"> $LOCATION</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-005cc5-99ffe4"> --name</span><span class="sk-24292e-fff"> $GROUPNAME </span><span class="sk-005cc5-99ffe4">--location</span><span class="sk-24292e-fff"> $LOCATION</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>การดำเนินการนี้จะส่งคืน URI ที่คุณจะเพิ่มลงในไฟล์ Keyless YAML ในภายหลังเพื่อระบุตำแหน่งที่คุณจะจัดเก็บคีย์ส่วนตัว</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> MYOID=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">az</span><span class="sk-032f62-99ffe4"> ad</span><span class="sk-032f62-99ffe4"> signed-in-user</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-005cc5-99ffe4"> --query</span><span class="sk-032f62-99ffe4"> objectId</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> tsv</span><span class="sk-24292e-fff">)</span></span>
@@ -61,11 +83,19 @@
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "tags"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {},</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Microsoft.KeyVault/managedHSMs"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>คุณเตรียมการใช้งานและเปิดใช้งาน HSM แล้ว คุณต้องสร้าง VM ที่คุณจะปรับใช้ Keyless daemon สำหรับตัวอย่างนี้ เราจะสร้าง Ubuntu Xenial VM ใน Azureเมื่ออยู่ในพอร์ทัล ให้ไปที่หน้า <strong>Virtual machines</strong> และ<strong>เพิ่ม</strong> VM คุณสามารถใช้กลุ่มทรัพยากรที่คุณสร้างไว้ก่อนหน้านี้สำหรับ HSM ได้ แต่เพื่อให้ได้ผลลัพธ์ที่ดีที่สุด ให้เลือกภูมิภาคเดียวกับของ HSM สำหรับ IP สาธารณะของ VM คุณจะใช้ข้อมูลนี้เพื่อเชื่อมต่อกับเซิร์ฟเวอร์จากระยะไกล</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> HSMURI="https://keylesshsm.managedhsm.azure.net/"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> HSMURI="https://keylesshsm.managedhsm.azure.net/"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>หลังจากนั้น ให้กำหนดค่า VM ของคุณเป็นคีย์เซิร์ฟเวอร์ โดยคุณต้องเพิ่ม <a href="https://pkg.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Package Repository</a> ก่อน จากนั้นให้อัปเดตรายการแพ็คเกจของระบบปฏิบัติการและติดตั้งเซิร์ฟเวอร์ gokeyless</p>
 <div class="emdash-code">
@@ -73,12 +103,20 @@
 <span class="line"><span class="sk-24292e-fff">$ openssl req -newkey rsa:</span><span class="sk-005cc5-ffc799">2048</span><span class="sk-24292e-fff"> -nodes -keyout cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.key -x</span><span class="sk-005cc5-ffc799">509</span><span class="sk-24292e-fff"> -days </span><span class="sk-005cc5-ffc799">365</span><span class="sk-24292e-fff"> -out cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer</span></span>
 <span class="line"><span class="sk-24292e-fff">$ openssl req -newkey rsa:</span><span class="sk-005cc5-ffc799">2048</span><span class="sk-24292e-fff"> -nodes -keyout cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.key -x</span><span class="sk-005cc5-ffc799">509</span><span class="sk-24292e-fff"> -days </span><span class="sk-005cc5-ffc799">365</span><span class="sk-24292e-fff"> -out cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer --sd-quorum </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> --security-domain-file $HSMNAME-SD.json</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">.cer ./cert_</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">.cer --sd-quorum </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff"> --security-domain-file $HSMNAME-SD.json</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>จากนั้น อัปเดตไฟล์ gokeyless YAML ก่อนเพิ่มชื่อโฮสต์ของคีย์เซิร์ฟเวอร์ ชื่อโฮสต์นี้ควรมีบันทึก DNS ที่ชี้ไปที่ VM ของคุณ, zoneID และคีย์ Origin CA API ดู zoneID และคีย์ Origin CA API ได้จากแดชบอร์ด Cloudflare นอกจากนั้น ให้ระบุ URI ที่จะชี้ไปยังไดเร็กทอรีย์ของคีย์ส่วนตัวของคุณภายใต้ private_key_stores</p>
 <p>กลับไปที่พอร์ทัล Azure และเปิดพอร์ต TCP ที่จำเป็นสำหรับ Azure VM ไปที่ VM → ระบบเครือข่าย → เพิ่มกฎพอร์ตขาเข้า คุณต้องอนุญาตให้มีการรับส่งข้อมูลบนพอร์ตต้นทางใด ๆ และระบุพอร์ต 2407 เป็นพอร์ตปลายทาง</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> keyvault</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --KeylessHSM</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> az</span><span class="sk-032f62-99ffe4"> keyvault</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-005cc5-99ffe4"> --KeylessHSM</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>บันทึกการเปลี่ยนแปลง จากนั้นไปที่แดชบอร์ด Cloudflare เพื่ออัปโหลดใบรับรอง SSL ของคุณ คุณควรเห็น “Upload Keyless SSL Certificate” ในส่วน Edge Certificates ของแท็บ SSL/TLS ป้อนข้อมูลลงในช่องข้อมูลที่มีป้ายกำกับเซิร์ฟเวอร์คีย์ ชื่อโฮสต์ในไฟล์ YAML, พอร์ตเซิร์ฟเวอร์คีย์ โดย 2407 เป็นพอร์ตเริ่มต้น และวางใบรับรอง SSL</p>
 <p>หลังจากนั้น คุณพร้อมที่จะทดสอบแล้ว! เรียกใช้ <code>curl -v https://zone.com</code> และตรวจสอบว่า TLS handshake เสร็จเรียบร้อยแล้ว</p>
@@ -89,15 +127,27 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> tee</span><span class="sk-032f62-99ffe4"> /etc/apt/sources.list.d/cloudflare-main.list</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -C</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> https://pkg.cloudflare.com/pubkey.gpg</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sudo</span><span class="sk-032f62-99ffe4"> apt-key</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> update</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> gokeyless</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> apt-get</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> gokeyless</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>นอกเหนือจากข้อเสนอ Managed HSM ซึ่งขณะนี้อยู่ในรุ่นตัวอย่างสำหรับสาธารณะแล้ว ลูกค้า Azure ยังสามารถกำหนดค่า Edge ของ Cloudflare เพื่อใช้คีย์ที่จัดเก็บไว้ใน<a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm" target="_blank" rel="noopener noreferrer">ข้อเสนอ Dedicated HSM</a> ของ Microsoft โดยอิงกับ SafeNet Luna Network HSM 7 รุ่น A790 ซีรีส์</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> vim</span><span class="sk-032f62-99ffe4"> /etc/keyless/gokeyless.yaml</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> vim</span><span class="sk-032f62-99ffe4"> /etc/keyless/gokeyless.yaml</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Azure Dedicated HSM ได้รับการตรวจสอบกับทั้ง FIPS 140-2 ระดับ 3 และ eIDAS Common Criteria EAL4+ แล้ว ซึ่งหลังจากทำตามคำแนะนำ<a href="https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell" target="_blank" rel="noopener noreferrer">ในการปรับใช้ HSM</a> ลูกค้าควรปฏิบัติตามคำแนะนำ Keyless SSL เฉพาะของ Azure <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm" target="_blank" rel="noopener noreferrer">ที่นี่</a></p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> gokeyless</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> gokeyless</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="คัดลอกโค้ด" data-copy-label="คัดลอกโค้ด" data-copied-label="คัดลอกโค้ดแล้ว!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Amazon Web Services (AWS) Cloud HSM</h3>
 <p><a href="https://aws.amazon.com/cloudhsm" target="_blank" rel="noopener noreferrer">AWS CloudHSM</a> ยังให้ HSM ที่ผ่านการตรวจสอบความถูกต้อง FIPS 140-2 ระดับ 3 เพื่อจัดเก็บคีย์ส่วนตัวของคุณ</p>

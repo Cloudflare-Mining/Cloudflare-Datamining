@@ -44,15 +44,41 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--</span><span class="sk-d73a49-a0a0a0">|</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                     RDATA</span><span class="sk-032f62-99ffe4">                     /</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    /</span><span class="sk-032f62-99ffe4">                                               /</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>static_zone 之所以不支持新的 ZONEMD 记录，是因为到目前为止，我们一直选择在内部以根区的展示格式分发根区，而不是二进制格式。在查看一些资源记录的文本表述时，我们可以发现不同记录的表述方式存在更多差异。</p>
 <p>取自 <a href="https://www.internic.net/domain/root.zone" target="_blank" rel="noopener noreferrer">https://www.internic.net/domain/root.zone</a> 的记录示例</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span><span class="sk-032f62-99ffe4"> nstld.verisign-grs.com.</span><span class="sk-005cc5-ffc799"> 2023100400</span><span class="sk-005cc5-ffc799"> 1800</span><span class="sk-005cc5-ffc799"> 900</span><span class="sk-005cc5-ffc799"> 604800</span><span class="sk-005cc5-ffc799"> 86400</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	RRSIG</span><span class="sk-032f62-99ffe4">	SOA</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799"> 86400</span><span class="sk-005cc5-ffc799"> 20231017050000</span><span class="sk-005cc5-ffc799"> 20231004040000</span><span class="sk-005cc5-ffc799"> 46780</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-032f62-99ffe4"> J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			518400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	a.root-servers.net.</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">.</span><span class="sk-005cc5-ffc799">			86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	ZONEMD</span><span class="sk-005cc5-ffc799">	2023100400</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 241</span><span class="sk-032f62-99ffe4"> E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>当我们遇到未知的资源记录时，往往不知道如何处理它。因此，我们用来解析边缘根区的库不会尝试解析，而是返回解析器错误。</p>
 <h3>为什么会使用过期版本的根区</h3>
@@ -64,7 +90,11 @@
 <p>起初，我们尝试通过覆盖规则禁用 static_zone 应用程序（覆盖规则是一种允许我们以编程方式更改 1.1.1.1 的某些行为的机制）。我们制定的规则如下：</p>
 <p>对于任何接收到的请求，此规则都会在请求中添加 rec_disable_static 标记。在 static_zone 应用程序中，我们会检查该标记，如果设置了该标记，我们就不会从缓存的静态根区返回响应。但是，<a href="https://blog.cloudflare.com/zh-cn/big-pineapple-intro-zh-cn">为了提高缓存性能</a>，如果当前节点无法在自己的缓存中找到响应，查询有时会被转发到另一个节点。不幸的是，rec_disable_static 标记并没有包含在转发到其他节点的查询中，这导致 static_zone 应用程序继续以陈旧的信息回复，直到我们最终完全禁用该应用程序。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">phase</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pre-cache</span><span class="sk-032f62-99ffe4"> set-tag</span><span class="sk-032f62-99ffe4"> rec_disable_static</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>为什么影响是局部的</h3>
 <p>Cloudflare 会定期对托管我们服务的服务器进行滚动重新启动，以执行内核更新等任务，这些更新只有在系统完全重新启动后才能生效。在本次故障发生时，在 ZONEMD 更改和 DNSSEC 失效之间重新启动的解析器服务器实例不会造成影响。如果它们在这两周内重新启动，它们将无法在启动时加载根区，而只能通过向根服务器发送 DNS 查询来进行解析。此外，解析器还使用了一种称为“过期服务”(serve stale) (<a href="https://datatracker.ietf.org/doc/html/rfc8767" target="_blank" rel="noopener noreferrer">RFC 8767</a>) 的技术，目的是能够继续从可能过期的缓存中提供当前的记录，以限制影响。一旦从上游检索记录的 TTL 秒数已过，该记录就会被视为过期记录。这避免了全面中断；受影响的主要是我们最大的数据中心，这些数据中心有许多服务器在该时间段内没有重新启动 1.1.1.1 服务。</p>

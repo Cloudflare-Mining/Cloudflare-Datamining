@@ -71,8 +71,30 @@
 <p><code>00:01.027 IP host.2 &gt; host.1: Flags [.], ack 1 # first probe<br>00:12.195 IP host.2 &gt; host.1: Flags [.], ack 1 # second probe<br>00:23.207 IP host.2 &gt; host.1: Flags [.], ack 1 # third probe<br>00:34.211 IP host.2 &gt; host.1: Flags [.], ack 1 # fourth probe! But TCP_KEEPCNT was only 3!<br>00:45.219 IP host.2 &gt; host.1: Flags [.], ack 1 # fifth probe!<br>00:56.227 IP host.2 &gt; host.1: Flags [.], ack 1 # sixth probe!<br>01:07.235 IP host.2 &gt; host.1: Flags [R.], seq 1 # TCP_USER_TIMEOUT aborts conn on 7th probe timer</code></p>
 <p>We saw six keepalive probes on the wire! With TCP_USER_TIMEOUT set, the TCP_KEEPCNT is totally ignored. If you want TCP_KEEPCNT to make sense, the only sensible USER_TIMEOUT value is slightly smaller than:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">TCP_KEEPIDLE</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> TCP_KEEPINTVL</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> TCP_KEEPCNT</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">TCP_KEEPIDLE</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> TCP_KEEPINTVL</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> TCP_KEEPCNT</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>Busy ESTAB socket is not forever</h2>
 <p>Thus far we have discussed the case where the connection is idle. Different rules apply when the connection has unacknowledged data in a send buffer.</p>
 <p>Let's prepare another experiment - after the three-way handshake, let's set up a firewall to drop all packets. Then, let's do a <code>send</code> on one end to have some dropped packets in-flight. An experiment shows the sending socket dies after ~16 minutes:</p>

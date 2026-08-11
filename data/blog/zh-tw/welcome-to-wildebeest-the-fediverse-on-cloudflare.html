@@ -50,8 +50,30 @@
 <span class="line"><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
 <span class="line"><span class="sk-24292e-fff">    …</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>與任何其他標準 Worker 一樣，Functions 也可讓您設定<a href="https://developers.cloudflare.com/pages/platform/functions/bindings" target="_blank" rel="noopener noreferrer">繫結</a>以與其他 Cloudflare 產品和功能（如 <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">KV</a>、<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-reference" target="_blank" rel="noopener noreferrer">R2</a>、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>）互動。該清單一直在不斷地增長。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> v1_instance </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'wildebeest/functions/api/v1/instance'</span></span>
@@ -69,7 +91,11 @@
 <span class="line"><span class="sk-24292e-fff">		})</span></span>
 <span class="line"><span class="sk-24292e-fff">       })</span></span>
 <span class="line"><span class="sk-24292e-fff">})</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我們使用 Functions 來實作大部分的官方 <a href="https://docs.joinmastodon.org/api" target="_blank" rel="noopener noreferrer">Mastodon API</a> 規格，讓 Wildebeest 與其他伺服器和用戶端應用程式的現有生態系統相容，並且還可以在同一個專案程式碼庫下執行我們自己的唯讀 Web 前端。</p>
 <p>Wildebeest 的 Web 前端使用 <a href="https://qwik.builder.io" target="_blank" rel="noopener noreferrer">Qwik</a>，這是一個針對速度進行了最佳化的通用 Web 架構，它使用 JSX JavaScript 語法擴充等新式概念，並支援伺服器端轉譯 (SSR) 和靜態網站生成 (SSG)。</p>
@@ -91,7 +117,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">-- Migration number: 0001 	 2023-01-16T13:09:04.033Z</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> UNIQUE INDEX</span><span class="sk-6f42c1-ffc799"> unique_actor_following</span><span class="sk-d73a49-ffc799"> ON</span><span class="sk-24292e-fff"> actor_following (actor_id, target_actor_id);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>下面是一個經過簡化的例子，它展示了當您開始在 Fediverse 上關注某人時，我們如何與 D1 互動：</p>
 <p>Cloudflare 的內部測試和基於我們自己的產品構建的文化，意味著我們有時會先於使用者體驗到種種缺陷。我們在使用基於 SQLite 構建的 D1 儲存資料時，確實面臨一些挑戰。下面是兩個例子。</p>
@@ -104,7 +134,11 @@
 <span class="line"><span class="sk-24292e-fff">		.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-24292e-fff"> id</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://www.w3.org/TR/activitypub" target="_blank" rel="noopener noreferrer">ActivityPub</a> 使用 <a href="https://www.rfc-editor.org/rfc/rfc4122.txt" target="_blank" rel="noopener noreferrer">UUID</a> 來標識物件並在 URI 中廣泛地參照它們。這些物件需要儲存在資料庫中。其他資料庫（如 PostgreSQL）會提供內建函數來<a href="https://www.postgresql.org/docs/current/functions-uuid.html" target="_blank" rel="noopener noreferrer">產生唯一識別碼</a>。SQLite 和 D1 還未提供，但我們已經進行規劃了。</p>
 <p>不過，不用擔心，Workers 執行階段支援 <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto" target="_blank" rel="noopener noreferrer">Web Crypto</a>，因此，我們使用 crypto.randomUUID() 來取得唯一識別碼。請查看 <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/activitypub/actors/inbox.ts" target="_blank" rel="noopener noreferrer">/backend/src/activitypub/actors/inbox.ts</a>：</p>
@@ -116,23 +150,39 @@
 <span class="line"><span class="sk-24292e-fff">		.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'INSERT INTO inbox_objects(id, actor_id, object_id) VALUES(?, ?, ?)'</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">		.</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(id, actor.id.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">(), obj.id.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-24292e-fff">		.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">()</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>另一個例子是我們需要以亞秒級解析度儲存日期。同樣，PostgreSQL 這樣的資料庫可以滿足：</p>
 <p>而 SQLite 未能滿足，如下所示：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">psql</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">select</span><span class="sk-032f62-99ffe4"> now</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2023-02-01</span><span class="sk-032f62-99ffe4"> 11:45:17.425563+00</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2023-02-01</span><span class="sk-032f62-99ffe4"> 11:45:17.425563+00</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>我們使用 <a href="https://www.sqlite.org/lang_datefunc.html" target="_blank" rel="noopener noreferrer">strftime()</a> 藉助一個小型駭客解決了這個問題：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sqlite</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">select</span><span class="sk-032f62-99ffe4"> datetime</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2023-02-01</span><span class="sk-032f62-99ffe4"> 11:44:02</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2023-02-01</span><span class="sk-032f62-99ffe4"> 11:44:02</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>請參閱我們的<a href="https://github.com/cloudflare/wildebeest/blob/main/migrations/0000_initial.sql" target="_blank" rel="noopener noreferrer">初始 SQL 結構描述</a>，查找 <em>cdate</em> 預設值。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sqlite</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">select</span><span class="sk-032f62-99ffe4"> strftime</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'%Y-%m-%d %H:%M:%f'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> 'NOW'</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2023-02-01</span><span class="sk-032f62-99ffe4"> 11:49:35.624</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2023-02-01</span><span class="sk-032f62-99ffe4"> 11:49:35.624</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Images</h3>
 <p>Mastodon 包含大量的多媒體內容。我們不必浪費時間重新構建影像管線；Cloudflare Images <a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer">提供的 API</a> 可以從我們的全球 CDN 上傳、轉換和提供最佳化的影像，因此它能夠很好地滿足 Wildebeest 的要求。</p>
@@ -155,7 +205,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-24292e-fff"> data.result</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>您也可以從儀表板存取 Cloudflare Images。您可以使用它快速瀏覽或管理目錄。</p>
 <h3>Queues</h3>
@@ -191,7 +245,11 @@
 <span class="line"><span class="sk-24292e-fff">	})</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> queue.</span><span class="sk-6f42c1-ffc799">sendBatch</span><span class="sk-24292e-fff">(messages)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最後一步，我們的<a href="https://github.com/cloudflare/wildebeest/tree/main/consumer" target="_blank" rel="noopener noreferrer">佇列消費者</a>在單獨的 Worker 中執行，獨立於 Pages 專案。消費者會接聽新郵件並按照自己的節奏依順序處理它們，從而使其他所有人都無法阻止。當事情變得繁忙時，佇列會增加緩衝區。儘管如此，事情仍在繼續，並且最終會將工作分派出去，釋放主 API 來完成關鍵工作：盡快回應遠端伺服器和用戶端。</p>
 <div class="emdash-code">
@@ -216,7 +274,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">	// frees the API</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff"> })</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果您想親自體驗一下 Queues，下面的範例簡單地展示了如何<a href="https://developers.cloudflare.com/queues/examples/send-errors-to-r2" target="_blank" rel="noopener noreferrer">使用 Queues 在 R2 中儲存資料</a>。</p>
 <div class="emdash-code">
@@ -237,7 +299,11 @@
 <span class="line"><span class="sk-24292e-fff">			}</span></span>
 <span class="line"><span class="sk-24292e-fff">		}</span></span>
 <span class="line"><span class="sk-24292e-fff">	},</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Caching 和 Durable Objects</h3>
 <p>在需要處理資料的複雜應用程式中，快取重複性操作是另一種提升效能的策略。一位著名的 Netscape 開發人員 Phil Karlton 曾經說過：「電腦科學中只有兩件難事：<strong>快取無效判定</strong>和命名。」</p>
@@ -268,7 +334,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">201</span><span class="sk-24292e-fff"> })</span></span>
 <span class="line"><span class="sk-24292e-fff">		}</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>零信任存取</h3>
 <p>官方 Mastodon 伺服器通常會使用電子郵件來<a href="https://docs.joinmastodon.org/user/signup" target="_blank" rel="noopener noreferrer">處理使用者註冊</a>，然後您可以選擇本機使用者名稱並開始使用該服務。但是，如果我們要從頭開始構建，處理使用者註冊和驗證可能會令人怯步，並且非常耗時。</p>
@@ -336,7 +406,11 @@
 <span class="line"><span class="sk-24292e-fff">      - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">Publish</span></span>
 <span class="line"><span class="sk-22863a-ffc799">        uses</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">cloudflare/wrangler-action@2.0.0</span></span>
 <span class="line"><span class="sk-22863a-ffc799">        with</span><span class="sk-24292e-fff">:</span></span>
-<span class="line"><span class="sk-22863a-ffc799">          command</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">pages publish --project-name=wildebeest-${{ env.OWNER_LOWER }} .</span></span></code></pre>
+<span class="line"><span class="sk-22863a-ffc799">          command</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">pages publish --project-name=wildebeest-${{ env.OWNER_LOWER }} .</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>此工作流程會在每次主分支發生變更時自動執行，因此更新 Wildebeest 就像將上游官方存放庫與分支同步處理一樣簡單。您甚至不需要為此使用 git 命令；GitHub 在 UI 中提供了一個便於使用的「同步」按鈕，您只需按一下即可。</p>
 <p>更重要的是什麼呢？我們採用累加式更新，不會造成破壞。當 GitHub Actions 工作流程重新部署 Wildebeest 時，我們只對設定進行必要的變更，而不進行其他任何變更。您不會遺失資料；我們無需刪除您現有的設定。下文闡述了我們是如何做到這一點的：</p>
@@ -372,7 +446,11 @@
 <span class="line"><span class="sk-24292e-fff">		.</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(id, actor.id.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">(), obj.id.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">())</span></span>
 <span class="line"><span class="sk-24292e-fff">		.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">()</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>WebFinger 是一個簡單的 HTTP 通訊協定，用於探索有關任何實體（如個人資料、伺服器或特定功能）的資訊。它將 URI 解析為資源物件。</p>
 <p>Mastodon 使用 <a href="https://www.rfc-editor.org/rfc/rfc7033" target="_blank" rel="noopener noreferrer">WebFinger</a> 查閱來探索有關遠端使用者的資訊。例如，假設您想要與 @<a href="mailto:user@example.com">user@example.com</a> 進行互動。您的本機伺服器會<a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/webfinger/index.ts" target="_blank" rel="noopener noreferrer">要求</a> <a href="https://example.com/.well-known/webfinger?resource=acct%3Auser%40example.com%EF%BC%88%E4%BD%BF%E7%94%A8" target="_blank" rel="noopener noreferrer">https://example.com/.well-known/webfinger?resource=acct:user@example.com（使用</a> <a href="https://www.rfc-editor.org/rfc/rfc7565" target="_blank" rel="noopener noreferrer">acct 配置</a>）並獲得如下所示的內容：</p>
@@ -391,7 +469,11 @@
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>下面是 WebFinger <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/.well-known/webfinger.ts" target="_blank" rel="noopener noreferrer">回應</a>：</p>
 <h4>Mastodon API</h4>
@@ -412,7 +494,11 @@
 <span class="line"><span class="sk-24292e-fff">		],</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(res), { headers })</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最後，諸如設定伺服器資訊、個人資料資訊、產生時間表、通知和搜索之類的事情都是 Mastodon 特定的 API。Mastodon 開放原始碼專案定義了一個 REST API 目錄，您可以在<a href="https://docs.joinmastodon.org/api" target="_blank" rel="noopener noreferrer">他們的網站</a>上找到所有相關文件。</p>
 <p>我們的 Mastodon API 實作可以在<a href="https://github.com/cloudflare/wildebeest/tree/main/functions/api" target="_blank" rel="noopener noreferrer">這裡</a>（REST 端點）和<a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/mastodon" target="_blank" rel="noopener noreferrer">這裡</a>（後端原始物件）找到。下面是一個有關 Mastodon 的伺服器資訊 <a href="https://docs.joinmastodon.org/methods/instance/#v2" target="_blank" rel="noopener noreferrer">/api/v2/instance</a> 的例子，由 <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v2/instance.ts" target="_blank" rel="noopener noreferrer">Wildebeest</a> 實作：</p>
@@ -440,7 +526,11 @@
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(res), { headers })</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>其他與 Mastodon 相容的伺服器<a href="https://pleroma.social" target="_blank" rel="noopener noreferrer">也</a>必須實作上述所有的通訊協定；Wildebeest 就是其中之一。社群在討論未來增強功能方面表現得非常積極活躍；隨著時間的推移，我們將不斷改進相容性並增加對更多功能的支援，以確保 Wildebeest 隨著 Fediverse 伺服器和用戶端生態系統的出現發揮良好的作用。</p>
 <h3>立即開始使用</h3>

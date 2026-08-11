@@ -52,8 +52,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    local</span><span class="sk-24292e-fff"> net addresses.  It is the task of lower level (</span><span class="sk-6f42c1-ffc799">i.e.,</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> net</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    or</span><span class="sk-032f62-99ffe4"> gateways</span><span class="sk-24292e-fff">) procedures to make the mapping from local net addresses</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    to</span><span class="sk-032f62-99ffe4"> routes.</span></span>
-<span class="line"><span class="sk-24292e-fff">                            [ RFC 791, </span><span class="sk-005cc5-ffc799">1981</span><span class="sk-24292e-fff"> ]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">                            [ RFC 791, </span><span class="sk-005cc5-ffc799">1981</span><span class="sk-24292e-fff"> ]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>有趣的問題來了：我們或任何內容服務提供者是否能確保每個 IP 位址僅與一個名稱配對？答案顯然是<strong>不</strong>，原因在於 DNS 通訊協定的設計。</p>
 <h3>DNS 中的名稱數量總是超過可用位址的數量</h3>
 <p>由於網際網路規範，名稱以及位址的關係不可能是一對一的，這與現實世界中無法實現此情況一樣。暫時先不考慮人們和機構可變更住址的情況。基本上來說，地球上的人們與機構的數量超過郵政地址的數量。而我們不僅希望，更_需要_網際網路容納的名稱數量大於位址數量。</p>

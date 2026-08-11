@@ -12,8 +12,30 @@
 <p>如果 nftables 能够自然运用 eBPF，故事就会简单得多；不过，我们只能继续我们的探索。为了开始我们的搜索，我们知道在 iptables 中已集成了 eBPF。例如，我们可以使用 iptables 和一个固定的 eBPF 程序来删除数据包，命令如下：</p>
 <p>这有助于我们走上正确的道路。Iptables 使用 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank" rel="noopener noreferrer">xt_bpf</a> 扩展名来匹配 eBPF 程序。这一扩展使用了 BPF_PROG_TYPE_SOCKET_FILTER eBPF 程序类型，允许我们套接字缓冲区加载数据包信息，并根据我们的代码返回一个值。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">iptables</span><span class="sk-005cc5-99ffe4"> -A</span><span class="sk-032f62-99ffe4"> INPUT</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> --object-pinned</span><span class="sk-032f62-99ffe4"> /sys/fs/bpf/match</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-032f62-99ffe4"> DROP</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>既然我们知道 iptables 可以使用 eBPF，为什么不直接使用它呢？Magic Firewall 目前使用了 nftables，由于它在句法和可编程接口方面的灵活性，对于我们的用例来说，nftables 是一个很好的选择。因此，我们需要找到一种方法，将 xt_bpf 扩展名应用于 nftables。</p>
 <p>这张<a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank" rel="noopener noreferrer">图</a>有助于解释 iptables、nftables 和内核之间的关系。nftables API 可以被 iptables 和 nft 用户空间程序使用，并且可以配置 xtables 匹配（包括 xt_bpf）和普通的 nftables 匹配。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -30,7 +52,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		NLA_F_NESTED</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> NFTA_EXPR_DATA</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_NAME</span><span class="sk-032f62-99ffe4"> "bpf"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_REV</span><span class="sk-005cc5-ffc799"> 1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">		NFTA_MATCH_INFO</span><span class="sk-032f62-99ffe4"> ebpf_bytes</span><span class="sk-24292e-fff">	</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>字节格式可以在 <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank" rel="noopener noreferrer">struct xt_bpf_info_v1</a> 的内核数据头部定义中找到。上面的代码示例显示了该结构的相关部分。</p>
 <div class="emdash-code">
@@ -42,7 +68,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		struct</span><span class="sk-032f62-99ffe4"> sock_filter</span><span class="sk-032f62-99ffe4"> bpf_program[XT_BPF_MAX_NUM_INSTR]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		char</span><span class="sk-032f62-99ffe4"> path[XT_BPF_PATH_MAX]</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">	};</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>xt_bpf 模块既支持原始字节码，也支持指向固定 eBPF 程序的路径。后一种模式是我们将 eBPF 程序与 nftables 结合所使用的技术。</p>
 <p>有了这些信息，我们能够编写代码来创建 netlink 消息，并正确地为任何相关的数据字段排序。这种方法只是第一步，我们也在考虑将其整合到合适的工具中，以替代发送自定义的 netfilter 消息。</p>
@@ -75,7 +105,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> BPF_OK</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>当我们有了程序后，下一步就是将它集成到我们的工具中。我们尝试了一些诸如 BCC、libbpf 等技术来加载程序，我们甚至创建了一个自定义加载器。最终，我们采用了<a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">cilium eBPF 库</a>，因为我们使用 Golang 作为我们的控制平面程序，而该库使在生成、嵌入和加载 eBPF 程序中非常编辑。</p>
 <p>一旦程序被编译并固定，我们就可以使用 netlink 命令将在 nftables 中添加匹配。列出规则集显示匹配的存在。这简直太棒了！我们现在可以部署自定义的 C 程序，以便在 Magic Firewall 规则集内提供高级匹配！</p>
@@ -85,7 +119,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	chain</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">		#match bpf pinned /sys/fs/bpf/mfw/match drop</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>更多 Magic</strong></h3>
 <p>在我们的工具包中增加 eBPF 后，Magic Firewall 成为了一种更加灵活和强大的方法，能够保护您的网络免受不良行为的伤害。现在，我们能够更深入地研究数据包，并实现比 nftables 单独能够提供的更复杂的匹配逻辑。由于我们的防火墙在所有 Cloudflare 服务器上都以软件的形式运行，所以我们可以快速迭代和更新功能。</p>

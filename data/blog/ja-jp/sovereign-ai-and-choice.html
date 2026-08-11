@@ -23,8 +23,30 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "text": ["What is your favourite food?", "I like pizza"],</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "target_language": "guj_Gujr"</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><strong>日本：</strong>日本は、AI開発に関して非常に明確で幅広い<a href="http://www8.cao.go.jp/cstp/ai/aistratagy2022en.pdf" target="_blank" rel="noopener noreferrer"><u>ビジョン</u></a>を持っています。日本のAI導入の遅れを懸念した日本政府は、国内外でAI成長に適した理想的な環境を整備することで、日本を「世界で最もAIに優しい国」にすることを目指しています。日本政府の主要な取り組みの一つは、日本語の複雑さや文化的文脈を深く理解できるAIの開発を支援することです。&nbsp;</p>
 <p>Cloudflareは、Preferred Networks, Inc.（PFN）&nbsp;の<a href="https://huggingface.co/pfnet/plamo-embedding-1b" target="_blank" rel="noopener noreferrer"><u>PLaMo-Embedding-1B</u></a>、自社製の日本語テキスト埋め込みモデルを無料かつオープンに提供しています。日本政府は、<a href="https://www.meti.go.jp/english/policy/mono_info_service/geniac/index.html" target="_blank" rel="noopener noreferrer"><u>Generative AI Accelerator Challenge（GENIAC）</u></a>プログラムを通じてPFNを支援しました。このプログラムは、訓練用のコンピューティングリソースへの投資を通じて、地域におけるLLM開発を支援します。PLaMo Embeddingモデルは、ユーザーが日本語テキストの高品質な埋め込みを生成できるようにし、RAGを活用したアプリケーションやセマンティック検索の構築に役立ちます。</p>
 <p>Workers AI モデルでは次のように<a href="https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b" target="_blank" rel="noopener noreferrer"><u>@cf/pfnet/plamo-embedding-1b</u></a>モデルを使用できます：</p>
@@ -38,7 +60,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">            "PLaMo-Embedding-1Bは、Preferred Networks, Inc. によって開発された日本語テキスト埋め込みモデルです。",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">            "最近は随分と暖かくなりましたね。"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        ]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>東南アジア：</strong><a href="https://www.imda.gov.sg/about-imda/international-relations/asean-working-group-on-ai-governance" target="_blank" rel="noopener noreferrer"><u>東南アジア国連（ASEAN）ワーキンググループ「AIガバナンス」の理事長として</u></a>、シンガポールが実施する野心的な<a href="https://www.smartnation.gov.sg/initiatives/national-ai-strategy" target="_blank" rel="noopener noreferrer"><u>国家AI戦略2.0</u></a>は、東南アジアと世界の両方にとって、AIが公共財であることの保証を目的としています。この戦略の基盤として、シンガポールはSEA-LIONの開発と導入を推進しています。SEA-LIONは、東南アジアの多様な言語や文化に対応するオープンソースLLMのファミリーです。この取り組みは、同国を包括的なグローバルAIリーダーとして位置付けることを目指しており、技術が多言語・多文化の国民にとってアクセス可能であり、地域に適したものであることを保証します。これらのモデルは、インドネシア語、マレー語、タイ語、ベトナム語、タミル語など、数多くの地域言語に精通しており、アジアおよび世界の多くの人々にAI技術へのアクセスを可能にします。</p>
 <p><a href="https://huggingface.co/aisingapore/Gemma-SEA-LION-v4-27B-IT-FP8-Dynamic" target="_blank" rel="noopener noreferrer"><u>SEA-LIONモデル v4-27B</u></a>がWorkers AIプラットフォームで利用可能になりました。SEA-LION v4は、シンガポール政府のリーダーボードにおいて、これまでで最も強力かつ効率的なマルチモーダル・多言語モデルとして際立っています。&nbsp;</p>
@@ -55,7 +81,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      "content": "แล้วทำผัดไทยอย่างไร"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  ]</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>AIモデルを世界に届ける</h2>
 <p>シンガポール、インド、日本はいずれも、自国の多くの現地語モデルをオープンソース化することを選択しており、この戦略は広範なAI主権のビジョンを推進するものです。このアプローチは重要な理解を示しています。すなわち、真のAI主権とは、選択肢を持つことを保証することです。&nbsp;</p>

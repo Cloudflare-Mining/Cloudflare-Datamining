@@ -17,13 +17,39 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[d1_databases]]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "blog-products-db"</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "XXXXXXXXXXXXXXXX"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "XXXXXXXXXXXXXXXX"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>예, 바로 그렇게요! 이제 Pages에 배포된 전체 스택 애플리케이션에 대해서도 <a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration" target="_blank" rel="noopener noreferrer">wrangler.toml 파일</a>을 통해 <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">바인딩된 리소스</a>를 구성할 수 있습니다. Pages의 구성 개선 사항에 대해서는 <a href="https://blog.cloudflare.com/browser-rendering-api-ga-rolling-out-cloudflare-snippets-swr-and-bringing-workers-for-platforms-to-our-paygo-plans">별도의 발표</a>를 통해 더 자세히 알려 드리겠습니다.</p>
 <p>이제 데이터베이스 스키마를 나타내는 간단한 schema.SQL 파일을 만들어 보겠습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CREATE</span><span class="sk-032f62-99ffe4"> TABLE</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">product_id</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-032f62-99ffe4"> PRIMARY</span><span class="sk-032f62-99ffe4"> KEY,</span><span class="sk-032f62-99ffe4"> name</span><span class="sk-032f62-99ffe4"> TEXT,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff"> (product_id, </span><span class="sk-032f62-99ffe4">name,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">1,</span><span class="sk-032f62-99ffe4"> 'Apple',</span><span class="sk-005cc5-ffc799"> 250</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">2,</span><span class="sk-032f62-99ffe4"> 'Banana',</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">3,</span><span class="sk-032f62-99ffe4"> 'Cherry',</span><span class="sk-005cc5-ffc799"> 375</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">INSERT</span><span class="sk-032f62-99ffe4"> INTO</span><span class="sk-032f62-99ffe4"> products</span><span class="sk-24292e-fff"> (product_id, </span><span class="sk-032f62-99ffe4">name,</span><span class="sk-032f62-99ffe4"> price</span><span class="sk-24292e-fff">) VALUES (</span><span class="sk-6f42c1-ffc799">1,</span><span class="sk-032f62-99ffe4"> 'Apple',</span><span class="sk-005cc5-ffc799"> 250</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">2,</span><span class="sk-032f62-99ffe4"> 'Banana',</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-24292e-fff">), (</span><span class="sk-6f42c1-ffc799">3,</span><span class="sk-032f62-99ffe4"> 'Cherry',</span><span class="sk-005cc5-ffc799"> 375</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>그리고 데이터베이스를 초기화합니다.</p>
 <p><code>$ npx wrangler d1 implement blog-products-db --local --file schema.SQL</code></p>
@@ -38,7 +64,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> getRequestContext</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.env.DB</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> Response.json</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> Response.json</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>또는 Nuxt 애플리케이션에서 <code>server/api/hello.ts</code> 파일을 생성하고 이 파일을 다음과 같이 채울 수 있습니다.</p>
 <div class="emdash-code">
@@ -46,7 +76,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> context.cloudflare.env.DB</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-032f62-99ffe4"> productsResults.results</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff"> });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff"> });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>프레임워크 개발 서버가 포트 3000에서 실행 중이라고 가정하면, <a href="http://localhost:3000/api/hello" target="_blank" rel="noopener noreferrer">http://localhost:3000/api/hello</a>로 이동해 어느 프레임워크에서도 새 API 경로를 테스트할 수 있습니다. 이 예시에서는 단순화를 위해 API 경로를 선택했지만, 이는 모든 UI 생성 경로에도 동일하게 적용됩니다.</p>
 <p>웹 프레임워크마다 경로를 정의하고 요청에 대한 컨텍스트 정보를 애플리케이션 전체에 전달하는 방법이 있기 때문에 데이터베이스, 개체 저장소, 기타 리소스에 액세스하는 방법은 사용하는 프레임워크에 따라 달라집니다. Cloudflare에서 업데이트한 전체 스택 프레임워크 가이드를 읽고 자세한 내용을 알아볼 수 있습니다.</p>
@@ -80,7 +114,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799"> //</span><span class="sk-032f62-99ffe4"> Now</span><span class="sk-032f62-99ffe4"> let’s</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> DB</span><span class="sk-032f62-99ffe4"> query</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> runs</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> D1</span><span class="sk-032f62-99ffe4"> db</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> //</span><span class="sk-032f62-99ffe4"> powered</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> miniflare/workerd</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> result</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> Node.js</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> const</span><span class="sk-032f62-99ffe4"> productsResults</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> db.prepare</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'SELECT * FROM products'</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.all</span><span class="sk-24292e-fff">();</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> console.log(productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> console.log(productsResults.results</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>getPlatformProxy()</code> API 사용할 수 있게 된 이후 나머지 작업은 이 API 를 사용하도록 모든 프레임워크 어답터, 플러그인, 경우에 따라 프레임워크 자체를 업데이트하는 것이었습니다. 이 여정을 진행하면서 프레임워크 팀으로부터 받은 지원 , 특히 Astro의 <a href="https://github.com/alexanderniebuhr" target="_blank" rel="noopener noreferrer">Alex</a>, Nuxt의 <a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer">Pi0</a>, Remix의 <a href="https://github.com/pcattori" target="_blank" rel="noopener noreferrer">Pedro</a>, Solid의 <a href="https://github.com/ryansolid" target="_blank" rel="noopener noreferrer">Ryan</a>, Svelte의 <a href="https://github.com/benmccann" target="_blank" rel="noopener noreferrer">Ben</a>과 <a href="https://github.com/Rich-Harris" target="_blank" rel="noopener noreferrer">Rich</a>, 그리고 <a href="https://github.com/cloudflare/next-on-pages" target="_blank" rel="noopener noreferrer">next-on-pages</a> 프로젝트의 협업자인 <a href="https://github.com/james-elicx" target="_blank" rel="noopener noreferrer">James Anderson</a>으로부터 받은 지원에 감사드립니다.</p>
 <h3>Vite를 사용한 개발 워크플로우의 향후 개선 사항</h3>

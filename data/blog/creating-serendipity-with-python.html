@@ -5,8 +5,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">    groups </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [g] </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (n</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">g)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> e </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> range</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, n </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff"> g):</span></span>
-<span class="line"><span class="sk-24292e-fff">        groups[e </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-005cc5-ffc799"> len</span><span class="sk-24292e-fff">(groups)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">        groups[e </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-005cc5-ffc799"> len</span><span class="sk-24292e-fff">(groups)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The first line creates <code>n//g</code> (<code>//</code> is integer division) entries of size <code>g</code> (for example, if <code>g == 4</code> and <code>n == 17</code> then <code>groups == [4, 4, 4, 4]</code>). The <code>for</code> loop deals with the 'left over' parts that don't divide exactly into groups of size <code>g</code>. If <code>g == 4</code> and <code>n == 17</code> then there will be one left over element to add to one of the existing <code>[4, 4, 4, 4]</code> groups resulting in <code>[5, 4, 4, 4]</code>.</p>
 <p>The <code>e % len(groups)</code> is needed because it's possible that there are more elements left over after dividing into equal sized groups than there are entries in <code>groups</code>. For example, if <code>g == 4</code> and <code>n == 11</code> then <code>groups</code> is initially set to <code>[4, 4]</code> with three left over elements that have to be distributed into just two entries in <code>groups</code>.</p>
 <p>So, that code works and here's the output for various sizes of <code>n</code> (and <code>g == 4</code>):</p>
@@ -24,14 +46,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    14</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">5,</span><span class="sk-032f62-99ffe4"> 4]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    15</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">5,</span><span class="sk-032f62-99ffe4"> 5]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    16</span><span class="sk-24292e-fff"> [4, </span><span class="sk-032f62-99ffe4">4,</span><span class="sk-032f62-99ffe4"> 4,</span><span class="sk-032f62-99ffe4"> 4]</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">    17</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">4,</span><span class="sk-032f62-99ffe4"> 4,</span><span class="sk-032f62-99ffe4"> 4]</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">    17</span><span class="sk-24292e-fff"> [5, </span><span class="sk-032f62-99ffe4">4,</span><span class="sk-032f62-99ffe4"> 4,</span><span class="sk-032f62-99ffe4"> 4]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But the code irritated me because I felt there must be a simple formula to work out how many elements should be in each group. After noodling on this problem I decided to do something that's often helpful... make the problem simple and naive, or, at least, the solution simple and naive, and so I wrote this code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    groups</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [0] </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> range</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        groups[i</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">groups</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">]</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        groups[i</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">groups</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">]</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is a really simple implementation. I don't like it because it loops <code>n</code> times but it helps visualize something. Imagine that <code>g == 4</code> and <code>n == 17</code>. This loop 'fills up' each entry in <code>groups</code> like this (each square is an entry in <code>groups</code> and numbers in the squares are values of <code>i</code> for which that entry was incremented by the loop).</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -41,7 +71,11 @@
 <p>So groups ends up being <code>[5, 4, 4, 4]</code>. &nbsp;What this helps see is that the number of times <code>groups[i]</code> is incremented depends on the number of times the <code>for</code> loop 'loops around' on the <code>i</code>th element. And that's something that's easy to calculate without looping.</p>
 <p>So this means that the code is now simply:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    groups</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [1+max(0,n-(i+1))//(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> range</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">)]</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">    groups</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [1+max(0,n-(i+1))//(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> range</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">n//g</span><span class="sk-24292e-fff">)]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And to me that is more satisfying. <code>n//g</code> is the size of <code>groups</code> which makes the loop update each entry in <code>groups</code> once. Each entry is set to <code>1 + max(0, n-(i+1))//(n//g).</code> You can think of this as follows:</p>
 <p>1. The <code>1</code> is the first element to be dropped into each entry in <code>groups</code>.</p>

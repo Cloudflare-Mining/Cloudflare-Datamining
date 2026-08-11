@@ -44,8 +44,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">reject</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">with tcp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">reset</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">iptables </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">A</span><span class="sk-005cc5-fff"> INPUT</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">p udp </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d &lt;</span><span class="sk-005cc5-fff">IP_ADDRESS_BLOCK</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">dport &lt;</span><span class="sk-005cc5-fff">HTTP_PORT</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">j </span><span class="sk-005cc5-fff">REJECT</span><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">reject</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">with icmp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">port</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">unreachable</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">reject</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">with icmp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">port</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">unreachable</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As a result, any connections to these IP addresses on HTTP ports are filtered and rejected at the transport layer, eliminating the need for state management at the application layer by our web proxies.</p>
 <p>The next logical step is to update the <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer"><u>DNS assignments</u></a> so that API traffic is routed over the <em>correct</em> IP addresses. In our case, we encoded a new DNS policy for API traffic for the HTTPS-only interface as a declarative <a href="https://blog.cloudflare.com/topaz-policy-engine-design" target="_blank" rel="noopener noreferrer"><u>Topaz program</u></a> in our authoritative DNS server:</p>
 <div class="emdash-code">
@@ -60,7 +82,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  match:</span><span class="sk-d73a49-a0a0a0"> |</span></span>
 <span class="line"><span class="sk-24292e-fff">    (</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> query_domain_class traffic_class)</span></span>
 <span class="line"><span class="sk-24292e-fff">  response</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-24292e-fff">    (response (list ipv4) (list ipv6) t)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">    (response (list ipv4) (list ipv6) t)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The above policy encodes that for any DNS query targeting the ‘API traffic’ class, we return the respective HTTPS-only interface IP addresses. Topaz’s safety guarantees ensure <em>exclusivity</em>, preventing other DNS policies from inadvertently matching the same queries and misrouting plaintext HTTP expected domains to HTTPS-only IPs<br><br>api.cloudflare.com is the first domain to be added to our HTTPS-only API traffic class, with other applicable endpoints to follow.</p>
 <h3>Opting-in your API endpoints</h3>

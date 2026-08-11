@@ -6,8 +6,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> composer</span><span class="sk-032f62-99ffe4"> require</span><span class="sk-032f62-99ffe4"> phpunit/phpunit</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> composer</span><span class="sk-032f62-99ffe4"> require</span><span class="sk-032f62-99ffe4"> guzzlehttp/guzzle</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> composer</span><span class="sk-032f62-99ffe4"> update</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> composer</span><span class="sk-032f62-99ffe4"> update</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>When we ran <code>composer require</code> for each of the two packages, Composer went ahead and actually downloaded the packages we want, these are stored in the <code>vendor</code> directory. Additionally when we ran <code>composer update</code>, Composer updated it’s <a href="http://www.php-fig.org/psr/psr-4" target="_blank" rel="noopener noreferrer">PSR-4</a> autoload script that allows us to pull in all the dependencies we’ve required with one file include, you can find this in <code>vendor/autoload.php</code>.</p>
 <p>With our dependencies in place, we can now configure PHPUnit to use Guzzle. In order to do this, we need to tell PHPUnit where our Composer autoload file is, but also where our tests are located. We can do this through writing a <code>phpunit.xml</code> in the root directory of our project:</p>
 <div class="emdash-code">
@@ -18,7 +40,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">            &lt;</span><span class="sk-22863a-ffc799">directory</span><span class="sk-6f42c1-a0a0a0"> suffix</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">".php"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">./tests/</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">directory</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">        &lt;/</span><span class="sk-22863a-ffc799">testsuite</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">    &lt;/</span><span class="sk-22863a-ffc799">testsuites</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">phpunit</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">phpunit</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the XML above, the two noteworthy elements are the opening <code>phpunit</code> tag (which defines with a bootstrap property where our Composer autoload script is), additionally we have a <code>testsuite</code> element which defines our test suites (and a child <code>directory</code> property to define where the specific tests live). From here, we can just add an empty directory called <code>tests</code> for our tests to reside in.</p>
 <p>If we now run PHPUnit (through the command <code>./vendor/bin/phpunit</code>), we should see an output similar to the one I get below:</p>
@@ -30,7 +56,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">  "scripts"</span><span class="sk-24292e-fff">: {</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "test"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"./vendor/bin/phpunit"</span></span>
-<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Writing our Tests</h2>
 <p>As an example, I’ll be writing tests against an endpoint at httpbin.org. The first test I’ll write will be against the <code>/user-agent</code> endpoint, so I’ll create a file called <code>UserAgentTest.php</code>, be sure to extend the <code>PHPUnit_Framework_TestCase</code> class:</p>
@@ -39,7 +69,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> UserAgentTest</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> PHPUnit_Framework_TestCase</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Before each test, PHPUnit will run the <code>setUp</code> method and after the test has executed it will run the <code>tearDown</code> method in the class (if they exist). By utilising these methods we can instantiate our Guzzle HTTP client ready for each test and then return to a clean slate afterwards:</p>
 <div class="emdash-code">
@@ -57,7 +91,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    public</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> tearDown</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">        $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff">http </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that if you feel even more adventurous, you can utilise environment variables (through the <code>getenv</code> method) to set the <code>baseurl</code> - for this tutorial however, I’ll be keeping things simple.</p>
 <p>With our <code>setUp</code> and <code>tearDown</code> methods in place, we can now go ahead and actually create our test methods. As I’ll start off by testing against the <code>GET</code> HTTP verb, I’ll name the first test method <code>testGet</code>. From here, we can make the request and then check the properties we get back.</p>
@@ -73,7 +111,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">    $userAgent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> json_decode</span><span class="sk-24292e-fff">($response</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getBody</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff">{</span><span class="sk-032f62-99ffe4">"user-agent"</span><span class="sk-24292e-fff">};</span></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">    $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">assertRegexp</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-a0a0a0">'/Guzzle/'</span><span class="sk-24292e-fff">, $userAgent);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In the method above, I’ve made a GET request to the user-agent endpoint. I can then check the response code I get back was indeed <code>200</code> using the first assertion. The next assertion I test against is whether the <code>Content-Type</code> header indicates the response is JSON. Finally I check that the JSON body itself actually contains the phrase “Guzzle” in the user-agent property.</p>
 <p>We can add additional assertions as required, but we can also add additional methods for other HTTP verbs. For example, here’s a simple test to see if I get a <code>405</code> status code when I make a PUT request to the <code>/user-agent</code> endpoint:</p>
@@ -83,7 +125,11 @@
 <span class="line"><span class="sk-24292e-fff">    $response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'PUT'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'user-agent'</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">'http_errors'</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-005cc5-fff"> false</span><span class="sk-24292e-fff">]);</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-005cc5-a0a0a0">    $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">assertEquals</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">405</span><span class="sk-24292e-fff">, $response</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getStatusCode</span><span class="sk-24292e-fff">());</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next time we run PHPUnit, we can see if our tests pass successfully and also get insight into some statistics surrounding the execution of these tests:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

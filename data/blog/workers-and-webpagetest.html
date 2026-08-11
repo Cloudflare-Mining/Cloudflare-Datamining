@@ -16,8 +16,30 @@
 <h3>Setting up a worker</h3>
 <p>It is really quick and easy to <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">sign up</a> for a free subdomain at <code>workers.dev</code> which provides you with 100,000 free requests per day. There is a quick-start guide available <a href="https://developers.cloudflare.com/workers/quickstart" target="_blank" rel="noopener noreferrer">here</a>.To be able to run the examples in this post you will need to <a href="https://github.com/cloudflare/wrangler#installation" target="_blank" rel="noopener noreferrer">install Wrangler</a>, the CLI tool for deploying workers. Once Wrangler is installed run the following command to download the example worker project: &nbsp; &nbsp;</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> wpt-proxy</span><span class="sk-032f62-99ffe4"> https://github.com/xtuc/WebPageTest-proxy</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> wpt-proxy</span><span class="sk-032f62-99ffe4"> https://github.com/xtuc/WebPageTest-proxy</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><a href="https://github.com/xtuc/WebPageTest-proxyYou" target="_blank" rel="noopener noreferrer">You</a> will then need to update the <code>wrangler.toml</code> with your account_id, which can be found in the <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dashboard</a> in the right sidebar. Then configure an API key with the command:</p>
 <p><code>wrangler config</code></p>
 <p>Finally, you can publish the worker with: &nbsp;</p>
@@ -35,12 +57,20 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-032f62-99ffe4"> www.bbc.co.uk</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-032f62-99ffe4"> nav.files.bbci.co.uk</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> https://www.bbc.co.uk</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> https://www.bbc.co.uk</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>&nbsp;It also supports wildcards: &nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">bbc.co.uk</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> https://www.bbc.co.uk</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> https://www.bbc.co.uk</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are a few special strings that can be used in a script when bulk testing, so a single script can be re-used across multiple URLs:</p>
 <ul>
@@ -51,7 +81,11 @@
 <p>A more generic script would look like this: &nbsp; &nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-032f62-99ffe4"> %HOSTR%</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> %URL%</span><span class="sk-24292e-fff"> </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> %URL%</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Basic worker</h2>
 <p>In the base example below, the worker listens for the fetch event, looks for the <code>x-host</code> header that WebPageTest has set and responds by fetching the content from the orginal url:</p>
@@ -78,14 +112,22 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'x-Host headers missing'</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">});                </span></span>
 <span class="line"><span class="sk-24292e-fff">     event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(response);        </span></span>
 <span class="line"><span class="sk-24292e-fff">   }    </span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The source code can be found <a href="https://github.com/xtuc/WebPageTest-proxy" target="_blank" rel="noopener noreferrer">here</a> and instructions to download and deploy this worker are described in the earlier section.</p>
 <p>So what happens if we point all the domains on the BBC website through this worker, using the following config: &nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-005cc5-a0a0a0">    *</span><span class="sk-032f62-99ffe4">bbci.co.uk</span><span class="sk-032f62-99ffe4"> wpt.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-005cc5-a0a0a0">    *</span><span class="sk-032f62-99ffe4">bbc.co.uk</span><span class="sk-032f62-99ffe4">  wpt.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4">    https://www.bbc.co.uk</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4">    https://www.bbc.co.uk</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>configured to a 3G Fast setting from a UK test location.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -116,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">        }    </span></span>
 <span class="line"><span class="sk-24292e-fff">    })    </span></span>
 <span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(response);</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Subsequently, when the browser makes a request with the specific prefix, the worker fetches the asset from the original URL. This example can be downloaded with this command: &nbsp; &nbsp;</p>
 <p><code>wrangler generate test [https://github.com/xtuc/rewrite-3d-party.git](https://github.com/xtuc/rewrite-3d-party.git)</code></p>
@@ -133,7 +179,11 @@
 <span class="line"><span class="sk-24292e-fff">    }    </span></span>
 <span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(originUrl, init));</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">//...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>HTTP/2 prioritization</h2>
 <p>What if you want to see what the effect of changing the HTTP/2 prioritization of assets would make to your website? Cloudflare Workers provide <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">custom http2 prioritization schemes</a> that can be applied by setting a custom header on the response. The <code>cf-priority</code> header is defined as <code>&lt;priority&gt;/&lt;concurrency&gt;</code> so adding: &nbsp; &nbsp;</p>

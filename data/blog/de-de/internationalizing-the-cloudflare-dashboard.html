@@ -14,8 +14,30 @@
 <p>Aus technischer Sicht ermöglicht es die Trennung von Anwendungscode und Übersetzungen, Änderungen an Strings vorzunehmen, ohne Code neuzukompilieren und/oder erneut bereitstellen zu müssen. In unserer react-basierten Anwendung lief die Externalisierung der meisten unserer Strings darauf hinaus, Codeblöcke wie diesen zu bearbeiten:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Cancel</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Next</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Zu:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;&lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-6f42c1-a0a0a0"> id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"signup.cancel"</span><span class="sk-24292e-a0a0a0"> /&gt;&lt;/</span><span class="sk-005cc5-ffc799">Button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
@@ -26,13 +48,21 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.cancel"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cancel"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "signup.next"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Next"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...many more keys</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Die oben gezeigte -Komponente ist der grundlegende i18n-Baustein in unserer Anwendung. In diesem Schema werden übersetzte Zeichenketten in großen Wörterbüchern aufbewahrt, die durch eine Übersetzungs-ID verschlüsselt sind. Wir nennen diese Wörterbücher „Übersetzungskataloge“ und für jede von uns unterstützte Sprache gibt es eine Reihe von Übersetzungskatalogen.</p>
 <p>Zur Laufzeit sucht die -Komponente die Übersetzung im richtigen Katalog für den angegebenen Key heraus und fügt diese Übersetzung dann in die Seite ein (über das DOM). Der gesamte statische Text einer Anwendung kann mit einfachen Transformationen wie diesen externalisiert werden.</p>
 <p>Wenn jedoch dynamische Daten mit statischem Text vermischt werden müssen, sieht die Lösung etwas komplizierter aus. Schauen Sie sich das folgende vermeintlich einfache Beispiel an, das aber mit potentiellen i18n-Fehlern durchsetzt ist:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Es mag verlockend sein, diesen Satz zu externalisieren, indem man ihn in einige wenige Teile aufbricht, etwa so:</p>
 <div class="emdash-code">
@@ -67,7 +97,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "pageRules"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Page Rules"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Damit scheint die Aufgabe erledigt und sogar elegant gelöst. Schließlich sind die Strings selected.prefix und pageRules.suffix doch sicherlich wiederverwendbar. Leider erweist sich das Zerschneiden von Sätzen und das anschließende Zusammensetzen der übersetzten Bits als der größte Fallstrick, wenn Strings für die Internationalisierung externalisiert werden.</p>
 <p>Das Problem ist, dass bei der Übersetzung die verschiedenen Wörter in einem Satz <a href="https://en.wikipedia.org/wiki/Inflection" target="_blank" rel="noopener noreferrer">auf verschiedene Weise verändert</a> werden können, je nach Kontexts (Singular vs. Plural, Artikel, die Übereinstimmung von Subjekt und Verb usw.). Diese Aspekte variieren stark von Sprache zu Sprache, genau wie die <a href="https://en.wikipedia.org/wiki/Word_order" target="_blank" rel="noopener noreferrer">Satzstellung</a>. Beispielsweise folgt der Englische Satz „We like them“ der Satzstellung Subjekt-Verb-Objekt. In anderen Sprachen kann die Satzstellung variieren: Subjekt-Objekt-Verb („We them like“), Verb-Subjekt-Objekt („Like we them“) oder kann sogar ganz anders aussehen. Aufgrund dieser nuancierten Unterschiede zwischen Sprachen entstehen fast immer Lokalisierungsfehler, sobald die zerschnittenen Satzteile wieder zu einem Satz verkettet werden.</p>
@@ -118,7 +152,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Auf diese Weise erhalten die Übersetzer den vollständigen Kontext des Satzes und können alle Wörter grammatikalisch korrekt übersetzen.</p>
 <p>Vielleicht ist Ihnen ein weiteres potenzielles Problem aufgefallen. Was passiert in diesem Beispiel, wenn totalSelected nur 1 beträgt? Mit dem obigen Code würde der Nutzer „Sie haben 1 Page Rules zum Löschen ausgewählt“ sehen. Wir müssen den Satz bedingt pluralisieren, basierend auf dem Wert der dynamischen Daten. Das passiert sogar ziemlich oft und unsere -Komponente handhabt dies automatisch über die smart_count-Funktion:</p>
@@ -145,14 +183,22 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Portuguese (Brazil) catalog.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "pageRules.selected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Você selecionou %{ smart_count } Page Rule. |||| Você selecionou %{ smart_count } Page Rules."</span><span class="sk-24292e-fff">,</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hier werden die Singular- und Pluralversionen durch |||| abgegrenzt. wählt je nach dem Wert der eingegebenen totalSelected-Variabel automatisch die richtige Übersetzung aus.</p>
 <p>Ein weiterer Stolperstein tritt auf, wenn Markup mit einem Textblock vermischt wird, den wir als einen einzelnen String externalisieren möchten. Was passiert zum Beispiel, wenn ein Satzteil in Ihrem Satz ein Link zu einer anderen Seite sein soll?</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  Don't forget to </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verify your email address.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Um diesen Anwendungsfall zu lösen, muss die -Komponente die Injektion beliebiger Elemente in Platzhalter in einem Übersetzungsstring ermöglichen, wie z.&nbsp;B:</p>
 <div class="emdash-code">
@@ -164,7 +210,11 @@
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "notification.email_verification"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Don't forget to &lt;0&gt;verify your email address.&lt;/0&gt;"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In diesem Beispiel wird die -Komponente Platzhalterelemente (&lt;0&gt;,&lt;1&gt;, usw.) durch Instanzen des Komponententyps ersetzen, die sich bei diesem Index in der Komponenten-Anordnung befinden. Sie gibt auch alle Daten weiter, die in componentProps zu dieser Instanz festgelegt sind. Das obige Beispiel würde in React auf Folgendes hinauslaufen:</p>
 <div class="emdash-code">
@@ -176,7 +226,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// es-ES</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-fff">  No olvide </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-6f42c1-a0a0a0"> to</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/profile"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">verificar la dirección de correo electrónico.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Link</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">VerificationReminder</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Sicherheit an dritter Stelle</h3>
 <p>Die oben skizzierte Funktionalität reichte uns aus, um unsere Strings zu externalisieren. Es führte jedoch zuweilen zu sperrigem, sich wiederholendem Code, den man leicht durcheinander bringen konnte. Einige Fallstricke wurden schnell deutlich.</p>
@@ -216,7 +270,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Hmm... We couldn't find any matching websites.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-005cc5-ffc799">Trans</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ein Tool, das Sie zur Erstellungszeit ausführen, übernimmt dann die Arbeit, alle diese Zeichenfolgen zu finden und in Kataloge zu extrahieren. Das oben genannte Beispiel würde dann zu den folgenden generierten Katalogen führen:</p>
 <div class="emdash-code">
@@ -228,7 +286,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// locales/de_DE.json</span></span>
 <span class="line"><span class="sk-24292e-fff">{</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  "Hmm... We couldn't find any matching websites."</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Hmm... Wir konnten keine übereinstimmenden Websites finden."</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Der offensichtliche Vorteil dieses Ansatzes besteht darin, dass wir es nicht mehr mit separaten Dateien zu tun haben! Der andere Vorteil besteht darin, dass es keinen Bedarf mehr für Type-Checking-IDs gibt, da Tippfehler nicht mehr vorkommen können.</p>
 <p>Allerdings gab es – zumindest für unseren Anwendungsfall – einige Nachteile.</p>
@@ -239,7 +301,11 @@
 <p>Als wir weiter oben über das Einfügen von übersetzten Datenstrings sprachen, haben wir einen wichtigen Punkt ausgelassen: Die Daten, die wir einfügen, müssen möglicherweise auch so formatiert werden, dass sie den lokalen Gewohnheiten des Nutzers entsprechen. Dies gilt für Daten, Uhrzeiten, Zahlen, Währungen und einige andere Arten von Daten.</p>
 <p>Nehmen wir unser einfaches Beispiel von vorhin:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">You've selected </span><span class="sk-24292e-a0a0a0">{</span><span class="sk-24292e-fff"> totalSelected </span><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff"> Page Rules.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">span</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Ohne richtige Formatierung wird dies bei kleinen Zahlen korrekt angezeigt, aber sobald es in die Tausende geht, werden Lokalisierungsprobleme auftreten. Die Art und Weise, wie Ziffern gruppiert und mit Symbolen getrennt werden <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank" rel="noopener noreferrer">variiert je nach Kultur</a>. Hier sehen Sie, wie dreihunderttausend und drei Hundertstel in einigen verschiedenen Sprachregionen formatiert werden:</p>
 <p>Sprache (Land)</p>
@@ -382,7 +448,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> number </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 300000.03</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> formatted </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> number.</span><span class="sk-6f42c1-ffc799">toLocaleString</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hi-IN'</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">// 3,00,000.03</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This probably works in the browser you're using right now!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Glücklicherweise ist die Browserunterstützung für Intl in den letzten Jahren ein gutes Stück vorangekommen und alle modernen Browser bieten volle Unterstützung.</p>
 <p>Einige moderne JavaScript-Engines wie V8 bevorzugen sogar statt selbst gehosteten JavaScript-Implementierungen dieser Bibliotheken lieber C++ basierte Builtins, <a href="https://v8.dev/blog/intl" target="_blank" rel="noopener noreferrer">was zu einer erheblichen Beschleunigung führt</a>.</p>
@@ -420,7 +490,11 @@
 <span class="line"><span class="sk-032f62-99ffe4"> "other.verify.button"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4"> "verify.proceed.link"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Verify Email to proceed"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"> // ...</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Hier haben wir Strings, die wortwörtlich dupliziert werden, sowie Unterstrings, die kopiert werden. Übersetzungsdienste berechnen pro Wort. Sie wollen nicht zweimal für etwas bezahlen und gleichzeitig riskieren, dass die Übersetzung nicht einheitlich wird. Zu diesem Zweck stellt eine gut gepflegte Translation Memory sicher, dass diese Strings in den Vorübersetzungsschritten berücksichtigt werden, bevor die Übersetzer die Datei überhaupt zu sehen bekommen.</p>
 <p>Sobald der Übersetzungsauftrag als fertig markiert ist, kann es Stunden bis Wochen dauern, bis die Übersetzungsteams die Rückübersetzung fertig gestellt haben. Die Bearbeitungszeit hängt von einer Reihe von Faktoren ab wie dem Umfang des Auftrags, der Verfügbarkeit von Übersetzern und den Vertragsbedingungen. Für die Probleme in dieser Phase könnte man einen anderen, gleichlangen Blogartikel verfassen: das richtige Übersetzungsteam zusammenstellen, die Kosten kontrollieren, Qualität und Einheitlichkeit sicherstellen, sicherstellen, dass die Marke des Unternehmens richtig vermittelt wird, usw. Da der Schwerpunkt dieses Artikels weitgehend technischer Natur ist, werden wir die Details hier auslassen. Aber seien Sie gewiss, wenn Sie in diesem Teil einen Fehler machen, war Ihr ganzer Aufwand umsonst, selbst wenn Sie Ihre technischen Ziele erreicht haben.</p>

@@ -17,25 +17,59 @@
 <p>First, I made sure to create a local branch of the cloudflare-docs repo, make local changes, and run a development server locally on port 8000.</p>
 <p>Since I already had <code>cloudflared</code> installed on my machine, the next thing I needed to do was log into my team’s Cloudflare account, pick the zone I wanted to create tunnels for (I picked <code>developers.cloudflare.com</code>), and authorize Cloudflare Tunnel for that zone.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> login</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> login</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Next, it was time to create the Named Tunnel.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> alice</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Tunnel</span><span class="sk-032f62-99ffe4"> credentials</span><span class="sk-032f62-99ffe4"> written</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> /Users/alicebracchi/.cloudflared/0e025819-6f12-4f49-8183-c678273feef4.json.</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> chose</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> based</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> where</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> origin</span><span class="sk-032f62-99ffe4"> certificate</span><span class="sk-032f62-99ffe4"> was</span><span class="sk-032f62-99ffe4"> found.</span><span class="sk-032f62-99ffe4"> Keep</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> secret.</span><span class="sk-032f62-99ffe4"> To</span><span class="sk-032f62-99ffe4"> revoke</span><span class="sk-032f62-99ffe4"> these</span><span class="sk-032f62-99ffe4"> credentials,</span><span class="sk-032f62-99ffe4"> delete</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> tunnel.</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Created</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> alice</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> 0e025819-6f12-4f49-8183-c678273feef4</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Created</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> alice</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> 0e025819-6f12-4f49-8183-c678273feef4</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Alright, tunnel created. Next, I needed to assign a DNS record to it. I wanted it to be something readable and easily shareable with stakeholders (like <code>abracchi.developers.cloudflare.com</code>), so I ran the following command and specified the tunnel name first and then the desired subdomain:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> dns</span><span class="sk-032f62-99ffe4"> alice</span><span class="sk-032f62-99ffe4"> abracchi</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> dns</span><span class="sk-032f62-99ffe4"> alice</span><span class="sk-032f62-99ffe4"> abracchi</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Next, I needed a way to tell the tunnel to serve traffic to my localhost:8000 port. For that, I created a configuration file in my default <code>cloudflared</code> directory and specified the following fields:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">url:</span><span class="sk-032f62-99ffe4"> https://localhost:8000</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">tunnel:</span><span class="sk-032f62-99ffe4"> 0e025819-6f12-4f49-8183-c678273feef4</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">credentials-file:</span><span class="sk-032f62-99ffe4"> /Users/alicebracchi/.cloudflared/0e025819-6f12-4f49-8183-c678273feef4</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">.json</span><span class="sk-24292e-fff">  </span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">.json</span><span class="sk-24292e-fff">  </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Time to run the tunnel. The following command established connections between my origin and the Cloudflare edge, telling the tunnel to serve traffic to my origin according to the parameters I’d specified in the config file:</p>
 <div class="emdash-code">
@@ -51,7 +85,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">2021-10-18T09:39:55Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> 13bf4c0c-b35b-4f9a-b6fa-f0a3dd001951</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-032f62-99ffe4"> location=MAD</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2021-10-18T09:39:56Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> 38510c22-5256-45f2-abf8-72f1207ca242</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-032f62-99ffe4"> location=LIS</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">2021-10-18T09:39:57Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> 9ab0ea06-b1cf-483c-bd48-64a067a87c39</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">2</span><span class="sk-032f62-99ffe4"> location=MAD</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">2021-10-18T09:39:58Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> df079efe-8246-4e93-85f5-10caf8b7c354</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> location=LIS</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">2021-10-18T09:39:58Z</span><span class="sk-032f62-99ffe4"> INF</span><span class="sk-032f62-99ffe4"> Connection</span><span class="sk-032f62-99ffe4"> df079efe-8246-4e93-85f5-10caf8b7c354</span><span class="sk-032f62-99ffe4"> registered</span><span class="sk-032f62-99ffe4"> connIndex=</span><span class="sk-005cc5-ffc799">3</span><span class="sk-032f62-99ffe4"> location=LIS</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And sure enough, at <code>abracchi.developers.cloudflare.com</code>, my teammates could see what I was seeing on localhost:8000.</p>
 <h3>Securing the tunnel</h3>

@@ -14,8 +14,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">ga</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'create'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'UA-XXXXX-Y'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'auto'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">ga</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'send'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'pageview'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-6a737d-8b8b8b94">&lt;!-- End Google Analytics --&gt;</span></span></code></pre>
+<span class="line"><span class="sk-6a737d-8b8b8b94">&lt;!-- End Google Analytics --&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>In this case, and in most other cases, the snippet that you’re pasting actually calls more JavaScript code to be executed. The snippet above creates a new <code>&lt;script&gt;</code> element, gives it the <code>https://www.google-analytics.com/analytics.js</code> <code>src</code> attribute, and appends it to the DOM. The browser then loads the <code>analytics.js</code> script, which includes more JavaScript code than the snippet itself, and sometimes asks the browser to download even more scripts, some of them bigger than <code>analytics.js</code> itself. So far, however, no analytics data has been captured at all, although this is why you’ve added Google Analytics in the first place.</p>
 <p>The last line in the snippet, <code>ga('send', 'pageview');</code>, uses a function defined in the <code>analytics.js</code> file to finally <code>send</code> the <code>pageview</code>. The function is needed because it is what is capturing the analytics data — it fetches the kind of browser, the screen resolution, the language, etc… &nbsp;Then, it constructs a URL that includes all the data, and &nbsp;sends a request to this URL. It’s only after this step that the analytics information gets captured. Every user behavior event you record using Google Analytics will result in another request.</p>
 <p>The reality is that the vast majority of tools consist of more than one resource file, and that it’s practically impossible to know in advance what a tool is going to load without testing it on your website. You can use <a href="https://requestmap.webperf.tools" target="_blank" rel="noopener noreferrer">Request Map Generator</a> to get a visual representation of all the resources loaded on your website, including how they call each other. Below is a Request Map of a demo e-commerce website we created:</p>
@@ -67,7 +89,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(code, {</span></span>
 <span class="line"><span class="sk-24292e-fff">     headers: { </span><span class="sk-032f62-99ffe4">'content-type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/javascript'</span><span class="sk-24292e-fff"> }</span></span>
 <span class="line"><span class="sk-24292e-fff">   });</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It was a tiny example, but I remember calling Yair afterwards and saying “this could actually work!”. It proved the flexibility of Workers. We just created an endpoint that served a JavaScript file, this JavaScript file was dynamically generated, and the response time was less than 10ms. We could now put <code>&lt;script src="path/to/worker.js"&gt;</code> in our HTML and treat this Worker like a normal JavaScript file.</p>
 <p>As we took a deeper look, we found Workers answering demand after demand from our list, and learned we could even do the most complicated things inside Workers. The Lambda function started doing less and less, and was eventually removed. Our little Node.js proof-of-concept was easily converted to Workers.</p>
@@ -107,7 +133,11 @@
 <span class="line"><span class="sk-24292e-fff">  </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Save or update the cookie in the browser</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> getCookieString</span><span class="sk-24292e-fff">(cookieName, sessionCookie)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The above code runs in our Cloudflare Worker, instead of the browser. Previously, having 10x more tools meant 10x more requests browsers rendering your website needed to make, and 10x more JavaScript code they needed to evaluate. This code would often be repetitive, for example, almost every tool implements their own “get cookie” function. It’s also 10x more origins you have to trust no one is tampering with. When running tools on the edge, this doesn’t affect the browser at all: you can add as many tools as you want, but they wouldn’t be loading in the browser, so they will have no effect.</p>
 <p>In this example, we first check for the existence of a cookie that identifies the session, called “visitor-identifier”. If it exists, we read its value; if not, we generate a new UUID for it. Note that the power of Workers is all accessible here: we use <code>crypto.randomUUID()</code> just like we can use any other Workers functionality. We then collect all the information our example tool needs — user agent, current URL, page title, screen resolution, client IP address — and the content of the “visitor-identifier” cookie. We construct the final URL that the Worker needs to send a request to, and we then use <code>waitUntil</code> to make sure the request gets there. Zaraz’s version of fetch gives our tools automatic logging, data loss prevention and retries capabilities.</p>
@@ -121,7 +151,11 @@
 <span class="line"><span class="sk-24292e-fff">    value: document.</span><span class="sk-6f42c1-ffc799">getElementById</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"total"</span><span class="sk-24292e-fff">).innerHTML,</span></span>
 <span class="line"><span class="sk-24292e-fff">    transaction: </span><span class="sk-032f62-99ffe4">"X-98765"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this example, we’re letting Zaraz know about a trigger called “card-submission”, and we associate some data with it — the <code>value</code> of the transaction that we’re taking from an element with the ID <code>total</code>, and a transaction code that is hardcoded and gets printed directly from our backend.</p>
 <p>In the Zaraz interface, configured tools can be subscribed to different and multiple triggers. When the code above gets triggered, Zaraz checks, on the edge, what tools are subscribed to the card-submission trigger, and it then calls them with the right additional data supplied, populating their requests with the transaction code and its value.</p>

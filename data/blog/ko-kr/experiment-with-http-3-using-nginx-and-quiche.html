@@ -10,16 +10,46 @@
 <p>첫번째로 <a href="https://nginx.org/en/download.html" target="_blank" rel="noopener noreferrer">NGINX 소스 코드를 다운로드받아서 압축을 풀어 둡니다.</a> HTTP/3 과 QUIC 패치는 1.16.x 릴리즈 브랜치에만 적용 가능하다는 점에 주의해 주세요 (최신 안정 버전은 1.16.1 입니다).</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -O</span><span class="sk-032f62-99ffe4"> https://nginx.org/download/nginx-1.16.1.tar.gz</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> xvzf</span><span class="sk-032f62-99ffe4"> nginx-1.16.1.tar.gz</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> xvzf</span><span class="sk-032f62-99ffe4"> nginx-1.16.1.tar.gz</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>HTTP/3 과 QUIC의 기반 구현인 quiche도 받아 놓습니다:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/quiche</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/quiche</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이제 패치를 NGINX에 적용 합니다:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> nginx-1.16.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> patch</span><span class="sk-005cc5-99ffe4"> -p01</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> ../quiche/extras/nginx/nginx-1.16.patch</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> patch</span><span class="sk-005cc5-99ffe4"> -p01</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> ../quiche/extras/nginx/nginx-1.16.patch</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>마지막으로 NGINX에 HTTP/3 지원을 추가하여 빌드 합니다:</p>
 <div class="emdash-code">
@@ -30,7 +60,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">   	--with-http_v3_module</span><span class="sk-005cc5-a0a0a0">               	\</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   	--with-openssl=../quiche/deps/boringssl</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">   	--with-quiche=../quiche</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> make</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> make</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위 명령은 NGINX 빌드 시스템에게 HTTP/3 지원을 추가하고 ( <code>--with-http_v3_module</code> ) 다운로드받아 놓은 quiche 라이브러리를 해당 경로에서 찾아서 사용하라는 의미( <code>--with-quiche=../quiche</code> ) 이며, TLS와 HTTP/2 옵션을 추가 합니다. 추가 옵션이 필요하면 더 설정하면 됩니다.</p>
 <p>상세한 방법에 대해서는 <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx#readme" target="_blank" rel="noopener noreferrer">여기</a>를 참조해 주세요.</p>
@@ -59,7 +93,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">        # Add Alt-Svc header to negotiate HTTP/3.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        add_header</span><span class="sk-032f62-99ffe4"> alt-svc</span><span class="sk-032f62-99ffe4"> 'h3-23=":443"; ma=86400'</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위 설정은 각각 TCP/443 포트에서 HTTP/2, UDP/443 포트에서 HTTP/3을 서비스할 수 있도록 합니다.</p>
 <p>이제 이용 가능한 HTTP/3 클라이언트 ( <a href="https://blog.cloudflare.com/ko/http3-the-past-present-and-future-ko/#google-chrome-http-3-">Chrome Canary</a>, <a href="https://blog.cloudflare.com/ko/http3-the-past-present-and-future-ko/#curl-">curl</a>, &nbsp;<a href="https://blog.cloudflare.com/http3-the-past-present-and-future-ko/#quiche-http3-client-">quiche의 예제로 제공되는 HTTP/3 클라이언트</a> 등) 를 사용하여 여러분의 NGINX에 HTTP/3으로 연결할 수 있습니다.</p>

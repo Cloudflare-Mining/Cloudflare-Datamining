@@ -51,8 +51,30 @@
 <span class="line"><span class="sk-005cc5-ffc799">   "EdgeStartTimestamp"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019-11-10T09:51:27Z"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">   "RayID"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"yzrCqUhRd6DVz72a"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">   "RequestHeaders"</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">:</span><span class="sk-24292e-fff">{</span><span class="sk-005cc5-ffc799">"cf-access-user"</span><span class="sk-24292e-fff">:</span><span class="sk-032f62-99ffe4">"srhea"</span><span class="sk-24292e-fff">},</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copiar código" data-copy-label="Copiar código" data-copied-label="¡Código copiado!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>En el ejemplo anterior, el usuario visitó inicialmente la página de presentación de una instancia de prueba de Jira. La siguiente solicitud se hizo para un ticket específico de Jira, EXP-12, aproximadamente un minuto después de la primera solicitud. Con el registro por solicitud, los administradores de Access pueden revisar cada solicitud que un usuario haya enviado luego de la autenticación en caso de que una cuenta se vea comprometida o se haya robado un dispositivo.</p>
 <p>Los registros son uniformes en todas las aplicaciones y con todos los proveedores de identidad. Se registran los mismos campos estándar cuando los contratistas inician sesión con su instancia de AzureAD en la herramienta de la cadena de suministro como cuando los usuarios internos se autentican con Okta en su Jira. También puedes agregar datos a los anteriores con otros detalles de la solicitud como el cifrado TLS que se utilizó y los resultados WAF.</p>
 <h2><strong>¿Cómo se pueden utilizar estos datos?</strong></h2>

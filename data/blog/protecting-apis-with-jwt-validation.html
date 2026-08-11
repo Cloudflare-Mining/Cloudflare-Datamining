@@ -94,8 +94,30 @@
 <h3>What’s the structure of a JWT?</h3>
 <p>JWTs are composed of three fields separated by periods. The first field is a header, the second a payload, and the third a signature:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNeURlbW9JRFAiLCJzdWIiOiJqb2huZG9lIiwiYXVkIjoiTXlBcHAiLCJpYXQiOjE3MDg5ODU2MDEsImV4cCI6MTcwODk4NjIwMSwiY2xhc3MiOiJhZG1pbiJ9.v0nywcQemlEU4A18QD9UTgJLyH4ZPXppuW</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">n0iOmtj4x</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">hWJuExlMKeNS</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">vMZt4K6n0pDCFIAKo7_VZqACx4gILXObXMU4MEleFoKKd0f58KscNrC3BQqs3Gnq</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">vb5Ut9CmcvevQ5h9cBCI4XhpP2_LkYcZiuoSd3zAm2W_0LNZuFXp1wo8swDoKETYmtrdTjuF</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">IlVjLDAxNsWm2e7T5A8HmCnAWRItEPedm_8XVJAOemx_KqIH5w6zHY1U</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">M6PJkHK6D2gDU5eiN35A4FCrC5bQ1</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">0HSTtJkLIed2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">1mRO1oANWHpscvpNLQBWQLLiIZ_evbcq_tnwh1X1sA3uxQ</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNeURlbW9JRFAiLCJzdWIiOiJqb2huZG9lIiwiYXVkIjoiTXlBcHAiLCJpYXQiOjE3MDg5ODU2MDEsImV4cCI6MTcwODk4NjIwMSwiY2xhc3MiOiJhZG1pbiJ9.v0nywcQemlEU4A18QD9UTgJLyH4ZPXppuW</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">n0iOmtj4x</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">hWJuExlMKeNS</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">vMZt4K6n0pDCFIAKo7_VZqACx4gILXObXMU4MEleFoKKd0f58KscNrC3BQqs3Gnq</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">vb5Ut9CmcvevQ5h9cBCI4XhpP2_LkYcZiuoSd3zAm2W_0LNZuFXp1wo8swDoKETYmtrdTjuF</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">IlVjLDAxNsWm2e7T5A8HmCnAWRItEPedm_8XVJAOemx_KqIH5w6zHY1U</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">M6PJkHK6D2gDU5eiN35A4FCrC5bQ1</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">0HSTtJkLIed2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">1mRO1oANWHpscvpNLQBWQLLiIZ_evbcq_tnwh1X1sA3uxQ</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>If we base64 decode the first two sections, we arrive at the following structure (comments added for clarity):</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
@@ -110,7 +132,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  "iat"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1708985601</span><span class="sk-24292e-fff">,  </span><span class="sk-6a737d-8b8b8b94">// When this JWT was issued</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "exp"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1709986201</span><span class="sk-24292e-fff">,  </span><span class="sk-6a737d-8b8b8b94">// When this JWT expires</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  "class"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"admin"</span><span class="sk-6a737d-8b8b8b94">    // Extra, customer-defined metadata</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can then use the algorithm mentioned in the header (RS256) as well as the Identity Provider’s public key (example below) to check the last segment in the JWT, the signature (code not shown).</p>
 <div class="emdash-code">
@@ -122,7 +148,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">NNe6BHGQjs6NfG037Jk36dGY1Yiy/rutj6nJ7WkEK5ktQgWrvMMoXW9TfpYHi6sC</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">mnSEdaxNS8jtFodqpURUaLDIdTOGGgpUZsvzv3jDMYo5IxQK+6y+HUV8eRyDYd/o</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">rQIDAQAB</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">-----END</span><span class="sk-032f62-99ffe4"> PUBLIC</span><span class="sk-032f62-99ffe4"> KEY-----</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">-----END</span><span class="sk-032f62-99ffe4"> PUBLIC</span><span class="sk-032f62-99ffe4"> KEY-----</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The signature is what makes a JWT special. The token issuer, taking into account the claims, generates a signature based on a private secret or a public/private key pair. The public key can be published online, allowing anyone to check if a JWT was legitimately issued by an organization.</p>
 <h3>Proper authentication and authorization stop API attacks</h3>

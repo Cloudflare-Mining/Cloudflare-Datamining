@@ -39,8 +39,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">traceroute</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 172.16.10.120</span><span class="sk-24292e-fff"> (172.16.10.120), 64 hops max, 72 byte packets</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-005cc5-ffc799">  172.68.101.57</span><span class="sk-24292e-fff"> (172.68.101.57)  20.782 ms  12.070 ms  15.888 ms</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 2</span><span class="sk-005cc5-ffc799">  172.16.10.100</span><span class="sk-24292e-fff"> (172.16.10.100)  31.508 ms  30.657 ms  29.478 ms</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 3</span><span class="sk-005cc5-ffc799">  172.16.10.120</span><span class="sk-24292e-fff"> (172.16.10.120)  40.158 ms  55.719 ms  27.603 ms</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 3</span><span class="sk-005cc5-ffc799">  172.16.10.120</span><span class="sk-24292e-fff"> (172.16.10.120)  40.158 ms  55.719 ms  27.603 ms</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>相反，如果我不能连接到我的应用程序服务器，traceroute 预计会输出以下内容：</p>
 <p>在上述示例中，这意味着 ICMP 回显请求没有到达 cloudflared。为了排除故障，首先，我将检查 <a href="https://dash.teams.cloudflare.com" target="_blank" rel="noopener noreferrer">ZeroTrust 仪表板</a>中 Tunnel 的状态，确保 cloudflared 正在运行。然后，我将检查该 Tunnel 是否有通往目的地 IP 的路由，这可以查看仪表板中 Tunnel 表的“Routes”（路由）栏。如果没有，我将向我的 Tunnel 添加一条路由，看看这是否会改变我的 traceroute 输出。</p>
 <div class="emdash-code">
@@ -48,7 +70,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">traceroute</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 172.16.10.120</span><span class="sk-24292e-fff"> (172.16.10.120), 64 hops max, 72 byte packets</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-005cc5-ffc799">  172.68.101.57</span><span class="sk-24292e-fff"> (172.68.101.57)  20.782 ms  12.070 ms  15.888 ms</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 2</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-a0a0a0"> *</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 3</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 3</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>确认 cloudflared 正在运行，且 Tunnel 有通往我的应用程序服务器的路由后，traceroute 将显示以下内容：</p>
 <p>然而，我们看起来仍然不能完全到达应用程序服务器。这意味着，ICMP 回显请求到达了 cloudflared，但我的应用程序服务器没有返回回显应答。现在，我可以把问题缩小到我的应用程序服务器上，或者缩小到 cloudflared 和应用程序服务器之间的通信上。也许机器需要重启，或者存在一个防火墙规则，无论是哪种情况，我们都已经知道需要如何开始排除最后一个跃点的故障。在 ICMP 的支持下，我们现在有很多可用的网络工具来排除端到端的连接问题。</p>
@@ -57,7 +83,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">traceroute</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 172.16.10.120</span><span class="sk-24292e-fff"> (172.16.10.120), 64 hops max, 72 byte packets</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-005cc5-ffc799">  172.68.101.57</span><span class="sk-24292e-fff"> (172.68.101.57)  20.782 ms  12.070 ms  15.888 ms</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 2</span><span class="sk-005cc5-ffc799">  172.16.10.100</span><span class="sk-24292e-fff"> (172.16.10.100)  31.508 ms  30.657 ms  29.478 ms</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> 3</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> 3</span><span class="sk-005cc5-a0a0a0">  *</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-a0a0a0"> *</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>请注意，cloudflared 到源站的路由总是显示为一个单一跃点，即使它们之间有一个或多个路由器。这是因为 cloudflared 创建了自己对源站的回显请求，而不是转发原始数据包。我们将在下一节解释其背后的技术原因。</p>
 <h2>是什么让 ICMP 流量独一无二？</h2>

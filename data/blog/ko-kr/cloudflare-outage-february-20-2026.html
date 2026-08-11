@@ -107,8 +107,30 @@
 <p>정리 하위 작업의 API 쿼리는 다음과 같습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"> resp, </span><span class="sk-6f42c1-ffc799">err</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> d.</span><span class="sk-6f42c1-ffc799">doRequest</span><span class="sk-24292e-fff">(ctx, http.MethodGet, </span><span class="sk-032f62-99ffe4">`/v1/prefixes?pending_delete`</span><span class="sk-24292e-fff">, nil)</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>다음은 API 구현의 관련 부분입니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-6f42c1-ffc799"> v</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req.</span><span class="sk-005cc5-fff">URL</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">Get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"pending_delete"</span><span class="sk-24292e-fff">); v </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff"> {</span></span>
@@ -122,7 +144,11 @@
 <span class="line"><span class="sk-24292e-fff">		api.</span><span class="sk-6f42c1-ffc799">Render</span><span class="sk-24292e-fff">(ctx, w, http.StatusOK, </span><span class="sk-6f42c1-ffc799">renderIPPrefixAPIResponse</span><span class="sk-24292e-fff">(prefixes, nil))</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">		return</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>클라이언트가 pending_delete에 값을 전달하지 않았기 때문에, 여기서 Query().Get(“pending_delete”)의 결과는 빈 문자열(“”)이 됩니다. 이로 인해 API 서버는 삭제 대상 프리픽스만이 아니라 모든 BYOIP 프리픽스를 요청한 것으로 해석하게 됩니다. 시스템은 이를 반환된 모든 프리픽스가 삭제 대기열에 추가된 것으로 해석했습니다. 새로 도입된 하위 작업은 그 영향이 감지될 때까지 모든 BYOIP 프리픽스와 이와 연관된 종속 객체(예: <a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>서비스 바인딩</u></a>)를 체계적으로 삭제하기 시작했습니다. 이후 한 엔지니어가 해당 하위 작업을 식별하고 이를 중단했습니다.</p>
 <h3>Cloudflare가 스테이징 환경이나 테스트에서 버그를 포착하지 못한 이유는 무엇일까요?</h3>

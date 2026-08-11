@@ -8,8 +8,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> OpenFeature.</span><span class="sk-6f42c1-ffc799">setProviderAndWait</span><span class="sk-24292e-fff">(</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    new</span><span class="sk-6f42c1-ffc799"> FlagshipServerProvider</span><span class="sk-24292e-fff">({ binding: env.</span><span class="sk-005cc5-fff">FLAGS</span><span class="sk-24292e-fff"> })</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>フラグシップは現在クローズドベータ版で利用可能です。</p>
 <h3>Workersの機能フラグの問題</h3>
 <p>多くのCloudflare開発者は、実用的な回避策に頼っています。フラグロジックをWorkersに直接ハードコーディングするということです。正直なところ、最初は十分に機能します。Workersは数秒でデプロイできるため、コードのブール値を切り換えて本番環境にプッシュするだけで、ほとんどの状況で十分な速さです。</p>
@@ -30,7 +52,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (value </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-ffc799"> true</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> handleNewCheckout</span><span class="sk-24292e-fff">(request);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> handleLegacyCheckout</span><span class="sk-24292e-fff">(request);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> handleLegacyCheckout</span><span class="sk-24292e-fff">(request);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>そのアウトバウンドリクエストは、すべてのユーザーリクエストのクリティカルパスにあります。ユーザーがフラグサービスの地域からどれだけ離れているかによって、かなりの遅延が発生する可能性があります。</p>
 <p>これは奇妙な状況です。アプリケーションはエッジで実行され、ユーザーから数ミリ秒の圏内で実行できます。しかし、機能フラグチェックによって、何をレンダリングするかを決定する前に、インターネット経由で別のAPIに到達することを強制します。</p>
@@ -57,7 +83,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "app_id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;APP_ID&gt;"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これで、以上です。アカウントIDはCloudflareアカウントから推測され、<code>app_id</code> はバインディングを特定のフラグシップアプリに結び付けます。Workerでは、フラグ値を要求するだけです。</p>
 <div class="emdash-code">
@@ -74,7 +104,11 @@
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // details.value = "v2", details.variant = "new", details.reason = "TARGETING_MATCH"</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>バインディングは、すべてのバリエーションタイプ（<code>getBooleanValue()</code>、<code>getStringValue()</code>、<code>getNumberValue()</code>、<code>getObjectValue()</code>）の型付きアクセサーと、一致したバリアントおよび選択された理由とともに解決された値を返す<code>*Details()</code>バリアントをサポートしています。評価エラーがあれば、デフォルト値がスムーズに返されます。型の不一致があった場合、バインディングは例外を発生させます。これはコードのバグであり、一時的な障害ではありません。</p>
 <h3>SDK：OpenFeatureネイティブ</h3>
@@ -99,7 +133,11 @@
 <span class="line"><span class="sk-24292e-fff">    plan: </span><span class="sk-032f62-99ffe4">'enterprise'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    country: </span><span class="sk-032f62-99ffe4">'US'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Flagshipバインディングを持つWorkersを実行している場合、OpenFeatureプロバイダーに直接渡すことができます。バインディングはすでにアカウントコンテキストを伝送するため、設定する必要はありません。認証は暗黙的です。</p>
 <div class="emdash-code">
@@ -120,7 +158,11 @@
 <span class="line"><span class="sk-24292e-fff">      plan: </span><span class="sk-032f62-99ffe4">'enterprise'</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
 <span class="line"><span class="sk-24292e-fff">  },</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>評価コードは変更されません。OpenFeatureのインターフェースは同一です。しかし、内部的には、FlagshipはHTTP経由ではなくバインディングを通じてフラグを評価します。標準のポータビリティとバインディングのパフォーマンスが得られます。</p>
 <p>ブラウザについては、クライアント側のプロバイダーも利用できます。指定したフラグをプリフェッチし、設定可能な有効期限（TTL）でキャッシュし、そのキャッシュから同期的に評価を行います。</p>
@@ -140,7 +182,11 @@
 <p>条件は、AND/OR論理を使って構成することができ、最大5レベルの深さに入れ子にできます。一つのルールで、以下のような内容を表現することができます：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">(plan </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> “enterprise” </span><span class="sk-005cc5-fff">AND</span><span class="sk-24292e-fff"> region </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> “us” ) </span><span class="sk-005cc5-fff">OR</span><span class="sk-24292e-fff"> (user</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">email</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">endsWith</span><span class="sk-24292e-fff">(“</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com”))</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> serve (“premium”)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> serve (“premium”)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ルールの最上位レベルでは、複数の条件が暗黙的なANDと組み合わされ、ルールが一致するためには、すべての条件が通過しなければなりません。各条件内で、AND/ORグループを入れ子にして、より複雑なロジックを使うことができます。</p>
 <h4>割合別のフラグロールアウト</h4>

@@ -24,8 +24,30 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">  /usr/local/Cellar/terraform/0.11.7: 6 files, 80.2MB</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> version</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Terraform</span><span class="sk-032f62-99ffe4"> v0.11.7</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Terraform</span><span class="sk-032f62-99ffe4"> v0.11.7</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The following instructions are adapted from the <a href="https://developers.cloudflare.com/terraform" target="_blank" rel="noopener noreferrer">Cloudflare Developers - Terraform documentation</a> site, which includes a <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a> and coverage of <a href="https://developers.cloudflare.com/terraform/advanced-topics" target="_blank" rel="noopener noreferrer">advanced topics</a>.</p>
 <p>If you're interested in seeing how to use a specific Terraform resource or technique, click on one of the following anchor links:</p>
 <ul>
@@ -61,7 +83,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  type    = "A"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  proxied = true</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>2. Initialize Terraform and the Cloudflare provider</h4>
 <p>Now that you've created your basic configuration in HCL let's initialize Terraform and ask it to apply the configuration to Cloudflare. HCL stands for HashiCorp Configuration Lanaguage, and is named after the maker of Terraform.</p>
@@ -98,7 +124,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">.terraform//plugins</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">.terraform//plugins/darwin_amd64</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">.terraform//plugins/darwin_amd64/lock.json</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">.terraform//plugins/darwin_amd64/terraform-provider-cloudflare_v1.0.0_x4</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">.terraform//plugins/darwin_amd64/terraform-provider-cloudflare_v1.0.0_x4</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>3. Review the execution plan</h4>
 <p>With the Cloudflare provider installed, let's ask Terraform to show the changes it's planning to make to your Cloudflare account so you can confirm it matches the configuration you intended:</p>
@@ -139,7 +169,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Note:</span><span class="sk-032f62-99ffe4"> You</span><span class="sk-032f62-99ffe4"> didn't specify an "-out" parameter to save this plan, so Terraform</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">can't</span><span class="sk-032f62-99ffe4"> guarantee</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> exactly</span><span class="sk-032f62-99ffe4"> these</span><span class="sk-032f62-99ffe4"> actions</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> performed</span><span class="sk-032f62-99ffe4"> if</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">"terraform apply"</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> subsequently</span><span class="sk-032f62-99ffe4"> run.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">"terraform apply"</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> subsequently</span><span class="sk-032f62-99ffe4"> run.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you can see in the above "execution plan”, Terraform is going to create a new DNS record, as requested. Values that you've explicitly specified are displayed, e.g., the value of the <code>A</code> record—<code>203.0.113.10</code>—while values that are derived based on other API calls, e.g., looking up the zone_id, or returned after the object is created, are displayed as <code>&lt;computed&gt;</code>.</p>
 <h4>4. Applying Your Changes</h4>
@@ -162,7 +196,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_record.www:</span><span class="sk-032f62-99ffe4"> Creation</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 1s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">c38d3103767284e7cd14d5dad3ab8668</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that I specified –auto-approve on the command line for briefer output; without this flag, Terraform will show you the output of <code>terraform plan</code> and then ask for confirmation before applying it.</p>
 <h4>Verify the results</h4>
@@ -190,11 +228,19 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  ttl</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> A</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  value</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 203.0.113.10</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> e2e6391340be87a3726f91fc4148b122</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> e2e6391340be87a3726f91fc4148b122</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://www.example.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 203.0.113.10!</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> 203.0.113.10!</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Tracking change history</h3>
 <p>In the <code>terraform apply</code> step above, you created and applied some basic Cloudflare configuration. Terraform was able to apply this configuration to your account because you provided your email address and API token at the top of the cloudflare.tf file:</p>
@@ -203,7 +249,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">provider</span><span class="sk-032f62-99ffe4"> "cloudflare"</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  email</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "you@example.com"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  token</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "your-api-key"</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We're now going to store your configuration in GitHub where it can be tracked, peer-reviewed, and rolled back to as needed. But before we do so, we're going to remove your credentials from the Terraform config file so it doesn't get committed to a repository.</p>
 <h4>1. Use environment variables for authentication</h4>
@@ -219,7 +269,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> CLOUDFLARE_EMAIL=you@example.com</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> CLOUDFLARE_TOKEN=your-api-key</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> CLOUDFLARE_TOKEN=your-api-key</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that you need to leave the empty provider definition in the file, so that Terraform knows to install the Cloudflare plugin.</p>
 <p>After completing the above step, it's a good idea to make sure that you can still authenticate to Cloudflare. By running <code>terraform plan</code> we can get Terraform to pull the current state (which requires a valid email and API key):</p>
@@ -237,7 +291,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">This</span><span class="sk-032f62-99ffe4"> means</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> Terraform</span><span class="sk-032f62-99ffe4"> did</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> detect</span><span class="sk-032f62-99ffe4"> any</span><span class="sk-032f62-99ffe4"> differences</span><span class="sk-032f62-99ffe4"> between</span><span class="sk-032f62-99ffe4"> your</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">configuration</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> real</span><span class="sk-032f62-99ffe4"> physical</span><span class="sk-032f62-99ffe4"> resources</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> exist.</span><span class="sk-032f62-99ffe4"> As</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> result,</span><span class="sk-032f62-99ffe4"> no</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">actions</span><span class="sk-032f62-99ffe4"> need</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> performed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">actions</span><span class="sk-032f62-99ffe4"> need</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> performed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <ol>
 	<li>Store your configuration in GitHubNow that credentials have been removed, it's time to initialize a git repository with your Cloudflare configuration and then push it to GitHub.</li>
@@ -251,7 +309,11 @@
 <span class="line"><span class="sk-24292e-fff">-d </span><span class="sk-032f62-99ffe4">'{"name": "cf-config", "private":"true"}'</span><span class="sk-d73a49-a0a0a0"> 2&gt;</span><span class="sk-032f62-99ffe4">/dev/null</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> .ssh_url</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-24292e-fff"> $GITHUB_URL</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">git@github.com:$GITHUB_USER/cf-config.git</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">git@github.com:$GITHUB_USER/cf-config.git</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we'll initialize a git repository and make our first commit:</p>
 <div class="emdash-code">
@@ -264,7 +326,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-032f62-99ffe4"> "Step 2 - Initial commit with webserver definition."</span></span>
 <span class="line"><span class="sk-24292e-fff">[master (root</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">commit) 5acea17] Step 2 - Initial commit with webserver definition.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> insertions</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">+</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> create</span><span class="sk-032f62-99ffe4"> mode</span><span class="sk-005cc5-ffc799"> 100644</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> create</span><span class="sk-032f62-99ffe4"> mode</span><span class="sk-005cc5-ffc799"> 100644</span><span class="sk-032f62-99ffe4"> cloudflare.tf</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>An astute reader may have noticed that we did not commit the <code>.terraform</code> directory nor did we commit the <code>terraform.tfstate</code> file. The former was not committed because this repository may be used on a different architecture, and the plugins contained in this directory are built for the system on which terraform init was run. The latter was not committed as i) it may eventually contain sensitive strings and ii) it is not a good way to keep state in sync, as HashiCorp [explains].</p>
 <p>To prevent git from bugging us about these files, let's add them to a new <code>.gitignore</code> file, commit it, and push everything to GitHub:</p>
@@ -288,7 +354,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Writing</span><span class="sk-032f62-99ffe4"> objects:</span><span class="sk-032f62-99ffe4"> 100%</span><span class="sk-24292e-fff"> (6/6), 762 bytes </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> 0</span><span class="sk-032f62-99ffe4"> bytes/s,</span><span class="sk-032f62-99ffe4"> done.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-24292e-fff"> (delta </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">), reused 0 (</span><span class="sk-6f42c1-ffc799">delta</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">To</span><span class="sk-032f62-99ffe4"> git@github.com:</span><span class="sk-24292e-fff">$GITHUB_USER</span><span class="sk-032f62-99ffe4">/cf-config.git</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-24292e-fff"> [new </span><span class="sk-032f62-99ffe4">branch]</span><span class="sk-032f62-99ffe4">      master</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> master</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799"> *</span><span class="sk-24292e-fff"> [new </span><span class="sk-032f62-99ffe4">branch]</span><span class="sk-032f62-99ffe4">      master</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> master</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Applying zone settings</h3>
 <p>Now that you've got a basic website proxied through Cloudflare, it's time to use Terraform to adjust some additional settings on your zone. Below we'll configure some optional HTTPS settings, and then push the updated configuration to GitHub for posterity.</p>
@@ -311,7 +381,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">    waf = "on"</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  }</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>2. Preview and merge the changes</h4>
 <p>Let's take a look at what Terraform is proposing before we apply it. We filter the <code>terraform plan</code> output to ignore those values that will be "computed”—in this case, settings that will be left at their default values. For brevity from here on out, we'll omit some extranneous Terraform output; if you'd like to see the output exactly as run, please see the <a href="https://developers.cloudflare.com/terraform/tutorial" target="_blank" rel="noopener noreferrer">full tutorial</a>.</p>
@@ -340,7 +414,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      settings.0.waf:</span><span class="sk-032f62-99ffe4">                         "on"</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The proposed changes look good, so we'll merge them into primary and then apply them with <code>terraform apply</code>. When working on a team, you may want to require pull requests and use this opportunity to peer review any proposed configuration changes.</p>
 <div class="emdash-code">
@@ -366,14 +444,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-24292e-fff"> (delta </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">), reused 0 (</span><span class="sk-6f42c1-ffc799">delta</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">remote:</span><span class="sk-032f62-99ffe4"> Resolving</span><span class="sk-032f62-99ffe4"> deltas:</span><span class="sk-032f62-99ffe4"> 100%</span><span class="sk-24292e-fff"> (1/1), completed with 1 </span><span class="sk-d73a49-a0a0a0">local</span><span class="sk-24292e-fff"> object.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">To</span><span class="sk-032f62-99ffe4"> git@github.com:</span><span class="sk-24292e-fff">$GITHUB_USER</span><span class="sk-032f62-99ffe4">/cf-config.git</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   d26f40b..d540600</span><span class="sk-032f62-99ffe4">  master</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> master</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   d26f40b..d540600</span><span class="sk-032f62-99ffe4">  master</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> master</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>3. Apply and verify the changes</h4>
 <p>Before applying the changes, let's see if we can connect with TLS 1.3. Hint: we should <em>not</em> be able to with default settings. If you want to follow along with this test, you'll need to [compile curl against BoringSSL].</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> --tlsv1.3</span><span class="sk-032f62-99ffe4"> https://www.upinatoms.com</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "SSL connection\|error"</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> error:1000042e:SSL routines:OPENSSL_internal:TLSV1_ALERT_PROTOCOL_VERSION</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">curl:</span><span class="sk-24292e-fff"> (35) error:1000042e:SSL routines:OPENSSL_internal:TLSV1_ALERT_PROTOCOL_VERSION</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">curl:</span><span class="sk-24292e-fff"> (35) error:1000042e:SSL routines:OPENSSL_internal:TLSV1_ALERT_PROTOCOL_VERSION</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As shown above, we receive an error as TLS 1.3 is not yet enabled on your zone. Let's enable it by running terraform apply and try again:</p>
 <div class="emdash-code">
@@ -431,12 +517,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  zone_type:</span><span class="sk-032f62-99ffe4">                              ""</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "&lt;computed&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_zone_settings_override.example-com-settings:</span><span class="sk-032f62-99ffe4"> Creation</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 2s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">e2e6491340be87a3726f91fc4148b125</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we can try the same command as above, and see that it succeeds. Niiice, TLS 1.3!</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> --tlsv1.3</span><span class="sk-032f62-99ffe4"> https://www.example.com</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "SSL connection\|error"</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> SSL connection using TLSv1.3 / AEAD-AES128-GCM-SHA256</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> SSL connection using TLSv1.3 / AEAD-AES128-GCM-SHA256</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Managing rate limits</h3>
 <p><em>Before proceeding, make sure that your account is enabled for Rate Limiting. If you’re on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Rate Limiting within the Cloudflare Dashboard.</em></p>
@@ -475,7 +569,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">  disabled = false</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  description = "Block failed login attempts (5 in 1 min) for 5 minutes."</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">}</span></span>
-<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This rule is a bit more complex than the zone settings rule, so let's break it down:</p>
 <div class="emdash-code">
@@ -483,7 +581,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">01:</span><span class="sk-032f62-99ffe4">   zone</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">domain</span><span class="sk-032f62-99ffe4">}"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">02:</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">03:</span><span class="sk-032f62-99ffe4">   threshold</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">04:</span><span class="sk-032f62-99ffe4">   period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">04:</span><span class="sk-032f62-99ffe4">   period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The threshold is an integer count of how many times an event (defined by the match block below) has to be detected in the period before the rule takes action. The period is measured in seconds, so the above rule says to take action if the match fires 5 times in 60 seconds.</p>
 <div class="emdash-code">
@@ -496,7 +598,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">11:</span><span class="sk-032f62-99ffe4">     response</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">12:</span><span class="sk-032f62-99ffe4">       statuses</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [401, </span><span class="sk-032f62-99ffe4">403]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">13:</span><span class="sk-032f62-99ffe4">     }</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">14:</span><span class="sk-032f62-99ffe4">   }</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">14:</span><span class="sk-032f62-99ffe4">   }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The match block tells the Cloudflare edge what to be on the lookout for, i.e., HTTP or HTTPS POST requests to <code>https://www.example.com/login</code>. We further restrict the match to HTTP <code>401/Unauthorized</code> or <code>403/Forbidden</code> response codes returned from the origin.</p>
 <div class="emdash-code">
@@ -510,7 +616,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">22:</span><span class="sk-032f62-99ffe4">   }</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">23:</span><span class="sk-032f62-99ffe4">   disabled</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">24:</span><span class="sk-032f62-99ffe4">   description</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Block failed login attempts (5 in 1 min) for 5 minutes."</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">25:</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">25:</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>After matching traffic, we set the action for our edge to take. When testing, it's a good idea to set the mode to simulate and review logs before taking enforcement action (see below). The timeout field here indicates that we want to enforce this action for 300 seconds (5 minutes) and the response block indicates what should be sent back to the caller that tripped the rate limit.</p>
 <h4>2. Preview and merge the changes</h4>
@@ -549,7 +659,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">      zone_id:</span><span class="sk-d73a49-a0a0a0">                                &lt;</span><span class="sk-032f62-99ffe4">compute</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The plan looks good so let's go ahead, merge it in, and apply it.</p>
 <div class="emdash-code">
@@ -598,7 +712,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  zone_id:</span><span class="sk-032f62-99ffe4">                                ""</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "&lt;computed&gt;"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_rate_limit.login-limit:</span><span class="sk-032f62-99ffe4"> Creation</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 1s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">8d518c5d6e63406a9466d83cb8675bb6</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Note that if you haven't purchased rate limiting yet, you will see the following error when attempting to apply the new rule:</p>
 <div class="emdash-code">
@@ -608,7 +726,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> cloudflare_rate_limit.login-limit: 1 error(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) occurred:</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> cloudflare_rate_limit.login-limit: error creating rate limit </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> zone: error from makeRequest: HTTP status 400: content </span><span class="sk-032f62-99ffe4">"{\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">result</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: null,\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">success</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: false,\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">errors</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: [\n    {\n      </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">code</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: 10021,\n      </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">message</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">ratelimit.api.not_entitled.account</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">\n    }\n  ],\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">messages</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: []\n}\n"</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> cloudflare_rate_limit.login-limit: error creating rate limit </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> zone: error from makeRequest: HTTP status 400: content </span><span class="sk-032f62-99ffe4">"{\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">result</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: null,\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">success</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: false,\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">errors</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: [\n    {\n      </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">code</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: 10021,\n      </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">message</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">ratelimit.api.not_entitled.account</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">\n    }\n  ],\n  </span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">messages</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">: []\n}\n"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>3. Update the rule to ban (not just simulate)</h4>
 <p>After confirming that the rule is triggering as planned in logs (but not yet enforcing), it's time to switch from simulate to ban:</p>
@@ -629,7 +751,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">    mode</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "ban"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     timeout</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 300</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">     response</span><span class="sk-032f62-99ffe4"> {</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">       content_type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "text/plain"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">       content_type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "text/plain"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> plan</span></span>
@@ -652,7 +778,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  ~</span><span class="sk-032f62-99ffe4"> cloudflare_rate_limit.login-limit</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">      action.0.mode:</span><span class="sk-032f62-99ffe4"> "simulate"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "ban"</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Plan:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> add,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> change,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> destroy.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>4. Merge and deploy the updated rule, then push config to GitHub</h4>
 <div class="emdash-code">
@@ -675,7 +805,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-24292e-fff"> (delta </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">), reused 0 (</span><span class="sk-6f42c1-ffc799">delta</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">remote:</span><span class="sk-032f62-99ffe4"> Resolving</span><span class="sk-032f62-99ffe4"> deltas:</span><span class="sk-032f62-99ffe4"> 100%</span><span class="sk-24292e-fff"> (1/1), completed with 1 </span><span class="sk-d73a49-a0a0a0">local</span><span class="sk-24292e-fff"> object.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">To</span><span class="sk-032f62-99ffe4"> git@github.com:</span><span class="sk-24292e-fff">$GITHUB_USER</span><span class="sk-032f62-99ffe4">/cf-config.git</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">   0f7e499..e1c38cf</span><span class="sk-032f62-99ffe4">  master</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> master</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">   0f7e499..e1c38cf</span><span class="sk-032f62-99ffe4">  master</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> master</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-005cc5-99ffe4"> --auto-approve</span></span>
@@ -686,7 +820,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  action.0.mode:</span><span class="sk-032f62-99ffe4"> "simulate"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> "ban"</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cloudflare_rate_limit.login-limit:</span><span class="sk-032f62-99ffe4"> Modifications</span><span class="sk-032f62-99ffe4"> complete</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-032f62-99ffe4"> 0s</span><span class="sk-24292e-fff"> (ID: </span><span class="sk-032f62-99ffe4">8d518c5d6e63406a9466d83cb8675bb6</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Apply</span><span class="sk-032f62-99ffe4"> complete!</span><span class="sk-032f62-99ffe4"> Resources:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> added,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> changed,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> destroyed.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h4>5. Confirm the rule works as expected</h4>
 <p>This step is optional, but it's a good way to demonstrate that the rule is working as expected (note the final <code>429</code> response):</p>
@@ -697,7 +835,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 401 Unauthorized</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 401 Unauthorized</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 401 Unauthorized</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 429 Too Many Requests</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 429 Too Many Requests</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Wrapping up</h3>
 <p>That's it for today! Stay tuned next week for <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-2">part 2 of this post</a>, where we continue the tour through the following resources and techniques:</p>

@@ -16,8 +16,30 @@
 <p>Cloudflare's goal is to remove or offset all of our historical emissions resulting from powering our network by 2025. To meet that target, Cloudflare must first determine exactly how much carbon was emitted as the result of operating our network from 2010 to 2019, and then invest in carbon offsets or removals to match those emissions.</p>
 <p>Determining carbon emissions from purchased electricity is a relatively straightforward calculation. In fact, it's basically just a unit conversion:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Energy</span><span class="sk-24292e-fff"> (KWH) x Emissions Factor (</span><span class="sk-6f42c1-ffc799">gC02e/KWH</span><span class="sk-24292e-fff">) = Carbon emissions (</span><span class="sk-6f42c1-ffc799">gC02e</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Energy</span><span class="sk-24292e-fff"> (KWH) x Emissions Factor (</span><span class="sk-6f42c1-ffc799">gC02e/KWH</span><span class="sk-24292e-fff">) = Carbon emissions (</span><span class="sk-6f42c1-ffc799">gC02e</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>The key to accurate results is the emissions factors. Emissions factors are essentially measurements of the amount of GHGs emitted from a specific power supplier (e.g. power plant X in San Francisco) per unit of energy created. For our purposes, GHGs are those defined in the 1992 <a href="https://unfccc.int/process-and-meetings/the-kyoto-protocol/what-is-the-kyoto-protocol/kyoto-protocol-targets-for-the-first-commitment-period" target="_blank" rel="noopener noreferrer">Kyoto Protocol</a> (carbon dioxide, methane, nitrous oxide, hydrofluorocarbons, perfluorocarbons, and sulphur hexafluoride). To help ease reporting, the six GHGs are often expressed as a single unit "carbon-dioxide equivalent" or "CO2e", based on each gas’ Global Warming Potential (GWP). Emission factors from individual power sources are often combined and averaged to create grid average emissions factors for cities, regions, or countries. Per the GHG Protocol, Cloudflare uses emissions factors from the U.S. EPA, U.K. DEFRA, and IEA.</p>
 <p>For our <a href="https://assets.ctfassets.net/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf" target="_blank" rel="noopener noreferrer">annual inventory report</a>, which we are also releasing today, Cloudflare calculates carbon emissions scores for every single data center in our network. Cloudflare multiplies the actual energy used by the equipment by the applicable grid average emissions factors in each of the more than 100 countries where we have equipment.</p>
 <p>For our historical calculations, we have data on our actual carbon emissions dating back to 2018, which was our first renewable energy purchase. Prior to 2018, we are combing through all of our purchasing, shipping, energy usage, and colocation agreements to reconstruct how much energy we consumed and when. It's actually a pretty cool exercise to go back and watch our network grow. Although we do not have a final calculation to share yet, rest assured we will keep everyone posted, particularly as we get to the fun part of starting to work with organizations and companies working on carbon removal efforts.</p>

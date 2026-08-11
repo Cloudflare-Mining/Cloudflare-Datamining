@@ -10,8 +10,30 @@
 <p>We’ll use <a href="https://asterius.netlify.app" target="_blank" rel="noopener noreferrer">Asterius</a> to target WebAssembly from Haskell. It’s a well documented tool that is updated often and supports a lot of Haskell features.</p>
 <p>First, as suggested in the <a href="https://asterius.netlify.app/images.html#using-prebuilt-container-images" target="_blank" rel="noopener noreferrer">documentation</a>, we’ll use podman to pull the Asterius prebuilt container from Docker hub. In this tutorial, we will use Asterius version <a href="https://hub.docker.com/layers/terrorjack/asterius/200617/images/sha256-8e6009198c3940d1b4938b0ab6c0b119d4fce3d7ac0f6336214e758f66887b80?context=explore" target="_blank" rel="noopener noreferrer">200617</a>, which works with GHC 8.8.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">podman</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> -it</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-24292e-fff"> $(</span><span class="sk-005cc5-ffc799">pwd</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:/workspace</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> /workspace</span><span class="sk-032f62-99ffe4"> terrorjack/asterius:200617</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">podman</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> -it</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-24292e-fff"> $(</span><span class="sk-005cc5-ffc799">pwd</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:/workspace</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> /workspace</span><span class="sk-032f62-99ffe4"> terrorjack/asterius:200617</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Now we’ll create a Haskell module called <code>fact.hs</code> file that will export a pure function:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>module Factorial (fact) where</span></span>
@@ -22,7 +44,11 @@
 <span class="line"><span>    go 0 acc = acc</span></span>
 <span class="line"><span>    go n acc = go (n - 1) (n*acc)</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>foreign export javascript "fact" fact :: Int -&gt; Int</span></span></code></pre>
+<span class="line"><span>foreign export javascript "fact" fact :: Int -&gt; Int</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this module, we define a pure function called <code>fact</code>, optimized with tail recursion and exported using the <a href="https://asterius.netlify.app/jsffi.html" target="_blank" rel="noopener noreferrer">Asterius JavaScript FFI</a>, so that it can be called when a WebAssembly module is instantiated in JavaScript.</p>
 <p>Next, we’ll create a JavaScript file called <code>fact_node.mjs</code> that contains the following code:</p>
@@ -37,7 +63,11 @@
 <span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">then</span><span class="sk-24292e-fff">(handleModule);</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">then</span><span class="sk-24292e-fff">(handleModule);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This code imports <code>rts.mjs</code> (common runtime), WebAssembly loaders, and the required parameters for the Asterius instance. It creates a new Asterius instance, it calls the exported function <code>fact</code> with the input <code>5</code>, and prints out the result.</p>
 <p>You probably have noted that <code>fact</code> is done <strong>asynchronously</strong>. This happens with any exported function by Asterius, even if it’s a pure function.</p>
@@ -49,7 +79,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --export-function=fact</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --run</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --input-mjs</span><span class="sk-032f62-99ffe4"> fact_node.mjs</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  --output-dir=node</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">  --output-dir=node</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This command takes <code>fact.hs</code> as a Haskell input file, specifies that no <code>main</code> function is exported, and exports the <code>fact</code> function. Additionally, it takes <code>fact_node.mjs</code> as the entry JavaScript file that replaces the generated file by default, and it places the generated code in a directory called <code>node</code>.</p>
 <p>Running the <code>ahc-link</code> command from above will print the following output in the console:</p>
@@ -57,7 +91,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[INFO] Compiling fact.hs to WebAssembly</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-24292e-fff">[INFO] Running node/fact.mjs</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">120</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">120</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>As you can see, the result is executed in <code>node</code> and it prints out the result of <code>fact</code> in the console.</p>
 <h3>Push your code to Cloudflare Workers</h3>
@@ -73,7 +111,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "part"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"wasm"</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This file is needed to specify the <code>wasm_module</code> binding. The <code>name</code> value corresponds to the global variable to access the WebAssembly module from your Worker code. In our example, it’s going to have the name <code>WASM</code>.</p>
 <p>Our next step is to define the main point of the Workers script.</p>
@@ -105,7 +147,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
-<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are a few interesting things to point out in this code:</p>
 <ol>
@@ -123,7 +169,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --input-mjs</span><span class="sk-032f62-99ffe4"> fact_cfw.mjs</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --bundle</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --browser</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  --output-dir</span><span class="sk-032f62-99ffe4"> worker</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">  --output-dir</span><span class="sk-032f62-99ffe4"> worker</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>ahc-link</code> will generate some files inside a directory called <code>worker</code>. For our Workers, we’re only interested in the JavaScript file (<code>fact.js</code>) and the WebAssembly module (<code>fact.wasm</code>). Now, it’s time to submit both of them to Workers. We can do this with the provided REST API.</p>
 <p>Make sure you have an account id (<code>$CF_ACCOUNT_ID</code>), a name for your script (<code>$SCRIPT_NAME</code>), and an API Token (<code>$CF_API_TOKEN</code>):</p>
@@ -133,19 +183,31 @@
 <span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4">  "Authorization: Bearer </span><span class="sk-24292e-fff">$CF_API_TOKEN</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -F</span><span class="sk-032f62-99ffe4"> "metadata=@metadata.json;type=application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">     -F</span><span class="sk-032f62-99ffe4"> "script=@fact.js;type=application/javascript"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">     -F</span><span class="sk-032f62-99ffe4"> "wasm=@fact.wasm;type=application/wasm"</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">     -F</span><span class="sk-032f62-99ffe4"> "wasm=@fact.wasm;type=application/wasm"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, visit the Workers UI, where you can use the editor to view, edit, and test the script. Also, you can enable it to on a <code>workers.dev</code> subdomain (<code>$CFW_SUBDOMAIN</code>); in that case, you could then simply:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-24292e-fff"> $CFW_SUBDOMAIN </span><span class="sk-005cc5-a0a0a0">\</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">       -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/x-www-form-urlencoded'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">       --data</span><span class="sk-032f62-99ffe4"> 'param=5'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">       --data</span><span class="sk-032f62-99ffe4"> 'param=5'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Beyond a simple Haskell file</h3>
 <p>So far, we’ve created a WebAssembly module that exports a pure Haskell function we ran in Workers. However, we can also create and build a Cabal project using Asterius <code>ahc-cabal</code> CLI, and then use <code>ahc-dist</code> to compile it to WebAssembly.</p>
 <p>First, let’s create the project:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-cabal</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> cabal-cfw-example</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-cabal</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> -m</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> cabal-cfw-example</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Then, let’s add some dependencies to our cabal project. The cabal file will look like this:</p>
 <div class="emdash-code">
@@ -162,7 +224,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    bytestring,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    aeson</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799">1.5</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799"> 1.6,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    text</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">  default-language:</span><span class="sk-032f62-99ffe4">    Haskell2010</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">  default-language:</span><span class="sk-032f62-99ffe4">    Haskell2010</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It’s a simple cabal file, except for the <code>-optl--export-function=handleReq</code> ghc flag. This is <a href="https://github.com/tweag/asterius/issues/362#issuecomment-561576162" target="_blank" rel="noopener noreferrer">necessary</a> when exporting a function from a cabal project.</p>
 <p>In this example, we’ll define a simple <code>User</code> record, and we’ll define its instance automatically using Template Haskell!</p>
@@ -190,7 +256,11 @@
 <span class="line"><span>    , age  :: Int</span></span>
 <span class="line"><span>    }</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>$(deriveJSON defaultOptions 'User)</span></span></code></pre>
+<span class="line"><span>$(deriveJSON defaultOptions 'User)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><strong>NOTE:</strong> It’s not necessary to create a Cabal project for this example, because the prebuilt container comes with a lot of <a href="https://github.com/tweag/asterius/issues/354" target="_blank" rel="noopener noreferrer">prebuilt packages</a> (aesona included). Nevertheless, it will help us show the potential of <code>ahc-cabal</code> and <code>ahc-dist</code>.</p>
 <p>Next, we’ll define <code>handleReq</code>, which we’ll export using JavaScript FFI just like we did before.</p>
@@ -209,16 +279,28 @@
 <span class="line"><span>foreign export javascript "handleReq" handleReq :: JSString -&gt; JSString -&gt; IO JSObject</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>foreign import javascript "new Response($1, {\"status\": $2})"</span></span>
-<span class="line"><span>  js_new_response :: JSString -&gt; Int -&gt; IO JSObject</span></span></code></pre>
+<span class="line"><span>  js_new_response :: JSString -&gt; Int -&gt; IO JSObject</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This time, we define <code>js_new_response</code>, a Haskell function that creates a JavaScript object, to create a <code>Response</code>. <code>handleReq</code> takes two string parameters from JavaScript and it uses them to prepare a response.</p>
 <p>Now let’s build and install the binary in the current directory:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-cabal</span><span class="sk-032f62-99ffe4"> new-install</span><span class="sk-005cc5-99ffe4"> --installdir</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-005cc5-99ffe4"> --overwrite-policy=always</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-cabal</span><span class="sk-032f62-99ffe4"> new-install</span><span class="sk-005cc5-99ffe4"> --installdir</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-005cc5-99ffe4"> --overwrite-policy=always</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This will generate a binary for our executable, called <code>cabal-cfw-example</code>. We’re going to use <code>ahc-dist</code> to take that binary and target WebAssembly:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-dist</span><span class="sk-005cc5-99ffe4"> --input-exe</span><span class="sk-032f62-99ffe4"> cabal-cfw-example</span><span class="sk-005cc5-99ffe4"> --export-function=handleReq</span><span class="sk-005cc5-99ffe4"> --no-main</span><span class="sk-005cc5-99ffe4"> --input-mjs</span><span class="sk-032f62-99ffe4"> cabal_cfw_example.mjs</span><span class="sk-005cc5-99ffe4"> --bundle</span><span class="sk-005cc5-99ffe4"> --browser</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ahc-dist</span><span class="sk-005cc5-99ffe4"> --input-exe</span><span class="sk-032f62-99ffe4"> cabal-cfw-example</span><span class="sk-005cc5-99ffe4"> --export-function=handleReq</span><span class="sk-005cc5-99ffe4"> --no-main</span><span class="sk-005cc5-99ffe4"> --input-mjs</span><span class="sk-032f62-99ffe4"> cabal_cfw_example.mjs</span><span class="sk-005cc5-99ffe4"> --bundle</span><span class="sk-005cc5-99ffe4"> --browser</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>cabal_cfw_example.mjs</code> contains the following code:</p>
 <div class="emdash-code">
@@ -233,7 +315,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, we can deploy our code to Workers by defining a <code>metadata.json</code> file and uploading the script and the WebAssembly module using Workers API as we did before.</p>
 <h3>Caveats</h3>

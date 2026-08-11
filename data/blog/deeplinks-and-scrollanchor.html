@@ -13,8 +13,30 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;accountId&gt;/ -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> account-level</span><span class="sk-032f62-99ffe4"> resources:</span><span class="sk-032f62-99ffe4"> analytics,</span><span class="sk-032f62-99ffe4"> workers,</span><span class="sk-032f62-99ffe4"> domains,</span><span class="sk-032f62-99ffe4"> stream,</span><span class="sk-032f62-99ffe4"> billing,</span><span class="sk-032f62-99ffe4"> audit-log</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;accountId&gt;/&lt;zoneId&gt; -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> zone-level</span><span class="sk-032f62-99ffe4"> resources:</span><span class="sk-032f62-99ffe4"> dns,</span><span class="sk-032f62-99ffe4"> ssl-tls,</span><span class="sk-032f62-99ffe4"> firewall,</span><span class="sk-032f62-99ffe4"> speed,</span><span class="sk-032f62-99ffe4"> caching,</span><span class="sk-032f62-99ffe4"> page-rules,</span><span class="sk-032f62-99ffe4"> traffic,</span><span class="sk-032f62-99ffe4"> etc.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;accountId&gt;/&lt;zoneId&gt; -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> zone-level</span><span class="sk-032f62-99ffe4"> resources:</span><span class="sk-032f62-99ffe4"> dns,</span><span class="sk-032f62-99ffe4"> ssl-tls,</span><span class="sk-032f62-99ffe4"> firewall,</span><span class="sk-032f62-99ffe4"> speed,</span><span class="sk-032f62-99ffe4"> caching,</span><span class="sk-032f62-99ffe4"> page-rules,</span><span class="sk-032f62-99ffe4"> traffic,</span><span class="sk-032f62-99ffe4"> etc.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>You might notice that in order to deep link to anything more interesting than logging in, a deep linker will need to know a user’s account or zone beforehand. A troubleshooting doc might want to send a user to the Page Rules tab in Dashboard to help a user fix their zone, but <em>the linker doesn’t know what that zone is</em>.</p>
 <p>Another highly desired feature was the ability for a deep link to scroll to a particular piece of content on a Dashboard page, making it even easier for users to navigate. Instead of a troubleshooting doc asking a user to fumble around to find a setting, we could helpfully scroll that setting right into view. Now that would be slick!</p>
 <h3>What do DeepLinks look like in Dashboard?</h3>
@@ -33,19 +55,35 @@
 <h3>How are DeepLinks exposed?</h3>
 <p>If you were paying attention to the URL bar in the GIF above, you already know what’s coming. In order to deal with dynamic account/zone resolution, a deep link can use a to query parameter to specify a path into Dashboard. I think it reads quite nicely:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/:account/:zone/ssl-tls/edge-certificates</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/:account/:zone/ssl-tls/edge-certificates</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This example is saying that we’d like to link to the “Edge Certificates” section of the “SSL-TLS” product for <em>some</em> account and <em>some</em> zone that a user needs to manually resolve, as you saw above. It’s easy to imagine removing “?to=/” to transform the link URL into the resolved one:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;resolvedAccount&gt;/&lt;resolvedZone&gt;/ssl-tls/edge-certificates</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;resolvedAccount&gt;/&lt;resolvedZone&gt;/ssl-tls/edge-certificates</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The URL-like schema of the to parameter makes it very natural to support different variations such as account-level resources</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/:account/billing</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/:account/billing</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Or allowing the linker to supply known information</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/1234567890abcdef/:zone/traffic</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/1234567890abcdef/:zone/traffic</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This link takes the user to the “Traffic” product tab for <em>some</em> zone inside of account 1234567890abcdef. Indeed, the :account and :zone symbols are placeholders for user-supplied values, but they can be replaced with any permutation of real, known values to speed up resolution time to provide a better UX.</p>
 <h3>DeepLink routing</h3>
@@ -57,7 +95,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">Route path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/sign-up"</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Signup</span><span class="sk-24292e-fff"> /&gt;&lt;/</span><span class="sk-6f42c1-ffc799">Route</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  ...</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">AccountRoutes </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">Switch</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">Switch</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>When a page is loaded, a lot of things need to happen: API calls need to be made to fetch all the data needed to render a page, like account/user/zone info not cached in the browser. Many components need to be rendered. It turns out that we can improve the UX of many users by <em>blocking React Router</em> to make specific queries to our API instead of rendering an entire page that anecdotally fetches the information we need. For example, there’s no need to render a zone selection page if a user only has one zone, like in our GIF above ☝️.</p>
 <h3>Resolvers</h3>
@@ -67,7 +109,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// parts = [‘:account’, ‘:zone’, ‘traffic’]</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> part</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> parts) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // do something with each part</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can build up the dynamic URL by looking at prefixes. If a part starts with “:”, it’s considered a symbol that needs to be resolved. Everything else is a static string that just gets appended.</p>
 <div class="emdash-code">
@@ -80,7 +126,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">  resolvedParts.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(part);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> finalUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> resolvedParts.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(‘</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">’);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> finalUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> resolvedParts.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(‘</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">’);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Symbols are handled by functions we call “resolvers”. A resolver is a function that:</p>
 <ol>
@@ -105,7 +155,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">  resolvedParts.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(part);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> finalUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> resolvedParts.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(‘</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">’);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> finalUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> resolvedParts.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(‘</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">’);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The internal implementation is a little bit more complicated, but this is a rough overview of how our DeepLink works.</p>
 <h3>Resolver context</h3>
@@ -120,7 +174,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (zones.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // need user’s help to pick a zone</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We already have a page in the dashboard with a zone list that looks like this.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -138,7 +196,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // block the router again</span></span>
 <span class="line"><span class="sk-24292e-fff">    ctx.</span><span class="sk-6f42c1-ffc799">blockRouter</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, the last piece is to somehow observe user interactions from within the resolver. To be able to do that, we have written a powerful utility.</p>
 <h3>waitForPageAction</h3>
@@ -163,12 +225,20 @@
 <span class="line"><span class="sk-24292e-fff">    ctx.</span><span class="sk-6f42c1-ffc799">blockRouter</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> action.zoneName</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>How does waitForPageAction work?</h3>
 <p>As mentioned above, we use Redux to manage our state. The <code>actionType</code> parameter is nothing else than a type of Redux action. Whenever a zone is selected, React dispatches a Redux action in an onClick handler.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ZoneCard onClick</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{</span><span class="sk-e36209-fff">zoneName</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-6f42c1-ffc799">dispatch</span><span class="sk-24292e-fff">({type: ‘</span><span class="sk-005cc5-fff">ZONE_SELECTED</span><span class="sk-24292e-fff">’, zoneName}) }} </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ZoneCard onClick</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{</span><span class="sk-e36209-fff">zoneName</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-6f42c1-ffc799">dispatch</span><span class="sk-24292e-fff">({type: ‘</span><span class="sk-005cc5-fff">ZONE_SELECTED</span><span class="sk-24292e-fff">’, zoneName}) }} </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, how does <code>waitForPageAction</code> know that <code>ZONE_SELECTED’</code> has been dispatched? Aren’t we supposed to write a reducer?!</p>
 <p>Not really. <code>waitForPageAction</code> is not changing any state, it’s just an observer that resolves whenever some action, that is dispatched, satisfies a predicate. And Redux has an API to subscribe to any store changes - <code>store.subscribe(listener)</code>.</p>
@@ -182,7 +252,11 @@
 <span class="line"><span class="sk-24292e-fff">){</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> nextState</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> state, lastAction: action };</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> nextState;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Anytime an action is dispatched, we can read that action’s metadata in <code>store.getState().lastAction</code>. Now, we have everything we need to finally implement <code>waitForPageAction</code>.</p>
 <div class="emdash-code">
@@ -206,7 +280,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        resolve</span><span class="sk-24292e-fff">(lastAction);</span></span>
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    });</span></span>
-<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The listener reads the current state and grabs the <code>currentPage</code> and <code>lastAction</code> data. If <code>currentPage</code> doesn’t match <code>pageToAwaitActionOn</code>, it means the user navigated away, and there’s no need to continue resolving the deep link - we unsubscribe, and reject the promise. Deep link resolvers are stopped, and React Router unblocked.</p>
 <p>Else, if <code>lastAction.type</code> matches the <code>actionType</code> parameter, it means the action we are waiting on just happened! Unsubscribe, and resolve the promise with action metadata. The deep link keeps resolving.</p>
@@ -216,17 +294,29 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ScrollAnchor id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-005cc5-a0a0a0">super</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">important</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">setting</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">card”</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">SuperImportantSettingCard </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">ScrollAnchor</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">ScrollAnchor</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And then reference it via a typical URL anchor:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/path/to/content#super-important-setting-card</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/path/to/content#super-important-setting-card</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now I can hear you saying, “what’s the point? Can’t we get the same behavior with any old ID?”</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">div id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-005cc5-a0a0a0">super</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">important</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">setting</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">card”</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">SuperImportantSettingCard </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We thought so too! But it turns out that there are a few problems that prevent this super simple approach:</p>
 <ul>
@@ -237,7 +327,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">div id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-005cc5-a0a0a0">super</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">important</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">setting</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">card” padding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">top</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{headerOffset} margin</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">top</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{headerOffset}</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">SuperImportantSettingCard </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="263" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=750&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=828&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1080&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1280&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1430&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="DeepLinks and ScrollAnchor Embedded Image - zwQzt9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1920&amp;h=706&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="706" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="263" class="pt-portable-image-media"></div>
@@ -246,7 +340,11 @@
 <p>A solution: scroll to the anchored content after the page content is fully loaded, i.e. after all API calls are resolved, spinners removed, content is rendered. Fortunately, there’s a good way to programmatically scroll a browser window: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener noreferrer">Element.scrollIntoView()</a>. However, there isn’t a good way to tell <em>when</em> the DOM is finished changing, since it can be modified at any time after page load. Let’s consider two possible strategies for determining when to scroll anchored content into view.</p>
 <p>Strategy #1: scroll after a fixed duration. If our goal is to make sure we only scroll to content after a page is “fully loaded”, we can simplify the problem by making some assumptions. Namely, we can assume a maximum amount of time it will take a given page to fetch resources from the backend and re-render the DOM. Let’s call this assumed max duration <code>M</code> milliseconds. We can then easily scroll to some content by running a timeout on page load:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">setTimeout</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> scrollTo</span><span class="sk-24292e-fff">(htmlId), </span><span class="sk-005cc5-fff">M</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">setTimeout</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> scrollTo</span><span class="sk-24292e-fff">(htmlId), </span><span class="sk-005cc5-fff">M</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The problem with this approach is that the DOM might finish updating before or after we scroll. We end up with vertical alignment problems (as the DOM is still settling) or a jarring, unexpected scroll (if we scroll long after the DOM is settled). Both options are bad UX, and in practice it’s difficult to choose a duration constant M that is “just right” for every single page.</p>
 <p>Strategy #2: scroll after the DOM has “settled”. If we know that choosing a good duration <code>M</code> for every page isn’t practical, we should try to come up with an algorithm that can choose a better <code>M</code>:</p>
@@ -272,7 +370,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">observer.</span><span class="sk-6f42c1-ffc799">observe</span><span class="sk-24292e-fff">(document.body, {childList: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, subtree: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-24292e-fff">domTimer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> window.</span><span class="sk-6f42c1-ffc799">setTimeout</span><span class="sk-24292e-fff">(scrollThunk, </span><span class="sk-005cc5-fff">SETTLE_THRESHOLD</span><span class="sk-24292e-fff">, observer);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">domTimer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> window.</span><span class="sk-6f42c1-ffc799">setTimeout</span><span class="sk-24292e-fff">(scrollThunk, </span><span class="sk-005cc5-fff">SETTLE_THRESHOLD</span><span class="sk-24292e-fff">, observer);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A key assumption is that API calls take roughly the same amount of time to resolve. If most fetches take 250ms to resolve but others take 1500ms, we might see that the DOM hasn’t been changed for a while and think that it’s settled. Who knew there would be so much work involved in scrolling!</p>
 <h3>Conclusion</h3>

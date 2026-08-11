@@ -16,8 +16,30 @@
 <p>Lorsqu'un nouveau client commence à utiliser Magic Transit, nous créons un nouvel espace de nom réseau pour ce client sur chaque serveur de notre réseau périphérique (ai-je déjà mentionné que chaque serveur peut exécuter toutes les tâches ?). Nous avons créé un démon qui s'exécute sur nos serveurs et est responsable de la gestion de ces espaces de noms réseau et leurs configurations. Ce démon lit en permanence les mises à jour de configuration depuis <a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-4">Quicksilver</a>, notre magasin de valeurs-clés distribué dans le monde entier et applique des configurations définies par le client pour les pare-feux, le routage, etc., <em>dans l’espace de noms du client.</em> Par exemple, si Acme souhaite configurer une règle de pare-feu pour autoriser le trafic FTP (ports TCP 20 et 21) vers 203.0.113.100, cette configuration est propagée de manière globale par Quicksilver et le démon de Magic Transit applique la règle de pare-feu en ajoutant une règle nftables à l'espace de noms client Acme :</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Apply nftables rule inside Acme’s namespace</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> netns</span><span class="sk-032f62-99ffe4"> exec</span><span class="sk-032f62-99ffe4"> acme_namespace</span><span class="sk-032f62-99ffe4"> nft</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> inet</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> prerouting</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> daddr</span><span class="sk-005cc5-ffc799"> 203.0.113.100</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-032f62-99ffe4"> 20-21</span><span class="sk-032f62-99ffe4"> accept</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> netns</span><span class="sk-032f62-99ffe4"> exec</span><span class="sk-032f62-99ffe4"> acme_namespace</span><span class="sk-032f62-99ffe4"> nft</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> inet</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> prerouting</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> daddr</span><span class="sk-005cc5-ffc799"> 203.0.113.100</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-032f62-99ffe4"> dport</span><span class="sk-032f62-99ffe4"> 20-21</span><span class="sk-032f62-99ffe4"> accept</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copier le code" data-copy-label="Copier le code" data-copied-label="Code copié !"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p># Appliquer la règle nftables dans l’espace de noms Acme</p>
 <p>$ sudo ip netns exec acme_namespace nft add rule inet filter prerouting ip daddr 203.0.113.100 tcp dport 20-21 accept</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

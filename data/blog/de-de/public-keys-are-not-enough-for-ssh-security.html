@@ -42,8 +42,30 @@
 <h4><strong>2. Ausgabe und Speichern des SSH-Konfigurations-Updates</strong></h4>
 <p>Sobald ein Endbenutzer <code>Cloudflared</code> installiert hat, muss er einen Befehl ausführen, um neue Zeilen zu generieren, die seiner SSH-Konfigurationsdatei hinzugefügt werden:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Das <code>--hostname</code>-Feld enthält den Hostnamen oder die Platzhalter-Unterdomäne der Ressource, die hinter Access geschützt ist. Nach der Ausführung gibt <code>Cloudflared</code> die folgenden Konfigurationsdetails aus:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Host vm.example.com</span></span>
@@ -53,7 +75,11 @@
 <span class="line"><span>    HostName vm.example.com</span></span>
 <span class="line"><span>    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h</span></span>
 <span class="line"><span>    IdentityFile ~/.cloudflared/vm.example.com-cf_key</span></span>
-<span class="line"><span>    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</span></span></code></pre>
+<span class="line"><span>    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Benutzer müssen diese Ausgabe an ihre SSH-Konfigurationsdatei anfügen. Nach dem Speichern können sie eine Verbindung über SSH mit der geschützten Ressource herstellen. Access fordert sie auf, sich mit ihren SSO-Anmeldeinformationen im Browser zu authentifizieren, genauso wie sie sich bei jedem anderen browserbasierten Tool anmelden. Wenn sie bereits über eine aktive Browsersitzung mit ihren Anmeldeinformationen verfügen, wird nur eine Seite mit einer Erfolgsmeldung angezeigt.</p>
 <p><code>Cloudflared</code> richtet die Sitzung in ihrem Terminal ein und stellt das Clientzertifikat aus, das ihrer Identität entspricht.</p>

@@ -29,8 +29,30 @@
 <span class="line"><span class="sk-d73a49-ffc799">    ORDER BY</span><span class="sk-24292e-fff"> RANDOM()</span></span>
 <span class="line"><span class="sk-d73a49-ffc799">    LIMIT</span><span class="sk-24292e-fff"> ?</span><span class="sk-005cc5-ffc799">5</span></span>
 <span class="line"><span class="sk-24292e-fff">)</span></span>
-<span class="line"><span class="sk-24292e-fff">RETURNING </span><span class="sk-d73a49-ffc799">data</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">RETURNING </span><span class="sk-d73a49-ffc799">data</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>We keep D1 shards <a href="https://developers.cloudflare.com/d1/configuration/data-location/#available-location-hints" target="_blank" rel="noopener noreferrer"><u>per location</u></a> and given that we may have several thousand containers running, and that each container needs to update its state every 5 seconds, we kept running into a problem: we would <a href="https://developers.cloudflare.com/d1/platform/limits/#concurrency-and-throughput" target="_blank" rel="noopener noreferrer"><u>overload the database</u></a>. For instance, if each write takes 1ms we can only write at most 1,000 times, which at one row per write would mean that we could only have 5,000 containers before overloading the database.</p>
 <p>However, if we batch those writes, we can get much higher values, because batch writes are not significantly longer than individual ones, so we can increase the throughput in orders of magnitude. In our case, we use 100 row batches, which means we can now update a maximum of 500,000 containers per location. This headroom means capacity planning is no longer a bottleneck.</p>
 <p>Currently, our P95 for batch write is 0.1ms!</p>
@@ -50,7 +72,11 @@
 <span class="line"><span class="sk-24292e-fff">        ]</span></span>
 <span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        ...</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With this configuration, we achieve acceptable lag times well below 2 seconds. That said, queue backlogs can still cause stale state. When this happens, each region falls back to a designated backup region until the primary queue catches up.</p>
 <h3>Additional perks for quick actions</h3>

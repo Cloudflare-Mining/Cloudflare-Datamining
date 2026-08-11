@@ -32,8 +32,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">        "packet_limit": 10000,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        "type": "simple",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">        "system": "magic-transit"</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Example of a request for packet capture using our API.</p>
 <p>We leverage <a href="https://netfilter.org/projects/nftables" target="_blank" rel="noopener noreferrer">nftables</a> to apply the filter to the customer’s incoming packets and log them using <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank" rel="noopener noreferrer">nflog</a>:</p>
 <div class="emdash-code">
@@ -41,12 +63,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    chain</span><span class="sk-032f62-99ffe4"> pcap_1</span><span class="sk-032f62-99ffe4"> {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        ip</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> saddr</span><span class="sk-005cc5-ffc799"> 1.2.3.4</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> comment</span><span class="sk-032f62-99ffe4"> “packet</span><span class="sk-032f62-99ffe4"> capture”</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Example nftables configuration used to filter log customer packets</p>
 <p>nflog creates a netfilter socket through which logs of a packet are sent from the Linux kernel to user space. In user space, we use tcpdump to read packets off the netfilter socket and generate a packet capture file:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcpdump</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> nflog:1</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> pcap_1.pcap</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcpdump</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> nflog:1</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> pcap_1.pcap</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Example tcpdump command to create a packet capture file.</p>
 <p>Usually tcpdump is used by listening to incoming packets on a network interface, but in our case we configure it to read packet logs from an nflog group. tcpdump will convert the packet logs into a packet capture file.</p>

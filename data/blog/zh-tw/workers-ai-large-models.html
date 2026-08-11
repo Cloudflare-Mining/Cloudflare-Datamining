@@ -42,8 +42,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "max_tokens": 2400,</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    "stream": true</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  }'</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>重新設計的非同步 API</h3>
 <p>無伺服器推斷 (Serverless inference) 實際上非常困難。在按詞元付費的商業模式下，就單一請求而言會比較便宜，因為您不需要為整個 GPU 的運算資源付費來處理您的請求。但這裡有一個取捨：您必須面對與他人共用流量以及容量限制的問題，而且沒有嚴格的保證說您的請求一定會被處理。這並非 Workers AI 獨有的問題——考慮到經常有關於提供者超載和服務中斷的新聞報導，這顯然是各家無伺服器模型提供者普遍存在的狀況。雖然我們始終盡力服務您的請求，並內建了自動擴展與重新平衡機制，但仍存在一些硬性限制（例如硬體設備），使這成為一項挑戰。</p>
 <p>對於可能超過同步速率限制的大量請求，您可以提交批次推斷，以非同步方式完成。我們推出了重新設計的非同步 API，這意味著對於非同步使用案例，您不會遇到「容量不足」的錯誤，而且推斷最終會持久地執行完成。我們的非同步 API 更像是彈性處理 (flex processing)，而不是批次 API——只要我們的模型執行個體還有餘裕，就會處理非同步佇列中的請求。根據內部測試，我們的非同步請求通常會在 5 分鐘內執行完畢，但這取決於當下的即時流量狀況。當我們將 Kimi 公開上線後，會相應調整擴展機制，但非同步 API 仍然是確保您在持久化工作流程中不會遇到容量錯誤的最佳方式。這非常適合非即時的使用案例，例如程式碼掃描智慧體或研究型智慧體。</p>
@@ -85,7 +107,11 @@
 <span class="line"><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(res); </span><span class="sk-6a737d-8b8b8b94">// This will contain the final completed response </span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>立即試用</h2>
 <p>立即開始在 Workers AI 上使用 Kimi K2.5。您可以閱讀我們的開發人員文件，以瞭解模型<a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>資訊和定價</u></a>，以及如何善用<a href="https://developers.cloudflare.com/workers-ai/features/prompt-caching" target="_blank" rel="noopener noreferrer"><u>透過工作階段親和性標頭進行的提示快取</u></a>與<a href="https://developers.cloudflare.com/workers-ai/features/batch-api" target="_blank" rel="noopener noreferrer"><u>非同步 API</u></a>。<a href="https://github.com/cloudflare/agents-starter" target="_blank" rel="noopener noreferrer"><u>Agents SDK 入門套件</u></a>現在也將 Kimi K2.5 設為其預設模型。您也可以<a href="https://opencode.ai/docs/providers" target="_blank" rel="noopener noreferrer"><u>透過 OpenCode 連接到 Workers AI 上的 Kimi K2.5</u></a>。如需即時展示，請在我們的<a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>試煉場</u></a>中試用。</p>

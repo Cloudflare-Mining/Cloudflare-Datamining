@@ -25,8 +25,30 @@
 <p>在开发这一新功能时，我们使用了来自 Cloudflare 开发人员平台的 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> 和 <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a> 组件，这有助于简化我们的设计。我们并非自行管理底层基础设施，而是以 <a href="https://www.cloudflare.com/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> 为基础，使用Workers AI 进行文本嵌入，并使用 Vectorize 作为向量数据库。这种配置使我们能够专注于算法本身，无需处理预置底层资源的开销。</p>
 <p>得益于 Workers AI，将文本转换为嵌入向量变得前所未有的简单。只需一行代码，我们就可以将任何文本转换为其相应的向量表示。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(model, {text: [text]}).data;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(model, {text: [text]}).data;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>这一方案处理从分词到 GPU 加速推理的一切工作，使得整个过程既简单又具有可扩展性。</p>
 <p>最近邻搜索同样简单直接。从Workers AI 获取向量后，我们使用 Vectorize 从过去的报告中快速找到类似的上下文。同时，我们将当前模式匹配的向量存储在 Vectorize 中，以便我们从未来的反馈中学习。</p>
 <p>为了优化资源利用，我们采用了一些更巧妙的技术。例如，我们不是存储每个模式匹配命中的向量，而是使用在线聚类将向量分组，并仅存储聚类中心点，同时附带用于追踪命中次数和报告的计数器。这样做减少了存储需求并加快搜索速度。此外，我们还集成了 <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queues</u></a>，将索引编制过程从 DLP 扫描热路径中分离出来，确保系统稳健、响应迅速。</p>

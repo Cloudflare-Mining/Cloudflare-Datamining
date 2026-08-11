@@ -6,8 +6,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">num_events</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> epoll_wait</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">epfd,</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">returned=</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">/events,</span><span class="sk-032f62-99ffe4"> events_len,</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">timeout=</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">/-1</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> events</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> list</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> active</span><span class="sk-032f62-99ffe4"> events</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-032f62-99ffe4"> event[0]:</span><span class="sk-032f62-99ffe4"> incoming</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> http://example.com/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-032f62-99ffe4"> event[1]:</span><span class="sk-032f62-99ffe4"> send</span><span class="sk-032f62-99ffe4"> out</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> http://cloudflare.com/</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-032f62-99ffe4"> event[1]:</span><span class="sk-032f62-99ffe4"> send</span><span class="sk-032f62-99ffe4"> out</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> http://cloudflare.com/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>So könnte beispielsweise ein Codeabschnitt aussehen, mit dem Daten aus einem Datei-Deskriptor (fd) gelesen werden:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> we</span><span class="sk-032f62-99ffe4"> got</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> fd</span></span>
@@ -25,7 +47,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    buf_len</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> n</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    buf</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-032f62-99ffe4"> n</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    total</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-032f62-99ffe4"> n</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Wenn fd ein Netzwerk-Socket ist, gibt dies die bereits angekommenen Bytes zurück. Der letzte Aufruf gibt <code>EWOULDBLOCK</code> zurück, was bedeutet, dass wir den lokalen Lesepuffer geleert haben, sodass wir nicht mehr aus dem Socket lesen sollten, bis mehr Daten verfügbar sind.</p>
 <h3><strong>Festplatten-E/A ist nicht gleich Netzwerk-E/A</strong></h3>
@@ -35,7 +61,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">read</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">fd,</span><span class="sk-032f62-99ffe4"> buf,</span><span class="sk-032f62-99ffe4"> buf_len</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-6f42c1-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-032f62-99ffe4"> buf_len</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Das bedeutet, dass ein Ereignishandler, der von der Festplatte lesen muss, die Ereignisschleife blockiert, bis das gesamte Leseereignis beendet ist, und die nachfolgenden Ereignishandler verzögert werden.</p>
 <p>Dies ist für die meisten Arbeitslasten in Ordnung, da das Lesen von der Festplatte normalerweise schnell genug und viel vorhersehbarer ist als das Warten auf das Eintreffen eines Pakets aus dem Netzwerk. Dies gilt besonders jetzt, da jeder eine SSD hat und unsere Cache-Festplatten alle SSDs sind. Moderne SSDs haben eine sehr geringe Latenzzeit, normalerweise unter 100 µs. Darüber hinaus können wir NGINX mit multiplen Worker-Prozessen ausführen, sodass ein langsamer Ereignishandler Anfragen in anderen Prozessen nicht blockiert. Meistens können wir uns darauf verlassen, dass die Ereignisbehandlung von NGINX Anfragen schnell und effizient verarbeitet.</p>
@@ -51,7 +81,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-032f62-99ffe4"> event[0]:</span><span class="sk-032f62-99ffe4"> incoming</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> http://example.com/</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">gettimeofday(</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">event_start_handle,</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-032f62-99ffe4"> event[1]:</span><span class="sk-032f62-99ffe4"> send</span><span class="sk-032f62-99ffe4"> out</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> http://cloudflare.com/</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">timersub(</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">event_start_handle,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">start,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">event_loop_blocked</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">timersub(</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">event_start_handle,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">start,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">event_loop_blocked</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>P99 von <code>event_loop_blocked</code> entpuppte sich als mehr als 50 % unserer TTFB. Das heißt, die Hälfte der Zeit, die für die Bearbeitung einer Anforderung benötigt wird, ist darauf zurückzuführen, dass die Ereignisschleife durch andere Anfragen blockiert wird. <code>event_loop_blocked</code> misst nur etwa die Hälfte der Blockierung (weil verzögerte Aufrufe von <code>epoll_wait()</code> nicht gemessen werden), sodass das tatsächliche Verhältnis der blockierten Zeit viel höher ist.</p>
 <p>Auf jeder unserer Maschinen läuft NGINX mit 15 Worker-Prozessen, was bedeutet, dass eine langsame E/A nur bis zu 6 % der Anfragen blockieren sollte. Die Ereignisse sind jedoch nicht gleichmäßig verteilt, der Top-Worker bearbeitet 11 % der Anfragen (also doppelt so viele wie erwartet).</p>
@@ -60,7 +94,11 @@
 <p>Eine Lösung dafür besteht darin, dafür zu sorgen, dass read() nicht blockiert. Tatsächlich ist diese Funktion <a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x" target="_blank" rel="noopener noreferrer">im Upstream von NGINX implementiert</a>! Wenn die folgende Konfiguration verwendet wird, werden <code>read()</code> und <code>write()</code> in einem Thread-Pool ausgeführt und blockieren die Ereignisschleife nicht:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">aio</span><span class="sk-032f62-99ffe4">         threads</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">aio_write</span><span class="sk-032f62-99ffe4">   on</span><span class="sk-24292e-fff">;</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">aio_write</span><span class="sk-032f62-99ffe4">   on</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Als wir dies jedoch testeten, sahen wir anstelle einer 33-fachen Verbesserung der Antwortzeit tatsächlich einen leichten Anstieg von P99. Der Unterschied lag innerhalb der Fehlergrenze, aber wir waren durch das Ergebnis ziemlich entmutigt und haben diese Option für eine Weile nicht mehr verfolgt.</p>
 <p>Es gibt mehrere Gründe dafür, dass wir nicht den Grad an Verbesserungen erhalten haben, den NGINX erlebt hat. Beim dortigen Test wurden 200 gleichzeitige Verbindungen genutzt, um Dateien mit einer Größe von 4 MB anzufordern, die sich auf rotierenden Festplatten befanden. Rotierende Festplatten erhöhen die E/A-Latenzzeit, deshalb ist es nachvollziehbar, dass eine Optimierung bei der Latenz dramatischere Auswirkungen haben würde.</p>
@@ -72,7 +110,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">fd</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"/cache/prefix/dir/EF/BE/CAFEBEEF"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> O_RDONLY</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> up</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> 32KB</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> metadata</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> well</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> headers</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> done</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> thread</span><span class="sk-032f62-99ffe4"> pool</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> "aio threads"</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> on</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">read</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">fd,</span><span class="sk-032f62-99ffe4"> buf,</span><span class="sk-032f62-99ffe4"> 32</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1024</span><span class="sk-24292e-fff">);</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">read</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">fd,</span><span class="sk-032f62-99ffe4"> buf,</span><span class="sk-032f62-99ffe4"> 32</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1024</span><span class="sk-24292e-fff">);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>32 KB ist keine statische Zahl. Wenn die Header klein sind, müssen wir nur 4 KB lesen (wir verwenden kein direktes E/A, sodass der Kernel auf 4 KB aufrunden wird). Das open() scheint harmlos zu sein, aber es hat tatsächlich seine Kosten. Als Minimum muss der Kernel prüfen, ob die Datei existiert und ob der aufrufende Prozess die Berechtigung hat, sie zu öffnen. Dazu müsste er den Inode von <code>/cache/prefix/dir/EF/BE/CAFEBEEF</code> finden, wozu er <code>CAFEBEEF</code> in <code>/cache/prefix/dir/EF/BE/</code> nachschlagen müsste. Um es kurz zu fassen, im schlimmsten Fall muss der Kernel die folgenden Lookups durchführen:</p>
 <div class="emdash-code">
@@ -81,7 +123,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">/cache/prefix/dir</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">/cache/prefix/dir/EF</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">/cache/prefix/dir/EF/BE</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">/cache/prefix/dir/EF/BE/CAFEBEEF</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">/cache/prefix/dir/EF/BE/CAFEBEEF</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Code kopieren" data-copy-label="Code kopieren" data-copied-label="Code kopiert!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Das sind sechs separate Lesevorgänge von <code>open()</code> im Vergleich zu nur einem Lesevorgang von <code>read()</code>! Glücklicherweise werden die meisten Lookups vom <a href="https://www.kernel.org/doc/Documentation/filesystems/vfs.txt" target="_blank" rel="noopener noreferrer">Verzeichniseintrag-Cache</a> bedient und erfordern keine Ausflüge zu den SSDs. Aber dass <code>read()</code> im Thread-Pool ausgeführt wird, ist offensichtlich nur die halbe Miete.</p>
 <h3><strong>Der Durchbruch: nicht blockierendes open() in Thread-Pools</strong></h3>

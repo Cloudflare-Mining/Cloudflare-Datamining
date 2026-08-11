@@ -41,19 +41,49 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    http.request.uri.path</span><span class="sk-032f62-99ffe4"> matches</span><span class="sk-032f62-99ffe4"> "\n+."</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    or</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    http.request.uri.query</span><span class="sk-032f62-99ffe4"> matches</span><span class="sk-032f62-99ffe4"> "\x00+."</span></span>
-<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>この式では、1つまたは複数の改行の後にリクエストパスの1文字が続くか、1つまたは複数のNULLバイトの後にクエリ文字で書かれた文字が続くいずれかの形式で表示されるHTTP/1.1リクエストのブール値を「true」と評価します。</p>
 <p>それでは、上記のルールに一致する次のリクエストがあったとしましょう。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> /cms/%0Aadmin?action=%00post</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> example.com</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> example.com</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>一致したデータログが有効になっている場合、一致したルールは、実行中にアクセスされたすべてのフィールドにタグを付ける特別なコンテキストで再び実行されます。このタグ付けによって計算オーバーヘッドが顕著になり、大多数のリクエストではルールがまったくトリガーされず、各リクエストにオーバーヘッドを不必要に追加するため、この2回目の実行を行います。ルールに一致するリクエストは、いくつかのルールにのみ一致するため、ルールセットの大部分を再実行する必要はありません。</p>
 <p><code>http.request.uri.query matches "\x00+."</code>は、このリクエストをtrue と評価するのに、実行されないことにお気づきかもしれません。なぜなら、この式は、最初に、もしくは一致するコンディションを使って、ショートカットされるからです。この結果、 <code>http.request.versionとhttp.request.uri.path</code>はアクセス済みであるとタグ付けされます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http.request.version</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">http.request.uri.path</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /cms/%0Aadmin</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">http.request.uri.path</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /cms/%0Aadmin</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>アクセスされたフィールドを集めた後、ファイアウォールエンジンは、他のサブセット（クエリ文字列や完全な URI など）であるフィールドの削除、または特定の文字数（長さ）を超えるフィールドの切り捨てなど、いくつかの後処理を行います。</p>
 <p>最後に、これらはJSONとしてシリアル化され、お客様のパブリックキーで暗号化されます。そして、バイトセットとして再びシリアル化されて、将来的に変更/更新の必要がある場合は、バージョン番号がプレフィックスとして付加されます。これらのブロブの消費を簡素化するために、APIはBase64でエンコードされたバイトのバージョンを表示します。</p>
@@ -64,7 +94,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> MATCHED_DATA=AkjQDktMX4FudxeQhwa0UPNezhkgLAUbkglNQ8XVCHYqPgAAAAAAAACox6cEwqWQpFVE2gCFyOFsSdm2hCoE0/oWKXZJGa5UPd5mWSRxNctuXNtU32hcYNR/azLjsGO668Jwk+qCdFvmKjEqEMJgI+fvhwLQmm4=</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> matched-data-cli</span><span class="sk-032f62-99ffe4"> decrypt</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-24292e-fff"> $MATCHED_DATA </span><span class="sk-005cc5-99ffe4">-k</span><span class="sk-24292e-fff"> $PRIVATE_KEY</span></span>
-<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"http.request.version"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "HTTP/1.1",</span><span class="sk-032f62-99ffe4"> "http.request.uri.path":</span><span class="sk-032f62-99ffe4"> "/cms/%0Aadmin"}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"http.request.version"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "HTTP/1.1",</span><span class="sk-032f62-99ffe4"> "http.request.uri.path":</span><span class="sk-032f62-99ffe4"> "/cms/%0Aadmin"}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>または、ダッシュボードUIを使用して行われます。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

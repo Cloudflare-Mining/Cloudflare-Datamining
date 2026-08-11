@@ -6,8 +6,30 @@
 <p>Once you’ve done this, you can run the Terraform command-line tool and it will figure out the difference between your desired state and your current state, and make the API calls in the background necessary to reconcile the two.</p>
 <p>Unlike other solutions, Terraform does not require you to run software on your hosts, and instead of spending time manually configuring machines, creating DNS records, and specifying Page Rules, you can simply run:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> terraform</span><span class="sk-032f62-99ffe4"> apply</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>and the state described in your configuration files will be built for you.</p>
 <h2>Enter Cloudflare Terraforming</h2>
 <p>Terraform is a tremendous time-saver once you have your configuration files in place, but what do you do if you’re already a Cloudflare user and you need to convert your particular setup, records, resources and rules into Terraform config files in the first place?</p>
@@ -17,19 +39,31 @@
 <p>Cf-terraforming is open-source and <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">available on Github now</a>. You need a working <a href="https://golang.org/doc/install" target="_blank" rel="noopener noreferrer">Golang installation</a> and a <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Cloudflare account</a> with some resources defined. That’s it!</p>
 <p>Let’s first install cf-terraforming, while also pulling down all dependencies and updating them as necessary:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cf-terraforming/...</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cf-terraforming/...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cf-terraforming is a command line tool that you invoke with your Cloudflare credentials, some zone information and the resource type that you want to export. The output is a valid Terraform configuration file describing your resources.</p>
 <p>To use cf-terraforming, first <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-" target="_blank" rel="noopener noreferrer">get your API key</a> and Account ID from the Cloudflare dashboard. You can find your account id at the bottom right of the overview page for any zone in your account. It also has a quick link to get your API key as well. You can store your key and account ID in environment variables to make it easier to work with the tool:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> CLOUDFLARE_TOKEN</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">your-key</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">” </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> CLOUDFLARE_EMAIL</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">your-email</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">”</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> CLOUDFLARE_ACCT_ID</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">your-id</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">” </span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> CLOUDFLARE_ACCT_ID</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">your-id</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">” </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cf-terraforming can create configuration files for any of the resources currently available in <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">the official Cloudflare Terraform provider</a>, but sometimes it’s also handy to export individual resources as needed.</p>
 <p>Let’s say you’re migrating your Cloudflare configuration to Terraform and you want to describe your Spectrum applications. You simply call cf-terraforming with your credentials, zone, and the spectrum_application command, like so:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> cmd/cf-terraforming/main.go</span><span class="sk-005cc5-99ffe4"> --email</span><span class="sk-24292e-fff"> $CLOUDFLARE_EMAIL </span><span class="sk-005cc5-99ffe4">--key</span><span class="sk-24292e-fff"> $CLOUDFLARE_TOKEN </span><span class="sk-005cc5-99ffe4">--account</span><span class="sk-24292e-fff"> $CLOUDFLARE_ACCT_ID </span><span class="sk-032f62-99ffe4">spectrum_application</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> cmd/cf-terraforming/main.go</span><span class="sk-005cc5-99ffe4"> --email</span><span class="sk-24292e-fff"> $CLOUDFLARE_EMAIL </span><span class="sk-005cc5-99ffe4">--key</span><span class="sk-24292e-fff"> $CLOUDFLARE_TOKEN </span><span class="sk-005cc5-99ffe4">--account</span><span class="sk-24292e-fff"> $CLOUDFLARE_ACCT_ID </span><span class="sk-032f62-99ffe4">spectrum_application</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Cf-terraforming will contact the Cloudflare API on your behalf and define your resources in a format that Terraform understands:</p>
 <div class="emdash-code">
@@ -42,17 +76,29 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    ip_firewall</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "true"</span><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    tls</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "off"</span><span class="sk-24292e-fff">    </span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    origin_direct</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [ </span><span class="sk-032f62-99ffe4">"tcp://37.241.37.138:8000",</span><span class="sk-032f62-99ffe4"> ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You can redirect the output to a file and then start working with Terraform. First, ensure you are in the cf-terraforming directory, then run:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> cmd/cf-terraforming/main.go</span><span class="sk-005cc5-99ffe4"> --email</span><span class="sk-24292e-fff"> $CLOUDFLARE_EMAIL </span><span class="sk-005cc5-99ffe4">--key</span><span class="sk-24292e-fff"> $CLOUDFLARE_TOKEN </span><span class="sk-005cc5-99ffe4">--account</span><span class="sk-24292e-fff"> $CLOUDFLARE_ACCT_ID </span><span class="sk-032f62-99ffe4">spectrum_application</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> my_spectrum_applications.tf</span><span class="sk-24292e-fff"> </span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> cmd/cf-terraforming/main.go</span><span class="sk-005cc5-99ffe4"> --email</span><span class="sk-24292e-fff"> $CLOUDFLARE_EMAIL </span><span class="sk-005cc5-99ffe4">--key</span><span class="sk-24292e-fff"> $CLOUDFLARE_TOKEN </span><span class="sk-005cc5-99ffe4">--account</span><span class="sk-24292e-fff"> $CLOUDFLARE_ACCT_ID </span><span class="sk-032f62-99ffe4">spectrum_application</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> my_spectrum_applications.tf</span><span class="sk-24292e-fff"> </span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The same goes for Zones, DNS records, Workers scripts and routes, security policies and more.</p>
 <h2>Download all Cloudflare resources</h2>
 <p>Use the <strong>all</strong> command to download everything and convert it into Terraform config.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> cmd/cf-terraforming/main.go</span><span class="sk-005cc5-99ffe4"> --email</span><span class="sk-24292e-fff"> $CLOUDFLARE_EMAIL </span><span class="sk-005cc5-99ffe4">--key</span><span class="sk-24292e-fff"> $CLOUDFLARE_TOKEN </span><span class="sk-005cc5-99ffe4">--account</span><span class="sk-24292e-fff"> $CLOUDFLARE_ACCT_ID </span><span class="sk-032f62-99ffe4">all</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> cmd/cf-terraforming/main.go</span><span class="sk-005cc5-99ffe4"> --email</span><span class="sk-24292e-fff"> $CLOUDFLARE_EMAIL </span><span class="sk-005cc5-99ffe4">--key</span><span class="sk-24292e-fff"> $CLOUDFLARE_TOKEN </span><span class="sk-005cc5-99ffe4">--account</span><span class="sk-24292e-fff"> $CLOUDFLARE_ACCT_ID </span><span class="sk-032f62-99ffe4">all</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Which resources are supported?</h2>
 <p>Currently, <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer">cf-terraforming</a> supports every resource type that you can manage via the official <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">Cloudflare Terraform provider</a>:</p>

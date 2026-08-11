@@ -10,8 +10,30 @@
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">input</span><span class="sk-24292e-fff">(image)</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">({ width: </span><span class="sk-005cc5-ffc799">800</span><span class="sk-24292e-fff">, rotate: </span><span class="sk-005cc5-ffc799">90</span><span class="sk-24292e-fff"> })</span></span>
 <span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">output</span><span class="sk-24292e-fff">({ format: </span><span class="sk-032f62-99ffe4">"image/avif"</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> result.</span><span class="sk-6f42c1-ffc799">response</span><span class="sk-24292e-fff">();</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> result.</span><span class="sk-6f42c1-ffc799">response</span><span class="sk-24292e-fff">();</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>大まかにいうと、このように画像データはさまざまなサービスを介して移動します。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="400" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=640&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=750&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=828&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=1080&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=1280&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=1430&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3318 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WM1JKG14FT6JFWG5YX2QK.png&amp;w=1920&amp;h=1074&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1074" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="400" class="pt-portable-image-media"></div>
@@ -38,7 +60,11 @@
 <p><sup><em>このバグは、内部パイプラインのリターンパスで発生し、応答が外部パイプラインに到達する前に切り捨てられました。</em></sup></p>
 <p>内部パイプライン（変換バインディング）が、コンポジットを処理しました。外側のパイプライン（Transformations URL）は、スケーリングやフォーマット変換といった配信の最適化を処理しました。この階層型アプローチは、内部パイプラインがサイレントに切り捨てられたレスポンスを返した時に、1レベル上の唯一の目に見えるエラーが現れることを意味します。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">error reading a body from connection</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> end of file before message length reached</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">error reading a body from connection</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> end of file before message length reached</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>外側のパイプラインは、内側のパイプラインからHTTP <code>200</code> を受け取り、<code>Content-Length</code> ヘッダーは数メガバイトを約束しました。実際の本文はそのほんの一部でした。1回のリクエストでは、予定されている3.3MBのうち、約200KBしか到着しなかったのです。エラーは外側のパイプラインで表面化しましたが、切り捨てはバインディング、中間サービス、Imagesサービス、またはそれらの間のどこかで発生した可能性があります。</p>
 <p>ブラウザが切り捨てられた画像を受信すると、結果が表示されます。フォーマットによって、画像は部分的にレンダリングするか（例：下の半分がない、またはグレー）、または完全にデコードされず、壊れた画像が表示されます。</p>
@@ -66,12 +92,20 @@
 <span class="line"><span class="sk-6f42c1-ffc799">sendto(42,</span><span class="sk-032f62-99ffe4"> "\xff\xd8\xff\xe0...",</span><span class="sk-005cc5-ffc799"> 292352</span><span class="sk-24292e-fff">) = 292352</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> keeps</span><span class="sk-032f62-99ffe4"> writing</span><span class="sk-032f62-99ffe4"> until</span><span class="sk-032f62-99ffe4"> buffer</span><span class="sk-032f62-99ffe4"> drains</span><span class="sk-032f62-99ffe4"> ...</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">sendto(42,</span><span class="sk-032f62-99ffe4"> "...",</span><span class="sk-005cc5-ffc799"> 292352</span><span class="sk-24292e-fff">) = 292352</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">shutdown(42,</span><span class="sk-032f62-99ffe4"> SHUT_WR</span><span class="sk-24292e-fff">) = 0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">shutdown(42,</span><span class="sk-032f62-99ffe4"> SHUT_WR</span><span class="sk-24292e-fff">) = 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>このバグを再現したところ、失敗したリクエストは次のようになりました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">sendto(42,</span><span class="sk-032f62-99ffe4"> "HTTP/1.1 200 OK\r\nContent-Length: 14991808\r\n...",</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-24292e-fff">) = 219264</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">shutdown(42,</span><span class="sk-032f62-99ffe4"> SHUT_WR</span><span class="sk-24292e-fff">) = 0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">shutdown(42,</span><span class="sk-032f62-99ffe4"> SHUT_WR</span><span class="sk-24292e-fff">) = 0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここでは、シャットダウンがすぐに呼び出される前に、1回の書き込み（ヘッダーと本文のほんの一部）しかありません。14.9MBのレスポンスのうち、約219KBしか送信されなかったのです。残りの約14.8 MBの画像データがhyperの内部バッファを離れることはなく、書き込みとシャットダウンの間にクライアントからの終了信号もありませんでした。その代わりに、Imagesサービスは、接続が完了したと信じて、自ら接続を急いでシャットダウンしました。</p>
 <p>失敗したリクエストにより、バグが断続的にトリガーされる競合状態であることが確認されました。リクエストが成功するか失敗するかは、消去とシャットダウンの操作がリクエストからリクエストへと変化するかどうかによって決まります。ハイパーが接続が終了したと判断した瞬間、バッファがまだ満杯になっていたとき、データは失われました。</p>
@@ -94,7 +128,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-6f42c1-ffc799"> Poll</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Ready</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Ok</span><span class="sk-24292e-fff">(()));</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>より正確には、<code>poll_flash</code>の前の<code>let_</code>がバグがある場所です。</p>
 <p>Rustでは、<code>let _ = expr</code>は、<code>Poll::Pending</code>（フラッシュがまだ完了していないことを示すシグナル）を含め、式の結果を破棄します。フラッシュのバッファにはまだバイトがバッファにあるかもしれませんが、ループはそれを見つけることはありません。</p>
@@ -126,7 +164,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">conn</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">wants_read_again</span><span class="sk-24292e-fff">() {</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> Poll</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Ready</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Ok</span><span class="sk-24292e-fff">(()));</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>消去が完了していない場合、ループは非同期ランタイムに<code>Poll::Pending</code>を返します。ランタイムはソケットが書き込み可能になるのを待ち、キャッシュを消去するためにバックアップを起動します。すべてのデータが送信された後にのみ、接続はシャットダウンします。</p>
 <p>この修正をデプロイした場合、すべてのバイトが書き込まれ、バッファが実際に空になった後にのみシャットダウンが呼び出されたことが確認されました。最初の報告を行ったお客様も、問題が解消したことを確認しています。</p>
@@ -139,7 +181,11 @@
 <span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> Poll</span><span class="sk-24292e-fff">&lt;io</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Result</span><span class="sk-24292e-fff">&lt;()&gt;&gt; {</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    ready!</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">poll_flush</span><span class="sk-24292e-fff">(cx)</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Pin</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">io)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">poll_shutdown</span><span class="sk-24292e-fff">(cx)</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これにより、ディスパッチループは変更されません。過負荷状態であれば、データ損失が発生するであろうポイント、つまり、シャットダウンの直前にのみフラッシュを追加します。</p>
 <h3>Cloudflareに残されたもの</h3>

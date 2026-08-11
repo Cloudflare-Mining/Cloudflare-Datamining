@@ -86,8 +86,30 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --url</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">zone_id</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">/cache/origin_post_quantum_encryption</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'Authorization: Bearer (API token)'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{"value": "preferred"}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{"value": "preferred"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Replace <a href="https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids" target="_blank" rel="noopener noreferrer"><code>(zone_id)</code></a> and <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token" target="_blank" rel="noopener noreferrer"><code>(API token)</code></a> appropriately. Then, make sure your server supports TLS 1.3; enable and prefer the key agreement <code>X25519Kyber768Draft00;</code> and ensure it’s configured with <em>server cipher preference</em>. For example, to configure <a href="https://www.nginx.com" target="_blank" rel="noopener noreferrer">nginx</a> (compiled with a recent <a href="https://boringssl.googlesource.com/boringssl" target="_blank" rel="noopener noreferrer">BoringSSL</a>) like this, use</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">	http</span><span class="sk-032f62-99ffe4"> {</span></span>
@@ -95,14 +117,22 @@
 <span class="line"><span class="sk-6f42c1-ffc799">		ssl_ecdh_curve</span><span class="sk-032f62-99ffe4"> X25519Kyber768Draft00:X25519</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		ssl_prefer_server_ciphers</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">		ssl_protocols</span><span class="sk-032f62-99ffe4"> TLSv1.3</span><span class="sk-24292e-fff">;</span></span>
-<span class="line"><span class="sk-24292e-fff">	}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">	}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>To check your server is properly configured, you can use the <code>bssl</code> tool of <a href="https://github.com/google/boringssl" target="_blank" rel="noopener noreferrer">BoringSSL</a>:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">	$</span><span class="sk-032f62-99ffe4"> bssl</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-24292e-fff"> (your </span><span class="sk-032f62-99ffe4">server</span><span class="sk-24292e-fff">):443 -curves X25519:X25519Kyber768Draft00</span></span>
 <span class="line"><span class="sk-24292e-fff">[...]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	  ECDHE</span><span class="sk-032f62-99ffe4"> curve:</span><span class="sk-032f62-99ffe4"> X25519Kyber768Draft00</span></span>
-<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We’re looking for <code>X25519Kyber768Draft00</code> for a post-quantum connection as shown above instead of merely <code>X25519</code>.For more client and server support, check out <a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">pq.cloudflareresearch.com</a>. Now, let’s dive in.</p>
 <h2>Overview of a TLS 1.3 handshake</h2>
@@ -233,7 +263,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">  --url</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">zone_id</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">/cache/origin_post_quantum_encryption</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
 <span class="line"><span class="sk-005cc5-99ffe4">  --header</span><span class="sk-032f62-99ffe4"> 'Authorization: Bearer (API token)'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
-<span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{"value": "(setting)"}'</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-99ffe4">  --data</span><span class="sk-032f62-99ffe4"> '{"value": "(setting)"}'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here, the parameters are as follows.</p>
 <div id="html-block-k88" class="html-block">
@@ -266,7 +300,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">	$</span><span class="sk-032f62-99ffe4"> bssl</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-24292e-fff"> (your </span><span class="sk-032f62-99ffe4">server</span><span class="sk-24292e-fff">):443 -curves X25519:X25519Kyber768Draft00</span></span>
 <span class="line"><span class="sk-24292e-fff">[...]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	  ECDHE</span><span class="sk-032f62-99ffe4"> curve:</span><span class="sk-032f62-99ffe4"> X25519Kyber768Draft00</span></span>
-<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If you set your zone to <code>supported</code> mode, or if you wait for the gradual roll-out, you will need to make sure that your origin server prefers post-quantum key agreement even if we sent a classical keyshare in the initial <em>ClientHello</em>. This can be done with <a href="https://github.com/cloudflare/boringssl-pq" target="_blank" rel="noopener noreferrer">our fork of BoringSSL</a>:</p>
 <div class="emdash-code">
@@ -276,7 +314,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> build/bssl</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-24292e-fff"> (your </span><span class="sk-032f62-99ffe4">server</span><span class="sk-24292e-fff">):443 -curves X25519:X25519Kyber768Draft00 -disable-second-keyshare</span></span>
 <span class="line"><span class="sk-24292e-fff">[...]</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	  ECDHE</span><span class="sk-032f62-99ffe4"> curve:</span><span class="sk-032f62-99ffe4"> X25519Kyber768Draft00</span></span>
-<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Scanning ahead to remove the extra roundtrip</h2>
 <p>With the <em>HelloRetryRequest</em> trick today, we can safely advertise support for post-quantum key agreement to all origins. The downside is that for those origins that do support post-quantum key agreement, we’re incurring an extra roundtrip for the <em>HelloRetryRequest</em>, which hurts performance.</p>

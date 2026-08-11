@@ -42,8 +42,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Decompress a 32 bit offset to a 64 bit pointer by adding a base address.</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">void*</span><span class="sk-6f42c1-ffc799"> Decompress</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-e36209-fff"> offset</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> offset; }</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// Compress a 64 bit pointer to a 32 bit offset by discarding the high bits.</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-6f42c1-ffc799"> Compress</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void*</span><span class="sk-e36209-fff"> pointer</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">intptr_t</span><span class="sk-24292e-fff">)pointer </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ffffffff</span><span class="sk-24292e-fff">; }</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-6f42c1-ffc799"> Compress</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void*</span><span class="sk-e36209-fff"> pointer</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">intptr_t</span><span class="sk-24292e-fff">)pointer </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ffffffff</span><span class="sk-24292e-fff">; }</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>这种指针压缩功能最初主要设计用于节省内存，可以作为沙箱的基础。</p>
 <h3>从压缩指针到沙箱</h3>
 <p>最大的 32 位无符号整数约为 40 亿，因此 <code>Decompress()</code> 函数无法生成任何超出 [base, base + 4 GiB] 范围的指针"您可以说指针被困在这个区域，因此它有时被称为<em>指针隔离笼</em>。V8 可以为指针隔离笼保留 4 GiB 的虚拟地址空间，以便只有 V8 对象出现在这个范围内。通过消除<em>所有</em>来自这个范围的指针，并遵循一些其他严格的规则，V8 可以将攻击者造成的任何内存破坏控制在这个笼子里。即使攻击者破坏了笼子内的 32 位偏移量，它也仍然只是一个 32 位偏移量，只能用于创建仍然被困在指针隔离笼内的新指针。"</p>

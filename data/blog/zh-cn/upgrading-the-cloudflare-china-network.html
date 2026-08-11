@@ -8,8 +8,30 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cf-ns.com</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">cf-ns.net</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">cf-ns.tech</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">cf-ns.tech</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>我们选择这些顶级域名 (TLD) 是因为它们在中国大陆提供了最佳性能。它们被选择为始终与使用它们的域的 TLD 不同。例如，example.com 将使用 .tech 和 .net TLD 分配名称服务器。这为我们提供了客户名称服务器的“无胶委托”，允许我们动态返回名称服务器 IP 地址而不是<a href="https://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records" target="_blank" rel="noopener noreferrer">静态粘合记录</a>。</p>
 <p>“粘合记录”（或简称 “粘合”）是名称服务器和 IP 之间的映射，由Registrar 添加，用于在域使用具有相同 TLD 的域名服务器时打破循环查找依赖性。例如，假设一个解析器询问 .comTLD 域名服务器：“我在哪里可以找到 example.com 的名称服务器？” 并且此域使用 ns1.example.com 和 ns2.example.com 作为名称服务器。If .com仅需回复：“去问问 ns1.example.com 或 ns2.example.com。” 解析器会带着同样的问题回到 .com，这永远不会停止。一种解决方案是在 .com 上添加胶水，因此答案可以是：“example.com 的名称服务器是 ns1.example.com 和 ns2.example.com，它们可以在 192.0.2.78 和 203.0.113.55 上访问。 ”。</p>
 <p>如上所述，通过使用不同的 TLD，我们不需要依赖客户名称服务器的粘合记录。通过这种方式，我们可以确保始终从最近的入网点 (PoP) 回答查询，从而实现更快的 DNS 响应。提供动态名称服务器 IP 的另一个优势是能够在不同的 PoP 之间分发查询，这有助于更有效地分散负载并缓解攻击。</p>

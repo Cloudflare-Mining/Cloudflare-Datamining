@@ -33,8 +33,30 @@
 <span class="line"><span class="sk-24292e-fff">      ],</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      "modified_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2023-10-22T13:32:47.213767Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>이 시나리오에서는 Aegis 고객 9876이 Cloudflare의 송신 트래픽을 수신하기 위한 데이터 센터가 하나 이상 필요하므로 데이터 센터 21과 데이터 센터 45가 서로 연관되어 있습니다. 21번 데이터 센터와 45번 데이터 센터를 동시에 가동 중지시키려고 하면, 코디네이터가 해당 고객의 워크로드에 의도하지 않은 결과가 발생할 수 있다고 경고합니다.</p>
 <p>처음에는 모든 데이터를 단일 Worker에 로드하는 순진한 솔루션을 가지고 있었습니다. 여기에는 모든 서버 관계, 제품 구성, 제품 및 인프라 상태에서 제약 조건을 계산하는 메트릭이 포함되었습니다. 개념 증명 단계에서도 '메모리 부족' 오류 문제가 발생했습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -50,7 +72,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  object_get</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ObjectID</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">TObject</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> undefined</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  assoc_get</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">id1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ObjectID</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">atype</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> TAssocType</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AsyncIterable</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">TAssoc</span><span class="sk-24292e-fff">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>핵심 인사이트는 연결이 입력된다는 것입니다. 예를 들어, 제약 조건은 Aegis 제품 데이터를 검색하기 위해 그래프 인터페이스를 호출합니다.</p>
 <div class="emdash-code">
@@ -91,7 +117,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> poolAnalysis</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위의 코드에서는 두 가지 연결 유형을 사용합니다.</p>
 <ol>
@@ -125,7 +155,11 @@
 <span class="line"><span class="sk-24292e-fff">    baseMs: </span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    jitter: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }))</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">handler</span><span class="sk-24292e-fff">(terminalFetch);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">handler</span><span class="sk-24292e-fff">(terminalFetch);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>바둑에 익숙하신 분이라면 <a href="https://pkg.go.dev/golang.org/x/sync/singleflight" target="_blank" rel="noopener noreferrer"><u>singleflight</u></a> 패키지를 본 적이 있을 것입니다. 저희는 이 아이디어에서 영감을 얻었고 가져오기 파이프라인의 첫 번째 미들웨어 구성 요소가 전송 중인 HTTP 요청의 중복을 제거하여 동일한 Worker에서 중복 요청을 생성하는 대신 데이터에 대해 모두 동일한 프라미스를 기다립니다. 다음으로, 경량 LRU(최소 최근 사용) 캐시를 사용하여 이전에 이미 본 요청을 내부적으로 캐시합니다.</p>
 <p>이 두 가지를 모두 완료하면 Cloudflare의 <code>caches.default.match</code> 함수를 사용하여 Worker가 실행 중인 지역에서 모든 GET 요청을 캐시합니다. 성능 특성이 서로 다른 데이터 소스가 여러 개 있으므로 Time To Live(TTL) 값을 신중하게 선택합니다. 예를 들어, 실시간 데이터는 1분 동안만 캐시됩니다. 비교적 정적인 인프라 데이터는 데이터 유형에 따라 1~24시간 동안 캐시될 수 있었습니다. 전원 관리 데이터는 에지에서 더 오래 캐시할 수 있도록 수동으로 그리고 자주 변경될 수 있습니다.</p>
@@ -138,12 +172,20 @@
 <h2>실시간으로 제공하는 타노스</h2>
 <p>그래프 처리 인터페이스 사용 선택이 실시간 쿼리에 어떤 영향을 미쳤는지 설명하기 위해 예를 들어 보겠습니다. 에지 라우터의 상태를 분석하기 위해 다음 쿼리를 보낼 수 있습니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge.*"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge.*"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>원래 Cloudflare는 각 에지 라우터의 현재 상태 목록을 요청하고 Worker 내부 유지 관리와 관련된 라우터를 수동으로 필터링했습니다. 이는 여러 가지 이유로 최적이 아닙니다. 예를 들어, 타노스는 디코딩과 인코딩에 필요한 멀티 MB 응답을 반환했습니다. 또한 Worker는 특정 유지 관리 요청을 처리하는 동안 대부분의 데이터를 필터링하기 위해 이러한 대규모 HTTP 응답을 캐시하고 디코딩하면 되었습니다. TypeScript는 단일 스레드이고 JSON 데이터 구문 분석은 CPU에 의존하므로 두 개의 큰 HTTP 요청을 전송하면 하나는 차단되어 다른 요청이 구문 분석을 마칠 때까지 기다리게 됩니다.</p>
 <p>대신 그래프를 사용하여 <code>EDGE_ROUTER_NETWORK_CONNECTS_TO_SPINE</code>으로 표시되는 에지와 스파인 라우터 간의 인터페이스 링크와 같은 표적 관계를 찾기만 하면 됩니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (lldp_name) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge01.fra03"</span><span class="sk-24292e-fff">, lldp_name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"spine.*"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (lldp_name) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge01.fra03"</span><span class="sk-24292e-fff">, lldp_name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"spine.*"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>그 결과 여러 MB가 나타나는 대신 평균 1Kb이거나 약 1,000배 더 작습니다. 우리는 대부분의 역직렬화를 타사로 오프로드하므로 Worker 내부에 필요한 CPU 양도 크게 줄어듭니다. 앞서 설명한 것처럼 이는 더 많은 수의 작은 가져오기 요청을 수행해야 하지만, Tanos 앞에 있는 로드 밸런서를 통해 요청을 균등하게 분산하여 이 사용 사례의 처리량을 늘릴 수 있습니다.&nbsp;</p>
 <p>그래프 구현 및 가져오기 파이프라인은 수천 건의 작은 실시간 요청이라는 '끔찍한 무리'를 성공적으로 처리했습니다. 하지만 이력 분석은 I/O와는 다른 문제를 제시합니다. 작고 구체적인 관계를 가져오는 대신 몇 달치의 데이터를 스캔하여 충돌하는 유지 관리 기간을 찾아야 합니다. 과거에는 Thanos가 개체 저장소인 <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">R2</a>에 대량의 무작위 읽기를 발행했습니다. 성능을 그대로 유지하면서 이 막대한 대역폭 저하를 해결하기 위해 저희는 올해 내부적으로 Observability 팀에서 개발한 새로운 접근 방식을 채택했습니다.</p>
@@ -152,7 +194,11 @@
 <p>Tanos는 주로 Prometheus를 사용하지만, Prometheus의 유지가 쿼리에 응답하기에 충분하지 않은 경우 개체 스토리지(이 경우 R2)에서 데이터를 다운로드해야 합니다. Prometheus TSDB 블록은 원래 로컬 SSD용으로 설계되었으며, 개체 스토리지로 이동할 때 병목 현상이 발생하는 무작위 액세스 패턴에 의존합니다. 스케줄러가 충돌하는 제약 조건을 식별하기 위해 몇 달 동안의 유지 관리 데이터를 분석해야 할 때 개체 스토리지에서 무작위 읽기는 막대한 I/O 페널티를 초래합니다. 이 문제를 해결하기 위해 Cloudflare는 이러한 블록을 <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> 파일로 변환하는 변환 계층을 구현했습니다. Parquet은 행이 아닌 열별로 데이터를 구성하는 빅데이터 분석에 기본인 열 형식으로, 풍부한 통계와 함께 필요한 항목만 가져올 수 있습니다.</p>
 <p>또한 TSDB 블록을 Parquet 파일로 다시 작성하므로 데이터를 순차적으로 큰 청크로 읽을 수 있는 방식으로 저장할 수도 있습니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (hmd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">release_scopes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">enabled{dc_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"45"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (hmd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">release_scopes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">enabled{dc_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"45"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위의 예에서는 "(__name__, dc_id)" 튜플을 기본 정렬 키로 선택하여 이름이 "hmd:release_scopes:활성화"이고 "dc_id"에 동일한 값을 가진 메트릭이 가깝게 정렬되도록 했습니다.</p>
 <p>이제 Parquet 게이트웨이는 쿼리와 관련된 특정 열만 가져오기 위해 정확한 R2 범위 요청을 발행합니다. 따라서 악의적인 페이로드가 메가바이트에서 킬로바이트로 줄어듭니다. 또한 이러한 파일 세그먼트는 변경할 수 없으므로 Cloudflare CDN에 적극적으로 캐시할 수 있습니다.</p>

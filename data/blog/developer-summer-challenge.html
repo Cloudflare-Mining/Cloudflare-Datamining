@@ -37,8 +37,30 @@
 <p>Cloudflare Workers’ high performance and edge network make it well-suited for building APIs. It is also a great <a href="https://developers.cloudflare.com/pages/tutorials/build-an-api-with-workers" target="_blank" rel="noopener noreferrer">companion to your frontend</a> applications on Cloudflare Pages. You can use Workers as the backend, and build your frontend with <a href="https://developers.cloudflare.com/pages/framework-guides" target="_blank" rel="noopener noreferrer">frameworks</a> such as React, Gatsby, Hugo, Svelte, and more — and then deploy your site onto Pages.</p>
 <p>You can easily begin building a serverless API for your frontend by creating a new Workers project with the Wrangler CLI:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">‘wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> serverless-api</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/worker-typescript-template’</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">‘wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> serverless-api</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/worker-typescript-template’</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>To complete this type of project, you can follow the rest of the steps outlined <a href="https://developers.cloudflare.com/pages/tutorials/build-an-api-with-workers" target="_blank" rel="noopener noreferrer">in our Pages documentation</a>.</p>
 <h3>Build an Interactive Game</h3>
 <p>Combining Cloudflare Workers, Durable Objects, and WebSockets makes a powerful platform for managing state at the edge. Running on Cloudflare’s global network enables exceptionally low latency, so users can interact instantly worldwide. Examples of interactive applications can range from <a href="https://edge-chat-demo.cloudflareworkers.com/?_ga=2.29929723.571465970.1625593904-false" target="_blank" rel="noopener noreferrer">chat rooms</a> to <a href="https://blog.cloudflare.com/building-real-time-games-using-workers-durable-objects-and-unity">multiplayer video games</a>.</p>

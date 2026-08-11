@@ -63,11 +63,37 @@
 <h2>Inefficient Streams Adapters</h2>
 <p>Much of the Next.js code was written to use Node.js's APIs for byte streams. Workers, however, prefers the web-standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API" target="_blank" rel="noopener noreferrer"><u>Streams API</u></a>, and uses it to represent HTTP request and response bodies. This necessitates using adapters to convert between the two APIs. When investigating the performance bottlenecks, we found a number of examples where inefficient streams adapters are being needlessly applied. For example:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Readable.</span><span class="sk-6f42c1-ffc799">toWeb</span><span class="sk-24292e-fff">(Readable.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(res.</span><span class="sk-6f42c1-ffc799">getBody</span><span class="sk-24292e-fff">()))</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Readable.</span><span class="sk-6f42c1-ffc799">toWeb</span><span class="sk-24292e-fff">(Readable.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(res.</span><span class="sk-6f42c1-ffc799">getBody</span><span class="sk-24292e-fff">()))</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><code>res.getBody()</code> was performing a <code>Buffer.concat(chunks)</code> to copy accumulated chunks of data into a new Buffer, which was then passed as an iterable into a Node.js <a href="https://nodejs.org/docs/latest/api/stream.html#readable-streams" target="_blank" rel="noopener noreferrer"><code><u>stream.Readable</u></code></a> that was then wrapped <a href="https://nodejs.org/docs/latest/api/stream.html#streamreadabletowebstreamreadable-options" target="_blank" rel="noopener noreferrer"><u>by an adapter</u></a> that returns a <code>ReadableStream</code>. While these utilities do serve a useful purpose, this becomes a data buffering nightmare since both Node.js streams and Web streams each apply their own internal buffers! Instead we can simply do:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(chunks);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ReadableStream.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(chunks);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This returns a <code>ReadableStream</code> directly from the accumulated chunks without additional copies, extraneous buffering, or passing everything through inefficient adaptation layers.</p>
 <p>In other places we see that Next.js and React make extensive use of <code>ReadableStream</code> to pass bytes through, but the streams being created are value-oriented rather than byte-oriented! For example,</p>
@@ -79,7 +105,11 @@
 <span class="line"><span class="sk-24292e-fff">      controller.</span><span class="sk-6f42c1-ffc799">close</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">});  </span><span class="sk-6a737d-8b8b8b94">// Default highWaterMark is 1!</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Seems perfectly reasonable. However, there's an issue here. If the chunks are <code>Buffer</code> or <code>Uint8Array</code> instances, every instance ends up being a separate read by default. So if the <code>chunk</code> is only a single byte, or 1000 bytes, that's still always two reads. By converting this to a byte stream with a reasonable high water mark, we can make it possible to read this stream much more efficiently:</p>
 <div class="emdash-code">
@@ -91,7 +121,11 @@
 <span class="line"><span class="sk-24292e-fff">      controller.</span><span class="sk-6f42c1-ffc799">close</span><span class="sk-24292e-fff">();</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">}, { </span><span class="sk-6f42c1-ffc799">highWaterMark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">4096</span><span class="sk-24292e-fff"> });</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now, the stream can be read as a stream of bytes rather than a stream of distinct JavaScript values, and the individual chunks can be coalesced internally into 4096 byte chunks, making it possible to optimize the reads much more efficiently. Rather than reading each individual enqueued chunk one at a time, the ReadableStream will proactively call <code>pull()</code> repeatedly until the highWaterMark is reached. Reads then do not have to ask the stream for one chunk of data at a time.</p>
 <p>While it would be best for the rendering pipeline to be using byte streams and paying attention to back pressure signals more, our implementation can still be tuned to better handle cases like this.</p>

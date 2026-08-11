@@ -13,8 +13,30 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">marek</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> ss </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">tMn dport </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-005cc5-ffc799">443</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> cat</span></span>
 <span class="line"><span class="sk-24292e-fff">tcp   </span><span class="sk-005cc5-fff">ESTAB</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799">  	0</span><span class="sk-005cc5-ffc799"> 192.168</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.143</span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff">enx2800af081bee</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">57756</span><span class="sk-005cc5-ffc799"> 104.28</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">152.1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">443</span></span>
 <span class="line"><span class="sk-24292e-fff">tcp   </span><span class="sk-005cc5-fff">ESTAB</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799">  	0</span><span class="sk-005cc5-ffc799">       192.168</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">1.149</span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff">wlp0s20f3</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">44719</span><span class="sk-005cc5-ffc799"> 104.28</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">152.1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">443</span></span>
-<span class="line"><span class="sk-24292e-fff">mptcp </span><span class="sk-005cc5-fff">ESTAB</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799">  	0</span><span class="sk-005cc5-ffc799">                 192.168</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.143</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">57756</span><span class="sk-005cc5-ffc799"> 104.28</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">152.1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">443</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">mptcp </span><span class="sk-005cc5-fff">ESTAB</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799">  	0</span><span class="sk-005cc5-ffc799">                 192.168</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.143</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">57756</span><span class="sk-005cc5-ffc799"> 104.28</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">152.1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">443</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Here you can see a single MPTCP connection, composed of two underlying TCP flows.</p>
 <h2>MPTCP aspirations</h2>
 <p>Being able to separate the lifetime of a connection from the lifetime of a flow allows MPTCP to address two problems present in classical TCP: aggregation and mobility.</p>
@@ -37,25 +59,41 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># </span><span class="sk-6f42c1-ffc799">Linux</span><span class="sk-24292e-fff"> server sysctl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> useful </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-005cc5-fff"> ECMP</span><span class="sk-24292e-fff"> or </span><span class="sk-6f42c1-ffc799">Anycast</span><span class="sk-24292e-fff"> servers</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> sysctl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">w net</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">mptcp</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">allow_join_initial_addr_port</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There is also a second way to advertise a listening IP/port. During the lifetime of a connection, a peer can send an ADD-ADDR MPTCP signal which advertises a listening IP/port. This can be managed on Linux by <code>ip mptcp endpoint ... signal</code>, like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># </span><span class="sk-6f42c1-ffc799">Linux</span><span class="sk-24292e-fff"> server </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> extra listening address</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> ip mptcp endpoint add </span><span class="sk-005cc5-ffc799">192.51</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">100.1</span><span class="sk-24292e-fff"> dev eth0 port </span><span class="sk-005cc5-ffc799">4321</span><span class="sk-24292e-fff"> signal</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With such a config, a Linux peer (typically server) will report the additional IP/port with ADD-ADDR MPTCP signal in an ACK packet, like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">host </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> host</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Flags</span><span class="sk-24292e-fff"> [</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">], ack </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, win </span><span class="sk-005cc5-ffc799">8</span><span class="sk-24292e-fff">, options [mptcp </span><span class="sk-005cc5-ffc799">30</span><span class="sk-24292e-fff"> add</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">addr v1 id </span><span class="sk-005cc5-ffc799">1</span><span class="sk-005cc5-ffc799"> 192.51</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">100.1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">4321</span><span class="sk-24292e-fff"> hmac 0x</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">,nop,nop], length </span><span class="sk-005cc5-ffc799">0</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>It's important to realize that either peer can send ADD-ADDR messages. Unusual as it might sound, it's totally fine for the client to advertise extra listening addresses. The most common scenario though, consists of either nobody, or just a server, sending ADD-ADDR.</p>
 <p>Technically, to launch an MPTCP socket on Linux, you just need to replace IPPROTO_TCP with IPPROTO_MPTCP in the application code:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">IPPROTO_MPTCP</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 262</span></span>
 <span class="line"><span class="sk-24292e-fff">sd </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">AF_INET</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">SOCK_STREAM</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">IPPROTO_MPTCP</span><span class="sk-24292e-fff">)</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In practice, though, this introduces some changes to the sockets API. Currently not all setsockopt's work yet — like <code>TCP_USER_TIMEOUT</code>. Additionally, at this stage, MPTCP is incompatible with kTLS.</p>
 <h2>Path manager / scheduler</h2>
@@ -65,7 +103,11 @@
 <p>On Linux, path manager is an operating system feature, not an application feature. The in-kernel path manager requires some configuration — it must know which IP addresses and interfaces are okay to start new subflows. This is configured with <code>ip mptcp endpoint ... subflow</code>, like:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> ip mptcp endpoint add dev wlp1s0 </span><span class="sk-005cc5-ffc799">192.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">2.3</span><span class="sk-24292e-fff"> subflow  # </span><span class="sk-6f42c1-ffc799">Linux</span><span class="sk-24292e-fff"> client</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This informs the path manager that we (typically a client) own a 192.0.2.3 IP address on interface wlp1s0, and that it's fine to use it as source of a new subflow. There are two additional flags that can be passed here: "backup" and "fullmesh". Maintaining these <code>ip mptcp endpoints</code> on a client is annoying. They need to be added and removed every time networks change. Fortunately, <a href="https://ubuntu.com/core/docs/networkmanager" target="_blank" rel="noopener noreferrer"><u>NetworkManager</u></a> from 1.40 supports managing these by default. If you want to customize the "backup" or "fullmesh" flags, you can do this here (see <a href="https://networkmanager.dev/docs/api/1.44.4/settings-connection.html#:~:text=mptcp-flags" target="_blank" rel="noopener noreferrer"><u>the documentation</u></a>):</p>
 <div class="emdash-code">
@@ -73,12 +115,20 @@
 <span class="line"><span class="sk-24292e-fff"># set </span><span class="sk-032f62-99ffe4">"subflow"</span><span class="sk-24292e-fff"> on all managed </span><span class="sk-032f62-99ffe4">"ip mptcp endpoints"</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799"> 0x22</span><span class="sk-24292e-fff"> is the default</span><span class="sk-d73a49-a0a0a0">.</span></span>
 <span class="line"><span class="sk-24292e-fff">[connection]</span></span>
 <span class="line"><span class="sk-24292e-fff">connection</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">mptcp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">flags</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">0x22</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Path manager also takes a "limit" setting, to set a cap of additional subflows per MPTCP connection, and limit the received ADD-ADDR messages, like:&nbsp;</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> ip mptcp limits set subflow </span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff"> add_addr_accepted </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">  # </span><span class="sk-6f42c1-ffc799">Linux</span><span class="sk-24292e-fff"> client</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>I experimented with the "mobility" use case on my Ubuntu 22 Linux laptop. I repeatedly enabled and disabled Wi-Fi and Ethernet. On new kernels (v6.12), it works, and I was able to hold a reliable MPTCP connection over many interface changes. I was <a href="https://github.com/multipath-tcp/mptcp_net-next/issues/534" target="_blank" rel="noopener noreferrer"><u>less lucky with the Ubuntu v6.8</u></a> kernel. Unfortunately, the <a href="https://github.com/multipath-tcp/mptcp_net-next/issues/536" target="_blank" rel="noopener noreferrer"><u>default path manager on Linux</u></a> client only works when the flag "<em>Do not attempt to establish new subflows to this address and port</em>" is cleared on the server. Server-announced ADD-ADDR don't result in new subflows created, unless <code>ip mptcp endpoint</code> has a <code>fullmesh</code> flag.</p>
 <p>It feels like the underlying MPTCP transport code works, but the path manager requires a bit more intelligence. With a new kernel, it's possible to get the "interactive" case working out of the box, but not for the ADD-ADDR case.&nbsp;</p>
@@ -86,7 +136,11 @@
 <p>Linux allows for two implementations of a path manager component. It can either use built-in kernel implementation (default), or userspace netlink daemon.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> sysctl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">w net</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">mptcp</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">pm_type</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> # </span><span class="sk-d73a49-ffc799">use</span><span class="sk-24292e-fff"> userspace path manager</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>However, from what I found there is no serious implementation of configurable userspace path manager. The existing <a href="https://github.com/multipath-tcp/mptcpd/blob/main/plugins/path_managers/sspi.c" target="_blank" rel="noopener noreferrer"><u>implementations don't do much</u></a>, and the API <a href="https://github.com/multipath-tcp/mptcp_net-next/issues/533" target="_blank" rel="noopener noreferrer"><u>seems</u></a> <a href="https://github.com/multipath-tcp/mptcp_net-next/issues/532" target="_blank" rel="noopener noreferrer"><u>immature</u></a> yet.</p>
 <h2>Scheduler and BPF extensions</h2>
@@ -97,7 +151,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">int sock </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> socket</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">AF_MULTIPATH</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">SOCK_STREAM</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">connectx</span><span class="sk-24292e-fff">(sock, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">cid1);</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">connectx</span><span class="sk-24292e-fff">(sock, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">cid2);</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This powerful API is hard to use though, as it would require every application to listen for network changes. Fortunately, macOS and iOS also expose higher-level APIs. One <a href="https://github.com/mptcp-apps/mptcp-hello/blob/main/c/macOS/main.c" target="_blank" rel="noopener noreferrer"><u>example is nw_connection</u></a> in C, which uses nw_parameters_set_multipath_service.</p>
 <p>Another, more common example is using <code>Network.framework</code>, and would <a href="https://gist.github.com/majek/cb54b537c74506164d2a7fa2d6601491" target="_blank" rel="noopener noreferrer"><u>look like this</u></a>:</p>
@@ -105,7 +163,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> parameters </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> NWParameters</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">tcp</span></span>
 <span class="line"><span class="sk-24292e-fff">parameters</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">multipathServiceType </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> .</span><span class="sk-24292e-fff">interactive</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> connection </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> NWConnection</span><span class="sk-24292e-fff">(host</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> host, port</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> port, using</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> parameters) </span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The API supports three MPTCP service type modes:</p>
 <ul>

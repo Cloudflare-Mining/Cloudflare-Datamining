@@ -17,8 +17,30 @@
 <p>The <a href="https://network.status-ovhcloud.com/incidents/qgb1ynp8x0c4" target="_blank" rel="noopener noreferrer"><u>postmortem</u></a> published by OVHcloud noted that the incident was caused by “<em>an issue in a network configuration mistakenly pushed by one of our peering partner[s]</em>” and that “<em>We immediately reconfigured our network routes to restore traffic.</em>” One possible explanation for the backbone incident may be a BGP route leak by the mentioned peering partner, where OVHcloud could have accepted a full Internet table from the peer and therefore overwhelmed their network or the peering partner’s network with traffic, or caused unexpected internal BGP route updates within AS16276.</p>
 <p>Upon investigating what route leak may have caused this incident impacting OVHcloud, we found evidence of a maximum prefix-limit threshold being breached on our peering with <a href="https://radar.cloudflare.com/as49981" target="_blank" rel="noopener noreferrer"><u>Worldstream (AS49981)</u></a> in Amsterdam.&nbsp;</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Oct 30 13:16:53  edge02.ams01 rpd[9669]: RPD_BGP_NEIGHBOR_STATE_CHANGED: BGP peer 141.101.65.53 (External AS 49981) changed state from Established to Idle (event PrefixLimitExceeded) (instance master)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>Oct 30 13:16:53  edge02.ams01 rpd[9669]: RPD_BGP_NEIGHBOR_STATE_CHANGED: BGP peer 141.101.65.53 (External AS 49981) changed state from Established to Idle (event PrefixLimitExceeded) (instance master)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As the number of received prefixes exceeded the limits configured for our peering session with Worldstream, the BGP session automatically entered an idle state. This prevented the route leak from impacting Cloudflare’s network. In analyzing <a href="https://datatracker.ietf.org/doc/html/rfc7854" target="_blank" rel="noopener noreferrer"><u>BGP Monitoring Protocol (BMP)</u></a> data from AS49981 prior to the automatic session shutdown, we were able to confirm Worldstream was sending advertisements with AS paths that contained their upstream Tier 1 transit provider.</p>
 <p>During this time, we also detected over 500,000 BGP announcements from AS49981, as Worldstream was announcing routes to many of their peers, visible on <a href="https://radar.cloudflare.com/routing/as49981?dateStart=2024-10-30&amp;dateEnd=2024-10-30#bgp-announcements" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

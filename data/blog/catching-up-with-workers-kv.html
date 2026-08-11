@@ -8,25 +8,59 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// later</span></span>
 <span class="line"></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> index </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(“index.html”);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> index </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(“index.html”);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>Pretty straightforward. But as you can see from this example, you may store different kinds of content in KV, even if the type is identical. All of the values are strings, but one is HTML, one is CSS, and one is JavaScript. If we were going to serve this content to users, we would have to construct a response. And when we do, we have to let the client know what the content type of that request is: text/html for HTML, text/css for CSS, and text/javascript for JavaScript. If we serve the incorrect content type to our clients, they won’t display the pages correctly.</p>
 <p>One possible solution to this problem is using the <a href="https://www.npmjs.com/package/mime" target="_blank" rel="noopener noreferrer">mime package from npm</a>. This lets us write code that looks like this:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// pathKey is a variable with a value like “index.html”</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> mimeType</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> mime.</span><span class="sk-6f42c1-ffc799">getType</span><span class="sk-24292e-fff">(pathKey) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> ‘text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">plain’</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> mimeType</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> mime.</span><span class="sk-6f42c1-ffc799">getType</span><span class="sk-24292e-fff">(pathKey) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> ‘text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">plain’</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nice and easy. But there are some drawbacks. First of all, because we have to detect the content type at runtime which means we’re figuring this out on every request. It would be nicer to figure it out only once instead. Second, if we look at how the package implements getType, it does this by <a href="https://github.com/broofa/mime/blob/d97bfaeabf8b5ff0124692244f921836ea405c41/types/standard.js" target="_blank" rel="noopener noreferrer">including an array of possible extensions and their types</a>. This means that this array is included in our worker, taking up 9kb of space. That’s also less than ideal.</p>
 <p>But now, we have a better way. Workers KV will now allow you to add some extra JSON to each key/value pair, to use however you’d like. So we could start inserting the contents of those files like this, instead:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(“index.html”, someHtmlContent, {“Content-Type”: “text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">html”});</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(“index.css”, someCssContent, {“Content-Type”: “text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">css”});</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(“index.js”, someJsContent, {“Content-Type”: “text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">javascript”});</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(“index.js”, someJsContent, {“Content-Type”: “text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">javascript”});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>You could determine these content types in various ways: by looking at the file extension like the mime package, or by using a library that inspects the file’s contents to figure out its type like libmagic. Regardless, the type would be stored in KV alongside the contents of the file. This way, there’s no need to recompute the type on every request. Additionally, the detection code would live in your uploading tool, not in your worker, creating a smaller bundle. Win-win!</p>
 <p>The worker code would pass along this metadata by using a new method:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> {value, metadata} </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">getWithMetadata</span><span class="sk-24292e-fff">(“index.js”);</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> {value, metadata} </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> contents.</span><span class="sk-6f42c1-ffc799">getWithMetadata</span><span class="sk-24292e-fff">(“index.js”);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here, <code>value</code> would have the contents, like before. But <code>metadata</code> contains the JSON of the metadata that was stored: <code>metadata[“Content-Type”]</code>would return <code>“text/javascript”</code>. You’ll also see this metadata come back when you make a list request as well.</p>
 <p>Given that you can store arbitrary JSON, it’s useful for more than just content types: we’ve had folks <a href="https://community.cloudflare.com/t/etag-and-content-type-support-in-kv-storage/150331?u=sklabnik" target="_blank" rel="noopener noreferrer">post to the forums asking about etags</a>, for example. We’re excited to see what you do with this new capability!</p>

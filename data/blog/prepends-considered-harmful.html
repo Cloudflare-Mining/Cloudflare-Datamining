@@ -30,8 +30,30 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> COMMUNITIES:</span><span class="sk-032f62-99ffe4"> 64500:13335</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Multi</span><span class="sk-032f62-99ffe4"> Exit</span><span class="sk-032f62-99ffe4"> Discriminator</span><span class="sk-24292e-fff"> (MED): 100</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Network</span><span class="sk-032f62-99ffe4"> Layer</span><span class="sk-032f62-99ffe4"> Reachability</span><span class="sk-032f62-99ffe4"> Information</span><span class="sk-24292e-fff"> (NLRI):</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>As you can see, BGP messages contain more than just the IP prefix (the NLRI bit) and the path, but also a bunch of other metadata that provides additional information about the path. Other fields include communities (more on that later), as well as MED, or origin code. MED is a suggestion to other directly connected networks on which path should be taken if multiple options are available, and the lowest value wins. The origin code can be one of three values: IGP, EGP or Incomplete. IGP will be set if you originate the prefix through BGP, EGP is no longer used (it’s an ancient routing protocol), and Incomplete is set when you distribute a prefix into BGP from another routing protocol (like IS-IS or OSPF).</p>
 <p>Now that source A knows how to get to Destination B through two different networks, let's talk about traffic engineering!</p>
 <h2>Traffic engineering</h2>
@@ -64,7 +86,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> COMMUNITIES:</span><span class="sk-032f62-99ffe4"> 64500:13335</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Multi</span><span class="sk-032f62-99ffe4"> Exit</span><span class="sk-032f62-99ffe4"> Discriminator</span><span class="sk-24292e-fff"> (MED): 100</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Network</span><span class="sk-032f62-99ffe4"> Layer</span><span class="sk-032f62-99ffe4"> Reachability</span><span class="sk-032f62-99ffe4"> Information</span><span class="sk-24292e-fff"> (NLRI):</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>AFTER:</p>
 <div class="emdash-code">
@@ -77,7 +103,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> COMMUNITIES:</span><span class="sk-032f62-99ffe4"> 64500:13335</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Multi</span><span class="sk-032f62-99ffe4"> Exit</span><span class="sk-032f62-99ffe4"> Discriminator</span><span class="sk-24292e-fff"> (MED): 100</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    Network</span><span class="sk-032f62-99ffe4"> Layer</span><span class="sk-032f62-99ffe4"> Reachability</span><span class="sk-032f62-99ffe4"> Information</span><span class="sk-24292e-fff"> (NLRI):</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Specifically, operators can do AS-path prepending. When doing AS-path prepending, an operator adds additional autonomous systems to the path (usually the operator uses their own AS, but that’s not enforced in the protocol). This way, an AS-path can go from a length of 1 to a length of 255. As the length has now increased dramatically, that specific path for the route will not be chosen. By changing the AS-path advertised to different peers, an operator can control the traffic flows coming into their network.</p>
 <p>Unfortunately, prepending has a catch: To be the deciding factor, all the other attributes need to be equal. This is rarely true, especially in large networks that are able to choose from many possible routes to a destination.</p>
@@ -156,7 +186,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        as-path-prepend</span><span class="sk-032f62-99ffe4"> "13335 13335"</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        accept</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="264" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=640&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=750&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=828&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1080&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1280&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1430&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - nVDqQ5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1321&amp;h=487&amp;f=webp" data-lightbox-width="1321" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="264" class="pt-portable-image-media"></div>
@@ -172,7 +206,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">        community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> COGENT_LPREF70</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">        accept</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The above configuration changes the traffic flow to this:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

@@ -55,8 +55,30 @@
 <p>재귀 라이브러리는 쿼리의 질문에 대한 대답을 찾는 방법을 알고 있기 때문에 BigPineapple의 DNS 브레인이라고 할 수 있습니다. 루트에서 시작해 클라이언트 쿼리를 하부 쿼리로 세분화하고 이를 이용해 인터넷 상의 다양한 권한 있는 네임서버에서 재귀적으로 정보를 수집합니다. 이 프로세스를 통한 결과물이 바로 응답입니다. async/await를 통해 다음과 같은 함수로 요약할 수 있습니다.</p>
 <p>함수에는 주어진 요청에 대한 응답을 생성하는 데 필요한 모든 논리가 있지만, 단독으로는 I/O를 수행하지 않습니다. 그래서 업스트림의 권한 있는 네임서버와 비동기식으로 DNS 메시지를 교환할 방법을 알고 있는 Exchanger(교환자) 트레잇(Rust 인터페이스)을 전달합니다. 보통 교환자는 다양한 대기 시점에서 호출됩니다. 예를 들어, 재귀가 시작되었을 때 교환자는 가장 먼저 도메인에 가장 가깝게 캐시된 위임을 찾습니다. 캐시에 최종 위임이 없다면 더 진행하기 전에 이 도메인을 담당하는 이름 서버를 요청하여 응답을 기다립니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Request,</span><span class="sk-032f62-99ffe4"> Exchanger</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">→</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Respons</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>재귀적 DNS 논리에서 "응답을 기다리는" 부분을 분리하여 설계한 덕분에, 교환자를 모킹 구현하여 테스트를 진행하기가 훨씬 수월합니다. 또한 다수의 콜백에 흩어져 있지 않고 연속적으로 작성되어 있어 재귀적 반복 코드(및 특히 DNSSEC 유효성 검사 논리)를 확인하기가 더 쉽습니다.</p>
 <p>완전히 처음부터 DNS 재귀 확인자를 작성하기란 쉽지 않습니다!</p>
 <p>DNSSEC 유효성 검사가 복잡성하기도 하고, 다양한 RFC 비호환 서버, 포워더, 방화벽 등에 필수 "회피책"이 필요하기 때문입니다. 그래서 테스트하기 수월하도록 <a href="https://github.com/CZ-NIC/deckard" target="_blank" rel="noopener noreferrer">deckard</a>를 Rust로 가져왔습니다. 이와 더불어 새로운 비동기 재귀 라이브러리로 마이그레이션을 시작했을 때, "섀도우" 모드로 먼저 실행했습니다. 프로덕션 서비스의 실제 쿼리 샘플을 처리하여 차이를 비교한 것입니다. 이전에 Cloudflare의 권한 있는 DNS 서비스에서도 이렇게 했던 적이 있는데, 재귀 서비스에서는 조금 더 어려웠습니다. 재귀 서비스에서는 인터넷의 모든 데이터를 찾아야 했고, 현지화나 부하 분산 등의 이유로 권한 있는 네임서버가 동일한 쿼리에 다르게 응답해 긍정 오류가 많이 발생했기 때문이었습니다.</p>
@@ -93,7 +115,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostOk</span><span class="sk-24292e-fff">  =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Ready,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">    	    HostEof</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Pending,</span></span>
 <span class="line"><span class="sk-24292e-fff">	}</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 모든 복잡한 내용이 사용하기 쉬운 API를 통해 게스트 비동기식 런타임에 캡슐화됩니다. 그래서 게스트 앱은 근본적인 세부 정보를 신경 쓰지 않고도 정규 비동기 함수에 액세스할 수 있습니다.</p>
 <h2>끝(이 아님)</h2>

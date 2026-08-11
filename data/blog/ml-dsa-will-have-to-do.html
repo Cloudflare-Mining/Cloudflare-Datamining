@@ -8,665 +8,206 @@
 <p>Let’s have a look at the signature algorithms in detail. After that we’ll look at the timeline for their availability, and the reasons why we still need them.</p>
 <h2>The signature algorithms</h2>
 <p>In the table below, we compare the candidate signature algorithms that progressed to the third round (marked by 🤔), with classical algorithms vulnerable to quantum attack (marked by ❌), and the post-quantum algorithms that are already standardized ( ✅) or soon will be (📝). Each candidate proposes several variants. We list the most relevant variants to TLS, the protocol used to secure connections on the Internet. To explore all variants, check out <a href="https://thomwiggers.nl" target="_blank" rel="noopener noreferrer"><u>Thom Wigger</u></a>s' <a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>signatures zoo</u></a>.</p>
-<div id="html-block-bs67vc6ig" class="html-block">
-	<style>
-		#html-block-bs67vc6ig .tg {
-			border-collapse: collapse;
-			border-spacing: 0;
-		}
-
-		#html-block-bs67vc6ig .tg td {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-bs67vc6ig .tg th {
-			border-color: black;
-			border-style: solid;
-			border-width: 1px;
-			font-family: Arial, sans-serif;
-			font-size: 14px;
-			font-weight: normal;
-			overflow: hidden;
-			padding: 10px 5px;
-			word-break: normal;
-		}
-
-		#html-block-bs67vc6ig .tg .tg-9ojm {
-			background-color: #0F0;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-2z78 {
-			background-color: #0F0;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-y2nm {
-			background-color: #FFE400;
-			border-color: inherit;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-baqh {
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-dov9 {
-			background-color: #FFE400;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-cvqw {
-			background-color: #F00;
-			color: #FFF;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-c3ow {
-			border-color: inherit;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-nbj5 {
-			background-color: #FFF;
-			border-color: inherit;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-nq8s {
-			background-color: #ffffff;
-			border-color: inherit;
-			font-size: 16px;
-			font-weight: bold;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-7btt {
-			border-color: inherit;
-			font-weight: bold;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-amwm {
-			font-weight: bold;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-ocy3 {
-			background-color: #0F0;
-			border-color: inherit;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-gdr6 {
-			background-color: #FF0;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-w5hb {
-			background-color: #F90;
-			color: #FFF;
-			text-align: center;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-ezr1 {
-			background-color: #0F0;
-			border-color: inherit;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-hw7o {
-			background-color: #FF0;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-ez01 {
-			background-color: #F90;
-			color: #FFF;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-fcih {
-			background-color: #C0FF00;
-			text-align: left;
-			vertical-align: top
-		}
-
-		#html-block-bs67vc6ig .tg .tg-7yig {
-			background-color: #FFF;
-			text-align: center;
-			vertical-align: top
-		}
-	</style>
-	<figure class="table" style="width:743px">
-		<table class="tg ck-table-resized" style="table-layout:fixed">
-			<colgroup>
-				<col style="width:14.29%">
-				<col style="width:14.29%">
-				<col style="width:14.29%">
-				<col style="width:14.29%">
-				<col style="width:14.29%">
-				<col style="width:14.29%">
-				<col style="width:14.26%">
-			</colgroup>
-			<thead>
-				<tr>
-					<th class="tg-nq8s">
-						&nbsp;
-					</th>
-					<th class="tg-7btt">
-						&nbsp;
-					</th>
-					<th class="tg-7btt">
-						&nbsp;
-					</th>
-					<th class="tg-7btt" colspan="2">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>Sizes</strong></span><span style="font-style:normal;font-weight:400;text-decoration:none"> (bytes)</span></span>
-					</th>
-					<th class="tg-amwm" colspan="2">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>CPU time</strong></span><span style="font-style:normal;font-weight:400;text-decoration:none"> (lower is better)</span></span>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="tg-7btt">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>Family</strong></span></span>
-					</td>
-					<td class="tg-7btt">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>Name</strong></span><span style="font-style:normal;font-weight:400;text-decoration:none"> </span><span style="font-style:normal;text-decoration:none"><strong><sub>variant</sub></strong></span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">A</span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Public key</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Signature</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Signing</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Verification</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-nbj5">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Elliptic curves</span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Ed25519</span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">❌</span></span>
-					</td>
-					<td class="tg-ocy3">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
-					</td>
-					<td class="tg-2z78">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">64</span></span>
-					</td>
-					<td class="tg-2z78">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.15</span></span>
-					</td>
-					<td class="tg-2z78">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.3</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-nbj5">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Factoring</span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">RSA <sub>2048</sub></span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">❌</span></span>
-					</td>
-					<td class="tg-ocy3">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">272</span></span>
-					</td>
-					<td class="tg-2z78">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">256</span></span>
-					</td>
-					<td class="tg-gdr6">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">80</span></span>
-					</td>
-					<td class="tg-2z78">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.4</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-nbj5">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Lattices</span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ML-DSA <sub>44</sub></span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
-					</td>
-					<td class="tg-y2nm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,312</span></span>
-					</td>
-					<td class="tg-w5hb">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">2,420</span></span>
-					</td>
-					<td class="tg-2z78">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1 (baseline)</span></span>
-					</td>
-					<td class="tg-2z78">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1 (baseline)</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-nbj5" rowspan="4">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Symmetric</span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SLH-DSA <sub>128s</sub></span></span>
-					</td>
-					<td class="tg-c3ow">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
-					</td>
-					<td class="tg-ezr1">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">7,856</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">14,000</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">40</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SLH-DSA <sub>128f</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">17,088</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">720</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">110</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SLH-DSA <sub>128-24</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">📝</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">3,856</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">7,000,000 </span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">⚠️</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">4</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">LMS <sub>M24_H20_W8</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">48</span></span>
-					</td>
-					<td class="tg-dov9">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,112</span></span>
-					</td>
-					<td class="tg-fcih">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2.9</span></span><span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none"> </span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">⚠️</span></span>
-					</td>
-					<td class="tg-fcih">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">8.4</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-7yig">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Lattices</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">FN-DSA <sub>512</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">📝</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">897</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">666</span></span>
-					</td>
-					<td class="tg-fcih">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">3 ⚠️</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.7</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-7yig">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Lattices</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">HAWK <sub>512</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,024</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">555</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.25</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.2</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-7yig" rowspan="3">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Proof of knowledge</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">MQOM <sub>L1-gf16-fast-5r</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">60</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">3,280</span></span>
-					</td>
-					<td class="tg-fcih">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">8</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">20</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SDitH <sub>SDitH2-L1-gf2-fast</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">70</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">4,484</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">15</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">40</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">FAEST <sub>EM-128f</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">5,060</span></span>
-					</td>
-					<td class="tg-fcih">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">4.2</span></span>
-					</td>
-					<td class="tg-fcih">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">9</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-7yig">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Isogeny</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SQIsign <sub>I</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">65</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">148</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">300 ⚠️</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">50</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-7yig" rowspan="8">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Multivariate</span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">MAYO <sub>one</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,420</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">454</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2.1</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.4</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">MAYO <sub>two</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">4,912</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">186</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.1</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.8</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QR-UOV&nbsp;</span></span><br>
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"><sub>I-(127 156 54 3)</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">24,225</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">200</span></span>
-					</td>
-					<td class="tg-fcih">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">9.3</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">20</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SNOVA <sub>(24,5,4)</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-hw7o">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,016</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">248</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.2</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.7</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SNOVA <sub>(25,8,3)</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-ez01">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">2,320</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">165</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.5</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SNOVA <sub>(37,17,2)</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">9,842</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">124</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.8</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.3</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">UOV <sub>Is-pkc</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">66,576</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">96</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.3</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2.4</span></span>
-					</td>
-				</tr>
-				<tr>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">UOV <sub>Ip-pkc</sub></span></span>
-					</td>
-					<td class="tg-baqh">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
-					</td>
-					<td class="tg-cvqw">
-						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">43,576</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">128</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.3</span></span>
-					</td>
-					<td class="tg-9ojm">
-						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2</span></span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</figure>
+<div id="html-block-a7ujtolu6" class="html-block">
+	<table class="heatmap">
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th colspan="2">Sizes (bytes)</th>
+				<th colspan="2">CPU time (lower is better)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="font-bold">Family</td>
+				<td class="font-bold">Name variant</td>
+				<td>A</td>
+				<td>Public key</td>
+				<td>Signature</td>
+				<td>Signing</td>
+				<td>Verification</td>
+			</tr>
+			<tr>
+				<td>Elliptic curves</td>
+				<td>Ed25519</td>
+				<td>❌</td>
+				<td class="green">32</td>
+				<td class="green">64</td>
+				<td class="green">0.15</td>
+				<td class="green">1.3</td>
+			</tr>
+			<tr>
+				<td>Factoring</td>
+				<td>RSA 2048</td>
+				<td>❌</td>
+				<td class="green">272</td>
+				<td class="green">256</td>
+				<td class="yellow">80</td>
+				<td class="green">0.4</td>
+			</tr>
+			<tr>
+				<td>Lattices</td>
+				<td>ML-DSA 44</td>
+				<td>✅</td>
+				<td class="yellow">1,312</td>
+				<td class="orange">2,420</td>
+				<td class="green">1 (baseline)</td>
+				<td class="green">1 (baseline)</td>
+			</tr>
+			<tr>
+				<td rowspan="4">Symmetric</td>
+				<td>SLH-DSA 128s</td>
+				<td>✅</td>
+				<td class="green">32</td>
+				<td class="red">7,856</td>
+				<td class="red">14,000</td>
+				<td class="yellow">40</td>
+			</tr>
+			<tr>
+				<td>SLH-DSA 128f</td>
+				<td>✅</td>
+				<td class="green">32</td>
+				<td class="red">17,088</td>
+				<td class="orange">720</td>
+				<td class="orange">110</td>
+			</tr>
+			<tr>
+				<td>SLH-DSA 128-24</td>
+				<td>📝</td>
+				<td class="green">32</td>
+				<td class="orange">3,856</td>
+				<td class="red">7,000,000 ⚠️</td>
+				<td class="green">4</td>
+			</tr>
+			<tr>
+				<td>LMS M24_H20_W8</td>
+				<td>✅</td>
+				<td class="green">48</td>
+				<td class="yellow">1,112</td>
+				<td class="green-yellow">2.9 ⚠️</td>
+				<td class="green-yellow">8.4</td>
+			</tr>
+			<tr>
+				<td>Lattices</td>
+				<td>FN-DSA 512</td>
+				<td>📝</td>
+				<td class="yellow-green">897</td>
+				<td class="yellow-green">666</td>
+				<td class="green-yellow">3 ⚠️</td>
+				<td class="green">0.7</td>
+			</tr>
+			<tr>
+				<td>Lattices</td>
+				<td>HAWK 512</td>
+				<td>🤔</td>
+				<td class="yellow-green">1,024</td>
+				<td class="yellow-green">555</td>
+				<td class="green">0.25</td>
+				<td class="green">1.2</td>
+			</tr>
+			<tr>
+				<td rowspan="3">Proof of knowledge</td>
+				<td>MQOM L1-gf16-fast-5r</td>
+				<td>🤔</td>
+				<td class="green">60</td>
+				<td class="orange">3,280</td>
+				<td class="green-yellow">8</td>
+				<td class="yellow-green">20</td>
+			</tr>
+			<tr>
+				<td>SDitH SDitH2-L1-gf2-fast</td>
+				<td>🤔</td>
+				<td class="green">70</td>
+				<td class="red">4,484</td>
+				<td class="yellow-green">15</td>
+				<td class="orange">40</td>
+			</tr>
+			<tr>
+				<td>FAEST EM-128f</td>
+				<td>🤔</td>
+				<td class="green">32</td>
+				<td class="red">5,060</td>
+				<td class="green-yellow">4.2</td>
+				<td class="green-yellow">9</td>
+			</tr>
+			<tr>
+				<td>Isogeny</td>
+				<td>SQIsign I</td>
+				<td>🤔</td>
+				<td class="green">65</td>
+				<td class="green">148</td>
+				<td class="orange">300 ⚠️</td>
+				<td class="orange">50</td>
+			</tr>
+			<tr>
+				<td rowspan="8">Multivariate</td>
+				<td>MAYO one</td>
+				<td>🤔</td>
+				<td class="yellow-green">1,420</td>
+				<td class="green">454</td>
+				<td class="green">2.1</td>
+				<td class="green">0.4</td>
+			</tr>
+			<tr>
+				<td>MAYO two</td>
+				<td>🤔</td>
+				<td class="red">4,912</td>
+				<td class="green">186</td>
+				<td class="green">1.1</td>
+				<td class="green">0.8</td>
+			</tr>
+			<tr>
+				<td>QR-UOV I-(127 156 54 3)</td>
+				<td>🤔</td>
+				<td class="red">24,225</td>
+				<td class="green">200</td>
+				<td class="green-yellow">9.3</td>
+				<td class="yellow-green">20</td>
+			</tr>
+			<tr>
+				<td>SNOVA (24,5,4)</td>
+				<td>🤔</td>
+				<td class="yellow-green">1,016</td>
+				<td class="green">248</td>
+				<td class="green">1.2</td>
+				<td class="green">1.7</td>
+			</tr>
+			<tr>
+				<td>SNOVA (25,8,3)</td>
+				<td>🤔</td>
+				<td class="orange">2,320</td>
+				<td class="green">165</td>
+				<td class="green">1</td>
+				<td class="green">1.5</td>
+			</tr>
+			<tr>
+				<td>SNOVA (37,17,2)</td>
+				<td>🤔</td>
+				<td class="red">9,842</td>
+				<td class="green">124</td>
+				<td class="green">0.8</td>
+				<td class="green">1.3</td>
+			</tr>
+			<tr>
+				<td>UOV Is-pkc</td>
+				<td>🤔</td>
+				<td class="red">66,576</td>
+				<td class="green">96</td>
+				<td class="green">0.3</td>
+				<td class="green">2.4</td>
+			</tr>
+			<tr>
+				<td>UOV Ip-pkc</td>
+				<td>🤔</td>
+				<td class="red">43,576</td>
+				<td class="green">128</td>
+				<td class="green">0.3</td>
+				<td class="green">2</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <p>A few more remarks on this table: Most candidates have multiple variants in every security level. We show the most relevant variants for TLS at the 128-bit security level, the gold standard for security. CPU times are taken from the <a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>signatures zoo</u></a> in June 2026, which collected them from the round two submission documents and later advances. Candidates are allowed to make changes for the third round, which will influence these numbers. Some will improve (both in compute and size), whereas others will regress to counter new attacks. Check out the zoo for the latest numbers. We marked FN-DSA and SQIsign signing with a&nbsp; ⚠️️, as both are hard to implement in a fast and <a href="https://blog.cloudflare.com/kyber-isnt-broken/#side-channel-attacks" target="_blank" rel="noopener noreferrer"><u>timing side-channel secure</u></a> manner. LMS signing has a ⚠️, as secure LMS signing requires keeping state across signatures, and the listed signing time assumes a 32MB cache. The 128-24 variant of SLH-DSA is marked with a ⚠️️ as it’s meant to create fewer than 2^24 signatures.</p>
 <h2>No "all-star" algorithm</h2>

@@ -46,8 +46,30 @@
 <p>除了站点地图外，智能体也可以直接从 HTTP 响应标头发现重要资源，具体是使用 Link 响应头 (<a href="https://www.rfc-editor.org/rfc/rfc8288" target="_blank" rel="noopener noreferrer"><u>RFC 8288</u></a>)。与埋藏在 HTML 中的链接不同，Link 头是 HTTP 响应本身的一部分，意味着智能体可以找到指向资源的链接，而无需解析任何 HTML 标记：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-005cc5-fff"> OK</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Link</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> &lt;</span><span class="sk-d73a49-a0a0a0">/.</span><span class="sk-24292e-fff">well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">api</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">catalog&gt;; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"api-catalog"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h3>内容可访问性</h3>
 <p>让智能体访问您的网站是一回事。确保它能够真正读取您的内容是另一回事。</p>
 <p>2024 年 9 月（说起来像是很久以前了，因为 AI 发展速度太快）， <a href="http://llms.txt" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> 曾被提议作为一种为网站提供 LLM 友好表示、并能够适应模型的上下文窗口的方式。<a href="https://llmstxt.org" target="_blank" rel="noopener noreferrer"><u>llms.txt</u></a> 是位于您网站根目录的一个纯文本文件，可为智能体提供结构化的阅读清单：网站是什么、网站包含哪些内容以及重要内容位于何处。可将其视为一份为 LLM 阅读而非为爬虫索引而编写的网站地图</p>
@@ -58,7 +80,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Getting</span><span class="sk-6f42c1-ffc799"> Started</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/start.md)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">API</span><span class="sk-6f42c1-ffc799"> Reference</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/docs/api.md)</span></span>
 <span class="line"><span class="sk-24292e-fff">## </span><span class="sk-6f42c1-ffc799">Changelog</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> [</span><span class="sk-6f42c1-ffc799">Release</span><span class="sk-6f42c1-ffc799"> Notes</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/changelog.md)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://blog.cloudflare.com/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>Markdown 内容协商</u></a>则更进一步。当智能体获取任何页面并发送一个 <code>Accept: text/markdown</code> 标头时，服务器会响应一个干净的 Markdown 版本，而不是 HTML。Markdown 版本需要的 token 要少得多 — 我们测量到某些情况下可减少多达 80% 的 token 消耗，从而使响应更快、更便宜，并且更有可能在其默认上下文窗口限制内消费完响应内容（大多数智能体工具均有默认限制）。</p>
 <p>默认情况下，我们只会检查站点是否正确处理了 Markdown 内容协商，而不检查 llms.txt。您可以定制扫描以包含 llms.txt。</p>
@@ -68,7 +94,11 @@
 <p><a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>内容信号（Content Signals）</u></a>让您更精确地定义内容使用规则。您可以精确定义 AI 可以对您的内容执行哪些操作，而不仅仅是允许或阻止。在您的 <code>robots.txt</code> 文件中使用 <code>Content-Signal</code> 指令，您可以独立控制三个方面：是否允许将您的内容用于 AI 训练（<code>ai-train</code>），是否允许将其用作推理和知识锚定 （<code>ai-input</code>）的 AI 输入，以及是否应将其显示在搜索结果中（<code>search</code>）：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> *</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>相反，<a href="https://blog.cloudflare.com/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>Web Bot Auth</u></a> IETF 草案标准允许友好机器人进行身份验证，并允许网站收到来自机器人的请求时予以识别。机器人使用私钥对其 HTTP 请求进行签名，接收端网站则使用该机器人发布的公钥来验证签名。</p>
 <p>这些公钥位于标准约定端点 <code>/.well-known/http-message-signatures-directory</code>，我们在扫描过程中会访问并验证该端点。</p>
@@ -110,7 +140,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>智能体在具备帮助其执行特定任务的<a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer"><u>智能体技能（Agent Skills）</u></a>时工作效果最佳——但智能体如何发现网站提供了哪些技能呢？我们建议网站可以在<a href="https://github.com/cloudflare/agent-skills-discovery-rfc" target="_blank" rel="noopener noreferrer"><code><u>.well-known/agent-skills/index.json</u></code></a> 中提供这些信息，告诉智能体该网站提供哪些技能以及在哪里可以找到这些技能。您可能注意到 <code>.well-known</code> 标准（RFC 8615）广泛应用于多个智能体和授权标准中。在此向 Cloudflare 的 Mark Nottingham（该标准的主编者）和其他 IETF 贡献者表示感谢！</p>
 <p>许多网站要求您先登录才能访问。这使得人类难以授权智能体代表自己访问这些网站，因此一些解决方案采取了存在安全风险的折衷做法：赋予智能体对用户已认证浏览器会话的访问权限。</p>
@@ -136,7 +170,11 @@
 <span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "url": "https://www.example.com",</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">          "options": {"agentReadiness": true}</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">        }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>以身作则：升级 Cloudflare Docs</h2>
 <p>在构建用于衡量互联网智能体就绪度的相关工具时，我们深知必须先确保自身服务符合规范、运行有序。我们的文档必须能被客户所使用的智能体轻松解析。</p>

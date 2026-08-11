@@ -36,8 +36,30 @@
 <span class="line"><span class="sk-24292e-fff">  }),</span></span>
 <span class="line"><span class="sk-24292e-fff">  …</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>もちろん、接続プーリングを無効にすると、各リクエストが最初にデータベースとの新しい接続を確立する必要があるため、全体的な遅延が増加します。これに対処するため、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>をその前面に配置しました。これにより、データベースサーバーへのトンネルを設定してCloudflareネットワーク全体の接続プールを維持するだけでなく、クエリキャッシュを追加して、パフォーマンスを大幅に向上させます。 </p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { buildConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'payload'</span></span>
@@ -56,7 +78,11 @@
 <span class="line"><span class="sk-24292e-fff">  }),</span></span>
 <span class="line"><span class="sk-24292e-fff">  …</span></span>
 <span class="line"><span class="sk-24292e-fff">});</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>D1を利用したデータベース</h3>
 <p>Postgresが機能しているため、次にSQLite上に構築されたCloudflareの<a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer"> マネージドサーバーレスデータベース</a> である<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u> D1</u></a> のサポートを追加したいと考えました。</p>
@@ -90,7 +116,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> mapToLibSql</span><span class="sk-24292e-fff">(executeFrom.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(statement</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">))</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> result</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>それ以外は、<a href="https://orm.drizzle.team/docs/connect-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u>D1バインディング</u></a>をDrizzleのコンストラクターに直接渡すことで動作させることができました。</p>
 <p>デプロイ中にデータベース移行を適用するために、Wranglerの 新しくリリースされた<a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga" target="_blank" rel="noopener noreferrer"><u>リモートバインディング</u></a>機能を使用して、同じバインディングでリモートデータベースに接続しました。こうすることで、データベースと対話できるようにAPIトークンを設定する必要はありませんでした。</p>
@@ -127,7 +157,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">        :</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(obj.body, { headers, status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff"> })</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>デプロイメント</h3>
 <p>データベースとストレージアダプターを配置し、Cloudflareの開発者プラットフォーム上で完全に動作する悪意のあるペイロードのインスタンスを正常に起動することができました。</p>
@@ -138,7 +172,11 @@
 <p>Drizzleはまだ<a href="https://github.com/drizzle-team/drizzle-orm/issues/2226" target="_blank" rel="noopener noreferrer"><u>D1セッションをサポートしていません</u></a>が、「ファーストプライマリ」タイプのセッションを使うことができます。このタイプでは、最初のクエリが常にプライマリインスタンスにヒットし、後続のクエリがレプリカのひとつにヒットする可能性があります。レプリカを使用するアダプターの更新は、D1セッションを直接渡すようにDrizzleの初期化を更新するだけの問題です：</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.drizzle </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> drizzle</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.binding.</span><span class="sk-6f42c1-ffc799">withSession</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"first-primary"</span><span class="sk-24292e-fff">), </span></span>
-<span class="line"><span class="sk-24292e-fff">{ logger, schema: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.schema });</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">{ logger, schema: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.schema });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>この単純な変更後、遅延がすぐに改善され、北米東部にあるデータベースに接続した場合、世界中からのリクエストのP50の実時間が60％短縮されました。リードレプリカは名前通り、読み取り専用のクエリのみに影響するため、書き込み操作は常にプライマリインスタンスに転送されますが、ここでのユースケースではトラフィックの大半が読み取りです。</p>
 <div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">

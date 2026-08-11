@@ -9,14 +9,40 @@
 <p>첫 번째 프로토콜 제안은 봇 운영자가 키를 호스팅하는 HTTP 엔드포인트를 참조하는 새로 정의된 HTTP 헤더 서명-에이전트를 제공하는 것이었습니다. IP 주소와 마찬가지로 기본적으로는 모두 허용이 있지만, 특정 운영자가 너무 많은 요청을 하는 경우, 레이트 리미팅을 높이고, 운영자에게 문의하는 등의 조치를 취하는 것이 좋습니다.</p>
 <p>다음은 <a href="https://help.shopify.com/en/manual/promoting-marketing/seo/crawling-your-store" target="_blank" rel="noopener noreferrer"><u>Shopify 온라인 스토어</u></a>의 예시입니다.</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://shopify.com"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://shopify.com"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>레지스트리 형식</h2>
 <p>이러한 점을 고려할 때, 다음과 같은 문제가 발생합니다. Cloudflare에서는 고객이나 소규모 원본에 종속되지 않는 개방형 큐레이션 생태계를 조성하면서 어떻게 합리적인 기본값으로 고객이 허용하고 싶은 트래픽을 제어할 수 있도록 보장할 수 있을까요?</p>
 <p>이러한 생태계는 IP 주소(예:<a href="https://github.com/antoinevastel/avastel-bot-ips-lists/blob/master/avastel-proxy-bot-ips-1day.txt" target="_blank" rel="noopener noreferrer"><u> avestel-bots-IP-lists</u></a>) 및 robots.txt(예:<a href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noopener noreferrer"><u> ai-robots-txt</u></a>)의 목록을 위해 존재합니다. 두 경우 모두 인터넷에서 표준 목록을 찾아 해당 IP의 트래픽을 허용하거나 허용하지 않도록 웹 사이트를 쉽게 구성할 수 있습니다. Nginx 또는 haproxy에 대한 직접 구성을 제공하며 이를 사용하여 Cloudflare 계정을 구성할 수 있습니다. 예를 들어, 아래와 같은 robots.txt를 가져올 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent: MyBadBot</span></span>
-<span class="line"><span class="sk-24292e-fff">Disallow: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">Disallow: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>여기서 레지스트리 형식이 등장하며, 서명 에이전트 키를 가리키는 URL 목록을 제공합니다.</p>
 <div class="emdash-code">
@@ -25,7 +51,11 @@
 <span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">autorag.ai.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">.well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">directory</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Test signature agent card</span></span>
-<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example.research.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">.well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">directory</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example.research.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">.well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">directory</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>끝입니다. 레지스트리에는 알려진 모든 서명 에이전트의 목록, 학술 연구 에이전트, 검색 에이전트를 위해 선별된 목록 등이 포함될 수 있습니다.</p>
 <p>누구나 이러한 목록을 유지 관리하고 호스팅할 수 있습니다. IP 또는 robots.txt list와 유사하게, 이러한 레지스트리는 모든 공개 파일 시스템에 호스팅할 수 있습니다. 즉, GitHub에 리포지토리를 만들거나, 파일을 Cloudflare R2에 저장하거나, 이메일 첨부 파일로 보낼 수 있습니다. Cloudflare는 이 레지스트리의 첫 번째 인스턴스 중 하나를 제공하여, 다른 사람들이 여기에 기여하거나 자신의 레지스트리를 구축할 때 참조할 수 있도록 하고자 합니다.&nbsp;</p>
@@ -57,7 +87,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "nbf"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1712793600</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "exp"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1715385600</span></span>
 <span class="line"><span class="sk-24292e-fff">  }]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>레지스트리 운영</h2>
 <p>Amazon Bedrock AgentCore는 대규모 AI 에이전트 구축 및 배포를 위한 에이전트 기반 플랫폼으로, AgentCore Browser 서비스에 웹 봇 인증을 채택했습니다(자세한 <a href="https://aws.amazon.com/blogs/machine-learning/reduce-captchas-for-ai-agents-browsing-the-web-with-web-bot-auth-preview-in-amazon-bedrock-agentcore-browser" target="_blank" rel="noopener noreferrer">내용은 게시물</a>에서 확인하세요). AgentCore Browser는 현재 공개 미리 보기로 제공되는 서비스 서명 키에서 프로토콜이 성숙되면 고객별 키로 전환할 계획입니다. Cloudflare 및 기타 원본 보호 서비스 사업자들은 AgentCore 전체가 아닌 개별 AgentCore 고객의 서명을 확인하고 검증할 수 있게 됩니다.</p>
@@ -78,7 +112,11 @@
 <span class="line"><span class="sk-24292e-fff">            respond </span><span class="sk-032f62-99ffe4">"Signature verification succeeded!"</span><span class="sk-005cc5-ffc799"> 200</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><a href="https://www.ietf.org/archive/id/draft-meunier-webbotauth-registry-01.html#name-signature-agent-card" target="_blank" rel="noopener noreferrer"><u>서명 에이전트 카드 형식</u></a>을 활용하여 레지스트리를 운영하고 큐레이션하려는 이유는 몇 가지가 있습니다.</p>
 <ol>

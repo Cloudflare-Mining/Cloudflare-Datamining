@@ -31,8 +31,30 @@
 <span class="line"><span class="sk-24292e-fff">});</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// init; w/ Cache API</span></span>
-<span class="line"><span class="sk-24292e-fff">Cache.</span><span class="sk-6f42c1-ffc799">listen</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">API</span><span class="sk-24292e-fff">.run);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">Cache.</span><span class="sk-6f42c1-ffc799">listen</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">API</span><span class="sk-24292e-fff">.run);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>At this point, nothing useful is happening, but having an application skeleton laid out like this is my preferred format for a TODO list. It’s very satisfying to go through and fill out the handler bodies as development progresses. Additionally, the <code>Cache.listen</code> helper at the bottom of the file integrates the entire application with the Cache API, which I know I’ll want since most of the requests will be for the static HTML pages anyway.</p>
 <h2>Building and Optimizing the Client pages</h2>
 <p>Historically, deploying a Workers Site meant uploading all of your assets into a KV namespace. Then you would include something like <a href="https://github.com/cloudflare/kv-asset-handler" target="_blank" rel="noopener noreferrer"><code>@cloudflare/kv-asset-handler</code></a> into your Worker so that incoming requests would seamlessly route to keys within the namespace. However, I chose to go a different route.</p>
@@ -55,7 +77,11 @@
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    &lt;!-- ... --&gt;</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>In this example, the <code>submit/index.html</code> file is injecting the <code>submit/index.styl</code>, which is its own stylesheet, and the <code>index.js</code> script, which does not live within the `submit` directory because it’s used by other pages. The toolkit looks at both asset paths, converts the Stylus to plain CSS, and then embeds the contents into the appropriate <code>&lt;script&gt;</code> or <code>&lt;style&gt;</code> HTML tags.</p>
 <p>Finally, for production builds, the setup will pass the final HTML source through a minifier, which compresses the entire document, including any CSS or JavaScript that was injected. This step is optional, but it never hurts to send fewer bytes down the wire.</p>
@@ -95,7 +121,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">      &lt;/body&gt;</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">    &lt;/html&gt;</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">  `</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Thankfully, I planned ahead and already have a build system that produces <em>better</em> HTML files anyway. So now I just needed a way to load those built outputs into my Worker code.</p>
 <p>Now for the <em>second half</em> of this project’s toolkit; I find it perfectly acceptable to have a two-step build pipeline. Here, this means that the static site should be built first, followed by building the Worker. I was planning to use TypeScript to author my Worker anyway, which meant I was already going to need a build step – the only change here is that these build steps would now have to be sequential and ordered.</p>
@@ -123,7 +153,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// ...</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">// init; w/ Cache API</span></span>
-<span class="line"><span class="sk-24292e-fff">Cache.</span><span class="sk-6f42c1-ffc799">listen</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">API</span><span class="sk-24292e-fff">.run);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">Cache.</span><span class="sk-6f42c1-ffc799">listen</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">API</span><span class="sk-24292e-fff">.run);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Of course, this is much cleaner and sensible in the long-run. Clarity makes it easier to identify and extract common patterns into utility functions. I took the opportunity to introduce a <code>render</code> function, the first of many reusable helpers this project would encounter:</p>
 <div class="emdash-code">
@@ -146,7 +180,11 @@
 <span class="line"><span class="sk-005cc5-fff">API</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">add</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'GET'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'/rulees'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">res</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-24292e-fff">  res.</span><span class="sk-6f42c1-ffc799">setHeader</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Cache-Control'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'public,max-age=1800'</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> utils.</span><span class="sk-6f42c1-ffc799">render</span><span class="sk-24292e-fff">(res, </span><span class="sk-005cc5-fff">RULES</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Finally, most of the pages need to dynamically insert values into the HTML markup. For example, the submission form should render with the participant’s name and email address and the landing page is required to reflect the current value of remaining prizes. Much like any other monolithic application, the Worker Site is fully aware – and capable – of injecting these values where needed.</p>
 <p>To do this, I standardized the <code>{{ variable }}</code> syntax in my project’s HTML. Each of these variables would be replaced <em>during the Worker request</em> with the appropriate value. Of course, it also requires that each endpoint actually provide the correct information to make the substitutions. With this in mind, I modified the `render` utility and updated the landing page’s route handler:</p>
@@ -183,7 +221,11 @@
 <span class="line"><span class="sk-24292e-fff">  </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // Render the HTML, passing in `count` variable</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> utils.</span><span class="sk-6f42c1-ffc799">render</span><span class="sk-24292e-fff">(res, </span><span class="sk-005cc5-fff">LANDING</span><span class="sk-24292e-fff">, { count });</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With these changes, the landing page will always check the KV namespace for the latest <code>::remain</code> value and inject it into the correct location. If you’re interested in checking out the project’s <a href="https://github.com/cloudflare/developer-summer-challenge/blob/master/worker/index.ts" target="_blank" rel="noopener noreferrer">source code</a>, you’ll find that this pattern is used in nearly every HTML response.</p>
 <h2>Accepting Form Submissions</h2>
@@ -228,7 +270,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // The `input` is valid!</span></span>
 <span class="line"><span class="sk-24292e-fff">  </span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'TODO: finish me'</span><span class="sk-24292e-fff">);</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Only after the data is considered valid can data be stored into KV for future use. For the initial registration, a number of things need to happen:</p>
 <ol>
@@ -285,7 +331,11 @@
 <span class="line"></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">  // render "Thank you, check your {{ email }} for next steps" page</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> utils.</span><span class="sk-6f42c1-ffc799">render</span><span class="sk-24292e-fff">(res, </span><span class="sk-005cc5-fff">CONFIRM</span><span class="sk-24292e-fff">, { email: entry.email });</span></span>
-<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>A full HTML response is returned, which means that the client-side form handler should be able to see this content and render it directly in the browser window. This can be seen in the following <code>index.js</code> snippet, which was referenced earlier in the <code>submit/index.html</code> as an injected asset:</p>
 <div class="emdash-code">
@@ -311,7 +361,11 @@
 <span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94">    // truncate: render errors</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
-<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <blockquote><em><strong>BONUS:</strong> Because a full HTML response is returned, and all the client-side <code>&lt;form&gt;</code> elements are semantically correct, the form submission workflow will work with JavaScript disabled! The client-side validation will remain functional, but be a degraded experience – the error dialog won’t popup and any error messages will not appear beneath their respective form inputs.</em></blockquote>
 <h2>Sending Transactional Emails</h2>
@@ -384,7 +438,11 @@
 <span class="line"><span class="sk-24292e-fff">    firstname: entry.firstname,</span></span>
 <span class="line"><span class="sk-24292e-fff">    code: entry.code,</span></span>
 <span class="line"><span class="sk-24292e-fff">  });</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The above snippet includes the <em>entire</em> <code>POST</code> request formatter – there’s nearly more type-hinting than there is code! Also shown is an example <code>confirm</code> method, which is responsible for sending the unique submission link to the newly-registered user. You’ll notice that <code>firstname</code> and <code>code</code> are the injected variables, required by the “devchallenge-confirm” template.</p>
 <h2>Overall Performance</h2>

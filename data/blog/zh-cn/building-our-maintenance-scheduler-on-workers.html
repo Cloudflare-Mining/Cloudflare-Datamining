@@ -32,8 +32,30 @@
 <span class="line"><span class="sk-24292e-fff">      ],</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">      "modified_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2023-10-22T13:32:47.213767Z"</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
-<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>在该场景中，数据中心 21 和数据中心 45 是相互关联的，因为对于 Aegis 客户 9876 来说，我们需要至少一个数据中心保持在线，以便其能够从 Cloudflare 接收出口流量。如果我们试图同时关闭数据中心 21 和 45，调度协调器就会提醒我们，该客户的工作负载将因此受到意外影响。</p>
 <p>最初我们尝试了一个简单的方案：将所有数据加载到单个 Worker 中。这包括所有服务器关联关系、产品配置，以及用于计算约束的产品和基础设施健康指标。但只是在概念验证阶段，我们就遇到了“内存不足”的错误。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -49,7 +71,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  object_get</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ObjectID</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">TObject</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> undefined</span><span class="sk-24292e-fff">&gt;</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  assoc_get</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">id1</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ObjectID</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">atype</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> TAssocType</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AsyncIterable</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">TAssoc</span><span class="sk-24292e-fff">&gt;</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>核心理念在于，关联是有类型的。例如，约束会调用图接口来获取 Aegis 产品数据。</p>
 <div class="emdash-code">
@@ -90,7 +116,11 @@
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> poolAnalysis</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在上面的代码中，我们使用了两种关联类型：</p>
 <ol>
@@ -124,7 +154,11 @@
 <span class="line"><span class="sk-24292e-fff">    baseMs: </span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">    jitter: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-24292e-fff">  }))</span></span>
-<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">handler</span><span class="sk-24292e-fff">(terminalFetch);</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">handler</span><span class="sk-24292e-fff">(terminalFetch);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>如果您熟悉 Go 语言，可能见过 <a href="https://pkg.go.dev/golang.org/x/sync/singleflight" target="_blank" rel="noopener noreferrer"><u>singleflight</u></a> 包。我们借鉴了这个思路，在获取管道中的第一个中间件组件实现了对正在进行的 HTTP 请求去重，让同一 Worker 内的重复请求都等待同一个 Promise 返回数据，而不是产生重复的请求。接下来，我们使用轻量级的最近最少使用 (LRU) 缓存，在内部缓存已经请求过的数据。</p>
 <p>完成这两项操作后，我们使用 Cloudflare 的 <code>caches.default.match</code> 函数缓存 Worker 运行所在区域的所有 GET 请求。由于我们有多个性能特征各异的数据源，因此我们谨慎地选择生存时间 (TTL) 值。例如，实时数据仅缓存 1 分钟。相对静态的基础设施数据可以根据数据类型缓存 1 到 24 小时。电源管理数据可能需要手动更改且更改频率较低，因此我们可以将其在边缘端缓存更长时间。</p>
@@ -137,12 +171,20 @@
 <h2>实时 Thanos</h2>
 <p>为了说明采用图处理接口如何影响实时查询，我们来看一个例子。要分析边缘路由器的健康状况，原本我们会发送如下查询：</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge.*"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge.*"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>最初，我们向存储 Prometheus 指标的 Thanos 服务请求每个边缘路由器的当前健康状况列表，并在 Worker 中手动筛选与维护相关的路由器。这种方法有很多不足之处。例如，Thanos 返回的响应大小高达数 MB，需要进行解码和编码。Worker 也需要缓存和解码这些大型 HTTP 响应，以便在处理特定维护请求时过滤掉大部分数据。由于 TypeScript 是单线程的，而解析 JSON 数据又受 CPU 限制，发送两个大型 HTTP 请求意味着一个请求会被阻塞，等待另一个请求完成解析。</p>
 <p>现在我们改为直接使用图来查找有针对性的关联关系，例如边缘路由器与骨干路由器之间的接口链路，用 <code>EDGE_ROUTER_NETWORK_CONNECTS_TO_SPINE</code> 表示。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (lldp_name) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge01.fra03"</span><span class="sk-24292e-fff">, lldp_name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"spine.*"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (lldp_name) (network_snmp_interface_admin_status{instance</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"edge01.fra03"</span><span class="sk-24292e-fff">, lldp_name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">~</span><span class="sk-032f62-99ffe4">"spine.*"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>结果平均只有 1 KB，而不是数 MB，大约缩小了 1000 倍。这也大幅降低了 Worker 内部的 CPU 消耗，因为我们把大部分反序列化工作交给 Thanos 完成。正如前面所说，这意味着我们需要发起更多的小请求，但 Thanos 前的负载平衡器可以将请求均匀分散，从而提高这种用例的吞吐量。</p>
 <p>我们的图实现与获取管道成功控制了成千上万个微小实时请求形成的“惊群效应”(thundering herd)。不过，历史分析带来了不同的 I/O 挑战——我们不再只是获取小而具体的关联关系，而是要扫描数月的数据来发现冲突的维护窗口。过去，Thanos 会对我们的对象存储 R2 发起大量随机读取，造成巨大带宽开销。为了解决这一问题又不损失性能，我们采用了 Observability 团队今年内部开发的新方法。</p>
@@ -151,7 +193,11 @@
 <p>Thanos 主要将数据查询分发到 Prometheus，但当 Prometheus 的数据保留期不足以回答查询时，就不得不从对象存储（在我们的案例中为 R2）下载数据。Prometheus 的 TSDB 块最初是为本地 SSD 设计的，依赖随机访问模式，这在迁移到对象存储后会成为瓶颈。当我们的调度器需要分析数月的维护历史数据以识别冲突约束时，从对象存储进行随机读取会带来巨大的 I/O 开销。为解决此问题，我们实现了一个转换层，将这些 TSDB 块转换为 <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> 文件。Parquet 是一种面向大数据分析的原生列式存储格式，按列而非按行组织数据，并结合丰富的统计信息，使我们可以只获取所需的部分数据。</p>
 <p>此外，由于我们将 TSDB 块重写为 Parquet 文件，还可以按支持少量大块依序读取数据的方式存储数据。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (hmd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">release_scopes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">enabled{dc_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"45"</span><span class="sk-24292e-fff">})</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sum by (instance) (hmd</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">release_scopes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">enabled{dc_id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"45"</span><span class="sk-24292e-fff">})</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="复制代码" data-copy-label="复制代码" data-copied-label="代码已复制！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>在上面的示例中，我们将选择元组“(__name__, dc_id)”作为主要排序键，以便名称为“hmd:release_scopes:enabled”且“dc_id”值相同的指标能够被排到一起。</p>
 <p>我们的 Parquet 网关现在会发起精确的 R2 区间请求，仅提取与查询相关的特定列。这将有效载荷从数 MB 减少到数 KB。而且因为这些文件段是不可变的，我们可以在 Cloudflare CDN 上积极缓存它们。</p>

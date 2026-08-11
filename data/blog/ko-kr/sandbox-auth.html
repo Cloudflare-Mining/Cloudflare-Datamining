@@ -19,8 +19,30 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>샌드박스에서 실행 중인 코드가 <code>"github.com"</code>에 요청할 때마다 요청은 핸들러를 통해 프록시됩니다. 이렇게 하면 각 요청에 대해 로깅, 수정, 취소 등 원하는 모든 작업을 수행할 수 있습니다. 이 경우 비밀을 안전하게 주입하고 있습니다(자세한 내용은 나중에 설명합니다). 이 프록시는 샌드박스와 동일한 시스템에서 실행되고 분산 상태에 액세스할 수 있으며 간단한 JavaScript로 쉽게 수정할 수 있습니다.</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="352" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=640&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=750&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=828&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1080&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1280&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1430&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3199 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7JWDJG380QQGEZ6MY1C.png&amp;w=1496&amp;h=736&amp;f=webp" data-lightbox-width="1496" data-lightbox-height="736" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="352" class="pt-portable-image-media"></div>
@@ -63,7 +85,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(req);</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>이 프록시는 Workers에서 실행되며 샌드박스를 적용한 VM과 동일한 컴퓨터에서 실행됩니다. Workers는 빠른 응답 시간을 위해 구축되었으며, 종종 캐시된 CDN 트래픽 앞에 위치하므로 추가 대기 시간이 극히 최소화됩니다.</p>
 <p>이는 Workers에서 실행되므로 즉시 사용할 수 있는 관찰 가능성을 얻습니다. 로그 및 아웃바운드 요청을 <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers 대시보드에서</u></a> 보거나 원하는 애플리케이션 성능 모니터링 도구로 <a href="https://developers.cloudflare.com/workers/observability/logs/logpush" target="_blank" rel="noopener noreferrer"><u>내보낼 수 있습니다</u></a>.</p>
@@ -80,7 +106,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>컨테이너의 ID에 따라 응답 조건도 쉽게 설정할 수 있습니다. 모든 샌드박스 인스턴스에 동일한 토큰을 삽입할 필요는 없습니다.</p>
 <div class="emdash-code">
@@ -94,7 +124,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(requestWithAuth);</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3>Cloudflare 개발자 플랫폼 사용</h3>
 <p>마지막 예에서 알아차렸을 수도 있지만, 아웃바운드 Workers를 사용할 때의 또 다른 주요 이점은 Workers 생태계로 더 쉽게 통합할 수 있다는 것입니다. 이전에는 사용자가 <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>에 액세스하려면 R2 자격 증명을 삽입한 다음 컨테이너에서 공개 R2 API를 호출해야 했습니다. <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>에이전트</u></a>, 기타 <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>컨테이너</u></a>, 기타 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Worker 서비스</u></a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>등</u></a>도 동일합니다.</p>
@@ -116,7 +150,11 @@
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-24292e-fff">  };</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>토큰을 구문 분석하고 정책을 설정하는 대신 코드와 원하는 로직을 사용하여 액세스 조건을 쉽게 설정할 수 있습니다. 또한 R2 예제에서는 샌드박스의 ID를 사용하여 쉽게 액세스 범위를 넓힐 수 있었습니다.</p>
 <h3>제어를 동적으로 만들기</h3>
@@ -126,7 +164,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">  defaultEgress</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"block"</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">  allowedDomains</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"github.com"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"npmjs.org"</span><span class="sk-24292e-fff">]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>없는 것보다는 낫지만, 더 잘할 수 있습니다. 많은 샌드박스의 경우 시작 시 정책을 적용하면서 특정 작업이 수행된 후에는 다른 정책으로 재정의하고 싶을 수 있습니다.</p>
 <p>예를 들어, 샌드박스를 부팅하고, NPM과 Github를 통해 종속성을 가져온 다음, 그 후에 송신을 잠글 수 있습니다. 이렇게 하면 가능한 한 짧은 시간 동안 네트워크를 개방할 수 있습니다.</p>
@@ -160,7 +202,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm install"</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">setOutboundHandler</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"noHttp"</span><span class="sk-24292e-fff">);</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>더 확장할 수도 있습니다. 에이전트가 최종 사용자에게 <code>"Cloudflare.com에</code> 대한 POST 요청을 허용하시겠습니까?"와 같은 질문을 할 수 있습니다. 작업을 수행할 수 있습니다. 동적 아웃바운드 Workers를 사용하면 샌드박스 규칙을 즉석에서 쉽게 수정하여 이러한 수준의 제어를 제공할 수 있습니다.</p>
 <h2>MITM 프록시를 통한 TLS 지원</h2>
@@ -176,7 +222,11 @@
 <span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(req);</span></span>
 <span class="line"><span class="sk-24292e-fff">};</span></span>
 <span class="line"></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>TLS 트래픽은 Cloudflare의 격리 네트워크 프로세스에서 TLS 핸드셰이크를 수행하여 프록시됩니다. 임시적이고 고유한 개인 키에서 리프 CA를 생성하고 ClientHello에서 추출된 SNI를 사용합니다. 그런 다음 동일한 컴퓨터에서 HTTPS 요청을 처리하도록 구성된 Worker를 호출합니다.</p>
 <p>Cloudflare의 임시 개인 키와 CA는 절대로 컨테이너 런타임 사이드카 프로세스를 벗어나지 않으며, 다른 컨테이너 사이드카 프로세스와 공유하지 않습니다.</p>
@@ -207,7 +257,11 @@
 <span class="line"><span class="sk-6a737d-8b8b8b94">// You can even set hostnames, CIDRs, for both IPv4 and IPv6</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">interceptOutboundHttp</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'example.com'</span><span class="sk-24292e-fff">, secondOutboundWorker);</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">interceptOutboundHttp</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'*.example.com'</span><span class="sk-24292e-fff">, secondOutboundWorker);</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">interceptOutboundHttp</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'123.123.123.123/23'</span><span class="sk-24292e-fff">, secoundOutboundWorker);</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.container.</span><span class="sk-6f42c1-ffc799">interceptOutboundHttp</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'123.123.123.123/23'</span><span class="sk-24292e-fff">, secoundOutboundWorker);</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Workers에 대한 모든 프록시 설정은 샌드박스 VM을 실행하는 동일한 컴퓨터에서 로컬로 발생합니다. 컨테이너와 Worker 간의 통신은 “비인증”이지만, 안전합니다.</p>
 <p>이러한 메서드는 연결이 열려 있는 동안에도 컨테이너 시작 전이나 후에 언제든지 호출할 수 있습니다. 여러 HTTP 요청을 전송하는 연결은 자동으로 새로운 진입점을 선택하므로 아웃바운드 Workers를 업데이트해도 기존 TCP 연결이 끊기거나 HTTP 요청이 중단되지 않습니다.</p>

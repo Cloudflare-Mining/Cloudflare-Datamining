@@ -87,23 +87,57 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Sat</span><span class="sk-032f62-99ffe4"> Mar</span><span class="sk-005cc5-ffc799">  4</span><span class="sk-032f62-99ffe4"> 02:45:48</span><span class="sk-032f62-99ffe4"> UTC</span><span class="sk-005cc5-ffc799"> 2017</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ocspfetch</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">redacted,</span><span class="sk-032f62-99ffe4"> customer</span><span class="sk-032f62-99ffe4"> I</span><span class="sk-24292e-fff">D</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">This</span><span class="sk-032f62-99ffe4"> Update:</span><span class="sk-032f62-99ffe4"> 2017-03-04</span><span class="sk-032f62-99ffe4"> 02:45:49</span><span class="sk-032f62-99ffe4"> +0000</span><span class="sk-032f62-99ffe4"> UTC</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">Next</span><span class="sk-032f62-99ffe4"> Update:</span><span class="sk-032f62-99ffe4"> 2017-03-04</span><span class="sk-032f62-99ffe4"> 03:45:49</span><span class="sk-032f62-99ffe4"> +0000</span><span class="sk-032f62-99ffe4"> UTC</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">Next</span><span class="sk-032f62-99ffe4"> Update:</span><span class="sk-032f62-99ffe4"> 2017-03-04</span><span class="sk-032f62-99ffe4"> 03:45:49</span><span class="sk-032f62-99ffe4"> +0000</span><span class="sk-032f62-99ffe4"> UTC</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>It shows that CA #1 had configured their OCSP responders to use an incredibly short validity period with almost no overlap between validity periods, which makes it functionally impossible to always have a fresh OCSP response for their certificates. We contacted them, and they reconfigured the responder to produce new responses every half-interval.</p>
 <h4>CA #2: Wrong signature algorithm</h4>
 <p>Several certificates from CA #2 started failing with this error:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> bad</span><span class="sk-032f62-99ffe4"> OCSP</span><span class="sk-032f62-99ffe4"> signature:</span><span class="sk-032f62-99ffe4"> crypto/rsa:</span><span class="sk-032f62-99ffe4"> verification</span><span class="sk-032f62-99ffe4"> error</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> bad</span><span class="sk-032f62-99ffe4"> OCSP</span><span class="sk-032f62-99ffe4"> signature:</span><span class="sk-032f62-99ffe4"> crypto/rsa:</span><span class="sk-032f62-99ffe4"> verification</span><span class="sk-032f62-99ffe4"> error</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>The issue is that the OCSP claims to be signed with SHA256-RSA, when it is actually signed with SHA1-RSA (and the reverse: indicates SHA1-RSA, actually signed with SHA256-RSA).</p>
 <h4>CA #3: Malformed OCSP responses</h4>
 <p>When we first started the project, our tool was unable to parse dozens of certificates in our database because of this error</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">asn1:</span><span class="sk-032f62-99ffe4"> structure</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> integer</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> minimally-encoded</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">asn1:</span><span class="sk-032f62-99ffe4"> structure</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> integer</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> minimally-encoded</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>and many OCSP responses that we fetched from the same CA:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">parsing</span><span class="sk-032f62-99ffe4"> ocsp</span><span class="sk-032f62-99ffe4"> response:</span><span class="sk-032f62-99ffe4"> bad</span><span class="sk-032f62-99ffe4"> OCSP</span><span class="sk-032f62-99ffe4"> signature:</span><span class="sk-032f62-99ffe4"> asn1:</span><span class="sk-032f62-99ffe4"> structure</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> integer</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> minimally-encoded</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">parsing</span><span class="sk-032f62-99ffe4"> ocsp</span><span class="sk-032f62-99ffe4"> response:</span><span class="sk-032f62-99ffe4"> bad</span><span class="sk-032f62-99ffe4"> OCSP</span><span class="sk-032f62-99ffe4"> signature:</span><span class="sk-032f62-99ffe4"> asn1:</span><span class="sk-032f62-99ffe4"> structure</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> integer</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> minimally-encoded</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>What happened was that this CA had begun issuing &lt;1% of certificates with a minor formatting error that rendered them unparseable by Golang’s x509 package. After contacting them directly, they quickly fixed the issue but then we had to patch Golang's parser to be more lenient about encoding bugs.</p>
 <h4>CA #4: Failed responder behind a load balancer</h4>

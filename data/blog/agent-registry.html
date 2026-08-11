@@ -8,14 +8,40 @@
 <p>The first protocol proposal suggested one approach: bot operators would provide a newly-defined HTTP header Signature-Agent that refers to an HTTP endpoint hosting their keys. Similar to IP addresses, the default is to allow all, but if a particular operator is making too many requests, you can start taking actions: increase their rate limit, contact the operator, etc.</p>
 <p>Here’s an example from <a href="https://help.shopify.com/en/manual/promoting-marketing/seo/crawling-your-store" target="_blank" rel="noopener noreferrer"><u>Shopify's online store</u></a>:</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://shopify.com"</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://shopify.com"</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h2>A registry format</h2>
 <p>With all that in mind, we come to the following problem. How can Cloudflare ensure customers have control over the traffic they want to allow, with sensible defaults, while fostering an open curation ecosystem that doesn’t lock in customers or small origins?</p>
 <p>Such an ecosystem exists for lists of IP addresses (e.g.<a href="https://github.com/antoinevastel/avastel-bot-ips-lists/blob/master/avastel-proxy-bot-ips-1day.txt" target="_blank" rel="noopener noreferrer"><u> avestel-bots-ip-lists</u></a>) and robots.txt (e.g.<a href="https://github.com/ai-robots-txt/ai.robots.txt" target="_blank" rel="noopener noreferrer"><u> ai-robots-txt</u></a>). For both, you can find canonical lists on the Internet to easily configure your website to allow or disallow traffic from those IPs. They provide direct configuration for your nginx or haproxy, and you can use it to configure your Cloudflare account. For instance, I could import the robots.txt below:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">agent: MyBadBot</span></span>
-<span class="line"><span class="sk-24292e-fff">Disallow: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">Disallow: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This is where the registry format comes in, providing a list of URLs pointing to Signature Agent keys:</p>
 <div class="emdash-code">
@@ -24,7 +50,11 @@
 <span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">autorag.ai.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">.well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">directory</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-6a737d-8b8b8b94"># Test signature agent card</span></span>
-<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example.research.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">.well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">directory</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">https:</span><span class="sk-d73a49-a0a0a0">//</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">example.research.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">.well</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">known</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">message</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">signatures</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">directory</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>And that's it. A registry could contain a list of all known signature agents, a curated list for academic research agents, for search agents, etc.</p>
 <p>Anyone can maintain and host these lists. Similar to IP or robots.txt list, you can host such a registry on any public file system. This means you can have a repository on GitHub, put the file on Cloudflare R2, or send it as an email attachment. Cloudflare intends to provide one of the first instances of this registry, so that others can contribute to it or reference it when building their own.&nbsp;</p>
@@ -56,7 +86,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">    "nbf"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1712793600</span><span class="sk-24292e-fff">,</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">    "exp"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1715385600</span></span>
 <span class="line"><span class="sk-24292e-fff">  }]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>Operating a registry</h2>
 <p>Amazon Bedrock AgentCore, an agentic platform for building and deploying AI agents at scale, adopted Web Bot Auth for its AgentCore Browser service (learn more in <a href="https://aws.amazon.com/blogs/machine-learning/reduce-captchas-for-ai-agents-browsing-the-web-with-web-bot-auth-preview-in-amazon-bedrock-agentcore-browser" target="_blank" rel="noopener noreferrer">their post)</a>. AgentCore Browser intends to transition from a service signing key that is currently available in their public preview, to customer-specific keys, once the protocol matures. Cloudflare and other operators of origin protection service will be able to see and validate signatures from individual AgentCore customers rather than AgentCore as a whole.</p>
@@ -77,7 +111,11 @@
 <span class="line"><span class="sk-24292e-fff">            respond </span><span class="sk-032f62-99ffe4">"Signature verification succeeded!"</span><span class="sk-005cc5-ffc799"> 200</span></span>
 <span class="line"><span class="sk-24292e-fff">        }</span></span>
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>There are several reasons why you might want to operate and curate a registry leveraging the <a href="https://www.ietf.org/archive/id/draft-meunier-webbotauth-registry-01.html#name-signature-agent-card" target="_blank" rel="noopener noreferrer"><u>Signature Agent Card format</u></a>:</p>
 <ol>

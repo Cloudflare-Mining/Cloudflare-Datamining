@@ -41,17 +41,47 @@
 <span class="line"><span class="sk-6f42c1-ffc799">service1.sd.</span><span class="sk-005cc5-ffc799"> 120</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> CNAME</span><span class="sk-032f62-99ffe4"> service1.query.consul.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">service1.query.consul.</span><span class="sk-005cc5-ffc799"> 30</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-032f62-99ffe4"> time:</span><span class="sk-005cc5-ffc799"> 230</span><span class="sk-032f62-99ffe4"> msec</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-032f62-99ffe4"> time:</span><span class="sk-005cc5-ffc799"> 230</span><span class="sk-032f62-99ffe4"> msec</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>If we dump Unbound's cache (unbound-control dump_cache), we can find the entries there:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">service1.query.consul.</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  A</span><span class="sk-005cc5-ffc799">   192.0.2.1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">service1.sd.</span><span class="sk-005cc5-ffc799">   113</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">  CNAME</span><span class="sk-032f62-99ffe4">   service1.query.consul.</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">service1.sd.</span><span class="sk-005cc5-ffc799">   113</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">  CNAME</span><span class="sk-032f62-99ffe4">   service1.query.consul.</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>If we wait for the TTL of these entries to expire and dump the cache again, we notice that they don't show up anymore:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4"> unbound-control</span><span class="sk-032f62-99ffe4"> dump_cache</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> query.consul</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> service1</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">➜</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">➜</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>But if we block access to the Consul resolver, we can see that still the entries are returned:</p>
 <div class="emdash-code">
@@ -59,7 +89,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">service1.sd.</span><span class="sk-005cc5-ffc799"> 119</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> CNAME</span><span class="sk-032f62-99ffe4"> service1.query.consul.</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">service1.query.consul.</span><span class="sk-005cc5-ffc799"> 30</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-032f62-99ffe4"> time:</span><span class="sk-005cc5-ffc799"> 503</span><span class="sk-032f62-99ffe4"> msec</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-032f62-99ffe4"> time:</span><span class="sk-005cc5-ffc799"> 503</span><span class="sk-032f62-99ffe4"> msec</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Notice that Unbound waited 500ms before returning a response, which was the value we configured. This also shows that the dump cache method does not return expired entries even though they are present. So far so good.</p>
 <h5><strong>Test - Unbound could serve stale records from cache indefinitely</strong></h5>
@@ -69,7 +103,11 @@
 <span class="line"><span class="sk-24292e-fff"> </span></span>
 <span class="line"><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> DiG</span><span class="sk-005cc5-ffc799"> 9.10.6</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> service1.sd.</span><span class="sk-032f62-99ffe4"> @127.0.0.1</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; global options: +cmd</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; connection timed out; no servers could be reached</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; connection timed out; no servers could be reached</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Dig gave up on waiting for a response from Unbound. So we see that after the configured time, Unbound will indeed stop serving the stale record, even if it has been requested recently. This is due to <em>serve-expired-ttl: 3600</em> and <em>serve-expired-ttl-reset</em> being set to "no" by default. These options were not available when we first tried Unbound’s stale cache.</p>
 <h5><strong>Test - Unbound serves negative/incomplete information from the expired cache</strong></h5>
@@ -77,14 +115,22 @@
 <p>We start by having both entries in cache, and block connections to the Consul resolver. We then remove from the cache the A entry:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> /usr/sbin/unbound-control</span><span class="sk-032f62-99ffe4"> flush_type</span><span class="sk-032f62-99ffe4"> service1.query.consul.</span><span class="sk-032f62-99ffe4"> A</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">ok</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">ok</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Now we attempt to query:</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4">  service1.sd.</span><span class="sk-032f62-99ffe4"> @127.0.0.1</span></span>
 <span class="line"><span class="sk-005cc5-ffc799">...</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">-</span><span class="sk-24292e-fff">&gt;&gt;</span><span class="sk-032f62-99ffe4">HEADER</span><span class="sk-d73a49-a0a0a0">&lt;&lt;-</span><span class="sk-032f62-fff"> opcode:</span><span class="sk-6f42c1-ffc799"> QUERY,</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-032f62-99ffe4"> SERVFAIL,</span><span class="sk-032f62-99ffe4"> id:</span><span class="sk-005cc5-ffc799"> 9532</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; Query time: 22 msec</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; Query time: 22 msec</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Nothing was returned which is the result we were expecting.</p>
 <p>Another scenario we wanted to test was to see if when <em>serve-expired-ttl</em> + A's TTL had passed, the CNAME would be returned on its own.</p>
@@ -100,7 +146,11 @@
 <span class="line"><span class="sk-032f62-99ffe4">➜ dig  service1.sd. @127.0.0.1</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 42432</span></span>
 <span class="line"><span class="sk-032f62-99ffe4">;; Query time: 509 msec</span></span>
-<span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Thu Dec 31 17:07:56 WET 2020</span></span></code></pre>
+<span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Thu Dec 31 17:07:56 WET 2020</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We lowered <em>serve-expired-ttl</em> to 40 to help testing the issue and we were able to see that as soon as the A entry was deemed not serve-able, the CNAME was also not returned, which is the behaviour that we want.</p>
 <p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional+Tools" target="_blank" rel="noopener noreferrer">Network Link Conditioner</a> was used to simulate high latency:</p>
@@ -114,7 +164,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">service1.service.consul.</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-005cc5-ffc799"> 192.0.2.10</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">service1.service.consul.</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-005cc5-ffc799"> 192.0.2.12</span></span>
 <span class="line"><span class="sk-24292e-fff"> </span></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-032f62-99ffe4"> time:</span><span class="sk-005cc5-ffc799"> 3053</span><span class="sk-032f62-99ffe4"> msec</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-032f62-99ffe4"> time:</span><span class="sk-005cc5-ffc799"> 3053</span><span class="sk-032f62-99ffe4"> msec</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can see that the artificial latency is working. We can now test if changes to the address are actually reflected on the consul record even though a stale record is served at first:</p>
 <div class="emdash-code">
@@ -136,7 +190,11 @@
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-032f62-99ffe4"> time:</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-032f62-99ffe4"> msec</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">SERVER:</span><span class="sk-032f62-99ffe4"> 127.0.0.1#53</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">127.0.0.1</span><span class="sk-24292e-fff">)</span></span>
 <span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">WHEN:</span><span class="sk-032f62-99ffe4"> Sat</span><span class="sk-032f62-99ffe4"> Jan</span><span class="sk-005cc5-ffc799"> 02</span><span class="sk-032f62-99ffe4"> 13:00:39</span><span class="sk-032f62-99ffe4"> WET</span><span class="sk-005cc5-ffc799"> 2021</span></span>
-<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">MSG</span><span class="sk-032f62-99ffe4"> SIZE</span><span class="sk-032f62-99ffe4">  rcvd:</span><span class="sk-005cc5-ffc799"> 89</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">MSG</span><span class="sk-032f62-99ffe4"> SIZE</span><span class="sk-032f62-99ffe4">  rcvd:</span><span class="sk-005cc5-ffc799"> 89</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>We can see that the first attempt was served from the stale cache, since the address was already changed on Consul to <em>192.0.2.200</em>, and the query time was 500ms. The next attempt was served from the fresh cache, hence the 0ms response time, and so we know that the cache was refreshed in the background.</p>
 <h4><strong>Test notes</strong></h4>

@@ -89,8 +89,30 @@
 <span class="line"><span class="sk-24292e-fff">})</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-24292e-fff">await page.</span><span class="sk-d73a49-a0a0a0">goto</span><span class="sk-24292e-fff">(url);</span></span>
-<span class="line"><span class="sk-24292e-fff">img </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (await page.</span><span class="sk-6f42c1-ffc799">screenshot</span><span class="sk-24292e-fff">()) as Buffer;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">img </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (await page.</span><span class="sk-6f42c1-ffc799">screenshot</span><span class="sk-24292e-fff">()) as Buffer;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>I’m genuinely surprised at how practical and effective this approach is. While the remote browser startup isn’t exactly fast — it can take a few seconds to generate the screenshot — it’s not an issue for my use case. The delay is perfectly acceptable, especially considering how much work is offloaded to the cloud.</p>
 <h4>Dithering</h4>
 <p>To prepare the bitmap for the ESP32, we need to decode the PNG, reduce the color palette to monochromatic, and apply <a href="https://en.wikipedia.org/wiki/Dither" target="_blank" rel="noopener noreferrer"><u>dithering</u></a>. Here's the dithering code:</p>
@@ -116,7 +138,11 @@
 <span class="line"><span class="sk-24292e-fff">    }</span></span>
 <span class="line"></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(Uint8ClampedArray.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(px));</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>This was my first time experimenting with dithering, and it’s been a lot of fun! I was surprised by how straightforward the process is and that it’s fully deterministic. Now that I understand the details of the algorithm, I can’t help but notice its subtle side effects everywhere — in printed materials, on screens, and even in design choices around me. It’s fascinating how something so simple has such a broad impact!</p>
 <p>To deploy this code as a Cloudflare Worker, you only need to install the required dependencies, configure the <code>wrangler.toml</code> file, and publish the code. Here’s a step-by-step guide:</p>
@@ -127,7 +153,11 @@
 <span class="line"><span class="sk-24292e-fff">npm install </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">puppeteer </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">save</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">dev</span></span>
 <span class="line"><span class="sk-24292e-fff">npm install fast</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">png </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">save</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">dev</span></span>
 <span class="line"><span class="sk-24292e-fff">npx wrangler kv</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">namespace create </span><span class="sk-005cc5-fff">KV</span></span>
-<span class="line"><span class="sk-24292e-fff">npx wrangler kv</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">namespace create </span><span class="sk-005cc5-fff">KV</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">preview</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">npx wrangler kv</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">namespace create </span><span class="sk-005cc5-fff">KV</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">preview</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With this out of the way, you can run the code:</p>
 <div class="emdash-code">
@@ -146,7 +176,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-6f42c1-ffc799"> Upload</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 755.39</span><span class="sk-6f42c1-ffc799"> KiB</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff"> gzip</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 149.05</span><span class="sk-6f42c1-ffc799"> KiB</span></span>
 <span class="line"><span class="sk-24292e-fff">╭─────────────────────────────────────────────────────────────────────────────────────────────────╮</span></span>
 <span class="line"><span class="sk-24292e-fff">│  [b] open a browser, [d] open devtools, [l] turn on local mode, [c] clear console, [x] to exit  │</span></span>
-<span class="line"><span class="sk-24292e-fff">╰─────────────────────────────────────────────────────────────────────────────────────────────────╯</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">╰─────────────────────────────────────────────────────────────────────────────────────────────────╯</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>With everything set up, you can now open a browser and see a rendered and rasterized version of a website, processed through your Cloudflare Worker! For example, here’s how the <strong>1.1.1.1</strong> page looks in a 800x480 monochromatic resolution, complete with dithering:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -166,7 +200,11 @@
 <span class="line"><span class="sk-24292e-fff">        result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> a.text()</span></span>
 <span class="line"><span class="sk-24292e-fff">        cached </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> json.loads(result)</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">KV</span><span class="sk-24292e-fff">.put(</span><span class="sk-032f62-99ffe4">"weather"</span><span class="sk-24292e-fff">, json.dumps(cached))</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.new(render(</span><span class="sk-005cc5-fff">...</span><span class="sk-24292e-fff">), </span><span class="sk-e36209-fff">headers</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">[(</span><span class="sk-032f62-99ffe4">'content-type'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">)])</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.new(render(</span><span class="sk-005cc5-fff">...</span><span class="sk-24292e-fff">), </span><span class="sk-e36209-fff">headers</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">[(</span><span class="sk-032f62-99ffe4">'content-type'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">)])</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>Here’s how it appears in a normal browser compared to the rendered and rasterized version by our worker:</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">

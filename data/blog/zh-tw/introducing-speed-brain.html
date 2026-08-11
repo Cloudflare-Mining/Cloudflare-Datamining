@@ -55,8 +55,30 @@
 <span class="line"><span class="sk-032f62-99ffe4">    "eagerness"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"conservative"</span></span>
 <span class="line"><span class="sk-24292e-fff">  }]</span></span>
 <span class="line"><span class="sk-24292e-fff">}</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <h5><br>文件規則</h5>
 <p><a href="https://developer.chrome.com/blog/speculation-rules-improvements" target="_blank" rel="noopener noreferrer"><u>文件規則</u></a>在設定中由 "source": "document" 和 "where" 表示，允許在整個網頁上動態套用預先擷取。這樣就無需用於預先擷取的預先定義靜態 URL 清單。因此，也就消除了<em>過時的預先擷取設定</em>的問題，因為預先擷取候選連結是根據作用中的頁面結構確定的。</p>
 <p>我們在 where 子句中使用 "relative_to": "document" 來指示瀏覽器將預先擷取限制為相同網站的連結。這樣做還有一個好處，就是我們的實作能夠避免跨來源預先擷取，從而避免對使用者的隱私權產生影響，因為它不會在 Web 上追踪使用者。&nbsp;</p>

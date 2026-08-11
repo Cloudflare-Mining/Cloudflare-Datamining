@@ -19,8 +19,30 @@
 <p>SYNキューは、インバウンドSYN パケット<a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/#fn1">[1]</a>（具体的には、<a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L73" target="_blank" rel="noopener noreferrer">struct inet_request_sock</a>）を格納します。SYN+ACK パケットを送信し、タイムアウト時に再試行を行います。Linux では、再試行の回数は次のように構成されます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_synack_retries</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_synack_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 5</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p><a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank" rel="noopener noreferrer">この切り替えについて文書に記載しています</a>。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcp_synack_retries</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> INTEGER</span></span>
@@ -31,7 +53,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">	retransmission</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> current</span><span class="sk-032f62-99ffe4"> initial</span><span class="sk-032f62-99ffe4"> RTO</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> 1second.</span><span class="sk-032f62-99ffe4"> With</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	this</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> final</span><span class="sk-032f62-99ffe4"> timeout</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> passive</span><span class="sk-032f62-99ffe4"> TCP</span><span class="sk-032f62-99ffe4"> connection</span><span class="sk-032f62-99ffe4"> will</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">	happen</span><span class="sk-032f62-99ffe4"> after</span><span class="sk-005cc5-ffc799"> 63</span><span class="sk-032f62-99ffe4"> seconds.</span></span>
-<span class="line"></span></code></pre>
+<span class="line"></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>SYN+ACKを送信した後、SYNキューはクライアントからの ACKパケット（3ウェイハンドシェイクの最後のパケット）を待ちます。受信したすべてのACKパケットはまず完全に確立された接続テーブルと比較され、一致すれば関連するSYNキュー内のデータと比較します。SYNキューとの比較では、カーネルは SYNキューから項目を削除し、完全な接続（具体的には、<a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L183" target="_blank" rel="noopener noreferrer">struct inet_sock</a>）を作成し、Acceptキューに追加します。</p>
 <h3><strong>Accept キュー</strong></h3>
@@ -40,13 +66,21 @@
 <h3><strong>キューサイズの制限</strong></h3>
 <p>Accept キューとSYNキューともに許容最大長は、アプリケーションによって listen(2) syscall に渡されるバックログパラメータから取得されます。たとえば、この場合Accept キューと SYN キューのサイズは1,024に設定されます。</p>
 <div class="emdash-code">
-	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre>
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">listen(sfd,</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">)</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>注意：4.3以前のカーネルでは、<a href="https://github.com/torvalds/linux/commit/ef547f2ac16bd9d77a780a0e7c70857e69e8f23f#diff-56ecfd3cd70d57cde321f395f0d8d743L43" target="_blank" rel="noopener noreferrer">SYN キューの長さのカウント法は異なっていました。</a></p>
 <p>このSYNキュー上限は、以前 net.ipv4.tcp_max_syn_backlog トグルによって設定されていましたが、今は違います。最近では、net.core.somaxconn が両方のキューサイズを制限します。当社のサーバーでは、16kに設定しました。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.core.somaxconn</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.core.somaxconn</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 16384</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h3><strong>完璧なバックログ値</strong></h3>
 <p>これに基づき、理想的なbacklogパラメータ値は？という質問をするかもしれません。</p>
@@ -65,7 +99,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :80</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">119</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> syn-recv</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :443</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">78</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>同様のデータが、当社の<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/resq.stp" target="_blank" rel="noopener noreferrer">オーバースペックのSystemTapスクリプトではresq.stp</a>と表示されます。</p>
 <h3><strong>低速アプリケーション</strong></h3>
@@ -86,13 +124,21 @@
 <p>nstat カウンターを調ベると、Acceptキューのオーバーフロー統計を追跡することができます。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nstat</span><span class="sk-005cc5-99ffe4"> -az</span><span class="sk-032f62-99ffe4"> TcpExtListenDrops</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">TcpExtListenDrops</span><span class="sk-005cc5-ffc799">     49199</span><span class="sk-005cc5-ffc799">     0.0</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>これはグローバルカウンターです。理想的ではありません。時々、増加しているにもかかわらず、すべてのアプリケーションは健全なようでした。最初のステップは、常にAcceptキューのサイズを ss でプリントすることです。</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -plnt</span><span class="sk-032f62-99ffe4"> sport</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> :6443</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">cat</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">   Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">  Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">      1024</span><span class="sk-005cc5-a0a0a0">                *</span><span class="sk-032f62-99ffe4">:6443</span><span class="sk-005cc5-a0a0a0">             *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p><code>Recv-Q</code> の列はAcceptキュー内のソケット数を示し、Send-Q &nbsp;バックログパラメーターを示します。この場合、accept()される未処理のソケットはありませんが、それでもListenDrops カウンターが増加していました。</p>
 <p>当社のアプリケーションがほんの一瞬だけ動かなかったことが判明しました。これは、非常に短い間、Acceptキューをオーバーフローさせるのに十分でした。しばらくすると回復します。このようなケースは、ssでデバッグするのが難しいので、補助手段として、　<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/acceptq.stp" target="_blank" rel="noopener noreferrer">acceptq.stpSystemTap スクリプト</a>を書きました。カーネルにフックし、ドロップされているSYNパケットをプリントします。</p>
@@ -102,7 +148,11 @@
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449075</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:28585</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198449253</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:50500</span></span>
 <span class="line"><span class="sk-6f42c1-ffc799">1495634198450062</span><span class="sk-005cc5-ffc799">  1025</span><span class="sk-005cc5-ffc799">   1024</span><span class="sk-032f62-99ffe4">  0.0.0.0:6443</span><span class="sk-032f62-99ffe4">  10.0.1.92:65434</span></span>
-<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>ここでは、どのSYNパケットがListenDropsの影響を受けたかを正確にみることができます。このスクリプトでは、どのアプリケーションが接続を切断しているかを理解することは些末な情報です。</p>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
@@ -134,7 +184,11 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  6</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 2</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">     24</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">       |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> t</span><span class="sk-032f62-99ffe4"> mod</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  MSS</span><span class="sk-d73a49-a0a0a0">   |</span><span class="sk-005cc5-ffc799"> hash</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">ip,</span><span class="sk-032f62-99ffe4"> port,</span><span class="sk-032f62-99ffe4"> t</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">|</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+----------+--------+-------------------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>+----------+--------+-------------------+</p>
 <p>| &nbsp;6 bits &nbsp;| 2 bits | &nbsp; &nbsp; 24 bits &nbsp; &nbsp; &nbsp; |</p>
@@ -142,12 +196,20 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">  26</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 1</span><span class="sk-032f62-99ffe4"> bit</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> 4</span><span class="sk-032f62-99ffe4"> bits</span><span class="sk-d73a49-a0a0a0"> |</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> Timestamp</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  ECN</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> SACK</span><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> WScale</span><span class="sk-d73a49-a0a0a0"> |</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">+-----------+-------+-------+--------+</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>| t mod 32 | &nbsp;MSS &nbsp; | hash(ip, port, t) |</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_timestamps</span></span>
-<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_timestamps</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="コードをコピー" data-copy-label="コードをコピー" data-copied-label="コードをコピーしました！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>+----------+--------+-------------------+</p>
 <p><a href="https://github.com/torvalds/linux/blob/5bbcc0f595fadb4cac0eddc4401035ec0bd95b09/net/ipv4/syncookies.c#L142" target="_blank" rel="noopener noreferrer">4つの異なる値に切り下げた</a>MSS 設定では、Linuxは相手側のオプションのTCPパラメータを認識しません。タイムスタンプ、ECN、選択的ACK、ウィンドウスケーリングに関する情報が失われ、TCP セッションのパフォーマンスが低下するかもしれません。</p>

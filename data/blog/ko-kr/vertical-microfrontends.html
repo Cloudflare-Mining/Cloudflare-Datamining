@@ -13,13 +13,39 @@
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-d73a49-a0a0a0">      =</span><span class="sk-6f42c1-ffc799"> Marketing</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">docs  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Documentation</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">blog  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Blog</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
 <p>여기에서 한 걸음 더 나아가 대시보드와 같은 보다 세분화된 하위 경로 Worker 연결에 집중할 수 있습니다. 대시보드 내에서는 URL 경로에 깊이를 추가하여 다양한 기능 또는 제품을 분류할 수 있습니다(예: <code>/dash/product-a</code>)를 사용하고 두 제품 간을 탐색하는 것은 두 개의 완전히 다른 코드 베이스를 의미할 수 있습니다.&nbsp;</p>
 <p>이제 수직형 마이크로프론트엔드를 통해 다음 사항도 수행할 수 있습니다.</p>
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">product</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">a  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WorkerA</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">product</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">b  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WorkerB</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">product</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">b  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> WorkerB</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위의 각각의 경로는 그들 사이에 공유 코드가 없는 자체 프런트엔드 프로젝트입니다. <code>제품 a</code> 및 <code>제품 b</code> 경로는 자체 팀에서 정의하고 소유하는 자체 프레임워크, 라이브러리, CI/CD 파이프라인이 있는 별도로 배포된 프런트엔드 애플리케이션에 매핑됩니다. 마침내</p>
 <p>이제 여러분은 처음부터 끝까지 여러분의 코드를 소유할 수 있습니다. 하지만 이제 우리는 이러한 개별 프로젝트를 하나로 연결하고, 심지어 통합 경험인 것처럼 느낄 수 있는 방법을 찾아야 합니다.</p>
@@ -48,7 +74,11 @@
 <span class="line"><span class="sk-005cc5-fff">    animation-timing-function</span><span class="sk-24292e-a0a0a0">:</span><span class="sk-005cc5-ffc799"> ease-in-out</span><span class="sk-24292e-fff">;</span></span>
 <span class="line"><span class="sk-24292e-fff">  }</span></span>
 <span class="line"><span class="sk-22863a-ffc799">  nav</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">view-transition-name</span><span class="sk-24292e-a0a0a0">:</span><span class="sk-24292e-a0a0a0"> navigation</span><span class="sk-24292e-fff">; }</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
 	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="314" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=640&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=750&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=828&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1080&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1280&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1430&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3015 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467W6ZH9NEYCF27MASBYC5.png&amp;w=1920&amp;h=842&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="842" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="314" class="pt-portable-image-media"></div>
@@ -68,7 +98,11 @@
 <span class="line"><span class="sk-24292e-fff">      }</span></span>
 <span class="line"><span class="sk-24292e-fff">    ]</span></span>
 <span class="line"><span class="sk-24292e-a0a0a0">  }</span></span>
-<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>그러면 응용 프로그램이 다른 마이크로프론트엔드를 프리페치하여 메모리 내 캐시에 저장하므로, 해당 페이지로 이동할 때 매우 즉각적이라고 느낄 수 있습니다.</p>
 <p>사용자는 그들 사이에 약간의 부하를 예상할 수 있으므로 명확하게 식별 가능한 수직 조각(마케팅, 문서, 대시보드)의 경우 이를 요구하지 않을 가능성이 높습니다. 하지만, 특정 가시적 경험(예: 대시보드 페이지 내에서).</p>
@@ -98,7 +132,11 @@
 <span class="line"><span class="sk-005cc5-ffc799">      "service"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"worker_dash"</span></span>
 <span class="line"><span class="sk-24292e-fff">    },</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위의 샘플 정의는 라우터 Worker에 정의되어 있으며, 요청을 세 개의 개별 추가 Workers(마케팅, 문서, 대시)로 만들 수 있음을 알려줍니다. 권한을 부여하는 것도 그렇게 간단하겠지만, 네트워크 응답을 라우팅하고 HTML을 재작성하는 좀 더 복잡한 로직을 알아보겠습니다.</p>
 <h3>요청 라우팅</h3>
@@ -108,7 +146,11 @@
 <div class="emdash-code">
 	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-d73a49-a0a0a0">      =</span><span class="sk-6f42c1-ffc799"> Marketing</span></span>
 <span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">docs  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Documentation</span></span>
-<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre>
+<span class="line"><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dash  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Dashboard</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>위의 각 경로를 실제 Worker에 매핑해야 합니다(위 섹션의 서비스에 대한 Wrangler 정의 참조). 라우터 Worker의 경우 다음 데이터로 추가 변수를 정의하여 어떤 경로가 어떤 서비스 바인딩에 매핑되어야 하는지 알 수 있습니다. 이제 요청이 들어오면 사용자를 어디로 라우팅해야 할지 알 수 있습니다! ROUTES 이름과 다음 내용으로 Wrangler 변수를 정의합니다.</p>
 <div class="emdash-code">
@@ -118,7 +160,11 @@
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"DOCS"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/docs"</span><span class="sk-24292e-fff">},</span></span>
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"DASH"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/dash"</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <p>사용자가 웹사이트 경로 <code>/docs/installation</code>를 방문한다고 가정해 보겠습니다. 내부에서는 요청이 어떤 URL 경로가 어떤 개별 Workers에 매핑되는지 이해하는 라우터 Worker에 먼저 도달합니다. 이는 <code>/docs</code> 경로 접두사가 <code>DOCS</code> 서비스 바인딩에 매핑되어 있음을 이해하며, 랭글러 파일을 참조하면 <code>worker_docs</code> 프로젝트를 가리킵니다. 라우터 Worker는 <code>/docs</code> 가 수직 마이크로프론트엔드 경로로 정의되었다는 것을 알고 경로에서 <code>/docs</code> 접두사를 제거하고 요청을 <code>worker_docs</code> Worker로 전달하여 요청을 처리한 다음 최종적으로 응답을 반환합니다.</p>
 <p>하지만 <code>/docs</code> 경로는 누락되는 이유는 무엇일까요? 이는 라우터 Worker를 통해 Worker에 액세스할 때 URL을 정리하여 라우터 Worker 외부에서 호출된 <em>것처럼 </em>요청을 처리할 수 있도록 하기 위해 구현된 세부 사항을 선택했던 것입니다. 다른 Cloudflare Worker와 마찬가지로, 당사의 <code>worker_docs</code> 서비스에도 액세스할 수 있는 자체 개별 URL이 있을 수 있습니다. 우리는 해당 서비스 URL이 계속 독립적으로 작동하기를 원한다고 결정했습니다. Cloudflare의 새로운 Router Worker에 연결되면 접두사 제거를 자동으로 처리하므로 자체적으로 정의된 URL이나 당사의 Router Worker를 통해 서비스에 액세스할 수 있었습니다… 어느 위치든 중요하지 않습니다.</p>
@@ -139,7 +185,11 @@
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"APP1"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/app1"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"preload"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">},</span></span>
 <span class="line"><span class="sk-24292e-fff">    {</span><span class="sk-005cc5-ffc799">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"APP2"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/app2"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"preload"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">}</span></span>
 <span class="line"><span class="sk-24292e-fff">  ]</span></span>
-<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="코드 복사" data-copy-label="코드 복사" data-copied-label="코드가 복사되었습니다!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
 </div>
 <h2>시작하기</h2>
 <p>버티컬 마이크로프론트엔드 템플릿으로 지금 바로 구축을 시작할 수 있습니다.</p>
