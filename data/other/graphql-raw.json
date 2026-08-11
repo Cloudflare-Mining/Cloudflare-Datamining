@@ -49105,7 +49105,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "AI Gateway Spend session end date",
+							"description": "UTC date when the AI Gateway session data was recorded",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -49121,7 +49121,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "AI Gateway Spend session end timestamp",
+							"description": "UTC timestamp when the AI Gateway session data was recorded",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -49137,7 +49137,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "AI Gateway Spend session end timestamp truncated to fifteen minutes",
+							"description": "AI Gateway session data recording timestamp truncated to fifteen minutes",
 							"isDeprecated": false,
 							"name": "datetimeFifteenMinutes",
 							"type": {
@@ -49153,7 +49153,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "AI Gateway Spend session end timestamp truncated to five minutes",
+							"description": "AI Gateway session data recording timestamp truncated to five minutes",
 							"isDeprecated": false,
 							"name": "datetimeFiveMinutes",
 							"type": {
@@ -49169,7 +49169,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "AI Gateway Spend session end timestamp truncated to the hour",
+							"description": "AI Gateway session data recording timestamp truncated to the hour",
 							"isDeprecated": false,
 							"name": "datetimeHour",
 							"type": {
@@ -49185,7 +49185,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "AI Gateway Spend session end timestamp truncated to the minute",
+							"description": "AI Gateway session data recording timestamp truncated to the minute",
 							"isDeprecated": false,
 							"name": "datetimeMinute",
 							"type": {
@@ -49482,6 +49482,38 @@
 								"ofType": {
 									"kind": "SCALAR",
 									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "UTC timestamp when the AI Gateway session started",
+							"isDeprecated": false,
+							"name": "sessionStart",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "UTC date when the AI Gateway session started",
+							"isDeprecated": false,
+							"name": "sessionStartDate",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Date",
 									"ofType": null
 								}
 							}
@@ -52097,6 +52129,198 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "sessionStart",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStartDate_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStart_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStart_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStart_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStart_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStart_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStart_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "sessionStart_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "source",
 							"type": {
 								"kind": "SCALAR",
@@ -53268,6 +53492,30 @@
 							"description": "sessionId descending",
 							"isDeprecated": false,
 							"name": "sessionId_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sessionStartDate ascending",
+							"isDeprecated": false,
+							"name": "sessionStartDate_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sessionStartDate descending",
+							"isDeprecated": false,
+							"name": "sessionStartDate_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sessionStart ascending",
+							"isDeprecated": false,
+							"name": "sessionStart_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sessionStart descending",
+							"isDeprecated": false,
+							"name": "sessionStart_DESC"
 						},
 						{
 							"deprecationReason": null,

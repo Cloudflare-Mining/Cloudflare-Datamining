@@ -860,12 +860,12 @@
 	"AccountAiGatewaySpendSessionsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"commonName": "Access common name or service principal name for the session",
-		"date": "AI Gateway Spend session end date",
-		"datetime": "AI Gateway Spend session end timestamp",
-		"datetimeFifteenMinutes": "AI Gateway Spend session end timestamp truncated to fifteen minutes",
-		"datetimeFiveMinutes": "AI Gateway Spend session end timestamp truncated to five minutes",
-		"datetimeHour": "AI Gateway Spend session end timestamp truncated to the hour",
-		"datetimeMinute": "AI Gateway Spend session end timestamp truncated to the minute",
+		"date": "UTC date when the AI Gateway session data was recorded",
+		"datetime": "UTC timestamp when the AI Gateway session data was recorded",
+		"datetimeFifteenMinutes": "AI Gateway session data recording timestamp truncated to fifteen minutes",
+		"datetimeFiveMinutes": "AI Gateway session data recording timestamp truncated to five minutes",
+		"datetimeHour": "AI Gateway session data recording timestamp truncated to the hour",
+		"datetimeMinute": "AI Gateway session data recording timestamp truncated to the minute",
 		"firstModel": "Model used by the first request in the session",
 		"firstProvider": "Provider used by the first request in the session",
 		"flagAbnormalCost": "Whether the session was flagged for abnormal cost",
@@ -884,6 +884,8 @@
 		"providersJson": "JSON summary of provider usage within the session",
 		"rowId": "Deterministic producer row identifier for this session fact",
 		"sessionId": "Application or framework session identifier",
+		"sessionStart": "UTC timestamp when the AI Gateway session started",
+		"sessionStartDate": "UTC date when the AI Gateway session started",
 		"source": "Producer source for this session fact",
 		"userId": "Access user ID or service principal identifier for the session"
 	},
@@ -16286,7 +16288,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
