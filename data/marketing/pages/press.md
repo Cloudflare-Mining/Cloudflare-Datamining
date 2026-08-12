@@ -24,7 +24,7 @@ Featured in
 
 ### Press releases
 
-[ Press release  Cloudflare Gives AI Agents an Identity and a Wallet August 4, 2026 View release → ](/press/press-releases/2026/cloudflare-gives-ai-agents-an-identity-and-a-wallet/)[ Press release  Cloudflare Introduces Precursor; One-Click Behavioral Defense Against Modern Bots July 13, 2026 View release → ](/press/press-releases/2026/cloudflare-introduces-precursor-one-click-behavioral-defense-against-modern-bots/)[ Press release  Cloudflare Announces Research Pilot with OpenAI July 8, 2026 View release → ](/press/press-releases/2026/cloudflare-announces-research-pilot-with-openai/) 
+[ Press release  Cloudflare Achieves FedRAMP High Authorization to Secure and Accelerate the U.S. Government's Critical Missions August 11, 2026 View release → ](/press/press-releases/2026/cloudflare-achieves-fedramp-high-authorization-to-secure-and-accelerate-the-u-s-governments-critical-missions/)[ Press release  Cloudflare, Inc. Announces Pricing of Offering of $2.175 Billion of 0% Convertible Senior Notes Due 2031 August 11, 2026 View release → ](/press/press-releases/2026/cloudflare-inc-announces-pricing-of-offering-of-2-175-billion-of-0-convertible-senior-notes-due-2031/)[ Press release  Cloudflare, Inc. Announces Proposed Private Offering of $2.175 Billion of Convertible Senior Notes Due 2031 August 10, 2026 View release → ](/press/press-releases/2026/cloudflare-inc-announces-proposed-private-offering-of-2-175-billion-of-convertible-senior-notes-due-2031/) 
 
 [View press releases](/press/press-releases/) 
 
