@@ -5,39 +5,46 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations |&nbsp;Austin, US</h3>
-<h3>About the Role</h3>
-<p>AI inference is becoming core infrastructure. Every serious application will need access to many models, across many providers, with reliability, observability, security, cost control, and routing built in from the start. AI Gateway is Cloudflare's bet that this layer should exist at the network edge: close to users, close to compute, and simple enough that a developer can adopt it with one API change.</p>
-<p>We are obsessively agent-pilled. We don't just build the product; we build the environment that builds the product: the agents, harnesses, skills, tools, and context that let a small team ship like a much larger one. We dogfood AI Gateway, Workers AI, and the broader Cloudflare agent stack relentlessly, and we expect you to as well.</p>
-<h3>Responsibilities</h3>
+<p><strong>Available Locations: </strong>Austin, TX</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>About the Role</strong></h4>
+<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>As the Engineering Manager for AI Gateway, you will lead a small, high-velocity team building that layer. This is a deeply hands-on role. You will be in the code, in the design docs, in customer conversations, and in the trenches with your team. We're looking for a generative builder who can move from half-formed idea to working prototype quickly, and bring a team along with that energy. We are obsessively agent-pilled. We don't just build the product; we build the environment that builds the product: the agents, harnesses, skills, tools, and context that let a small team ship like a much larger one. We dogfood AI Gateway, Workers AI, and the broader Cloudflare agent stack relentlessly, and we expect you to as well.</li>
-	<li>Set the technical and product direction for AI Gateway alongside engineers and PMs, then roll up your sleeves and help build it.</li>
-	<li>Build the software and the software that builds the software. Your team needs to build the context and toolchain that let agents help build, operate, monitor, and improve AI Gateway itself.</li>
-	<li>Inspire and energize a team shipping at the pace the AI ecosystem demands. Provider APIs change weekly, new models drop daily, and the gap between "good idea" and "in production" is measured in days, not quarters.</li>
-	<li>Obsess over developer experience. Every error message, SDK choice, dashboard flow, and line of docs matters. You should have strong taste about what makes developer tools feel great.</li>
-	<li>Recruit, mentor, and grow engineers. Build a small team that punches massively above its weight.</li>
-	<li>Partner closely with Workers AI, Agents, and the broader Developer Platform teams to deliver a unified inference layer that feels like one product</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
-	<li>A minimum of 8 years of relevant industry experience, including at least 4 years managing software engineering teams.</li>
-	<li>Proven track record leading teams that have shipped and operated complex, large-scale systems, preferably in AI infrastructure, developer platforms, cloud infrastructure, edge/proxy systems, or high-scale APIs.</li>
-	<li>Significant technical depth, with the ability to guide architectural discussions, make credible technical decisions, review designs, and unblock your team.</li>
-	<li>Strong developer tools taste. You have used and built enough APIs, SDKs, dashboards, CLIs, and internal platforms to know what makes them delightful or painful.</li>
-	<li>Demonstrated ability to hire, coach, and develop senior engineers, and to build high-performing, inclusive teams that ship. You care about teams and team culture.</li>
-	<li>A hands-on approach to leadership: you consider yourself a builder, stay close to the code, know the numbers, know the customer, and know what to build next.</li>
+	<li>Fluent English speaker is a requirement</li>
+	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
+	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Fundamental understanding how the Internet works (OSI Model)</li>
+	<li>Advanced understanding of internet protocols like TCP and UDP</li>
+	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Packet capture analysis</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Experience in working as part of a team in a customer-facing role</li>
 </ul>
-<h3>Bonus Points</h3>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>Experience building AI/ML infrastructure, inference platforms, model gateways, or LLM-powered applications.</li>
-	<li>Experience building developer-facing APIs or SDKs at scale.</li>
-	<li>Hands-on experience with proxy, edge, or gateway systems.</li>
-	<li>You've built or heavily customized your own agentic dev environment: custom agents, harnesses, or tooling that changed how you ship.</li>
-	<li>Familiarity with the current AI ecosystem: providers, model capabilities, agent frameworks, and where the rough edges are.</li>
-	<li>A track record of writing publicly about developer tools or systems you've built.</li>
-	<li>You've built something with AI Gateway, Workers AI, or a competing product, and have opinions about what's missing.</li>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
 </ul>
+<h4><strong>Availability and Schedule Requirements</strong></h4>
+<ul>
+	<li>Flexibility to work varying work schedules including: 8:30 AM - 5:30 PM Pacific Time Zone, Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

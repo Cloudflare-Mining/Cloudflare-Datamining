@@ -5,38 +5,130 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas<br>Internship Dates: September 28 - December 18</strong></p>
-<p><strong>About the role<br></strong><br>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better Internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience and contribute directly to our efforts in making an impact.<strong><br></strong></p>
-<h4><strong>What you'll do</strong></h4>
-<p>The Americas Marketing Programs &amp; Platforms team drives B2B pipeline through field events, webinars, and campaigns across the region. As a Marketing Programs &amp; Analytics intern, you’ll work directly with the team to build automated reporting, develop internal tools, analyze performance data, and support live event and webinar execution. We’re looking for someone who is analytically sharp, curious about B2B marketing, and comfortable using AI to build tools that solve specific business problems.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>About the team and the role</strong></p>
+<p>The Developer Tooling team builds internal tools and platforms that improve the velocity and developer experience of Cloudflare's engineering teams. We own developer productivity (code commit to production), developer insights and ADLC metrics, developer infrastructure (CI/CD, build systems), AI-assisted development, and Cloudflare-on-Cloudflare dogfooding.</p>
+<p>This team is responsible for AI-assisted development across all of Cloudflare engineering. Adoption has grown 4–6x in the last year. It's a small team, so you'll have a big surface area and real ownership from day one.</p>
+<p>As a Principal Engineer, you'll build and operate the AI tools thousands of engineers use every day. It's a hands-on role with both engineering and operational responsibility.&nbsp; You'll be embedded with the DevTools Engineering Manager and help shoulder technical mentorship and end-to-end ownership of projects, while caring deeply about the experience of the engineers you build for.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Partner with team members to identify process gaps and help build or improve systems that make the team more efficient.</li>
-	<li>Document the tools and processes you build so they can be maintained and scaled beyond the internship.</li>
-	<li>Projects may include:
-		<ul>
-			<li>Building and automating an event performance reporting process that aggregates data from historical sponsored events to support future marketing investment decisions and enable ongoing real-time reporting.</li>
-			<li>Developing an internal speaker management tool to track speaker availability, topics of expertise, location, and usage history across in-person events and webinars.</li>
-			<li>Supporting planning and logistics execution for field events and webinars running during the fall term.</li>
-			<li>Analyzing event and campaign performance data to surface trends, identify high-performing programs, and produce actionable recommendations for future investment.</li>
-		</ul>
+	<li>
+		<p>Ship features for our AI coding tools</p>
+	</li>
+	<li>
+		<p>Build and improve AI and other developer-observability tools.</p>
+	</li>
+	<li>
+		<p>Own our internal MCP servers (GitLab, Confluence, Jira, Backstage etc.).</p>
+	</li>
+	<li>
+		<p>Build AI agents.</p>
+	</li>
+	<li>
+		<p>Maintain our context engineering: shared configs, prompt libraries, and agent instructions.</p>
+	</li>
+	<li>
+		<p>Wire AI tooling into CI/CD pipelines.</p>
+	</li>
+	<li>
+		<p>Handle security and access controls for AI tools.</p>
+	</li>
+	<li>
+		<p>Track adoption and usage across the org.</p>
+	</li>
+	<li>
+		<p>Triage and respond to support in our tool channels.</p>
+	</li>
+	<li>
+		<p>Own projects end to end - from roadmap and prioritization through delivery and operation.</p>
+	</li>
+	<li>
+		<p>Mentor teammates and raise the bar through code review and design feedback.</p>
+	</li>
+	<li>
+		<p>Help respond to and prevent incidents on the tools engineers depend on.</p>
 	</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Currently pursuing a degree in Marketing, Business Analytics, Communications, or a related field.</li>
-	<li>Hands-on experience using AI tools in academic or professional work—you use it regularly, not just occasionally.</li>
-	<li>Proven ability to build tools, dashboards, or automated workflows to solve real-world problems (vibe coding is fine; no engineering degree required, but you need to have built something and be able to walk through it).</li>
-	<li>Strong analytical skills with experience working in spreadsheets, BI tools, or data visualization platforms.</li>
-	<li>Organized and proactive, with the ability to manage multiple projects simultaneously in a fast-paced environment.</li>
-	<li>Clear written and verbal communication skills.</li>
-	<li>Available for the full 12-week fall internship (September 28 – December 18, 2026) and able to work from the Austin, TX office 3–5 days per week.</li>
+	<li>
+		<p>Strong coding ability in TypeScript, Go, Rust and Bash.</p>
+	</li>
+	<li>
+		<p>Excellent debugging skills.</p>
+	</li>
+	<li>
+		<p>Source control experience including branching, merging, and rebasing.</p>
+	</li>
+	<li>
+		<p>Experience deploying and operating on Kubernetes or a similar platform.</p>
+	</li>
+	<li>
+		<p>Comfort breaking down complex problems, weighing trade-offs, and driving them to done.</p>
+	</li>
+	<li>
+		<p>A habit of mentoring and raising the bar for the people around you.</p>
+	</li>
+	<li>
+		<p>Experience with, or strong interest in, building tools that improve DevEx</p>
+	</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>Prior experience in event marketing, field marketing, or marketing operations—internship, part-time, or project-based.</li>
-	<li>Familiarity with CRM or marketing automation platforms such as Salesforce or Marketo.</li>
-	<li>Experience with data visualization tools such as Looker Studio, Tableau, or similar.</li>
+	<li>
+		<p>Experience building LLM-based tools in production (agents, evals, cost and latency tuning).</p>
+	</li>
+	<li>
+		<p>Experience with CI/CD systems and build tooling.</p>
+	</li>
+	<li>
+		<p>Experience building on Cloudflare's platform (Workers, AI Gateway) - or eagerness to.</p>
+	</li>
+	<li>
+		<p>Operating Kubernetes on-premise at scale (SRE, systems design, or architecture).</p>
+	</li>
+	<li>
+		<p>Building platforms across multiple zones and regions.</p>
+	</li>
+	<li>
+		<p>Prior work on a platform engineering or developer-productivity team.</p>
+	</li>
+	<li>
+		<p>Open-source contributions to developer tooling or AI projects.</p>
+	</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $230,000 - $281,000</span></li>
+	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $200,000 - $275,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
