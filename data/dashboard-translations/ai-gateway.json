@@ -1170,6 +1170,7 @@
 	"ai-gateway.domains_tab.status_error_tooltip": "AI Gateway couldn't provision this domain and won't retry. Common causes: the hostname is already in use elsewhere on Cloudflare, the zone is no longer on this account, or a bad AI Gateway binding in <0>wrangler.toml</0>. Fix the underlying issue, then remove and re-add the domain.",
 	"ai-gateway.domains_tab.status_initializing": "Initializing",
 	"ai-gateway.domains_tab.status_initializing_tooltip": "Registering the domain with AI Gateway. This takes a few seconds.",
+	"ai-gateway.domains_tab.status_blocked_tooltip": "This hostname is on a held zone, so Cloudflare can’t issue its SSL certificate. Ask the zone owner to release the zone hold — this row updates automatically once they do.",
 	"ai-gateway.domains_tab.status_pending_dns": "Pending DNS",
 	"ai-gateway.domains_tab.status_pending_dns_tooltip": "Waiting for the CNAME at your DNS provider. Once it’s live, Cloudflare finishes issuing the SSL certificate and this row flips to Enabled automatically.",
 	"ai-gateway.domains_tab.status_provisioning": "Provisioning",
