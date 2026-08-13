@@ -191,7 +191,7 @@
 		"id": "Uw7Mcj",
 		"name": "certificate-transparency-monitoring",
 		"title": "Certificate Transparency Monitoring",
-		"availability": "Beta",
+		"availability": "GA",
 		"certification": {}
 	},
 	{
@@ -524,13 +524,6 @@
 		"certification": {}
 	},
 	{
-		"id": "Qdtjbi",
-		"name": "cloudflare-exposed-credentials-check",
-		"title": "Exposed Credentials Check",
-		"availability": "GA",
-		"certification": {}
-	},
-	{
 		"id": "EiKeLk",
 		"name": "turnstile",
 		"title": "Turnstile",
@@ -731,16 +724,6 @@
 		"title": "Workers VPC",
 		"availability": "Beta",
 		"certification": {}
-	},
-	{
-		"id": "hdbXEi",
-		"name": "leaked-credentials-detection",
-		"title": "Leaked Credentials Detection",
-		"availability": "GA",
-		"certification": {
-			"fedramp-moderate": "yes",
-			"fedramp-high": "pending"
-		}
 	},
 	{
 		"id": "DTqUkM",
