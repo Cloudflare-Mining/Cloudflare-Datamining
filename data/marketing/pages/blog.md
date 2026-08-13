@@ -6,15 +6,23 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 13, 2026[Total eclipse of the Internet: traffic impacts in Iceland, Spain, and Portugal](https://blog.cloudflare.com/total-eclipse-internet-traffic-iceland-spain-portugal/)
+
+Cloudflare's data shows a clear impact on Internet traffic from Iceland to Spain and Portugal, following the path of totality of the total solar eclipse that occurred on August 12, 2026\. 
+
+![Sabina Zejnilovic](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B114HP8HRQ7MA3FAFRSN.JPG&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Sabina Zejnilovic](https://blog.cloudflare.com/author/sabina/) and [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZY9E03GZQKFZPVFDA5EKNGP.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/total-eclipse-internet-traffic-iceland-spain-portugal/)
+
 August 13, 2026[Certificate Transparency Monitoring is now generally available](https://blog.cloudflare.com/certificate-transparency-monitoring-ga/)
 
 Cloudflare's Certificate Transparency Monitoring is now generally available. The biggest change: we no longer email you about certificates Cloudflare issued for your domain, so when an alert lands in your inbox, it's worth a look.
 
-![Pravallika Nakarikanti](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ34PPYQF64Q3WFAPX7W5S.png&w=64&h=64&f=webp&fit=cover&position=center)![Jenny Yang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ26VN8E4P561X998FKQ9H.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+![Jenny Yang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ26VN8E4P561X998FKQ9H.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Pravallika Nakarikanti](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ34PPYQF64Q3WFAPX7W5S.png&w=64&h=64&f=webp&fit=cover&position=center)
 
-[Pravallika Nakarikanti](https://blog.cloudflare.com/author/pravallika-nakarikanti/) and [Jenny Yang](https://blog.cloudflare.com/author/jenny-yang/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQPYFA4V0A6ZGSYZDJGASME.png&w=2048&h=1152&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/certificate-transparency-monitoring-ga/)
+[Jenny Yang](https://blog.cloudflare.com/author/jenny-yang/) and [Pravallika Nakarikanti](https://blog.cloudflare.com/author/pravallika-nakarikanti/)
 
 August 11, 2026[Cloudflare DDoS Threat Report H1 2026: 1 Tbps attacks soar as DNS floods and geopolitical tensions drive a new wave](https://blog.cloudflare.com/ddos-threat-report-2026-h1/)
 
@@ -151,14 +159,6 @@ Cloudflare OS is an open-source platform that lets everyone in your company buil
 ![Phillip Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CA63Q819PPAR7M8DTNQ3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Carter](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BJJATPEKV6ZZ0N22HHVH.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Phillip Jones](https://blog.cloudflare.com/author/phillip/) and [Dan Carter](https://blog.cloudflare.com/author/dan-carter/)
-
-August 5, 2026[WriteGuard: fine-grained controls for MCP Servers](https://blog.cloudflare.com/mcp-portal-writeguard-private-beta/)
-
-At Cloudflare, we knew we could not depend on every employee to configure every agent perfectly or watch every tool call. Before expanding write access across our own internal MCP servers, we built WriteGuard. We are now bringing those controls to Cloudflare MCP server portals through a private beta. 
-
-![Scott Roe-Meschke](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46423166S2RP6H2395Z078.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Scott Roe-Meschke](https://blog.cloudflare.com/author/scott-roe-meschke/) and [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
 
 Load more
 

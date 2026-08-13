@@ -12,7 +12,7 @@ image: https://www.cloudflare.com/preview.png
 
  Take the fast path to safe AI adoption and zero trust access with our composable, programmable platform. Accelerate innovation with a SASE architecture unified by design — on a global connectivity cloud. 
 
-[ Talk to an expert ](/contact/sase/) [ Try Cloudflare One ](https://dash.cloudflare.com/sign-up/zero-trust) 
+[ Talk to an expert ](https://www.cloudflare.com/contact/sase/) [ Try Cloudflare One ](https://dash.cloudflare.com/sign-up/zero-trust) 
 
 ###### Workforce
 
@@ -34,9 +34,9 @@ ZTNA + CASB protect every SaaS and internal app — block lateral movement, isol
 
 First SASE platform to secure connections to MCP servers — govern AI agents like any other identity.
 
-###### 300+ cities
+###### 335+ cities
 
-Cloudflare delivers full SASE from 300+ cities — >3× more than other SASE vendors.
+Cloudflare delivers full SASE from 335+ cities — >3× more than other SASE vendors.
 
 ###### Quantum-safe
 
@@ -92,7 +92,7 @@ Legacy SASE architectures have become the new technical debt. First-generation S
 
  The "platform" promise, finally delivered. One control plane, data plane, and infrastructure layer. Cloudflare One eliminates the friction of legacy security and networking with a platform that's easier to deploy and built to last. 
 
-[ Read reference architecture ](https://developers.cloudflare.com/reference-architecture/architectures/sase/) [ See SASE in action ](/sase/demos/) 
+[ Read reference architecture ](https://developers.cloudflare.com/reference-architecture/architectures/sase/) [ See SASE in action ](https://www.cloudflare.com/sase/demos/) 
 
 ### Deploy faster. Adapt instantly.
 
@@ -136,7 +136,7 @@ Discord
 
 ### Proven outcomes at scale
 
-Results from a 2026 Forrester Total Economic Impact study, powered by the world's connectivity cloud
+Results from a 2026 Forrester Total Economic Impact study, powered by the world's connectivity cloud. Actual benefits will vary based on organization size and existing infrastructure.
 
 ###  35% 
 
@@ -168,33 +168,33 @@ Results from a 2026 Forrester Total Economic Impact study, powered by the world'
 
  Connect and protect your workforce, workspace, and WAN — securing your data everywhere. 
 
-[  See SASE in action ](/sase/demos/) 
+[  See SASE in action ](https://www.cloudflare.com/sase/demos/) 
 
  Safely adopt AI 
 
-Move beyond AI blocking to securing AI adoption at scale. Govern AI agent connections, control shadow AI, and analyze prompt content to block sensitive data from leaking into public models. [Learn more](/zero-trust/use-cases/secure-workforce-use-of-genai/) 
+Move beyond AI blocking to securing AI adoption at scale. Govern AI agent connections, control shadow AI, and analyze prompt content to block sensitive data from leaking into public models. [Learn more](https://www.cloudflare.com/zero-trust/use-cases/secure-workforce-use-of-genai/) 
 
  Modernize remote access 
 
-Stop relying on clunky, insecure VPNs. Provide identity-first, quantum-safe access to internal apps. Accelerate onboarding, speed up M&A integration, and stop ransomware with granular zero trust rules. [Learn more](/sase/use-cases/vpn-replacement/) 
+Stop relying on clunky, insecure VPNs. Provide identity-first, quantum-safe access to internal apps. Accelerate onboarding, speed up M&A integration, and stop ransomware with granular zero trust rules. [Learn more](https://www.cloudflare.com/sase/use-cases/vpn-replacement/) 
 
  Block email phishing 
 
-AI-powered email security stops phishing, impersonation, malware, and BEC before threats reach inboxes. Deploy instantly with flexible MX and API methods, and extend security across collaboration apps. [Learn more](/sase/use-cases/multi-channel-phishing/) 
+AI-powered email security stops phishing, impersonation, malware, and BEC before threats reach inboxes. Deploy instantly with flexible MX and API methods, and extend security across collaboration apps. [Learn more](https://www.cloudflare.com/sase/use-cases/multi-channel-phishing/) 
 
  Protect web browsing 
 
-Implement DNS and HTTP filtering to protect remote users and branch offices from malware, phishing, and malicious websites. Enforce acceptable use policies and get instant results. [Learn more](/sase/use-cases/remote-workforces/) 
+Implement DNS and HTTP filtering to protect remote users and branch offices from malware, phishing, and malicious websites. Enforce acceptable use policies and get instant results. [Learn more](https://www.cloudflare.com/sase/use-cases/remote-workforces/) 
 
  Coffee shop networking 
 
-Treat anywhere like a coffee shop. Minimize appliances and MPLS, unify access policies across remote and local users, and consolidate infrastructure with a simpler stack. [Learn more](/coffee-shop-networking/) 
+Treat anywhere like a coffee shop. Minimize appliances and MPLS, unify access policies across remote and local users, and consolidate infrastructure with a simpler stack. [Learn more](https://www.cloudflare.com/coffee-shop-networking/) 
 
 ### Explore Cloudflare One
 
 Security and network services, built for innovators
 
-[ View all SASE products ](/sase/products/) [ Read technical docs ](https://developers.cloudflare.com/cloudflare-one/) 
+[ View all SASE products ](https://www.cloudflare.com/sase/products/) [ Read technical docs ](https://developers.cloudflare.com/cloudflare-one/) 
 
 **Zero trust & workspace security** 
 
@@ -280,7 +280,7 @@ Cloudflare One uses AI-powered email security to stop phishing, impersonation, m
 
 ###### How does the platform support global scale and performance?
 
-Cloudflare delivers full SASE services from over 300 cities around the world. This global footprint protects approximately 20% of the web and secures roughly 80% of the top generative AI companies, providing unmatched threat intelligence and zero-day visibility.
+Cloudflare delivers full SASE services from over 335+ cities around the world. This global footprint protects approximately 20% of the web and secures roughly 80% of the top generative AI companies, providing unmatched threat intelligence and zero-day visibility.
 
 ## Cloudflare powers  
 1 in 5 sites on the Internet 

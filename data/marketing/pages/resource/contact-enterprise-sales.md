@@ -8,21 +8,21 @@ image: https://www.cloudflare.com/preview.png
 
 ##  Contact Enterprise Sales 
 
-######  Multi-vector attack defense 
+######  Build AI and agents 
 
- Cloudflare can protect you against DDoS, ransomware, identity or access, network, web and application attacks. 
+ Build AI faster, deploy it to our global network, maintain agent state for hours or days, and track and control model costs and performance. 
 
-######  Unified security & performance 
+######  Secure AI and agents 
 
- DDoS + WAF + CDN and other security and performance functions are all built on the same global network. Deploy in minutes, not weeks. 
+ Stop AI-driven attacks in real-time, discover shadow AI, centralize visibility across agents, and govern their activities. 
 
-######  Zero Trust security 
+######  Simplify workforce security 
 
- Keep known and unknown threats away from your apps, user devices, network, and email accounts. Threat intelligence derived from 1+ trillion daily DNS requests. 
+ Connect and protect your workforce, AI agents, and infrastructure with a composable, programmable SASE architecture that's unified by design. 
 
-######  Largest global DDoS mitigation network 
+######  Improve web security and performance 
 
- Cloudflare's network has 330+ data centers across the globe. That's five times more than key competitors. Block DDoS attacks of any size and kind. 
+ Stop DDoS attacks, zero-days, malicious bots, shadow APIs, and more from the same 335+ city network that accelerates your web application traffic. 
 
  or call us at 
 

@@ -52,25 +52,25 @@ To 95% of the world's Internet users
 
 Every service runs in every data center. Your users get a fast, consistent experience — everywhere.
 
-337 cities · 8 regions[System status →](https://www.cloudflarestatus.com/)
+348 cities · 8 regions[System status →](https://www.cloudflarestatus.com/)
 
 North America
 
-55
+54
 
-Albuquerque, USAnchorage, USAshburn, USAtlanta, USAustin, USBangor, USBoston, USBuffalo, USCalgary, CACharlotte, USChicago, USCleveland, USColumbus, USDallas, USDenver, USDetroit, USDurham, USHalifax, CAHonolulu, USHouston, USIndianapolis, USJacksonville, USKansas City, USLas Vegas, USLos Angeles, USMemphis, USMiami, USMinneapolis, USMontréal, CANashville, USNewark, USNorfolk, USOklahoma City, USOmaha, USOttawa, CAPhiladelphia, USPhoenix, USPittsburgh, USPortland, USRichmond, USSacramento, USSalt Lake City, USSan Antonio, USSan Diego, USSan Francisco, USSan Jose, USSaskatoon, CASeattle, USSioux Falls, USSt. Louis, USTallahassee, USTampa, USToronto, CAVancouver, CAWinnipeg, CA
+Albuquerque, USAnchorage, USAshburn, USAtlanta, USAustin, USBangor, USBoston, USBuffalo, USCalgary, CACharlotte, USChicago, USCincinnati, USCleveland, USColumbus, USDallas, USDenver, USDetroit, USRaleigh-Durham, USHalifax, CAHonolulu, USHouston, USIndianapolis, USJacksonville, USKansas City, USLas Vegas, USLos Angeles, USMemphis, USMiami, USMinneapolis, USMontréal, CANashville, USNewark, USNorfolk, USOklahoma City, USOmaha, USPhiladelphia, USPhoenix, USPittsburgh, USPortland, USRichmond, USSacramento, USSalt Lake City, USSan Antonio, USSan Diego, USSan Jose, USSaskatoon, CASeattle, USSioux Falls, USSt. Louis, USTallahassee, USTampa, USToronto, CAVancouver, CAWinnipeg, CA
 
 Latin America & the Caribbean
 
-66
+64
 
-Americana, BRAracatuba, BRArica, CLAsuncion, PYBarranquilla, COBelo Horizonte, BRBelém, BRBlumenau, BRBogota, COBrasília, BRBridgetown, BBBuenos Aires, ARCali, COCampinas, BRCampos dos Goytacazes, BRCaçador, BRChapeco, BRConcepción, CLCordoba, ARCuiabá, BRCuritiba, BRFlorianópolis, BRFortaleza, BRGeorgetown, GYGoiânia, BRGuadalajara, MXGuatemala City, GTGuayaquil, ECItajaí, BRJoinville, BRJuazeiro do Norte, BRKingston, JMLa Paz, BOLima, PEManaus, BRMedellín, COMexico City, MXNavegantes, BRNeuquen, ARPalmas, BRPanama City, PAParamaribo, SRPort of Spain, TTPorto Alegre, BRQueretaro, MXQuito, ECRecife, BRRibeirão Preto, BRRio de Janeiro, BRSalvador, BRSan José, CRSan Juan, PRSan Pedro Sula, HNSantiago de los Caballeros, DOSantiago, CLSanto Domingo, DOSorocaba, BRSt. George's, GDSão José do Rio Preto, BRSão José dos Campos, BRSão Paulo, BRTegucigalpa, HNTimbo, BRUberlândia, BRValparaíso, CLVitoria, BR
+Americana, BRAracatuba, BRArica, CLAsuncion, PYBarranquilla, COBelo Horizonte, BRBelém, BRBlumenau, BRBogota, COBrasília, BRBridgetown, BBBuenos Aires, ARCali, COCampinas, BRCampos dos Goytacazes, BRCaçador, BRChapeco, BRConcepción, CLCordoba, ARCuiabá, BRCuritiba, BRFlorianópolis, BRFortaleza, BRGeorgetown, GYGoiânia, BRGuadalajara, MXGuatemala City, GTGuayaquil, ECJoinville, BRJuazeiro do Norte, BRKingston, JMLa Paz, BOLima, PEManaus, BRMedellín, COMexico City, MXNeuquen, ARPalmas, BRPanama City, PAParamaribo, SRPort of Spain, TTPorto Alegre, BRQueretaro, MXQuito, ECRecife, BRRibeirão Preto, BRRio de Janeiro, BRSalvador, BRSan José, CRSan Juan, PRSan Pedro Sula, HNSantiago de los Caballeros, DOSantiago, CLSanto Domingo, DOSorocaba, BRSt. George's, GDSão José do Rio Preto, BRSão José dos Campos, BRSão Paulo, BRTegucigalpa, HNTimbo, BRUberlândia, BRValparaíso, CLVitoria, BR
 
 Europe
 
 57
 
-Amsterdam, NLAthens, GRBarcelona, ESBelgrade, RSBerlin, DEBordeaux, FRBratislava, SKBrussels, BEBucharest, ROBudapest, HUChișinău, MDCopenhagen, DKCork, IEDublin, IEDüsseldorf, DEEdinburgh, GBFrankfurt, DEGeneva, CHGothenburg, SEHamburg, DEHelsinki, FIIstanbul, TRIzmir, TRKrasnoyarsk, RUKyiv, UALisbon, PTLondon, GBLuxembourg City, LULyon, FRMadrid, ESManchester, GBMarseille, FRMilan, ITMinsk, BYMoscow, RUMunich, DENicosia, CYOslo, NOPalermo, ITParis, FRPrague, CZReykjavík, ISRiga, LVRome, ITSaint Petersburg, RUSkopje, MKSofia, BGStockholm, SEStuttgart, DETallinn, EEThessaloniki, GRTirana, ALVienna, ATVilnius, LTWarsaw, PLZagreb, HRZürich, CH
+Amsterdam, NLAthens, GRBarcelona, ESBelgrade, RSBerlin, DEBordeaux, FRBratislava, SKBrussels, BEBucharest, ROBudapest, HUChișinău, MDCopenhagen, DKDublin, IEDüsseldorf, DEFrankfurt, DEGeneva, CHGothenburg, SEHamburg, DEHelsinki, FIIstanbul, TRIzmir, TRKrasnoyarsk, RUKyiv, UALisbon, PTLjubljana, SILondon, GBLuxembourg City, LULyon, FRMadrid, ESManchester, GBMarseille, FRMilan, ITMinsk, BYMoscow, RUMunich, DENicosia, CYOslo, NOPalermo, ITParis, FRPrague, CZReykjavík, ISRiga, LVRome, ITSaint Petersburg, RUSkopje, MKSofia, BGStockholm, SEStuttgart, DETallinn, EEThessaloniki, GRTirana, ALVienna, ATVilnius, LTWarsaw, PLWrocław, PLZagreb, HRZürich, CH
 
 Middle East
 
@@ -80,27 +80,27 @@ Amman, JOBaghdad, IQBasra, IQBeirut, LBDammam, SADoha, QADubai, AEErbil, IQHaifa
 
 Africa
 
-32
+33
 
-Abidjan, CIAccra, GHAddis Ababa, ETAlgiers, DZAnnaba, DZAntananarivo, MGCairo, EGCape Town, ZAConstantine, DZDakar, SNDar Es Salaam, TZDjibouti, DJDurban, ZAGaborone, BWHarare, ZWJohannesburg, ZAKampala, UGKigali, RWKinshasa, CDLagos, NGLuanda, AOLusaka, ZMMaputo, MZMombasa, KENairobi, KEOran, DZOuagadougou, BFPort Louis, MUSaint-Denis, RETunis, TNWindhoek, NAYamoussoukro, CI
+Abidjan, CIAccra, GHAddis Ababa, ETAlgiers, DZAnnaba, DZAntananarivo, MGCairo, EGCape Town, ZAConstantine, DZDakar, SNDar Es Salaam, TZDjibouti, DJDouala, CMDurban, ZAGaborone, BWHarare, ZWJohannesburg, ZAKampala, UGKigali, RWKinshasa, CDLagos, NGLuanda, AOLusaka, ZMMaputo, MZMombasa, KENairobi, KEOran, DZOuagadougou, BFPort Louis, MUSaint-Denis, RETunis, TNWindhoek, NAYamoussoukro, CI
 
 Asia
 
-60
+71
 
-Ahmedabad, INAktobe, KZAlmaty, KZAstana, KZAstara, AZBaku, AZBandar Seri Begawan, BNBangalore, INBangkok, THBishkek, KGCagayan de Oro, PHCebu, PHChandigarh, INChennai, INChiang Mai, THChittagong, BDColombo, LKDa Nang, VNDenpasar, IDDhaka, BDFukuoka, JPHanoi, VNHo Chi Minh City, VNHong Kong, HKHyderabad, INIslamabad, PKJakarta, IDJohor Bahru, MYKannur, INKanpur, INKaohsiung City, TWKarachi, PKKathmandu, NPKochi, INKolkata, INKuala Lumpur, MYKuching, MYLahore, PKMacau, MOMale, MVManila, PHMumbai, INNagpur, INNaha, JPNew Delhi, INOsaka, JPPatna, INPhnom Penh, KHSeoul, KRSingapore, SGSurat Thani, THTaipei, TWTarlac City, PHTbilisi, GEThimphu, BTTokyo, JPUlaanbaatar, MNVientiane, LAYerevan, AMYogyakarta, ID
+Agra, INAhmedabad, INAktobe, KZAlmaty, KZAstana, KZAstara, AZBaku, AZBandar Seri Begawan, BNBangalore, INBangkok, THBhubaneswar, INBishkek, KGCagayan de Oro, PHCebu, PHChandigarh, INChennai, INChiang Mai, THChittagong, BDCoimbatore, INColombo, LKDa Nang, VNDenpasar, IDDhaka, BDDushanbe, TJFukuoka, JPHanoi, VNHo Chi Minh City, VNHong Kong, HKHyderabad, INIslamabad, PKJalandhar, INJakarta, IDJamnagar, INJohor Bahru, MYKannur, INKanpur, INKaohsiung City, TWKarachi, PKKathmandu, NPKochi, INKolkata, INKuala Lumpur, MYKuching, MYLahore, PKLudhiana, INMacau, MOMalang, IDMale, MVManila, PHMumbai, INNagpur, INNaha, JPNew Delhi, INOsaka, JPPatna, INPhnom Penh, KHPune, INSambalpur, INSeoul, KRSingapore, SGSurat Thani, THTaipei, TWTarlac City, PHTbilisi, GEThimphu, BTTokyo, JPUdaipur, INUlaanbaatar, MNVientiane, LAYerevan, AMYogyakarta, ID
 
 Mainland China
 
-35
+36
 
-Baoji, CNBeihai, CNBeijing, CNChangde, CNChangsha, CNChangzhou, CNChengdu, CNChengmai, CNChongqing, CNDalian, CNFoshan, CNFuzhou, CNGuangzhou, CNGuiyang, CNHaikou, CNHengshui, CNJiaxing, CNJinan, CNKunming, CNLangfang, CNNanchang, CNNanning, CNQingdao, CNShanghai, CNShaoxing, CNShenzhen, CNShijiazhuang, CNTaizhou, CNTongren, CNXiangyang, CNXining, CNYangquan, CNZhengzhou, CNZhongshan, CNZibo, CN
+Anshung, CNBaoji, CNBeijing, CNChangde, CNChangsha, CNChangzhou, CNChengdu, CNChengmai, CNChongqing, CNDalian, CNFoshan, CNFuzhou, CNGuangzhou, CNGuiyang, CNHaikou, CNHengshui, CNJiaxing, CNJinan, CNKunming, CNLangfang, CNLuoyang, CNMeishan, CNNanchang, CNQingdao, CNShanghai, CNShaoxing, CNShenzhen, CNShijiazhuang, CNTaizhou, CNTongren, CNXiangyang, CNXianning, CNXingyi, CNYangquan, CNZhengzhou, CNZibo, CN
 
 Oceania
 
-13
+14
 
-Adelaide, AUAuckland, NZBrisbane, AUCanberra, AUChristchurch, NZHagatna, GUHobart, AUMelbourne, AUNouméa, NCPerth, AUSuva, FJSydney, AUTahiti, PF
+Adelaide, AUAuckland, NZBrisbane, AUCanberra, AUChristchurch, NZHagatna, GUHobart, AUMelbourne, AUNouméa, NCPerth, AUSuva, FJSydney, AUTahiti, PFWellington, NZ
 
 #####  Cloudflare is rolling out GPUs across our global network 
 
