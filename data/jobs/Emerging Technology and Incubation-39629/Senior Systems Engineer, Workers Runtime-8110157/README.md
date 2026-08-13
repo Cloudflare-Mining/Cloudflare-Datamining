@@ -5,29 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: San Francisco, CA<br>Dates: September 14 - December 4</strong></p>
-<p><strong>About the role<br></strong>We are seeking a creative and driven Brand Social Media Intern to help execute an impactful, high-visibility social media strategy. This role will support a major new Cloudflare awareness campaign and a large-scale Out-of-Home (OOH) advertising blitz in the San Francisco Bay Area during Q4.&nbsp;Timed alongside Connect, our global annual user conference, this campaign—titled “Paint the Town Orange”—aims to bridge physical and digital advertising. You will play a key role in extending our local OOH presence into a global social media movement, driving engagement among Cloudflare’s customers, prospects, and tech community.</p>
-<h4><strong>Responsibilities</strong></h4>
+<h3><strong>Available Locations: Austin, TX&nbsp;</strong></h3>
+<h3>About the Role</h3>
+<p>Cloudflare’s Emerging Technologies &amp; Incubation team builds new products at the edge by combining Cloudflare’s network scale with rapid product incubation. This role is on the Workers Runtime team, which ships the runtime that executes customer code at the edge. You’ll improve performance, expand JavaScript and WebAssembly support, and help the runtime scale safely and efficiently.</p>
+<h3>Responsibilities</h3>
 <ul>
-	<li><strong>Social Amplification &amp; Experiential Marketing:</strong> Drive digital engagement for our brand awareness campaign and other marketing activations by utilizing and repurposing footage from OOH and live experiential events.</li>
-	<li><strong>Virtual OOH &amp; Content Ideation:</strong> Brainstorm, concept, and help create "Virtual OOH" (CGI/digital-first) social content to maximize online visual impact and virality.</li>
-	<li><strong>Copywriting &amp; Traffic Management:</strong> Develop compelling social ad copy and manage the creation of tracking/destination URLs to support campaign goals.</li>
-	<li><strong>Global Calendar Management:</strong> Oversee a campaign-specific social media calendar, ensuring all platforms across all target languages are synchronized and executed in close partnership with the Corporate Social team.</li>
-	<li><strong>Localization &amp; Distribution:</strong> Coordinate translations and manage distribution specifically for Cloudflare's Japanese social media handles to ensure regional relevance.</li>
-	<li><strong>Campaign Project Management:</strong> Maintain organization, track deadlines, and manage project workflows to keep multi-channel campaign deliverables on schedule.</li>
+	<li>Build features and improvements for the Workers Runtime.</li>
+	<li>Improve runtime performance, reliability, and scale.</li>
+	<li>Expand JavaScript API and WebAssembly support.</li>
+	<li>Help shape features based on what is technically possible.</li>
+	<li>Own code in production and debug issues in a large-scale distributed system.</li>
+	<li>Work in a fast-paced, iterative environment that balances product goals with technical execution.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h3>Desirable Skills, Knowledge &amp; Experience</h3>
 <ul>
-	<li>Currently pursuing a degree or program in Marketing or relevant field to the role.</li>
-	<li>A social media native with a pulse on current Internet culture, emerging digital trends, and visual storytelling.</li>
-	<li>Strong copyediting skills and an eye for creative multimedia content (video, virtual OOH, etc.).</li>
-	<li>Excellent project management and organizational skills, with the ability to manage multi-language calendars.</li>
-	<li>Available for a full-time, 12-week internship, working from our San Francisco office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>2+ years of recent professional experience with C++ or Rust.</li>
+	<li>Strong computer science fundamentals, including data structures, algorithms, and software design.</li>
+	<li>Operational mindset and experience owning production systems.</li>
+	<li>Deep understanding of the web, including HTTP, JavaScript, and WebAssembly.</li>
+	<li>Experience debugging and optimizing large-scale Linux-based distributed systems.</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h3>Bonus Points</h3>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27.</span></li>
+	<li>Experience building high-performance distributed systems in Rust.</li>
+	<li>Experience with cloud or serverless platforms.</li>
+	<li>Familiarity with JS engine internals such as V8, SpiderMonkey, or JavaScriptCore.</li>
+	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, or Lucet.</li>
+	<li>Deep Linux, UNIX, kernel, or networking knowledge.</li>
+	<li>Contributions to large open source projects.</li>
 </ul>
+<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

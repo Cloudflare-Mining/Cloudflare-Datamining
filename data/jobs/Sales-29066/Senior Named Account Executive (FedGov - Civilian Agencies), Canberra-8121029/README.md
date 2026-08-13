@@ -5,48 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Washington D.C.<br>Internship Dates: September 14 - December 4</strong></p>
-<p><strong>About the role</strong></p>
-<p>Cloudflare’s Public Policy teams anticipate regulatory opportunities and challenges and advocate for the company’s interests across a rapidly evolving digital and policy landscape. The team manages a diverse portfolio of issues, focusing on critical areas such as AI, cybersecurity, data protection and privacy, digital sovereignty, connectivity, and intermediary liability. Operating in a fast-paced environment, members collaborate across functions to align policy solutions with core business priorities. By building strategic external partnerships, they effectively promote Cloudflare’s work and navigate complex global, national, and local policy issues to help build a better Internet for all.&nbsp;</p>
-<h4><strong>What you'll do</strong></h4>
-<p>As a U.S. Public Policy and AI Innovation intern, you will dive headfirst into the intersection of public policy and cutting-edge technology. &nbsp;Primarily supporting our Washington, D.C.-based U.S. Federal, State and Local Policy, Policy Strategy, and Global Government Relations teams, you will assist in efforts to both (1) navigate and respond to relevant tech policy, legislative, and regulatory processes, and (2) build internal AI-driven tools to enhance the efficacy and efficiency of our policy work.</p>
-<h4><strong>Responsibilities</strong></h4>
-<p><strong>Policy Operations and Advocacy</strong></p>
+<p>Available Locations:&nbsp;Canberra, ACT Australia (preferred)</p>
+<h3>About the Role</h3>
+<p>The Cloudflare APAC sales organisation operates as one integrated revenue system. Account Executives, Customer Engineers, Partner Account Managers, Business Development Representatives, Customer Experience Managers, Professional Services and Revenue Operations work as a continuous engine — winning, deploying, adopting, expanding, and scaling platform commitments across the full customer lifecycle.</p>
+<p>The system is supported by an AI-embedded operating model. The work itself, however, remains human. The role of every seller at Cloudflare is to bring critical thinking, judgment, and trust to customer relationships and outcomes.</p>
+<p>Our Public Sector team specifically helps government agencies solve complex technical challenges while protecting the essential services and infrastructure that Australian citizens rely on every day.</p>
+<p>As a Senior Enterprise Account Executive for the Australian Federal Government, you will lead Cloudflare’s strategic engagement within the Canberra territory. You will drive the adoption of the Cloudflare platform across Australian Public Service (APS) and Civilian Services agencies such as Services Australia, Department of Health and Aged Care, Australian Taxation Office (ATO), ASIC, Department of Finance, Treasury, and the ACT Government, while positioning Cloudflare as a foundational pillar for national cybersecurity and government digital transformation.</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Maintaining internal policy knowledge bases and issue trackers.</li>
-	<li>Monitoring and evaluating U.S. federal, state, and local legislation for impact on Cloudflare products.</li>
-	<li>Providing timely updates on policy shifts.</li>
-	<li>Drafting talking points, policy messaging, and presentation materials for external events, blog posts, and consultation responses.&nbsp;</li>
-	<li>Collaborating with Legal, Trust &amp; Safety, Public Sector Sales, and other internal teams on regulatory inquiries and high-stakes policy issues.</li>
-	<li>Analyzing new or proposed Internet- and Cloudflare-impacting regulations or legislation to guide advocacy and operational responses.</li>
+	<li>Strategic Relationship Management: Build and nurture deep, long-term relationships across all layers of your allocated Government segment, leveraging your existing network to navigate complex agency structures.</li>
+	<li>Territory Leadership: Lead the engagement strategy for the Australian Federal Government, acting as a subject matter expert on government IT, Cloud SaaS, Zero Trust, and AI adoption</li>
+	<li>Partner Ecosystem Advocacy: Identify, develop, and own relationships with a select group of strategic partners. By fostering deep advocacy within this ecosystem, you will create a "force multiplier" effect that scales Cloudflare’s reach and influence across the Commonwealth</li>
+	<li>Business Development: Actively identify and create new business opportunities within a competitive market to drive large-scale, transformational outcomes for the Commonwealth</li>
+	<li>Account Strategy &amp; Operations: Formulate and execute comprehensive multi-year account plans while maintaining rigorous sales discipline around forecasting, pipeline hygiene, and deal staging</li>
+	<li>Cross-Functional Collaboration: Partner with Customer Engineers and Professional Services to ensure seamless customer onboarding, deployment, and adoption tied to measurable agency benchmarks through to first renewal and expansion</li>
+	<li>Knowledge Leadership: Share market intelligence, procurement best practices, and federal insights across the ANZ team, actively mentoring peers to raise collective performance.</li>
 </ul>
-<p><strong>AI Innovation and Tooling</strong></p>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Designing AI-driven prototypes, and developing and refining specialized prompts and internal AI interfaces to streamline policy team workflows and processes.</li>
-	<li>Leveraging internal AI tools to synthesize vast amounts of public policy data into actionable insights, ensuring the team can respond to legislative shifts with higher speed and accuracy.</li>
-	<li>Supporting the development of internal best practices for the responsible use of AI within the policy and legal functions.</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li><strong>Education:</strong> Currently pursuing a Bachelor’s or Master’s degree with a focus on technology, engineering, public policy, law, or a related field.</li>
-	<li><strong>In-Office:</strong> Available for a full-time 12-week internship, working from our Washington D.C. office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li><strong>Tech-Forward Mindset:</strong> Strong demonstrated interest in Internet and technology policy, cybersecurity, privacy, and artificial intelligence issues.</li>
-	<li><strong>AI Experience and Skills</strong>: Prior experience building and deploying AI tools and applications using modern developer workflows, including AI-augmented coding or natural language programming (vibe coding).&nbsp;</li>
-	<li><strong>Analytical Rigor:</strong> Strong research, writing, and analytical skills. You are able to distill legislative and regulatory texts into clear, business-friendly advice and analysis.</li>
-	<li><strong>Initiative:</strong> Self-starter mentality. You are comfortable navigating ambiguity, developing and initiating new projects. You thrive in a fast-paced, highly collaborative environment.</li>
-	<li><strong>Curiosity: </strong>Willingness to learn, ask questions, and dig deep into novel issue sets with diligence, speed, and energy.</li>
-	<li><strong>Communication:</strong> Strong interpersonal and communications skills. You can articulate complex technology and policy concepts to cross-functional and public audiences. Proficiency in English, both written and oral, is required.</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Prior experience teaching AI tooling or adoption to a non-technical user base.</li>
-	<li>Prior experience (including internships, clinical work, or research) in government, a public policy organization, trade association, or a technology company.</li>
-	<li>Familiarity with Cloudflare’s products, cloud computing infrastructure, and the general mechanics of how the Internet works.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Washington D.C. based hires: Estimated hourly rate of $24/hr.</li>
+	<li>Proven track record of meeting and exceeding complex B2B enterprise software or SaaS sales quotas in high-growth technology environment</li>
+	<li>Deep specialization in the Australian Public Sector, including direct experience navigating government procurement frameworks, panel arrangements, and public domain contracting flows</li>
+	<li>Demonstrated capability to establish strategic relationships and close multi-year enterprise agreements with senior government stakeholders</li>
+	<li>Strong business acumen and technical aptitude, with the ability to translate complex cloud, network, SASE, and security architectures into clear value drivers for non-technical agency leaders</li>
+	<li>Strategic partner management skills, with experience co-selling alongside Partners and regional government consultancies</li>
+	<li>High proficiency in using modern sales tools and AI-driven platforms to streamline research, pipeline generation, and forecasting workflows</li>
+	<li>Demonstrated alignment with Cloudflare’s core values: Principled, Curious, and Transparent</li>
+	<li>Bachelor's degree or equivalent work experience.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
