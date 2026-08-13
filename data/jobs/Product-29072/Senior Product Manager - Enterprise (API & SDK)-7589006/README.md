@@ -10,6 +10,9 @@
 	<li>Atlanta, US</li>
 	<li>Austin, US</li>
 	<li>Denver, US</li>
+	<li>New York, US - Salary: $175k - $215k</li>
+	<li>San Fransisco, US - Salary: $179k - $225</li>
+	<li>Toronto, Canada&nbsp;</li>
 </ul>
 <h2>About the Role</h2>
 <p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
