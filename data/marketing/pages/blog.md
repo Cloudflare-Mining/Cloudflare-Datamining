@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 13, 2026[Certificate Transparency Monitoring is now generally available](https://blog.cloudflare.com/certificate-transparency-monitoring-ga/)
+
+Cloudflare's Certificate Transparency Monitoring is now generally available. The biggest change: we no longer email you about certificates Cloudflare issued for your domain, so when an alert lands in your inbox, it's worth a look.
+
+![Pravallika Nakarikanti](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ34PPYQF64Q3WFAPX7W5S.png&w=64&h=64&f=webp&fit=cover&position=center)![Jenny Yang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQQ26VN8E4P561X998FKQ9H.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Pravallika Nakarikanti](https://blog.cloudflare.com/author/pravallika-nakarikanti/) and [Jenny Yang](https://blog.cloudflare.com/author/jenny-yang/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQPYFA4V0A6ZGSYZDJGASME.png&w=2048&h=1152&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/certificate-transparency-monitoring-ga/)
+
 August 11, 2026[Cloudflare DDoS Threat Report H1 2026: 1 Tbps attacks soar as DNS floods and geopolitical tensions drive a new wave](https://blog.cloudflare.com/ddos-threat-report-2026-h1/)
 
 In the first half of 2026, Cloudflare detected a 519% surge in hyper-volumetric DDos attacks across its network. These attacks were driven heavily by DNS and CLDAP reflection vectors. This report breaks down how major geopolitical conflicts reshaped the global cyber threat landscape.
@@ -13,8 +23,6 @@ In the first half of 2026, Cloudflare detected a 519% surge in hyper-volumetric 
 ![Cloudforce One](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F4NKW3JJWXAED2MVFY7Y.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Cloudforce One](https://blog.cloudflare.com/author/cloudforce/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZQNQBJ1WH5E5QSQP8KFDVJV.png&w=2048&h=1152&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/ddos-threat-report-2026-h1/)
 
 August 10, 2026[Everything we launched during Agents Week](https://blog.cloudflare.com/agents-week-review-august-2026/)
 
@@ -151,14 +159,6 @@ At Cloudflare, we knew we could not depend on every employee to configure every 
 ![Scott Roe-Meschke](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46423166S2RP6H2395Z078.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Scott Roe-Meschke](https://blog.cloudflare.com/author/scott-roe-meschke/) and [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
-
-August 5, 2026[Catching rogue AI behavior with identity-aware analytics](https://blog.cloudflare.com/identity-aware-ai-gateway/)
-
-Identity-aware AI Gateway is now in open beta. User Insights turns that traffic into a behavioral baseline for every person and agent, and flags insider risk the moment it appears.
-
-![Ming Lu](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449KZ4869TJZZSHHFJXPTB.png&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)![Ayush Kumar](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449VZTK4C95VB94E47SS8C.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Ming Lu](https://blog.cloudflare.com/author/ming-lu/), [Kenny Johnson](https://blog.cloudflare.com/author/kenny/), and [Ayush Kumar](https://blog.cloudflare.com/author/ayush/)
 
 Load more
 
