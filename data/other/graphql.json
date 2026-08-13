@@ -1341,6 +1341,68 @@
 		"totalTokens": "Confidence interval for the corresponding point estimate",
 		"vectorizeDurationMs": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountAiSearchPublicEventsAdaptiveGroups": {
+		"__description": "AI Search public endpoint analytics: searches, result clicks and view-more interactions reported by the public search snippet",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of snippet events, of any kind",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension",
+		"uniq": "The number of unique values for a metric per dimension"
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsAvg": {
+		"__description": "",
+		"clickPosition": "The average position of the clicked result within the result list, -1 when the group holds no result clicks",
+		"sampleInterval": "Average sample interval",
+		"totalResult": "The average number of results returned per search, -1 when the group holds no search events"
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of snippet events, of any kind, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"clickPosition": "The position of the clicked result within the result list, starting at zero",
+		"clickViewMore": "Whether the event is a click on the view more results control (0 = false, 1 = true)",
+		"clickedResultId": "The identifier of the result that was clicked, empty for events that are not a result click",
+		"date": "The date of the snippet event",
+		"datetime": "The date and time the event occurred",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"eventVersion": "The version of the search snippet that reported the event",
+		"inputQuery": "The verbatim search term entered in the search snippet, empty for events that carry no query",
+		"origin": "The Origin header of the page hosting the search snippet",
+		"publicEndpointId": "The identifier of the AI Search public endpoint that served the snippet",
+		"totalResult": "The number of results returned for the search this event belongs to"
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsSum": {
+		"__description": "",
+		"clickCount": "The number of times a search result was clicked in the public search snippet",
+		"searchCount": "The number of searches performed through the public search snippet",
+		"totalResult": "The total number of results returned across all searches",
+		"viewMoreCount": "The number of times the view more results control was clicked"
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"clickCount": "Confidence interval for the corresponding point estimate",
+		"searchCount": "Confidence interval for the corresponding point estimate",
+		"totalResult": "Confidence interval for the corresponding point estimate",
+		"viewMoreCount": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountAiSearchPublicEventsAdaptiveGroupsUniq": {
+		"__description": "",
+		"searchIdCount": "The number of distinct requests to the public endpoint that reported these events"
+	},
 	"AccountArtifactsEventsAdaptiveGroups": {
 		"__description": "Artifacts events with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
@@ -16288,7 +16350,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
