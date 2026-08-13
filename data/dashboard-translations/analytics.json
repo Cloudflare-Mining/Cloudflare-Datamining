@@ -890,6 +890,8 @@
 	"logpush.create.bucket_step.s3_compatible.input_description.secret_access_key": "The private secret access key for your service",
 	"logpush.create.bucket_step.s3_compatible.input_label.endpoint": "Endpoint URL",
 	"logpush.create.bucket_step.s3_compatible.input_description.endpoint": "The url without the bucket name or path. Example: sfo2.digitaloceanspaces.com",
+	"logpush.create.bucket_step.s3_compatible.input_label.use_path_style": "Use path-style addressing",
+	"logpush.create.bucket_step.s3_compatible.input_description.use_path_style": "Address the bucket as a path (endpoint/bucket) instead of a subdomain (bucket.endpoint). Required by providers whose TLS certificate does not cover the bucket subdomain, such as Oracle Cloud Infrastructure Object Storage.",
 	"logpush.create.bucket_step.splunk.input_label.source_type": "Source Type",
 	"logpush.create.bucket_step.splunk.input_description.source_type": "The Splunk sourcetype. Example: cloudflare:json",
 	"logpush.create.bucket_step.splunk.input_label.auth_token": "Auth Token",
