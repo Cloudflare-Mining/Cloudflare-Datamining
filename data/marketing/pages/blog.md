@@ -6,6 +6,24 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 14, 2026[How Cloudflare detects MCP traffic and helps secure it](https://blog.cloudflare.com/mcp-security-updates/)
+
+Cloudflare Gateway identifies MCP requests using protocol-level heuristics. Security teams can use that signal to find shadow MCP traffic, enforce Portal-only access for approved servers, and block direct connections on managed network paths.
+
+![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AC8ST716E4F0Q7NWHHKA.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M005HG1H0K802B4Y17SX9NQ5.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/mcp-security-updates/)
+
+August 14, 2026[Secure all your internal vibe-coded applications — in one click](https://blog.cloudflare.com/workers-protected-by-access/)
+
+Introducing Cloudflare Access for Workers. Attach an Access policy directly to a Worker and it applies everywhere that Worker runs — routes, custom domains, workers.dev, and previews — automatically.
+
+![Chythra Malapati](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HX4HHXGH027XF9NKB8X0.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Matt Rothenberg](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HWV9Q9VTDJZXEVZDWDCP.webp&w=64&h=64&f=webp&fit=cover&position=center)![Matt Provost](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZW0HZ5QA2K86ATYSMSAQXYC.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Chythra Malapati](https://blog.cloudflare.com/author/chythra-malapati/), [Matt Rothenberg](https://blog.cloudflare.com/author/matt-rothenberg/), and [Matt Provost](https://blog.cloudflare.com/author/matt-provost/)
+
 August 13, 2026[Total eclipse of the Internet: traffic impacts in Iceland, Spain, and Portugal](https://blog.cloudflare.com/total-eclipse-internet-traffic-iceland-spain-portugal/)
 
 Cloudflare's data shows a clear impact on Internet traffic from Iceland to Spain and Portugal, following the path of totality of the total solar eclipse that occurred on August 12, 2026\. 
@@ -13,8 +31,6 @@ Cloudflare's data shows a clear impact on Internet traffic from Iceland to Spain
 ![Sabina Zejnilovic](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49B114HP8HRQ7MA3FAFRSN.JPG&w=64&h=64&f=webp&fit=cover&position=center)![Lai Yi Ohlsen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DGMNXAW2CZQQAX92W97V.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Sabina Zejnilovic](https://blog.cloudflare.com/author/sabina/) and [Lai Yi Ohlsen](https://blog.cloudflare.com/author/lai-yi-ohlsen/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZY9E03GZQKFZPVFDA5EKNGP.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/total-eclipse-internet-traffic-iceland-spain-portugal/)
 
 August 13, 2026[Certificate Transparency Monitoring is now generally available](https://blog.cloudflare.com/certificate-transparency-monitoring-ga/)
 
@@ -144,27 +160,11 @@ The Agent Access Model proposes a new architecture to secure task-scoped agents 
 
 [Matt Silverlock](https://blog.cloudflare.com/author/silverlock/)
 
-August 5, 2026[How we're rethinking work at Cloudflare with Cloudflare OS](https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os/)
-
-We built Cloudflare OS to equip our teams to safely rethink how they get work done with AI. The platform brings together the best of our technologies, from our Compute primitives to our Zero Trust suite. This post walks through our journey to give our users the best AI tools available.
-
-![Sam Rhea](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B32X8M7A8CXY9C0SX0EQ.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Sam Rhea](https://blog.cloudflare.com/author/sam/)
-
-August 5, 2026[Cloudflare OS: an open platform for agents, apps, and work](https://blog.cloudflare.com/cloudflare-os/)
-
-Cloudflare OS is an open-source platform that lets everyone in your company build apps, automate work, and safely access internal systems, shaped around what your organization knows and how it operates
-
-![Phillip Jones](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CA63Q819PPAR7M8DTNQ3.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Dan Carter](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BJJATPEKV6ZZ0N22HHVH.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Phillip Jones](https://blog.cloudflare.com/author/phillip/) and [Dan Carter](https://blog.cloudflare.com/author/dan-carter/)
-
 Load more
 
 Search is temporarily unavailable.
 
-[Login opens in a new tab](https://dash.cloudflare.com/login)[Contact Sales opens in a new tab](https://www.cloudflare.com/resource/contact-enterprise-sales/)[Start Building opens in a new tab](https://dash.cloudflare.com/sign-up)
+[Login opens in a new tab](https://dash.cloudflare.com/login)[Dashboard opens in a new tab](https://dash.cloudflare.com)[Contact Sales opens in a new tab](https://www.cloudflare.com/resource/contact-enterprise-sales/)[Start Building opens in a new tab](https://dash.cloudflare.com/sign-up)
 
 [ opens in a new tab](https://x.com/cloudflare)[ opens in a new tab](https://www.linkedin.com/company/cloudflare-inc-)[ opens in a new tab](https://blog.cloudflare.com/rss/)
 
