@@ -1,0 +1,261 @@
+<p>Au début de l'Agents Week, Rita<a href="https://blog.cloudflare.com/agents-week-welcome" target="_blank" rel="noopener noreferrer"> <u>a expliqué</u></a> que les agents représentent la prochaine évolution de l'informatique : non seulement en tant que nouvelle application de l'IA, mais également comme nouvelle catégorie de logiciels conçus pour façonner la manière dont les utilisateurs interagissent avec la technologie et dont les logiciels interagissent avec Internet. Au cours de<a href="https://www.cloudflare.com/innovation-week/ai-week-2025/updates" target="_blank" rel="noopener noreferrer"> <u>l'année dernière</u></a>, nous avons entrepris d'explorer ce que cette transformation signifie pour les développeurs et les clients qui conçoivent des applications natives de l'IA, de même que l'infrastructure nécessaire pour les soutenir. Plus les agents deviennent capables et autonomes, plus les problématiques s'étendent au-delà des modèles eux-mêmes, vers l'identité, la communication, l'orchestration, la mémoire, l'observabilité et la sécurité.</p>
+<p>La semaine passée, nous avons détaillé de quelle manière nous rassemblons ces éléments sur la plateforme Cloudflare afin de servir un Internet agentique. Chaque jour, nous vous avons présenté de nouveaux outils, de nouvelles idées et de nouveaux produits conçus pour bâtir un Internet au sein duquel les humains et les agents<a href="https://blog.cloudflare.com/the-agentic-internet" target="_blank" rel="noopener noreferrer"> <u>coopèrent plutôt que d'entrer en conflit</u></a>.</p>
+<h3><strong>Lundi 3 août</strong></h3>
+<p>Le lundi se concentrait sur le socle à mettre en place pour développer et exécuter des applications intelligentes et autonomes, c'est-à-dire les agents d'exécution et d'infrastructure sur lesquels ils reposent.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/cloudflare-computer" target="_blank" rel="noopener noreferrer"><u>Votre agent a besoin d'un ordinateur, pas d'un conteneur — découvrez @cloudflare/computer</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>La solution @cloudflare/computer propose un nouvel environnement d'exécution conçu pour les agents, capable de choisir l'environnement adéquat pour une tâche donnée.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/python-workers-rpc" target="_blank" rel="noopener noreferrer"><u>Workers RPC fonctionne désormais sur l'ensemble des environnements Python et JavaScript</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Les Workers Python et JavaScript peuvent désormais communiquer directement afin de faciliter les projets multilingues.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/smaller-faster-safer-models" target="_blank" rel="noopener noreferrer"><u>Plus petits, plus rapides, plus sûrs : exécuter les modèles Kimi et GLM à grande échelle</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Découvrez comment nous prenons en charge de grands modèles de manière plus efficace, sans sacrifier la qualité, la fiabilité ni la sécurité.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/billable-usage-api" target="_blank" rel="noopener noreferrer"><u>Présentation de l'API Billable Usage : une visibilité programmatique sur les coûts pour Cloudflare</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Un moyen plus simple de suivre l'utilisation et les coûts de nos produits en libre-service.&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/grpc-workers" target="_blank" rel="noopener noreferrer"><u>Les services Cloudflare Workers et Containers prennent désormais en charge les connexions TCP entrantes et gRPC</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Hébergez des back-ends vocaux assistés par IA ou d'autres agents vocaux en temps réel grâce à Cloudflare Workers.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>Mardi 4 août</strong></h3>
+<p>Mardi, nous avons lancé le service Agent Development Lifecycle (ADLC, cycle de vie du développement des agents) et les primitives qui font passer les logiciels agentiques du stade de prototype à la production.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/agent-development-lifecycle" target="_blank" rel="noopener noreferrer"><u>Cloudflare propose désormais le service Agent Development Lifecycle</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Remplacez le service SDLC (Software Development Lifecycle, cycle de vie du développement logiciel) par l'ADLC, notre approche pour faire passer les agents du stade de prototype à la production, ainsi que par les primitives qui sous-tendent la prochaine génération de « fabriques de logiciels » (software factories).</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>Présentation : Cloudflare Agents</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Développez des agents sur Cloudflare et suivez chaque exécution en direct, avec traçage, replay et approbations avec intervention humaine (Human-in-the-Loop) pour voir ce qui se passe en production.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/local-tracing" target="_blank" rel="noopener noreferrer"><u>Votre agent peut désormais débuguer les Workers grâce au traçage local</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Nous vous proposons le traçage distribué au sein du développement local afin de permettre aux agents de trouver et de débuguer plus facilement les problèmes avant qu'ils ne se manifestent en production.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/wallets" target="_blank" rel="noopener noreferrer"><u>Annonce de Cloudflare Wallets : le portefeuille programmable pour l'Internet agentique</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Le service Wallets propose un moyen sécurisé de permettre aux agents de réaliser des transactions en tant que participants à l'économie agentique émergente.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/ci-workflows" target="_blank" rel="noopener noreferrer"><u>Exécutez CI/CD pour des millions de dépôts : sur votre plateforme, sur Cloudflare</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pipeline d'intégration/diffusion continue (CI/CD, Continuous Integration/Continuous Delivery) programmable. Profitez de pipelines rédigés en code (et non en configuration) grâce à un agent qui répare les échecs et prépare les correctifs pour révision.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/engineering-standards-enforcement" target="_blank" rel="noopener noreferrer"><u>Comment Cloudflare applique les normes d'ingénierie grâce à l'IA</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>La manière dont nous utilisons l'automatisation assistée par IA tout au long de nos workflows de développement afin de maintenir l'alignement des normes de code et des processus, et ainsi d'aider nos propres fabriques de logiciels à produire un code de qualité et cohérent à grande échelle.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/astro-issue-triage" target="_blank" rel="noopener noreferrer"><u>La manière dont nous avons bâti notre fabrique de logiciels pour réduire le nombre de problèmes GitHub d'Astro à zéro</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Automatisez l'analyse, la catégorisation et le routage des problèmes afin de minimiser les tâches fastidieuses de maintenance logicielle et optimiser la productivité des développeurs.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>Mercredi 5 août</strong></h3>
+<p>Le mercredi, nous avons étendu le Zero Trust des utilisateurs et des appareils aux agents eux-mêmes. Nous avons également partagé la manière dont nous l'appliquons en interne chez Cloudflare.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/the-agent-access-model" target="_blank" rel="noopener noreferrer"><u>Le cadre Agent Access Model</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Ce cadre permet aux agents d'accéder en toute sécurité aux ressources et aux services pour le compte des utilisateurs, sur un réseau Internet de plus en plus peuplé d'agents.&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os" target="_blank" rel="noopener noreferrer"><u>Comment nous réinventons le travail chez Cloudflare grâce à Cloudflare OS</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Découvrez la manière dont nous avons intégré l'IA au sein de notre modèle opérationnel interne afin de permettre aux équipes de travailler plus intelligemment et plus rapidement sans sacrifier la sécurité ni la supervision.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/cloudflare-os" target="_blank" rel="noopener noreferrer"><u>Cloudflare OS : une plateforme ouverte pour les agents, les applications et le travail</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Nous avons ouvert le code de la plateforme que nos équipes utilisent pour développer des applications, automatiser le travail et accéder aux systèmes internes, en toute sécurité.&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/identity-aware-ai-gateway" target="_blank" rel="noopener noreferrer"><u>Détecter les comportements indésirables en matière d'IA grâce à des outils d'analyse sensibles à l'identité</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Attribuez l'activité de l'IA à de véritables utilisateurs et systèmes afin de détecter plus facilement les anomalies et les pics de dépenses.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/mcp-portal-writeguard-private-beta" target="_blank" rel="noopener noreferrer"><u>WriteGuard : des mesures de contrôle fines pour les serveurs MCP</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pour un meilleur contrôle des appels d'outils à risque et réduire les chances que les agents effectuent des modifications indésirables, nous proposons à nos clients les mêmes outils que ceux que nous déployons.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>Jeudi 6 août</strong></h3>
+<p>Jeudi fut le jour de la définition de l'Internet agentique et de la manière dont les propriétaires de sites web, les éditeurs et les agents peuvent tous contribuer à un Internet qui fonctionne à la fois pour les utilisateurs et les agents.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/the-agentic-internet" target="_blank" rel="noopener noreferrer"><u>Bâtir un Internet agentique ouvert : lisible, découvrable, accessible et payable</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Un modèle pour un Internet agentique au sein duquel les éditeurs gardent le contrôle et les agents bénéficient d'un accès utile aux ressources dont ils ont besoin, en plus de protocoles ouverts permettant aux deux parties d'effectuer des transactions.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/webmcp" target="_blank" rel="noopener noreferrer"><u>Donnez une interface WebMCP à n'importe quel site web</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Découvrez un aperçu du WebMCP, qui introduit une nouvelle approche (très simple) pour rendre les sites web et les applications web accessibles et utilisables par les agents.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/aeo" target="_blank" rel="noopener noreferrer"><u>Du référencement à la recommandation : préparez votre site afin de lui permettre de prospérer à l'ère agentique</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Adaptez le SEO aux pratiques de l'AEO (Answer Engine Optimization, optimisation pour les moteurs de réponses) afin d'améliorer l'identification, la compréhension et l'interprétation du contenu web par les agents.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/kitesurf" target="_blank" rel="noopener noreferrer"><u>Présentation de Kitesurf : le navigateur conçu pour les agents qui fonctionne au sein d'isolats V8 sur les Workers Cloudflare</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Un navigateur conçu spécialement pour les agents, qui privilégie un rendu parfait pixel par pixel pour une utilisation réduite de la mémoire et du processeur.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/mcp-v2" target="_blank" rel="noopener noreferrer"><u>La prochaine génération de MCP</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Le MCP a été réécrit. En simplifiant le déploiement et la scalabilité des applications agentiques, la version MCPv2 introduit la prochaine évolution du support MCP,.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/ai-search-easier" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Search : offrez un moteur de recherche à vos agents afin d'interroger vos données</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Le service AI Search transforme vos fichiers ou votre site web en un moteur de recherche prêt pour les agents avec une seule commande.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>Vendredi 7 août</strong></h3>
+<p>Vendredi a mis en lumière ce qui se passe réellement : les tâches que les agents effectuent vraiment sur le web, où l'IA fonctionne dans vos applications, qui contribue aux écosystèmes et de nouveaux outils pour analyser les données Internet.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/good-and-bad-agentic-behaviors" target="_blank" rel="noopener noreferrer"><u>Dévoiler les bons et les mauvais comportements sur l'Internet agentique</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Les bots ne sont pas toujours mauvais, et les humains ne sont pas toujours bons. I faut repenser la lutte contre les bots autour de la confiance continue plutôt que voir un risque ponctuel.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/workers-ai-gateway-unification" target="_blank" rel="noopener noreferrer"><u>Unifier les services Workers AI et AI Gateway grâce à une interface de contrôle unique assistée par IA</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Une liaison, un portefeuille, un tableau de bord pour appeler n'importe quel modèle d'IA. Le routage axé sur le modèle viendra ensuite.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/community-program-refresh" target="_blank" rel="noopener noreferrer"><u>Annonce des programmes Cloudflare Ambassadors, Community Engineers et d'un autre million de dollars pour le financement open-source</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Notre initiative Community actualisée lance deux nouveaux programmes : Cloudflare Ambassadors (ambassadeurs Cloudflare) pour les leaders de la communauté et Community Engineers (ingénieurs communautaires) pour les mainteneurs open-source. De même, 1 millions de dollars supplémentaires en financement open-source viendront s'ajouter pour les deux prochaines années.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><a href="https://blog.cloudflare.com/introducing-radar-researcher" target="_blank" rel="noopener noreferrer"><u>Présentation de Radar Researcher : un outil IA conçu pour explorer les données de l'Internet en langage clair</u></a></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>L'assistant de recherche soutenu par IA de Cloudflare Radar: questions en langage clair, graphiques interactifs en sortie.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>L'Agents Week est terminée, mais nous n'avons pas terminé de travailler</strong></h3>
+<p>Cinq jours plus tard, la réponse à la question de Rita « <a href="https://blog.cloudflare.com/agents-week-welcome" target="_blank" rel="noopener noreferrer"><u>Qu'attend votre agent d'un cloud agentique ?</u></a> » commence à se préciser. Ce nouvel univers nécessite une couche d'exécution et des primitives pour fonctionner, un cycle de développement qui s'écrit de plus en plus lui-même, un accès sécurisé pour les utilisateurs et les agents qui effectuent le travail, un Internet agentique, ainsi que les humains et les communautés qui maintiennent l'ensemble. Il reste encore beaucoup à venir, mais la forme de ce qui va suivre devient plus précise : un Internet qui soutient nativement les utilisateurs humains pour lesquels il a été conçu et les agents qui effectuent désormais des tâches pour leur compte.</p>
+<p>Nos travaux ne s'arrêtent pas ici. Gardez un œil sur notre<a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"> <u>journal des modifications</u></a> pour consulter les dernières mises à jour. En outre, nous serions ravis de vous entendre si vous souhaitez bâtir une partie de cet édifice avec nous ! N'hésitez pas à nous retrouver sur<a href="https://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer"> <u>X</u></a> ou<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"> <u>Discord</u></a>.</p>
