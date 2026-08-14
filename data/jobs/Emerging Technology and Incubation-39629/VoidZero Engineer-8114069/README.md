@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: Singapore, Sydney, or Tokyo</strong></h3>
+<h3><strong>Available Locations: Singapore, Sydney, Tokyo, Seoul, or Lisbon</strong></h3>
 <h3>About the Role</h3>
 <p>The VoidZero team builds open-source tools that power the modern web. Our projects, like Vite, have pushed the frontiers of what is possible and are trusted by countless developers.&nbsp;</p>
 <p>We are looking for someone to join our team that is passionate about making developers more productive. They’ll be working to improve the VoidZero family of projects (Vite, Vitest, Rolldown, Oxc, Vite+).</p>

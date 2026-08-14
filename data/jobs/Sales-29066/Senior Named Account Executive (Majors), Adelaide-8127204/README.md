@@ -5,31 +5,43 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2><span style="font-size: 12pt;">Available Locations: </span><span style="font-size: 10pt;"><strong>Austin, US</strong></span></h2>
-<h2><span style="font-size: 12pt;">About the Role</span></h2>
-<p>The Senior Oracle Technical Architect is the definitive technical architect responsible for developing, maintaining, governing, and standardizing all data capture/movement/reports involving our Oracle Fusion ERP/GTM/Integration Cloud environment. This highly influential role serves as the top techno-functional expert and is critical for leading the design and hands-on development of the most challenging, cross-functional technical solutions.</p>
-<h2>Responsibilities</h2>
+<p><strong>Available Location: Adelaide<br></strong></p>
+<hr>
+<h3>About the Role</h3>
+<p>The Cloudflare APAC sales organisation operates as one integrated revenue system. Account Executives, Customer Engineers, Partner Account Managers, Business Development Representatives, Customer Experience Managers, Professional Services and Revenue Operations work as a continuous engine — winning, deploying, adopting, expanding, and scaling platform commitments across the full customer lifecycle.</p>
+<p>The system is supported by an AI-embedded operating model. The work itself, however, remains human. The role of every seller at Cloudflare is to bring critical thinking, judgment, and trust to customer relationships and outcomes.</p>
+<p>Our Enterprise team specifically helps marquee Australian corporations solve complex technical challenges while protecting their critical digital infrastructure, customer data, and online experiences.</p>
+<p>As a Senior Enterprise Account Executive, you will lead Cloudflare’s strategic engagement for a portfolio of premier Adelaide-headquartered enterprise accounts and SA Government. In this role, you will drive adoption of the Cloudflare platform across Security, Performance, Zero Trust, and AI infrastructure, positioning Cloudflare as a foundational pillar for digital transformation and enterprise resilience.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li><strong>Technical Architecture: </strong>Oversee technical architecture, ensuring that all new integrations, extensions, conversions, workflows and customizations align with scalability, maintainability, and security standards across the entire Oracle ecosystem.</li>
-	<li><strong>Ownership:</strong> Act as the technical gatekeeper for all Oracle Fusion development and integration design, setting enterprise standards and defining the long-term technical roadmap.</li>
-	<li><strong>RICEW:</strong> Personally lead the design and hands-on development of the most challenging, cross-functional integrations and technical solutions, including Reports, Interfaces, Extensions, Conversions, and Workflows within OIC and the Fusion framework (using Groovy, VBCS, PaaS, OBN, Adapters, and Oracle AI Data).</li>
-	<li><strong>Security:</strong> Define security protocols (e.g., OAuth, API Gateway) and lead performance tuning initiatives for critical batch jobs and high-volume interfaces.</li>
+	<li>Strategic Relationship Management: Build and nurture deep, executive-level relationships across target named accounts, navigating complex organizational structures to establish trusted advisor status with C-suite and technology leaders.</li>
+	<li>Territory Leadership: Formulate and lead the engagement strategy across your assigned Melbourne enterprise portfolio, driving adoption of Cloudflare’s core solutions across Cloud SaaS, Zero Trust, Network Security, and AI enablement.</li>
+	<li>Partner Ecosystem Engagement: Collaborate with strategic channel partners, Global Systems Integrators (GSIs), and cloud ecosystem partners to extend Cloudflare’s reach, influence, and co-selling impact within target accounts.</li>
+	<li>Business Development &amp; Execution: Proactively identify and qualify high-impact enterprise opportunities, leveraging AI-assisted research and cross-functional teams to drive multi-million-dollar transformational outcomes.</li>
+	<li>Account Strategy &amp; Operational Rigor: Execute comprehensive multi-year account plans while maintaining high standards in forecasting accuracy, pipeline hygiene, and deal qualification.</li>
+	<li>Full Lifecycle Collaboration: Partner with Customer Engineers, Customer Success, and Professional Services to ensure successful deployment, value realization, and platform expansion through to renewal.</li>
+	<li>Knowledge Leadership: Share industry insights, competitive intelligence, and enterprise deal strategies across the ANZ team, actively mentoring peers to elevate collective performance.</li>
 </ul>
-<h2>Role Requirements</h2>
-<h2>Must-Have Skills</h2>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li><strong>12+ years</strong> of deep RICEW and support experience with Oracle Fusion ERP.</li>
-	<li><strong>Mandatory 6+ years:</strong> Proven history of designing and building complex custom technical/RICEW solutions within the Fusion framework (e.g., BI Publisher, Groovy scripting, VBCS, PaaS extensions, AI Agent Studio). Architectural and design experience for enterprise ERP/SCM/GTM system integrations is also required.</li>
-	<li><strong>Mandatory 6+ years:</strong>Expert-level, hands-on proficiency with Oracle Integration Cloud, including orchestration and standard adapter capabilities</li>
-	<li>Deep understanding of modern architecture (SOA, microservices, API management) and security protocols.</li>
-	<li>Good understanding of technical details of finance and supply chain modules within Oracle Fusion ERP/EPM/GTM ecosystem.</li>
+	<li>Proven track record of meeting and exceeding complex B2B enterprise software or SaaS sales quotas in high-growth technology environments.</li>
+	<li>Deep understanding of the Melbourne enterprise market, with experience navigating complex commercial procurement, legal, and risk governance processes.</li>
+	<li>Demonstrated ability to build executive relationships (CIO, CISO, CTO, Head of Infrastructure) and close multi-year enterprise agreements.</li>
+	<li>Strong technical aptitude with the ability to translate complex cloud, network, Zero Trust, SASE, and AI infrastructure concepts into strategic business outcomes for senior leadership.</li>
+	<li>High proficiency in leveraging modern sales tools and AI-assisted workflows to accelerate pipeline generation, deal strategy, and account research.</li>
+	<li>Alignment with Cloudflare’s core values: Principled, Curious, and Transparent.</li>
+	<li>Existing network and familiarity within target accounts across including Santos, Elders and South Australian Government and the local channel partner ecosystem</li>
+	<li>Demonstrated success co-selling with major GSIs, regional consultancies, and cloud ecosystem vendors in ANZ.</li>
+	<li>Bachelor's degree in business, technology, or a related field, or equivalent practical experience.</li>
 </ul>
-<h2>Nice-to-Have Skills</h2>
-<ul>
-	<li>Experience in an organization transitioning to the Oracle Cloud Ecosystem.</li>
-	<li>Hands-on experience building CI/CD tools (e.g., FlexDeploy, or custom VBCS) platforms.</li>
-	<li>Relevant professional product/functional certifications (e.g., Oracle Fusion, OIC/OPA, Database)</li>
-</ul>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
