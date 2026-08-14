@@ -1091,6 +1091,57 @@
 		]
 	},
 	{
+		"id": "7276b330-b4ae-4662-81d1-3a8bea8368f8",
+		"source": 1,
+		"name": "@cf/deepseek-ai/deepseek-v4-flash-0731",
+		"description": "DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. ",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"created_at": "2026-07-31 14:10:43.440",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "require_workers_paid",
+				"value": "true"
+			},
+			{
+				"property_id": "context_window",
+				"value": "384000"
+			},
+			{
+				"property_id": "function_calling",
+				"value": "true"
+			},
+			{
+				"property_id": "reasoning",
+				"value": "true"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.44,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 1.32,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M cached input tokens",
+						"price": 0.014,
+						"currency": "USD"
+					}
+				]
+			}
+		]
+	},
+	{
 		"id": "724608fa-983e-495d-b95c-340d6b7e78be",
 		"source": 1,
 		"name": "@cf/leonardo/phoenix-1.0",
@@ -1704,6 +1755,65 @@
 			{
 				"property_id": "function_calling",
 				"value": "true"
+			}
+		]
+	},
+	{
+		"id": "2d50837b-2dc7-4994-a690-a38e25c16d74",
+		"source": 1,
+		"name": "@cf/deepseek-ai/deepseek-v4-pro-0813",
+		"description": "deepseek-ai/deepseek-v4-pro-0813",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"created_at": "2026-08-13 17:15:08.489",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "beta",
+				"value": "false"
+			},
+			{
+				"property_id": "require_workers_paid",
+				"value": "true"
+			},
+			{
+				"property_id": "context_window",
+				"value": "1048576"
+			},
+			{
+				"property_id": "function_calling",
+				"value": "true"
+			},
+			{
+				"property_id": "reasoning",
+				"value": "true"
+			},
+			{
+				"property_id": "vision",
+				"value": "false"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 1.32,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 3.96,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M cached input tokens",
+						"price": 0.044,
+						"currency": "USD"
+					}
+				]
 			}
 		]
 	},
