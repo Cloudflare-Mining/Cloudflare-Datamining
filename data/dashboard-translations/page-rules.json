@@ -1,6 +1,6 @@
 {
 	"cloud_connector.page.title": "Cloud Connector",
-	"cloud_connector.page.description": "Redirect traffic from your website or application to a defined storage bucket on Cloudflare R2 or supported third parties like AWS, Google Cloud, and Azure.",
+	"cloud_connector.page.description": "Redirect traffic from your website or application to a defined storage bucket on Cloudflare R2 or supported third parties like AWS, Google Cloud, Azure, and Oracle Cloud Storage.",
 	"cloud_connector.page.documentation": "Cloud Connector documentation",
 	"cloud_connector.page.usage": "You have used **%{used} out of %{entitled}** available Cloud Connectors.",
 	"cloud_connector.landing.provider.select.button": "Select",
@@ -53,6 +53,7 @@
 	"cloud_connector.form.bucket.input.rules": "Bucket URL must follow these rules:",
 	"cloud_connector.form.bucket.input.rules.1.ends": "Ends with one of the following:",
 	"cloud_connector.form.bucket.input.rules.1.includes": "Includes with one of the following:",
+	"cloud_connector.form.bucket.input.rules.1.matches": "Matches one of the following formats:",
 	"cloud_connector.form.bucket.input.rules.2": "No spaces",
 	"cloud_connector.form.bucket.input.rules.3": "No https:// or http://",
 	"cloud_connector.form.bucket.input.rules.4": "No path",
