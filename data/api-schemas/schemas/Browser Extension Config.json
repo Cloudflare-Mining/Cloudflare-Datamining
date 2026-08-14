@@ -348,7 +348,10 @@
 		],
 		"tags": [
 			"Browser Extension Config"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-extension.config",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-get",
@@ -692,7 +695,10 @@
 		],
 		"tags": [
 			"Browser Extension Config"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-extension.config",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-post",
@@ -1136,7 +1142,10 @@
 		],
 		"tags": [
 			"Browser Extension Config"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-extension.config",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/browser-extension/config": {
 		"operationId": "accounts-browser-extension-config-put",
@@ -1580,6 +1589,9 @@
 		],
 		"tags": [
 			"Browser Extension Config"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "browser-extension.config",
+		"x-fern-sdk-method-name": "update"
 	}
 }

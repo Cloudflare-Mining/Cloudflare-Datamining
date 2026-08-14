@@ -341,7 +341,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/monitors": {
 		"operationId": "load-balancer-monitors-list-monitors",
@@ -1012,7 +1016,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/monitors/{monitor_id}": {
 		"operationId": "load-balancer-monitors-monitor-details",
@@ -1647,7 +1655,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/monitors/{monitor_id}/references": {
 		"operationId": "load-balancer-monitors-list-monitor-references",
@@ -1998,7 +2010,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors.references",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/preview/{preview_id}": {
 		"operationId": "load-balancer-monitors-preview-result",
@@ -2443,7 +2459,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.preview",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /user/load_balancers/monitors/{monitor_id}": {
 		"operationId": "load-balancer-monitors-patch-monitor",
@@ -3218,7 +3238,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /user/load_balancers/monitors": {
 		"operationId": "load-balancer-monitors-create-monitor",
@@ -3981,7 +4005,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /user/load_balancers/monitors/{monitor_id}/preview": {
 		"operationId": "load-balancer-monitors-preview-monitor",
@@ -4483,7 +4511,11 @@
 		],
 		"tags": [
 			"Load Balancer Monitors"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors.preview",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /user/load_balancers/monitors/{monitor_id}": {
 		"operationId": "load-balancer-monitors-update-monitor",
@@ -5258,6 +5290,10 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.monitors",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

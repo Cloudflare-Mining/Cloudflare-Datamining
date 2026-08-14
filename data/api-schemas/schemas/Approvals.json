@@ -1,0 +1,1223 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/rules/approvals": {
+		"operationId": "cloudforce-one-list-rule-approvals",
+		"summary": "List rule approvals",
+		"description": "List rule approvals with optional status, revision, reviewer-scope, and mutation-type filtering.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "status",
+				"in": "query",
+				"description": "Filter by status. Repeat the parameter to OR-match statuses (for example, status=pending&status=rejected). Use status=all alone to disable status filtering.",
+				"schema": {
+					"description": "Filter by status. Repeat the parameter to OR-match statuses (for example, status=pending&status=rejected). Use status=all alone to disable status filtering.",
+					"example": [
+						"pending",
+						"rejected"
+					],
+					"default": "pending",
+					"anyOf": [
+						{
+							"enum": [
+								"pending",
+								"approved",
+								"rejected",
+								"all"
+							],
+							"example": "pending",
+							"type": "string"
+						},
+						{
+							"items": {
+								"enum": [
+									"pending",
+									"approved",
+									"rejected",
+									"all"
+								],
+								"example": "pending",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"minItems": 1,
+							"type": "array"
+						}
+					]
+				}
+			},
+			{
+				"name": "latest_only",
+				"in": "query",
+				"description": "When true, return only the latest revision in each approval chain (rows not superseded by another approval).",
+				"schema": {
+					"description": "When true, return only the latest revision in each approval chain (rows not superseded by another approval).",
+					"type": "string",
+					"example": "true",
+					"default": "false",
+					"enum": [
+						"true",
+						"false"
+					]
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"type": "number",
+					"example": 50,
+					"default": 50,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "offset",
+				"in": "query",
+				"schema": {
+					"type": "number",
+					"example": 0,
+					"default": 0,
+					"minimum": 0,
+					"nullable": true
+				}
+			},
+			{
+				"name": "reviewer_scope",
+				"in": "query",
+				"description": "Filter approvals by reviewer scope.",
+				"schema": {
+					"description": "Filter approvals by reviewer scope.",
+					"type": "string",
+					"example": "email",
+					"enum": [
+						"default",
+						"email",
+						"unresolved"
+					]
+				}
+			},
+			{
+				"name": "change_type",
+				"in": "query",
+				"description": "Filter approvals by proposed mutation type.",
+				"schema": {
+					"description": "Filter approvals by proposed mutation type.",
+					"type": "string",
+					"example": "create",
+					"enum": [
+						"create",
+						"update",
+						"delete"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of approvals",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approvals": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"audit_log_id": {
+												"type": "number",
+												"example": 1
+											},
+											"can_review": {
+												"description": "Whether the authenticated user may approve or reject this pending change.",
+												"type": "boolean",
+												"example": true
+											},
+											"change_description": {
+												"type": "string",
+												"example": "Updated rule content"
+											},
+											"change_type": {
+												"type": "string",
+												"example": "create",
+												"enum": [
+													"create",
+													"update",
+													"delete",
+													"unresolved"
+												]
+											},
+											"commit_message": {
+												"description": "Human-readable justification supplied by the requester when the change was submitted. Required for internal-account mutations; optional for customer accounts and sync-originated changes.",
+												"type": "string",
+												"example": "Tighten regex to reduce false positives on legit CI workers.",
+												"nullable": true
+											},
+											"id": {
+												"type": "number",
+												"example": 12345,
+												"x-auditable": true
+											},
+											"proposed_changes": {
+												"description": "Structured proposed rule changes, or null when persisted data cannot be resolved.",
+												"oneOf": [
+													{
+														"properties": {
+															"content": {
+																"type": "string"
+															},
+															"created_at": {
+																"type": "number"
+															},
+															"created_by": {
+																"type": "string"
+															},
+															"description": {
+																"type": "string"
+															},
+															"enabled": {
+																"type": "boolean"
+															},
+															"id": {
+																"type": "string"
+															},
+															"is_public": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"namespaces": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"path": {
+																"type": "string",
+																"minLength": 1
+															},
+															"structured_source": {
+																"type": "string",
+																"nullable": true
+															},
+															"sync_message": {
+																"type": "string"
+															},
+															"sync_source": {
+																"type": "string"
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"create"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"id",
+															"name",
+															"path",
+															"description",
+															"namespaces",
+															"content",
+															"is_public",
+															"enabled",
+															"created_by",
+															"created_at"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"content": {
+																"type": "string"
+															},
+															"description": {
+																"type": "string"
+															},
+															"enabled": {
+																"type": "boolean"
+															},
+															"is_public": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"namespaces": {
+																"type": "array",
+																"items": {
+																	"type": "string"
+																}
+															},
+															"path": {
+																"type": "string",
+																"minLength": 1
+															},
+															"structured_source": {
+																"type": "string",
+																"nullable": true
+															},
+															"sync_message": {
+																"type": "string"
+															},
+															"sync_source": {
+																"type": "string"
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"update"
+																]
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"id": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"sync_message": {
+																"type": "string"
+															},
+															"sync_source": {
+																"type": "string"
+															},
+															"type": {
+																"type": "string",
+																"enum": [
+																	"delete"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													{
+														"nullable": true
+													}
+												]
+											},
+											"rejection_reason": {
+												"description": "Optional reason supplied by the reviewer when rejecting the change.",
+												"type": "string",
+												"example": "Narrow the hostname match to avoid false positives.",
+												"nullable": true,
+												"x-auditable": true
+											},
+											"requested_at": {
+												"type": "number",
+												"example": 1679529600000,
+												"x-auditable": true
+											},
+											"requested_by": {
+												"type": "string",
+												"example": "user@example.com",
+												"x-auditable": true
+											},
+											"reviewed_at": {
+												"type": "number",
+												"example": 1679529600000,
+												"nullable": true,
+												"x-auditable": true
+											},
+											"reviewer_scope": {
+												"description": "Review policy: general Nomos approvers for default; general approvers or Phishguard for email.",
+												"type": "string",
+												"example": "email",
+												"enum": [
+													"default",
+													"email",
+													"unresolved"
+												]
+											},
+											"revision_number": {
+												"description": "Revision number within this approval request chain.",
+												"type": "integer",
+												"example": 2,
+												"exclusiveMinimum": true,
+												"minimum": 0
+											},
+											"rule_id": {
+												"type": "string",
+												"format": "uuid",
+												"example": "550e8400-e29b-41d4-a716-446655440000",
+												"x-auditable": true
+											},
+											"rule_name": {
+												"type": "string",
+												"example": "suspicious_email.yar"
+											},
+											"status": {
+												"type": "string",
+												"example": "pending",
+												"enum": [
+													"pending",
+													"approved",
+													"rejected"
+												]
+											},
+											"superseded_by_approval_id": {
+												"description": "Newer approval revision that replaced this approval.",
+												"type": "number",
+												"example": 12346,
+												"nullable": true
+											},
+											"supersedes_approval_id": {
+												"description": "Previous approval revision replaced by this approval.",
+												"type": "number",
+												"example": 12344,
+												"nullable": true
+											}
+										},
+										"required": [
+											"id",
+											"rule_id",
+											"rule_name",
+											"audit_log_id",
+											"requested_by",
+											"requested_at",
+											"change_description",
+											"change_type",
+											"proposed_changes",
+											"status",
+											"reviewed_at",
+											"rejection_reason",
+											"supersedes_approval_id",
+											"superseded_by_approval_id",
+											"revision_number",
+											"commit_message",
+											"reviewer_scope",
+											"can_review"
+										],
+										"type": "object"
+									}
+								},
+								"total": {
+									"type": "number",
+									"example": 10
+								}
+							},
+							"required": [
+								"approvals",
+								"total"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid approval filter",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cross-account approval access is restricted",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Approvals"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.approvals",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/approvals/{id}": {
+		"operationId": "cloudforce-one-get-rule-approval",
+		"summary": "Get rule approval details",
+		"description": "Get a single rule approval with current rule data",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the approval.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the approval.",
+					"type": "string",
+					"example": "1"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Approval details",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval": {
+									"type": "object",
+									"properties": {
+										"audit_log_id": {
+											"type": "number",
+											"example": 1
+										},
+										"can_review": {
+											"description": "Whether the authenticated user may approve or reject this pending change.",
+											"type": "boolean",
+											"example": true
+										},
+										"change_description": {
+											"type": "string",
+											"example": "Updated rule content"
+										},
+										"change_type": {
+											"type": "string",
+											"example": "create",
+											"enum": [
+												"create",
+												"update",
+												"delete",
+												"unresolved"
+											]
+										},
+										"commit_message": {
+											"description": "Human-readable justification supplied by the requester when the change was submitted. Required for internal-account mutations; optional for customer accounts and sync-originated changes.",
+											"type": "string",
+											"example": "Tighten regex to reduce false positives on legit CI workers.",
+											"nullable": true
+										},
+										"current_rule": {
+											"anyOf": [
+												{
+													"type": "object",
+													"properties": {
+														"content": {
+															"example": "rule example { condition: true }",
+															"type": "string"
+														},
+														"created_at": {
+															"type": "number",
+															"example": 1679529600000,
+															"x-auditable": true
+														},
+														"created_by": {
+															"type": "string",
+															"example": "user@example.com",
+															"x-auditable": true
+														},
+														"description": {
+															"type": "string",
+															"example": "Detects malicious proxy workers"
+														},
+														"enabled": {
+															"description": "Whether this rule is active for dice consumers.",
+															"type": "boolean",
+															"example": true
+														},
+														"id": {
+															"type": "string",
+															"format": "uuid",
+															"example": "550e8400-e29b-41d4-a716-446655440000",
+															"x-auditable": true
+														},
+														"is_public": {
+															"description": "Whether this rule is visible to other internal accounts.",
+															"type": "boolean",
+															"example": false,
+															"x-auditable": true
+														},
+														"meta": {
+															"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"key": {
+																		"type": "string"
+																	},
+																	"type": {
+																		"type": "string",
+																		"enum": [
+																			"string",
+																			"bool",
+																			"int"
+																		]
+																	},
+																	"value": {
+																		"anyOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "boolean"
+																			},
+																			{
+																				"type": "number"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"key",
+																	"value",
+																	"type"
+																]
+															}
+														},
+														"name": {
+															"type": "string",
+															"example": "block-malicious-workers",
+															"x-auditable": true
+														},
+														"namespaces": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															},
+															"example": [
+																"yara/workers"
+															],
+															"x-auditable": true
+														},
+														"path": {
+															"type": "string",
+															"example": "yara/workers",
+															"x-auditable": true
+														},
+														"pending_approval_id": {
+															"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+															"type": "number",
+															"nullable": true
+														},
+														"structured_source": {
+															"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+															"type": "string",
+															"nullable": true
+														},
+														"updated_at": {
+															"type": "number",
+															"example": 1679529600000,
+															"x-auditable": true
+														},
+														"updated_by": {
+															"type": "string",
+															"example": "user@example.com",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"path",
+														"description",
+														"namespaces",
+														"content",
+														"is_public",
+														"enabled",
+														"created_at",
+														"updated_at",
+														"created_by",
+														"updated_by",
+														"pending_approval_id"
+													]
+												},
+												{
+													"nullable": true
+												}
+											]
+										},
+										"id": {
+											"type": "number",
+											"example": 12345,
+											"x-auditable": true
+										},
+										"proposed_changes": {
+											"description": "Structured proposed rule changes, or null when persisted data cannot be resolved.",
+											"oneOf": [
+												{
+													"properties": {
+														"content": {
+															"type": "string"
+														},
+														"created_at": {
+															"type": "number"
+														},
+														"created_by": {
+															"type": "string"
+														},
+														"description": {
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"id": {
+															"type": "string"
+														},
+														"is_public": {
+															"type": "boolean"
+														},
+														"name": {
+															"type": "string"
+														},
+														"namespaces": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"path": {
+															"type": "string",
+															"minLength": 1
+														},
+														"structured_source": {
+															"type": "string",
+															"nullable": true
+														},
+														"sync_message": {
+															"type": "string"
+														},
+														"sync_source": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"create"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"id",
+														"name",
+														"path",
+														"description",
+														"namespaces",
+														"content",
+														"is_public",
+														"enabled",
+														"created_by",
+														"created_at"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"content": {
+															"type": "string"
+														},
+														"description": {
+															"type": "string"
+														},
+														"enabled": {
+															"type": "boolean"
+														},
+														"is_public": {
+															"type": "boolean"
+														},
+														"name": {
+															"type": "string"
+														},
+														"namespaces": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"path": {
+															"type": "string",
+															"minLength": 1
+														},
+														"structured_source": {
+															"type": "string",
+															"nullable": true
+														},
+														"sync_message": {
+															"type": "string"
+														},
+														"sync_source": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"update"
+															]
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"sync_message": {
+															"type": "string"
+														},
+														"sync_source": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"delete"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"id",
+														"name"
+													],
+													"type": "object"
+												},
+												{
+													"nullable": true
+												}
+											]
+										},
+										"rejection_reason": {
+											"description": "Optional reason supplied by the reviewer when rejecting the change.",
+											"type": "string",
+											"example": "Narrow the hostname match to avoid false positives.",
+											"nullable": true,
+											"x-auditable": true
+										},
+										"requested_at": {
+											"type": "number",
+											"example": 1679529600000,
+											"x-auditable": true
+										},
+										"requested_by": {
+											"type": "string",
+											"example": "user@example.com",
+											"x-auditable": true
+										},
+										"reviewed_at": {
+											"type": "number",
+											"example": 1679529600000,
+											"nullable": true,
+											"x-auditable": true
+										},
+										"reviewer_scope": {
+											"description": "Review policy: general Nomos approvers for default; general approvers or Phishguard for email.",
+											"type": "string",
+											"example": "email",
+											"enum": [
+												"default",
+												"email",
+												"unresolved"
+											]
+										},
+										"revision_number": {
+											"description": "Revision number within this approval request chain.",
+											"type": "integer",
+											"example": 2,
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"rule_id": {
+											"type": "string",
+											"format": "uuid",
+											"example": "550e8400-e29b-41d4-a716-446655440000",
+											"x-auditable": true
+										},
+										"rule_name": {
+											"type": "string",
+											"example": "suspicious_email.yar"
+										},
+										"status": {
+											"type": "string",
+											"example": "pending",
+											"enum": [
+												"pending",
+												"approved",
+												"rejected"
+											]
+										},
+										"superseded_by_approval_id": {
+											"description": "Newer approval revision that replaced this approval.",
+											"type": "number",
+											"example": 12346,
+											"nullable": true
+										},
+										"supersedes_approval_id": {
+											"description": "Previous approval revision replaced by this approval.",
+											"type": "number",
+											"example": 12344,
+											"nullable": true
+										}
+									},
+									"required": [
+										"id",
+										"rule_id",
+										"rule_name",
+										"audit_log_id",
+										"requested_by",
+										"requested_at",
+										"change_description",
+										"change_type",
+										"proposed_changes",
+										"status",
+										"reviewed_at",
+										"rejection_reason",
+										"supersedes_approval_id",
+										"superseded_by_approval_id",
+										"revision_number",
+										"commit_message",
+										"reviewer_scope",
+										"can_review",
+										"current_rule"
+									]
+								}
+							},
+							"required": [
+								"approval"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid approval detail request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Cross-account approval access is restricted",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Approval not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Approvals"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.approvals",
+		"x-fern-sdk-method-name": "get"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/approvals/{id}/resubmit": {
+		"operationId": "cloudforce-one-resubmit-rule-approval",
+		"summary": "Revise and resubmit a rejected approval",
+		"description": "Create a new pending revision from a rejected rule approval. Only the original requester may resubmit the latest revision.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the approval.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the approval.",
+					"type": "string",
+					"example": "1"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"commit_message": {
+								"type": "string",
+								"maxLength": 1000,
+								"minLength": 1
+							},
+							"content": {
+								"minLength": 1,
+								"type": "string"
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1000
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"namespaces": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"202": {
+				"description": "New approval revision submitted",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number"
+								},
+								"message": {
+									"type": "string"
+								},
+								"requires_approval": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								},
+								"revision_number": {
+									"type": "integer",
+									"exclusiveMinimum": true,
+									"minimum": 0
+								},
+								"supersedes_approval_id": {
+									"type": "number"
+								}
+							},
+							"required": [
+								"message",
+								"approval_id",
+								"supersedes_approval_id",
+								"revision_number",
+								"requires_approval"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Not authorized to resubmit this approval",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Approval or underlying rule not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Approval is not rejected or has already been superseded",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Approvals"
+		]
+	}
+}

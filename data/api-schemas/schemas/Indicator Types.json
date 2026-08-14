@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/indicator-types": {
 		"operationId": "get_IndicatorTypesList",
 		"summary": "Lists indicator types across multiple datasets",
-		"description": "List indicator types across one or more datasets for the account.",
+		"description": "Lists indicator types across multiple datasets",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -110,7 +110,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.indicator.types",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicatorTypes": {
 		"operationId": "get_LegacyIndicatorTypesList",
@@ -212,6 +216,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.indicator-types",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

@@ -27,7 +27,8 @@
 					"maxLength": 100,
 					"minLength": 1
 				},
-				"example": "coffee shop"
+				"example": "coffee shop",
+				"x-fern-parameter-name": "query"
 			},
 			{
 				"name": "extensions",
@@ -569,7 +570,9 @@
 		],
 		"tags": [
 			"Domain Discovery"
-		]
+		],
+		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
+		"x-fern-sdk-method-name": "search"
 	},
 	"GET /accounts/{account_id}/registrar/domain-search": {
 		"operationId": "registrar-domain-discovery-search",
@@ -599,7 +602,8 @@
 					"maxLength": 100,
 					"minLength": 1
 				},
-				"example": "coffee shop"
+				"example": "coffee shop",
+				"x-fern-parameter-name": "query"
 			},
 			{
 				"name": "extensions",
@@ -1141,7 +1145,9 @@
 		],
 		"tags": [
 			"Domain Discovery"
-		]
+		],
+		"x-fern-sdk-group-name": "registrar.registrations",
+		"x-fern-sdk-method-name": "search"
 	},
 	"POST /accounts/{account_id}/registrar-sandbox/domain-check": {
 		"operationId": "sandbox-registrar-domain-discovery-check",
@@ -1736,7 +1742,9 @@
 		],
 		"tags": [
 			"Domain Discovery"
-		]
+		],
+		"x-fern-sdk-group-name": "registrar-sandbox.registrations",
+		"x-fern-sdk-method-name": "check"
 	},
 	"POST /accounts/{account_id}/registrar/domain-check": {
 		"operationId": "registrar-domain-discovery-check",
@@ -2331,6 +2339,8 @@
 		],
 		"tags": [
 			"Domain Discovery"
-		]
+		],
+		"x-fern-sdk-group-name": "registrar.registrations",
+		"x-fern-sdk-method-name": "check"
 	}
 }

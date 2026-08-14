@@ -7,17 +7,17 @@
 			{
 				"name": "instance_id",
 				"in": "path",
-				"description": "The ID of the container instance. This is the same ID listed in Wrangler and the Cloudflare Dash",
+				"description": "The ID of the container instance. This is the same ID listed in Wrangler and the Cloudflare Dash.",
 				"required": true,
 				"schema": {
-					"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement",
+					"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement.",
 					"type": "string"
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "Credentials to SSH into a Container",
+				"description": "Credentials to SSH into a Container.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -130,7 +130,7 @@
 				}
 			},
 			"400": {
-				"description": "Unknown account",
+				"description": "Unknown account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -348,7 +348,7 @@
 				}
 			},
 			"404": {
-				"description": "Deployment not found",
+				"description": "Deployment not found.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -566,7 +566,7 @@
 				}
 			},
 			"503": {
-				"description": "Instance exists but is not yet ready to use",
+				"description": "Instance exists but is not yet ready to use.",
 				"content": {
 					"application/json": {
 						"schema": {

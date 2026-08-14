@@ -2,7 +2,7 @@
 	"POST /accounts/{account_id}/cloudforce-one/events/datasets/populate": {
 		"operationId": "post_DatasetPopulate",
 		"summary": "Populate dataset-specific lookup tables from existing Events data with batch processing",
-		"description": "Populate dataset-specific lookup tables by scanning existing event data with batch processing.",
+		"description": "Populate dataset-specific lookup tables from existing Events data with batch processing",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -635,6 +635,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.datasets.populate",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

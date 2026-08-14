@@ -452,6 +452,11 @@
 														"x-auditable": true,
 														"x-stainless-skip": true
 													},
+													"contract_version": {
+														"description": "Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.",
+														"type": "integer",
+														"x-auditable": true
+													},
 													"created_at": {
 														"allOf": [
 															{
@@ -475,7 +480,9 @@
 														"type": "string",
 														"enum": [
 															"identity_denied",
-															"forbidden"
+															"forbidden",
+															"login",
+															"interstitial"
 														],
 														"x-auditable": true
 													},
@@ -498,6 +505,35 @@
 																"x-auditable": true
 															}
 														]
+													},
+													"warnings": {
+														"description": "Advisory validation findings returned when creating or updating a template. Omitted when empty.",
+														"type": "array",
+														"items": {
+															"description": "A single validation finding for a template.",
+															"type": "object",
+															"properties": {
+																"message": {
+																	"description": "Human-readable description of the finding.",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ref": {
+																	"description": "Optional pointer to the part of the template the finding refers to.",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"tier": {
+																	"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"tier",
+																"message"
+															]
+														}
 													}
 												},
 												"required": [
@@ -782,6 +818,11 @@
 													"x-auditable": true,
 													"x-stainless-skip": true
 												},
+												"contract_version": {
+													"description": "Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.",
+													"type": "integer",
+													"x-auditable": true
+												},
 												"created_at": {
 													"allOf": [
 														{
@@ -811,7 +852,9 @@
 													"type": "string",
 													"enum": [
 														"identity_denied",
-														"forbidden"
+														"forbidden",
+														"login",
+														"interstitial"
 													],
 													"x-auditable": true
 												},
@@ -1012,6 +1055,11 @@
 								"x-auditable": true,
 								"x-stainless-skip": true
 							},
+							"contract_version": {
+								"description": "Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.",
+								"type": "integer",
+								"x-auditable": true
+							},
 							"created_at": {
 								"allOf": [
 									{
@@ -1041,7 +1089,9 @@
 								"type": "string",
 								"enum": [
 									"identity_denied",
-									"forbidden"
+									"forbidden",
+									"login",
+									"interstitial"
 								],
 								"x-auditable": true
 							},
@@ -1181,6 +1231,11 @@
 													"x-auditable": true,
 													"x-stainless-skip": true
 												},
+												"contract_version": {
+													"description": "Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.",
+													"type": "integer",
+													"x-auditable": true
+												},
 												"created_at": {
 													"allOf": [
 														{
@@ -1204,7 +1259,9 @@
 													"type": "string",
 													"enum": [
 														"identity_denied",
-														"forbidden"
+														"forbidden",
+														"login",
+														"interstitial"
 													],
 													"x-auditable": true
 												},
@@ -1227,11 +1284,229 @@
 															"x-auditable": true
 														}
 													]
+												},
+												"warnings": {
+													"description": "Advisory validation findings returned when creating or updating a template. Omitted when empty.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
 												}
 											},
 											"required": [
 												"name",
 												"type"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "Template failed content validation; the verdict rides in the result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The result of validating a template's content.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"description": "Blocking findings; a non-empty list means the template cannot be published.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
+												},
+												"page_type": {
+													"description": "Custom page type.",
+													"type": "string",
+													"enum": [
+														"identity_denied",
+														"forbidden",
+														"login",
+														"interstitial"
+													],
+													"x-auditable": true
+												},
+												"version": {
+													"description": "The contract version the template was validated against.",
+													"type": "integer",
+													"x-auditable": true
+												},
+												"warnings": {
+													"description": "Advisory findings that do not block publishing.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
+												}
+											},
+											"required": [
+												"page_type",
+												"version",
+												"errors",
+												"warnings"
 											]
 										}
 									}
@@ -1373,6 +1648,383 @@
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
+	"POST /accounts/{account_id}/access/custom_pages/validate": {
+		"operationId": "access-custom-pages-validate-a-custom-page-template",
+		"summary": "Validate a custom page template",
+		"description": "Validate a Liquid template and return its errors and warnings without persisting it.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A template to validate without persisting it.",
+						"type": "object",
+						"properties": {
+							"template": {
+								"description": "The Liquid template to validate.",
+								"type": "string",
+								"x-auditable": true
+							},
+							"type": {
+								"description": "Custom page type.",
+								"type": "string",
+								"enum": [
+									"identity_denied",
+									"forbidden",
+									"login",
+									"interstitial"
+								],
+								"x-auditable": true
+							},
+							"version": {
+								"description": "Contract version to validate against; omit for the latest.",
+								"type": "integer",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"type",
+							"template"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Validate a custom page template response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The result of validating a template's content.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"description": "Blocking findings; a non-empty list means the template cannot be published.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
+												},
+												"page_type": {
+													"description": "Custom page type.",
+													"type": "string",
+													"enum": [
+														"identity_denied",
+														"forbidden",
+														"login",
+														"interstitial"
+													],
+													"x-auditable": true
+												},
+												"version": {
+													"description": "The contract version the template was validated against.",
+													"type": "integer",
+													"x-auditable": true
+												},
+												"warnings": {
+													"description": "Advisory findings that do not block publishing.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
+												}
+											},
+											"required": [
+												"page_type",
+												"version",
+												"errors",
+												"warnings"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Validate a custom page template response failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Access custom pages"
+		],
+		"x-api-token-group": [
+			"Access: Custom Pages Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.custom-pages",
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-hidden": true
+	},
 	"PUT /accounts/{account_id}/access/custom_pages/{custom_page_id}": {
 		"operationId": "access-custom-pages-update-a-custom-page",
 		"summary": "Update a custom page",
@@ -1415,6 +2067,11 @@
 								"x-auditable": true,
 								"x-stainless-skip": true
 							},
+							"contract_version": {
+								"description": "Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.",
+								"type": "integer",
+								"x-auditable": true
+							},
 							"created_at": {
 								"allOf": [
 									{
@@ -1444,7 +2101,9 @@
 								"type": "string",
 								"enum": [
 									"identity_denied",
-									"forbidden"
+									"forbidden",
+									"login",
+									"interstitial"
 								],
 								"x-auditable": true
 							},
@@ -1584,6 +2243,11 @@
 													"x-auditable": true,
 													"x-stainless-skip": true
 												},
+												"contract_version": {
+													"description": "Contract version of the page's Liquid template. Present (>= 1) marks a sanitized template; absent or 0 marks a legacy page served verbatim.",
+													"type": "integer",
+													"x-auditable": true
+												},
 												"created_at": {
 													"allOf": [
 														{
@@ -1607,7 +2271,9 @@
 													"type": "string",
 													"enum": [
 														"identity_denied",
-														"forbidden"
+														"forbidden",
+														"login",
+														"interstitial"
 													],
 													"x-auditable": true
 												},
@@ -1630,11 +2296,229 @@
 															"x-auditable": true
 														}
 													]
+												},
+												"warnings": {
+													"description": "Advisory validation findings returned when creating or updating a template. Omitted when empty.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
 												}
 											},
 											"required": [
 												"name",
 												"type"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"422": {
+				"description": "Template failed content validation; the verdict rides in the result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The result of validating a template's content.",
+											"type": "object",
+											"properties": {
+												"errors": {
+													"description": "Blocking findings; a non-empty list means the template cannot be published.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
+												},
+												"page_type": {
+													"description": "Custom page type.",
+													"type": "string",
+													"enum": [
+														"identity_denied",
+														"forbidden",
+														"login",
+														"interstitial"
+													],
+													"x-auditable": true
+												},
+												"version": {
+													"description": "The contract version the template was validated against.",
+													"type": "integer",
+													"x-auditable": true
+												},
+												"warnings": {
+													"description": "Advisory findings that do not block publishing.",
+													"type": "array",
+													"items": {
+														"description": "A single validation finding for a template.",
+														"type": "object",
+														"properties": {
+															"message": {
+																"description": "Human-readable description of the finding.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ref": {
+																"description": "Optional pointer to the part of the template the finding refers to.",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tier": {
+																"description": "The validation tier that produced the finding (e.g. html, liquid).",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tier",
+															"message"
+														]
+													}
+												}
+											},
+											"required": [
+												"page_type",
+												"version",
+												"errors",
+												"warnings"
 											]
 										}
 									}

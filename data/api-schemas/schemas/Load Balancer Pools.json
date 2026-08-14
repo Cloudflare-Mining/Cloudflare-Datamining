@@ -341,7 +341,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/pools": {
 		"operationId": "load-balancer-pools-list-pools",
@@ -532,6 +536,25 @@
 														"example": false,
 														"default": true,
 														"x-auditable": true
+													},
+													"health_sources": {
+														"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+														"type": "array",
+														"items": {
+															"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+															"enum": [
+																"local",
+																"regional",
+																"global"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"example": [
+															"regional",
+															"global"
+														],
+														"nullable": true
 													},
 													"id": {
 														"type": "string",
@@ -982,6 +1005,25 @@
 																"default": true,
 																"x-auditable": true
 															},
+															"health_sources": {
+																"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+																"type": "array",
+																"items": {
+																	"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+																	"enum": [
+																		"local",
+																		"regional",
+																		"global"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"regional",
+																	"global"
+																],
+																"nullable": true
+															},
 															"id": {
 																"type": "string",
 																"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -1354,7 +1396,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/pools/{pool_id}": {
 		"operationId": "load-balancer-pools-pool-details",
@@ -1524,6 +1570,25 @@
 													"example": false,
 													"default": true,
 													"x-auditable": true
+												},
+												"health_sources": {
+													"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+													"type": "array",
+													"items": {
+														"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+														"enum": [
+															"local",
+															"regional",
+															"global"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"regional",
+														"global"
+													],
+													"nullable": true
 												},
 												"id": {
 													"type": "string",
@@ -1950,6 +2015,25 @@
 															"default": true,
 															"x-auditable": true
 														},
+														"health_sources": {
+															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+															"type": "array",
+															"items": {
+																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+																"enum": [
+																	"local",
+																	"regional",
+																	"global"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"regional",
+																"global"
+															],
+															"nullable": true
+														},
 														"id": {
 															"type": "string",
 															"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -2321,7 +2405,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/pools/{pool_id}/health": {
 		"operationId": "load-balancer-pools-pool-health-details",
@@ -2798,7 +2886,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools.health",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/pools/{pool_id}/references": {
 		"operationId": "load-balancer-pools-list-pool-references",
@@ -3161,7 +3253,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools.references",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /user/load_balancers/pools": {
 		"operationId": "load-balancer-pools-patch-pools",
@@ -3362,6 +3458,25 @@
 														"example": false,
 														"default": true,
 														"x-auditable": true
+													},
+													"health_sources": {
+														"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+														"type": "array",
+														"items": {
+															"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+															"enum": [
+																"local",
+																"regional",
+																"global"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"example": [
+															"regional",
+															"global"
+														],
+														"nullable": true
 													},
 													"id": {
 														"type": "string",
@@ -3812,6 +3927,25 @@
 																"default": true,
 																"x-auditable": true
 															},
+															"health_sources": {
+																"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+																"type": "array",
+																"items": {
+																	"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+																	"enum": [
+																		"local",
+																		"regional",
+																		"global"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"example": [
+																	"regional",
+																	"global"
+																],
+																"nullable": true
+															},
 															"id": {
 																"type": "string",
 																"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -4183,7 +4317,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
+		"x-fern-sdk-method-name": "pools",
+		"x-forge-hidden": true
 	},
 	"PATCH /user/load_balancers/pools/{pool_id}": {
 		"operationId": "load-balancer-pools-patch-pool",
@@ -4258,6 +4396,25 @@
 								"example": false,
 								"default": true,
 								"x-auditable": true
+							},
+							"health_sources": {
+								"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+								"type": "array",
+								"items": {
+									"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+									"enum": [
+										"local",
+										"regional",
+										"global"
+									],
+									"type": "string",
+									"x-auditable": true
+								},
+								"example": [
+									"regional",
+									"global"
+								],
+								"nullable": true
 							},
 							"latitude": {
 								"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -4652,6 +4809,25 @@
 													"example": false,
 													"default": true,
 													"x-auditable": true
+												},
+												"health_sources": {
+													"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+													"type": "array",
+													"items": {
+														"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+														"enum": [
+															"local",
+															"regional",
+															"global"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"regional",
+														"global"
+													],
+													"nullable": true
 												},
 												"id": {
 													"type": "string",
@@ -5078,6 +5254,25 @@
 															"default": true,
 															"x-auditable": true
 														},
+														"health_sources": {
+															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+															"type": "array",
+															"items": {
+																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+																"enum": [
+																	"local",
+																	"regional",
+																	"global"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"regional",
+																"global"
+															],
+															"nullable": true
+														},
 														"id": {
 															"type": "string",
 															"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -5448,7 +5643,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools.edit.pools",
+		"x-fern-sdk-method-name": "pool",
+		"x-forge-hidden": true
 	},
 	"POST /user/load_balancers/pools": {
 		"operationId": "load-balancer-pools-create-pool",
@@ -5504,6 +5703,25 @@
 								"example": false,
 								"default": true,
 								"x-auditable": true
+							},
+							"health_sources": {
+								"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+								"type": "array",
+								"items": {
+									"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+									"enum": [
+										"local",
+										"regional",
+										"global"
+									],
+									"type": "string",
+									"x-auditable": true
+								},
+								"example": [
+									"regional",
+									"global"
+								],
+								"nullable": true
 							},
 							"latitude": {
 								"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -5915,6 +6133,25 @@
 													"example": false,
 													"default": true,
 													"x-auditable": true
+												},
+												"health_sources": {
+													"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+													"type": "array",
+													"items": {
+														"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+														"enum": [
+															"local",
+															"regional",
+															"global"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"regional",
+														"global"
+													],
+													"nullable": true
 												},
 												"id": {
 													"type": "string",
@@ -6341,6 +6578,25 @@
 															"default": true,
 															"x-auditable": true
 														},
+														"health_sources": {
+															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+															"type": "array",
+															"items": {
+																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+																"enum": [
+																	"local",
+																	"regional",
+																	"global"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"regional",
+																"global"
+															],
+															"nullable": true
+														},
 														"id": {
 															"type": "string",
 															"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -6711,7 +6967,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /user/load_balancers/pools/{pool_id}/preview": {
 		"operationId": "load-balancer-pools-preview-pool",
@@ -7213,7 +7473,11 @@
 		],
 		"tags": [
 			"Load Balancer Pools"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools.preview",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /user/load_balancers/pools/{pool_id}": {
 		"operationId": "load-balancer-pools-update-pool",
@@ -7288,6 +7552,25 @@
 								"example": false,
 								"default": true,
 								"x-auditable": true
+							},
+							"health_sources": {
+								"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+								"type": "array",
+								"items": {
+									"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+									"enum": [
+										"local",
+										"regional",
+										"global"
+									],
+									"type": "string",
+									"x-auditable": true
+								},
+								"example": [
+									"regional",
+									"global"
+								],
+								"nullable": true
 							},
 							"latitude": {
 								"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -7699,6 +7982,25 @@
 													"example": false,
 													"default": true,
 													"x-auditable": true
+												},
+												"health_sources": {
+													"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+													"type": "array",
+													"items": {
+														"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+														"enum": [
+															"local",
+															"regional",
+															"global"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
+													"example": [
+														"regional",
+														"global"
+													],
+													"nullable": true
 												},
 												"id": {
 													"type": "string",
@@ -8125,6 +8427,25 @@
 															"default": true,
 															"x-auditable": true
 														},
+														"health_sources": {
+															"description": "A list of health sources, ordered from highest to lowest priority, used to evaluate individual origin health and overall pool health. The load balancer uses the first source that has data and falls back to the next. Currently accepted values are null or the exact array [\"regional\", \"global\"]; any other combination is rejected. Null (the default) behaves like [\"local\", \"global\"]. [\"regional\", \"global\"] makes each region steer on its own health, falling back to the global decision when a region has no fresh data. Setting regional requires at least one region in check_regions.",
+															"type": "array",
+															"items": {
+																"description": "The scope a health decision is aggregated over. local: the result from the single data center running the health check; only available when health checks run from every data center (check_regions is ALL_DATACENTERS). regional: a separate decision per region, each aggregated from the data centers within that region, so regions steer independently; requires at least one region configured in check_regions. global: one worldwide decision aggregated across all configured regions, used as the fallback.",
+																"enum": [
+																	"local",
+																	"regional",
+																	"global"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"example": [
+																"regional",
+																"global"
+															],
+															"nullable": true
+														},
 														"id": {
 															"type": "string",
 															"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -8495,6 +8816,10 @@
 		],
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.load-balancers.pools",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

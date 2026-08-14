@@ -254,9 +254,8 @@
 			"Tenants"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "tenants",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "tenant",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /tenants/{tenant_id}/account_types": {
 		"operationId": "Tenants_validAccountTypes",
@@ -401,9 +400,8 @@
 			"Tenants"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "tenants.account-types",
-		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "tenant.account-type",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /tenants/{tenant_id}/accounts": {
 		"operationId": "Tenants_listAccounts",
@@ -617,9 +615,8 @@
 			"Tenants"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "tenants.accounts",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "tenant.account",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /tenants/{tenant_id}/entitlements": {
 		"operationId": "Tenants_listEntitlements",
@@ -942,9 +939,8 @@
 			"Tenants"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "tenants.entitlements",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "tenant.entitlement",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /tenants/{tenant_id}/memberships": {
 		"operationId": "Tenants_listMemberships",
@@ -1105,8 +1101,7 @@
 			"Tenants"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "tenants.memberships",
-		"x-fern-sdk-method-name": "list",
-		"x-forge-hidden": true
+		"x-fern-sdk-group-name": "tenant.membership",
+		"x-fern-sdk-method-name": "list"
 	}
 }

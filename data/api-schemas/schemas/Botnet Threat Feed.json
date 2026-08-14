@@ -260,7 +260,11 @@
 		],
 		"x-api-token-group": [
 			"DDoS Botnet Feed Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "botnet-feed.configs.asn",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/botnet_feed/asn/{asn_id}/day_report": {
 		"operationId": "botnet-threat-feed-get-day-report",
@@ -543,7 +547,11 @@
 		"x-api-token-group": [
 			"DDoS Botnet Feed Write",
 			"DDoS Botnet Feed Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "botnet-feed.asn",
+		"x-fern-sdk-method-name": "day-report",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/botnet_feed/asn/{asn_id}/full_report": {
 		"operationId": "botnet-threat-feed-get-full-report",
@@ -816,7 +824,11 @@
 		"x-api-token-group": [
 			"DDoS Botnet Feed Write",
 			"DDoS Botnet Feed Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "botnet-feed.asn",
+		"x-fern-sdk-method-name": "full-report",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/botnet_feed/configs/asn": {
 		"operationId": "botnet-threat-feed-list-asn",
@@ -1072,6 +1084,10 @@
 		"x-api-token-group": [
 			"DDoS Botnet Feed Write",
 			"DDoS Botnet Feed Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "botnet-feed.configs.asn",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

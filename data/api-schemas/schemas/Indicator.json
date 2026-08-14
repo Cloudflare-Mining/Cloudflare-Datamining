@@ -103,7 +103,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
 		"operationId": "get_IndicatorListLegacy",
@@ -312,7 +316,14 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.get",
+		"x-fern-sdk-method-name": "indicator-legacy",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		}
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"operationId": "get_IndicatorRead",
@@ -490,7 +501,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.get",
+		"x-fern-sdk-method-name": "indicator",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/tags": {
 		"operationId": "get_IndicatorTagsList",
@@ -659,7 +674,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.tags",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
 		"operationId": "get_IndicatorList",
@@ -951,28 +970,24 @@
 				}
 			},
 			{
-				"name": "source",
-				"in": "query",
-				"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields).",
-				"schema": {
-					"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields).",
-					"type": "string",
-					"enum": [
-						"do",
-						"r2catalog"
-					]
-				}
-			},
-			{
 				"name": "cache",
 				"in": "query",
-				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+				"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit. Cannot be combined with `cursor`.",
 				"schema": {
-					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit.",
+					"description": "Cache strategy. 'from-graph' serves results from the graph-node KV cache when all requested UUIDs are cached; falls back to normal path on partial/zero hit. Cannot be combined with `cursor`.",
 					"type": "string",
 					"enum": [
 						"from-graph"
 					]
+				}
+			},
+			{
+				"name": "cursor",
+				"in": "query",
+				"description": "Opaque cursor from a previous response's `pagination.cursor`. When provided, all filters, datasetIds, page, `pageSize`, `includeTags` and `relatedEventsLimit` come from the cursor — do not resend them. Sending any filter, `page`, `pageSize`, `includeTags`, `relatedEventsLimit`, `includeTotalCount=true`, or `cache=from-graph` alongside a cursor yields a 400 `CursorFilterConflictError`. A cursor issued for a different entity, an unsupported version, or a dataset that has since been reconfigured as analytics-only yields a 400 `InvalidCursorError`.",
+				"schema": {
+					"description": "Opaque cursor from a previous response's `pagination.cursor`. When provided, all filters, datasetIds, page, `pageSize`, `includeTags` and `relatedEventsLimit` come from the cursor — do not resend them. Sending any filter, `page`, `pageSize`, `includeTags`, `relatedEventsLimit`, `includeTotalCount=true`, or `cache=from-graph` alongside a cursor yields a 400 `CursorFilterConflictError`. A cursor issued for a different entity, an unsupported version, or a dataset that has since been reconfigured as analytics-only yields a 400 `InvalidCursorError`.",
+					"type": "string"
 				}
 			}
 		],
@@ -1244,6 +1259,45 @@
 															],
 															"type": "object"
 														},
+														"cursor": {
+															"properties": {
+																"description": {
+																	"type": "string",
+																	"example": "Opaque cursor for the next page. Pass back as the `cursor` query param on the next request. `null` when the sequence has ended, when the encoded cursor would exceed the safe URL length, or when this endpoint served the request from a backend that does not support cursor pagination (analytics R2 path)."
+																},
+																"nullable": {
+																	"type": "boolean",
+																	"example": true
+																},
+																"type": {
+																	"type": "string",
+																	"example": "string"
+																}
+															},
+															"required": [
+																"type",
+																"nullable",
+																"description"
+															],
+															"type": "object"
+														},
+														"has_more": {
+															"properties": {
+																"description": {
+																	"type": "string",
+																	"example": "True when more pages exist after this one. Present on both offset and cursor paths."
+																},
+																"type": {
+																	"type": "string",
+																	"example": "boolean"
+																}
+															},
+															"required": [
+																"type",
+																"description"
+															],
+															"type": "object"
+														},
 														"page": {
 															"properties": {
 																"type": {
@@ -1313,7 +1367,9 @@
 														"page",
 														"per_page",
 														"total_count",
-														"total_count_is_exact"
+														"total_count_is_exact",
+														"has_more",
+														"cursor"
 													]
 												},
 												"type": {
@@ -1397,7 +1453,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.indicators",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators/aggregate": {
 		"operationId": "get_IndicatorAggregate",
@@ -1462,19 +1522,37 @@
 			{
 				"name": "createdAfter",
 				"in": "query",
-				"description": "Filter indicators created after this date (ISO 8601 format, e.g., '2024-01-01')",
+				"description": "Filter indicators created after this date/datetime (ISO 8601, e.g., '2024-01-01' or '2024-01-01T00:00:00Z')",
 				"schema": {
-					"description": "Filter indicators created after this date (ISO 8601 format, e.g., '2024-01-01')",
-					"type": "string"
+					"description": "Filter indicators created after this date/datetime (ISO 8601, e.g., '2024-01-01' or '2024-01-01T00:00:00Z')",
+					"anyOf": [
+						{
+							"format": "date-time",
+							"type": "string"
+						},
+						{
+							"pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
 				"name": "createdBefore",
 				"in": "query",
-				"description": "Filter indicators created before this date (ISO 8601 format, e.g., '2024-12-31')",
+				"description": "Filter indicators created before this date/datetime (ISO 8601, e.g., '2024-12-31' or '2024-12-31T23:59:59Z')",
 				"schema": {
-					"description": "Filter indicators created before this date (ISO 8601 format, e.g., '2024-12-31')",
-					"type": "string"
+					"description": "Filter indicators created before this date/datetime (ISO 8601, e.g., '2024-12-31' or '2024-12-31T23:59:59Z')",
+					"anyOf": [
+						{
+							"format": "date-time",
+							"type": "string"
+						},
+						{
+							"pattern": "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$",
+							"type": "string"
+						}
+					]
 				}
 			},
 			{
@@ -1882,6 +1960,44 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "The updated indicator would duplicate an existing indicator.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string",
+												"example": "An error occurred."
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -1894,7 +2010,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators",
+		"x-fern-sdk-method-name": "patch",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/bulk": {
 		"operationId": "post_IndicatorCreateBulk",
@@ -2071,7 +2191,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.bulk",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/create": {
 		"operationId": "post_IndicatorCreate",
@@ -2311,6 +2435,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.indicators.create",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

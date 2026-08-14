@@ -1,0 +1,120 @@
+{
+	"GET /accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets/{file_name}": {
+		"operationId": "workers-ai-download-finetune-asset",
+		"summary": "Download a Finetune Asset",
+		"description": "Returns a pre-signed R2 URL for downloading a finetune asset file.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "finetune_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "bc451aef-f723-4b26-a6b2-901afd2e7a8a"
+				}
+			},
+			{
+				"name": "file_name",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "adapter_model.safetensors"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Pre-signed download URL",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"file_name": {
+											"type": "string"
+										},
+										"file_url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"file_name",
+										"file_url"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Finetune or asset not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Finetune Asset"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

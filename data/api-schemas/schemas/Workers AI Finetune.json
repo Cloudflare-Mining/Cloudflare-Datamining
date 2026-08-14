@@ -1,4 +1,118 @@
 {
+	"DELETE /accounts/{account_id}/ai/finetunes/{finetune_id}": {
+		"operationId": "workers-ai-delete-finetune",
+		"summary": "Delete a Finetune",
+		"description": "Permanently deletes a finetune. D1 rows are removed immediately and R2 objects are moved to a trash bucket with a 30-day lifecycle rule for recovery.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "finetune_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "bc451aef-f723-4b26-a6b2-901afd2e7a8a"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Finetune deleted successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"result": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"format": "uuid"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"name"
+									]
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Finetune not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object"
+									}
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Workers AI Finetune"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai.finetunes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
 	"GET /accounts/{account_id}/ai/finetunes": {
 		"operationId": "workers-ai-list-finetunes",
 		"summary": "List Finetunes",
@@ -135,7 +249,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai.finetunes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai/finetunes/public": {
 		"operationId": "workers-ai-list-public-finetunes",
@@ -470,7 +588,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai.finetunes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets": {
 		"operationId": "workers-ai-upload-finetune-asset",

@@ -755,7 +755,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.instances",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-get-script-triggers",
@@ -5709,7 +5712,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.settings",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/triggers/{script_name}": {
 		"operationId": "wor-add-script-triggers",
@@ -6881,7 +6887,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workflows.settings",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances": {
 		"operationId": "wor-create-new-workflow-instance",
@@ -6915,6 +6924,7 @@
 						"type": "object",
 						"properties": {
 							"instance_id": {
+								"description": "An id of exactly `cf_` followed by 64 lowercase hex characters is reserved for system-generated instances.",
 								"type": "string",
 								"maximum": 100,
 								"minimum": 1,
@@ -7605,6 +7615,7 @@
 						"items": {
 							"properties": {
 								"instance_id": {
+									"description": "An id of exactly `cf_` followed by 64 lowercase hex characters is reserved for system-generated instances.",
 									"type": "string",
 									"maximum": 100,
 									"minimum": 1,
@@ -8003,9 +8014,10 @@
 							"instances": {
 								"type": "array",
 								"items": {
+									"description": "Instance identifier. Accepts user-created ids (`^[a-zA-Z0-9_][a-zA-Z0-9-_]*$`, max 100 characters) and the system-generated ids returned by instance creation, which are `cf_` or `-` followed by exactly 64 lowercase hex characters.",
 									"maxLength": 100,
 									"minLength": 1,
-									"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+									"pattern": "^(-[0-9a-f]{64}|[a-zA-Z0-9_][a-zA-Z0-9-_]*)$",
 									"type": "string"
 								},
 								"maxItems": 100,
@@ -8322,9 +8334,9 @@
 					"schema": {
 						"type": "array",
 						"items": {
-							"maximum": 100,
-							"minimum": 1,
-							"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+							"maxLength": 100,
+							"minLength": 1,
+							"pattern": "^(-[0-9a-f]{64}|[a-zA-Z0-9_][a-zA-Z0-9-_]*)$",
 							"type": "string"
 						},
 						"maxItems": 100,

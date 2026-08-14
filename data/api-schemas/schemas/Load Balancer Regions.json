@@ -354,7 +354,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.regions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/load_balancers/regions/{region_id}": {
 		"operationId": "load-balancer-regions-get-region",
@@ -873,7 +877,11 @@
 		"x-api-token-group": [
 			"Load Balancing: Monitors and Pools Write",
 			"Load Balancing: Monitors and Pools Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.regions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /user/load_balancers/regions": {
 		"operationId": "user-load-balancer-regions-list-regions",

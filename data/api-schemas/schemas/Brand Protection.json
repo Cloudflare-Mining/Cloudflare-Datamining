@@ -177,7 +177,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.v2.logos",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices/{notice_id}": {
 		"operationId": "delete_TakedownNoticeDelete",
@@ -519,7 +523,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.v2.matches",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
 		"operationId": "get_GetDomainQueries",
@@ -802,7 +810,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.v2.queries",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates": {
 		"operationId": "get_LetterTemplateList",
@@ -1234,7 +1246,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.v2.logo-matches",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries": {
 		"operationId": "get_GetLogoQueries",
@@ -1328,7 +1344,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.v2.logos",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
 		"operationId": "get_TakedownNoticeList",
@@ -1819,7 +1839,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection",
+		"x-fern-sdk-method-name": "url-info",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
 		"operationId": "patch_UpdateDomainQuery",
@@ -2487,7 +2511,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection.v2.logos",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/search": {
 		"operationId": "post_SearchLogoSimilarity",
@@ -2632,7 +2660,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "brand-protection",
+		"x-fern-sdk-method-name": "submit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/takedown-notices": {
 		"operationId": "post_TakedownNoticeCreate",

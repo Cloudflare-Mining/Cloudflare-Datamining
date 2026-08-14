@@ -270,7 +270,7 @@
 	"DELETE /accounts/{account_id}/access/users/{user_id}/mfa_authenticators/{authenticator_id}": {
 		"operationId": "zero-trust-users-delete-mfa-authenticator",
 		"summary": "Delete a user's MFA device",
-		"description": "Deletes a specific MFA device for a user. This action is only available if MFA is turned on for the organization.",
+		"description": "Deletes a specific MFA device, including a PIV key or FIDO2 key enrollment, for a user. This action is only available if MFA is turned on for the organization. Successful deletion revokes the enrollment and returns a null result.",
 		"parameters": [
 			{
 				"name": "user_id",

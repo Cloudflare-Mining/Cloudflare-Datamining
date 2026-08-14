@@ -661,7 +661,10 @@
 			"enum": [
 				"#analytics:read"
 			]
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "dns.analytics.reports",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/dns_analytics/report/bytime": {
 		"operationId": "dns-analytics-by-time",
@@ -1436,6 +1439,9 @@
 			"enum": [
 				"#analytics:read"
 			]
-		}
+		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "dns.analytics.reports.bytimes",
+		"x-fern-sdk-method-name": "get"
 	}
 }

@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/events/{dataset_id}/delete": {
 		"operationId": "delete_EventDelete",
 		"summary": "Deletes one or more events",
-		"description": "Delete one or more events from a dataset.",
+		"description": "Deletes one or more events",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -101,12 +101,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.delete",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}": {
 		"operationId": "delete_EventTagDelete",
 		"summary": "Removes a tag from an event",
-		"description": "Remove one or more tags from an event.",
+		"description": "Removes a tag from a threat event in Cloudforce One.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -232,7 +236,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.event-tags",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "delete_EventQueryDelete",
@@ -313,12 +321,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
 		"operationId": "delete_EventReferenceDelete",
 		"summary": "Removes an event reference",
-		"description": "Remove one or more references from an event.",
+		"description": "Removes a reference link between related threat events in Cloudforce One.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -444,7 +456,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.relate",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
 		"operationId": "get_EventListGet",
@@ -594,18 +610,6 @@
 						"json",
 						"stix2",
 						"taxii"
-					]
-				}
-			},
-			{
-				"name": "source",
-				"in": "query",
-				"schema": {
-					"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields — no 'tags').",
-					"type": "string",
-					"enum": [
-						"do",
-						"r2catalog"
 					]
 				}
 			},
@@ -845,7 +849,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "get_EventReadDeprecated",
@@ -1095,12 +1103,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "get_EventRawRead",
 		"summary": "Reads data for a raw event",
-		"description": "Retrieve raw data for a specific event.",
+		"description": "Retrieves raw threat event data for a specific event in Cloudforce One.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1227,7 +1239,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.raw",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/relationships": {
 		"operationId": "get_EventRelationships",
@@ -1568,7 +1584,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.relationships",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/aggregate": {
 		"operationId": "get_EventAggregate",
@@ -1764,7 +1784,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.aggregate",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/events/{event_id}": {
 		"operationId": "get_EventRead",
@@ -2023,7 +2047,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.events",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries": {
 		"operationId": "get_EventQueryList",
@@ -2172,7 +2200,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.queries.get",
+		"x-fern-sdk-method-name": "event",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "get_EventQueryRead",
@@ -2328,7 +2360,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.queries.get",
+		"x-fern-sdk-method-name": "v2",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}": {
 		"operationId": "get_EventRawReadDS",
@@ -2499,12 +2535,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-method-name": "raw",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "patch_EventUpdate",
 		"summary": "Updates an event",
-		"description": "Update an existing event by its identifier.",
+		"description": "Partially updates a threat event in Cloudforce One, modifying specific fields without replacing the entire event.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2835,12 +2875,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "patch_EventRawUpdate",
 		"summary": "Updates a raw event",
-		"description": "Update raw data for a specific event.",
+		"description": "Partially updates raw threat event data in Cloudforce One, modifying specific fields of the event.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -2968,7 +3012,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.raw",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "patch_EventQueryUpdate",
@@ -3196,7 +3244,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
+		"x-fern-sdk-method-name": "patch",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/update/bulk": {
 		"operationId": "patch_EventUpdateBulk",
@@ -3415,12 +3467,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.update.bulk",
+		"x-fern-sdk-method-name": "patch",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
 		"summary": "Updates an event",
-		"description": "Update an existing event by its identifier.",
+		"description": "Updates an event",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3752,12 +3808,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
 		"operationId": "post_EventRawUpdate",
 		"summary": "Updates a raw event",
-		"description": "Update raw data for a specific event.",
+		"description": "Updates a raw event",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -3886,7 +3946,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.raw",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create": {
 		"operationId": "post_EventCreate",
@@ -4248,7 +4312,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk": {
 		"operationId": "post_EventCreateBulk",
@@ -4548,7 +4616,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events",
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
 		"operationId": "post_DOSEventCreateBulkWithRelationships",
@@ -4813,12 +4885,19 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "cloudforce-one.events.create-bulk.relationships",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		}
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/copy": {
 		"operationId": "post_EventCopyToNewDS",
 		"summary": "Copies specified events from one dataset to another dataset",
-		"description": "Copy one or more events from a source dataset to a destination dataset.",
+		"description": "Copies specified events from one dataset to another dataset",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -4981,12 +5060,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.copy",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
 		"operationId": "post_EventMoveToNewDS",
 		"summary": "Moves specified events from one dataset to another dataset",
-		"description": "Move one or more events from a source dataset to a destination dataset.",
+		"description": "Moves specified events from one dataset to another dataset",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5170,12 +5253,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.move",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create": {
 		"operationId": "post_EventTagCreate",
 		"summary": "Adds a tag to an event",
-		"description": "Add one or more tags to an event.",
+		"description": "Adds a tag to a threat event in Cloudforce One for classification and filtering.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5302,7 +5389,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.event-tags",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/graphql": {
 		"operationId": "post_EventGraphQL",
@@ -5394,7 +5485,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.graphql.create.graph",
+		"x-fern-sdk-method-name": "ql",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
 		"operationId": "post_EventQueryUpdate",
@@ -5623,7 +5718,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/queries/create": {
 		"operationId": "post_EventQueryCreate",
@@ -5811,12 +5910,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.queries",
+		"x-fern-sdk-method-name": "create-create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relate/{event_id}/create": {
 		"operationId": "post_EventReferenceCreate",
 		"summary": "Creates event references for a event",
-		"description": "Create one or more references between events.",
+		"description": "Creates event references for a event",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -5943,7 +6046,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.relate.create",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relationships/create": {
 		"operationId": "post_CreateEventRelationship",
@@ -6162,7 +6269,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.relationships.create",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/events/graphql": {
 		"operationId": "post_EventGraphQLV2",
@@ -6253,6 +6364,10 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.graphql.create.graph",
+		"x-fern-sdk-method-name": "qlv2",
+		"x-forge-hidden": true
 	}
 }

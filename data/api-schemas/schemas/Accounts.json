@@ -1348,7 +1348,7 @@
 			"Account Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.account-organizations",
+		"x-fern-sdk-group-name": "account.organization",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -1547,7 +1547,7 @@
 			"Account Settings Read"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "accounts.account-profile",
+		"x-fern-sdk-group-name": "account.profile",
 		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts": {
@@ -2086,9 +2086,9 @@
 			"Accounts"
 		],
 		"x-api-token-group": null,
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "accounts.account-organizations",
-		"x-fern-sdk-method-name": "create"
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "account",
+		"x-fern-sdk-method-name": "move"
 	},
 	"POST /accounts/move": {
 		"operationId": "Accounts_batchMoveAccounts",
@@ -2269,8 +2269,8 @@
 		"tags": [
 			"Accounts"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "accounts",
+		"x-fern-availability": "alpha",
+		"x-fern-sdk-group-name": "account.batch",
 		"x-fern-sdk-method-name": "move"
 	},
 	"PUT /accounts/{account_id}": {
@@ -2836,7 +2836,7 @@
 			"Account Settings Write"
 		],
 		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "accounts.account-profile",
+		"x-fern-sdk-group-name": "account.profile",
 		"x-fern-sdk-method-name": "update"
 	}
 }

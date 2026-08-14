@@ -1,8 +1,8 @@
 {
 	"DELETE /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-delete-servers",
-		"summary": "Delete a MCP Server",
-		"description": "Deletes an MCP portal from the account.",
+		"summary": "Delete an MCP Server",
+		"description": "Deletes an MCP server from the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -18,7 +18,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "server id",
+					"description": "Unique identifier for the MCP server.",
 					"type": "string",
 					"example": "my-mcp-server",
 					"maxLength": 32,
@@ -99,6 +99,7 @@
 											"readOnly": true
 										},
 										"auth_type": {
+											"description": "Authentication method used to connect to the upstream MCP server.",
 											"type": "string",
 											"example": "unauthenticated",
 											"enum": [
@@ -129,8 +130,9 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP server.",
 											"type": "string",
-											"example": "This is one remote mcp server",
+											"example": "This is one remote MCP server",
 											"maxLength": 512,
 											"nullable": true
 										},
@@ -165,12 +167,13 @@
 											"readOnly": true
 										},
 										"hostname": {
+											"description": "URL of the upstream MCP endpoint.",
 											"type": "string",
 											"format": "uri",
 											"example": "https://example.com/mcp"
 										},
 										"id": {
-											"description": "server id",
+											"description": "Unique identifier for the MCP server.",
 											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
@@ -202,6 +205,7 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP server.",
 											"type": "string",
 											"example": "My MCP Server",
 											"maxLength": 350
@@ -215,7 +219,7 @@
 											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -242,22 +246,27 @@
 											"readOnly": true
 										},
 										"updated_prompts": {
+											"description": "Server-wide prompt capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -268,22 +277,27 @@
 											}
 										},
 										"updated_tools": {
+											"description": "Server-wide tool capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -383,12 +397,17 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.servers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes the MCP server, removes it from every portal, and deletes its stored OAuth secrets."
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers": {
 		"operationId": "mcp-portals-api-list-servers",
 		"summary": "List MCP Servers",
-		"description": "Lists all MCP portals configured for the account.",
+		"description": "Lists all MCP servers configured for the account.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -500,6 +519,7 @@
 												"readOnly": true
 											},
 											"auth_type": {
+												"description": "Authentication method used to connect to the upstream MCP server.",
 												"type": "string",
 												"example": "unauthenticated",
 												"enum": [
@@ -530,8 +550,9 @@
 												"readOnly": true
 											},
 											"description": {
+												"description": "Optional description of the MCP server.",
 												"type": "string",
-												"example": "This is one remote mcp server",
+												"example": "This is one remote MCP server",
 												"maxLength": 512,
 												"nullable": true
 											},
@@ -566,12 +587,13 @@
 												"readOnly": true
 											},
 											"hostname": {
+												"description": "URL of the upstream MCP endpoint.",
 												"type": "string",
 												"format": "uri",
 												"example": "https://example.com/mcp"
 											},
 											"id": {
-												"description": "server id",
+												"description": "Unique identifier for the MCP server.",
 												"type": "string",
 												"example": "my-mcp-server",
 												"maxLength": 32,
@@ -603,6 +625,7 @@
 												"readOnly": true
 											},
 											"name": {
+												"description": "Display name for the MCP server.",
 												"type": "string",
 												"example": "My MCP Server",
 												"maxLength": 350
@@ -616,7 +639,7 @@
 												"readOnly": true
 											},
 											"secure_web_gateway": {
-												"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+												"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 												"type": "boolean",
 												"example": false,
 												"default": false
@@ -643,22 +666,27 @@
 												"readOnly": true
 											},
 											"updated_prompts": {
+												"description": "Server-wide prompt capability overrides.",
 												"type": "array",
 												"items": {
 													"properties": {
 														"alias": {
+															"description": "Custom name exposed for the capability.",
 															"type": "string",
 															"example": "my-custom-alias",
 															"maxLength": 40,
 															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 														},
 														"description": {
+															"description": "Custom description exposed for the capability.",
 															"type": "string"
 														},
 														"enabled": {
+															"description": "Whether the capability is available through the MCP server.",
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Name of the tool or prompt capability to override.",
 															"type": "string"
 														}
 													},
@@ -669,22 +697,27 @@
 												}
 											},
 											"updated_tools": {
+												"description": "Server-wide tool capability overrides.",
 												"type": "array",
 												"items": {
 													"properties": {
 														"alias": {
+															"description": "Custom name exposed for the capability.",
 															"type": "string",
 															"example": "my-custom-alias",
 															"maxLength": 40,
 															"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 														},
 														"description": {
+															"description": "Custom description exposed for the capability.",
 															"type": "string"
 														},
 														"enabled": {
+															"description": "Whether the capability is available through the MCP server.",
 															"type": "boolean"
 														},
 														"name": {
+															"description": "Name of the tool or prompt capability to override.",
 															"type": "string"
 														}
 													},
@@ -783,12 +816,16 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.servers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-fetch-servers",
-		"summary": "Read the details of a MCP Server",
-		"description": "Retrieves gateway configuration for MCP portals.",
+		"summary": "Read the details of an MCP Server",
+		"description": "Retrieves an MCP server's configuration and capability sync state.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -804,7 +841,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "server id",
+					"description": "Unique identifier for the MCP server.",
 					"type": "string",
 					"example": "my-mcp-server",
 					"maxLength": 32,
@@ -885,6 +922,7 @@
 											"readOnly": true
 										},
 										"auth_type": {
+											"description": "Authentication method used to connect to the upstream MCP server.",
 											"type": "string",
 											"example": "unauthenticated",
 											"enum": [
@@ -915,8 +953,9 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP server.",
 											"type": "string",
-											"example": "This is one remote mcp server",
+											"example": "This is one remote MCP server",
 											"maxLength": 512,
 											"nullable": true
 										},
@@ -951,12 +990,13 @@
 											"readOnly": true
 										},
 										"hostname": {
+											"description": "URL of the upstream MCP endpoint.",
 											"type": "string",
 											"format": "uri",
 											"example": "https://example.com/mcp"
 										},
 										"id": {
-											"description": "server id",
+											"description": "Unique identifier for the MCP server.",
 											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
@@ -988,6 +1028,7 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP server.",
 											"type": "string",
 											"example": "My MCP Server",
 											"maxLength": 350
@@ -1001,7 +1042,7 @@
 											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -1028,22 +1069,27 @@
 											"readOnly": true
 										},
 										"updated_prompts": {
+											"description": "Server-wide prompt capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -1054,22 +1100,27 @@
 											}
 										},
 										"updated_tools": {
+											"description": "Server-wide tool capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -1170,12 +1221,16 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.servers",
+		"x-fern-sdk-method-name": "read",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers": {
 		"operationId": "mcp-portals-api-create-servers",
 		"summary": "Create a new MCP Server",
-		"description": "Creates a new MCP portal for managing AI tool access through Cloudflare Access.",
+		"description": "Creates a new MCP server for connecting to an upstream MCP endpoint.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1194,10 +1249,13 @@
 						"type": "object",
 						"properties": {
 							"auth_credentials": {
+								"description": "Static credential for the upstream MCP server. For auth_type \"bearer\", either a raw token string (e.g. \"sk-abc123\"), which is wrapped server-side as `Authorization: Bearer <token>`, or a JSON-encoded object of the form `{\"headers\":{\"Header-Name\":\"value\",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{\"headers\":{\"cf-access-client-id\":\"...\",\"cf-access-client-secret\":\"...\"}}`).",
 								"type": "string",
+								"example": "sk-my-bearer-token",
 								"x-sensitive": true
 							},
 							"auth_type": {
+								"description": "Authentication method used to connect to the upstream MCP server.",
 								"type": "string",
 								"example": "unauthenticated",
 								"enum": [
@@ -1213,18 +1271,20 @@
 								"x-sensitive": true
 							},
 							"description": {
+								"description": "Optional description of the MCP server.",
 								"type": "string",
-								"example": "This is one remote mcp server",
+								"example": "This is one remote MCP server",
 								"maxLength": 512,
 								"nullable": true
 							},
 							"hostname": {
+								"description": "URL of the upstream MCP endpoint.",
 								"type": "string",
 								"format": "uri",
 								"example": "https://example.com/mcp"
 							},
 							"id": {
-								"description": "server id",
+								"description": "Unique identifier for the MCP server.",
 								"type": "string",
 								"example": "my-mcp-server",
 								"maxLength": 32,
@@ -1237,33 +1297,39 @@
 								"default": false
 							},
 							"name": {
+								"description": "Display name for the MCP server.",
 								"type": "string",
 								"example": "My MCP Server",
 								"maxLength": 350
 							},
 							"secure_web_gateway": {
-								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 								"type": "boolean",
 								"example": false,
 								"default": false
 							},
 							"updated_prompts": {
+								"description": "Server-wide prompt capability overrides.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"description": "Custom name exposed for the capability.",
 											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
 											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
+											"description": "Custom description exposed for the capability.",
 											"type": "string"
 										},
 										"enabled": {
+											"description": "Whether the capability is available through the MCP server.",
 											"type": "boolean"
 										},
 										"name": {
+											"description": "Name of the tool or prompt capability to override.",
 											"type": "string"
 										}
 									},
@@ -1274,22 +1340,27 @@
 								}
 							},
 							"updated_tools": {
+								"description": "Server-wide tool capability overrides.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"description": "Custom name exposed for the capability.",
 											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
 											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
+											"description": "Custom description exposed for the capability.",
 											"type": "string"
 										},
 										"enabled": {
+											"description": "Whether the capability is available through the MCP server.",
 											"type": "boolean"
 										},
 										"name": {
+											"description": "Name of the tool or prompt capability to override.",
 											"type": "string"
 										}
 									},
@@ -1382,6 +1453,7 @@
 											"readOnly": true
 										},
 										"auth_type": {
+											"description": "Authentication method used to connect to the upstream MCP server.",
 											"type": "string",
 											"example": "unauthenticated",
 											"enum": [
@@ -1412,8 +1484,9 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP server.",
 											"type": "string",
-											"example": "This is one remote mcp server",
+											"example": "This is one remote MCP server",
 											"maxLength": 512,
 											"nullable": true
 										},
@@ -1448,12 +1521,13 @@
 											"readOnly": true
 										},
 										"hostname": {
+											"description": "URL of the upstream MCP endpoint.",
 											"type": "string",
 											"format": "uri",
 											"example": "https://example.com/mcp"
 										},
 										"id": {
-											"description": "server id",
+											"description": "Unique identifier for the MCP server.",
 											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
@@ -1485,6 +1559,7 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP server.",
 											"type": "string",
 											"example": "My MCP Server",
 											"maxLength": 350
@@ -1498,7 +1573,7 @@
 											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -1525,22 +1600,27 @@
 											"readOnly": true
 										},
 										"updated_prompts": {
+											"description": "Server-wide prompt capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -1551,22 +1631,27 @@
 											}
 										},
 										"updated_tools": {
+											"description": "Server-wide tool capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -1674,7 +1759,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.servers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/servers/{id}/sync": {
 		"operationId": "mcp-portals-api-sync-server",
@@ -1686,9 +1775,9 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "portal id",
+					"description": "Unique identifier for the MCP server.",
 					"type": "string",
-					"example": "my-mcp-portal",
+					"example": "my-mcp-server",
 					"maxLength": 32,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
@@ -1835,19 +1924,23 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.servers",
+		"x-fern-sdk-method-name": "sync",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/ai-controls/mcp/servers/{id}": {
 		"operationId": "mcp-portals-api-update-servers",
-		"summary": "Update a MCP Server",
-		"description": "Updates an MCP portal configuration.",
+		"summary": "Update an MCP Server",
+		"description": "Updates an MCP server's configuration and credentials.",
 		"parameters": [
 			{
 				"name": "id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "server id",
+					"description": "Unique identifier for the MCP server.",
 					"type": "string",
 					"example": "my-mcp-server",
 					"maxLength": 32,
@@ -1872,7 +1965,9 @@
 						"type": "object",
 						"properties": {
 							"auth_credentials": {
+								"description": "Static credential for the upstream MCP server. For auth_type \"bearer\", either a raw token string (e.g. \"sk-abc123\"), which is wrapped server-side as `Authorization: Bearer <token>`, or a JSON-encoded object of the form `{\"headers\":{\"Header-Name\":\"value\",...}}` for custom or multiple static headers (e.g. Cloudflare Access service tokens: `{\"headers\":{\"cf-access-client-id\":\"...\",\"cf-access-client-secret\":\"...\"}}`).",
 								"type": "string",
+								"example": "sk-my-bearer-token",
 								"x-sensitive": true
 							},
 							"client_secret": {
@@ -1882,8 +1977,9 @@
 								"x-sensitive": true
 							},
 							"description": {
+								"description": "Optional description of the MCP server.",
 								"type": "string",
-								"example": "This is one remote mcp server",
+								"example": "This is one remote MCP server",
 								"maxLength": 512,
 								"nullable": true
 							},
@@ -1893,33 +1989,39 @@
 								"default": false
 							},
 							"name": {
+								"description": "Display name for the MCP server.",
 								"type": "string",
 								"example": "My MCP Server",
 								"maxLength": 350
 							},
 							"secure_web_gateway": {
-								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 								"type": "boolean",
 								"example": false,
 								"default": false
 							},
 							"updated_prompts": {
+								"description": "Server-wide prompt capability overrides.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"description": "Custom name exposed for the capability.",
 											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
 											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
+											"description": "Custom description exposed for the capability.",
 											"type": "string"
 										},
 										"enabled": {
+											"description": "Whether the capability is available through the MCP server.",
 											"type": "boolean"
 										},
 										"name": {
+											"description": "Name of the tool or prompt capability to override.",
 											"type": "string"
 										}
 									},
@@ -1930,22 +2032,27 @@
 								}
 							},
 							"updated_tools": {
+								"description": "Server-wide tool capability overrides.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"alias": {
+											"description": "Custom name exposed for the capability.",
 											"type": "string",
 											"example": "my-custom-alias",
 											"maxLength": 40,
 											"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 										},
 										"description": {
+											"description": "Custom description exposed for the capability.",
 											"type": "string"
 										},
 										"enabled": {
+											"description": "Whether the capability is available through the MCP server.",
 											"type": "boolean"
 										},
 										"name": {
+											"description": "Name of the tool or prompt capability to override.",
 											"type": "string"
 										}
 									},
@@ -2032,6 +2139,7 @@
 											"readOnly": true
 										},
 										"auth_type": {
+											"description": "Authentication method used to connect to the upstream MCP server.",
 											"type": "string",
 											"example": "unauthenticated",
 											"enum": [
@@ -2062,8 +2170,9 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP server.",
 											"type": "string",
-											"example": "This is one remote mcp server",
+											"example": "This is one remote MCP server",
 											"maxLength": 512,
 											"nullable": true
 										},
@@ -2098,12 +2207,13 @@
 											"readOnly": true
 										},
 										"hostname": {
+											"description": "URL of the upstream MCP endpoint.",
 											"type": "string",
 											"format": "uri",
 											"example": "https://example.com/mcp"
 										},
 										"id": {
-											"description": "server id",
+											"description": "Unique identifier for the MCP server.",
 											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
@@ -2135,6 +2245,7 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP server.",
 											"type": "string",
 											"example": "My MCP Server",
 											"maxLength": 350
@@ -2148,7 +2259,7 @@
 											"readOnly": true
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -2175,22 +2286,27 @@
 											"readOnly": true
 										},
 										"updated_prompts": {
+											"description": "Server-wide prompt capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -2201,22 +2317,27 @@
 											}
 										},
 										"updated_tools": {
+											"description": "Server-wide tool capability overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -2366,6 +2487,18 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.servers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"is_shared_oauth_callback_enabled": {
+				"default": null
+			},
+			"secure_web_gateway": {
+				"default": null
+			}
 		}
 	}
 }

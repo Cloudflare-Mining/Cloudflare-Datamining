@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/targetIndustries": {
 		"operationId": "get_TargetIndustryListByDataset",
 		"summary": "Lists all target industries for a specific dataset",
-		"description": "List all target industries referenced in events for a specific dataset.",
+		"description": "Lists all target industries for a specific dataset",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -109,12 +109,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset.target.industries",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries": {
 		"operationId": "get_TargetIndustryList",
 		"summary": "Lists target industries across multiple datasets",
-		"description": "List target industries referenced in events across one or more datasets.",
+		"description": "Retrieves the catalog of industry classifications used in Cloudforce One threat intelligence.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -222,12 +226,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.target-industries",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries/catalog": {
 		"operationId": "get_TargetIndustryListComplete",
 		"summary": "Lists all target industries from industry map catalog",
-		"description": "List all predefined target industries from the industry map catalog.",
+		"description": "Lists all target industries from industry map catalog",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -323,6 +331,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.target.industries.catalog",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

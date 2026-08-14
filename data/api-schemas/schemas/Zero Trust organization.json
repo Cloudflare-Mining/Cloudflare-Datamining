@@ -226,14 +226,15 @@
 													"type": "object",
 													"properties": {
 														"allowed_authenticators": {
-															"description": "Lists the MFA methods that users can authenticate with.",
+															"description": "Lists the MFA methods that users can authenticate with. The `piv_key` and `ssh_fido2_key` values are supported only for infrastructure applications.",
 															"type": "array",
 															"items": {
 																"enum": [
 																	"totp",
 																	"biometrics",
 																	"security_key",
-																	"piv_key"
+																	"piv_key",
+																	"ssh_fido2_key"
 																],
 																"type": "string"
 															},
@@ -330,7 +331,7 @@
 													"x-auditable": true
 												},
 												"mfa_required_for_all_apps": {
-													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
 													"type": "boolean",
 													"example": false,
 													"default": false,
@@ -673,6 +674,11 @@
 															"default": "8760h",
 															"x-auditable": true
 														},
+														"enabled": {
+															"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+															"type": "boolean",
+															"x-auditable": true
+														},
 														"expires_at": {
 															"type": "string",
 															"format": "date-time",
@@ -986,14 +992,15 @@
 								"type": "object",
 								"properties": {
 									"allowed_authenticators": {
-										"description": "Lists the MFA methods that users can authenticate with.",
+										"description": "Lists the MFA methods that users can authenticate with. The `piv_key` and `ssh_fido2_key` values are supported only for infrastructure applications.",
 										"type": "array",
 										"items": {
 											"enum": [
 												"totp",
 												"biometrics",
 												"security_key",
-												"piv_key"
+												"piv_key",
+												"ssh_fido2_key"
 											],
 											"type": "string"
 										},
@@ -1090,7 +1097,7 @@
 								"x-auditable": true
 							},
 							"mfa_required_for_all_apps": {
-								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
 								"type": "boolean",
 								"example": false,
 								"default": false,
@@ -1350,14 +1357,15 @@
 													"type": "object",
 													"properties": {
 														"allowed_authenticators": {
-															"description": "Lists the MFA methods that users can authenticate with.",
+															"description": "Lists the MFA methods that users can authenticate with. The `piv_key` and `ssh_fido2_key` values are supported only for infrastructure applications.",
 															"type": "array",
 															"items": {
 																"enum": [
 																	"totp",
 																	"biometrics",
 																	"security_key",
-																	"piv_key"
+																	"piv_key",
+																	"ssh_fido2_key"
 																],
 																"type": "string"
 															},
@@ -1454,7 +1462,7 @@
 													"x-auditable": true
 												},
 												"mfa_required_for_all_apps": {
-													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
 													"type": "boolean",
 													"example": false,
 													"default": false,
@@ -1994,14 +2002,15 @@
 								"type": "object",
 								"properties": {
 									"allowed_authenticators": {
-										"description": "Lists the MFA methods that users can authenticate with.",
+										"description": "Lists the MFA methods that users can authenticate with. The `piv_key` and `ssh_fido2_key` values are supported only for infrastructure applications.",
 										"type": "array",
 										"items": {
 											"enum": [
 												"totp",
 												"biometrics",
 												"security_key",
-												"piv_key"
+												"piv_key",
+												"ssh_fido2_key"
 											],
 											"type": "string"
 										},
@@ -2098,7 +2107,7 @@
 								"x-auditable": true
 							},
 							"mfa_required_for_all_apps": {
-								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
 								"type": "boolean",
 								"example": false,
 								"default": false,
@@ -2354,14 +2363,15 @@
 													"type": "object",
 													"properties": {
 														"allowed_authenticators": {
-															"description": "Lists the MFA methods that users can authenticate with.",
+															"description": "Lists the MFA methods that users can authenticate with. The `piv_key` and `ssh_fido2_key` values are supported only for infrastructure applications.",
 															"type": "array",
 															"items": {
 																"enum": [
 																	"totp",
 																	"biometrics",
 																	"security_key",
-																	"piv_key"
+																	"piv_key",
+																	"ssh_fido2_key"
 																],
 																"type": "string"
 															},
@@ -2458,7 +2468,7 @@
 													"x-auditable": true
 												},
 												"mfa_required_for_all_apps": {
-													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot contain only the infrastructure SSH authenticators ('piv_key' and 'ssh_fido2_key') if the organization has any non-infrastructure applications.",
 													"type": "boolean",
 													"example": false,
 													"default": false,
@@ -2818,6 +2828,11 @@
 															"type": "string",
 															"example": "60m",
 															"default": "8760h",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+															"type": "boolean",
 															"x-auditable": true
 														},
 														"expires_at": {

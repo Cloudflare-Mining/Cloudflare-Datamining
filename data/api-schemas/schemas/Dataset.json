@@ -137,12 +137,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
 		"operationId": "get_DatasetList",
 		"summary": "Lists all datasets in an account",
-		"description": "List all datasets accessible to the account.",
+		"description": "Lists all threat event datasets configured in Cloudforce One.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -176,6 +180,20 @@
 									"deletedAt": {
 										"type": "string"
 									},
+									"indicatorWriteMode": {
+										"description": "Effective indicator mutation capability after account/dataset authorization and dataset storage capability are applied. API Gateway method permissions are separate and must also allow the requested operation.",
+										"type": "string",
+										"example": "full",
+										"enum": [
+											"read_only",
+											"create_only",
+											"full"
+										]
+									},
+									"isAnalytics": {
+										"type": "boolean",
+										"example": true
+									},
 									"isPublic": {
 										"type": "boolean",
 										"example": true
@@ -192,7 +210,9 @@
 								"required": [
 									"uuid",
 									"name",
-									"isPublic"
+									"isPublic",
+									"isAnalytics",
+									"indicatorWriteMode"
 								],
 								"type": "object"
 							}
@@ -250,12 +270,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "get_DatasetRead",
 		"summary": "Reads a dataset",
-		"description": "Retrieve metadata for a specific dataset.",
+		"description": "Retrieves details for a specific threat event dataset.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -287,8 +311,9 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"deletedAt": {
-									"type": "string"
+								"isAnalytics": {
+									"type": "boolean",
+									"example": true
 								},
 								"isPublic": {
 									"type": "boolean",
@@ -306,7 +331,8 @@
 							"required": [
 								"uuid",
 								"name",
-								"isPublic"
+								"isPublic",
+								"isAnalytics"
 							]
 						}
 					}
@@ -362,12 +388,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "patch_DatasetUpdate",
 		"summary": "Updates an existing dataset",
-		"description": "Update an existing dataset by its identifier.",
+		"description": "Partially updates a threat event dataset in Cloudforce One, modifying specific fields without replacing the entire dataset configuration.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -423,8 +453,9 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"deletedAt": {
-									"type": "string"
+								"isAnalytics": {
+									"type": "boolean",
+									"example": true
 								},
 								"isPublic": {
 									"type": "boolean",
@@ -442,7 +473,8 @@
 							"required": [
 								"uuid",
 								"name",
-								"isPublic"
+								"isPublic",
+								"isAnalytics"
 							]
 						}
 					}
@@ -497,12 +529,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
 		"operationId": "post_DatasetUpdate",
 		"summary": "Updates an existing dataset",
-		"description": "Update an existing dataset by its identifier.",
+		"description": "Updates an existing dataset",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -558,8 +594,9 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"deletedAt": {
-									"type": "string"
+								"isAnalytics": {
+									"type": "boolean",
+									"example": true
 								},
 								"isPublic": {
 									"type": "boolean",
@@ -577,7 +614,8 @@
 							"required": [
 								"uuid",
 								"name",
-								"isPublic"
+								"isPublic",
+								"isAnalytics"
 							]
 						}
 					}
@@ -633,12 +671,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.dataset",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/create": {
 		"operationId": "post_DatasetCreate",
 		"summary": "Creates a dataset",
-		"description": "Create a new dataset in the account.",
+		"description": "Creates a new threat event dataset in Cloudforce One for organizing related threat events.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -683,8 +725,9 @@
 						"schema": {
 							"type": "object",
 							"properties": {
-								"deletedAt": {
-									"type": "string"
+								"isAnalytics": {
+									"type": "boolean",
+									"example": true
 								},
 								"isPublic": {
 									"type": "boolean",
@@ -702,7 +745,8 @@
 							"required": [
 								"uuid",
 								"name",
-								"isPublic"
+								"isPublic",
+								"isAnalytics"
 							]
 						}
 					}
@@ -758,6 +802,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.datasets",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

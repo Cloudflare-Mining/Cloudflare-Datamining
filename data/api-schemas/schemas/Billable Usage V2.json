@@ -439,7 +439,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "billing.usage",
+		"x-fern-sdk-method-name": "get-account-usage-v2"
 	},
 	"GET /organizations/{organization_id}/billable/usage": {
 		"operationId": "billable-usage-v2-get-organization-usage",
@@ -881,7 +884,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.billing.usage",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/billable/usage": {
 		"operationId": "billable-usage-v2-query-account-usage",
@@ -1369,6 +1375,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "billing.usage",
+		"x-fern-sdk-method-name": "query"
 	}
 }

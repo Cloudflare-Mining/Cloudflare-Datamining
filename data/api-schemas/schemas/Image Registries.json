@@ -2,21 +2,21 @@
 	"DELETE /accounts/{account_id}/containers/registries/{domain}": {
 		"operationId": "deleteImageRegistry",
 		"summary": "Delete a registry from the account",
-		"description": "Delete a registry from the account, this will prevent Containers from pulling images from the registry",
+		"description": "Delete a registry from the account, this will prevent Containers from pulling images from the registry.",
 		"parameters": [
 			{
 				"name": "domain",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "The domain to delete",
+					"description": "The domain to delete.",
 					"type": "string"
 				}
 			}
 		],
 		"responses": {
 			"200": {
-				"description": "The image registry is deleted",
+				"description": "The image registry is deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -112,7 +112,7 @@
 													"example": "docker.io"
 												},
 												"secrets_store_ref": {
-													"description": "Reference to credentials in Secrets Store that are no longer used by another\nregistry and can be removed. The value has the form `<store_id>:<secret_name>`.\n",
+													"description": "Reference to credentials in Secrets Store that remain unused across all other\nregistries, so you can safely remove them. The value takes the form `<store_id>:<secret_name>`.\n",
 													"type": "string"
 												}
 											},
@@ -132,7 +132,7 @@
 				}
 			},
 			"403": {
-				"description": "The image registry cannot be deleted",
+				"description": "The image registry cannot be deleted.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -241,7 +241,7 @@
 				}
 			},
 			"404": {
-				"description": "The image registry does not exist",
+				"description": "The image registry does not exist.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -350,7 +350,7 @@
 				}
 			},
 			"409": {
-				"description": "The image registry cannot be deleted because it is still referenced by applications on the account",
+				"description": "The image registry cannot be deleted because it is still referenced by applications on the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -587,10 +587,10 @@
 	"GET /accounts/{account_id}/containers/registries": {
 		"operationId": "listImageRegistries",
 		"summary": "Get the list of configured registries in the account",
-		"description": "Get the list of configured registries in the account",
+		"description": "Get the list of configured registries in the account.",
 		"responses": {
 			"200": {
-				"description": "The list of registries that are added in the account",
+				"description": "The list of registries that are added in the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -679,11 +679,11 @@
 										"result": {
 											"type": "array",
 											"items": {
-												"description": "An image registry added in a customer account",
+												"description": "An image registry added in a customer account.",
 												"type": "object",
 												"properties": {
 													"created_at": {
-														"description": "UTC timestamp string in ISO 8601 format",
+														"description": "UTC timestamp string in ISO 8601 format.",
 														"type": "string",
 														"example": "2021-04-01T12:32:41.488Z"
 													},
@@ -714,11 +714,11 @@
 														]
 													},
 													"private_credential": {
-														"description": "A reference to a secret stored in Secrets Store",
+														"description": "A reference to a secret stored in Secrets Store.",
 														"type": "object",
 														"properties": {
 															"secret_name": {
-																"description": "Name of the secret being referenced",
+																"description": "Name of the secret being referenced.",
 																"type": "string",
 																"example": "API_KEY",
 																"maxLength": 255,
@@ -726,7 +726,7 @@
 																"pattern": "^[A-z0-9-_]+$"
 															},
 															"store_id": {
-																"description": "Store ID where the secret is stored",
+																"description": "Store ID where the secret is stored.",
 																"type": "string",
 																"example": "14758f1afd44c09b7992073ccf00b43d",
 																"maxLength": 32,
@@ -756,6 +756,115 @@
 									],
 									"type": "object"
 								}
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"enum": [
+										null
+									],
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
 							]
 						}
 					}
@@ -910,11 +1019,11 @@
 												"type": "string"
 											},
 											{
-												"description": "A reference to a secret stored in Secrets Store",
+												"description": "A reference to a secret stored in Secrets Store.",
 												"type": "object",
 												"properties": {
 													"secret_name": {
-														"description": "Name of the secret being referenced",
+														"description": "Name of the secret being referenced.",
 														"type": "string",
 														"example": "API_KEY",
 														"maxLength": 255,
@@ -922,7 +1031,7 @@
 														"pattern": "^[A-z0-9-_]+$"
 													},
 													"store_id": {
-														"description": "Store ID where the secret is stored",
+														"description": "Store ID where the secret is stored.",
 														"type": "string",
 														"example": "14758f1afd44c09b7992073ccf00b43d",
 														"maxLength": 32,
@@ -938,7 +1047,7 @@
 										]
 									},
 									"public_credential": {
-										"description": "The format of this value is determined by the registry being configured.",
+										"description": "The registry you configure determines the format of this value.",
 										"type": "string",
 										"example": "AWS_ACCESS_KEY_ID"
 									}
@@ -954,7 +1063,7 @@
 								"example": "docker.io"
 							},
 							"is_public": {
-								"description": "Containers only supports authenticated external registries. If provided, this must be false.",
+								"description": "Containers only supports authenticated external registries. If provided, set this to false.",
 								"type": "boolean",
 								"enum": [
 									false
@@ -982,7 +1091,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Created a new image registry in the account",
+				"description": "Created a new image registry in the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1069,11 +1178,11 @@
 								{
 									"properties": {
 										"result": {
-											"description": "An image registry added in a customer account",
+											"description": "An image registry added in a customer account.",
 											"type": "object",
 											"properties": {
 												"created_at": {
-													"description": "UTC timestamp string in ISO 8601 format",
+													"description": "UTC timestamp string in ISO 8601 format.",
 													"type": "string",
 													"example": "2021-04-01T12:32:41.488Z"
 												},
@@ -1104,11 +1213,11 @@
 													]
 												},
 												"private_credential": {
-													"description": "A reference to a secret stored in Secrets Store",
+													"description": "A reference to a secret stored in Secrets Store.",
 													"type": "object",
 													"properties": {
 														"secret_name": {
-															"description": "Name of the secret being referenced",
+															"description": "Name of the secret being referenced.",
 															"type": "string",
 															"example": "API_KEY",
 															"maxLength": 255,
@@ -1116,7 +1225,7 @@
 															"pattern": "^[A-z0-9-_]+$"
 														},
 														"store_id": {
-															"description": "Store ID where the secret is stored",
+															"description": "Store ID where the secret is stored.",
 															"type": "string",
 															"example": "14758f1afd44c09b7992073ccf00b43d",
 															"maxLength": 32,
@@ -1151,7 +1260,7 @@
 				}
 			},
 			"400": {
-				"description": "Image registry input is malformed, see the error details",
+				"description": "Image registry input is malformed, see the error details.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1260,7 +1369,7 @@
 				}
 			},
 			"403": {
-				"description": "The registry that is being added is not allowed",
+				"description": "The registry that is being added is not allowed.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1369,7 +1478,7 @@
 				}
 			},
 			"409": {
-				"description": "The image registry already exists in the account",
+				"description": "The image registry already exists in the account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1628,18 +1737,19 @@
 						"type": "object",
 						"properties": {
 							"expiration_minutes": {
-								"description": "The minimum number of minutes the token will be valid for. Must be positive. We make a best effort to respect this value, but some registry providers do not let us configure the token lifetime, so the token may be valid for longer.",
+								"description": "The minimum number of minutes the token stays valid. Must remain positive. We make a best effort to respect this value, but some registry providers do not let us configure the token lifetime, so the token might stay valid for longer.",
 								"type": "integer",
 								"minimum": 1
 							},
 							"permissions": {
 								"type": "array",
 								"items": {
-									"description": "Specifies what permissions the credentials will have.",
+									"description": "Specifies what permissions the credentials carry.",
 									"type": "string",
 									"enum": [
 										"pull",
-										"push"
+										"push",
+										"list"
 									]
 								}
 							}
@@ -1654,7 +1764,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Credentials with 'pull' or 'push' permissions to access the registry",
+				"description": "Credentials with scoped permissions to access the registry.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1745,7 +1855,7 @@
 											"type": "object",
 											"properties": {
 												"account_id": {
-													"description": "A unique identifier for the user's account",
+													"description": "A unique identifier for the user's account.",
 													"type": "string"
 												},
 												"password": {
@@ -1753,7 +1863,7 @@
 													"type": "string"
 												},
 												"registry_host": {
-													"description": "The domain of the image registry the credentials are for.",
+													"description": "The domain of the image registry these credentials target.",
 													"type": "string"
 												},
 												"username": {
@@ -1780,7 +1890,7 @@
 				}
 			},
 			"400": {
-				"description": "Bad Request for Public API.",
+				"description": "Bad Request that contains a specific constant code and details object about the error.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1889,7 +1999,7 @@
 				}
 			},
 			"403": {
-				"description": "The requested token permissions are not allowed for this account",
+				"description": "The requested token permissions are not allowed for this account.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1998,7 +2108,7 @@
 				}
 			},
 			"404": {
-				"description": "The image registry does not exist",
+				"description": "The image registry does not exist.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2107,7 +2217,7 @@
 				}
 			},
 			"409": {
-				"description": "The registry was configured as public, so credentials can not be generated",
+				"description": "The registry was configured as public, so credentials can not be generated.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2216,7 +2326,7 @@
 				}
 			},
 			"500": {
-				"description": "InternalError500.",
+				"description": "An internal error has occurred.",
 				"content": {
 					"application/json": {
 						"schema": {

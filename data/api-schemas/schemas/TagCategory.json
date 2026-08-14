@@ -132,7 +132,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/tags/categories": {
 		"operationId": "get_TagCategoryList",
@@ -252,7 +256,11 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/categories/{category_uuid}": {
 		"operationId": "patch_TagCategoryUpdate",
@@ -456,7 +464,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories",
+		"x-fern-sdk-method-name": "patch",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/tags/categories/create": {
 		"operationId": "post_TagCategoryCreate",
@@ -617,6 +629,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.tags.categories.create",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

@@ -124,10 +124,11 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "Are you sure? This action cannot be undone."
 	},
 	"GET /organizations/{organization_id}/members": {
 		"operationId": "Members_list",
@@ -423,8 +424,8 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true
 	},
@@ -643,8 +644,8 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true
 	},
@@ -893,8 +894,8 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "organization.member",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	},
@@ -1150,8 +1151,8 @@
 		"tags": [
 			"OrganizationMembers"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "organizations.members-batch-create",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "organization.member.batch",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true
 	}

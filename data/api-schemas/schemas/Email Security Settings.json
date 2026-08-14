@@ -251,7 +251,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
@@ -509,7 +509,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.block-senders",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
@@ -797,6 +797,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "bulk_delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -1051,6 +1055,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
@@ -1306,6 +1314,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
@@ -1561,6 +1573,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -1815,7 +1831,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
 		"x-fern-sdk-method-name": "delete",
 		"x-forge-hidden": true,
@@ -2074,6 +2090,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies": {
@@ -2601,7 +2621,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
@@ -2983,7 +3003,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -3431,6 +3451,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -3756,6 +3780,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
@@ -4118,13 +4146,18 @@
 														]
 													},
 													"folder": {
-														"type": "string",
-														"enum": [
-															"AllItems",
-															"Inbox",
-															null
+														"allOf": [
+															{
+																"type": "string",
+																"enum": [
+																	"AllItems",
+																	"Inbox",
+																	null
+																],
+																"nullable": true
+															}
 														],
-														"nullable": true
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"id": {
 														"description": "Domain identifier.",
@@ -4173,7 +4206,8 @@
 													},
 													"lookback_hops": {
 														"type": "integer",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"modified_at": {
 														"allOf": [
@@ -4205,11 +4239,13 @@
 													},
 													"require_tls_inbound": {
 														"type": "boolean",
-														"nullable": true
+														"nullable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"require_tls_outbound": {
 														"type": "boolean",
-														"nullable": true
+														"nullable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"spf_status": {
 														"type": "string",
@@ -4379,6 +4415,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -4586,13 +4626,18 @@
 													]
 												},
 												"folder": {
-													"type": "string",
-													"enum": [
-														"AllItems",
-														"Inbox",
-														null
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"AllItems",
+																"Inbox",
+																null
+															],
+															"nullable": true
+														}
 													],
-													"nullable": true
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Domain identifier.",
@@ -4641,7 +4686,8 @@
 												},
 												"lookback_hops": {
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"modified_at": {
 													"allOf": [
@@ -4673,11 +4719,13 @@
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"spf_status": {
 													"type": "string",
@@ -4846,7 +4894,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.domains",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -5129,6 +5177,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.domains.verification",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry": {
@@ -5571,6 +5623,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
@@ -5909,6 +5965,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
@@ -6317,6 +6377,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
@@ -6635,6 +6699,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains": {
@@ -7072,6 +7140,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -7396,7 +7468,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -7759,6 +7831,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
@@ -8060,6 +8136,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -8588,7 +8668,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
@@ -9014,7 +9094,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.block-senders",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
@@ -9063,13 +9143,18 @@
 								}
 							},
 							"folder": {
-								"type": "string",
-								"enum": [
-									"AllItems",
-									"Inbox",
-									null
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"AllItems",
+											"Inbox",
+											null
+										],
+										"nullable": true
+									}
 								],
-								"nullable": true
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"integration_id": {
 								"type": "string",
@@ -9092,7 +9177,8 @@
 								"type": "integer",
 								"maximum": 20,
 								"minimum": 1,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"regions": {
 								"type": "array",
@@ -9109,11 +9195,13 @@
 							},
 							"require_tls_inbound": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"require_tls_outbound": {
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"transport": {
 								"type": "string",
@@ -9325,13 +9413,18 @@
 													]
 												},
 												"folder": {
-													"type": "string",
-													"enum": [
-														"AllItems",
-														"Inbox",
-														null
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"AllItems",
+																"Inbox",
+																null
+															],
+															"nullable": true
+														}
 													],
-													"nullable": true
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Domain identifier.",
@@ -9380,7 +9473,8 @@
 												},
 												"lookback_hops": {
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"modified_at": {
 													"allOf": [
@@ -9412,11 +9506,13 @@
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"spf_status": {
 													"type": "string",
@@ -9584,6 +9680,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
@@ -10032,6 +10132,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
@@ -10440,6 +10544,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
@@ -10860,7 +10968,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
 		"x-fern-sdk-method-name": "edit",
 		"x-forge-hidden": true,
@@ -11195,6 +11303,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies": {
@@ -11731,7 +11843,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
@@ -12949,9 +13061,9 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "email-security.settings.batch.allow.policies.batch",
-		"x-fern-sdk-method-name": "create",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-method-name": "batch",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
@@ -13379,6 +13491,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
@@ -14271,6 +14387,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-method-name": "batch",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/domains": {
@@ -14323,13 +14443,18 @@
 								"maxItems": 10
 							},
 							"folder": {
-								"type": "string",
-								"enum": [
-									"AllItems",
-									"Inbox",
-									null
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"AllItems",
+											"Inbox",
+											null
+										],
+										"nullable": true
+									}
 								],
-								"nullable": true
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"integration_id": {
 								"type": "string",
@@ -14354,7 +14479,8 @@
 								"maximum": 20,
 								"minimum": 1,
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"regions": {
 								"type": "array",
@@ -14374,12 +14500,14 @@
 							"require_tls_inbound": {
 								"type": "boolean",
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"require_tls_outbound": {
 								"type": "boolean",
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"transport": {
 								"type": "string",
@@ -14600,13 +14728,18 @@
 													]
 												},
 												"folder": {
-													"type": "string",
-													"enum": [
-														"AllItems",
-														"Inbox",
-														null
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"AllItems",
+																"Inbox",
+																null
+															],
+															"nullable": true
+														}
 													],
-													"nullable": true
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Domain identifier.",
@@ -14655,7 +14788,8 @@
 												},
 												"lookback_hops": {
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"modified_at": {
 													"allOf": [
@@ -14687,11 +14821,13 @@
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"spf_status": {
 													"type": "string",
@@ -14859,6 +14995,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/domains/batch": {
@@ -14930,13 +15070,18 @@
 													}
 												},
 												"folder": {
-													"type": "string",
-													"enum": [
-														"AllItems",
-														"Inbox",
-														null
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"AllItems",
+																"Inbox",
+																null
+															],
+															"nullable": true
+														}
 													],
-													"nullable": true
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"integration_id": {
 													"type": "string",
@@ -14959,7 +15104,8 @@
 													"type": "integer",
 													"maximum": 20,
 													"minimum": 1,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"regions": {
 													"type": "array",
@@ -14976,11 +15122,13 @@
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"transport": {
 													"type": "string",
@@ -15051,13 +15199,18 @@
 											"maxItems": 10
 										},
 										"folder": {
-											"type": "string",
-											"enum": [
-												"AllItems",
-												"Inbox",
-												null
+											"allOf": [
+												{
+													"type": "string",
+													"enum": [
+														"AllItems",
+														"Inbox",
+														null
+													],
+													"nullable": true
+												}
 											],
-											"nullable": true
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"integration_id": {
 											"type": "string",
@@ -15082,7 +15235,8 @@
 											"maximum": 20,
 											"minimum": 1,
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"regions": {
 											"type": "array",
@@ -15102,12 +15256,14 @@
 										"require_tls_inbound": {
 											"type": "boolean",
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"require_tls_outbound": {
 											"type": "boolean",
 											"nullable": true,
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"transport": {
 											"type": "string",
@@ -15169,13 +15325,18 @@
 													"maxItems": 10
 												},
 												"folder": {
-													"type": "string",
-													"enum": [
-														"AllItems",
-														"Inbox",
-														null
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"AllItems",
+																"Inbox",
+																null
+															],
+															"nullable": true
+														}
 													],
-													"nullable": true
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"integration_id": {
 													"type": "string",
@@ -15199,7 +15360,9 @@
 													"type": "integer",
 													"maximum": 20,
 													"minimum": 1,
-													"x-auditable": true
+													"nullable": true,
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"regions": {
 													"type": "array",
@@ -15219,12 +15382,14 @@
 												"require_tls_inbound": {
 													"type": "boolean",
 													"nullable": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
 													"type": "boolean",
 													"nullable": true,
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"transport": {
 													"type": "string",
@@ -15234,7 +15399,6 @@
 											},
 											"required": [
 												"allowed_delivery_modes",
-												"lookback_hops",
 												"ip_restrictions",
 												"drop_dispositions",
 												"regions"
@@ -15494,13 +15658,18 @@
 																]
 															},
 															"folder": {
-																"type": "string",
-																"enum": [
-																	"AllItems",
-																	"Inbox",
-																	null
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"AllItems",
+																			"Inbox",
+																			null
+																		],
+																		"nullable": true
+																	}
 																],
-																"nullable": true
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
 																"description": "Domain identifier.",
@@ -15549,7 +15718,8 @@
 															},
 															"lookback_hops": {
 																"type": "integer",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"modified_at": {
 																"allOf": [
@@ -15581,11 +15751,13 @@
 															},
 															"require_tls_inbound": {
 																"type": "boolean",
-																"nullable": true
+																"nullable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"require_tls_outbound": {
 																"type": "boolean",
-																"nullable": true
+																"nullable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"spf_status": {
 																"type": "string",
@@ -15724,13 +15896,18 @@
 																]
 															},
 															"folder": {
-																"type": "string",
-																"enum": [
-																	"AllItems",
-																	"Inbox",
-																	null
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"AllItems",
+																			"Inbox",
+																			null
+																		],
+																		"nullable": true
+																	}
 																],
-																"nullable": true
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
 																"description": "Domain identifier.",
@@ -15779,7 +15956,8 @@
 															},
 															"lookback_hops": {
 																"type": "integer",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"modified_at": {
 																"allOf": [
@@ -15811,11 +15989,13 @@
 															},
 															"require_tls_inbound": {
 																"type": "boolean",
-																"nullable": true
+																"nullable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"require_tls_outbound": {
 																"type": "boolean",
-																"nullable": true
+																"nullable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"spf_status": {
 																"type": "string",
@@ -15954,13 +16134,18 @@
 																]
 															},
 															"folder": {
-																"type": "string",
-																"enum": [
-																	"AllItems",
-																	"Inbox",
-																	null
+																"allOf": [
+																	{
+																		"type": "string",
+																		"enum": [
+																			"AllItems",
+																			"Inbox",
+																			null
+																		],
+																		"nullable": true
+																	}
 																],
-																"nullable": true
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
 																"description": "Domain identifier.",
@@ -16009,7 +16194,8 @@
 															},
 															"lookback_hops": {
 																"type": "integer",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"modified_at": {
 																"allOf": [
@@ -16041,11 +16227,13 @@
 															},
 															"require_tls_inbound": {
 																"type": "boolean",
-																"nullable": true
+																"nullable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"require_tls_outbound": {
 																"type": "boolean",
-																"nullable": true
+																"nullable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"spf_status": {
 																"type": "string",
@@ -16222,6 +16410,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "batch",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/impersonation_registry": {
@@ -16674,6 +16866,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.impersonation-registry",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
@@ -17085,6 +17281,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions/batch": {
@@ -17386,6 +17586,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.sending-domain-restrictions",
+		"x-fern-sdk-method-name": "batch",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains": {
@@ -17811,7 +18015,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
@@ -18702,6 +18906,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-method-name": "batch",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
@@ -19035,6 +19243,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns/batch": {
@@ -19668,6 +19880,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.url-ignore-patterns",
+		"x-fern-sdk-method-name": "batch",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -19717,13 +19933,18 @@
 								"maxItems": 10
 							},
 							"folder": {
-								"type": "string",
-								"enum": [
-									"AllItems",
-									"Inbox",
-									null
+								"allOf": [
+									{
+										"type": "string",
+										"enum": [
+											"AllItems",
+											"Inbox",
+											null
+										],
+										"nullable": true
+									}
 								],
-								"nullable": true
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"integration_id": {
 								"type": "string",
@@ -19747,7 +19968,9 @@
 								"type": "integer",
 								"maximum": 20,
 								"minimum": 1,
-								"x-auditable": true
+								"nullable": true,
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"regions": {
 								"type": "array",
@@ -19767,12 +19990,14 @@
 							"require_tls_inbound": {
 								"type": "boolean",
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"require_tls_outbound": {
 								"type": "boolean",
 								"nullable": true,
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"transport": {
 								"type": "string",
@@ -19782,7 +20007,6 @@
 						},
 						"required": [
 							"allowed_delivery_modes",
-							"lookback_hops",
 							"ip_restrictions",
 							"drop_dispositions",
 							"regions"
@@ -19992,13 +20216,18 @@
 													]
 												},
 												"folder": {
-													"type": "string",
-													"enum": [
-														"AllItems",
-														"Inbox",
-														null
+													"allOf": [
+														{
+															"type": "string",
+															"enum": [
+																"AllItems",
+																"Inbox",
+																null
+															],
+															"nullable": true
+														}
 													],
-													"nullable": true
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Domain identifier.",
@@ -20047,7 +20276,8 @@
 												},
 												"lookback_hops": {
 													"type": "integer",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"modified_at": {
 													"allOf": [
@@ -20079,11 +20309,13 @@
 												},
 												"require_tls_inbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"require_tls_outbound": {
 													"type": "boolean",
-													"nullable": true
+													"nullable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"spf_status": {
 													"type": "string",
@@ -20248,6 +20480,10 @@
 		"tags": [
 			"Email Security Settings"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

@@ -1,0 +1,2820 @@
+{
+	"DELETE /accounts/{account_id}/logpush/transformers/{transformer_id}": {
+		"operationId": "delete-accounts-account_id-logpush-transformers-transformer_id",
+		"summary": "Delete transformer",
+		"description": "Deletes a custom log transformer. Returns 409 Conflict if any active logpush jobs reference the transformer.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "transformer_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The transformer ID.",
+					"type": "integer",
+					"example": 42,
+					"minimum": 1,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Delete transformer response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"description": "The deleted transformer's ID.",
+													"type": "integer",
+													"example": 42
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Conflict — transformer is referenced by active logpush jobs.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Delete transformer response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/logpush/transformers": {
+		"operationId": "get-accounts-account_id-logpush-transformers",
+		"summary": "List transformers",
+		"description": "Lists all custom log transformers for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List transformers response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"associated_jobs": {
+														"description": "Logpush jobs that reference this transformer.",
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "The logpush job ID.",
+																	"type": "integer",
+																	"example": 123
+																},
+																"name": {
+																	"description": "The logpush job destination name.",
+																	"type": "string",
+																	"example": "s3-export"
+																},
+																"object_tag": {
+																	"description": "The zone or account tag.",
+																	"type": "string",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353"
+																},
+																"object_type": {
+																	"description": "Whether the job is zone-scoped or account-scoped.",
+																	"type": "string",
+																	"example": "zone",
+																	"enum": [
+																		"zone",
+																		"account"
+																	]
+																}
+															}
+														}
+													},
+													"created_at": {
+														"description": "When the transformer was created (RFC 3339).",
+														"type": "string",
+														"format": "date-time",
+														"example": "2026-08-01T12:00:00Z"
+													},
+													"dataset": {
+														"description": "The dataset this transformer operates on, derived from the SQL query's FROM clause. Informational only. May be absent if the dataset cannot be determined from the query.",
+														"type": "string",
+														"example": "http_requests",
+														"nullable": true,
+														"x-auditable": true
+													},
+													"description": {
+														"description": "Optional customer-provided description.",
+														"type": "string",
+														"example": "Redacts PII fields from HTTP request logs.",
+														"maxLength": 4096,
+														"x-auditable": true
+													},
+													"id": {
+														"description": "The transformer ID.",
+														"type": "integer",
+														"example": 42,
+														"minimum": 1,
+														"x-auditable": true
+													},
+													"name": {
+														"description": "Customer-provided name for identification.",
+														"type": "string",
+														"example": "redact-pii",
+														"maxLength": 255,
+														"x-auditable": true
+													},
+													"updated_at": {
+														"description": "When the transformer was last modified (RFC 3339).",
+														"type": "string",
+														"format": "date-time",
+														"example": "2026-08-10T15:30:00Z"
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List transformers response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/logpush/transformers/{transformer_id}": {
+		"operationId": "get-accounts-account_id-logpush-transformers-transformer_id",
+		"summary": "Get transformer",
+		"description": "Gets a single custom log transformer by ID.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "transformer_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The transformer ID.",
+					"type": "integer",
+					"example": 42,
+					"minimum": 1,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get transformer response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"associated_jobs": {
+													"description": "Logpush jobs that reference this transformer.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "The logpush job ID.",
+																"type": "integer",
+																"example": 123
+															},
+															"name": {
+																"description": "The logpush job destination name.",
+																"type": "string",
+																"example": "s3-export"
+															},
+															"object_tag": {
+																"description": "The zone or account tag.",
+																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353"
+															},
+															"object_type": {
+																"description": "Whether the job is zone-scoped or account-scoped.",
+																"type": "string",
+																"example": "zone",
+																"enum": [
+																	"zone",
+																	"account"
+																]
+															}
+														}
+													}
+												},
+												"created_at": {
+													"description": "When the transformer was created (RFC 3339).",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-08-01T12:00:00Z"
+												},
+												"dataset": {
+													"description": "The dataset this transformer operates on, derived from the SQL query's FROM clause. Informational only. May be absent if the dataset cannot be determined from the query.",
+													"type": "string",
+													"example": "http_requests",
+													"nullable": true,
+													"x-auditable": true
+												},
+												"description": {
+													"description": "Optional customer-provided description.",
+													"type": "string",
+													"example": "Redacts PII fields from HTTP request logs.",
+													"maxLength": 4096,
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The transformer ID.",
+													"type": "integer",
+													"example": 42,
+													"minimum": 1,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Customer-provided name for identification.",
+													"type": "string",
+													"example": "redact-pii",
+													"maxLength": 255,
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "When the transformer was last modified (RFC 3339).",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-08-10T15:30:00Z"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get transformer response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/logpush/transformers/{transformer_id}/content": {
+		"operationId": "get-accounts-account_id-logpush-transformers-transformer_id-content",
+		"summary": "Get transformer content",
+		"description": "Returns the SQL query content for a transformer. Without query params, returns the latest version. With `version_id`, returns the specified version.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "transformer_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The transformer ID.",
+					"type": "integer",
+					"example": 42,
+					"minimum": 1,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "version_id",
+				"in": "query",
+				"description": "Specific version ID to retrieve. When omitted, the latest version is returned.",
+				"schema": {
+					"type": "integer",
+					"format": "int64"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get transformer content response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"content": {
+													"description": "The SQL query content.",
+													"example": "SELECT ClientIP, RayID FROM http_requests",
+													"type": "string"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get transformer content response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers.content",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/logpush/transformers/{transformer_id}/versions": {
+		"operationId": "get-accounts-account_id-logpush-transformers-transformer_id-versions",
+		"summary": "List transformer versions",
+		"description": "Returns version metadata for a transformer, newest first. Each version corresponds to a SQL query update.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "transformer_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The transformer ID.",
+					"type": "integer",
+					"example": 42,
+					"minimum": 1,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"description": "Maximum number of versions to return.",
+				"schema": {
+					"type": "integer",
+					"default": 10,
+					"maximum": 10,
+					"minimum": 1
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List transformer versions response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"type": "object",
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														}
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"enum": [
+												true
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"created_at": {
+														"description": "When this version was created (RFC 3339).",
+														"type": "string",
+														"format": "date-time",
+														"example": "2026-08-10T15:30:00Z"
+													},
+													"id": {
+														"description": "Unique identifier for this version.",
+														"type": "integer",
+														"format": "int64",
+														"example": 1,
+														"minimum": 1
+													},
+													"version": {
+														"description": "Sequential version number.",
+														"type": "integer",
+														"example": 3,
+														"minimum": 1
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List transformer versions response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers.versions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/logpush/transformers": {
+		"operationId": "post-accounts-account_id-logpush-transformers",
+		"summary": "Create transformer",
+		"description": "Creates a new custom log transformer for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"code": {
+								"description": "The SQL transformer query. Maximum 32 KB. The query must contain a FROM clause referencing a valid logpush dataset.",
+								"type": "string",
+								"example": "SELECT ClientIP, RayID FROM http_requests",
+								"maxLength": 32768,
+								"x-auditable": true
+							},
+							"description": {
+								"description": "Optional customer-provided description.",
+								"type": "string",
+								"example": "Redacts PII fields from HTTP request logs.",
+								"maxLength": 4096,
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Customer-provided name for identification.",
+								"type": "string",
+								"example": "redact-pii",
+								"maxLength": 255,
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"name",
+							"code"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Create transformer response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"associated_jobs": {
+													"description": "Logpush jobs that reference this transformer.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "The logpush job ID.",
+																"type": "integer",
+																"example": 123
+															},
+															"name": {
+																"description": "The logpush job destination name.",
+																"type": "string",
+																"example": "s3-export"
+															},
+															"object_tag": {
+																"description": "The zone or account tag.",
+																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353"
+															},
+															"object_type": {
+																"description": "Whether the job is zone-scoped or account-scoped.",
+																"type": "string",
+																"example": "zone",
+																"enum": [
+																	"zone",
+																	"account"
+																]
+															}
+														}
+													}
+												},
+												"created_at": {
+													"description": "When the transformer was created (RFC 3339).",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-08-01T12:00:00Z"
+												},
+												"dataset": {
+													"description": "The dataset this transformer operates on, derived from the SQL query's FROM clause. Informational only. May be absent if the dataset cannot be determined from the query.",
+													"type": "string",
+													"example": "http_requests",
+													"nullable": true,
+													"x-auditable": true
+												},
+												"description": {
+													"description": "Optional customer-provided description.",
+													"type": "string",
+													"example": "Redacts PII fields from HTTP request logs.",
+													"maxLength": 4096,
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The transformer ID.",
+													"type": "integer",
+													"example": 42,
+													"minimum": 1,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Customer-provided name for identification.",
+													"type": "string",
+													"example": "redact-pii",
+													"maxLength": 255,
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "When the transformer was last modified (RFC 3339).",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-08-10T15:30:00Z"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Create transformer response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/logpush/transformers/preview": {
+		"operationId": "post-accounts-account_id-logpush-transformers-preview",
+		"summary": "Preview transformer",
+		"description": "Executes a SQL transformer against a single input record and returns the transformed output. This is a stateless endpoint — nothing is persisted.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"input": {
+								"description": "A single log record to transform (JSON object).",
+								"type": "object",
+								"example": {
+									"ClientIP": "198.51.100.1",
+									"ClientRequestHost": "example.com",
+									"EdgeStartTimestamp": 1722513600000000000,
+									"RayID": "abcdef1234567890"
+								},
+								"additionalProperties": true
+							},
+							"sql": {
+								"description": "The SQL transformer query. Maximum 32 KB. The query must contain a FROM clause referencing a valid logpush dataset.",
+								"type": "string",
+								"example": "SELECT ClientIP, RayID FROM http_requests",
+								"maxLength": 32768,
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"sql",
+							"input"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Preview transformer response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The transformed log record, or null if the query filtered it out.",
+											"type": "object",
+											"example": {
+												"ClientIP": "198.51.100.1",
+												"RayID": "abcdef1234567890"
+											},
+											"additionalProperties": true,
+											"nullable": true
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Preview transformer response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers",
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-hidden": true
+	},
+	"PUT /accounts/{account_id}/logpush/transformers/{transformer_id}": {
+		"operationId": "put-accounts-account_id-logpush-transformers-transformer_id",
+		"summary": "Update transformer",
+		"description": "Updates an existing custom log transformer. When `code` is provided, the SQL query is validated and a new version is created. When `code` is omitted, only the name and description are updated. Omitting `description` clears the existing description.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "transformer_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "The transformer ID.",
+					"type": "integer",
+					"example": 42,
+					"minimum": 1,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"code": {
+								"description": "The SQL transformer query. Maximum 32 KB. The query must contain a FROM clause referencing a valid logpush dataset.",
+								"type": "string",
+								"example": "SELECT ClientIP, RayID FROM http_requests",
+								"maxLength": 32768,
+								"x-auditable": true
+							},
+							"description": {
+								"description": "Optional customer-provided description.",
+								"type": "string",
+								"example": "Redacts PII fields from HTTP request logs.",
+								"maxLength": 4096,
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Customer-provided name for identification.",
+								"type": "string",
+								"example": "redact-pii",
+								"maxLength": 255,
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"name"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Update transformer response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"associated_jobs": {
+													"description": "Logpush jobs that reference this transformer.",
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "The logpush job ID.",
+																"type": "integer",
+																"example": 123
+															},
+															"name": {
+																"description": "The logpush job destination name.",
+																"type": "string",
+																"example": "s3-export"
+															},
+															"object_tag": {
+																"description": "The zone or account tag.",
+																"type": "string",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353"
+															},
+															"object_type": {
+																"description": "Whether the job is zone-scoped or account-scoped.",
+																"type": "string",
+																"example": "zone",
+																"enum": [
+																	"zone",
+																	"account"
+																]
+															}
+														}
+													}
+												},
+												"created_at": {
+													"description": "When the transformer was created (RFC 3339).",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-08-01T12:00:00Z"
+												},
+												"dataset": {
+													"description": "The dataset this transformer operates on, derived from the SQL query's FROM clause. Informational only. May be absent if the dataset cannot be determined from the query.",
+													"type": "string",
+													"example": "http_requests",
+													"nullable": true,
+													"x-auditable": true
+												},
+												"description": {
+													"description": "Optional customer-provided description.",
+													"type": "string",
+													"example": "Redacts PII fields from HTTP request logs.",
+													"maxLength": 4096,
+													"x-auditable": true
+												},
+												"id": {
+													"description": "The transformer ID.",
+													"type": "integer",
+													"example": 42,
+													"minimum": 1,
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Customer-provided name for identification.",
+													"type": "string",
+													"example": "redact-pii",
+													"maxLength": 255,
+													"x-auditable": true
+												},
+												"updated_at": {
+													"description": "When the transformer was last modified (RFC 3339).",
+													"type": "string",
+													"format": "date-time",
+													"example": "2026-08-10T15:30:00Z"
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Update transformer response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Logpush transformers"
+		],
+		"x-api-token-group": [
+			"Logs Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#logs:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.transformers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
+	}
+}

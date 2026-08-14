@@ -351,7 +351,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/load_balancers": {
 		"operationId": "load-balancers-list-load-balancers",
@@ -2520,7 +2524,11 @@
 		"x-api-token-group": [
 			"Load Balancers Write",
 			"Load Balancers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "load-balancers-load-balancer-details",
@@ -4651,7 +4659,11 @@
 		"x-api-token-group": [
 			"Load Balancers Write",
 			"Load Balancers Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "load-balancers-patch-load-balancer",
@@ -7468,7 +7480,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/load_balancers": {
 		"operationId": "load-balancers-create-load-balancer",
@@ -10286,7 +10302,11 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"operationId": "load-balancers-update-load-balancer",
@@ -13121,6 +13141,10 @@
 		],
 		"x-api-token-group": [
 			"Load Balancers Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

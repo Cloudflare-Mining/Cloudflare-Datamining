@@ -710,7 +710,11 @@
 		],
 		"tags": [
 			"Account Load Balancer Monitor Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups": {
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-groups",
@@ -1226,7 +1230,11 @@
 		],
 		"tags": [
 			"Account Load Balancer Monitor Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-monitor-group-details",
@@ -1686,7 +1694,11 @@
 		],
 		"tags": [
 			"Account Load Balancer Monitor Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references": {
 		"operationId": "account-load-balancer-monitor-groups-list-monitor-group-references",
@@ -2046,7 +2058,11 @@
 		],
 		"tags": [
 			"Account Load Balancer Monitor Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.monitor-groups.references",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-patch-monitor-group",
@@ -2855,7 +2871,11 @@
 		],
 		"tags": [
 			"Account Load Balancer Monitor Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/load_balancers/monitor_groups": {
 		"operationId": "account-load-balancer-monitor-groups-create-monitor-group",
@@ -3654,7 +3674,11 @@
 		],
 		"tags": [
 			"Account Load Balancer Monitor Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}": {
 		"operationId": "account-load-balancer-monitor-groups-update-monitor-group",
@@ -4463,6 +4487,10 @@
 		],
 		"tags": [
 			"Account Load Balancer Monitor Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "load-balancers.monitor-groups",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

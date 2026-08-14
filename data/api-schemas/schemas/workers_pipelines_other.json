@@ -7984,6 +7984,109 @@
 					}
 				}
 			},
+			"422": {
+				"description": "Indicates SQL validation failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"diagnostics": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											},
+											"span": {
+												"type": "object",
+												"nullable": true,
+												"properties": {
+													"end": {
+														"type": "object",
+														"properties": {
+															"column": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"line": {
+																"type": "integer",
+																"minimum": 0
+															}
+														},
+														"required": [
+															"line",
+															"column"
+														]
+													},
+													"start": {
+														"type": "object",
+														"properties": {
+															"column": {
+																"type": "integer",
+																"minimum": 0
+															},
+															"line": {
+																"type": "integer",
+																"minimum": 0
+															}
+														},
+														"required": [
+															"line",
+															"column"
+														]
+													}
+												},
+												"required": [
+													"start",
+													"end"
+												]
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									}
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"diagnostics",
+								"result"
+							]
+						}
+					}
+				}
+			},
 			"4XX": {
 				"description": "Indicates SQL validation failed."
 			}

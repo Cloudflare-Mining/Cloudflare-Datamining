@@ -377,6 +377,10 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"log_classification": {
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
@@ -513,7 +517,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "ddf7501e",
+																"default": "1f79ffc5",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -1168,6 +1172,10 @@
 												"type": "boolean",
 												"x-auditable": true
 											},
+											"log_classification": {
+												"type": "boolean",
+												"x-auditable": true
+											},
 											"log_management": {
 												"type": "integer",
 												"maximum": 10000000,
@@ -1304,7 +1312,7 @@
 																},
 																"id": {
 																	"type": "string",
-																	"default": "884d0761",
+																	"default": "253245f7",
 																	"minLength": 1,
 																	"pattern": "^[a-zA-Z0-9_-]+$"
 																},
@@ -2079,6 +2087,10 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"log_classification": {
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
@@ -2215,7 +2227,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "4799196d",
+																"default": "213385d8",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -2982,6 +2994,10 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"log_classification": {
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
@@ -3118,7 +3134,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "a63dee3a",
+																"default": "60acad3d",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},
@@ -3745,6 +3761,10 @@
 								],
 								"x-auditable": true
 							},
+							"log_classification": {
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"log_management": {
 								"type": "integer",
 								"maximum": 10000000,
@@ -3877,7 +3897,7 @@
 												},
 												"id": {
 													"type": "string",
-													"default": "4a6d1f72",
+													"default": "4e5ce391",
 													"minLength": 1,
 													"pattern": "^[a-zA-Z0-9_-]+$"
 												},
@@ -4410,6 +4430,10 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"log_classification": {
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"log_management": {
 											"type": "integer",
 											"maximum": 10000000,
@@ -4546,7 +4570,7 @@
 															},
 															"id": {
 																"type": "string",
-																"default": "a8ba4157",
+																"default": "28256b6d",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$"
 															},

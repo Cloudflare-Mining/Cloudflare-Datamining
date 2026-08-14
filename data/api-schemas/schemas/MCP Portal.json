@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-delete-portals",
-		"summary": "Delete a MCP Portal",
+		"summary": "Delete an MCP Portal",
 		"description": "Deletes an MCP portal from the account.",
 		"parameters": [
 			{
@@ -18,7 +18,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "portal id",
+					"description": "Unique identifier for the MCP portal.",
 					"type": "string",
 					"example": "my-mcp-portal",
 					"maxLength": 32,
@@ -65,17 +65,19 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP portal.",
 											"type": "string",
 											"example": "This is my custom MCP Portal",
 											"maxLength": 512
 										},
 										"hostname": {
+											"description": "Hostname where the MCP portal is available.",
 											"type": "string",
-											"example": "exmaple.com",
+											"example": "example.com",
 											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
 										},
 										"id": {
-											"description": "portal id",
+											"description": "Unique identifier for the MCP portal.",
 											"type": "string",
 											"example": "my-mcp-portal",
 											"maxLength": 32,
@@ -92,12 +94,13 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP portal.",
 											"type": "string",
 											"example": "My MCP Portal",
 											"maxLength": 350
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -189,7 +192,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation permanently deletes the MCP portal."
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals": {
 		"operationId": "mcp-portals-api-list-portals",
@@ -272,17 +280,19 @@
 												"readOnly": true
 											},
 											"description": {
+												"description": "Optional description of the MCP portal.",
 												"type": "string",
 												"example": "This is my custom MCP Portal",
 												"maxLength": 512
 											},
 											"hostname": {
+												"description": "Hostname where the MCP portal is available.",
 												"type": "string",
-												"example": "exmaple.com",
+												"example": "example.com",
 												"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
 											},
 											"id": {
-												"description": "portal id",
+												"description": "Unique identifier for the MCP portal.",
 												"type": "string",
 												"example": "my-mcp-portal",
 												"maxLength": 32,
@@ -299,12 +309,13 @@
 												"readOnly": true
 											},
 											"name": {
+												"description": "Display name for the MCP portal.",
 												"type": "string",
 												"example": "My MCP Portal",
 												"maxLength": 350
 											},
 											"secure_web_gateway": {
-												"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+												"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway.",
 												"type": "boolean",
 												"example": false,
 												"default": false
@@ -374,6 +385,7 @@
 															"readOnly": true
 														},
 														"auth_type": {
+															"description": "Authentication method used to connect to the upstream MCP server.",
 															"type": "string",
 															"example": "unauthenticated",
 															"enum": [
@@ -408,8 +420,9 @@
 															"default": false
 														},
 														"description": {
+															"description": "Optional description of the MCP server.",
 															"type": "string",
-															"example": "This is one remote mcp server",
+															"example": "This is one remote MCP server",
 															"maxLength": 512,
 															"nullable": true
 														},
@@ -444,12 +457,13 @@
 															"readOnly": true
 														},
 														"hostname": {
+															"description": "URL of the upstream MCP endpoint.",
 															"type": "string",
 															"format": "uri",
 															"example": "https://example.com/mcp"
 														},
 														"id": {
-															"description": "server id",
+															"description": "Unique identifier for the MCP server.",
 															"type": "string",
 															"example": "my-mcp-server",
 															"maxLength": 32,
@@ -481,6 +495,7 @@
 															"readOnly": true
 														},
 														"name": {
+															"description": "Display name for the MCP server.",
 															"type": "string",
 															"example": "My MCP Server",
 															"maxLength": 350
@@ -498,13 +513,13 @@
 															"readOnly": true
 														},
 														"secure_web_gateway": {
-															"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+															"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 															"type": "boolean",
 															"example": false,
 															"default": false
 														},
 														"server_id": {
-															"description": "server id",
+															"description": "Unique identifier for the MCP server.",
 															"type": "string",
 															"example": "my-mcp-server",
 															"maxLength": 32,
@@ -699,7 +714,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-fetch-gateways",
@@ -711,7 +730,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "portal id",
+					"description": "Unique identifier for the MCP portal.",
 					"type": "string",
 					"example": "my-mcp-portal",
 					"maxLength": 32,
@@ -767,17 +786,19 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP portal.",
 											"type": "string",
 											"example": "This is my custom MCP Portal",
 											"maxLength": 512
 										},
 										"hostname": {
+											"description": "Hostname where the MCP portal is available.",
 											"type": "string",
-											"example": "exmaple.com",
+											"example": "example.com",
 											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
 										},
 										"id": {
-											"description": "portal id",
+											"description": "Unique identifier for the MCP portal.",
 											"type": "string",
 											"example": "my-mcp-portal",
 											"maxLength": 32,
@@ -794,12 +815,13 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP portal.",
 											"type": "string",
 											"example": "My MCP Portal",
 											"maxLength": 350
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -869,6 +891,7 @@
 														"readOnly": true
 													},
 													"auth_type": {
+														"description": "Authentication method used to connect to the upstream MCP server.",
 														"type": "string",
 														"example": "unauthenticated",
 														"enum": [
@@ -903,8 +926,9 @@
 														"default": false
 													},
 													"description": {
+														"description": "Optional description of the MCP server.",
 														"type": "string",
-														"example": "This is one remote mcp server",
+														"example": "This is one remote MCP server",
 														"maxLength": 512,
 														"nullable": true
 													},
@@ -939,12 +963,13 @@
 														"readOnly": true
 													},
 													"hostname": {
+														"description": "URL of the upstream MCP endpoint.",
 														"type": "string",
 														"format": "uri",
 														"example": "https://example.com/mcp"
 													},
 													"id": {
-														"description": "server id",
+														"description": "Unique identifier for the MCP server.",
 														"type": "string",
 														"example": "my-mcp-server",
 														"maxLength": 32,
@@ -976,6 +1001,7 @@
 														"readOnly": true
 													},
 													"name": {
+														"description": "Display name for the MCP server.",
 														"type": "string",
 														"example": "My MCP Server",
 														"maxLength": 350
@@ -993,13 +1019,13 @@
 														"readOnly": true
 													},
 													"secure_web_gateway": {
-														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 														"type": "boolean",
 														"example": false,
 														"default": false
 													},
 													"server_id": {
-														"description": "server id",
+														"description": "Unique identifier for the MCP server.",
 														"type": "string",
 														"example": "my-mcp-server",
 														"maxLength": 32,
@@ -1196,19 +1222,23 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-method-name": "read",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals/{portal_id}/servers/{server_id}/effective-redirect-uri": {
 		"operationId": "mcp-portals-api-effective-redirect-uri",
-		"summary": "Resolve the OAuth redirect_uri the admin must register at the upstream",
-		"description": "Returns the redirect URI the gateway will send to the upstream OAuth provider for this (portal, server) pair. The server-level shared callback setting controls which URI is returned. Use this value verbatim when registering the OAuth app at the upstream.",
+		"summary": "Resolve an MCP server OAuth redirect URI",
+		"description": "Resolves the OAuth redirect URI to register for a portal and server based on the server's current shared callback setting. Use the returned value when setting up a new manual OAuth registration. This value is for display only: existing manual OAuth registrations continue using their stored redirect URI, so changing callback settings can make this result differ from the URI used at runtime.",
 		"parameters": [
 			{
 				"name": "portal_id",
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "portal id",
+					"description": "Unique identifier for the MCP portal.",
 					"type": "string",
 					"example": "my-mcp-portal",
 					"maxLength": 32,
@@ -1221,8 +1251,12 @@
 				"in": "path",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier for the MCP server.",
 					"type": "string",
-					"example": "github-mcp"
+					"example": "my-mcp-server",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 				}
 			},
 			{
@@ -1344,7 +1378,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-method-name": "resolve-oauth-redirect-uri"
 	},
 	"POST /accounts/{account_id}/access/ai-controls/mcp/portals": {
 		"operationId": "mcp-portals-api-create-portals",
@@ -1385,17 +1423,19 @@
 								]
 							},
 							"description": {
+								"description": "Optional description of the MCP portal.",
 								"type": "string",
 								"example": "This is my custom MCP Portal",
 								"maxLength": 512
 							},
 							"hostname": {
+								"description": "Hostname where the MCP portal is available.",
 								"type": "string",
-								"example": "exmaple.com",
+								"example": "example.com",
 								"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
 							},
 							"id": {
-								"description": "portal id",
+								"description": "Unique identifier for the MCP portal.",
 								"type": "string",
 								"example": "my-mcp-portal",
 								"maxLength": 32,
@@ -1403,30 +1443,34 @@
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 							},
 							"name": {
+								"description": "Display name for the MCP portal.",
 								"type": "string",
 								"example": "My MCP Portal",
 								"maxLength": 350
 							},
 							"secure_web_gateway": {
-								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway.",
 								"type": "boolean",
 								"example": false,
 								"default": false
 							},
 							"servers": {
+								"description": "MCP servers attached to the portal and their portal-specific settings.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"default_disabled": {
+											"description": "Disable this server by default for clients connecting through the portal.",
 											"type": "boolean",
 											"default": false
 										},
 										"on_behalf": {
+											"description": "Use end-user OAuth credentials when connecting this server to the portal.",
 											"type": "boolean",
 											"default": true
 										},
 										"server_id": {
-											"description": "server id",
+											"description": "Unique identifier for the MCP server.",
 											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
@@ -1434,22 +1478,27 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 										},
 										"updated_prompts": {
+											"description": "Portal-specific prompt overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -1460,22 +1509,27 @@
 											}
 										},
 										"updated_tools": {
+											"description": "Portal-specific tool overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -1542,17 +1596,19 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP portal.",
 											"type": "string",
 											"example": "This is my custom MCP Portal",
 											"maxLength": 512
 										},
 										"hostname": {
+											"description": "Hostname where the MCP portal is available.",
 											"type": "string",
-											"example": "exmaple.com",
+											"example": "example.com",
 											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
 										},
 										"id": {
-											"description": "portal id",
+											"description": "Unique identifier for the MCP portal.",
 											"type": "string",
 											"example": "my-mcp-portal",
 											"maxLength": 32,
@@ -1569,12 +1625,13 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP portal.",
 											"type": "string",
 											"example": "My MCP Portal",
 											"maxLength": 350
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -1644,6 +1701,7 @@
 														"readOnly": true
 													},
 													"auth_type": {
+														"description": "Authentication method used to connect to the upstream MCP server.",
 														"type": "string",
 														"example": "unauthenticated",
 														"enum": [
@@ -1678,8 +1736,9 @@
 														"default": false
 													},
 													"description": {
+														"description": "Optional description of the MCP server.",
 														"type": "string",
-														"example": "This is one remote mcp server",
+														"example": "This is one remote MCP server",
 														"maxLength": 512,
 														"nullable": true
 													},
@@ -1714,12 +1773,13 @@
 														"readOnly": true
 													},
 													"hostname": {
+														"description": "URL of the upstream MCP endpoint.",
 														"type": "string",
 														"format": "uri",
 														"example": "https://example.com/mcp"
 													},
 													"id": {
-														"description": "server id",
+														"description": "Unique identifier for the MCP server.",
 														"type": "string",
 														"example": "my-mcp-server",
 														"maxLength": 32,
@@ -1751,6 +1811,7 @@
 														"readOnly": true
 													},
 													"name": {
+														"description": "Display name for the MCP server.",
 														"type": "string",
 														"example": "My MCP Server",
 														"maxLength": 350
@@ -1768,13 +1829,13 @@
 														"readOnly": true
 													},
 													"secure_web_gateway": {
-														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 														"type": "boolean",
 														"example": false,
 														"default": false
 													},
 													"server_id": {
-														"description": "server id",
+														"description": "Unique identifier for the MCP server.",
 														"type": "string",
 														"example": "my-mcp-server",
 														"maxLength": 32,
@@ -1978,11 +2039,15 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
 		"operationId": "mcp-portals-api-update-portals",
-		"summary": "Update a MCP Portal",
+		"summary": "Update an MCP Portal",
 		"description": "Updates an MCP portal configuration.",
 		"parameters": [
 			{
@@ -1990,7 +2055,7 @@
 				"in": "path",
 				"required": true,
 				"schema": {
-					"description": "portal id",
+					"description": "Unique identifier for the MCP portal.",
 					"type": "string",
 					"example": "my-mcp-portal",
 					"maxLength": 32,
@@ -2032,40 +2097,46 @@
 								]
 							},
 							"description": {
+								"description": "Optional description of the MCP portal.",
 								"type": "string",
 								"example": "This is my custom MCP Portal",
 								"maxLength": 512
 							},
 							"hostname": {
+								"description": "Hostname where the MCP portal is available.",
 								"type": "string",
-								"example": "exmaple.com",
+								"example": "example.com",
 								"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
 							},
 							"name": {
+								"description": "Display name for the MCP portal.",
 								"type": "string",
 								"example": "My MCP Portal",
 								"maxLength": 350
 							},
 							"secure_web_gateway": {
-								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway.",
 								"type": "boolean",
 								"example": false,
 								"default": false
 							},
 							"servers": {
+								"description": "MCP servers attached to the portal and their portal-specific settings.",
 								"type": "array",
 								"items": {
 									"properties": {
 										"default_disabled": {
+											"description": "Disable this server by default for clients connecting through the portal.",
 											"type": "boolean",
 											"default": false
 										},
 										"on_behalf": {
+											"description": "Use end-user OAuth credentials when connecting this server to the portal.",
 											"type": "boolean",
 											"default": true
 										},
 										"server_id": {
-											"description": "server id",
+											"description": "Unique identifier for the MCP server.",
 											"type": "string",
 											"example": "my-mcp-server",
 											"maxLength": 32,
@@ -2073,22 +2144,27 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$"
 										},
 										"updated_prompts": {
+											"description": "Portal-specific prompt overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -2099,22 +2175,27 @@
 											}
 										},
 										"updated_tools": {
+											"description": "Portal-specific tool overrides.",
 											"type": "array",
 											"items": {
 												"properties": {
 													"alias": {
+														"description": "Custom name exposed for the capability.",
 														"type": "string",
 														"example": "my-custom-alias",
 														"maxLength": 40,
 														"pattern": "^[a-zA-Z0-9]+([_-][a-zA-Z0-9]+)*$"
 													},
 													"description": {
+														"description": "Custom description exposed for the capability.",
 														"type": "string"
 													},
 													"enabled": {
+														"description": "Whether the capability is available through the MCP server.",
 														"type": "boolean"
 													},
 													"name": {
+														"description": "Name of the tool or prompt capability to override.",
 														"type": "string"
 													}
 												},
@@ -2176,17 +2257,19 @@
 											"readOnly": true
 										},
 										"description": {
+											"description": "Optional description of the MCP portal.",
 											"type": "string",
 											"example": "This is my custom MCP Portal",
 											"maxLength": 512
 										},
 										"hostname": {
+											"description": "Hostname where the MCP portal is available.",
 											"type": "string",
-											"example": "exmaple.com",
+											"example": "example.com",
 											"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$"
 										},
 										"id": {
-											"description": "portal id",
+											"description": "Unique identifier for the MCP portal.",
 											"type": "string",
 											"example": "my-mcp-portal",
 											"maxLength": 32,
@@ -2203,12 +2286,13 @@
 											"readOnly": true
 										},
 										"name": {
+											"description": "Display name for the MCP portal.",
 											"type": "string",
 											"example": "My MCP Portal",
 											"maxLength": 350
 										},
 										"secure_web_gateway": {
-											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway.",
 											"type": "boolean",
 											"example": false,
 											"default": false
@@ -2278,6 +2362,7 @@
 														"readOnly": true
 													},
 													"auth_type": {
+														"description": "Authentication method used to connect to the upstream MCP server.",
 														"type": "string",
 														"example": "unauthenticated",
 														"enum": [
@@ -2312,8 +2397,9 @@
 														"default": false
 													},
 													"description": {
+														"description": "Optional description of the MCP server.",
 														"type": "string",
-														"example": "This is one remote mcp server",
+														"example": "This is one remote MCP server",
 														"maxLength": 512,
 														"nullable": true
 													},
@@ -2348,12 +2434,13 @@
 														"readOnly": true
 													},
 													"hostname": {
+														"description": "URL of the upstream MCP endpoint.",
 														"type": "string",
 														"format": "uri",
 														"example": "https://example.com/mcp"
 													},
 													"id": {
-														"description": "server id",
+														"description": "Unique identifier for the MCP server.",
 														"type": "string",
 														"example": "my-mcp-server",
 														"maxLength": 32,
@@ -2385,6 +2472,7 @@
 														"readOnly": true
 													},
 													"name": {
+														"description": "Display name for the MCP server.",
 														"type": "string",
 														"example": "My MCP Server",
 														"maxLength": 350
@@ -2402,13 +2490,13 @@
 														"readOnly": true
 													},
 													"secure_web_gateway": {
-														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway.",
 														"type": "boolean",
 														"example": false,
 														"default": false
 													},
 													"server_id": {
-														"description": "server id",
+														"description": "Unique identifier for the MCP server.",
 														"type": "string",
 														"example": "my-mcp-server",
 														"maxLength": 32,
@@ -2654,6 +2742,18 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "zero-trust.access.ai-controls.mcp.portals",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"allow_code_mode": {
+				"default": null
+			},
+			"secure_web_gateway": {
+				"default": null
+			}
 		}
 	}
 }

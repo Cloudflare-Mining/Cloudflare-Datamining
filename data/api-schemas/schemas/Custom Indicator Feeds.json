@@ -464,7 +464,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
 		"operationId": "custom-indicator-feeds-get-indicator-feed-metadata",
@@ -1174,7 +1178,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/data": {
 		"operationId": "custom-indicator-feeds-get-indicator-feed-data",
@@ -1325,7 +1333,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds",
+		"x-fern-sdk-method-name": "data",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/download": {
 		"operationId": "custom-indicator-feeds-download-indicator-feed-data",
@@ -1467,10 +1479,23 @@
 													"example": "snapshot_file.unified",
 													"x-auditable": true
 												},
-												"status": {
-													"description": "Current status of upload, should be unified",
+												"poll_url": {
+													"description": "Account-relative polling path. Prepend `/accounts/{account_id}`\nusing the same account identifier and API host as the upload\nrequest. The path omits the account segment because the service\ndoes not have your account identifier in this context.\n",
 													"type": "string",
-													"example": "unified",
+													"example": "/intel/indicator-feeds/12/uploads/12345",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Current status of the upload at the moment the request returned.\nThis is NOT a terminal state: the file is unified inline, but the\ndurable loader has only accepted it, so the upload is still\n`Unifying`. Poll `poll_url` until the status reaches a terminal\nvalue (`Unified` or `Error`).\n",
+													"type": "string",
+													"example": "Unifying",
+													"x-auditable": true
+												},
+												"upload_id": {
+													"description": "Identifier of the upload row, for polling this upload to a\nterminal state via `poll_url`.\n",
+													"type": "integer",
+													"format": "int64",
+													"example": 12345,
 													"x-auditable": true
 												}
 											}
@@ -1488,6 +1513,505 @@
 					"application/json": {
 						"schema": {
 							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"example": [],
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											]
+										},
+										"result": {
+											"type": "object",
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"type": "boolean",
+											"example": false,
+											"enum": [
+												false
+											]
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Custom Indicator Feeds"
+		],
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds.downloads",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
+	},
+	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/uploads/{upload_id}": {
+		"operationId": "custom-indicator-feeds-get-upload-status",
+		"summary": "Get indicator feed upload status",
+		"description": "Polls an asynchronously accepted upload. Continue polling after the\nrecommended `poll_after_seconds` delay until status is `Unified` or\n`Error`. `Unified` is returned only after the durable loader finishes.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "feed_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Indicator feed ID",
+					"type": "integer",
+					"example": 12,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "upload_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"type": "integer",
+					"format": "int64"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Current upload status",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"attempts": {
+													"type": "integer",
+													"minimum": 0,
+													"x-auditable": true
+												},
+												"created_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-auditable": true
+												},
+												"error": {
+													"description": "Sanitized terminal error; omitted for non-error states.",
+													"type": "string",
+													"x-auditable": true
+												},
+												"feed_id": {
+													"description": "Indicator feed ID",
+													"type": "integer",
+													"example": 12,
+													"x-auditable": true
+												},
+												"filename": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"poll_after_seconds": {
+													"description": "Recommended delay before the next poll; 0 means terminal.",
+													"type": "integer",
+													"maximum": 30,
+													"minimum": 0,
+													"x-auditable": true
+												},
+												"stage": {
+													"description": "Sanitized durable loader stage, when available.",
+													"type": "string",
+													"enum": [
+														"queued",
+														"loading",
+														"provisioning",
+														"retrying",
+														"complete",
+														"error"
+													],
+													"x-auditable": true
+												},
+												"status": {
+													"description": "`Unifying` while work is queued or active, optionally with attempt\nprogress; `Unified` or `Error` when terminal.\n",
+													"type": "string",
+													"example": "Unifying (attempt 2/3)",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"type": "string",
+													"format": "date-time",
+													"x-auditable": true
+												},
+												"upload_id": {
+													"type": "integer",
+													"format": "int64",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"upload_id",
+												"feed_id",
+												"filename",
+												"status",
+												"attempts",
+												"poll_after_seconds"
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Upload status lookup failure",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"documentation_url": {
+																		"type": "string"
+																	},
+																	"message": {
+																		"type": "string"
+																	},
+																	"source": {
+																		"type": "object",
+																		"properties": {
+																			"pointer": {
+																				"type": "string"
+																			}
+																		}
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"success": {
+															"description": "Whether the API call was successful.",
+															"type": "boolean",
+															"example": true,
+															"enum": [
+																true
+															]
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													]
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"attempts": {
+															"type": "integer",
+															"minimum": 0,
+															"x-auditable": true
+														},
+														"created_at": {
+															"type": "string",
+															"format": "date-time",
+															"x-auditable": true
+														},
+														"error": {
+															"description": "Sanitized terminal error; omitted for non-error states.",
+															"type": "string",
+															"x-auditable": true
+														},
+														"feed_id": {
+															"description": "Indicator feed ID",
+															"type": "integer",
+															"example": 12,
+															"x-auditable": true
+														},
+														"filename": {
+															"type": "string",
+															"x-auditable": true
+														},
+														"poll_after_seconds": {
+															"description": "Recommended delay before the next poll; 0 means terminal.",
+															"type": "integer",
+															"maximum": 30,
+															"minimum": 0,
+															"x-auditable": true
+														},
+														"stage": {
+															"description": "Sanitized durable loader stage, when available.",
+															"type": "string",
+															"enum": [
+																"queued",
+																"loading",
+																"provisioning",
+																"retrying",
+																"complete",
+																"error"
+															],
+															"x-auditable": true
+														},
+														"status": {
+															"description": "`Unifying` while work is queued or active, optionally with attempt\nprogress; `Unified` or `Error` when terminal.\n",
+															"type": "string",
+															"example": "Unifying (attempt 2/3)",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"type": "string",
+															"format": "date-time",
+															"x-auditable": true
+														},
+														"upload_id": {
+															"type": "integer",
+															"format": "int64",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"upload_id",
+														"feed_id",
+														"filename",
+														"status",
+														"attempts",
+														"poll_after_seconds"
+													]
+												}
+											}
+										}
+									]
+								},
 								{
 									"type": "object",
 									"properties": {
@@ -2017,7 +2541,11 @@
 		"x-api-token-group": [
 			"Intel Write",
 			"Intel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/intel/indicator-feeds": {
 		"operationId": "custom-indicator-feeds-create-indicator-feeds",
@@ -2477,7 +3005,11 @@
 		],
 		"tags": [
 			"Custom Indicator Feeds"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
 		"operationId": "custom-indicator-feeds-update-indicator-feed-metadata",
@@ -2964,7 +3496,11 @@
 		],
 		"tags": [
 			"Custom Indicator Feeds"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot": {
 		"operationId": "custom-indicator-feeds-update-indicator-feed-data",
@@ -2993,6 +3529,17 @@
 					"type": "integer",
 					"example": 12,
 					"x-auditable": true
+				}
+			},
+			{
+				"name": "Cf-Async-Upload",
+				"in": "header",
+				"description": "Set to the literal value `1` to enqueue the upload and receive a\n`202` response with a polling URL. Any other value uses the legacy\nsynchronous response.\n",
+				"schema": {
+					"type": "string",
+					"enum": [
+						"1"
+					]
 				}
 			}
 		],
@@ -3123,13 +3670,154 @@
 													"example": "snapshot_file.unified",
 													"x-auditable": true
 												},
-												"status": {
-													"description": "Current status of upload, should be unified",
+												"poll_url": {
+													"description": "Account-relative polling path. Prepend `/accounts/{account_id}`\nusing the same account identifier and API host as the upload\nrequest. The path omits the account segment because the service\ndoes not have your account identifier in this context.\n",
 													"type": "string",
-													"example": "unified",
+													"example": "/intel/indicator-feeds/12/uploads/12345",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Current status of the upload at the moment the request returned.\nThis is NOT a terminal state: the file is unified inline, but the\ndurable loader has only accepted it, so the upload is still\n`Unifying`. Poll `poll_url` until the status reaches a terminal\nvalue (`Unified` or `Error`).\n",
+													"type": "string",
+													"example": "Unifying",
+													"x-auditable": true
+												},
+												"upload_id": {
+													"description": "Identifier of the upload row, for polling this upload to a\nterminal state via `poll_url`.\n",
+													"type": "integer",
+													"format": "int64",
+													"example": 12345,
 													"x-auditable": true
 												}
 											}
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"202": {
+				"description": "Upload accepted for asynchronous processing",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"allOf": [
+										{
+											"type": "object",
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"messages": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"type": "object",
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																}
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"example": []
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"type": "boolean",
+													"example": true,
+													"enum": [
+														true
+													]
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"poll_url": {
+													"description": "Account-relative polling path. Prepend `/accounts/{account_id}`\nusing the same account identifier and API host as the upload\nrequest. The path omits the account segment because the service\ndoes not have your account identifier in this context.\n",
+													"type": "string",
+													"example": "/intel/indicator-feeds/12/uploads/12345",
+													"x-auditable": true
+												},
+												"status": {
+													"type": "string",
+													"example": "Queued",
+													"x-auditable": true
+												},
+												"upload_id": {
+													"type": "integer",
+													"format": "int64",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"upload_id",
+												"status",
+												"poll_url"
+											]
 										}
 									}
 								}
@@ -3337,7 +4025,11 @@
 		],
 		"tags": [
 			"Custom Indicator Feeds"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds.snapshots",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/add": {
 		"operationId": "custom-indicator-feeds-add-permission",
@@ -3701,7 +4393,11 @@
 		],
 		"tags": [
 			"Custom Indicator Feeds"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/createProvider": {
 		"operationId": "custom-indicator-feeds-create-provider",
@@ -4469,6 +5165,11 @@
 		],
 		"tags": [
 			"Custom Indicator Feeds"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "intel.indicator-feeds.permissions",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation destructively removes a permission entry."
 	}
 }

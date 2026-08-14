@@ -295,7 +295,7 @@
 															}
 														},
 														"cname_dmarc_records": {
-															"description": "CNAME records at _dmarc (problematic)",
+															"description": "CNAME records at _dmarc. When such a CNAME resolves to a DMARC TXT record, the API returns that record in resolved_dmarc_records.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -434,6 +434,26 @@
 																}
 															}
 														},
+														"resolved_dmarc_records": {
+															"description": "DMARC records that a recursive lookup of _dmarc.{zone} returned. The API populates this only when the zone lacks a DMARC TXT record of its own, which usually means a CNAME delegates DMARC to another zone.",
+															"type": "array",
+															"items": {
+																"description": "A DMARC TXT record that a recursive lookup of _dmarc.{zone} returned. Such a record usually lives in another zone outside this account's control, so this schema omits the DNS record ID. The API therefore treats such a record as read-only.",
+																"type": "object",
+																"properties": {
+																	"content": {
+																		"description": "The TXT record value. The API joins all character-strings into a single string.",
+																		"example": "v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name the API queried.",
+																		"type": "string",
+																		"example": "_dmarc.example.com"
+																	}
+																}
+															}
+														},
 														"spf_records": {
 															"description": "SPF TXT records",
 															"type": "array",
@@ -482,7 +502,7 @@
 													"example": false
 												},
 												"status": {
-													"description": "DMARC configuration status",
+													"description": "DMARC configuration status. The API omits this field when DMARC is correctly configured. If the zone lacks a DMARC TXT record of its own, the API resolves _dmarc.{zone} recursively and evaluates whatever that lookup returns. A CNAME at _dmarc.{zone} that points to a valid DMARC record is therefore healthy; the cname-on-dmarc-record value means the CNAME resolves to no DMARC record at all.",
 													"type": "string",
 													"enum": [
 														"missing-dmarc-report",
@@ -638,7 +658,11 @@
 		],
 		"tags": [
 			"Email Auth"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-auth.dmarc-reports",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/email/auth/spf/inspect": {
 		"operationId": "inspect_spf",
@@ -1023,7 +1047,11 @@
 		],
 		"tags": [
 			"Email Auth"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-auth.spf",
+		"x-fern-sdk-method-name": "inspect",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/email/auth/dmarc-reports": {
 		"operationId": "configure_dmarc_reports",
@@ -1346,7 +1374,7 @@
 															}
 														},
 														"cname_dmarc_records": {
-															"description": "CNAME records at _dmarc (problematic)",
+															"description": "CNAME records at _dmarc. When such a CNAME resolves to a DMARC TXT record, the API returns that record in resolved_dmarc_records.",
 															"type": "array",
 															"items": {
 																"description": "Summary of a single DNS record",
@@ -1485,6 +1513,26 @@
 																}
 															}
 														},
+														"resolved_dmarc_records": {
+															"description": "DMARC records that a recursive lookup of _dmarc.{zone} returned. The API populates this only when the zone lacks a DMARC TXT record of its own, which usually means a CNAME delegates DMARC to another zone.",
+															"type": "array",
+															"items": {
+																"description": "A DMARC TXT record that a recursive lookup of _dmarc.{zone} returned. Such a record usually lives in another zone outside this account's control, so this schema omits the DNS record ID. The API therefore treats such a record as read-only.",
+																"type": "object",
+																"properties": {
+																	"content": {
+																		"description": "The TXT record value. The API joins all character-strings into a single string.",
+																		"example": "v=DMARC1; p=reject; rua=mailto:rua@dmarc-reports.cloudflare.net",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name the API queried.",
+																		"type": "string",
+																		"example": "_dmarc.example.com"
+																	}
+																}
+															}
+														},
 														"spf_records": {
 															"description": "SPF TXT records",
 															"type": "array",
@@ -1533,7 +1581,7 @@
 													"example": false
 												},
 												"status": {
-													"description": "DMARC configuration status",
+													"description": "DMARC configuration status. The API omits this field when DMARC is correctly configured. If the zone lacks a DMARC TXT record of its own, the API resolves _dmarc.{zone} recursively and evaluates whatever that lookup returns. A CNAME at _dmarc.{zone} that points to a valid DMARC record is therefore healthy; the cname-on-dmarc-record value means the CNAME resolves to no DMARC record at all.",
 													"type": "string",
 													"enum": [
 														"missing-dmarc-report",
@@ -1689,6 +1737,10 @@
 		],
 		"tags": [
 			"Email Auth"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-auth.dmarc-reports",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

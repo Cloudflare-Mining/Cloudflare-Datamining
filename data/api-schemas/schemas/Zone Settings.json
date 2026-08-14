@@ -8741,6 +8741,630 @@
 			"pro": false
 		}
 	},
+	"GET /zones/{zone_id}/settings/automatic_platform_optimization": {
+		"operationId": "zone-settings-get-automatic-platform-optimization-setting",
+		"summary": "Get Automatic Platform Optimization setting",
+		"description": "Automatic Platform Optimization (APO) for WordPress is a performance feature that serves your\nWordPress site from Cloudflare's edge network, reducing load times for visitors.\nRefer to the APO documentation for more information.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Automatic Platform Optimization setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Automatic Platform Optimization (APO) for WordPress.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "automatic_platform_optimization",
+															"enum": [
+																"automatic_platform_optimization"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Configuration for Automatic Platform Optimization (APO) for WordPress.\nSet to \"off\" to disable, or provide an object to configure APO settings.\n",
+															"oneOf": [
+																{
+																	"description": "Disable Automatic Platform Optimization.",
+																	"enum": [
+																		"off"
+																	],
+																	"type": "string"
+																},
+																{
+																	"properties": {
+																		"cache_by_device_type": {
+																			"description": "Whether to cache by device type.",
+																			"type": "boolean",
+																			"example": false
+																		},
+																		"cf": {
+																			"description": "Whether the zone is proxied through Cloudflare.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"enabled": {
+																			"description": "Whether APO is enabled.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"hostnames": {
+																			"description": "List of hostnames where APO is active.",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"www.example.com"
+																			]
+																		},
+																		"recheck": {
+																			"description": "Whether to recheck WordPress and plugin detection.",
+																			"type": "boolean",
+																			"example": false
+																		},
+																		"wordpress": {
+																			"description": "Whether the site is a WordPress site.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"wp_plugin": {
+																			"description": "Whether the Cloudflare WordPress plugin is installed.",
+																			"type": "boolean",
+																			"example": true
+																		}
+																	},
+																	"required": [
+																		"cf",
+																		"enabled",
+																		"wordpress",
+																		"wp_plugin"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Automatic Platform Optimization value"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Automatic Platform Optimization setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Automatic Platform Optimization setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/settings/binary_ast": {
+		"operationId": "zone-settings-get-binary-ast-setting",
+		"summary": "Get Binary AST setting",
+		"description": "Binary AST is a new binary encoding for JavaScript that enables faster parsing of scripts.\nWhen enabled, Cloudflare will serve a binary-encoded version of JavaScript to compatible browsers.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Binary AST setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Binary AST JavaScript parsing for the zone.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "binary_ast",
+															"enum": [
+																"binary_ast"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Controls Binary AST behavior:\n- \"off\": Feature disabled.\n- \"on\": Binary AST enabled.\n- \"latest\": Binary AST enabled using the latest version.\n",
+															"type": "string",
+															"enum": [
+																"off",
+																"on",
+																"latest"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Binary AST setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Binary AST setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /zones/{zone_id}/settings/fonts": {
 		"operationId": "zone-settings-get-fonts-setting",
 		"summary": "Get Cloudflare Fonts setting",
@@ -8838,7 +9462,6 @@
 														"editable": {
 															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 															"type": "boolean",
-															"default": true,
 															"enum": [
 																true,
 																false
@@ -8910,6 +9533,580 @@
 			},
 			"4XX": {
 				"description": "Get Cloudflare Fonts setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.fonts",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /zones/{zone_id}/settings/h2_prioritization": {
+		"operationId": "zone-settings-get-h2-prioritization-setting",
+		"summary": "Get HTTP/2 Prioritization setting",
+		"description": "HTTP/2 Prioritization controls the order in which assets are delivered to browsers.\nCloudflare's HTTP/2 Prioritization overrides the default browser prioritization order,\nimproving the loading performance of web pages.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get HTTP/2 Prioritization setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls HTTP/2 Prioritization for the zone.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "h2_prioritization",
+															"enum": [
+																"h2_prioritization"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Controls HTTP/2 Prioritization behavior:\n- \"off\": Use browser default prioritization.\n- \"on\": Use Cloudflare's optimized prioritization.\n- \"custom\": Use custom prioritization rules.\n",
+															"type": "string",
+															"enum": [
+																"off",
+																"on",
+																"custom"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "HTTP/2 Prioritization setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get HTTP/2 Prioritization setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/settings/image_resizing": {
+		"operationId": "zone-settings-get-image-resizing-setting",
+		"summary": "Get Image Transformations setting",
+		"description": "Gets the Image Transformations setting for a zone. Accepted values are `off`, `on`, `open`, and `latest`.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Image Resizing setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Cloudflare Image Resizing for the zone.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "image_resizing",
+															"enum": [
+																"image_resizing"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Controls Image Resizing behavior:\n- \"off\": Feature disabled.\n- \"on\": Resizing is enabled for same-zone images only.\n- \"open\": Resizing is enabled for images from any origin.\n- \"latest\": Resizing is enabled for same-zone images using the latest version.\n",
+															"type": "string",
+															"enum": [
+																"off",
+																"on",
+																"open",
+																"latest"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Image Resizing setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Image Resizing setting response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -9778,7 +10975,6 @@
 														"editable": {
 															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 															"type": "boolean",
-															"default": true,
 															"enum": [
 																true,
 																false
@@ -9945,6 +11141,866 @@
 				"#zone_settings:read"
 			]
 		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.speed-brain",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /zones/{zone_id}/settings/transformations_allowed_origins": {
+		"operationId": "zone-settings-get-transformations-allowed-origins-setting",
+		"summary": "Get Image Transformations Allowed Origins setting",
+		"description": "Media Transformations Allowed Origins restricts transformations for images and video served through\nCloudflare's network to requests originating from specified domains. Refer to the\nImage Transformations and Video Transformations documentation for more information.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Image Transformations Allowed Origins setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls which origins are allowed to request image and video transformations.\n",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "image_resizing_allowed_origins",
+															"enum": [
+																"image_resizing_allowed_origins"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Comma-separated list of allowed origin domains for image and video transformations.\nUse \"*\" to allow all origins (default).\n",
+															"type": "string",
+															"example": "example.com,cdn.example.com",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Image Transformations Allowed Origins setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Image Transformations Allowed Origins setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/settings/transformations_c2pa": {
+		"operationId": "zone-settings-get-transformations-c2pa-setting",
+		"summary": "Get Image Transformations C2PA setting",
+		"description": "C2PA (Coalition for Content Provenance and Authenticity) signing adds cryptographic metadata\nto images processed through Cloudflare Image Transformations, enabling verification of image\nauthenticity and provenance.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Image Transformations C2PA setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls C2PA signing for images processed through Cloudflare Image Transformations.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "image_resizing_c2pa",
+															"enum": [
+																"image_resizing_c2pa"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Whether C2PA signing is enabled for image transformations.",
+															"type": "string",
+															"enum": [
+																"off",
+																"on"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Image Transformations C2PA setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Image Transformations C2PA setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/settings/transformations_config": {
+		"operationId": "zone-settings-get-transformations-config",
+		"summary": "Get Transformations configuration",
+		"description": "Returns the combined Transformations configuration for a zone, including the transformations\ntoggle, allowed origins, and C2PA signing settings in a single response.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Transformations configuration response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Combined view of Transformations, Allowed Origins, and C2PA settings for a zone.\n",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "transformations_config",
+															"enum": [
+																"transformations_config"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Combined configuration value for Transformations. All fields are optional on PATCH;\nomitted fields are left unchanged.\n",
+															"type": "object",
+															"properties": {
+																"allowed_origins": {
+																	"description": "Comma-separated list of allowed origin domains for image and video transformations.\nUse \"*\" to allow all origins (default).\n",
+																	"type": "string",
+																	"example": "example.com,cdn.example.com",
+																	"x-auditable": true
+																},
+																"c2pa": {
+																	"description": "Whether C2PA signing is enabled for image transformations.",
+																	"type": "string",
+																	"enum": [
+																		"off",
+																		"on"
+																	],
+																	"x-auditable": true
+																},
+																"transformations": {
+																	"description": "Controls Image Transformations behavior:\n- \"off\": Feature disabled.\n- \"on\": Transformations enabled for same-zone images only.\n- \"open\": Transformations enabled for images from any origin.\n- \"latest\": Transformations enabled using the latest version.\n",
+																	"type": "string",
+																	"enum": [
+																		"off",
+																		"on",
+																		"open",
+																		"latest"
+																	],
+																	"x-auditable": true
+																}
+															}
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Transformations combined configuration"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Transformations configuration response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -23322,6 +25378,732 @@
 			"pro": false
 		}
 	},
+	"PATCH /zones/{zone_id}/settings/automatic_platform_optimization": {
+		"operationId": "zone-settings-change-automatic-platform-optimization-setting",
+		"summary": "Change Automatic Platform Optimization setting",
+		"description": "Automatic Platform Optimization (APO) for WordPress is a performance feature that serves your\nWordPress site from Cloudflare's edge network, reducing load times for visitors.\nRefer to the APO documentation for more information.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Configuration for Automatic Platform Optimization (APO) for WordPress.\nSet to \"off\" to disable, or provide an object to configure APO settings.\n",
+								"oneOf": [
+									{
+										"description": "Disable Automatic Platform Optimization.",
+										"enum": [
+											"off"
+										],
+										"type": "string"
+									},
+									{
+										"properties": {
+											"cache_by_device_type": {
+												"description": "Whether to cache by device type.",
+												"type": "boolean",
+												"example": false
+											},
+											"cf": {
+												"description": "Whether the zone is proxied through Cloudflare.",
+												"type": "boolean",
+												"example": true
+											},
+											"enabled": {
+												"description": "Whether APO is enabled.",
+												"type": "boolean",
+												"example": true
+											},
+											"hostnames": {
+												"description": "List of hostnames where APO is active.",
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"www.example.com"
+												]
+											},
+											"recheck": {
+												"description": "Whether to recheck WordPress and plugin detection.",
+												"type": "boolean",
+												"example": false
+											},
+											"wordpress": {
+												"description": "Whether the site is a WordPress site.",
+												"type": "boolean",
+												"example": true
+											},
+											"wp_plugin": {
+												"description": "Whether the Cloudflare WordPress plugin is installed.",
+												"type": "boolean",
+												"example": true
+											}
+										},
+										"required": [
+											"cf",
+											"enabled",
+											"wordpress",
+											"wp_plugin"
+										],
+										"type": "object"
+									}
+								],
+								"title": "Automatic Platform Optimization value"
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change Automatic Platform Optimization setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Automatic Platform Optimization (APO) for WordPress.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "automatic_platform_optimization",
+															"enum": [
+																"automatic_platform_optimization"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Configuration for Automatic Platform Optimization (APO) for WordPress.\nSet to \"off\" to disable, or provide an object to configure APO settings.\n",
+															"oneOf": [
+																{
+																	"description": "Disable Automatic Platform Optimization.",
+																	"enum": [
+																		"off"
+																	],
+																	"type": "string"
+																},
+																{
+																	"properties": {
+																		"cache_by_device_type": {
+																			"description": "Whether to cache by device type.",
+																			"type": "boolean",
+																			"example": false
+																		},
+																		"cf": {
+																			"description": "Whether the zone is proxied through Cloudflare.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"enabled": {
+																			"description": "Whether APO is enabled.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"hostnames": {
+																			"description": "List of hostnames where APO is active.",
+																			"type": "array",
+																			"items": {
+																				"type": "string"
+																			},
+																			"example": [
+																				"www.example.com"
+																			]
+																		},
+																		"recheck": {
+																			"description": "Whether to recheck WordPress and plugin detection.",
+																			"type": "boolean",
+																			"example": false
+																		},
+																		"wordpress": {
+																			"description": "Whether the site is a WordPress site.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"wp_plugin": {
+																			"description": "Whether the Cloudflare WordPress plugin is installed.",
+																			"type": "boolean",
+																			"example": true
+																		}
+																	},
+																	"required": [
+																		"cf",
+																		"enabled",
+																		"wordpress",
+																		"wp_plugin"
+																	],
+																	"type": "object"
+																}
+															],
+															"title": "Automatic Platform Optimization value"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Automatic Platform Optimization setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change Automatic Platform Optimization setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/settings/binary_ast": {
+		"operationId": "zone-settings-change-binary-ast-setting",
+		"summary": "Change Binary AST setting",
+		"description": "Binary AST is a new binary encoding for JavaScript that enables faster parsing of scripts.\nWhen enabled, Cloudflare will serve a binary-encoded version of JavaScript to compatible browsers.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Controls Binary AST behavior:\n- \"off\": Feature disabled.\n- \"on\": Binary AST enabled.\n- \"latest\": Binary AST enabled using the latest version.\n",
+								"type": "string",
+								"enum": [
+									"off",
+									"on",
+									"latest"
+								],
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change Binary AST setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Binary AST JavaScript parsing for the zone.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "binary_ast",
+															"enum": [
+																"binary_ast"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Controls Binary AST behavior:\n- \"off\": Feature disabled.\n- \"on\": Binary AST enabled.\n- \"latest\": Binary AST enabled using the latest version.\n",
+															"type": "string",
+															"enum": [
+																"off",
+																"on",
+																"latest"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Binary AST setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change Binary AST setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"PATCH /zones/{zone_id}/settings/fonts": {
 		"operationId": "zone-settings-change-fonts-setting",
 		"summary": "Change Cloudflare Fonts setting",
@@ -23444,7 +26226,6 @@
 														"editable": {
 															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 															"type": "boolean",
-															"default": true,
 															"enum": [
 																true,
 																false
@@ -23516,6 +26297,629 @@
 			},
 			"4XX": {
 				"description": "Change Cloudflare Fonts setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.fonts",
+		"x-fern-sdk-method-name": "edit"
+	},
+	"PATCH /zones/{zone_id}/settings/h2_prioritization": {
+		"operationId": "zone-settings-change-h2-prioritization-setting",
+		"summary": "Change HTTP/2 Prioritization setting",
+		"description": "HTTP/2 Prioritization controls the order in which assets are delivered to browsers.\nCloudflare's HTTP/2 Prioritization overrides the default browser prioritization order,\nimproving the loading performance of web pages.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Controls HTTP/2 Prioritization behavior:\n- \"off\": Use browser default prioritization.\n- \"on\": Use Cloudflare's optimized prioritization.\n- \"custom\": Use custom prioritization rules.\n",
+								"type": "string",
+								"enum": [
+									"off",
+									"on",
+									"custom"
+								],
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change HTTP/2 Prioritization setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls HTTP/2 Prioritization for the zone.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "h2_prioritization",
+															"enum": [
+																"h2_prioritization"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Controls HTTP/2 Prioritization behavior:\n- \"off\": Use browser default prioritization.\n- \"on\": Use Cloudflare's optimized prioritization.\n- \"custom\": Use custom prioritization rules.\n",
+															"type": "string",
+															"enum": [
+																"off",
+																"on",
+																"custom"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "HTTP/2 Prioritization setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change HTTP/2 Prioritization setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/settings/image_resizing": {
+		"operationId": "zone-settings-change-image-resizing-setting",
+		"summary": "Change Image Transformations setting",
+		"description": "Sets the Image Transformations setting for a zone. Accepted values are `off`, `on`, `open`, and `latest`.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Controls Image Resizing behavior:\n- \"off\": Feature disabled.\n- \"on\": Resizing is enabled for same-zone images only.\n- \"open\": Resizing is enabled for images from any origin.\n- \"latest\": Resizing is enabled for same-zone images using the latest version.\n",
+								"type": "string",
+								"enum": [
+									"off",
+									"on",
+									"open",
+									"latest"
+								],
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change Image Resizing setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Cloudflare Image Resizing for the zone.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "image_resizing",
+															"enum": [
+																"image_resizing"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Controls Image Resizing behavior:\n- \"off\": Feature disabled.\n- \"on\": Resizing is enabled for same-zone images only.\n- \"open\": Resizing is enabled for images from any origin.\n- \"latest\": Resizing is enabled for same-zone images using the latest version.\n",
+															"type": "string",
+															"enum": [
+																"off",
+																"on",
+																"open",
+																"latest"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Image Resizing setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change Image Resizing setting response failure.",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -24449,7 +27853,6 @@
 														"editable": {
 															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 															"type": "boolean",
-															"default": true,
 															"enum": [
 																true,
 																false
@@ -24615,6 +28018,955 @@
 				"#zone_settings:edit"
 			]
 		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.speed-brain",
+		"x-fern-sdk-method-name": "edit"
+	},
+	"PATCH /zones/{zone_id}/settings/transformations_allowed_origins": {
+		"operationId": "zone-settings-change-transformations-allowed-origins-setting",
+		"summary": "Change Image Transformations Allowed Origins setting",
+		"description": "Media Transformations Allowed Origins restricts transformations for images and video served through\nCloudflare's network to requests originating from specified domains. Refer to the\nImage Transformations and Video Transformations documentation for more information.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Comma-separated list of allowed origin domains for image and video transformations.\nUse \"*\" to allow all origins (default).\n",
+								"type": "string",
+								"example": "example.com,cdn.example.com",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change Image Transformations Allowed Origins setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls which origins are allowed to request image and video transformations.\n",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "image_resizing_allowed_origins",
+															"enum": [
+																"image_resizing_allowed_origins"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Comma-separated list of allowed origin domains for image and video transformations.\nUse \"*\" to allow all origins (default).\n",
+															"type": "string",
+															"example": "example.com,cdn.example.com",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Image Transformations Allowed Origins setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change Image Transformations Allowed Origins setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/settings/transformations_c2pa": {
+		"operationId": "zone-settings-change-transformations-c2pa-setting",
+		"summary": "Change Image Transformations C2PA setting",
+		"description": "C2PA (Coalition for Content Provenance and Authenticity) signing adds cryptographic metadata\nto images processed through Cloudflare Image Transformations, enabling verification of image\nauthenticity and provenance.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Whether C2PA signing is enabled for image transformations.",
+								"type": "string",
+								"enum": [
+									"off",
+									"on"
+								],
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change Image Transformations C2PA setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls C2PA signing for images processed through Cloudflare Image Transformations.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "image_resizing_c2pa",
+															"enum": [
+																"image_resizing_c2pa"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Whether C2PA signing is enabled for image transformations.",
+															"type": "string",
+															"enum": [
+																"off",
+																"on"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Image Transformations C2PA setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change Image Transformations C2PA setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/settings/transformations_config": {
+		"operationId": "zone-settings-change-transformations-config",
+		"summary": "Change Transformations configuration",
+		"description": "Updates one or more fields of the combined Transformations configuration for a zone.\nOmitted fields are left unchanged. The response always returns the full current state\nof all three sub-settings.\n",
+		"parameters": [
+			{
+				"name": "zone_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Combined configuration value for Transformations. All fields are optional on PATCH;\nomitted fields are left unchanged.\n",
+								"type": "object",
+								"properties": {
+									"allowed_origins": {
+										"description": "Comma-separated list of allowed origin domains for image and video transformations.\nUse \"*\" to allow all origins (default).\n",
+										"type": "string",
+										"example": "example.com,cdn.example.com",
+										"x-auditable": true
+									},
+									"c2pa": {
+										"description": "Whether C2PA signing is enabled for image transformations.",
+										"type": "string",
+										"enum": [
+											"off",
+											"on"
+										],
+										"x-auditable": true
+									},
+									"transformations": {
+										"description": "Controls Image Transformations behavior:\n- \"off\": Feature disabled.\n- \"on\": Transformations enabled for same-zone images only.\n- \"open\": Transformations enabled for images from any origin.\n- \"latest\": Transformations enabled using the latest version.\n",
+										"type": "string",
+										"enum": [
+											"off",
+											"on",
+											"open",
+											"latest"
+										],
+										"x-auditable": true
+									}
+								}
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change Transformations configuration response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Combined view of Transformations, Allowed Origins, and C2PA settings for a zone.\n",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"type": "string",
+															"example": "transformations_config",
+															"enum": [
+																"transformations_config"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Combined configuration value for Transformations. All fields are optional on PATCH;\nomitted fields are left unchanged.\n",
+															"type": "object",
+															"properties": {
+																"allowed_origins": {
+																	"description": "Comma-separated list of allowed origin domains for image and video transformations.\nUse \"*\" to allow all origins (default).\n",
+																	"type": "string",
+																	"example": "example.com,cdn.example.com",
+																	"x-auditable": true
+																},
+																"c2pa": {
+																	"description": "Whether C2PA signing is enabled for image transformations.",
+																	"type": "string",
+																	"enum": [
+																		"off",
+																		"on"
+																	],
+																	"x-auditable": true
+																},
+																"transformations": {
+																	"description": "Controls Image Transformations behavior:\n- \"off\": Feature disabled.\n- \"on\": Transformations enabled for same-zone images only.\n- \"open\": Transformations enabled for images from any origin.\n- \"latest\": Transformations enabled using the latest version.\n",
+																	"type": "string",
+																	"enum": [
+																		"off",
+																		"on",
+																		"open",
+																		"latest"
+																	],
+																	"x-auditable": true
+																}
+															}
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Transformations combined configuration"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change Transformations configuration response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Zone Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

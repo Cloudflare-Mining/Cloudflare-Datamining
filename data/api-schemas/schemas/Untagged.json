@@ -834,6 +834,30 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"example": "account-123"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"example": "account-123"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/rollouts": [
 		{
 			"description": "Account identifier.",
@@ -847,6 +871,30 @@
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/versions": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"example": "account-123"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/instance-groups": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string",
+				"example": "account-123"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/instance-groups/{namespace_id}": [
 		{
 			"description": "Account identifier.",
 			"in": "path",
@@ -2316,96 +2364,6 @@
 			"required": true,
 			"schema": {
 				"type": "string"
-			}
-		}
-	],
-	"PARAMETERS /accounts/booking/{booking_id}": [
-		{
-			"description": "Unique identifier of the booking.",
-			"in": "path",
-			"name": "booking_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"format": "uuid",
-				"x-auditable": true
-			}
-		}
-	],
-	"PARAMETERS /v1/dash/{internal_user_id}/{internal_account_id}/booking": [
-		{
-			"description": "Internal identifier of the user making the request.",
-			"in": "path",
-			"name": "internal_user_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"x-auditable": true
-			}
-		},
-		{
-			"description": "Internal identifier of the Cloudflare account.",
-			"in": "path",
-			"name": "internal_account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"x-auditable": true
-			}
-		}
-	],
-	"PARAMETERS /v1/dash/{internal_user_id}/{internal_account_id}/booking/{booking_id}": [
-		{
-			"description": "Internal identifier of the user making the request.",
-			"in": "path",
-			"name": "internal_user_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"x-auditable": true
-			}
-		},
-		{
-			"description": "Internal identifier of the Cloudflare account.",
-			"in": "path",
-			"name": "internal_account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"x-auditable": true
-			}
-		},
-		{
-			"description": "Unique identifier of the booking.",
-			"in": "path",
-			"name": "booking_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"format": "uuid",
-				"x-auditable": true
-			}
-		}
-	],
-	"PARAMETERS /v1/dash/{internal_user_id}/{internal_account_id}/booking/availability": [
-		{
-			"description": "Internal identifier of the user making the request.",
-			"in": "path",
-			"name": "internal_user_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"x-auditable": true
-			}
-		},
-		{
-			"description": "Internal identifier of the Cloudflare account.",
-			"in": "path",
-			"name": "internal_account_id",
-			"required": true,
-			"schema": {
-				"type": "string",
-				"x-auditable": true
 			}
 		}
 	],

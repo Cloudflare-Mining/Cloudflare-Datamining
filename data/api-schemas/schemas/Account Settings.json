@@ -1,0 +1,831 @@
+{
+	"GET /accounts/{account_id}/settings/transformations": {
+		"operationId": "account-settings-list-transformations",
+		"summary": "List Image Resizing configurations for account",
+		"description": "Returns a list of Image Resizing configurations across all zones for the account.\nThis endpoint is useful for retrieving the transformations (image_resizing) state\nfor all zones belonging to an account.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List Image Resizing configurations response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"description": "A configuration item for a specific zone and feature.",
+												"type": "object",
+												"properties": {
+													"cf_zone_tag": {
+														"description": "Zone tag identifier.",
+														"type": "string",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"x-auditable": true
+													},
+													"editable": {
+														"description": "Whether this setting can be modified.",
+														"type": "boolean",
+														"example": true,
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"id": {
+														"description": "Feature identifier.",
+														"type": "string",
+														"example": "image_resizing",
+														"x-auditable": true
+													},
+													"modified_on": {
+														"description": "When this setting was last modified.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-01-15T10:30:00Z",
+														"nullable": true,
+														"readOnly": true,
+														"x-auditable": true
+													},
+													"value": {
+														"description": "Current value of the feature setting.",
+														"example": "on",
+														"x-auditable": true
+													}
+												},
+												"title": "Zone configuration item"
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "List Image Resizing configurations response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		}
+	},
+	"GET /accounts/{account_id}/settings/ut-billing": {
+		"operationId": "account-settings-get-ut-billing-setting",
+		"summary": "Get Unique Transformations billing setting",
+		"description": "Retrieves the Unique Transformations billing configuration for an account.\nWhen enabled, billing data is directed to the Transformations pipeline.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Get Unique Transformations billing setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Unique Transformations billing for the account.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the account setting.",
+															"type": "string",
+															"example": "ut_billing",
+															"enum": [
+																"ut_billing"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Enables Unique Transformations billing for the account.\nNote: once enabled, this setting cannot be set back to \"off\".\n",
+															"type": "string",
+															"enum": [
+																"on"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Unique Transformations billing setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Get Unique Transformations billing setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		}
+	},
+	"PATCH /accounts/{account_id}/settings/ut-billing": {
+		"operationId": "account-settings-change-ut-billing-setting",
+		"summary": "Change Unique Transformations billing setting",
+		"description": "Updates the Unique Transformations billing configuration for an account.\nWhen enabled, billing data is directed to the Transformations pipeline.\nNote: setting the value to \"off\" is not permitted once enabled.\n",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"value": {
+								"description": "Enables Unique Transformations billing for the account.\nNote: once enabled, this setting cannot be set back to \"off\".\n",
+								"type": "string",
+								"enum": [
+									"on"
+								],
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Change Unique Transformations billing setting response.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"type": "boolean",
+											"example": true,
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Controls Unique Transformations billing for the account.",
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"type": "boolean",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"type": "string",
+															"example": "development_mode",
+															"x-auditable": true
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"type": "string",
+															"format": "date-time",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"nullable": true,
+															"readOnly": true,
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"type": "string",
+															"example": "on",
+															"enum": [
+																"on",
+																"off"
+															],
+															"x-auditable": true
+														}
+													}
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the account setting.",
+															"type": "string",
+															"example": "ut_billing",
+															"enum": [
+																"ut_billing"
+															],
+															"x-auditable": true
+														},
+														"value": {
+															"description": "Enables Unique Transformations billing for the account.\nNote: once enabled, this setting cannot be set back to \"off\".\n",
+															"type": "string",
+															"enum": [
+																"on"
+															],
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"title": "Unique Transformations billing setting"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Change Unique Transformations billing setting response failure.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"example": [],
+									"allOf": [
+										{
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": []
+										}
+									]
+								},
+								"result": {
+									"type": "object",
+									"nullable": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Account Settings"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		}
+	}
+}

@@ -154,6 +154,11 @@
 													"default": "8760h",
 													"x-auditable": true
 												},
+												"enabled": {
+													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"expires_at": {
 													"type": "string",
 													"format": "date-time",
@@ -562,6 +567,11 @@
 														"default": "8760h",
 														"x-auditable": true
 													},
+													"enabled": {
+														"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+														"type": "boolean",
+														"x-auditable": true
+													},
 													"expires_at": {
 														"type": "string",
 														"format": "date-time",
@@ -912,6 +922,11 @@
 													"default": "8760h",
 													"x-auditable": true
 												},
+												"enabled": {
+													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"expires_at": {
 													"type": "string",
 													"format": "date-time",
@@ -1143,6 +1158,11 @@
 								"default": "8760h",
 								"x-auditable": true
 							},
+							"enabled": {
+								"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"name": {
 								"description": "The name of the service token.",
 								"type": "string",
@@ -1293,6 +1313,11 @@
 													"type": "string",
 													"example": "60m",
 													"default": "8760h",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"id": {
@@ -1612,6 +1637,11 @@
 													"type": "string",
 													"example": "60m",
 													"default": "8760h",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"expires_at": {
@@ -1985,6 +2015,11 @@
 													"default": "8760h",
 													"x-auditable": true
 												},
+												"enabled": {
+													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"id": {
 													"description": "The ID of the service token.",
 													"type": "string"
@@ -2195,6 +2230,11 @@
 								"default": "8760h",
 								"x-auditable": true
 							},
+							"enabled": {
+								"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"name": {
 								"description": "The name of the service token.",
 								"type": "string",
@@ -2336,6 +2376,11 @@
 													"type": "string",
 													"example": "60m",
 													"default": "8760h",
+													"x-auditable": true
+												},
+												"enabled": {
+													"description": "Whether the service token is enabled. A disabled service token cannot be used to authenticate; both its current and previous `client_secret` stop being accepted, but the token itself is preserved and can be re-enabled at any time. Defaults to enabled when omitted on create.",
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"expires_at": {

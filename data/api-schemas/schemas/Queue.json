@@ -266,6 +266,24 @@
 														{
 															"type": "object",
 															"properties": {
+																"script_tag": {
+																	"description": "Tag of the Worker script",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"type": "string",
+																	"enum": [
+																		"workers.script"
+																	],
+																	"x-auditable": true
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
 																"type": {
 																	"description": "Type of source",
 																	"type": "string",
@@ -987,6 +1005,24 @@
 															{
 																"type": "object",
 																"properties": {
+																	"script_tag": {
+																		"description": "Tag of the Worker script",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": {
+																		"description": "Type of source",
+																		"type": "string",
+																		"enum": [
+																			"workers.script"
+																		],
+																		"x-auditable": true
+																	}
+																}
+															},
+															{
+																"type": "object",
+																"properties": {
 																	"type": {
 																		"description": "Type of source",
 																		"type": "string",
@@ -1397,6 +1433,24 @@
 																"worker_name": {
 																	"description": "Name of the worker",
 																	"type": "string",
+																	"x-auditable": true
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
+																"script_tag": {
+																	"description": "Tag of the Worker script",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"type": "string",
+																	"enum": [
+																		"workers.script"
+																	],
 																	"x-auditable": true
 																}
 															}
@@ -3875,6 +3929,24 @@
 														{
 															"type": "object",
 															"properties": {
+																"script_tag": {
+																	"description": "Tag of the Worker script",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"type": "string",
+																	"enum": [
+																		"workers.script"
+																	],
+																	"x-auditable": true
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
 																"type": {
 																	"description": "Type of source",
 																	"type": "string",
@@ -4938,6 +5010,24 @@
 									{
 										"type": "object",
 										"properties": {
+											"script_tag": {
+												"description": "Tag of the Worker script",
+												"type": "string",
+												"x-auditable": true
+											},
+											"type": {
+												"description": "Type of source",
+												"type": "string",
+												"enum": [
+													"workers.script"
+												],
+												"x-auditable": true
+											}
+										}
+									},
+									{
+										"type": "object",
+										"properties": {
 											"type": {
 												"description": "Type of source",
 												"type": "string",
@@ -5188,6 +5278,24 @@
 																"worker_name": {
 																	"description": "Name of the worker",
 																	"type": "string",
+																	"x-auditable": true
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
+																"script_tag": {
+																	"description": "Tag of the Worker script",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": {
+																	"description": "Type of source",
+																	"type": "string",
+																	"enum": [
+																		"workers.script"
+																	],
 																	"x-auditable": true
 																}
 															}
@@ -7155,6 +7263,238 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "queues.messages",
 		"x-fern-sdk-method-name": "bulk-push",
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/queues/{queue_id}/messages/extend": {
+		"operationId": "queues-extend-messages",
+		"summary": "Extend Message Leases",
+		"description": "Extend the lease on a message. This creates a new lease ID on your message without incrementing the message's `attempts` counter.",
+		"parameters": [
+			{
+				"name": "queue_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "A Resource identifier.",
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"extend": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"lease_id": {
+											"description": "An ID that represents an \"in-flight\" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message.",
+											"type": "string",
+											"example": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIn0..Q8p21d7dceR6vUfwftONdQ.JVqZgAS-Zk7MqmqccYtTHeeMElNHaOMigeWdb8LyMOg.T2_HV99CYzGaQuhTyW8RsgbnpTRZHRM6N7UoSaAKeK0",
+											"x-auditable": true
+										}
+									},
+									"type": "object"
+								}
+							},
+							"visibility_timeout_ms": {
+								"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
+								"type": "number",
+								"example": 6000,
+								"x-auditable": true
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "New lease IDs",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"errors": {
+											"type": "array",
+											"items": {
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000,
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"example": []
+										},
+										"success": {
+											"description": "Indicates if the API call was successful or not.",
+											"type": "boolean",
+											"enum": [
+												true
+											],
+											"x-auditable": true
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object",
+											"properties": {
+												"extendCount": {
+													"description": "The number of message leases that were succesfully extended.",
+													"type": "number",
+													"example": 5
+												},
+												"warnings": {
+													"description": "Map of lease IDs to warning messages encountered during extensions.",
+													"type": "object",
+													"additionalProperties": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			},
+			"4XX": {
+				"description": "Failure response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000,
+												"x-auditable": true
+											},
+											"message": {
+												"type": "string",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"x-auditable": true
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Indicates if the API call was successful or not.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									],
+									"x-auditable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"tags": [
+			"Queue"
+		],
+		"x-api-token-group": [
+			"Queues Write",
+			"Workers Scripts Write"
+		],
+		"x-auditable": false,
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.pull"
+			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "extendLeases",
 		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/peek": {

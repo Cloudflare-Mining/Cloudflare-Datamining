@@ -1,0 +1,1484 @@
+{
+	"GET /user/communication_preferences": {
+		"operationId": "user-communication-preferences-get",
+		"summary": "Get communication preferences",
+		"description": "Retrieve the communication preferences for the authenticated user, including email verification status, marketing subscription opt-in/opt-out state, and language locale. Callers authenticate with standard Cloudflare API tokens or keys.",
+		"responses": {
+			"200": {
+				"description": "Successfully retrieved communication preferences.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"success": {
+								"summary": "Successful preferences retrieval",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"created_on": "2024-06-01T14:20:00Z",
+										"email": {
+											"hard_bounce": false,
+											"verified": true
+										},
+										"language-locale": "en-US",
+										"preferences": {
+											"marketing": {
+												"created_on": "2024-01-15T10:30:00Z",
+												"subscribed": false,
+												"updated_on": "2024-08-12T09:45:00Z"
+											},
+											"product_news": {
+												"created_on": "2024-01-15T10:30:00Z",
+												"subscribed": true,
+												"updated_on": "2024-06-01T14:20:00Z"
+											}
+										},
+										"updated_on": "2024-08-12T09:45:00Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "The user's communication preferences.",
+									"type": "object",
+									"properties": {
+										"created_on": {
+											"description": "Timestamp of the most recently created preference.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-06-01T14:20:00Z"
+										},
+										"email": {
+											"description": "Email verification status for the user.",
+											"type": "object",
+											"properties": {
+												"hard_bounce": {
+													"description": "True when delivery attempts to this email address fail permanently.",
+													"type": "boolean",
+													"example": false
+												},
+												"verified": {
+													"description": "True when the user verifies their email address.",
+													"type": "boolean",
+													"example": true
+												}
+											}
+										},
+										"language-locale": {
+											"description": "The user's preferred language locale for communications.",
+											"type": "string",
+											"example": "en-US",
+											"enum": [
+												"en-US",
+												"es-ES",
+												"de-DE",
+												"fr-FR",
+												"it-IT",
+												"ja-JP",
+												"ko-KR",
+												"pt-BR",
+												"zh-CN",
+												"zh-TW"
+											]
+										},
+										"preferences": {
+											"description": "Preference keys mapped to subscription states. Keys use human-readable slugs (e.g. \"product_news\", \"marketing\").",
+											"type": "object",
+											"example": {
+												"marketing": {
+													"created_on": "2024-01-15T10:30:00Z",
+													"subscribed": false,
+													"updated_on": "2024-08-12T09:45:00Z"
+												},
+												"product_news": {
+													"created_on": "2024-01-15T10:30:00Z",
+													"subscribed": true,
+													"updated_on": "2024-06-01T14:20:00Z"
+												}
+											},
+											"additionalProperties": {
+												"description": "A single communication preference subscription state.",
+												"type": "object",
+												"properties": {
+													"created_on": {
+														"description": "When this preference first appeared.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-01-15T10:30:00Z"
+													},
+													"subscribed": {
+														"description": "Whether the user subscribes to this communication type.",
+														"type": "boolean",
+														"example": true
+													},
+													"updated_on": {
+														"description": "When this preference last changed.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-06-01T14:20:00Z"
+													}
+												},
+												"required": [
+													"subscribed"
+												]
+											}
+										},
+										"updated_on": {
+											"description": "Timestamp of the most recently updated preference.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-08-12T09:45:00Z"
+										}
+									},
+									"required": [
+										"email",
+										"preferences",
+										"language-locale",
+										"created_on",
+										"updated_on"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request contains invalid parameters.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"recipient_invalid": {
+								"summary": "Recipient ID is invalid (zero)",
+								"value": {
+									"errors": [
+										{
+											"code": 4002,
+											"message": "Invalid request"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							},
+							"recipient_not_present": {
+								"summary": "Recipient ID not present in request context",
+								"value": {
+									"errors": [
+										{
+											"code": 4001,
+											"message": "Invalid request"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "The request lacks valid authentication credentials.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"unauthorized": {
+								"summary": "Request unauthorized",
+								"value": {
+									"errors": [
+										{
+											"code": 4010,
+											"message": "Request unauthorized"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user does not own the requested resource.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"user_id_mismatch": {
+								"summary": "User ID in URI does not match authenticated user",
+								"value": {
+									"errors": [
+										{
+											"code": 4030,
+											"message": "Request unauthorized"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The requested user identity does not exist.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"not_found": {
+								"summary": "User identity not found",
+								"value": {
+									"errors": [
+										{
+											"code": 4040,
+											"message": "Id not found"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "The server encountered an unexpected error.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"failed_to_fetch_preference_types": {
+								"summary": "Failed to fetch preference types",
+								"value": {
+									"errors": [
+										{
+											"code": 5002,
+											"message": "Something went wrong"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							},
+							"failed_to_fetch_preferences": {
+								"summary": "Failed to fetch recipient preferences",
+								"value": {
+									"errors": [
+										{
+											"code": 5001,
+											"message": "Something went wrong"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Communication Preferences"
+		],
+		"x-api-token-group": [
+			"User Details Read"
+		]
+	},
+	"PUT /user/communication_preferences": {
+		"operationId": "user-communication-preferences-update",
+		"summary": "Update communication preferences",
+		"description": "Set one or more communication preferences for the authenticated user. Supply a map of preference keys to subscription states, and an optional language locale. This endpoint does not modify email verification settings. Callers authenticate with standard Cloudflare API tokens or keys.",
+		"requestBody": {
+			"required": true,
+			"content": {
+				"application/json": {
+					"examples": {
+						"update_all": {
+							"summary": "Update preferences and language",
+							"value": {
+								"language-locale": "es-ES",
+								"preferences": {
+									"marketing": {
+										"subscribed": true
+									},
+									"product_news": {
+										"subscribed": true
+									}
+								}
+							}
+						},
+						"update_language": {
+							"summary": "Update language locale",
+							"value": {
+								"language-locale": "fr-FR",
+								"preferences": {}
+							}
+						},
+						"update_subscriptions": {
+							"summary": "Update marketing subscription preferences",
+							"value": {
+								"preferences": {
+									"marketing": {
+										"subscribed": false
+									},
+									"product_news": {
+										"subscribed": true
+									}
+								}
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for updating communication preferences. An email field in the payload is ignored; email verification state is managed separately, so the field is excluded from this schema.",
+						"type": "object",
+						"properties": {
+							"language-locale": {
+								"description": "The user's preferred language locale for communications. If omitted, the language locale does not change.",
+								"type": "string",
+								"example": "en-US",
+								"enum": [
+									"en-US",
+									"es-ES",
+									"de-DE",
+									"fr-FR",
+									"it-IT",
+									"ja-JP",
+									"ko-KR",
+									"pt-BR",
+									"zh-CN",
+									"zh-TW"
+								]
+							},
+							"preferences": {
+								"description": "Preference keys mapped to subscription states to update. Only the preferences in this map change; others remain unchanged.",
+								"type": "object",
+								"example": {
+									"marketing": {
+										"subscribed": false
+									},
+									"product_news": {
+										"subscribed": true
+									}
+								},
+								"additionalProperties": {
+									"properties": {
+										"subscribed": {
+											"description": "Whether to subscribe or unsubscribe from this communication type.",
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"subscribed"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Successfully updated communication preferences.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"success": {
+								"summary": "Preferences updated successfully",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"created_on": "2024-09-01T16:00:00Z",
+										"email": {
+											"hard_bounce": false,
+											"verified": true
+										},
+										"language-locale": "es-ES",
+										"preferences": {
+											"marketing": {
+												"created_on": "2024-01-15T10:30:00Z",
+												"subscribed": false,
+												"updated_on": "2024-09-01T16:00:00Z"
+											},
+											"product_news": {
+												"created_on": "2024-01-15T10:30:00Z",
+												"subscribed": true,
+												"updated_on": "2024-09-01T16:00:00Z"
+											}
+										},
+										"updated_on": "2024-09-01T16:00:00Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "The user's communication preferences.",
+									"type": "object",
+									"properties": {
+										"created_on": {
+											"description": "Timestamp of the most recently created preference.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-06-01T14:20:00Z"
+										},
+										"email": {
+											"description": "Email verification status for the user.",
+											"type": "object",
+											"properties": {
+												"hard_bounce": {
+													"description": "True when delivery attempts to this email address fail permanently.",
+													"type": "boolean",
+													"example": false
+												},
+												"verified": {
+													"description": "True when the user verifies their email address.",
+													"type": "boolean",
+													"example": true
+												}
+											}
+										},
+										"language-locale": {
+											"description": "The user's preferred language locale for communications.",
+											"type": "string",
+											"example": "en-US",
+											"enum": [
+												"en-US",
+												"es-ES",
+												"de-DE",
+												"fr-FR",
+												"it-IT",
+												"ja-JP",
+												"ko-KR",
+												"pt-BR",
+												"zh-CN",
+												"zh-TW"
+											]
+										},
+										"preferences": {
+											"description": "Preference keys mapped to subscription states. Keys use human-readable slugs (e.g. \"product_news\", \"marketing\").",
+											"type": "object",
+											"example": {
+												"marketing": {
+													"created_on": "2024-01-15T10:30:00Z",
+													"subscribed": false,
+													"updated_on": "2024-08-12T09:45:00Z"
+												},
+												"product_news": {
+													"created_on": "2024-01-15T10:30:00Z",
+													"subscribed": true,
+													"updated_on": "2024-06-01T14:20:00Z"
+												}
+											},
+											"additionalProperties": {
+												"description": "A single communication preference subscription state.",
+												"type": "object",
+												"properties": {
+													"created_on": {
+														"description": "When this preference first appeared.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-01-15T10:30:00Z"
+													},
+													"subscribed": {
+														"description": "Whether the user subscribes to this communication type.",
+														"type": "boolean",
+														"example": true
+													},
+													"updated_on": {
+														"description": "When this preference last changed.",
+														"type": "string",
+														"format": "date-time",
+														"example": "2024-06-01T14:20:00Z"
+													}
+												},
+												"required": [
+													"subscribed"
+												]
+											}
+										},
+										"updated_on": {
+											"description": "Timestamp of the most recently updated preference.",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-08-12T09:45:00Z"
+										}
+									},
+									"required": [
+										"email",
+										"preferences",
+										"language-locale",
+										"created_on",
+										"updated_on"
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "The request contains invalid parameters or body.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"bad_body": {
+								"summary": "Failed to decode request body",
+								"value": {
+									"errors": [
+										{
+											"code": 4003,
+											"message": "Invalid request"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							},
+							"recipient_invalid": {
+								"summary": "Recipient ID is invalid (zero)",
+								"value": {
+									"errors": [
+										{
+											"code": 4002,
+											"message": "Invalid request"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							},
+							"recipient_not_present": {
+								"summary": "Recipient ID not present in request context",
+								"value": {
+									"errors": [
+										{
+											"code": 4001,
+											"message": "Invalid request"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "The request lacks valid authentication credentials.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"unauthorized": {
+								"summary": "Request unauthorized",
+								"value": {
+									"errors": [
+										{
+											"code": 4010,
+											"message": "Request unauthorized"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "The authenticated user does not own the requested resource.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"user_id_mismatch": {
+								"summary": "User ID in URI does not match authenticated user",
+								"value": {
+									"errors": [
+										{
+											"code": 4030,
+											"message": "Request unauthorized"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "The requested user identity does not exist.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"not_found": {
+								"summary": "User identity not found",
+								"value": {
+									"errors": [
+										{
+											"code": 4040,
+											"message": "Id not found"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "The server encountered an unexpected error.",
+				"content": {
+					"application/json": {
+						"examples": {
+							"internal_error": {
+								"summary": "Failed to update preferences",
+								"value": {
+									"errors": [
+										{
+											"code": 5003,
+											"message": "Something went wrong"
+										}
+									],
+									"messages": [],
+									"result": [],
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"result": {
+									"description": "Empty result on failure.",
+									"type": "array",
+									"items": {
+										"type": "object"
+									},
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean",
+									"example": false,
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Communication Preferences"
+		],
+		"x-api-token-group": [
+			"User Details Write"
+		]
+	}
+}

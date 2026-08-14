@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/countries": {
 		"operationId": "get_CountryRead",
 		"summary": "Retrieves countries information for all countries",
-		"description": "Retrieve country code information for all supported countries.",
+		"description": "Lists countries referenced in Cloudforce One threat intelligence data.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -114,6 +114,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.countries",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

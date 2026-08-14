@@ -53,6 +53,25 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Bulk delete blocked because email rules require individual approval.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -66,7 +85,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "deleteAll"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/{id}": {
 		"operationId": "cloudforce-one-delete-rule",
@@ -115,7 +137,7 @@
 		},
 		"responses": {
 			"200": {
-				"description": "Rule deleted (customer accounts).",
+				"description": "Rule deleted (non-email customer accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -134,7 +156,7 @@
 				}
 			},
 			"202": {
-				"description": "Deletion pending approval (internal accounts).",
+				"description": "Deletion pending approval (internal accounts and customer email rules).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -213,6 +235,38 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Another approval is already pending for this rule.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number",
+									"example": 12345
+								},
+								"code": {
+									"type": "string",
+									"example": "approval_pending",
+									"enum": [
+										"approval_pending"
+									]
+								},
+								"error": {
+									"type": "string",
+									"example": "An approval is already pending for this rule."
+								}
+							},
+							"required": [
+								"error",
+								"code",
+								"approval_id"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -226,7 +280,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-remove-account-exemptions",
@@ -394,7 +451,188 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
+		"x-fern-sdk-method-name": "delete"
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/rules/structured/{id}": {
+		"operationId": "cloudforce-one-delete-email-rule",
+		"summary": "Delete an email rule",
+		"description": "Delete an existing structured email rule.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the rule.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the rule.",
+					"type": "string",
+					"format": "uuid",
+					"example": "550e8400-e29b-41d4-a716-446655440000"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Email rule deleted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"success": {
+									"type": "boolean",
+									"example": true
+								}
+							},
+							"required": [
+								"success"
+							]
+						}
+					}
+				}
+			},
+			"202": {
+				"description": "Deletion pending approval (internal accounts and customer email rules).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number",
+									"example": 1
+								},
+								"message": {
+									"type": "string",
+									"example": "Rule creation pending approval"
+								}
+							},
+							"required": [
+								"approval_id",
+								"message"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Rule not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Another approval is already pending for this rule.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number",
+									"example": 12345
+								},
+								"code": {
+									"type": "string",
+									"example": "approval_pending",
+									"enum": [
+										"approval_pending"
+									]
+								},
+								"error": {
+									"type": "string",
+									"example": "An approval is already pending for this rule."
+								}
+							},
+							"required": [
+								"error",
+								"code",
+								"approval_id"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules": {
 		"operationId": "cloudforce-one-list-rules",
@@ -705,7 +943,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/{id}": {
 		"operationId": "cloudforce-one-get-rule",
@@ -926,7 +1167,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-get-exemptions",
@@ -1058,7 +1302,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/managed": {
 		"operationId": "cloudforce-one-get-managed-rules",
@@ -1157,7 +1404,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.managed",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/search": {
 		"operationId": "cloudforce-one-search-rules",
@@ -1603,7 +1853,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "search"
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/stats": {
 		"operationId": "cloudforce-one-get-rule-stats",
@@ -1688,7 +1941,534 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.stats",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/structured": {
+		"operationId": "cloudforce-one-list-email-rules",
+		"summary": "List email rules",
+		"description": "List structured email rules.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "limit",
+				"in": "query",
+				"schema": {
+					"type": "number",
+					"default": 50,
+					"maximum": 100,
+					"minimum": 1
+				}
+			},
+			{
+				"name": "offset",
+				"in": "query",
+				"schema": {
+					"type": "number",
+					"default": 0,
+					"minimum": 0,
+					"nullable": true
+				}
+			},
+			{
+				"name": "search",
+				"in": "query",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of rules.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"rules": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"content": {
+												"example": "rule example { condition: true }",
+												"type": "string"
+											},
+											"created_at": {
+												"type": "number",
+												"example": 1679529600000,
+												"x-auditable": true
+											},
+											"created_by": {
+												"type": "string",
+												"example": "user@example.com",
+												"x-auditable": true
+											},
+											"description": {
+												"type": "string",
+												"example": "Detects malicious proxy workers"
+											},
+											"enabled": {
+												"description": "Whether this rule is active for dice consumers.",
+												"type": "boolean",
+												"example": true
+											},
+											"id": {
+												"type": "string",
+												"format": "uuid",
+												"example": "550e8400-e29b-41d4-a716-446655440000",
+												"x-auditable": true
+											},
+											"is_public": {
+												"description": "Whether this rule is visible to other internal accounts.",
+												"type": "boolean",
+												"example": false,
+												"x-auditable": true
+											},
+											"meta": {
+												"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"key": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"string",
+																"bool",
+																"int"
+															]
+														},
+														"value": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "boolean"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														}
+													},
+													"required": [
+														"key",
+														"value",
+														"type"
+													]
+												}
+											},
+											"name": {
+												"type": "string",
+												"example": "block-malicious-workers",
+												"x-auditable": true
+											},
+											"namespaces": {
+												"type": "array",
+												"items": {
+													"type": "string"
+												},
+												"example": [
+													"yara/workers"
+												],
+												"x-auditable": true
+											},
+											"path": {
+												"type": "string",
+												"example": "yara/workers",
+												"x-auditable": true
+											},
+											"pending_approval_id": {
+												"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+												"type": "number",
+												"nullable": true
+											},
+											"structured_source": {
+												"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+												"type": "string",
+												"nullable": true
+											},
+											"updated_at": {
+												"type": "number",
+												"example": 1679529600000,
+												"x-auditable": true
+											},
+											"updated_by": {
+												"type": "string",
+												"example": "user@example.com",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"path",
+											"description",
+											"namespaces",
+											"content",
+											"is_public",
+											"enabled",
+											"created_at",
+											"updated_at",
+											"created_by",
+											"updated_by",
+											"pending_approval_id"
+										]
+									}
+								},
+								"total": {
+									"type": "number",
+									"example": 100
+								}
+							},
+							"required": [
+								"rules",
+								"total"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/structured/{id}": {
+		"operationId": "cloudforce-one-get-email-rule",
+		"summary": "Get an email rule",
+		"description": "Get a structured email rule by ID.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the rule.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the rule.",
+					"type": "string",
+					"format": "uuid",
+					"example": "550e8400-e29b-41d4-a716-446655440000"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Rule details.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"content": {
+									"example": "rule example { condition: true }",
+									"type": "string"
+								},
+								"created_at": {
+									"type": "number",
+									"example": 1679529600000,
+									"x-auditable": true
+								},
+								"created_by": {
+									"type": "string",
+									"example": "user@example.com",
+									"x-auditable": true
+								},
+								"description": {
+									"type": "string",
+									"example": "Detects malicious proxy workers"
+								},
+								"enabled": {
+									"description": "Whether this rule is active for dice consumers.",
+									"type": "boolean",
+									"example": true
+								},
+								"id": {
+									"type": "string",
+									"format": "uuid",
+									"example": "550e8400-e29b-41d4-a716-446655440000",
+									"x-auditable": true
+								},
+								"is_public": {
+									"description": "Whether this rule is visible to other internal accounts.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								},
+								"meta": {
+									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"string",
+													"bool",
+													"int"
+												]
+											},
+											"value": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"type": "number"
+													}
+												]
+											}
+										},
+										"required": [
+											"key",
+											"value",
+											"type"
+										]
+									}
+								},
+								"name": {
+									"type": "string",
+									"example": "block-malicious-workers",
+									"x-auditable": true
+								},
+								"namespaces": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [
+										"yara/workers"
+									],
+									"x-auditable": true
+								},
+								"path": {
+									"type": "string",
+									"example": "yara/workers",
+									"x-auditable": true
+								},
+								"pending_approval_id": {
+									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+									"type": "number",
+									"nullable": true
+								},
+								"structured_source": {
+									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+									"type": "string",
+									"nullable": true
+								},
+								"updated_at": {
+									"type": "number",
+									"example": 1679529600000,
+									"x-auditable": true
+								},
+								"updated_by": {
+									"type": "string",
+									"example": "user@example.com",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"id",
+								"name",
+								"path",
+								"description",
+								"namespaces",
+								"content",
+								"is_public",
+								"enabled",
+								"created_at",
+								"updated_at",
+								"created_by",
+								"updated_by",
+								"pending_approval_id"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Rule not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/cloudforce-one/rules/structured/schema": {
+		"operationId": "cloudforce-one-get-email-rule-schema",
+		"summary": "Get email rule schema",
+		"description": "Get the field catalog for structured email rules.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Email rule field catalog.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"additionalProperties": {
+								"nullable": true
+							}
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/rules/tree": {
 		"operationId": "cloudforce-one-get-rule-tree",
@@ -1783,7 +2563,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.tree",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules": {
 		"operationId": "cloudforce-one-create-rule",
@@ -1968,7 +2751,7 @@
 		},
 		"responses": {
 			"201": {
-				"description": "Rule created (customer accounts).",
+				"description": "Rule created (non-email customer accounts).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2108,7 +2891,7 @@
 				}
 			},
 			"202": {
-				"description": "Rule pending approval (internal accounts).",
+				"description": "Rule pending approval (internal accounts and customer email rules).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2182,7 +2965,9 @@
 		"tags": [
 			"Rules"
 		],
-		"x-stability": "beta"
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-add-account-exemptions",
@@ -2350,7 +3135,1640 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/structured": {
+		"operationId": "cloudforce-one-create-email-rule",
+		"summary": "Create an email rule",
+		"description": "Create a structured email rule.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"condition": {
+								"description": "Nested condition groups support up to 10 levels of depth.",
+								"type": "object",
+								"properties": {
+									"conditions": {
+										"type": "array",
+										"items": {
+											"discriminator": {
+												"mapping": {
+													"array": "#/components/schemas/cloudforce-one_EmailRuleArrayCondition",
+													"group": "#/components/schemas/cloudforce-one_EmailRuleConditionGroup",
+													"header": "#/components/schemas/cloudforce-one_EmailRuleHeaderCondition",
+													"scalar": "#/components/schemas/cloudforce-one_EmailRuleScalarCondition"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"type": "object",
+													"properties": {
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"scalar"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"operator",
+														"value"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"conditions": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"==",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"contains",
+																			"matches"
+																		]
+																	},
+																	"subfield": {
+																		"type": "string",
+																		"maxLength": 128,
+																		"minLength": 1
+																	},
+																	"value": {
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"subfield",
+																	"operator",
+																	"value"
+																],
+																"type": "object"
+															},
+															"maxItems": 20,
+															"minItems": 1
+														},
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"quantifier": {
+															"type": "string",
+															"default": "any",
+															"enum": [
+																"any",
+																"all"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"array"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"conditions"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"header_name": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"match_type": {
+															"type": "string",
+															"enum": [
+																"any",
+																"all",
+																"first",
+																"last",
+																"count"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"header"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"header_name",
+														"match_type",
+														"operator",
+														"value"
+													]
+												},
+												"[Circular ~.POST /accounts/{account_id}/cloudforce-one/rules/structured.requestBody.content.application/json.schema.properties.condition]"
+											]
+										},
+										"maxItems": 50,
+										"minItems": 1
+									},
+									"operator": {
+										"type": "string",
+										"enum": [
+											"and",
+											"or"
+										]
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"group"
+										]
+									}
+								},
+								"required": [
+									"type",
+									"operator",
+									"conditions"
+								]
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1000
+							},
+							"enabled": {
+								"type": "boolean",
+								"default": true
+							},
+							"meta": {
+								"type": "array",
+								"items": {
+									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"type": "object",
+									"properties": {
+										"key": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"maxLength": 10000,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"value"
+									]
+								},
+								"maxItems": 50
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"strings": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"identifier": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"match_type": {
+											"type": "string",
+											"default": "text",
+											"enum": [
+												"text",
+												"hex",
+												"regex"
+											]
+										},
+										"modifiers": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"nocase",
+													"wide",
+													"ascii",
+													"fullword"
+												],
+												"type": "string"
+											},
+											"default": []
+										},
+										"type": {
+											"type": "string",
+											"enum": [
+												"string_match"
+											]
+										},
+										"value": {
+											"type": "string",
+											"maxLength": 10000,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"type",
+										"identifier",
+										"value"
+									],
+									"type": "object"
+								},
+								"default": [],
+								"maxItems": 50
+							}
+						},
+						"required": [
+							"name",
+							"condition"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"description": "Email rule created.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"content": {
+									"example": "rule example { condition: true }",
+									"type": "string"
+								},
+								"created_at": {
+									"type": "number",
+									"example": 1679529600000,
+									"x-auditable": true
+								},
+								"created_by": {
+									"type": "string",
+									"example": "user@example.com",
+									"x-auditable": true
+								},
+								"description": {
+									"type": "string",
+									"example": "Detects malicious proxy workers"
+								},
+								"enabled": {
+									"description": "Whether this rule is active for dice consumers.",
+									"type": "boolean",
+									"example": true
+								},
+								"id": {
+									"type": "string",
+									"format": "uuid",
+									"example": "550e8400-e29b-41d4-a716-446655440000",
+									"x-auditable": true
+								},
+								"is_public": {
+									"description": "Whether this rule is visible to other internal accounts.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								},
+								"meta": {
+									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"string",
+													"bool",
+													"int"
+												]
+											},
+											"value": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"type": "number"
+													}
+												]
+											}
+										},
+										"required": [
+											"key",
+											"value",
+											"type"
+										]
+									}
+								},
+								"name": {
+									"type": "string",
+									"example": "block-malicious-workers",
+									"x-auditable": true
+								},
+								"namespaces": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [
+										"yara/workers"
+									],
+									"x-auditable": true
+								},
+								"path": {
+									"type": "string",
+									"example": "yara/workers",
+									"x-auditable": true
+								},
+								"pending_approval_id": {
+									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+									"type": "number",
+									"nullable": true
+								},
+								"structured_source": {
+									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+									"type": "string",
+									"nullable": true
+								},
+								"updated_at": {
+									"type": "number",
+									"example": 1679529600000,
+									"x-auditable": true
+								},
+								"updated_by": {
+									"type": "string",
+									"example": "user@example.com",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"id",
+								"name",
+								"path",
+								"description",
+								"namespaces",
+								"content",
+								"is_public",
+								"enabled",
+								"created_at",
+								"updated_at",
+								"created_by",
+								"updated_by",
+								"pending_approval_id"
+							]
+						}
+					}
+				}
+			},
+			"202": {
+				"description": "Rule pending approval (internal accounts and customer email rules).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number",
+									"example": 1
+								},
+								"message": {
+									"type": "string",
+									"example": "Rule creation pending approval"
+								}
+							},
+							"required": [
+								"approval_id",
+								"message"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "create"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/structured/{id}/test": {
+		"operationId": "cloudforce-one-test-email-rule",
+		"summary": "Test an email rule",
+		"description": "Test a structured email rule against sample email JSON.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the rule.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the rule.",
+					"type": "string",
+					"format": "uuid",
+					"example": "550e8400-e29b-41d4-a716-446655440000"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"sample_json": {
+								"type": "string",
+								"maxLength": 16777216,
+								"minLength": 1
+							}
+						},
+						"required": [
+							"sample_json"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Test result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"matched": {
+									"type": "boolean"
+								},
+								"rules": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								}
+							},
+							"required": [
+								"matched",
+								"rules"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Rule not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "test"
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/structured/approvals/{id}/resubmit": {
+		"operationId": "cloudforce-one-resubmit-email-rule-approval",
+		"summary": "Revise and resubmit a rejected structured email rule approval",
+		"description": "Validate and compile a complete structured email rule, then create an immutable pending revision of its rejected approval.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the approval.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the approval.",
+					"type": "string",
+					"example": "1"
+				}
+			},
+			{
+				"name": "module",
+				"in": "query",
+				"description": "Structured rule module.",
+				"schema": {
+					"description": "Structured rule module.",
+					"type": "string",
+					"example": "eml",
+					"default": "eml",
+					"enum": [
+						"eml"
+					]
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"condition": {
+								"description": "Nested condition groups support up to 10 levels of depth.",
+								"type": "object",
+								"properties": {
+									"conditions": {
+										"type": "array",
+										"items": {
+											"discriminator": {
+												"mapping": {
+													"array": "#/components/schemas/cloudforce-one_EmailRuleArrayCondition",
+													"group": "#/components/schemas/cloudforce-one_EmailRuleConditionGroup",
+													"header": "#/components/schemas/cloudforce-one_EmailRuleHeaderCondition",
+													"scalar": "#/components/schemas/cloudforce-one_EmailRuleScalarCondition"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"type": "object",
+													"properties": {
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"scalar"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"operator",
+														"value"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"conditions": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"==",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"contains",
+																			"matches"
+																		]
+																	},
+																	"subfield": {
+																		"type": "string",
+																		"maxLength": 128,
+																		"minLength": 1
+																	},
+																	"value": {
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"subfield",
+																	"operator",
+																	"value"
+																],
+																"type": "object"
+															},
+															"maxItems": 20,
+															"minItems": 1
+														},
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"quantifier": {
+															"type": "string",
+															"default": "any",
+															"enum": [
+																"any",
+																"all"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"array"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"conditions"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"header_name": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"match_type": {
+															"type": "string",
+															"enum": [
+																"any",
+																"all",
+																"first",
+																"last",
+																"count"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"header"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"header_name",
+														"match_type",
+														"operator",
+														"value"
+													]
+												},
+												"[Circular ~.POST /accounts/{account_id}/cloudforce-one/rules/structured/approvals/{id}/resubmit.requestBody.content.application/json.schema.properties.condition]"
+											]
+										},
+										"maxItems": 50,
+										"minItems": 1
+									},
+									"operator": {
+										"type": "string",
+										"enum": [
+											"and",
+											"or"
+										]
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"group"
+										]
+									}
+								},
+								"required": [
+									"type",
+									"operator",
+									"conditions"
+								]
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1000
+							},
+							"enabled": {
+								"type": "boolean",
+								"default": true
+							},
+							"meta": {
+								"type": "array",
+								"items": {
+									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"type": "object",
+									"properties": {
+										"key": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"maxLength": 10000,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"value"
+									]
+								},
+								"maxItems": 50
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"strings": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"identifier": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"match_type": {
+											"type": "string",
+											"default": "text",
+											"enum": [
+												"text",
+												"hex",
+												"regex"
+											]
+										},
+										"modifiers": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"nocase",
+													"wide",
+													"ascii",
+													"fullword"
+												],
+												"type": "string"
+											},
+											"default": []
+										},
+										"type": {
+											"type": "string",
+											"enum": [
+												"string_match"
+											]
+										},
+										"value": {
+											"type": "string",
+											"maxLength": 10000,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"type",
+										"identifier",
+										"value"
+									],
+									"type": "object"
+								},
+								"default": [],
+								"maxItems": 50
+							}
+						},
+						"required": [
+							"name",
+							"condition"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"202": {
+				"description": "New approval revision submitted.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number"
+								},
+								"message": {
+									"type": "string"
+								},
+								"requires_approval": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								},
+								"revision_number": {
+									"type": "integer",
+									"exclusiveMinimum": true,
+									"minimum": 0
+								},
+								"supersedes_approval_id": {
+									"type": "number"
+								}
+							},
+							"required": [
+								"message",
+								"approval_id",
+								"supersedes_approval_id",
+								"revision_number",
+								"requires_approval"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Structured rule validation or compilation failed.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"403": {
+				"description": "Not authorized to resubmit this approval.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Approval or underlying rule not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Approval is not rejected or was already superseded.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-forge-hidden": true
+	},
+	"POST /accounts/{account_id}/cloudforce-one/rules/structured/validate": {
+		"operationId": "cloudforce-one-validate-email-rule",
+		"summary": "Validate an email rule",
+		"description": "Validate structured email rule syntax and metadata.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"condition": {
+								"description": "Nested condition groups support up to 10 levels of depth.",
+								"type": "object",
+								"properties": {
+									"conditions": {
+										"type": "array",
+										"items": {
+											"discriminator": {
+												"mapping": {
+													"array": "#/components/schemas/cloudforce-one_EmailRuleArrayCondition",
+													"group": "#/components/schemas/cloudforce-one_EmailRuleConditionGroup",
+													"header": "#/components/schemas/cloudforce-one_EmailRuleHeaderCondition",
+													"scalar": "#/components/schemas/cloudforce-one_EmailRuleScalarCondition"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"type": "object",
+													"properties": {
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"scalar"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"operator",
+														"value"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"conditions": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"==",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"contains",
+																			"matches"
+																		]
+																	},
+																	"subfield": {
+																		"type": "string",
+																		"maxLength": 128,
+																		"minLength": 1
+																	},
+																	"value": {
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"subfield",
+																	"operator",
+																	"value"
+																],
+																"type": "object"
+															},
+															"maxItems": 20,
+															"minItems": 1
+														},
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"quantifier": {
+															"type": "string",
+															"default": "any",
+															"enum": [
+																"any",
+																"all"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"array"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"conditions"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"header_name": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"match_type": {
+															"type": "string",
+															"enum": [
+																"any",
+																"all",
+																"first",
+																"last",
+																"count"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"header"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"header_name",
+														"match_type",
+														"operator",
+														"value"
+													]
+												},
+												"[Circular ~.POST /accounts/{account_id}/cloudforce-one/rules/structured/validate.requestBody.content.application/json.schema.properties.condition]"
+											]
+										},
+										"maxItems": 50,
+										"minItems": 1
+									},
+									"operator": {
+										"type": "string",
+										"enum": [
+											"and",
+											"or"
+										]
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"group"
+										]
+									}
+								},
+								"required": [
+									"type",
+									"operator",
+									"conditions"
+								]
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1000
+							},
+							"enabled": {
+								"type": "boolean",
+								"default": true
+							},
+							"meta": {
+								"type": "array",
+								"items": {
+									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"type": "object",
+									"properties": {
+										"key": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"maxLength": 10000,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"value"
+									]
+								},
+								"maxItems": 50
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"strings": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"identifier": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"match_type": {
+											"type": "string",
+											"default": "text",
+											"enum": [
+												"text",
+												"hex",
+												"regex"
+											]
+										},
+										"modifiers": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"nocase",
+													"wide",
+													"ascii",
+													"fullword"
+												],
+												"type": "string"
+											},
+											"default": []
+										},
+										"type": {
+											"type": "string",
+											"enum": [
+												"string_match"
+											]
+										},
+										"value": {
+											"type": "string",
+											"maxLength": 10000,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"type",
+										"identifier",
+										"value"
+									],
+									"type": "object"
+								},
+								"default": [],
+								"maxItems": 50
+							}
+						},
+						"required": [
+							"name",
+							"condition"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Validation result.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"compiled_yara": {
+									"type": "string"
+								},
+								"error": {
+									"type": "string"
+								},
+								"valid": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"valid"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "validate"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/validate": {
 		"operationId": "cloudforce-one-validate-rule",
@@ -2464,7 +4882,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "validate"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/{id}": {
 		"operationId": "cloudforce-one-update-rule",
@@ -2736,7 +5157,7 @@
 				}
 			},
 			"202": {
-				"description": "Update pending approval (internal accounts).",
+				"description": "Update pending approval (internal accounts and customer email rules).",
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2796,6 +5217,38 @@
 						}
 					}
 				}
+			},
+			"409": {
+				"description": "Another approval is already pending for this rule.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number",
+									"example": 12345
+								},
+								"code": {
+									"type": "string",
+									"example": "approval_pending",
+									"enum": [
+										"approval_pending"
+									]
+								},
+								"error": {
+									"type": "string",
+									"example": "An approval is already pending for this rule."
+								}
+							},
+							"required": [
+								"error",
+								"code",
+								"approval_id"
+							]
+						}
+					}
+				}
 			}
 		},
 		"security": [
@@ -2809,7 +5262,10 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/cloudforce-one/rules/exemptions": {
 		"operationId": "cloudforce-one-update-account-exemptions",
@@ -3057,6 +5513,640 @@
 		],
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.exemptions",
+		"x-fern-sdk-method-name": "update"
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/rules/structured/{id}": {
+		"operationId": "cloudforce-one-update-email-rule",
+		"summary": "Update an email rule",
+		"description": "Update an existing structured email rule.",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353"
+				}
+			},
+			{
+				"name": "id",
+				"in": "path",
+				"description": "The unique identifier for the rule.",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the rule.",
+					"type": "string",
+					"format": "uuid",
+					"example": "550e8400-e29b-41d4-a716-446655440000"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"condition": {
+								"description": "Nested condition groups support up to 10 levels of depth.",
+								"type": "object",
+								"properties": {
+									"conditions": {
+										"type": "array",
+										"items": {
+											"discriminator": {
+												"mapping": {
+													"array": "#/components/schemas/cloudforce-one_EmailRuleArrayCondition",
+													"group": "#/components/schemas/cloudforce-one_EmailRuleConditionGroup",
+													"header": "#/components/schemas/cloudforce-one_EmailRuleHeaderCondition",
+													"scalar": "#/components/schemas/cloudforce-one_EmailRuleScalarCondition"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"type": "object",
+													"properties": {
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"scalar"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																},
+																{
+																	"type": "boolean"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"operator",
+														"value"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"conditions": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"operator": {
+																		"type": "string",
+																		"enum": [
+																			"==",
+																			"!=",
+																			">",
+																			">=",
+																			"<",
+																			"<=",
+																			"contains",
+																			"matches"
+																		]
+																	},
+																	"subfield": {
+																		"type": "string",
+																		"maxLength": 128,
+																		"minLength": 1
+																	},
+																	"value": {
+																		"oneOf": [
+																			{
+																				"type": "string"
+																			},
+																			{
+																				"type": "number"
+																			},
+																			{
+																				"type": "boolean"
+																			}
+																		]
+																	}
+																},
+																"required": [
+																	"subfield",
+																	"operator",
+																	"value"
+																],
+																"type": "object"
+															},
+															"maxItems": 20,
+															"minItems": 1
+														},
+														"field": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"quantifier": {
+															"type": "string",
+															"default": "any",
+															"enum": [
+																"any",
+																"all"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"array"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"field",
+														"conditions"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"header_name": {
+															"type": "string",
+															"maxLength": 256,
+															"minLength": 1
+														},
+														"match_type": {
+															"type": "string",
+															"enum": [
+																"any",
+																"all",
+																"first",
+																"last",
+																"count"
+															]
+														},
+														"operator": {
+															"type": "string",
+															"enum": [
+																"==",
+																"!=",
+																">",
+																">=",
+																"<",
+																"<=",
+																"contains",
+																"matches"
+															]
+														},
+														"type": {
+															"type": "string",
+															"enum": [
+																"header"
+															]
+														},
+														"value": {
+															"oneOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"type": "number"
+																}
+															]
+														}
+													},
+													"required": [
+														"type",
+														"header_name",
+														"match_type",
+														"operator",
+														"value"
+													]
+												},
+												"[Circular ~.PUT /accounts/{account_id}/cloudforce-one/rules/structured/{id}.requestBody.content.application/json.schema.properties.condition]"
+											]
+										},
+										"maxItems": 50,
+										"minItems": 1
+									},
+									"operator": {
+										"type": "string",
+										"enum": [
+											"and",
+											"or"
+										]
+									},
+									"type": {
+										"type": "string",
+										"enum": [
+											"group"
+										]
+									}
+								},
+								"required": [
+									"type",
+									"operator",
+									"conditions"
+								]
+							},
+							"description": {
+								"type": "string",
+								"maxLength": 1000
+							},
+							"enabled": {
+								"type": "boolean"
+							},
+							"meta": {
+								"type": "array",
+								"items": {
+									"description": "A YARA meta entry. Value type is resolved server-side. Constrained keys: 'detection' must be one of MALICIOUS, SUSPICIOUS, SPAM, SPOOF.",
+									"type": "object",
+									"properties": {
+										"key": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"value": {
+											"anyOf": [
+												{
+													"maxLength": 10000,
+													"type": "string"
+												},
+												{
+													"type": "number"
+												},
+												{
+													"type": "boolean"
+												}
+											]
+										}
+									},
+									"required": [
+										"key",
+										"value"
+									]
+								},
+								"maxItems": 50
+							},
+							"name": {
+								"type": "string",
+								"maxLength": 255,
+								"minLength": 1
+							},
+							"strings": {
+								"type": "array",
+								"items": {
+									"properties": {
+										"identifier": {
+											"type": "string",
+											"maxLength": 128,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+										},
+										"match_type": {
+											"type": "string",
+											"default": "text",
+											"enum": [
+												"text",
+												"hex",
+												"regex"
+											]
+										},
+										"modifiers": {
+											"type": "array",
+											"items": {
+												"enum": [
+													"nocase",
+													"wide",
+													"ascii",
+													"fullword"
+												],
+												"type": "string"
+											},
+											"default": []
+										},
+										"type": {
+											"type": "string",
+											"enum": [
+												"string_match"
+											]
+										},
+										"value": {
+											"type": "string",
+											"maxLength": 10000,
+											"minLength": 1
+										}
+									},
+									"required": [
+										"type",
+										"identifier",
+										"value"
+									],
+									"type": "object"
+								},
+								"maxItems": 50
+							}
+						}
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Rule updated (customer accounts).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"content": {
+									"example": "rule example { condition: true }",
+									"type": "string"
+								},
+								"created_at": {
+									"type": "number",
+									"example": 1679529600000,
+									"x-auditable": true
+								},
+								"created_by": {
+									"type": "string",
+									"example": "user@example.com",
+									"x-auditable": true
+								},
+								"description": {
+									"type": "string",
+									"example": "Detects malicious proxy workers"
+								},
+								"enabled": {
+									"description": "Whether this rule is active for dice consumers.",
+									"type": "boolean",
+									"example": true
+								},
+								"id": {
+									"type": "string",
+									"format": "uuid",
+									"example": "550e8400-e29b-41d4-a716-446655440000",
+									"x-auditable": true
+								},
+								"is_public": {
+									"description": "Whether this rule is visible to other internal accounts.",
+									"type": "boolean",
+									"example": false,
+									"x-auditable": true
+								},
+								"meta": {
+									"description": "Structured meta entries for the rule (parsed from content plus any request-supplied meta). Returned in source order.",
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"key": {
+												"type": "string"
+											},
+											"type": {
+												"type": "string",
+												"enum": [
+													"string",
+													"bool",
+													"int"
+												]
+											},
+											"value": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"type": "number"
+													}
+												]
+											}
+										},
+										"required": [
+											"key",
+											"value",
+											"type"
+										]
+									}
+								},
+								"name": {
+									"type": "string",
+									"example": "block-malicious-workers",
+									"x-auditable": true
+								},
+								"namespaces": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": [
+										"yara/workers"
+									],
+									"x-auditable": true
+								},
+								"path": {
+									"type": "string",
+									"example": "yara/workers",
+									"x-auditable": true
+								},
+								"pending_approval_id": {
+									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+									"type": "number",
+									"nullable": true
+								},
+								"structured_source": {
+									"description": "Original JSON payload for rules created via the structured rules API. Null for hand-written rules.",
+									"type": "string",
+									"nullable": true
+								},
+								"updated_at": {
+									"type": "number",
+									"example": 1679529600000,
+									"x-auditable": true
+								},
+								"updated_by": {
+									"type": "string",
+									"example": "user@example.com",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"id",
+								"name",
+								"path",
+								"description",
+								"namespaces",
+								"content",
+								"is_public",
+								"enabled",
+								"created_at",
+								"updated_at",
+								"created_by",
+								"updated_by",
+								"pending_approval_id"
+							]
+						}
+					}
+				}
+			},
+			"202": {
+				"description": "Update pending approval (internal accounts and customer email rules).",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number",
+									"example": 1
+								},
+								"message": {
+									"type": "string",
+									"example": "Rule creation pending approval"
+								}
+							},
+							"required": [
+								"approval_id",
+								"message"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Validation error.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"401": {
+				"description": "Unauthorized.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Rule not found.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"error": {
+									"type": "string",
+									"example": "Not found"
+								}
+							},
+							"required": [
+								"error"
+							]
+						}
+					}
+				}
+			},
+			"409": {
+				"description": "Another approval is already pending for this rule.",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"approval_id": {
+									"type": "number",
+									"example": 12345
+								},
+								"code": {
+									"type": "string",
+									"example": "approval_pending",
+									"enum": [
+										"approval_pending"
+									]
+								},
+								"error": {
+									"type": "string",
+									"example": "An approval is already pending for this rule."
+								}
+							},
+							"required": [
+								"error",
+								"code",
+								"approval_id"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"Rules"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.rules.email",
+		"x-fern-sdk-method-name": "update"
 	}
 }

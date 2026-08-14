@@ -669,7 +669,11 @@
 		"x-api-token-group": [
 			"DNS Firewall Write",
 			"DNS Firewall Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "dns-firewall.analytics.reports",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report/bytime": {
 		"operationId": "dns-firewall-analytics-by-time",
@@ -1452,6 +1456,10 @@
 		"x-api-token-group": [
 			"DNS Firewall Write",
 			"DNS Firewall Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "dns-firewall.analytics.reports.bytimes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

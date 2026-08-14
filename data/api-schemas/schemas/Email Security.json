@@ -248,6 +248,10 @@
 		"tags": [
 			"Email Security"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate": {
@@ -1292,7 +1296,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
@@ -1957,7 +1961,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -2274,9 +2278,9 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
-		"x-fern-sdk-group-name": "email-security.investigate.get-action",
-		"x-fern-sdk-method-name": "log",
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.action-log",
+		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
@@ -2800,7 +2804,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.detections",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -3054,7 +3058,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.preview",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -3308,7 +3312,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.raw",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -3635,7 +3639,7 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.trace",
 		"x-fern-sdk-method-name": "get",
 		"x-forge-hidden": true,
@@ -4217,6 +4221,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
@@ -4700,6 +4708,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages": {
@@ -5166,6 +5178,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.bulk.messages",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/phishguard/reports": {
@@ -5569,6 +5585,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.phishguard.reports",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/submissions": {
@@ -6119,7 +6139,7 @@
 			"Email Security"
 		],
 		"x-api-token-group": null,
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.submissions",
 		"x-fern-sdk-method-name": "list",
 		"x-forge-hidden": true,
@@ -6459,6 +6479,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.move",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify": {
@@ -6733,7 +6757,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.reclassify",
 		"x-fern-sdk-method-name": "create",
 		"x-forge-hidden": true,
@@ -7376,6 +7400,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.bulk",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel": {
@@ -7858,6 +7886,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.bulk.cancel",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
@@ -8216,6 +8248,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.move",
+		"x-fern-sdk-method-name": "bulk",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
@@ -8485,6 +8521,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "email-security.investigate.preview",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
@@ -8792,7 +8832,7 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
-		"x-fern-availability": "generally-available",
+		"x-fern-availability": "beta",
 		"x-fern-sdk-group-name": "email-security.investigate.release",
 		"x-fern-sdk-method-name": "bulk",
 		"x-forge-hidden": true,

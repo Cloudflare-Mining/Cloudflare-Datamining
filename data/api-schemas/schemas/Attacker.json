@@ -2,7 +2,7 @@
 	"GET /accounts/{account_id}/cloudforce-one/events/attackers": {
 		"operationId": "get_AttackerList",
 		"summary": "Lists attackers across multiple datasets",
-		"description": "List attacker names referenced in events across one or more datasets.",
+		"description": "Lists known threat attackers tracked in Cloudforce One threat intelligence.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -110,6 +110,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.attackers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

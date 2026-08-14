@@ -370,7 +370,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "firewall.access-rules",
 		"x-fern-sdk-method-name": "delete",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation deletes the account-level IP Access Rule and affects every zone in the account."
 	},
 	"GET /accounts/{account_id}/firewall/access_rules/rules": {
 		"operationId": "ip-access-rules-for-an-account-list-ip-access-rules",

@@ -2,7 +2,7 @@
 	"DELETE /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "delete_CategoryDelete",
 		"summary": "Deletes a category",
-		"description": "Delete a category by its identifier.",
+		"description": "Removes a threat event category from Cloudforce One.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -95,12 +95,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
 		"operationId": "get_CategoryList",
 		"summary": "Lists categories across multiple datasets",
-		"description": "List categories across one or more datasets for the account.",
+		"description": "Lists all threat event categories configured for classifying and organizing threat events.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -225,12 +229,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "get_CategoryRead",
 		"summary": "Reads a category",
-		"description": "Retrieve a single category by its identifier.",
+		"description": "Retrieves details for a specific threat event category.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -351,12 +359,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/catalog": {
 		"operationId": "get_CategoryListComplete",
 		"summary": "Lists categories",
-		"description": "List all categories stored in the account catalog.",
+		"description": "Lists categories",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -469,10 +481,14 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.categories.catalog",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/resource-library/categories": {
-		"operationId": "getCategories",
+		"operationId": "getResourceLibraryCategories",
 		"summary": "List application categories",
 		"description": "List application categories.",
 		"parameters": [
@@ -614,8 +630,11 @@
 													},
 													"id": {
 														"description": "Returns the category ID.",
-														"type": "string",
-														"example": "12345678-1234-1234-1234-123456789012"
+														"type": "integer",
+														"format": "int64",
+														"example": 12,
+														"maximum": 4294967295,
+														"minimum": 1
 													},
 													"name": {
 														"description": "Returns the category name.",
@@ -749,8 +768,11 @@
 															},
 															"id": {
 																"description": "Returns the category ID.",
-																"type": "string",
-																"example": "12345678-1234-1234-1234-123456789012"
+																"type": "integer",
+																"format": "int64",
+																"example": 12,
+																"maximum": 4294967295,
+																"minimum": 1
 															},
 															"name": {
 																"description": "Returns the category name.",
@@ -900,7 +922,7 @@
 		"x-fern-sdk-method-name": "categories"
 	},
 	"GET /accounts/{account_id}/resource-library/categories/{id}": {
-		"operationId": "getCategoryById",
+		"operationId": "getResourceLibraryCategoryById",
 		"summary": "Get application category",
 		"description": "Get application category by ID.",
 		"parameters": [
@@ -920,9 +942,12 @@
 				"description": "Application category ID.",
 				"required": true,
 				"schema": {
-					"type": "string"
+					"type": "integer",
+					"format": "int64",
+					"maximum": 4294967295,
+					"minimum": 1
 				},
-				"example": "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0"
+				"example": 12
 			}
 		],
 		"responses": {
@@ -1031,8 +1056,11 @@
 												},
 												"id": {
 													"description": "Returns the category ID.",
-													"type": "string",
-													"example": "12345678-1234-1234-1234-123456789012"
+													"type": "integer",
+													"format": "int64",
+													"example": 12,
+													"maximum": 4294967295,
+													"minimum": 1
 												},
 												"name": {
 													"description": "Returns the category name.",
@@ -1162,8 +1190,11 @@
 														},
 														"id": {
 															"description": "Returns the category ID.",
-															"type": "string",
-															"example": "12345678-1234-1234-1234-123456789012"
+															"type": "integer",
+															"format": "int64",
+															"example": 12,
+															"maximum": 4294967295,
+															"minimum": 1
 														},
 														"name": {
 															"description": "Returns the category name.",
@@ -1314,7 +1345,7 @@
 	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "patch_CategoryUpdate",
 		"summary": "Updates a category",
-		"description": "Update an existing category by its identifier.",
+		"description": "Partially updates a threat event category in Cloudforce One, modifying specific fields without replacing the entire category.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1470,12 +1501,16 @@
 		],
 		"x-api-token-group": [
 			"Cloudforce One Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "post_CategoryUpdate",
 		"summary": "Updates a category",
-		"description": "Update an existing category by its identifier.",
+		"description": "Updates a category",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1632,12 +1667,16 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.events.categories",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
 		"operationId": "post_CategoryCreate",
 		"summary": "Creates a new category",
-		"description": "Create a new event category for the account.",
+		"description": "Creates a new threat event category in Cloudforce One for organizing and classifying threat events.",
 		"parameters": [
 			{
 				"name": "account_id",
@@ -1787,6 +1826,10 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "cloudforce-one.threat-events.categories",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }
