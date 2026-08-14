@@ -287,6 +287,9 @@
 	"cfone-cloudy-threat-events-enabled": {
 		"true": 100
 	},
+	"cfone-egress-intelligence-enabled": {
+		"false": 100
+	},
 	"cfone-vulnerability-intelligence-enabled": {
 		"true": 100
 	},
@@ -1167,8 +1170,7 @@
 		"false": 100
 	},
 	"wobs-trace-query-v3": {
-		"false": 50,
-		"true": 50
+		"true": 100
 	},
 	"workers-access-buttons": {
 		"true": 100
