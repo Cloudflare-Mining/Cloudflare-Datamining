@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-08-14T04:34:06.312Z",
-	"model_count": 76,
+	"generated_at": "2026-08-15T04:33:53.748Z",
+	"model_count": 78,
 	"models": [
 		{
 			"model_id": "@cf/pipecat-ai/smart-turn-v2",
@@ -1957,6 +1957,77 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "@cf/deepseek-ai/deepseek-v4-flash-0731",
+			"slug": "cf/deepseek-ai/deepseek-v4-flash-0731",
+			"display_name": "deepseek-v4-flash-0731",
+			"description": "DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. ",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"tags": [],
+			"context_length": 1048576,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "hosted",
+			"data_source": "legacy",
+			"properties": [
+				{
+					"property_id": "require_workers_paid",
+					"value": "true"
+				},
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "function_calling",
+					"value": "true"
+				},
+				{
+					"property_id": "reasoning",
+					"value": "true"
+				},
+				{
+					"property_id": "vision",
+					"value": "false"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.44,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 1.32,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M cached input tokens",
+							"price": 0.014,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"metadata": {
+				"beta": false,
+				"lora": false,
+				"function_calling": true,
+				"partner": false,
+				"realtime": false
+			},
+			"external_info": null,
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-07-31 14:10:43.440",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "@cf/leonardo/phoenix-1.0",
 			"slug": "cf/leonardo/phoenix-1.0",
 			"display_name": "phoenix-1.0",
@@ -3041,6 +3112,77 @@
 			"terms": "https://llama.meta.com/llama3/license/#",
 			"cover_image_url": null,
 			"created_at": "2024-05-09 23:32:47.584",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "@cf/deepseek-ai/deepseek-v4-pro-0813",
+			"slug": "cf/deepseek-ai/deepseek-v4-pro-0813",
+			"display_name": "deepseek-v4-pro-0813",
+			"description": "deepseek-ai/deepseek-v4-pro-0813",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"tags": [],
+			"context_length": 1048576,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "hosted",
+			"data_source": "legacy",
+			"properties": [
+				{
+					"property_id": "require_workers_paid",
+					"value": "true"
+				},
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "function_calling",
+					"value": "true"
+				},
+				{
+					"property_id": "reasoning",
+					"value": "true"
+				},
+				{
+					"property_id": "vision",
+					"value": "false"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 1.32,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 3.96,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M cached input tokens",
+							"price": 0.044,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"metadata": {
+				"beta": false,
+				"lora": false,
+				"function_calling": true,
+				"partner": false,
+				"realtime": false
+			},
+			"external_info": null,
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-08-13 17:15:08.489",
 			"zdr_comment": null
 		},
 		{

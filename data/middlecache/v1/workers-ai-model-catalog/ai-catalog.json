@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-08-14T04:34:06.312Z",
-	"model_count": 218,
+	"generated_at": "2026-08-15T04:33:53.748Z",
+	"model_count": 222,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -2341,6 +2341,57 @@
 			"terms": "https://ai.google.dev/gemini-api/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.6-flash.png",
 			"created_at": "2026-07-21 21:44:40",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "google/gemini-3.7-flash",
+			"slug": "google/gemini-3.7-flash",
+			"display_name": "Gemini 3.7 Flash",
+			"description": "Gemini 3.7 Flash is a highly capable, natively multimodal reasoning model optimized for agentic workflows and real-world tasks.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Multimodal",
+				"Reasoning",
+				"Agentic",
+				"Coding"
+			],
+			"context_length": 1048576,
+			"max_output_tokens": 65536,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "65536"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.7-flash.png",
+			"created_at": "2026-08-14 22:33:12",
 			"zdr_comment": null
 		},
 		{
@@ -6194,6 +6245,51 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "xai/grok-imagine-image-2.0",
+			"slug": "xai/grok-imagine-image-2.0",
+			"display_name": "Grok Imagine Image 2.0",
+			"description": "xAI's Grok Imagine Image 2.0 is a precise image generation and editing model for creative work, with strong instruction following, typography, layout, and reference-image preservation.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Multimodal",
+				"Text Rendering",
+				"Typography"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.x.ai/developers/model-capabilities/images/generation"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, 9:19.5, 19.5:9, 9:20, 20:9, 2:1, 1:2, auto",
+				"Max Reference Images": "5",
+				"Quality": "low, medium",
+				"Resolutions": "1k, 2k",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://docs.x.ai/developers/model-capabilities/images/generation",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-imagine-image-2.0.png",
+			"created_at": "2026-08-14 22:17:39",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "xai/grok-imagine-image-quality",
 			"slug": "xai/grok-imagine-image-quality",
 			"display_name": "Grok Imagine Image Quality",
@@ -8472,6 +8568,77 @@
 			"zdr_comment": null
 		},
 		{
+			"model_id": "@cf/deepseek-ai/deepseek-v4-flash-0731",
+			"slug": "cf/deepseek-ai/deepseek-v4-flash-0731",
+			"display_name": "deepseek-v4-flash-0731",
+			"description": "DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. ",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"tags": [],
+			"context_length": 1048576,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "hosted",
+			"data_source": "legacy",
+			"properties": [
+				{
+					"property_id": "require_workers_paid",
+					"value": "true"
+				},
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "function_calling",
+					"value": "true"
+				},
+				{
+					"property_id": "reasoning",
+					"value": "true"
+				},
+				{
+					"property_id": "vision",
+					"value": "false"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.44,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 1.32,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M cached input tokens",
+							"price": 0.014,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"metadata": {
+				"beta": false,
+				"lora": false,
+				"function_calling": true,
+				"partner": false,
+				"realtime": false
+			},
+			"external_info": null,
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-07-31 14:10:43.440",
+			"zdr_comment": null
+		},
+		{
 			"model_id": "@cf/leonardo/phoenix-1.0",
 			"slug": "cf/leonardo/phoenix-1.0",
 			"display_name": "phoenix-1.0",
@@ -9556,6 +9723,77 @@
 			"terms": "https://llama.meta.com/llama3/license/#",
 			"cover_image_url": null,
 			"created_at": "2024-05-09 23:32:47.584",
+			"zdr_comment": null
+		},
+		{
+			"model_id": "@cf/deepseek-ai/deepseek-v4-pro-0813",
+			"slug": "cf/deepseek-ai/deepseek-v4-pro-0813",
+			"display_name": "deepseek-v4-pro-0813",
+			"description": "deepseek-ai/deepseek-v4-pro-0813",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"tags": [],
+			"context_length": 1048576,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "hosted",
+			"data_source": "legacy",
+			"properties": [
+				{
+					"property_id": "require_workers_paid",
+					"value": "true"
+				},
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "function_calling",
+					"value": "true"
+				},
+				{
+					"property_id": "reasoning",
+					"value": "true"
+				},
+				{
+					"property_id": "vision",
+					"value": "false"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 1.32,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 3.96,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M cached input tokens",
+							"price": 0.044,
+							"currency": "USD"
+						}
+					]
+				}
+			],
+			"metadata": {
+				"beta": false,
+				"lora": false,
+				"function_calling": true,
+				"partner": false,
+				"realtime": false
+			},
+			"external_info": null,
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-08-13 17:15:08.489",
 			"zdr_comment": null
 		},
 		{
