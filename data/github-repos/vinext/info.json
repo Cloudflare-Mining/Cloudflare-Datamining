@@ -39,7 +39,6 @@
 		"codex/cover-react-version-conditions",
 		"codex/fix-action-runtime-takeover",
 		"codex/fix-app-basepath-false-rewrites",
-		"codex/fix-app-basic-navigation-current",
 		"codex/fix-app-bootstrap-preinit",
 		"codex/fix-app-initial-html-parity",
 		"codex/fix-app-isr-searchparams-poisoning",
@@ -105,6 +104,7 @@
 		"codex/fix-react-experimental-parity",
 		"codex/fix-repeated-interception-prefetch",
 		"codex/fix-resume-data-cache",
+		"codex/fix-retain-shared-layout",
 		"codex/fix-revalidate-reason-20260615-003626",
 		"codex/fix-root-params-segment-prefetch-28478866791",
 		"codex/fix-rsc-query-routing-28143992598",
@@ -136,6 +136,7 @@
 		"codex/fix-shallow-routing-back-forward-31439707085",
 		"codex/fix-shallow-routing-popstate",
 		"codex/fix-static-export-search-params",
+		"codex/fix-static-export-search-params-fresh",
 		"codex/fix-streaming-ssr-styled-jsx-31439707085",
 		"codex/fix-suspense-derived-prefetch",
 		"codex/fix-viewport-prefetch-hang",
@@ -150,6 +151,7 @@
 		"codex/pages-router-cjs-node-modules",
 		"codex/pages-router-script-loader-28938793088",
 		"codex/pages-router-suite-main",
+		"codex/preserve-bundled-esm-module-identity",
 		"codex/profile-script-readiness",
 		"codex/refresh-ai-docs-vp-vite8",
 		"codex/rsc-vary-cache-warm",
@@ -240,6 +242,7 @@
 		"perf/prune-unused-app-page-probe-runtime",
 		"perf/rsc-server-renderer-without-client-edge",
 		"pr-1882",
-		"refactor/cli-command-framework"
+		"refactor/cli-command-framework",
+		"repro/app-router-shared-layout-identity"
 	]
 }
