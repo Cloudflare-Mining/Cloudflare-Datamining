@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-react",
 	"dist-tags": {
 		"latest": "2.0.1",
-		"staging": "2.0.2-staging.2"
+		"staging": "2.0.2-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -4312,15 +4312,38 @@
 				"react": ">=16.8.6"
 			},
 			"dist": {
-				"integrity": "sha512-21VD990mHVqKbxE6zerDx7JYGmYOnXQleJMEVou/5/CGY/phhRJktzM9/oTe1QHuMCWdqhQoW8wXXdYNDHhC5w==",
 				"shasum": "aa4e17cf65311a629ce650da721b934fc1a0217a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react/-/realtimekit-react-2.0.2-staging.2.tgz",
+				"fileCount": 18,
+				"integrity": "sha512-21VD990mHVqKbxE6zerDx7JYGmYOnXQleJMEVou/5/CGY/phhRJktzM9/oTe1QHuMCWdqhQoW8wXXdYNDHhC5w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCV4c5xlQiIiemMf5A1tNP9HoainWTccE26tIlbRilbNgIgJymDBUAA0xFw2UcdLDtfwAZjGMQeVmNYSq6sjoNMgvw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 45854
+			}
+		},
+		"2.0.2-staging.3": {
+			"name": "@cloudflare/realtimekit-react",
+			"version": "2.0.2-staging.3",
+			"dependencies": {
+				"@cloudflare/realtimekit": "2.0.2-staging.3"
+			},
+			"peerDependencies": {
+				"react": ">=16.8.6"
+			},
+			"dist": {
+				"integrity": "sha512-6ciOBaghRJZ+Z8SMMB3criNxH9vAwZl85hreAJ0GiYOndIcutDpnUijzpTUTlpvKE23U16xwM9/why6f3V2Ipw==",
+				"shasum": "250d73364048e0f1fc8ed454e982050ee1646d14",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react/-/realtimekit-react-2.0.2-staging.3.tgz",
 				"fileCount": 18,
 				"unpackedSize": 45854,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCV4c5xlQiIiemMf5A1tNP9HoainWTccE26tIlbRilbNgIgJymDBUAA0xFw2UcdLDtfwAZjGMQeVmNYSq6sjoNMgvw="
+						"sig": "MEYCIQD8rOwqQLOzZs+/DbUCgd/hS6+kc2o0Dhu9QXGsA9uuqQIhAJq3jvLQ6Z1+nB0GKyX/9IFamoESI1mAoJF3aCbRig2I"
 					}
 				]
 			}
