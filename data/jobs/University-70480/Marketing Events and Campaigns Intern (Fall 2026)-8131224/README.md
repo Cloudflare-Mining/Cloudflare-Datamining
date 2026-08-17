@@ -5,36 +5,42 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4><strong>Available Location: Austin, US</strong></h4>
-<h1><strong>Overview</strong></h1>
-<p>The Security Third Party Risk Management Lead is a senior individual-contributor role. You will be the technical and operational leader for our Third Party Risk function — owning the execution and continuous improvement of vendor &amp; data center security reviews, serving as the go-to subject matter expert for the team, and mentoring Third Party Risk Management Specialists as they deliver high-quality assessments at scale.</p>
-<p>This role leads through expertise, coordination, and influence. You will set the operational bar for how the program runs day to day and make sure the team's work gets across the finish line. You will lead projects to improve our Security Third Party Risk Program, including setting the strategy, overseeing the project execution, and navigating roadblocks. You will represent the team and interface with Procurement and other key cross-functional partners.&nbsp;</p>
-<p>You will also play an essential role in developing our Third Party Risk Management Specialists. While people-management responsibilities sit with the Director of Information Security GRC, you will mentor the team on assessment methodology, risk decisions, and best practices.&nbsp;</p>
-<p><strong>Key Deliverables</strong></p>
+<p><strong>Available location:&nbsp;</strong>Washington D.C.</p>
+<p><strong>About the Team</strong></p>
+<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better Internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience and contribute directly to our efforts in making an impact.</p>
+<p><strong>About the Role</strong></p>
+<p>As a Marketing Events &amp; Campaigns Intern, you will play a crucial supporting role in the successful execution of Cloudflare's marketing initiatives. This is an exciting opportunity to gain hands-on experience across a variety of marketing channels, including webinars, trade shows, and digital advertising. You will contribute to the end-to-end process, from logistical coordination to ensuring our creative assets are polished and ready for launch. Your work will directly support lead generation efforts and help deliver impactful marketing experiences to our prospects and customers.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Own and drive the operational execution of our third party risk management program — vendor risk assessments, security contract terms, and continuous monitoring — ensuring work is completed efficiently and to a consistently high standard.</li>
-	<li>Serve as the subject matter expert and go-to technical resource for vendor security review methodology, vendor tiering, and risk treatment decisions.</li>
-	<li>Lead the vendor risk assessment process day to day, applying and refining the security policies and standards that govern different types of vendor engagements (e.g. cloud, contractor, software, hardware, data centers).</li>
-	<li>Proactively identify inefficiencies in vendor security workflows and propose and implement improvements that increase effectiveness, quality, and scalability.</li>
-	<li>Coordinate the team's operational work — running check-ins with the specialists to drive assessments, escalations, and projects across the finish line.</li>
-	<li>Provide technical guidance and mentorship to Third Party Risk Management Specialists on assessment methodology, risk decisions, tooling, and best practices.</li>
-	<li>Make timely, well-reasoned decisions on risk findings and policy exceptions — assessing risk, compensating controls, and acceptable risk thresholds — and act as the escalation point for complex or ambiguous cases.</li>
-	<li>Support negotiation of security contract terms with vendors by maintaining guidance for Contracts/Legal teams and helping resolve contract escalations.</li>
-	<li>Act as a primary point of coordination with Sourcing, Contracts, Legal, Privacy, and Security teams across the vendor lifecycle — onboarding, implementation, monitoring, and offboarding — influencing how vendor security integrates into their processes.</li>
-	<li>Support the design, implementation, and improvement of Procurement/GRC tools and AI workflows</li>
-	<li>Report on third party risk posture and program operations to the Director, Information Security GRC, and security leadership.&nbsp;</li>
+	<li>Assist with the logistical planning and execution of virtual webinars and in-person trade shows, including scheduling, vendor coordination, and materials preparation.</li>
+	<li>Support the development and deployment of digital ad campaigns across various platforms, ensuring proper tracking and optimization.</li>
+	<li>Coordinate the readiness of marketing assets, such as website banners, email communications, and landing pages, collaborating with design and content teams.</li>
+	<li>Help manage and track leads generated from events and campaigns, ensuring data accuracy and timely follow-up.</li>
+	<li>Contribute to post-event and campaign reporting by gathering data and assisting with performance analysis.</li>
+	<li>Participate in team meetings and contribute ideas for improving marketing processes and campaign effectiveness.</li>
 </ul>
-<h1><strong>Examples of skills, knowledge and experience</strong></h1>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Experience typically gained in 8+ years working in Security GRC&nbsp;</li>
-	<li>Deep, hands-on expertise operating a third party / vendor risk program end to end.</li>
-	<li>Subject-matter expertise across security control frameworks — ISO 27001, SOC 2, PCI, NIST 800-53.</li>
-	<li>Solid understanding of security contract terms and vendor negotiation support.</li>
-	<li>Demonstrated ability to mentor peers and provide technical guidance.</li>
-	<li>A track record of identifying process inefficiencies and driving operational improvements at scale.</li>
-	<li>Strong ability to influence and coordinate across cross-functional teams.</li>
-	<li>Strong organizational, analytical, and interpersonal skills.</li>
+	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, or a related field.</li>
+	<li>Available for a full-time 12-week internship, working from our Washington D.C. office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple tasks simultaneously.</li>
+	<li>Excellent written and verbal communication skills.</li>
+	<li>Familiarity with digital marketing concepts and platforms is a plus.</li>
+	<li>Proactive attitude with a desire to learn and contribute in a fast-paced environment.</li>
+	<li>Ability to collaborate effectively within a team and with cross-functional partners.</li>
+	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
 </ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Previous experience (academic or professional) with event coordination or digital campaign support.</li>
+	<li>Understanding of lead tracking and CRM systems.</li>
+</ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Washington D.C. based hires: Estimated hourly rate of $24/hr.</li>
+</ul>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
