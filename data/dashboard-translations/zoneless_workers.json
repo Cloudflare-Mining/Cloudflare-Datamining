@@ -2402,6 +2402,7 @@
 	"zoneless_workers.workers_observability.metrics.active_deployments.deployed": "Deployed",
 	"zoneless_workers.workers_observability.metrics.active_deployments.percentage": "Traffic %",
 	"zoneless_workers.workers_observability.metrics.active_deployments.percentage_tooltip": "Observed traffic share per version versus the configured deployment split.",
+	"zoneless_workers.workers_observability.metrics.active_deployments.percentage_tooltip_durable_objects": "Deployment percentages assign Worker versions to Durable Objects, not individual requests. Because some objects receive more traffic than others, observed traffic may differ from the configured split. <0>Learn more</0>",
 	"zoneless_workers.workers_observability.metrics.active_deployments.rps": "Requests/sec",
 	"zoneless_workers.workers_observability.metrics.active_deployments.error": "Error Rate",
 	"zoneless_workers.workers_observability.metrics.active_deployments.cpu": "Median CPU Time",
