@@ -5,48 +5,47 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: London</strong></p>
-<p><strong>About the Team</strong></p>
-<p>The Cloudflare Data Intelligence &amp; Analytics (DIA) team has built a unified data &amp; ML platform to provide our internal Business Partners with actionable analytics, insights, and recommendations.</p>
-<p>Our goals are to:</p>
-<ul>
-	<li>Democratize data &amp; intelligence for humans and agents</li>
-	<li>Build a context layer and an AI systems layer upon our unified data &amp; content platform</li>
-	<li>Support Cloudflare’s critical business needs</li>
-</ul>
-<p>DIA is a ~ 75-member strong geographically distributed but organizationally centralized team. This role is within the growth &amp; adoption analytics pod based in London that works across several business functions, offering broad exposure to Cloudflare's entire business.</p>
+<p><strong>Available Location:&nbsp;</strong>Austin, TX</p>
+<p><strong>Job Title&nbsp;</strong></p>
+<p>Oracle Operations Manager</p>
+<p>&nbsp;</p>
 <p><strong>Role Summary</strong></p>
-<p>We are looking for an experienced Senior Data Analyst in London to scale our growth &amp; adoption analytics initiatives. You will be a trusted data advisor to our business partners, a technical coach to your peers, and the lead in terms of shaping AI-first data models, workflows, and agent-ready-datasets.</p>
-<p>Success in this role will rely on marrying a strong analytics background with product and business acumen to deliver highly strategic and compelling insights that accelerate growth and influence adoption. This role also requires a deep understanding of data infrastructure, job orchestration, and lineage, all with the use of AI-tooling as default.</p>
-<p><strong>Role Responsibilities</strong></p>
-<ul>
-	<li>Own the development and maintenance of agent-ready curated datasets end-to-end</li>
-	<li>Provide analytics support and a strategic perspective to our business partners</li>
-	<li>Partner with data engineers, product managers, and stakeholders to enable data-driven answers to key business problems</li>
-	<li>Review Merge Requests created by your team of humans and agents</li>
-	<li>Take initiative to gather requirements, define, build, and maintain pipelines and metrics</li>
-	<li>Tell easily digestible and highly actionable stories with data to help stakeholders understand analytical insights</li>
-</ul>
-<p><strong>Role Requirements</strong></p>
-<ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
-	<li>Demonstrable proficiency with analytics-relevant AI-tooling</li>
-	<li>4+ years experience in a centralized data analytics teams in close partnership with business stakeholders</li>
-	<li>Expert-level proficiency in writing and optimizing complex SQL queries is mandatory, with a proven ability to performance-tune complex queries and manage analysis workflows against large, petabyte-scale datasets (Candidates will be assessed on advanced SQL skills including window functions and common table expressions (CTEs))</li>
-	<li>3+ years experience working in version control environments using platforms such as Gitlab or Github</li>
-	<li>2+ years experience working with job orchestration tools like Apache Airflow, both as a pipeline developer and reviewer</li>
-	<li>2+ years experience with data ingestion and transformation frameworks (e.g., dbt, Fivetran, or custom/in-house developed platforms)</li>
-	<li>Initiative, curiosity, strong stakeholder engagement, and empathy</li>
-	<li>Experience translating business questions into analysis frameworks, converting results into business recommendations, and presenting those to stakeholders</li>
-</ul>
-<p><strong>Nice-to-Have Experience</strong></p>
-<ul>
-	<li>Experience and/or a keen interest in internet security, protocols, and edge-development</li>
-	<li>Analytics experience in a fast-growing technology, SaaS, or subscription-based business</li>
-	<li>Experience with statistical analysis programming languages (Python, R etc.)</li>
-</ul>
+<p>The Oracle Operations Manager will work with the Oracle IT team to plan, execute operations, and manage enterprise programs to successful completion. Our large-scale programs span multiple quarters and involve IT, various Business Verticals, and Technical Operations teams across the Oracle ecosystem.</p>
+<p>You bring a passion for matching complex business needs with technically innovative solutions, and excel at shifting between high-level strategy and technical execution. You are able to implement and drive standardized Oracle operational methodologies to ensure persistent progress. The ideal candidate is flexible and comfortable playing multiple roles—diplomat, moderator, negotiator, and coach - within a large-scale enterprise environment. Combined with deep technical expertise in cloud operations, you have the ability to build trust and strong partnerships with counterparts in Engineering, Development, and Business units.</p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><strong>Role Responsibilities:</strong></p>
+<ul>
+	<li>Build bridges across Oracle business units to ensure programs and projects are effectively planned, developed, and deployed with quality and on-time delivery into our production environments.</li>
+	<li>Drive the execution of tasks within cross-functional core teams to ensure the success of large-scale initiatives comprising the Oracle operations portfolio.</li>
+	<li>Build transparent communication channels to align enterprise stakeholders, IT, and third-party vendors, ensuring executive audiences receive appropriate updates on program status.</li>
+	<li>Manage program scope and execution to committed schedules, maintaining reporting for program deliverables across multiple global business units.</li>
+	<li>Ensure adherence to Oracle best practices and accountability throughout the program lifecycle when working with external vendors and partners.</li>
+	<li>Manage critical path timelines by proactively identifying risks and facilitating the resolution of blockers to ensure the success of enterprise-tier projects.</li>
+	<li>Collaborate on internal processes, tools, and workflows across Oracle functions in support of IT governance and standardized project management methodologies.</li>
+</ul>
+<p><strong>Role Requirements&nbsp;</strong></p>
+<p><strong>Must-Have Skills</strong></p>
+<ul>
+	<li>Minimum 5 years’ experience in program and project management</li>
+	<li>Minimum 3 years proven experience in leading highly complex, enterprise-wide initiatives.</li>
+	<li>Proficient in solutions that service global Finance and enterprise business capabilities.</li>
+	<li>Strong technical background in cloud operations to facilitate architecture and integration discussions within an Oracle environment.</li>
+	<li>Track record of delivering technical programs through the full end to end program management lifecycle, from conception to usability study.</li>
+	<li>Have a balance of people, organizational, and technical skills to deliver and guide decision making without authority.</li>
+	<li>Work independently in a dynamic and high-pressure environment with timely delivery despite ambiguous and changing business requirements.</li>
+	<li>Strong competency with project management tools (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Waterfall, Scrum, etc).</li>
+	<li>Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications in English (writing sample will be requested).</li>
+	<li>Thrive in a fast-paced enterprise environment, with the ability to learn and deploy new Oracle technologies quickly.</li>
+	<li>Bachelor’s degree in computer science, Information Systems Management, Technology management, Business management or comparable work experience.</li>
+</ul>
+<p><strong>Nice-To-Have Skills</strong></p>
+<ul>
+	<li>Direct experience with Oracle implementation and management at an enterprise scale.</li>
+	<li>Experience with both waterfall and Agile development methodologies</li>
+	<li>PMP/PgMP and Agile certifications</li>
+	<li>Familiarity with Oracle-specific governance, risk, and compliance (GRC) frameworks.</li>
+</ul>
+<p><br><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
