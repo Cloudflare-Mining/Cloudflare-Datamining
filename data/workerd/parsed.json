@@ -4211,6 +4211,14 @@
 						"compatEnableDate": "2026-08-11"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "wasmMemoryDiscard",
+					"annotations": {
+						"compatEnableFlag": "wasm_memory_discard",
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
