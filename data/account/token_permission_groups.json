@@ -1791,6 +1791,42 @@
 		"category": "app_security"
 	},
 	{
+		"id": "81d2b1ae7db44622ab35e8db58ed4e9a",
+		"name": "Flagship App Bind",
+		"description": "Grants permission to bind a Flagship app to Cloudflare Workers.",
+		"scopes": [
+			"com.cloudflare.api.account.flagship.app"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "f5292409995b4c8680bff98766de9700",
+		"name": "Flagship App Evaluate",
+		"description": "Grants access to evaluating flags in a single Flagship app.",
+		"scopes": [
+			"com.cloudflare.api.account.flagship.app"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "cb72dad981a0413297280680d1cde7b1",
+		"name": "Flagship App Read",
+		"description": "Grants read and evaluation access to a single Flagship app.",
+		"scopes": [
+			"com.cloudflare.api.account.flagship.app"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "1655653ee7614c058595583987ff1e59",
+		"name": "Flagship App Write",
+		"description": "Grants read, update, delete, and evaluate access to a single Flagship app.",
+		"scopes": [
+			"com.cloudflare.api.account.flagship.app"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "51cceea6f2d048deab6c6e7afa734727",
 		"name": "Flagship Evaluate",
 		"description": "Grants access to evaluating Flagship flags",
