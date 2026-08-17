@@ -9,12 +9,12 @@
 		},
 		"steps": {
 			"type": "integer",
-			"default": 4,
 			"maximum": 8,
-			"description": "The number of diffusion steps; higher values can improve quality but take longer."
+			"description": "The number of diffusion steps; higher values can improve quality but take longer. Default is 4"
 		}
 	},
 	"required": [
 		"prompt"
-	]
+	],
+	"additionalProperties": false
 }
