@@ -45,21 +45,26 @@ export class MyAgent extends VoiceAgent<Env> {
 }
 ```
 
-`onTurn()` can also return streaming text, including AI SDK `fullStream` values:
+`onTurn()` can also return streaming text, including AI SDK `stream` values:
 
 ```typescript
 import { streamText } from "ai";
 
-async onTurn(transcript: string) {
+async onTurn(transcript: string, context: VoiceTurnContext) {
   const result = streamText({
     model: myModel,
-    system: "You are a helpful voice assistant. Keep replies short.",
-    messages: [{ role: "user", content: transcript }]
+    instructions: "You are a helpful voice assistant. Keep replies short.",
+    messages: [
+      ...context.messages,
+      { role: "user", content: transcript }
+    ]
   });
 
-  return result.fullStream;
+  return result.stream;
 }
 ```
+
+`context.messages` contains completed conversation history before the current transcript. Append `transcript` exactly once when constructing the LLM request. The pipeline persists the transcript before `onTurn()` runs, so calling `getConversationHistory()` directly inside the hook returns stored history that includes the current transcript.
 
 ### Provider properties
 
@@ -72,7 +77,7 @@ async onTurn(transcript: string) {
 
 | Method                           | Description                                                                                                    |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `onTurn(transcript, context)`    | **Required.** Handle a user utterance. Return `string`, AI SDK `fullStream`, or `AsyncIterable<string>`.       |
+| `onTurn(transcript, context)`    | **Required.** Handle a user utterance. Return `string`, AI SDK `stream`, or `AsyncIterable<string>`.           |
 | `createTranscriber(connection)`  | Override to create a transcriber dynamically per connection.                                                   |
 | `onCallStart(connection)`        | Called when a voice call begins.                                                                               |
 | `onCallEnd(connection)`          | Called when a voice call ends.                                                                                 |

@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/voice-twilio",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.0.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -19,6 +19,32 @@
 					}
 				],
 				"unpackedSize": 260
+			}
+		},
+		"0.0.2": {
+			"name": "@cloudflare/voice-twilio",
+			"version": "0.0.2",
+			"peerDependencies": {
+				"@cloudflare/voice": ">=0.3.3 <1.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-pIS0zkE1lw99YzRXqphCxqfjLIaOGK5jjJIABCjpXJLRPmAHdQup/nWXb5WWokeD0qPQ7ThaHWpeosX7DrS04w==",
+				"shasum": "d35ad8ccc83e15307e29002cfefd7d854d596be1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice-twilio/-/voice-twilio-0.0.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 32843,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-twilio@0.0.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCRoM6TNSRbEQCFYMuD8kyn4U1IazziANVbGxy8CFx7pwIhAIChxE0IbGbW4tgiI5QtsG1Uw0dYCeKoKTCQKIR+zFbw"
+					}
+				]
 			}
 		}
 	}

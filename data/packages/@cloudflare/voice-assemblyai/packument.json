@@ -2,22 +2,48 @@
 	"name": "@cloudflare/voice-assemblyai",
 	"dist-tags": {
 		"bootstrap": "0.0.0",
-		"latest": "0.0.0"
+		"latest": "0.0.2"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/voice-assemblyai",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-CMwIPXesekmyRbl37gQpqbkNMkmSFKhY4jSseAUDn71VjcKt3F6S3QTtDamgG46EEwScY+Auzm9i97AZ4I0dHA==",
 				"shasum": "f3f11b2fabf1b497f8512c88cf888b910f6ec3de",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-assemblyai/-/voice-assemblyai-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 306,
+				"integrity": "sha512-CMwIPXesekmyRbl37gQpqbkNMkmSFKhY4jSseAUDn71VjcKt3F6S3QTtDamgG46EEwScY+Auzm9i97AZ4I0dHA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDLQMICt0VGNVVARDuU8GEqf3ayV/5BiZPOPxKzJYBCawIgTWChokyARHAkY7tGKIJbZIalsngJXu9w0qWV/IZOc0o=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 306
+			}
+		},
+		"0.0.2": {
+			"name": "@cloudflare/voice-assemblyai",
+			"version": "0.0.2",
+			"peerDependencies": {
+				"@cloudflare/voice": ">=0.3.3 <1.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-s++VK5lY1rR+7BOqKQcKtlr6nDoB7YlLr2SvWF6hlNBGxdHUpqVI61n8XHZncwz7LiNvDhpFikCoq38JXwtQ3A==",
+				"shasum": "f25162a87da82782476660201f5ea9086fa1f7a2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice-assemblyai/-/voice-assemblyai-0.0.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 62679,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-assemblyai@0.0.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDLQMICt0VGNVVARDuU8GEqf3ayV/5BiZPOPxKzJYBCawIgTWChokyARHAkY7tGKIJbZIalsngJXu9w0qWV/IZOc0o="
+						"sig": "MEUCIQCHJtqTQO+5NnAPtU3kueRM7XjFqC8FTL4TAJUwUFU8VgIgK8EogIGlbrxUEiSsIw/wf6W7U+UmVz0lT9pikUzWiYA="
 					}
 				]
 			}

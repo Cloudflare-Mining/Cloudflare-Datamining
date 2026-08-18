@@ -2,22 +2,48 @@
 	"name": "@cloudflare/voice-deepgram",
 	"dist-tags": {
 		"bootstrap": "0.0.0",
-		"latest": "0.0.0"
+		"latest": "0.0.1"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/voice-deepgram",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-7YjVu3J/fKcbDOgdjJp6F5HGuX5+KQ0JK8y6c0EtVQG42l15jPwF4lJDwnlgYxr0nruwx/ogQo3F/ostRKcySQ==",
 				"shasum": "a7becba2b3bac4ed15e73656c70f2f529db98179",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice-deepgram/-/voice-deepgram-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 304,
+				"integrity": "sha512-7YjVu3J/fKcbDOgdjJp6F5HGuX5+KQ0JK8y6c0EtVQG42l15jPwF4lJDwnlgYxr0nruwx/ogQo3F/ostRKcySQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIA2SZtLhQZdUgbld/Y0HhNiY/RQM4gBw7f+X5kgYQFhdAiBIxNQvpRAAzmzudYITTdlEoxDLbqUbmXsERbZaCjJBow==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 304
+			}
+		},
+		"0.0.1": {
+			"name": "@cloudflare/voice-deepgram",
+			"version": "0.0.1",
+			"peerDependencies": {
+				"@cloudflare/voice": ">=0.3.3 <1.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-vIR3j+0iukn6REuRbP+F/PYWjcQRxSKnl1XhjhrPiPQpqF3LxsYutY8dvdwJEFK9tu41W9P23/goj40g2z7iPg==",
+				"shasum": "5a22f856a28ce0bd1968b2ad9fd327758bbaad0e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/voice-deepgram/-/voice-deepgram-0.0.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 22195,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice-deepgram@0.0.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIA2SZtLhQZdUgbld/Y0HhNiY/RQM4gBw7f+X5kgYQFhdAiBIxNQvpRAAzmzudYITTdlEoxDLbqUbmXsERbZaCjJBow=="
+						"sig": "MEUCIQC7l5Xi5t8Arj3VXSYC+bTgoiITgAeGqoA6JbswyK1v/AIgaLyhex4BMDTCaBa95bOi6zR+jnG2LWR3O9zt4F3NxjE="
 					}
 				]
 			}
