@@ -225,31 +225,6 @@
 		"id": "purge_cache.api.title.purge_files_by_tag_or_host"
 	},
 	{
-		"uri": "/zones/:zone_identifier/rate_limits",
-		"method": "GET",
-		"id": "rate-limits-for-a-zone-list-rate-limits"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits",
-		"method": "POST",
-		"id": "rate-limits-for-a-zone-create-rate-limit"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits/:id",
-		"method": "GET",
-		"id": "rate-limits-for-a-zone-rate-limit-details"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits/:id",
-		"method": "PUT",
-		"id": "rate-limits-for-a-zone-update-rate-limit"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits/:id",
-		"method": "DELETE",
-		"id": "rate-limits-for-a-zone-delete-rate-limit"
-	},
-	{
 		"uri": "/zones/:zone_identifier/settings/always_online",
 		"method": "GET",
 		"id": "always_online.api.title.get"
