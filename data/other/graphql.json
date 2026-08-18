@@ -6401,7 +6401,7 @@
 	},
 	"AccountLbHealthEntitiesGroupsDimensions": {
 		"__description": "",
-		"date": "The date when the event was generated",
+		"date": "The date when the event was generated. Filter by this field for optimal performance.",
 		"datetime": "The datetime when the event was generated",
 		"originName": "Name of the origin within the pool",
 		"poolId": "Unique identifier for the pool",
@@ -6417,7 +6417,7 @@
 		"__description": "Raw LB health state-change events with geographic scope support, account-scoped",
 		"changedOriginHealth": "Health status of the origin that triggered the health change event (unknown = health state unknown, healthy = origin healthy, critical = origin critical)",
 		"changedOriginName": "Name of the origin that triggered the health change event (empty if no origin health changed)",
-		"date": "The date when the event was generated",
+		"date": "The date when the event was generated. Filter by this field for optimal performance.",
 		"datetime": "The date and time when the event was generated",
 		"eventId": "Unique identifier for this event",
 		"expectedResponseCodes": "Expected HTTP response codes for the pool health checks, comma-separated",
@@ -6431,7 +6431,7 @@
 		"poolName": "Name of the pool (a group of origin servers that can serve traffic for the load balancer)",
 		"region": "Geographic region code where the load balancing event originated (e.g., WNAM, ENAM, WEU, EEU), or 'GLOBAL' for globally-scoped events.",
 		"scope": "Geographic scope of the health event. Values: global (aggregated view across all regions), regional (per-region health status), unknown (unclassified events).",
-		"timestamp": "The timestamp when the event was generated"
+		"timestamp": "The date and time when the event was generated"
 	},
 	"AccountLbHealthEventsFilter_InputObject": {
 		"__description": ""

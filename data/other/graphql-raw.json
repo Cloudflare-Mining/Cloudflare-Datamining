@@ -344552,7 +344552,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The date when the event was generated",
+							"description": "The date when the event was generated. Filter by this field for optimal performance.",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -345345,7 +345345,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The date when the event was generated",
+							"description": "The date when the event was generated. Filter by this field for optimal performance.",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -345577,7 +345577,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "The timestamp when the event was generated",
+							"description": "The date and time when the event was generated",
 							"isDeprecated": false,
 							"name": "timestamp",
 							"type": {
@@ -857952,7 +857952,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Scalar type types.Float64",
+					"description": "Scalar type float64",
 					"enumValues": [],
 					"fields": [],
 					"inputFields": [],
