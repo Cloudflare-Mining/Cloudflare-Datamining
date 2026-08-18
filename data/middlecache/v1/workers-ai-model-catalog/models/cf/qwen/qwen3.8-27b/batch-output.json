@@ -1,0 +1,501 @@
+{
+	"type": "object",
+	"contentType": "application/json",
+	"properties": {
+		"id": {
+			"type": "string",
+			"description": "A unique identifier for the chat completion."
+		},
+		"object": {
+			"type": "string"
+		},
+		"created": {
+			"type": "integer",
+			"description": "Unix timestamp (seconds) of when the completion was created."
+		},
+		"model": {
+			"type": "string",
+			"description": "The model used for the chat completion."
+		},
+		"choices": {
+			"type": "array",
+			"items": {
+				"anyOf": [
+					{
+						"type": "object",
+						"properties": {
+							"index": {
+								"type": "integer"
+							},
+							"message": {
+								"anyOf": [
+									{
+										"type": "object",
+										"properties": {
+											"role": {
+												"type": "string",
+												"enum": [
+													"assistant"
+												]
+											},
+											"content": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "null"
+													}
+												]
+											},
+											"refusal": {
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "null"
+													}
+												]
+											},
+											"annotations": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"url_citation"
+															]
+														},
+														"url_citation": {
+															"type": "object",
+															"properties": {
+																"url": {
+																	"type": "string"
+																},
+																"title": {
+																	"type": "string"
+																},
+																"start_index": {
+																	"type": "integer"
+																},
+																"end_index": {
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"url",
+																"title",
+																"start_index",
+																"end_index"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"url_citation"
+													]
+												}
+											},
+											"audio": {
+												"anyOf": [
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string"
+															},
+															"data": {
+																"type": "string",
+																"description": "Base64 encoded audio bytes."
+															},
+															"expires_at": {
+																"type": "integer"
+															},
+															"transcript": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"data",
+															"expires_at",
+															"transcript"
+														]
+													}
+												]
+											},
+											"tool_calls": {
+												"type": "array",
+												"items": {
+													"oneOf": [
+														{
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"function"
+																	]
+																},
+																"function": {
+																	"type": "object",
+																	"properties": {
+																		"name": {
+																			"type": "string"
+																		},
+																		"arguments": {
+																			"type": "string",
+																			"description": "JSON-encoded arguments string."
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"arguments"
+																	]
+																}
+															},
+															"required": [
+																"id",
+																"type",
+																"function"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string",
+																	"enum": [
+																		"custom"
+																	]
+																},
+																"custom": {
+																	"type": "object",
+																	"properties": {
+																		"name": {
+																			"type": "string"
+																		},
+																		"input": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"input"
+																	]
+																}
+															},
+															"required": [
+																"id",
+																"type",
+																"custom"
+															]
+														}
+													]
+												}
+											},
+											"function_call": {
+												"anyOf": [
+													{
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string"
+															},
+															"arguments": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"arguments"
+														]
+													},
+													{
+														"type": "null"
+													}
+												]
+											}
+										},
+										"required": [
+											"role",
+											"content",
+											"refusal"
+										]
+									}
+								]
+							},
+							"finish_reason": {
+								"type": "string",
+								"enum": [
+									"stop",
+									"length",
+									"tool_calls",
+									"content_filter",
+									"function_call"
+								]
+							},
+							"logprobs": {
+								"anyOf": [
+									{
+										"type": "object",
+										"properties": {
+											"content": {
+												"anyOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"token": {
+																	"type": "string"
+																},
+																"logprob": {
+																	"type": "number"
+																},
+																"bytes": {
+																	"anyOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "integer"
+																			}
+																		},
+																		{
+																			"type": "null"
+																		}
+																	]
+																},
+																"top_logprobs": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"token": {
+																				"type": "string"
+																			},
+																			"logprob": {
+																				"type": "number"
+																			},
+																			"bytes": {
+																				"anyOf": [
+																					{
+																						"type": "array",
+																						"items": {
+																							"type": "integer"
+																						}
+																					},
+																					{
+																						"type": "null"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"token",
+																			"logprob",
+																			"bytes"
+																		]
+																	}
+																}
+															},
+															"required": [
+																"token",
+																"logprob",
+																"bytes",
+																"top_logprobs"
+															]
+														}
+													},
+													{
+														"type": "null"
+													}
+												]
+											},
+											"refusal": {
+												"anyOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"token": {
+																	"type": "string"
+																},
+																"logprob": {
+																	"type": "number"
+																},
+																"bytes": {
+																	"anyOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "integer"
+																			}
+																		},
+																		{
+																			"type": "null"
+																		}
+																	]
+																},
+																"top_logprobs": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"token": {
+																				"type": "string"
+																			},
+																			"logprob": {
+																				"type": "number"
+																			},
+																			"bytes": {
+																				"anyOf": [
+																					{
+																						"type": "array",
+																						"items": {
+																							"type": "integer"
+																						}
+																					},
+																					{
+																						"type": "null"
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"token",
+																			"logprob",
+																			"bytes"
+																		]
+																	}
+																}
+															},
+															"required": [
+																"token",
+																"logprob",
+																"bytes",
+																"top_logprobs"
+															]
+														}
+													},
+													{
+														"type": "null"
+													}
+												]
+											}
+										}
+									},
+									{
+										"type": "null"
+									}
+								]
+							}
+						},
+						"required": [
+							"index",
+							"message",
+							"finish_reason",
+							"logprobs"
+						]
+					}
+				]
+			},
+			"minItems": 1
+		},
+		"usage": {
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"prompt_tokens": {
+							"type": "integer"
+						},
+						"completion_tokens": {
+							"type": "integer"
+						},
+						"total_tokens": {
+							"type": "integer"
+						},
+						"prompt_tokens_details": {
+							"type": "object",
+							"properties": {
+								"cached_tokens": {
+									"type": "integer"
+								},
+								"audio_tokens": {
+									"type": "integer"
+								}
+							}
+						},
+						"completion_tokens_details": {
+							"type": "object",
+							"properties": {
+								"reasoning_tokens": {
+									"type": "integer"
+								},
+								"audio_tokens": {
+									"type": "integer"
+								},
+								"accepted_prediction_tokens": {
+									"type": "integer"
+								},
+								"rejected_prediction_tokens": {
+									"type": "integer"
+								}
+							}
+						}
+					},
+					"required": [
+						"prompt_tokens",
+						"completion_tokens",
+						"total_tokens"
+					]
+				}
+			]
+		},
+		"system_fingerprint": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"service_tier": {
+			"anyOf": [
+				{
+					"type": "string",
+					"enum": [
+						"auto",
+						"default",
+						"flex",
+						"scale",
+						"priority"
+					]
+				},
+				{
+					"type": "null"
+				}
+			]
+		}
+	},
+	"required": [
+		"id",
+		"object",
+		"created",
+		"model",
+		"choices"
+	]
+}
