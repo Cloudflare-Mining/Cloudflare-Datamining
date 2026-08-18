@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 18, 2026[BGP Role model: tracking the adoption of RFC 9234](https://blog.cloudflare.com/rfc9234-bgp-role-model/)
+
+RFC 9234 lets routers reject route leaks on their own, using BGP Roles and the Only to Customer attribute. We measured who has deployed it, and found two Tier 1 networks unexpectedly stripping OTC.
+
+![Bryton Herdes](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAJP648S3013NEXJ8RKZF1Y.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Iliana Xygkou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAGC1W8ZPJBM3V4CJ2523N8.png&w=64&h=64&f=webp&fit=cover&position=center)![Mingwei Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ER28A8EPWVBKJWBWZ58R.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Bryton Herdes](https://blog.cloudflare.com/author/bryton/), [Iliana Xygkou](https://blog.cloudflare.com/author/iliana-xygkou/), and [Mingwei Zhang](https://blog.cloudflare.com/author/mingwei/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0AP04HK7ZM02ZWP3G59W4DP.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/rfc9234-bgp-role-model/)
+
 August 14, 2026[How Cloudflare detects MCP traffic and helps secure it](https://blog.cloudflare.com/mcp-security-updates/)
 
 Cloudflare Gateway identifies MCP requests using protocol-level heuristics. Security teams can use that signal to find shadow MCP traffic, enforce Portal-only access for approved servers, and block direct connections on managed network paths.
@@ -13,8 +23,6 @@ Cloudflare Gateway identifies MCP requests using protocol-level heuristics. Secu
 ![AJ Gerstenhaber](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AC8ST716E4F0Q7NWHHKA.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Kenny Johnson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471W94YNK8KYMJEK8P7RHD.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/) and [Kenny Johnson](https://blog.cloudflare.com/author/kenny/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M005HG1H0K802B4Y17SX9NQ5.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/mcp-security-updates/)
 
 August 14, 2026[Secure all your internal vibe-coded applications — in one click](https://blog.cloudflare.com/workers-protected-by-access/)
 
@@ -151,14 +159,6 @@ We're honored to announce that Cloudflare is the only vendor that has been recog
 ![Michael Keane](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NH30V32ND238KA4C7HFD.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Michael Keane](https://blog.cloudflare.com/author/michael-keane/)
-
-August 5, 2026[The Agent Access Model](https://blog.cloudflare.com/the-agent-access-model/)
-
-The Agent Access Model proposes a new architecture to secure task-scoped agents using strict identity brokering, continuous mediation, and stateful trust.
-
-![Matt Silverlock](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492M11VMJ0WCWAND287DEN.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Matt Silverlock](https://blog.cloudflare.com/author/silverlock/)
 
 Load more
 
