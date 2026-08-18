@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.0
+
+### Minor Changes
+
+- 907e4ebefb: Add React Testing Library Fela render and snapshot helpers as Enzyme-free alternatives to the legacy wrapper APIs.
+
 ## 8.0.6
 
 ### Patch Changes

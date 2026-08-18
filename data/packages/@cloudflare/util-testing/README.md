@@ -1,4 +1,4 @@
-# @cloudflare/cf-util-testing
+# @cloudflare/util-testing
 
 > Cloudflare Testing utilities
 
@@ -7,10 +7,85 @@
 Installation with yarn is recommended
 
 ```sh
-$ yarn add @cloudflare/cf-util-testing
+$ yarn add @cloudflare/util-testing
 ```
 
+## React Testing Library Fela helpers
+
+Prefer these helpers for new tests. They render components with React Testing
+Library and provide access to the Fela renderer/styles for focused assertions or
+snapshots.
+
+These helpers use React Testing Library 12 and require React/React DOM 16.8 or
+newer.
+
+### renderWithFela
+
+`renderWithFela(ui, options)` accepts the same options as React Testing
+Library's `render`, plus:
+
+* `theme`: Optional Fela theme. Defaults to the Cloudflare frontend theme.
+* `renderer`: Optional Fela renderer. A dev renderer is created by default.
+* `includeStyles`: Optional default for `snapshot()` style inclusion. Defaults
+  to `true`.
+* `wrapper`: Optional React Testing Library wrapper component rendered inside
+  `StyleProvider`.
+
+It returns React Testing Library's render result plus:
+
+* `renderer`: The Fela renderer used for the render.
+* `getStyles()`: Returns beautified rendered CSS.
+* `snapshot({ includeStyles })`: Returns `{ component, styles }`, where
+  `component` is `asFragment()` and `styles` is omitted when there are no styles
+  or `includeStyles` is false. `includeStyles` defaults to the render-time
+  `includeStyles` option, which itself defaults to `true`.
+
+```js
+import React from 'react';
+import { screen } from '@testing-library/react';
+import { createComponent } from '@cloudflare/style-container';
+import { renderWithFela } from '@cloudflare/util-testing';
+
+const Box = createComponent(() => ({ color: 'black' }));
+
+test('renders a Fela component', () => {
+  const { getStyles } = renderWithFela(<Box>Hello</Box>);
+
+  expect(screen.getByText('Hello')).toBeTruthy();
+  expect(getStyles()).toContain('color: black');
+});
+```
+
+### snapshotWithFela
+
+`snapshotWithFela(ui, options)` is a convenience wrapper around
+`renderWithFela(ui, options).snapshot()`.
+
+```js
+import React from 'react';
+import { createComponent } from '@cloudflare/style-container';
+import { snapshotWithFela } from '@cloudflare/util-testing';
+
+const Box = createComponent(() => ({ color: 'black' }));
+
+test('captures component and styles', () => {
+  expect(snapshotWithFela(<Box>Hello</Box>)).toMatchSnapshot();
+});
+```
+
+## Legacy Enzyme APIs
+
+The following exports are kept for backwards compatibility with existing tests,
+but should not be used in new tests: `felaShallow`, `felaMount`,
+`felaMountWithoutContext`, `createEnzymeRouterOptions`,
+`findWhereNameContains`, and `I18n`.
+
+Prefer `renderWithFela` and React Testing Library behavior assertions instead of
+Enzyme wrappers, `.find()`, `.state()`, or shallow-render snapshots.
+
 ## felaShallow
+
+Legacy Enzyme API. Prefer `renderWithFela` for new tests.
 
 **For testing** This is the interface to use if you want to use enzyme's
 `shallow` function with Fela components. It takes in the same parameters as
@@ -338,6 +413,8 @@ describe('felaShallow', () => {
 
 ## felaMount
 
+Legacy Enzyme API. Prefer `renderWithFela` for new tests.
+
 **For testing** This is the interface to use if you want to use enzyme's `mount`
 function with Fela components. It takes in the same parameters as enzyme's
 mount: `node` and `options`. It returns an object with keys: `wrapper` and
@@ -410,14 +487,14 @@ mockImport(RouteHandler, 'handleRoutes', originalHandleRoutes);
 ## mockComponent
 
 Mock a component's implementation. If your goal is to mock the implementation of
-a component, especially for enzyme snapshots then this function provides a handy
-tool. It replaces the a component definition of an imported module with a jest
+a component, this function provides a handy tool. It replaces the component
+definition of an imported module with a jest
 mock function, the implementation of which is a basic functional component.
 
 If you take an snapshot of such a component, you will get to see all its props.
-As well you can target it in enzyme by finding it by its displayName. You can
-provide a displayName to this function, or it will attempt to get it from the
-underlying component
+You can provide a displayName to this function, or it will attempt to get it
+from the underlying component. Existing Enzyme tests can still target it by its
+displayName.
 
 if children are passed as a prop, they are included in the mockComponent's
 render function if children are passed as a prop and children is a function then
@@ -452,6 +529,9 @@ mockComponent(Table, 'TableCell', 'TableCell', { arg: 'foo' });
 
 ## createEnzymeRouterOptions
 
+Legacy Enzyme API. Prefer React Testing Library with `MemoryRouter` or a custom
+`wrapper` passed to `renderWithFela`.
+
 If you'd like to pass the Router into enzyme tests without using MemoryRouter,
 this is the function to use. The downside of using MemoryRouter is that the root
 enzyme wrapper would be the MemoryRouter itself, which would then prohibit us
@@ -485,6 +565,9 @@ snapshot(wrapper.find('Route'), false);
 ```
 
 ## findWhereNameContains
+
+Legacy Enzyme API. Prefer React Testing Library queries such as `getByRole`,
+`getByText`, or `getByTestId`.
 
 A function which takes as a parameter an enzyme `ShallowWrapper`, either the
 root, returned from the initial call to `felaShallow`, or from targeting
