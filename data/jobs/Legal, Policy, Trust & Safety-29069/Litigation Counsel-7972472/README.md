@@ -5,39 +5,45 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas or New York</strong></p>
-<p><strong>About the Role</strong><br>We are currently seeking a highly skilled and adaptable Floating Administrative Assistant to join our team. This individual will provide comprehensive backup administrative support to executives across various organizations as needed. You will step in as a vital reinforcement to the admin team to cover planned and unplanned absences (such as PTO, sick days, maternity/paternity leave, and sabbaticals) and provide overflow support during peak project periods.<br>The ideal candidate will possess a dynamic personality, demonstrating a genuine enthusiasm for engaging with different individuals, departments, and facets of our organization. With a minimum of 3-5 years of experience supporting VP-level executives, the successful candidate will be a "chameleon", able to seamlessly integrate into new workflows, ensure operational continuity, and provide invaluable assistance across diverse functions.<br><strong><br>Key Responsibilities</strong></p>
+<h2>Available Locations</h2>
 <ul>
-	<li><strong>Seamless Coverage:</strong> Provide comprehensive backup administrative support to executives during EA absences, demonstrating rapid proficiency in their specific calendar management, domestic and international travel arrangements, and expense reporting.</li>
-	<li><strong>Adaptable Prioritization:</strong> Exhibit exceptional multitasking abilities and adeptness in prioritizing tasks within a fast-paced environment, while maintaining meticulous attention to detail, accuracy, and adherence to deadlines.</li>
-	<li><strong>Cross-Functional Communication:</strong> Serve as a reliable liaison between executives and internal/external stakeholders, facilitating effective communication and collaboration across all levels of the organization.</li>
-	<li><strong>Project &amp; Overflow Support:</strong> Handle ad hoc projects, event coordination, and operational assignments with professionalism and efficiency, demonstrating flexibility and resourcefulness in addressing evolving priorities.</li>
-	<li><strong>Process Improvement:</strong> Contribute to the efficiency of office operations by anticipating needs, proactively identifying solutions, and implementing streamlined processes for hand-offs and coverage.</li>
-	<li><strong>Confidentiality:</strong> Handle highly sensitive and confidential information with the utmost discretion and professionalism at all times.</li>
+	<li>London, UK</li>
+	<li>Washington DC, US</li>
 </ul>
-<p>Requirements</p>
+<h2>About the Role</h2>
+<p>As the world’s first connectivity cloud, Cloudflare helps connect and protect millions of customers globally. Everyone from individuals to the world’s largest enterprises use our unified platform of networking, security, and developer services to succeed everywhere in the world. This can sometimes make Cloudflare a target for litigation and regulation. We’re looking for a Litigation Counsel to join our team responsible for managing litigation matters around the world.</p>
+<p>The ideal candidate is comfortable confronting novel legal issues in a fast paced environment, while never losing sight of Cloudflare’s core principles. As Litigation Counsel, you’ll work with our internal legal team, external counsel, and stakeholders across the company to handle ongoing lawsuits, respond to litigation threats, and assist in broader legal strategy. You’ll help Cloudflare navigate a diverse set of legal issues around the globe including intellectual property, contracts and other business disputes, regulatory issues, and labor and employment matters. Cloudflare faces complex legal issues as a result of its role as an Internet infrastructure provider, including litigation and regulation relating to customer content on our network (i.e., “intermediary liability”). These cases require a strong interest in navigating challenging technical and legal issues in order to advance Cloudflare’s mission to help build a better Internet. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and Internet law, and the initiative to help scale our litigation function alongside a fast growing company.</p>
+<h2>Responsibilities</h2>
 <ul>
-	<li><strong>Experience:</strong> 3+ years of experience as an Administrative Assistant or Executive Assistant supporting leadership-level executives.</li>
-	<li><strong>Adaptability:</strong> Proven ability to quickly learn and adapt to different executives' working styles, preferences, and internal processes without missing a beat.</li>
-	<li><strong>Emotional Intelligence:</strong> High EQ with a strong ability to build trust rapidly with new teams and maintain a calm, solutions-oriented demeanor under pressure.</li>
-	<li><strong>Communication:</strong> Exceptional written and verbal communication skills.</li>
-	<li><strong>Organization:</strong> Strong organizational skills, meticulous attention to detail, and a strong sense of urgency and proactiveness.</li>
-	<li><strong>Project Skills:</strong> Proven experience assisting with or managing ad-hoc operational or administrative projects.</li>
+	<li>Work with our existing litigation team to help formulate and implement litigation strategies;</li>
+	<li>Evaluate and respond to litigation threats and legal matters in various jurisdictions around the world;</li>
+	<li>Help select, onboard, and manage outside counsel on all aspects of litigation (including factual development, briefing, hearings, trials, appeals, etc.)</li>
+	<li>Work cross-functionally to further develop Cloudflare’s approach to intermediary liability, AI, and other emerging legal and technology issues globally;</li>
+	<li>Assist in responding to and working with government regulators and private organizations on issues relating to Cloudflare’s products and services;</li>
+	<li>Communicate with business leaders across the company about ongoing litigation and litigation threats, and provide training and resources to address future legal risks.</li>
 </ul>
-<p>Bonus Points</p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li><strong>AI Experience:</strong> Familiarity with using AI tools to streamline administrative tasks and increase efficiency.</li>
-	<li><strong>Hospitality Background:</strong> Experience in hospitality, guest relations, or luxury client services is highly valued.</li>
-	<li><strong>Google Workspace:</strong> Strong proficiency with Google Workspace (Gmail, Calendar, Docs, and Sheets).</li>
-	<li><strong>Navan Experience:</strong> Prior experience using Navan for booking travel and managing expenses.</li>
+	<li>Been admitted to practice law in the US or the UK;</li>
+	<li>4+ years PQE either in a law firm or in-house (preferably with technology companies);</li>
+	<li>Experience litigating cases in one or more jurisdictions;</li>
+	<li>Strong communication skills and cooperative team player;</li>
+	<li>Ability to lead with empathy and understanding while embracing diverse points of view;</li>
+	<li>Flexibility to adapt and thrive in a fast paced environment;</li>
+	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish principled, thoughtful, and effective solutions efficiently and in an amenable manner;</li>
+	<li>Ability to organize, prioritize, and manage many tasks on complex projects;</li>
+	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
 </ul>
+<h2>Compensation</h2>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>New York Estimated Base salary $84,000 - $116,000.</p>
+<ul>
+	<li>For Washington, D.C. based hires: Estimated annual salary of $150,000 - $207,000.</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
