@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-linux-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260818.1"
+		"latest": "1.20260819.1"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -11823,8 +11823,8 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIGc8uZgC0jZQfvQx0OqlPVqq9DoIQJsz8IZ5mp0QJ4WXAiAqrTeLICZ3QDHILFswZ1+YN9+JpEVVKp+rMNQdOJK5EA=="
+						"sig": "MEQCIGc8uZgC0jZQfvQx0OqlPVqq9DoIQJsz8IZ5mp0QJ4WXAiAqrTeLICZ3QDHILFswZ1+YN9+JpEVVKp+rMNQdOJK5EA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
@@ -11834,6 +11834,36 @@
 					}
 				},
 				"unpackedSize": 151336213
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260819.1": {
+			"name": "@cloudflare/workerd-linux-64",
+			"version": "1.20260819.1",
+			"dist": {
+				"shasum": "7d70aeb882e9a54e7f6d9006bbc95c2ba531d26f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20260819.1.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-sSKkPPZfycQMdYzjT6UXh92NOrxyi+BEQe4k+KSXCnLi/4nAYqTrZtZyCc/w4iMEX8+z8hAGLPfx5XpZnqsnUA==",
+				"signatures": [
+					{
+						"sig": "MEUCIDiinP7XdW1aDoZ4t4aSVxTOHGB7nuYfbdIg39N2wUCnAiEAt6Z9V5zCtanBuayRaeOjPt0c3eHZLPU9Eeag+R5Vi8o=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQD1mtybelYlj/zsVc0/Ril6XbNXZ9unAYrhAI73bhQMxAIgV9ljG0PFhTAJgeCFQlCWK39EnlE5/6ug3M9auqS8jLs="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-64@1.20260819.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 151336437
 			},
 			"engines": {
 				"node": ">=16"
