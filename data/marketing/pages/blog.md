@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 19, 2026[A revisit of remote Spectre attacks on Cloudflare Workers](https://blog.cloudflare.com/revisiting-spectre-attacks-on-workers/)
+
+In 2024 and 2025, we reassessed remote Spectre attacks on our Workers infrastructure. We share details about the new attack primitives like Spectre gadgets, remote timers, achieving co-location and how new defenses further harden Cloudflare Workers. 
+
+![Martin Schwarzl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q44FVCNYF3AKGF6DGP9G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Albert Pedersen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X1RPT45576XPREMG1CQ3.webp&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Martin Schwarzl](https://blog.cloudflare.com/author/martin/) and [Albert Pedersen](https://blog.cloudflare.com/author/albert-pedersen/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M00XZZC7473CXRW6EF1Z69ZW.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/revisiting-spectre-attacks-on-workers/)
+
 August 18, 2026[BGP Role model: tracking the adoption of RFC 9234](https://blog.cloudflare.com/rfc9234-bgp-role-model/)
 
 RFC 9234 lets routers reject route leaks on their own, using BGP Roles and the Only to Customer attribute. We measured who has deployed it, and found two Tier 1 networks unexpectedly stripping OTC.
@@ -13,8 +23,6 @@ RFC 9234 lets routers reject route leaks on their own, using BGP Roles and the O
 ![Bryton Herdes](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAJP648S3013NEXJ8RKZF1Y.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Iliana Xygkou](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KYAGC1W8ZPJBM3V4CJ2523N8.png&w=64&h=64&f=webp&fit=cover&position=center)![Mingwei Zhang](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ER28A8EPWVBKJWBWZ58R.jpeg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Bryton Herdes](https://blog.cloudflare.com/author/bryton/), [Iliana Xygkou](https://blog.cloudflare.com/author/iliana-xygkou/), and [Mingwei Zhang](https://blog.cloudflare.com/author/mingwei/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0AP04HK7ZM02ZWP3G59W4DP.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/rfc9234-bgp-role-model/)
 
 August 14, 2026[How Cloudflare detects MCP traffic and helps secure it](https://blog.cloudflare.com/mcp-security-updates/)
 
@@ -151,14 +159,6 @@ Today we're launching a developer preview of WebMCP on Cloudflare. With one swit
 ![Will Rowe](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RTXYC845D1Y5KJHYETK71.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Will Rowe](https://blog.cloudflare.com/author/will-rowe/)
-
-August 5, 2026[Cloudflare is the only vendor named a Visionary in 2026 SASE and SSE reports](https://blog.cloudflare.com/cloudflare-sase-sse-gartner-magic-quadrants-2026/)
-
-We're honored to announce that Cloudflare is the only vendor that has been recognized as a Visionary in both the 2026 Gartner® Magic Quadrant™ for SASE Platforms and the 2026 Gartner® Magic Quadrant™ for Security Service Edge reports.
-
-![Michael Keane](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NH30V32ND238KA4C7HFD.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Michael Keane](https://blog.cloudflare.com/author/michael-keane/)
 
 Load more
 
