@@ -5,77 +5,42 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<h3><strong>The Role</strong></h3>
+<p>This role exists to fundamentally change how Cloudflare's marketing organization works by putting AI at the center of how we operate. Equal parts strategist and force-multiplier, you will identify where AI can deliver the greatest business impact, build the solutions that matter most, and systematically raise the organization's ability to build and leverage AI independently. The ultimate measure of success is not how much you build—it's how much the organization can build without you.</p>
+<h3><strong>What You'll Do</strong></h3>
+<h3><strong>Drive and Build Marketing AI Strategy &amp; High-Impact Integrated Programs</strong></h3>
 <ul>
-	<li>Atlanta, US</li>
-	<li>Austin, US</li>
-	<li>Denver, US</li>
-	<li>New York, US</li>
-	<li>San Francisco, US</li>
-	<li>Seattle, US</li>
+	<li>Define and own the marketing AI roadmap: assess where AI can deliver the greatest business impact, prioritize against marketing's strategic objectives, and sequence what gets tackled and in what order.</li>
+	<li>Build the business case for AI investments—not in abstract terms, but by mapping current-state workflows, quantifying the opportunity, and defining clear success metrics before work begins.</li>
+	<li>Directly build and ship AI solutions for the highest-impact, cross-functional opportunities—the programs that fundamentally reshape how marketing operates, not incremental automations.</li>
+	<li>Manage intake of AI requests from across the org. Triage what rises to the level of a strategic program versus what should be solved by the team closest to the problem with the right guidance and tools.</li>
 </ul>
-<h2>About the Role</h2>
-<p><strong>Position Overview:</strong> We are seeking a high-velocity, strategic People M&amp;A Leader to own the human side of our mergers and acquisitions end-to-end. In this role, you will be the single designated point person (DRI) and strategic counterpart to our Corporate Development team. You will own the People lifecycle for all deals—from early-stage confirmatory due diligence through post-close integration.</p>
-<p>Acting as the ultimate "Hub to the Spokes," you will translate deal rationale into practical execution strategies, coordinating fluidly across Recruiting, Total Rewards, People Operations, Workplace Immigration, and Employment Legal. This is a builder role for someone who thrives under compressed timelines, loves creating order out of ambiguity, and is obsessed with delivering a world-class onboarding experience for newly acquired teams.</p>
-<h2>Responsibilities</h2>
+<h3><strong>Scale the Marketing Organization's AI Capability</strong></h3>
 <ul>
-	<li><strong> Corporate Development Partnership &amp; Diligence</strong></li>
-	<li>Serve as the primary People team representative alongside Corporate Development and Legal from deal kickoff through close.</li>
-	<li>Lead rapid-fire HR due diligence to assess target company culture, compensation structures, and compliance risks.</li>
-	<li>Evaluate technical talent density and provide critical input into deal structures, focus areas for retention pools, and offer letters.</li>
-	<li>Partner with finance and legal to analyze equity structures, ensuring seamless alignment on equity rollover mechanics and cash/stock retention incentives.</li>
-	<li><strong> Cross-Functional Orchestration (The Hub to the Spokes)</strong></li>
-	<li>Mobilize and quarterback cross-functional People teams (Recruiting, Comp, People Ops, Immigration, Payroll) to ensure workstreams are perfectly sequenced (e.g., ensuring visa/immigration verifications clear before offer letters drop).</li>
-	<li>Build the infrastructure, checklists, and automated workflows that don't exist yet to scale our M&amp;A engine.</li>
-	<li>Identify recurring failure modes across deals and implement upstream fixes to continuously optimize our playbooks.</li>
-	<li><strong> Integration &amp; Elite Talent Retention</strong></li>
-	<li>Provide a "white-glove" experience to incoming talent, serving as their primary advocate, guide, and escalation point as they navigate our culture and systems.</li>
-	<li>Partner with leadership and Internal Comms to execute empathetic change management, addressing workforce anxiety through transparent communications, FAQs, and town halls.</li>
-	<li>Design and execute organizational mapping and day-1 onboarding schedules to ensure acquired technical teams maintain momentum and feel integrated from day one.</li>
+	<li>Build and run a champion network across marketing sub-teams: identify AI-curious practitioners, equip them with tools and patterns, and create the peer community that extends your reach.</li>
+	<li>Ensure every team has a clear path to surface AI needs—and a clear understanding that the goal is to help them build, not to build for them. When a request is triaged as self-serve, provide the guidance and support to make that successful.</li>
+	<li>Create the rituals that make AI visible and accessible: office hours, demo sessions, shared skill libraries, onboarding materials. Lower the barrier to entry so that building with AI becomes a normal part of how marketers work.</li>
+	<li>Establish reusable patterns and templates so that solutions built for one team can be adapted by others without starting from scratch.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3><strong>Crossfunctional Planning and Integration</strong></h3>
 <ul>
-	<li><strong>Experience:</strong> 6–10+ years of experience across People Operations, HRBP roles, or Program Management, with at least 3+ years directly owning People/HR workstreams for M&amp;A transactions in high-growth tech environments.</li>
-	<li><strong>Startup Agility:</strong> Proven track record of building 0-to-1 processes. You excel in fast-moving, unstructured environments where templates are built on the fly.</li>
-	<li><strong>Execution Under Pressure:</strong> Outstanding project management skills; calm under pressure and capable of handling highly confidential data and compressed, unpredictable deal timelines.</li>
-	<li><strong>Technical &amp; Core HR Fluency:</strong> Solid foundational understanding of employment legal basics, high-growth compensation structures, and visa/immigration complexities (critical for international or highly technical talent).</li>
-	<li><strong>Influence Without Authority:</strong> Exceptional communication and relationship-building skills. Ability to earn the trust of elite technical founders and seamlessly align cross-functional internal executives.</li>
+	<li>Serve as a core member of the Global Integrated Marketing Leadership team — helping set the strategic agenda, shaping priorities, and bringing structured thinking and a steady hand to the organization's biggest decisions and most ambiguous problems.</li>
+	<li>Translate and represent the leadership vision into a clear, coherent strategy for the Global Integrated Marketing organization, framing the hardest problems, developing options and recommendations, and helping leadership decide where to focus and where to place its biggest bets.</li>
+	<li>Design and run the operating system for the Global Integrated Marketing organization ensuring decisions happen on schedule and alignment is built in, not chased.</li>
+	<li>Create processes to monitor business performance and outcomes with proactive escalations to ensure demand gen goals are met for the Americas and globally.</li>
 </ul>
-<h2>Compensation</h2>
-<p>Compensation may be adjusted depending on work location.</p>
+<h3><strong>What This Requires</strong></h3>
 <ul>
-	<li>For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</li>
-	<li>For New York City and Washington based hires: Estimated annual salary of $178,000 - $245,000.</li>
-	<li>For Colorado based hires: Estimated annual salary of $162,000 - $223,000</li>
+	<li>8+ years in an integrated marketing role such as Marketing Operations, Demand Gen or a Marketing CoS function</li>
+	<li>Deep knowledge of how B2B marketing organizations operate—campaigns, content, demand gen, field marketing, analytics. You know where work gets stuck because you've lived it.</li>
+	<li>Comfort building with AI tools: agents, skills, prompt engineering, MCP integrations, no-code/low-code platforms.&nbsp;</li>
+	<li>A product management mindset: you think in terms of intake, backlog, iteration, adoption, and measurable outcomes.</li>
+	<li>Strong communication and the credibility to tell senior stakeholders "not yet" on low-priority requests and "think bigger" when teams default to automating the status quo.</li>
+	<li>Exceptional executive communication and writing skills — clear, concise, transparent, and insightful for teams, executives, and a diverse set of stakeholders.</li>
 </ul>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p>Financial Benefits</p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p>Time Off</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

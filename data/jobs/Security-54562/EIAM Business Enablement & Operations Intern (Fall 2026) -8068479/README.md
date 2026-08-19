@@ -5,45 +5,46 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Location- Austin, TX</h2>
-<h2 id="JD:BusinessSystemAnalyst-AbouttheRole">About the Role</h2>
-<p>Cloudflare's FinTech Engineering team builds and runs the software and systems that make Cloudflare run efficiently and enable our customers and partners to do business with us.</p>
-<p>This role sits at the intersection of billing systems, fraud, and operations. Millions of customers self-serve onto Cloudflare, which means our billing stack processes an enormous volume of transactions and is a constant target for abuse. Cloudflare also ships new products constantly, and every one of them has to bill correctly and land correctly in revenue accounting. When something breaks, when someone tries to game it, or when a new product is about to go live, you are the person who makes sure we get it right. You will work with engineers, finance, support, trust and safety, and product.</p>
-<p>This is a role with real, visible impact. The problems here are unsolved rather than already scoped for you, the surface area is large, and the work translates directly into revenue protected, fraud prevented, launches that go smoothly, and manual work that stops existing. You will get exposure to the full quote to cash stack, real ownership from day one, very little hand holding, and the opportunity to leave the systems and processes meaningfully better than you found them. If you want to point at something a year from now and say you built that, this is that kind of role.</p>
-<h2 id="JD:BusinessSystemAnalyst-Day-to-dayresponsibilitiesinclude">Day-to-day responsibilities include</h2>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About Cloudflare's Security Team</strong></p>
+<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
+<p>The Enterprise Identity &amp; Access Management (IAM) Business Enablement team plans strategic alignment by optimizing IAM processes - such as user provisioning and access controls - to enhance overall efficiency and improve the user experience. Ultimately, the team ensures that security measures actively accelerate business operations while maintaining full regulatory compliance.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li><strong>Investigate fraud and payment abuse:</strong>&nbsp;Dig into suspicious signup, payment, and usage patterns. Trace how bad actors got through, quantify the impact, and work with Data Science to close the gap to turn one off investigations into repeatable detection.</li>
-	<li><strong>Own root cause analysis for billing issues:</strong>&nbsp;When invoices, subscriptions, entitlements, taxation, or payments misbehave, you find the real root cause and make sure engineering fixes it accordingly. You quantify the impact, so engineering knows what to prioritize.</li>
-	<li><strong>Make new product integrations bill correctly:</strong>&nbsp;You own billing correctness for new product launches, from payment till revenue accounting. Define and run the end to end tests, catch the edge cases before launch, and advise engineering on the implementation.</li>
-	<li><strong>Own month end reconciliation:</strong>&nbsp;Investigate differences between billing and accounting systems, explain every variance, and log the root causes so it does not come back next month.</li>
-	<li><strong>Design scalable solutions to operational problems:</strong>&nbsp;Replace manual work and recurring escalations with automation, AI agents, or better system design.</li>
-	<li><strong>Build your own tooling:</strong>&nbsp;Write the SQL to answer the question. Write the script to resolve 1,000 accounts instead of 1. Use AI tooling across analysis, investigation, and documentation.</li>
-	<li><strong>Run programs, not just tickets:</strong>&nbsp;The surface area here is wide and you get real influence over where the effort goes. Pick the highest impact problem area, break it down, line up the stakeholders, and drive it to a measurable outcome.</li>
+	<li>
+		<ul>
+			<li>Execute a specialized security project over 12 weeks that directly improves Cloudflare’s defensive posture.</li>
+			<li>High-level job responsibilities includes but not limited to -&nbsp;
+				<ul>
+					<li>Contribute to the development and maintenance of the user access review dashboard and associated metrics.</li>
+					<li>Execute comprehensive group analysis to precisely determine and document organizational group descriptions and ownership mandates.</li>
+					<li>Provide analytical support pertaining to the implementation and strategic application of Role-Based Access Control (RBAC).</li>
+				</ul>
+			</li>
+			<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
+			<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
+			<li>Present your security project to the entire company at the end of the internship.</li>
+			<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+			<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
+		</ul>
+	</li>
 </ul>
-<h2 id="JD:BusinessSystemAnalyst-Requiredskills,knowledge,andexperience">Required skills, knowledge, and experience</h2>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience at a high scale technology business, ideally with a self serve motion</li>
-	<li>A track record of owning ambiguous problems end to end and driving them to a measurable outcome</li>
-	<li>Strong SQL proficiency and comfort working with large datasets</li>
-	<li>Familiarity with Python for scripting and light automation</li>
-	<li>Solid understanding of how systems integrate: APIs, webhooks, and event driven flows</li>
-	<li>Hands on with AI tooling in your daily workflow</li>
-	<li>Program management and process improvement experience</li>
-	<li>Excellent written and verbal communication</li>
-	<li>Investigative and detail oriented, you want the actual root cause rather than a plausible one</li>
-	<li>A bias to go straight to the data and drive problems to resolution without waiting for direction</li>
-	<li>Analytical, you can tell an anecdote from a pattern and quantify the difference</li>
-	<li>Systems thinking, you fix the class of problem rather than the single instance</li>
-	<li>Comfort with ambiguity and shifting priorities</li>
+	<li>Proficiency with Google Sheets for filtering, sorting, VLOOKUP, and basic data manipulation to support review efforts.</li>
+	<li>Familiarity with SQL is a significant plus, as IGA analysis often involves querying access logs or user tables to support metrics and dashboards.</li>
+	<li>Understanding of roles, groups, and permissions, and how they relate to the concept of "least privilege."</li>
+	<li>Ability to use tools like Google Docs, Wiki to create clear, organized documentation for processes, roles, and review evidence.</li>
+	<li>Clear and professional verbal and written communication skills for interacting with application owners and stakeholders to gather information during access reviews.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in our Austin office</li>
 </ul>
-<h2 id="JD:BusinessSystemAnalyst-BonusPoints">Bonus Points</h2>
-<ul>
-	<li>Experience working with billing or subscription systems (Stripe, Zuora, or similar)</li>
-	<li>Experience with fraud, payment abuse, chargebacks, or trust and safety type investigations</li>
-	<li>Experience running end to end validation across multiple systems</li>
-	<li>Familiarity with the finance side of quote to cash</li>
-</ul>
-<p>&nbsp;</p>
+<p><strong>Bonus:</strong> Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
