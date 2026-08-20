@@ -52,7 +52,7 @@
 </script>
 <p>There are several useful signals packed into this request. The hostname and path identify the destination. The authorization header carries the credential used to authenticate the caller when the server requires one. The header: <code>MCP-Protocol-Version</code> identifies the protocol version, while <code>Mcp-Method</code> and <code>Mcp-Name</code> expose the operation and tool in the new stateless protocol. The JSON-RPC envelope repeats the method, gives the request an <code>id</code> that the client can match with a response, and carries the tool arguments in <code>params</code>.</p>
 <p>The arguments are the most sensitive part. They can contain a search query, source code, customer data, or instructions for an action such as creating a ticket or changing infrastructure. The tool name says what the agent intends to call; the arguments say what data it will send and what action it wants the server to perform.</p>
-<p>If the call succeeds, the server returns a JSON-RPC response with the same id and the tool result. That response may also contain sensitive data. Request inspection can stop an unsafe action before execution, while response inspection and logging show what the tool returned to the agent.</p>
+<p>If the call succeeds, the server returns a JSON-RPC response with the same ID and the tool result. That response may also contain sensitive data. Request inspection can stop an unsafe action before execution, while response inspection and logging show what the tool returned to the agent.</p>
 <h2>Three places to control an MCP request</h2>
 <p>The request gives security teams three places to observe or control the call.</p>
 <h3>Inside the MCP client</h3>
