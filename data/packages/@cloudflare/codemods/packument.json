@@ -1,0 +1,60 @@
+{
+	"name": "@cloudflare/codemods",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "@cloudflare/codemods",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "de60d20ef208bfdc346ecb1dcba132b9a62ca864",
+				"tarball": "https://registry.npmjs.org/@cloudflare/codemods/-/codemods-0.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-0C5Ao47dOQBQovX4sp9Efw7+L3mcPK4/I6iO94AMSdNDncPLGNY1585CPaW/qSX9LKPbgrgWB72vi+TOXAjy1w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDJYB/iWJa4nwmmkzai2Np4b5PpTX+C74PoFsdDTCAA4gIhAIwFSuxBmX2EKB62pFOnGjHiKzgAAkt9kzT3phlWnW84",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 102
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/codemods",
+			"version": "0.1.0",
+			"devDependencies": {
+				"@types/node": "22.15.17",
+				"tinyglobby": "0.2.16",
+				"tsup": "8.3.0",
+				"typescript": "5.8.3",
+				"vitest": "4.1.0",
+				"@cloudflare/shared-ast-primitives": "1.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"bin": {
+				"cloudflare-codemods": "dist/bin.mjs"
+			},
+			"dist": {
+				"integrity": "sha512-esQFbDyNtaMjEEUzk9w60KcYZanDqmWU6ib9IYh/U30RIjeciN6DZlOb4FDUwXnyNmooGKAjwCSBbViEtGEyjw==",
+				"shasum": "44a16172a3a63da3716f86ce03b44c45aa45ef2b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/codemods/-/codemods-0.1.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 1469994,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemods@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDUEOKn1X6blNJZZlaQLO6CFuugVvqUa5bZkf+le2aJzgIhALJVAeK4fge5Tm3n2kXBJ3Z1qRMSSTRy/oZj7KMVfAPs"
+					}
+				]
+			}
+		}
+	}
+}
