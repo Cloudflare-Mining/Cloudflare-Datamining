@@ -3278,7 +3278,7 @@
 	{
 		"id": "2072033d694d415a936eaeb94e6405b8",
 		"name": "Workers Routes Read",
-		"description": "Grants read access to Cloudflare Workers and Workers KV Storage",
+		"description": "Grants read access for configuring Worker domains and routes",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		],
@@ -3287,7 +3287,7 @@
 	{
 		"id": "28f4b596e7d643029c524985477ae49a",
 		"name": "Workers Routes Write",
-		"description": "Grants write access to Cloudflare Workers and Workers KV Storage",
+		"description": "Grants read and write access for configuring Worker domains and routes",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		],
