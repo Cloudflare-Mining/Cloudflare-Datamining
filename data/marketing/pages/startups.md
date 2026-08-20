@@ -192,7 +192,7 @@ Business email required — no personal email addresses
 
 Begin building with Cloudflare
 
-[  Cloudflare Agents ](https://agents.cloudflare.com/)[  Developer docs ](https://developers.cloudflare.com)[  Discord community ](https://discord.cloudflare.com) 
+[  Build an agent ](https://agents.cloudflare.com/)[  Developer docs ](https://developers.cloudflare.com)[  Discord community ](https://discord.cloudflare.com)[  Cloudflare blog ](https://blog.cloudflare.com/) 
 
 ### Frequently asked questions
 
