@@ -38,7 +38,6 @@
 	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $178,000 - $245,000.</li>
 	<li>For Colorado based hires: Estimated annual salary of $162,000 - $223,000</li>
 </ul>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan.&nbsp;The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the&nbsp;Sales Compensation Plan.</p>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

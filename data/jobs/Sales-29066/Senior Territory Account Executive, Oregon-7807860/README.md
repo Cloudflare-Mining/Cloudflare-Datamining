@@ -5,10 +5,10 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Location: This is a remote role but the location requirement is that you reside in Las Vegas, NV<br></strong></h3>
+<h3><strong>Available Location: This is a remote role but the location requirement is that you reside in Oregon<br></strong></h3>
 <hr>
 <p><strong>What you'll do</strong></p>
-<p>Cloudflare is looking for highly motivated Named Account Executives seeking a role with the opportunity to help build a GTM working with some of the largest companies in North America. This position will manage a focused set of ~20-30 accounts with $1B -$25B in annual revenues. The Enterprise Account team will shape and lead Cloudflare’s Go To Market.</p>
+<p>Cloudflare is looking for highly motivated Territory Account Executives seeking a role with the opportunity to help build a GTM working with some of the largest companies in North America. This position will manage a focused set of ~20-30 accounts with $1B -$25B in annual revenues. The Enterprise Account team will shape and lead Cloudflare’s Go To Market.</p>
 <p>We will leverage the strength of all Cloudflare functions to become a strategic partner to our customers and their digital transformation efforts. Our product and services and our methods of engagement will differentiate and delight our customers.</p>
 <p>The AE will interact with both C-level clients and senior technical decision makers, utilizing Cloudflare solutions and resources to drive a business partnership focused on joint success with our customers.&nbsp; Success requires consultative, solutions-oriented sales, and customer service skills in addition to intense personal energy and focused activity. A critical factor of achievement in this role is the ability and desire to focus and lead an internal group of constituents to bring their skillset to bear to build solutions and exponentially grow revenue. The AE must be expert in identifying business opportunities with customers, developing Enterprise Account Plans, driving execution across functional stakeholders, and closing revenue. The Enterprise Account Executive should be comfortable engaging in business level outcome conversations with the C-suite, presenting Cloudflare’s vision and plan for value creation to all levels, and negotiating win-win scenarios for all parties. The AE will be accountable to obtaining new business and expansion of Cloudflare wallet-share within existing customers. The role involves handling multiple accounts and will require high degrees of attention to detail and coordination with customers, partners, and internal resources. Lastly, the AE should thrive in an entrepreneurial environment where initiative is celebrated and enthusiasm for the possible is expected.</p>
 <p><strong>Enterprise Account Team Core Values:</strong></p>
@@ -52,7 +52,6 @@
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>For Nevada based hires: Estimated annual salary of $244,000- $336,000</p>
 <p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong><br>The role is eligible to participate in Cloudflare's equity plan.</p>
 <p><strong>Benefits</strong></p>
