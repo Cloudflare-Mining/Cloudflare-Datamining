@@ -45,6 +45,23 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Linux container technologies, such as </span><strong>Docker and Kubernetes</strong><span style="font-weight: 400;">, is a plus.</span></li>
 </ul>
 <p><span style="font-weight: 400;">If you're passionate about building scalable and performant data platforms using cutting-edge technologies and want to work with a world-class team of engineers, then we want to hear from you! Join us in our mission to help build a better internet for everyone!</span></p>
+<p></p>
+<h3 data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="2">Compensation may be adjusted depending on work location.</p>
+<p data-path-to-node="2"></p>
+<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between €54,000 - €91,000.</p>
+<ul data-path-to-node="2">
+	<li>
+		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+	</li>
+</ul>
+<p data-path-to-node="2"></p>
+<p data-path-to-node="3">● For Denver based hires: Estimated annual salary of $136,000 - $231,000.</p>
+<p data-path-to-node="4">● For Washington, D.C. and Seattle based hires: Estimated annual salary of $150,000 - $154,000.</p>
+<p data-path-to-node="4"></p>
+<p data-path-to-node="4"></p>
+<p><span style="font-weight: 400;"></span></p>
+<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -72,6 +89,9 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p></p>
+<p>&nbsp;</p>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
