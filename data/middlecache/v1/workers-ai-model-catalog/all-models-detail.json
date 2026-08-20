@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-08-19T04:33:52.956Z",
-	"model_count": 223,
+	"generated_at": "2026-08-20T04:34:02.209Z",
+	"model_count": 224,
 	"models": {
 		"alibaba/hh1-i2v": {
 			"model_id": "alibaba/hh1-i2v",
@@ -37211,6 +37211,247 @@
 				]
 			}
 		},
+		"black-forest-labs/flux-1-kontext-max": {
+			"model_id": "black-forest-labs/flux-1-kontext-max",
+			"slug": "black-forest-labs/flux-1-kontext-max",
+			"display_name": "FLUX.1 Kontext [max]",
+			"description": "FLUX.1 Kontext [max] is Black Forest Labs' highest-quality Kontext model for text-to-image generation and context-aware image editing.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Maximum Quality"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://blackforestlabs.ai/terms-of-service/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[max]"
+				}
+			],
+			"metadata": {
+				"Max Reference Images": "1",
+				"Output Formats": "JPEG, PNG",
+				"Pricing": "$0.08 per image"
+			},
+			"external_info": "https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[max]",
+			"terms": "https://blackforestlabs.ai/terms-of-service/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/black-forest-labs/flux-1-kontext-max.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-08-19 20:45:47",
+			"updated_at": null,
+			"zdr_comment": null,
+			"banner": null,
+			"request_formats": null,
+			"examples": [
+				{
+					"name": "Maximum Quality Generation",
+					"description": "Create a high-quality image from a text prompt.",
+					"input": {
+						"prompt": "A lone warrior in bloodstained samurai armor stands before a pagoda engulfed in flames, cinematic dark fantasy realism"
+					},
+					"output": {
+						"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-max/maximum-quality-generation.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-max/maximum-quality-generation.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'black-forest-labs/flux-1-kontext-max',\n  {\n    prompt:\n      'A lone warrior in bloodstained samurai armor stands before a pagoda engulfed in flames, cinematic dark fantasy realism',\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"black-forest-labs/flux-1-kontext-max\",\n  \"input\": {\n    \"prompt\": \"A lone warrior in bloodstained samurai armor stands before a pagoda engulfed in flames, cinematic dark fantasy realism\"\n  }\n}'"
+						}
+					]
+				},
+				{
+					"name": "Reproducible Generation",
+					"description": "Use a seed and PNG output for reproducible image generation.",
+					"input": {
+						"prompt": "A detailed oil painting portrait of a Renaissance nobleman with an intricate lace collar",
+						"seed": 42,
+						"output_format": "png"
+					},
+					"output": {
+						"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-max/reproducible-generation.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-max/reproducible-generation.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'black-forest-labs/flux-1-kontext-max',\n  {\n    prompt:\n      'A detailed oil painting portrait of a Renaissance nobleman with an intricate lace collar',\n    seed: 42,\n    output_format: 'png',\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"black-forest-labs/flux-1-kontext-max\",\n  \"input\": {\n    \"prompt\": \"A detailed oil painting portrait of a Renaissance nobleman with an intricate lace collar\",\n    \"seed\": 42,\n    \"output_format\": \"png\"\n  }\n}'"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/black-forest-labs/flux-1-kontext-max/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
+		"black-forest-labs/flux-1-kontext-pro": {
+			"model_id": "black-forest-labs/flux-1-kontext-pro",
+			"slug": "black-forest-labs/flux-1-kontext-pro",
+			"display_name": "FLUX.1 Kontext [pro]",
+			"description": "FLUX.1 Kontext [pro] creates and edits images from text prompts with strong character and style consistency.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Character Consistency"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://blackforestlabs.ai/terms-of-service/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[pro]"
+				}
+			],
+			"metadata": {
+				"Max Reference Images": "1",
+				"Output Formats": "JPEG, PNG",
+				"Pricing": "$0.04 per image"
+			},
+			"external_info": "https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[pro]",
+			"terms": "https://blackforestlabs.ai/terms-of-service/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/black-forest-labs/flux-1-kontext-pro.png",
+			"schema_version": "1.0.0",
+			"created_at": "2026-08-19 20:42:08",
+			"updated_at": null,
+			"zdr_comment": null,
+			"banner": null,
+			"request_formats": null,
+			"examples": [
+				{
+					"name": "Text to Image",
+					"description": "Create an image from a detailed text prompt.",
+					"input": {
+						"prompt": "A small furry elephant pet looks out from a cat house"
+					},
+					"output": {
+						"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-pro/text-to-image.png"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-pro/text-to-image.png"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'black-forest-labs/flux-1-kontext-pro',\n  { prompt: 'A small furry elephant pet looks out from a cat house' },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"black-forest-labs/flux-1-kontext-pro\",\n  \"input\": {\n    \"prompt\": \"A small furry elephant pet looks out from a cat house\"\n  }\n}'"
+						}
+					]
+				},
+				{
+					"name": "Wide Cinematic Image",
+					"description": "Generate a cinematic landscape using a wide aspect ratio.",
+					"input": {
+						"prompt": "A remote gas station swallowed by crimson fog, green glow from overhead lights staining the asphalt, cinematic wide shot",
+						"input_image": "https://cdn.sanity.io/images/gsvmb6gz/production/3ae6ee032b85373b84934574f3ac3bb2fb792d64-2048x1365.jpg",
+						"aspect_ratio": "16:9",
+						"output_format": "jpeg"
+					},
+					"output": {
+						"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-pro/wide-cinematic-image.jpeg"
+					},
+					"raw_response": {
+						"state": "Completed",
+						"result": {
+							"image": "https://examples.aig.cloudflare.com/black-forest-labs/flux-1-kontext-pro/wide-cinematic-image.jpeg"
+						},
+						"gatewayMetadata": {
+							"keySource": "Unified"
+						}
+					},
+					"code_snippets": [
+						{
+							"label": "typescript",
+							"language": "typescript",
+							"code": "const response = await env.AI.run(\n  'black-forest-labs/flux-1-kontext-pro',\n  {\n    prompt:\n      'A remote gas station swallowed by crimson fog, green glow from overhead lights staining the asphalt, cinematic wide shot',\n    input_image:\n      'https://cdn.sanity.io/images/gsvmb6gz/production/3ae6ee032b85373b84934574f3ac3bb2fb792d64-2048x1365.jpg',\n    aspect_ratio: '16:9',\n    output_format: 'jpeg',\n  },\n)\nconsole.log(response)"
+						},
+						{
+							"label": "curl",
+							"language": "bash",
+							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"black-forest-labs/flux-1-kontext-pro\",\n  \"input\": {\n    \"prompt\": \"A remote gas station swallowed by crimson fog, green glow from overhead lights staining the asphalt, cinematic wide shot\",\n    \"input_image\": \"https://cdn.sanity.io/images/gsvmb6gz/production/3ae6ee032b85373b84934574f3ac3bb2fb792d64-2048x1365.jpg\",\n    \"aspect_ratio\": \"16:9\",\n    \"output_format\": \"jpeg\"\n  }\n}'"
+						}
+					]
+				}
+			],
+			"default_example": null,
+			"code_snippets": [],
+			"schema_manifest": {
+				"parameters_json": "v1/workers-ai-model-catalog/models/black-forest-labs/flux-1-kontext-pro/parameters.json",
+				"raw_files": [
+					"schema-input.json",
+					"schema-output.json"
+				]
+			}
+		},
 		"black-forest-labs/flux-2-flex": {
 			"model_id": "black-forest-labs/flux-2-flex",
 			"slug": "black-forest-labs/flux-2-flex",
@@ -54822,224 +55063,6 @@
 			"code_snippets": [],
 			"schema_manifest": {
 				"parameters_json": "v1/workers-ai-model-catalog/models/google/gemini-3.7-flash/parameters.json",
-				"raw_files": [
-					"schema-input.json",
-					"schema-output.json"
-				]
-			}
-		},
-		"google/imagen-4": {
-			"model_id": "google/imagen-4",
-			"slug": "google/imagen-4",
-			"display_name": "Imagen 4",
-			"description": "Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.",
-			"task": {
-				"id": "",
-				"name": "Text-to-Image",
-				"description": ""
-			},
-			"tags": [
-				"Image Generation",
-				"High Quality",
-				"Photorealistic"
-			],
-			"context_length": null,
-			"max_output_tokens": null,
-			"supports_async": false,
-			"hosting": "proxied",
-			"data_source": "catalog",
-			"properties": [
-				{
-					"property_id": "terms",
-					"value": "https://ai.google.dev/gemini-api/terms"
-				},
-				{
-					"property_id": "info",
-					"value": "https://deepmind.google/technologies/imagen/"
-				},
-				{
-					"property_id": "zdr",
-					"value": "true"
-				}
-			],
-			"metadata": {
-				"Aspect Ratios": "1:1, 3:4, 4:3, 9:16, 16:9",
-				"Person Generation": "Configurable (dont_allow, allow_adult, allow_all)"
-			},
-			"external_info": "https://deepmind.google/technologies/imagen/",
-			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/imagen-4.png",
-			"schema_version": "1.0.0",
-			"created_at": "2026-05-22 17:53:11",
-			"updated_at": null,
-			"zdr_comment": null,
-			"banner": null,
-			"request_formats": null,
-			"examples": [
-				{
-					"name": "Simple Generation",
-					"description": "Basic text-to-image with just a prompt",
-					"input": {
-						"prompt": "A golden retriever puppy playing in autumn leaves"
-					},
-					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png"
-					},
-					"raw_response": {
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png"
-						},
-						"state": "Completed"
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/imagen-4',\n  { prompt: 'A golden retriever puppy playing in autumn leaves' },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/imagen-4\",\n  \"input\": {\n    \"prompt\": \"A golden retriever puppy playing in autumn leaves\"\n  }\n}'"
-						}
-					]
-				},
-				{
-					"name": "Widescreen Landscape",
-					"description": "Generate a widescreen landscape image",
-					"input": {
-						"prompt": "A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones",
-						"aspect_ratio": "16:9"
-					},
-					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png"
-					},
-					"raw_response": {
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png"
-						},
-						"state": "Completed"
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/imagen-4',\n  {\n    prompt:\n      'A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones',\n    aspect_ratio: '16:9',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/imagen-4\",\n  \"input\": {\n    \"prompt\": \"A dramatic drone shot of a winding river through an autumn forest, warm golden and red tones\",\n    \"aspect_ratio\": \"16:9\"\n  }\n}'"
-						}
-					]
-				},
-				{
-					"name": "Portrait Format",
-					"description": "Vertical portrait-style image",
-					"input": {
-						"prompt": "An elegant Art Deco poster featuring a jazz singer under a spotlight",
-						"aspect_ratio": "9:16"
-					},
-					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png"
-					},
-					"raw_response": {
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png"
-						},
-						"state": "Completed"
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/imagen-4',\n  {\n    prompt: 'An elegant Art Deco poster featuring a jazz singer under a spotlight',\n    aspect_ratio: '9:16',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/imagen-4\",\n  \"input\": {\n    \"prompt\": \"An elegant Art Deco poster featuring a jazz singer under a spotlight\",\n    \"aspect_ratio\": \"9:16\"\n  }\n}'"
-						}
-					]
-				},
-				{
-					"name": "With People",
-					"description": "Allow generation of adult people",
-					"input": {
-						"prompt": "A chef preparing sushi in a traditional Japanese kitchen, detailed close-up",
-						"person_generation": "allow_adult"
-					},
-					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png"
-					},
-					"raw_response": {
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png"
-						},
-						"state": "Completed"
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/imagen-4',\n  {\n    prompt: 'A chef preparing sushi in a traditional Japanese kitchen, detailed close-up',\n    person_generation: 'allow_adult',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/imagen-4\",\n  \"input\": {\n    \"prompt\": \"A chef preparing sushi in a traditional Japanese kitchen, detailed close-up\",\n    \"person_generation\": \"allow_adult\"\n  }\n}'"
-						}
-					]
-				},
-				{
-					"name": "Product Photo",
-					"description": "Square product photography",
-					"input": {
-						"prompt": "A sleek wireless headphone on a minimalist white marble surface with soft studio lighting",
-						"aspect_ratio": "1:1"
-					},
-					"output": {
-						"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png"
-					},
-					"raw_response": {
-						"gatewayMetadata": {
-							"keySource": "Unified"
-						},
-						"result": {
-							"image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png"
-						},
-						"state": "Completed"
-					},
-					"code_snippets": [
-						{
-							"label": "typescript",
-							"language": "typescript",
-							"code": "const response = await env.AI.run(\n  'google/imagen-4',\n  {\n    prompt:\n      'A sleek wireless headphone on a minimalist white marble surface with soft studio lighting',\n    aspect_ratio: '1:1',\n  },\n)\nconsole.log(response)"
-						},
-						{
-							"label": "curl",
-							"language": "bash",
-							"code": "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \\\n  --header \"Authorization: Bearer $CLOUDFLARE_API_TOKEN\" \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\n  \"model\": \"google/imagen-4\",\n  \"input\": {\n    \"prompt\": \"A sleek wireless headphone on a minimalist white marble surface with soft studio lighting\",\n    \"aspect_ratio\": \"1:1\"\n  }\n}'"
-						}
-					]
-				}
-			],
-			"default_example": null,
-			"code_snippets": [],
-			"schema_manifest": {
-				"parameters_json": "v1/workers-ai-model-catalog/models/google/imagen-4/parameters.json",
 				"raw_files": [
 					"schema-input.json",
 					"schema-output.json"
@@ -175028,7 +175051,12 @@
 			"created_at": "2026-07-10 02:48:18",
 			"updated_at": null,
 			"zdr_comment": null,
-			"banner": null,
+			"banner": {
+				"id": "e2dc316b-8765-407f-8405-058ab5d502c8",
+				"text": "GPT-5.6 Sol is 50% off through Sept 18",
+				"severity": "info",
+				"dismissible": true
+			},
 			"request_formats": [
 				"responses"
 			],
@@ -254730,10 +254758,6 @@
 			"data_source": "legacy",
 			"properties": [
 				{
-					"property_id": "beta",
-					"value": "true"
-				},
-				{
 					"property_id": "context_window",
 					"value": "15000"
 				},
@@ -254743,7 +254767,7 @@
 				}
 			],
 			"metadata": {
-				"beta": true,
+				"beta": false,
 				"lora": true,
 				"function_calling": false,
 				"partner": false,
