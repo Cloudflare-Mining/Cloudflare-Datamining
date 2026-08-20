@@ -6229,7 +6229,7 @@
 		"requests": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountImagesTransformationsAdaptiveGroups": {
-		"__description": "Image transformations grouped by zone, binding request type, worker binding script ID, and transformation string",
+		"__description": "Image transformations performed for an account, grouped by zone, Worker script, transformation and origin host. Counts only transformations the resizer actually performed, so this is estimated processing volume rather than end-user request count or invoice total",
 		"avg": "The average value for a metric per dimensions",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Estimated number of requests per specific dimensions using adaptive sampling weights",
@@ -9889,6 +9889,43 @@
 		"billableOperations": "Confidence interval for the corresponding point estimate",
 		"bytes": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountR2BandwidthUsageAdaptiveGroups": {
+		"__description": "Estimated R2 transfer usage with adaptive sampling. Transfers smaller than 100 KiB are excluded.",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountR2BandwidthUsageAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountR2BandwidthUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"bucketName": "The canonical R2 bucket identifier, including its jurisdiction prefix when applicable",
+		"date": "Transfer timestamp, truncated to the start of a day",
+		"datetime": "Transfer timestamp",
+		"datetimeFifteenMinutes": "Transfer timestamp, truncated to the start of fifteen minutes",
+		"datetimeFiveMinutes": "Transfer timestamp, truncated to the start of five minutes",
+		"datetimeHour": "Transfer timestamp, truncated to the start of an hour",
+		"datetimeMinute": "Transfer timestamp, truncated to the start of a minute"
+	},
+	"AccountR2BandwidthUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountR2BandwidthUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountR2BandwidthUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"bytesDownload": "Estimated downloaded bytes, weighted by the adaptive sample interval",
+		"bytesUpload": "Estimated uploaded bytes, weighted by the adaptive sample interval"
+	},
+	"AccountR2BandwidthUsageAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"bytesDownload": "Confidence interval for the corresponding point estimate",
+		"bytesUpload": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountR2CatalogDataOperationsAdaptiveGroups": {
 		"__description": "R2 Data Catalog data plane operations (Iceberg REST API requests) with adaptive sampling",
 		"avg": "The average of values for a metric per dimension",
@@ -10806,6 +10843,7 @@
 		"queueConsumerMetricsAdaptiveGroups": "",
 		"queueDelayedBacklogAdaptiveGroups": "",
 		"queueMessageOperationsAdaptiveGroups": "",
+		"r2BandwidthUsageAdaptiveGroups": "",
 		"r2CatalogDataOperationsAdaptiveGroups": "",
 		"r2CatalogTableMaintenanceAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
@@ -16218,7 +16256,7 @@
 		"hyperdrivePoolSizesAdaptiveGroups": "Hyperdrive connection pool size snapshots with adaptive sampling.",
 		"hyperdriveQueriesAdaptiveGroups": "Hyperdrive query events with adaptive sampling.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
-		"imagesTransformationsAdaptiveGroups": "Image transformations grouped by zone, binding request type, worker binding script ID, and transformation string",
+		"imagesTransformationsAdaptiveGroups": "Image transformations performed for an account, grouped by zone, Worker script, transformation and origin host. Counts only transformations the resizer actually performed, so this is estimated processing volume rather than end-user request count or invoice total",
 		"imagesUniqueTransformations": "Image unique transfromations per day",
 		"imagesUniqueTransformationsAccumulatedSinceStartOfMonth": "Image unique transformations accumulated since start of month",
 		"kvOperationsAdaptiveGroups": "KV operations data with adaptive sampling",
@@ -16291,6 +16329,7 @@
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
 		"queueDelayedBacklogAdaptiveGroups": "Beta. Queue delayed backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueMessageOperationsAdaptiveGroups": "Beta. Queue message operation data with adaptive sampling",
+		"r2BandwidthUsageAdaptiveGroups": "Estimated R2 transfer usage with adaptive sampling. Transfers smaller than 100 KiB are excluded.",
 		"r2CatalogDataOperationsAdaptiveGroups": "R2 Data Catalog data plane operations (Iceberg REST API requests) with adaptive sampling",
 		"r2CatalogTableMaintenanceAdaptiveGroups": "R2 Data Catalog table maintenance job metrics (compaction, snapshot expiration) with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",

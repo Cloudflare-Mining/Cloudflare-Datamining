@@ -339131,7 +339131,7 @@
 					"possibleTypes": []
 				},
 				{
-					"description": "Image transformations grouped by zone, binding request type, worker binding script ID, and transformation string",
+					"description": "Image transformations performed for an account, grouped by zone, Worker script, transformation and origin host. Counts only transformations the resizer actually performed, so this is estimated processing volume rather than end-user request count or invoice total",
 					"enumValues": [],
 					"fields": [
 						{
@@ -339313,7 +339313,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "",
+							"description": "The date the transformation request was served",
 							"isDeprecated": false,
 							"name": "date",
 							"type": {
@@ -339329,7 +339329,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "",
+							"description": "The date and time the transformation request was served",
 							"isDeprecated": false,
 							"name": "datetime",
 							"type": {
@@ -339345,7 +339345,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "",
+							"description": "The date and time the transformation request was served, truncated to a multiple of 15 minutes",
 							"isDeprecated": false,
 							"name": "datetimeFifteenMinutes",
 							"type": {
@@ -339361,7 +339361,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "",
+							"description": "The date and time the transformation request was served, truncated to a multiple of 5 minutes",
 							"isDeprecated": false,
 							"name": "datetimeFiveMinutes",
 							"type": {
@@ -339377,7 +339377,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "",
+							"description": "The date and time the transformation request was served, truncated to the hour",
 							"isDeprecated": false,
 							"name": "datetimeHour",
 							"type": {
@@ -339393,7 +339393,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "",
+							"description": "The date and time the transformation request was served, truncated to the minute",
 							"isDeprecated": false,
 							"name": "datetimeMinute",
 							"type": {
@@ -339441,7 +339441,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Worker script name associated with a binding transformation request",
+							"description": "Name of the Worker script that requested the transformation through the Images binding. Empty for transformations that did not come from a binding",
 							"isDeprecated": false,
 							"name": "scriptName",
 							"type": {
@@ -339473,7 +339473,23 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Associated zone",
+							"description": "Billing classification of the event: 0 when the account is not on unique transformation billing, 1 when the request was billable, 2 when the account is on the free tier",
+							"isDeprecated": false,
+							"name": "version",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "int64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Zone the transformation was requested through. Binding requests are not associated with a zone and report an all-zero tag",
 							"isDeprecated": false,
 							"name": "zoneTag",
 							"type": {
@@ -340541,6 +340557,102 @@
 						{
 							"defaultValue": null,
 							"description": "",
+							"name": "version",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "version_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "version_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "version_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "version_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "version_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "version_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "int64",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "version_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "int64",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
 							"name": "zoneTag",
 							"type": {
 								"kind": "SCALAR",
@@ -340797,6 +340909,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "product ascending",
+							"isDeprecated": false,
+							"name": "product_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "product descending",
+							"isDeprecated": false,
+							"name": "product_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "scriptName ascending",
 							"isDeprecated": false,
 							"name": "scriptName_ASC"
@@ -340845,6 +340969,18 @@
 						},
 						{
 							"deprecationReason": null,
+							"description": "version ascending",
+							"isDeprecated": false,
+							"name": "version_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "version descending",
+							"isDeprecated": false,
+							"name": "version_DESC"
+						},
+						{
+							"deprecationReason": null,
 							"description": "zoneTag ascending",
 							"isDeprecated": false,
 							"name": "zoneTag_ASC"
@@ -340870,7 +341006,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Estimated number of billable transformation events using adaptive sampling weights",
+							"description": "Estimated count of billable transformation requests using adaptive sampling weights. Includes only version = 1 requests (unique transformation billing), so this can be lower than requests and is not an invoice figure",
 							"isDeprecated": false,
 							"name": "billableEventCount",
 							"type": {
@@ -340886,7 +341022,7 @@
 						{
 							"args": [],
 							"deprecationReason": null,
-							"description": "Estimated count of image transformation requests using adaptive sampling weights",
+							"description": "Estimated count of transformations performed, using adaptive sampling weights",
 							"isDeprecated": false,
 							"name": "requests",
 							"type": {
@@ -518160,6 +518296,1178 @@
 					"possibleTypes": []
 				},
 				{
+					"description": "Estimated R2 transfer usage with adaptive sampling. Transfers smaller than 100 KiB are excluded.",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "level",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "float64",
+											"ofType": null
+										}
+									}
+								}
+							],
+							"deprecationReason": null,
+							"description": "ALPHA - DO NOT USE",
+							"isDeprecated": false,
+							"name": "confidence",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "AccountR2BandwidthUsageAdaptiveGroupsConfidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "List of dimensions to group by",
+							"isDeprecated": false,
+							"name": "dimensions",
+							"type": {
+								"kind": "OBJECT",
+								"name": "AccountR2BandwidthUsageAdaptiveGroupsDimensions",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The sum of values for a metric per dimension",
+							"isDeprecated": false,
+							"name": "sum",
+							"type": {
+								"kind": "OBJECT",
+								"name": "AccountR2BandwidthUsageAdaptiveGroupsSum",
+								"ofType": null
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountR2BandwidthUsageAdaptiveGroups",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence level that was requested",
+							"isDeprecated": false,
+							"name": "level",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "float64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The sum of values for a metric per dimension, with confidence intervals",
+							"isDeprecated": false,
+							"name": "sum",
+							"type": {
+								"kind": "OBJECT",
+								"name": "AccountR2BandwidthUsageAdaptiveGroupsSumConfidence",
+								"ofType": null
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountR2BandwidthUsageAdaptiveGroupsConfidence",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "The canonical R2 bucket identifier, including its jurisdiction prefix when applicable",
+							"isDeprecated": false,
+							"name": "bucketName",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "string",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Transfer timestamp, truncated to the start of a day",
+							"isDeprecated": false,
+							"name": "date",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Date",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Transfer timestamp",
+							"isDeprecated": false,
+							"name": "datetime",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Transfer timestamp, truncated to the start of fifteen minutes",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Transfer timestamp, truncated to the start of five minutes",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Transfer timestamp, truncated to the start of an hour",
+							"isDeprecated": false,
+							"name": "datetimeHour",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Transfer timestamp, truncated to the start of a minute",
+							"isDeprecated": false,
+							"name": "datetimeMinute",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "Time",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountR2BandwidthUsageAdaptiveGroupsDimensions",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [],
+					"inputFields": [
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "AND",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "AccountR2BandwidthUsageAdaptiveGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "OR",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "INPUT_OBJECT",
+										"name": "AccountR2BandwidthUsageAdaptiveGroupsFilter_InputObject",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_like",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "string",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "bucketName_notlike",
+							"type": {
+								"kind": "SCALAR",
+								"name": "string",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Date",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "date_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Date",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFifteenMinutes_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeFiveMinutes_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeHour_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetimeMinute_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_geq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_gt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_in",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_leq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_lt",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_neq",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Time",
+								"ofType": null
+							}
+						},
+						{
+							"defaultValue": null,
+							"description": "",
+							"name": "datetime_notin",
+							"type": {
+								"kind": "LIST",
+								"name": "",
+								"ofType": {
+									"kind": "NON_NULL",
+									"name": "",
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Time",
+										"ofType": null
+									}
+								}
+							}
+						}
+					],
+					"interfaces": [],
+					"kind": "INPUT_OBJECT",
+					"name": "AccountR2BandwidthUsageAdaptiveGroupsFilter_InputObject",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [
+						{
+							"deprecationReason": null,
+							"description": "bucketName ascending",
+							"isDeprecated": false,
+							"name": "bucketName_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "bucketName descending",
+							"isDeprecated": false,
+							"name": "bucketName_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "date ascending",
+							"isDeprecated": false,
+							"name": "date_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "date descending",
+							"isDeprecated": false,
+							"name": "date_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFifteenMinutes ascending",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFifteenMinutes descending",
+							"isDeprecated": false,
+							"name": "datetimeFifteenMinutes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFiveMinutes ascending",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeFiveMinutes descending",
+							"isDeprecated": false,
+							"name": "datetimeFiveMinutes_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour ascending",
+							"isDeprecated": false,
+							"name": "datetimeHour_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeHour descending",
+							"isDeprecated": false,
+							"name": "datetimeHour_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeMinute ascending",
+							"isDeprecated": false,
+							"name": "datetimeMinute_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetimeMinute descending",
+							"isDeprecated": false,
+							"name": "datetimeMinute_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetime ascending",
+							"isDeprecated": false,
+							"name": "datetime_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "datetime descending",
+							"isDeprecated": false,
+							"name": "datetime_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(bytesDownload) ascending",
+							"isDeprecated": false,
+							"name": "sum_bytesDownload_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(bytesDownload) descending",
+							"isDeprecated": false,
+							"name": "sum_bytesDownload_DESC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(bytesUpload) ascending",
+							"isDeprecated": false,
+							"name": "sum_bytesUpload_ASC"
+						},
+						{
+							"deprecationReason": null,
+							"description": "sum(bytesUpload) descending",
+							"isDeprecated": false,
+							"name": "sum_bytesUpload_DESC"
+						}
+					],
+					"fields": [],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "ENUM",
+					"name": "AccountR2BandwidthUsageAdaptiveGroupsOrderBy",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated downloaded bytes, weighted by the adaptive sample interval",
+							"isDeprecated": false,
+							"name": "bytesDownload",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Estimated uploaded bytes, weighted by the adaptive sample interval",
+							"isDeprecated": false,
+							"name": "bytesUpload",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "SCALAR",
+									"name": "uint64",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountR2BandwidthUsageAdaptiveGroupsSum",
+					"possibleTypes": []
+				},
+				{
+					"description": "",
+					"enumValues": [],
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "bytesDownload",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Confidence interval for the corresponding point estimate",
+							"isDeprecated": false,
+							"name": "bytesUpload",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Confidence",
+									"ofType": null
+								}
+							}
+						}
+					],
+					"inputFields": [],
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "AccountR2BandwidthUsageAdaptiveGroupsSumConfidence",
+					"possibleTypes": []
+				},
+				{
 					"description": "R2 Data Catalog data plane operations (Iceberg REST API requests) with adaptive sampling",
 					"enumValues": [],
 					"fields": [
@@ -553611,6 +554919,22 @@
 							"description": "",
 							"isDeprecated": false,
 							"name": "queueMessageOperationsAdaptiveGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Settings",
+									"ofType": null
+								}
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "",
+							"isDeprecated": false,
+							"name": "r2BandwidthUsageAdaptiveGroups",
 							"type": {
 								"kind": "NON_NULL",
 								"name": "",
@@ -849245,7 +850569,7 @@
 								}
 							],
 							"deprecationReason": null,
-							"description": "Image transformations grouped by zone, binding request type, worker binding script ID, and transformation string",
+							"description": "Image transformations performed for an account, grouped by zone, Worker script, transformation and origin host. Counts only transformations the resizer actually performed, so this is estimated processing volume rather than end-user request count or invoice total",
 							"isDeprecated": false,
 							"name": "imagesTransformationsAdaptiveGroups",
 							"type": {
@@ -854372,6 +855696,77 @@
 										"ofType": {
 											"kind": "OBJECT",
 											"name": "AccountQueueMessageOperationsAdaptiveGroups",
+											"ofType": null
+										}
+									}
+								}
+							}
+						},
+						{
+							"args": [
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "filter",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "INPUT_OBJECT",
+											"name": "AccountR2BandwidthUsageAdaptiveGroupsFilter_InputObject",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "limit",
+									"type": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "uint64",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": "",
+									"name": "orderBy",
+									"type": {
+										"kind": "LIST",
+										"name": "",
+										"ofType": {
+											"kind": "NON_NULL",
+											"name": "",
+											"ofType": {
+												"kind": "ENUM",
+												"name": "AccountR2BandwidthUsageAdaptiveGroupsOrderBy",
+												"ofType": null
+											}
+										}
+									}
+								}
+							],
+							"deprecationReason": null,
+							"description": "Estimated R2 transfer usage with adaptive sampling. Transfers smaller than 100 KiB are excluded.",
+							"isDeprecated": false,
+							"name": "r2BandwidthUsageAdaptiveGroups",
+							"type": {
+								"kind": "NON_NULL",
+								"name": "",
+								"ofType": {
+									"kind": "LIST",
+									"name": "",
+									"ofType": {
+										"kind": "NON_NULL",
+										"name": "",
+										"ofType": {
+											"kind": "OBJECT",
+											"name": "AccountR2BandwidthUsageAdaptiveGroups",
 											"ofType": null
 										}
 									}
