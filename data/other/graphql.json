@@ -6248,17 +6248,18 @@
 	},
 	"AccountImagesTransformationsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"date": "",
-		"datetime": "",
-		"datetimeFifteenMinutes": "",
-		"datetimeFiveMinutes": "",
-		"datetimeHour": "",
-		"datetimeMinute": "",
+		"date": "The date the transformation request was served",
+		"datetime": "The date and time the transformation request was served",
+		"datetimeFifteenMinutes": "The date and time the transformation request was served, truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time the transformation request was served, truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time the transformation request was served, truncated to the hour",
+		"datetimeMinute": "The date and time the transformation request was served, truncated to the minute",
 		"isBindingRequest": "1 when the transformation request originates from a Worker binding, otherwise 0",
 		"originHost": "Hostname of the origin image URL",
-		"scriptName": "Worker script name associated with a binding transformation request",
+		"scriptName": "Name of the Worker script that requested the transformation through the Images binding. Empty for transformations that did not come from a binding",
 		"transformation": "Image transformation string",
-		"zoneTag": "Associated zone"
+		"version": "Billing classification of the event: 0 when the account is not on unique transformation billing, 1 when the request was billable, 2 when the account is on the free tier",
+		"zoneTag": "Zone the transformation was requested through. Binding requests are not associated with a zone and report an all-zero tag"
 	},
 	"AccountImagesTransformationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -6268,8 +6269,8 @@
 	},
 	"AccountImagesTransformationsAdaptiveGroupsSum": {
 		"__description": "",
-		"billableEventCount": "Estimated number of billable transformation events using adaptive sampling weights",
-		"requests": "Estimated count of image transformation requests using adaptive sampling weights"
+		"billableEventCount": "Estimated count of billable transformation requests using adaptive sampling weights. Includes only version = 1 requests (unique transformation billing), so this can be lower than requests and is not an invoice figure",
+		"requests": "Estimated count of transformations performed, using adaptive sampling weights"
 	},
 	"AccountImagesTransformationsAdaptiveGroupsSumConfidence": {
 		"__description": "",
