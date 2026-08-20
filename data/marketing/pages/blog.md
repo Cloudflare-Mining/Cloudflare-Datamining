@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 20, 2026[From all-or-nothing to task-based OAuth consent](https://blog.cloudflare.com/task-based-oauth-consent/)
+
+Cloudflare OAuth now supports optional scopes, giving users more control over what an app can access and helping developers build secure consent flows around the task at hand.
+
+![Miller Vargas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2HM2Z37MDHV3RTS1N280R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Adam Bouhmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V48CPK64MWTYNSCVTA3E.webp&w=64&h=64&f=webp&fit=cover&position=center)![José Enrique Rodríguez](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2KF6STNPG58C7R3CDSF28.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Miller Vargas](https://blog.cloudflare.com/author/miller-vargas/), [Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/), and [José Enrique Rodríguez](https://blog.cloudflare.com/author/jose-enrique-rodriguez/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2VFX1WXFF6TK51VFNP5V3.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/task-based-oauth-consent/)
+
 August 19, 2026[A revisit of remote Spectre attacks on Cloudflare Workers](https://blog.cloudflare.com/revisiting-spectre-attacks-on-workers/)
 
 In 2024 and 2025, we reassessed remote Spectre attacks on our Workers infrastructure. We share details about the new attack primitives like Spectre gadgets, remote timers, achieving co-location and how new defenses further harden Cloudflare Workers. 
@@ -13,8 +23,6 @@ In 2024 and 2025, we reassessed remote Spectre attacks on our Workers infrastruc
 ![Martin Schwarzl](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Q44FVCNYF3AKGF6DGP9G.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Albert Pedersen](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X1RPT45576XPREMG1CQ3.webp&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Martin Schwarzl](https://blog.cloudflare.com/author/martin/) and [Albert Pedersen](https://blog.cloudflare.com/author/albert-pedersen/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M00XZZC7473CXRW6EF1Z69ZW.png&w=1999&h=1125&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/revisiting-spectre-attacks-on-workers/)
 
 August 18, 2026[BGP Role model: tracking the adoption of RFC 9234](https://blog.cloudflare.com/rfc9234-bgp-role-model/)
 
@@ -151,14 +159,6 @@ We should be giving all agents tools that excel at what's important for an AI mo
 ![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Ruskin Constant](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BW07W83PCRTM6JP4W61R.webp&w=64&h=64&f=webp&fit=cover&position=center)![Rui Figueira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VN7XMZ4WCQMGQSPJ2B3Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Luís Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4768W5B20EQMM9ZD5AQMED.png&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Celso Martinho](https://blog.cloudflare.com/author/celso/), [Ruskin Constant](https://blog.cloudflare.com/author/ruskin-constant/), [Rui Figueira](https://blog.cloudflare.com/author/rui-figueira/), and [Luís Duarte](https://blog.cloudflare.com/author/luis-duarte/)
-
-August 6, 2026[Give any website a WebMCP interface](https://blog.cloudflare.com/webmcp/)
-
-Today we're launching a developer preview of WebMCP on Cloudflare. With one switch, any site becomes usable by browser AI agents — no new APIs, no origin changes — while the human stays in control and creators keep their traffic.
-
-![Will Rowe](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZ9RTXYC845D1Y5KJHYETK71.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Will Rowe](https://blog.cloudflare.com/author/will-rowe/)
 
 Load more
 
