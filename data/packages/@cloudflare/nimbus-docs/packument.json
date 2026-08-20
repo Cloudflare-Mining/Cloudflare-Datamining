@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/nimbus-docs",
 	"dist-tags": {
-		"latest": "0.10.0"
+		"latest": "0.11.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -599,6 +599,83 @@
 			"name": "@cloudflare/nimbus-docs",
 			"version": "0.10.0",
 			"dependencies": {
+				"mri": "^1.2.0",
+				"clsx": "^2.1.1",
+				"yaml": "^2.7.1",
+				"giget": "^3.3.0",
+				"shiki": "^4.4.1",
+				"vfile": "^6.0.3",
+				"satteri": "^0.9.1",
+				"unified": "^11.0.5",
+				"picomatch": "^4.0.5",
+				"@astrojs/mdx": "~7.0.3",
+				"@clack/prompts": "^0.9.1",
+				"@iconify/tools": "^5.0.12",
+				"@iconify/types": "^2.0.0",
+				"@iconify/utils": "^3.1.4",
+				"@shikijs/types": "^4.4.1",
+				"github-slugger": "^2.0.0",
+				"tailwind-merge": "^3.5.0",
+				"@astrojs/sitemap": "^3.7.2",
+				"@vercel/detect-agent": "^1.2.3",
+				"@shikijs/transformers": "^4.4.1",
+				"@astrojs/markdown-satteri": "^0.3.4",
+				"remark-lint-emphasis-marker": "^4.0.1",
+				"remark-lint-no-literal-urls": "^4.0.1",
+				"remark-lint-fenced-code-flag": "^4.2.0",
+				"remark-lint-heading-increment": "^4.0.1",
+				"remark-lint-no-duplicate-headings": "^4.0.1",
+				"remark-lint-no-heading-punctuation": "^4.0.1",
+				"remark-lint-unordered-list-marker-style": "^4.0.1",
+				"remark-lint-no-multiple-toplevel-headings": "^4.0.1"
+			},
+			"devDependencies": {
+				"tsx": "^4.22.3",
+				"vite": "^8.0.0",
+				"astro": "~7.0.9",
+				"jsdom": "^29.1.1",
+				"tsdown": "^0.20.3",
+				"typescript": "^5.8.3",
+				"@mdx-js/mdx": "^3.1.1",
+				"@types/react": "^19.2.6",
+				"@types/picomatch": "^4.0.3",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"astro": ">=7.0.0 <7.1.0 || >=7.2.0 <8.0.0",
+				"react": ">=19.0.0",
+				"react-dom": ">=19.0.0"
+			},
+			"bin": {
+				"nimbus-docs": "dist/cli/index.js"
+			},
+			"dist": {
+				"shasum": "93b9d67838ebd7d90cd19db78cf8f0d1d1f22221",
+				"tarball": "https://registry.npmjs.org/@cloudflare/nimbus-docs/-/nimbus-docs-0.10.0.tgz",
+				"fileCount": 44,
+				"integrity": "sha512-IibwZoTUewGwy/WjZuI8AkmmQnp/fve3o0zkSGLZwuQ5VR7OjMtzJZU2EF3FRkt3dRgznRVK4g2yz9JMdBKs7w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDIP8ldxt20m3dfl3bIQVz1bu1Kdo/s/DoVk9ZY/j+q5wIgP/6POUgV1kGNu5kv1kBP1a5RB+30SjtdADfcGN04g4w=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fnimbus-docs@0.10.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 1897170
+			},
+			"engines": {
+				"node": ">=22.12.0"
+			}
+		},
+		"0.11.0": {
+			"name": "@cloudflare/nimbus-docs",
+			"version": "0.11.0",
+			"dependencies": {
 				"@astrojs/markdown-satteri": "^0.3.4",
 				"@astrojs/mdx": "~7.0.3",
 				"@astrojs/sitemap": "^3.7.2",
@@ -650,13 +727,13 @@
 				"nimbus-docs": "dist/cli/index.js"
 			},
 			"dist": {
-				"integrity": "sha512-IibwZoTUewGwy/WjZuI8AkmmQnp/fve3o0zkSGLZwuQ5VR7OjMtzJZU2EF3FRkt3dRgznRVK4g2yz9JMdBKs7w==",
-				"shasum": "93b9d67838ebd7d90cd19db78cf8f0d1d1f22221",
-				"tarball": "https://registry.npmjs.org/@cloudflare/nimbus-docs/-/nimbus-docs-0.10.0.tgz",
+				"integrity": "sha512-PF3ETVqsgp8ChBoRzqR/9dqpnAZVLd7EjYU1cCVSwPpgwXgIWeOZ7LTi+KTRIBKnA7fcTYjJGbDmS2zamLOv/A==",
+				"shasum": "07b60b5bd9cc1579861323c4b308afb8390cae5e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/nimbus-docs/-/nimbus-docs-0.11.0.tgz",
 				"fileCount": 44,
-				"unpackedSize": 1897170,
+				"unpackedSize": 1899521,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fnimbus-docs@0.10.0",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fnimbus-docs@0.11.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -664,7 +741,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDIP8ldxt20m3dfl3bIQVz1bu1Kdo/s/DoVk9ZY/j+q5wIgP/6POUgV1kGNu5kv1kBP1a5RB+30SjtdADfcGN04g4w="
+						"sig": "MEUCIB7UtEPxIKafhkHk+6Eh7C3I9iHyFmeTASu3nfV6CqVyAiEAp1RPvM9Rt4s7qiGWy/Jmvax6n/u02Di0X+RZD/pQ4gM="
 					}
 				]
 			},
