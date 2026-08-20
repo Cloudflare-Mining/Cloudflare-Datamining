@@ -1,0 +1,67 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"prompt": {
+			"description": "Text prompt for image generation or editing.",
+			"type": "string"
+		},
+		"input_image": {
+			"description": "Optional base64 encoded image or URL to edit.",
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"aspect_ratio": {
+			"description": "Output aspect ratio, from 3:7 to 7:3. Defaults to 1:1.",
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"seed": {
+			"description": "Optional seed for reproducible generation.",
+			"anyOf": [
+				{
+					"type": "integer",
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"prompt_upsampling": {
+			"description": "Whether to upsample the prompt. Defaults to false.",
+			"type": "boolean"
+		},
+		"safety_tolerance": {
+			"description": "Moderation tolerance. 0 is strictest and 6 is most permissive.",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 6
+		},
+		"output_format": {
+			"description": "Output image format. Defaults to jpeg.",
+			"type": "string",
+			"enum": [
+				"jpeg",
+				"png"
+			]
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"additionalProperties": false
+}
