@@ -4284,6 +4284,17 @@ Serverless functions that run everywhere, instantly
 | Requests | 100k / day | $0.30 / million requests |
 | CPU Time | 10 ms / request | $0.02 / million CPU ms |
 
+### [Containers](https://developers.cloudflare.com/containers/)
+
+Run any language in secure, global containers (also applies to Sandboxes)
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Memory | 25 GiB-hrs included | $0.0000025 / GiB-second |
+| CPU | 375 vCPU-min included | $0.000020 / vCPU-second |
+| Disk | 200 GB-hrs included | $0.00000007 / GB-second |
+| Network Egress (NA/EU) | 1 TB included | $0.025 / GB |
+
 ### [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)
 
 Deploy Workers on behalf of your customers
@@ -4302,8 +4313,8 @@ Stateful compute for real-time coordination
 |-----------|-----------|-------|
 | Requests | 100,000 requests / day | $0.15 / million requests |
 | Duration | 13,000 GB-s / day | $12.50 / million GB-s |
-| SQL Rows Read | — | $0.001 / million rows |
-| SQL Rows Written | — | $1.00 / million rows |
+| SQL Rows Read | 50M / day | $0.001 / million rows |
+| SQL Rows Written | 100K / day | $1.00 / million rows |
 | SQL Stored Data | 5 GB | $0.20 / GB-month |
 | Read Request Units (KV Storage Backend) | — | $0.20 / million rows |
 | Write Request Units (KV Storage Backend) | — | $1.00 / million rows |
@@ -4328,6 +4339,14 @@ Orchestrate complex multi-step processes
 | Requests | 100k / day | $0.30 / million requests |
 | CPU Time | 10 ms / invocation | $0.02 / million CPU ms |
 | Storage | 1 GB | $0.20 / GB-month |
+
+### Dynamic Workers
+
+Spin up Workers at runtime to execute code on-demand
+
+| Component | Price |
+|-----------|-------|
+| Dynamic Workers | $0.002 / Dynamic Worker |
 
 ## Storage & Data
 
@@ -4388,7 +4407,7 @@ Make any database global instantly
 
 | Component | Free Tier | Price |
 |-----------|-----------|-------|
-| Queries |  100,000 / day | Free |
+| Queries | 100,000 / day | Free |
 
 ### [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
 
@@ -4456,18 +4475,18 @@ Video hosting and live streaming
 
 Vector database for semantic search
 
-| Component | Price |
-|-----------|-------|
-| Vector Dimensions Queried | $0.01 / million |
-| Vector Dimensions Stored | $0.05 / hundred million |
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Vector Dimensions Queried | 30M queried dimensions / month | $0.01 / million |
+| Vector Dimensions Stored | 5M stored dimensions | $0.05 / hundred million |
 
 ### [Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 50+ models running at the edge
 
-| Component | Price |
-|-----------|-------|
-| Neurons | $0.011 / thousand neurons |
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Neurons | 10,000 neurons / day | $0.011 / thousand neurons |
 
 ## Observability
 
@@ -4512,7 +4531,8 @@ Many Cloudflare services include generous free tiers:
 | Service | Free Tier Highlights |
 |---------|---------------------|
 | Workers | Requests: 100k / day, CPU Time: 10 ms / request |
-| Durable Objects | Requests: 100,000 requests / day, Duration: 13,000 GB-s / day, SQL Stored Data: 5 GB, Stored Data (KV Storage Backend): 1 GB |
+| Containers | Memory: 25 GiB-hrs included, CPU: 375 vCPU-min included, Disk: 200 GB-hrs included, Network Egress (NA/EU): 1 TB included |
+| Durable Objects | Requests: 100,000 requests / day, Duration: 13,000 GB-s / day, SQL Rows Read: 50M / day, SQL Rows Written: 100K / day, SQL Stored Data: 5 GB, Stored Data (KV Storage Backend): 1 GB |
 | Browser Rendering | Browser Hours: 10 min / day, Concurrent Browsers: 3 browsers |
 | Workflows | Requests: 100k / day, CPU Time: 10 ms / invocation, Storage: 1 GB |
 | R2 | Standard Storage: 10 GB-month, Standard Class A operations: 1 million, Standard Class B operations: 10 million |
@@ -4520,10 +4540,12 @@ Many Cloudflare services include generous free tiers:
 | D1 | Storage: 5 GB (total), Rows Read: 5 million / day, Rows Written: 100,000 / day |
 | Artifacts | Operations (1,000 operations): Coming Soon, Storage (GB-month): Coming Soon |
 | Queues | Standard Operations: 10,000 operations/day included |
-| Hyperdrive | Queries:  100,000 / day |
+| Hyperdrive | Queries: 100,000 / day |
 | Workers Analytics Engine | Data Points Written: 100,000 / day, Read Queries: 10,000 / day |
 | TURN / SFU | Data Egress: 1,000 GB / month |
 | Images | Unique Transformations: 5,000 / month |
+| Vectorize | Vector Dimensions Queried: 30M queried dimensions / month, Vector Dimensions Stored: 5M stored dimensions |
+| Workers AI | Neurons: 10,000 neurons / day |
 | Workers Logs | Events: 200k / day |
 
 ## Get Started
