@@ -1,0 +1,97 @@
+<p>Since June, developers have created thousands of <a href="https://blog.cloudflare.com/oauth-for-all" target="_blank" rel="noopener noreferrer"><u>third-party OAuth apps on Cloudflare</u></a>, with more than a million authorizations since.&nbsp;&nbsp;</p>
+<p>OAuth makes delegated access possible. It lets applications act on a user’s behalf without asking them to handle long-lived credentials or hand over a password. That model works well when an application can describe its access needs with a small set of scopes.&nbsp;</p>
+<p>Developers use OAuth for SaaS integrations, internal tools, CLIs, and agents. Our permission model has become more granular over time to support better scoping of these different workflows. That is great for security, but it makes a purely all-or-nothing consent screen hard to justify.</p>
+<p>Cloudflare OAuth already allows clients to request a subset of their configured scopes. But once the client made that request, the user could not narrow it any further on the consent screen. For the user on the consent screen, the experience was still an all-or-nothing one. If an application requested more access than a user was comfortable granting, their only options were to approve the full request, or deny outright.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01M0E1GFZ6DDW8NXR685SD3CB9.gif" alt="BLOG-3481 3.gif" width="715" height="448" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>MCP servers are a good example of this. An MCP server might request a broad set of permissions, because in theory an agent could use all of them. But most users would not want an agent to have that much access. Before this feature, the only way to handle this was for the app developer to build a custom scope selection screen before sending the user to our consent flow.</p>
+<p>Today, we’re introducing OAuth scope customization. Client owners can mark specific scopes as optional when configuring an OAuth client, giving users the ability to grant a narrower subset of an application’s requested access at authorization time.</p>
+<p>The OAuth spec already allows authorization servers to grant a narrower set of scopes than what was requested. We built on top of that flexibility to make this work cleanly for every existing app.</p>
+<h2>More control, without overwhelming users</h2>
+<p>Our goal with introducing scope selection is to give security conscious users more flexibility to make the right choices for their use case, without turning the consent screen into a long scope checklist.&nbsp;</p>
+<p>With scope customization:&nbsp;</p>
+<ul>
+	<li>Developers can mark specific scopes on an OAuth client as required or optional</li>
+	<li>At authorization time, users can deselect optional scopes from the requested set</li>
+	<li>Required and optional scopes are evaluated against the scopes requested for that authorization flow</li>
+	<li>If no optional scopes are requested, the consent experience stays the same</li>
+	<li>By default, the consent screen still grants the full requested scope set.&nbsp;&nbsp;</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01M0E1GG62H7P75CGY2P2Q4CWW.gif" alt="BLOG-3481 4.gif" width="715" height="448" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h2>Scoping to the authorization request</h2>
+<p>One important detail is that required and optional scopes are evaluated only against the scopes requested in a specific authorization flow, not every scope configured on the client. That matters because OAuth clients do not always request their full configured scope set.</p>
+<p>For example, a client might be configured with <a href="http://user-details.read" target="_blank" rel="noopener noreferrer">user-details.read</a>, workers-scripts.write, workers-kv-storage.write, and <a href="http://zone.read" target="_blank" rel="noopener noreferrer">zone.read</a>, while marking workers-kv-storage.write and <a href="http://zone.read" target="_blank" rel="noopener noreferrer">zone.read</a> as optional. If that client starts an authorization flow requesting all four scopes, the consent screen will evaluate all four. In that case, <a href="http://user-details.read" target="_blank" rel="noopener noreferrer">user-details.read</a> and workers-scripts.write remain required, while the user can choose whether to grant workers-kv-storage.write and <a href="http://zone.read" target="_blank" rel="noopener noreferrer">zone.read</a>.</p>
+<p>But if the client later requests only workers-scripts.write and <a href="http://zone.read" target="_blank" rel="noopener noreferrer">zone.read</a>, then only those two scopes are considered for that authorization flow. <a href="http://user-details.read" target="_blank" rel="noopener noreferrer">user-details.read</a> and workers-kv-storage.write would not be shown or enforced, because they were not requested.</p>
+<p>This keeps the consent screen focused on the task at hand, rather than every capability the application could request. It also means existing OAuth clients keep their current behavior by default: if a client does not opt into optional scopes, the consent flow remains unchanged.</p>
+<h2>Configuring an OAuth client to use optional scopes</h2>
+<p>Developers can opt into scope customization when configuring an OAuth client. Scopes continue to be configured as they are today, and clients can now additionally specify which of those scopes are optional:&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">  --request POST \</span></span>
+<span class="line"><span class="sk-24292e-fff">  --header </span><span class="sk-032f62-99ffe4">"Authorization: Bearer $CLOUDFLARE_API_TOKEN"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">  --header </span><span class="sk-032f62-99ffe4">"Content-Type: application/json"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">  --data '{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "client_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ACME Corp"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "redirect_uris"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "https://acme.org/oauth/callback"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "grant_types"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "authorization_code"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "response_types"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "code"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "token_endpoint_auth_method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"client_secret_basic"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "scopes"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "user-details.read"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "workers-scripts.write"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "workers-kv-storage.write"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "zone.read"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "optional_scopes"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "workers-kv-storage.write"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "zone.read"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }'</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="Copy code" data-copy-label="Copy code" data-copied-label="Code copied!"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>In the example above, the client can request all four scopes, but the user may only opt out of the <code>workers-kv-storage.write</code> and <code>zone.read</code> scopes during consent. <code>user-details:read</code> and <code>workers-scripts.write</code> remain required if they are included in the authorization request.&nbsp;</p>
+<p>If the client later requests only <code>workers-scripts.write</code> and <code>zone.read</code>, then only those two scopes are considered for that authorization flow. <code>user-details.read</code> and <code>workers-kv-storage.write</code> would not be shown or enforced because it was not requested.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01M0E1GGSR29T7ZF75ZW9YSZSZ.gif" alt="BLOG-3481 5.gif" width="715" height="448" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h2>Building with partial grants in mind</h2>
+<p>When a user deselects any optional scopes and completes the authorization flow, the generated access token will only contain the scopes they consented to. For developers, this means you need to check the granted scope set after exchanging the authorization code, rather than assuming the full requested set of scopes was approved.</p>
+<p>An app that handles a narrower grant gracefully, for example an agent that operates within whatever subset of permissions it receives, is one that users feel comfortable authorizing. Requesting only the permissions needed and marking the rest as optional is a good sign to users that your app respects their access decisions.</p>
+<h2>Scopes for every Product</h2>
+<p>Over the next few weeks, we will be expanding our account &amp; zone-level role surface to cover nearly every Cloudflare product. That means more API token roles, account membership options, and OAuth scopes, giving customers the tools to secure workloads with the right level of access.&nbsp;</p>
+<h2>Build with Optional Scopes</h2>
+<p>Allowing developers and users to better restrict access through optional OAuth scopes is an important step toward a more flexible and trustworthy consent experience on Cloudflare. With optional scopes, developers can build more nuanced authorization flows, and users gain more control over what they approve.&nbsp;</p>
+<p>To get started with Third Party OAuth, take a look at our <a href="https://developers.cloudflare.com/fundamentals/oauth" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> or jump straight to the OAuth apps page in the dashboard and <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Foauth-clients" target="_blank" rel="noopener noreferrer"><u>create your first OAuth app</u></a>.&nbsp;</p>
+<h2>Thank you to our amazing interns</h2>
+<p>This feature is one of the many that we built with the help of our <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program" target="_blank" rel="noopener noreferrer"><u>1,111 interns</u></a>. Congratulations to Miller Vargas and José Enrique Rodriguez on your high impact contributions here. Miller is a senior at the University of Texas - Austin studying computer science and math; and José is a senior at Universidad Panamericana studying engineering, data intelligence, and cybersecurity.</p>
