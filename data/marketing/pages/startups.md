@@ -200,7 +200,9 @@ Begin building with Cloudflare
 
 Once your credits are confirmed, all eligible usage-based features will be automatically deducted from your credit balance or applied at no cost as a program benefit. Core security and networking features are included entirely for free across all tiers.
 
-You can see your credit usage and remaining credits in the dashboard. Your monthly invoices also include a detailed breakdown of your usage, credits deducted, and features covered at no cost.
+Your monthly invoices will include a detailed breakdown of your usage, credits deducted, and features covered at no cost.
+
+**Note on Dashboard Visibility:** Credits are not currently visible directly inside your Cloudflare dashboard. You can track your remaining balance and consumption details on your monthly invoices.
 
 **Product-Specific Caps & Exclusions:**
 
