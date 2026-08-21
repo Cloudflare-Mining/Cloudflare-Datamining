@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: </strong>Austin,&nbsp;New York<strong><br></strong></p>
 <p><strong>About the role:</strong></p>
-<p>You’ll be part of a team pushing the envelope of global realtime communication over the Internet. We are using the power of Cloudflare’s network to build and operate systems and services for realtime video, voice and data across the world, building on WebRTC, MoQ and whatever new technologies emerge. We’re a team of researchers, experimenters and makers, who are all passionate about working together to create high-performance, resilient systems running at massive scale. Does this sound like you? If so, come join us!<strong><br></strong></p>
+<p>You’ll be part of a team pushing the envelope of global realtime communication over the Internet. We are using the power of Cloudflare’s network to build and operate systems and services for realtime video, voice and data across the world, building on WebRTC, MoQ and whatever new technologies emerge. We’re a team of researchers, experimenters and makers, who are all passionate about working together to create high-performance, resilient systems running at massive scale. Does this sound like you? If so, come join us!</p>
 <h4><strong>Responsibilities:</strong></h4>
 <ul>
 	<li>Working with Product Management and customers to understand requirements.</li>
@@ -30,17 +30,39 @@
 	<li>Experience working with streaming media.</li>
 	<li>Relevant personal projects.</li>
 </ul>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For NYC based hires: estimated annual salary of $150,000 - 187,000.</span></li>
+	<li><span data-sheets-root="1">For NYC based hires: estimated annual salary of $123,000 - 187,000.</span></li>
 </ul>
 <p><strong>Equity:</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits:</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family, including medical, dental, and vision insurance, a 401(k) plan with company match, flexible paid time off, and fertility &amp; family-forming benefits.</p>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p>&nbsp;</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
