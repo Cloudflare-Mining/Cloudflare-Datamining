@@ -715,7 +715,7 @@ interface DurableObjectState<Props = unknown> {
   setHibernatableWebSocketEventTimeout(timeoutMs?: number): void;
   getHibernatableWebSocketEventTimeout(): number | null;
   getTags(ws: WebSocket): string[];
-  abort(reason?: string): void;
+  abort(reason?: string, options?: DurableObjectAbortOptions): void;
   configureReadReplication(
     options: DurableObjectReadReplicationOptions,
   ): Promise<void>;
@@ -798,6 +798,9 @@ interface DurableObjectStorage {
   ensureReplicas(): void;
   /** @deprecated Use `ctx.configureReadReplication()` instead. */
   disableReplicas(): void;
+}
+interface DurableObjectAbortOptions {
+  retryAlarm?: boolean;
 }
 interface DurableObjectReadReplicationOptions {
   mode: "auto" | "disabled";
@@ -4078,10 +4081,15 @@ interface ContainerDirectorySnapshotOptions {
   dir: string;
   name?: string;
 }
-interface ContainerDirectorySnapshotRestoreParams {
-  snapshot: ContainerDirectorySnapshot;
-  mountPoint?: string;
-}
+type ContainerDirectorySnapshotRestoreParams =
+  | {
+      snapshot: ContainerDirectorySnapshot;
+      mountPoint?: string;
+    }
+  | {
+      snapshot?: undefined;
+      mountPoint: string;
+    };
 interface ContainerSnapshot {
   id: string;
   size: number;
@@ -16744,7 +16752,8 @@ declare namespace TailStream {
     | "responseStreamDisconnected"
     | "scriptNotFound"
     | "internalError"
-    | "exceededWallTime";
+    | "exceededWallTime"
+    | "aborted";
   interface ScriptVersion {
     readonly id: string;
     readonly tag?: string;
