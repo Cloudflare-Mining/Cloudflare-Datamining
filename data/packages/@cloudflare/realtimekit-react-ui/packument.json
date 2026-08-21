@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-react-ui",
 	"dist-tags": {
-		"staging": "2.0.2-staging.1",
-		"latest": "2.0.1"
+		"latest": "2.0.1",
+		"staging": "2.0.2-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2133,13 +2133,39 @@
 				"@cloudflare/realtimekit-ui": "2.0.2-staging.1"
 			},
 			"dist": {
-				"integrity": "sha512-iaS06D4mzTZtTSJthaQzlwW5L7imwcSnyr6VJjZuTwckdZVyheqiUD0dDlNLfvgX1EsirYMWX/LvJWXKaYfmZA==",
 				"shasum": "a66905bca2e1aa1d6258749f088642f153d53861",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-2.0.2-staging.1.tgz",
 				"fileCount": 46,
-				"unpackedSize": 161163,
+				"integrity": "sha512-iaS06D4mzTZtTSJthaQzlwW5L7imwcSnyr6VJjZuTwckdZVyheqiUD0dDlNLfvgX1EsirYMWX/LvJWXKaYfmZA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC6SZCyy5KKGi+qEuHUGcjdkbtOU7VX9V1br6qhv2UkaQIhAOp0z+/VxvDW39oqRGEwxn2uzTcY6tVvCtBiQEoNjkbC",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.0.2-staging.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161163
+			}
+		},
+		"2.0.2-staging.2": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "2.0.2-staging.2",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "2.0.2-staging.2"
+			},
+			"dist": {
+				"integrity": "sha512-lYveuZXPPMySo6vR59HaDz/F3FryWL4A3ms2VGPhbSB2ScmCyXLLLvI7Rq54pKuPsnGRb4DP9TSSr801M908hg==",
+				"shasum": "587827204778c7a43547a7bbdfb812c157b997e7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-2.0.2-staging.2.tgz",
+				"fileCount": 46,
+				"unpackedSize": 161163,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.0.2-staging.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -2147,7 +2173,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQC6SZCyy5KKGi+qEuHUGcjdkbtOU7VX9V1br6qhv2UkaQIhAOp0z+/VxvDW39oqRGEwxn2uzTcY6tVvCtBiQEoNjkbC"
+						"sig": "MEUCIHYhtS+B99c8qGDwwPshli4GTg+adPo4GaCD5qa2D8OXAiEA1zZqIAYBpFBovZKv6VwkkrZKnThhiwpS8hVyJzeNQgw="
 					}
 				]
 			}
