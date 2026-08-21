@@ -4154,10 +4154,6 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers_20260610",
 						"compatDisableFlag": "no_python_workers_20260610",
-						"impliedByAfterDate": {
-							"name": "pythonWorkers",
-							"date": "2026-08-25"
-						},
 						"pythonSnapshotRelease": true
 					},
 					"type": "Bool"
@@ -4216,6 +4212,16 @@
 					"annotations": {
 						"compatEnableFlag": "wasm_memory_discard",
 						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "pythonWorkers20260817",
+					"annotations": {
+						"compatEnableFlag": "python_workers_20260817",
+						"compatDisableFlag": "no_python_workers_20260817",
+						"experimental": true,
+						"pythonSnapshotRelease": true
 					},
 					"type": "Bool"
 				}
