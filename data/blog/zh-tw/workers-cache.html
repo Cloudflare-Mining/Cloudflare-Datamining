@@ -1,0 +1,448 @@
+<p>今天，我們正式推出 <strong>Workers Cache</strong>：一個直接部署在您的 Worker 前方的<a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>分層快取 (Tiered Cache)</u></a>。只需在 Wrangler 設定檔中加上一行，並沿用您熟悉的 <code>Cache-Control</code> 標頭即可完成設定。</p>
+<p>啟用 Workers Cache 後，所有送往您 Worker 的<a href="https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.3" target="_blank" rel="noopener noreferrer"><u>可快取</u></a>請求都會先經過 Cloudflare 的快取。如果發現新鮮的快取回應，Cloudflare 會直接回傳——您的 Worker 無須執行，您也無須為此支付 CPU 時間。若發生快取未命中 (Miss)，您的 Worker 才會執行；如果回應可快取，Cloudflare 會將其儲存起來，供後續請求使用。屆時，來自全球各地的下一個請求就能直接從快取中取得內容。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="162" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=640&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=750&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=828&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1080&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1280&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1430&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PJQBRBQRQ825JD7MPFD6.png&amp;w=1920&amp;h=436&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="436" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="162" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>整個設定只需要一個設定區塊：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "name"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "my-worker"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "main"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "src/index.ts"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "compatibility_date"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "2026-05-01"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "cache"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "enabled"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<script type="module">
+	globalThis.process ??= {}, globalThis.process.env ??= {}, document.querySelectorAll(`[data-code-copy]`).forEach(e => {
+		let t = e.closest(`.emdash-code`)?.querySelector(`pre code`);
+		if (!t) return;
+		let n = e.dataset.copyLabel ?? ``,
+			r = e.dataset.copiedLabel ?? ``,
+			i = null;
+		e.addEventListener(`click`, () => {
+			navigator.clipboard.writeText(t.textContent ?? ``).then(() => {
+				e.setAttribute(`data-copied`, ``), e.setAttribute(`aria-label`, r), i && clearTimeout(i), i = setTimeout(() => {
+					e.removeAttribute(`data-copied`), e.setAttribute(`aria-label`, n), i = null
+				}, 1500)
+			}).catch(e => {
+				console.warn(`code-copy: clipboard write failed`, e)
+			})
+		})
+	});
+</script>
+<p>之後，您就可以透過在回應中設定標頭，以 HTTP 原本期望的方式來控制快取：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "Cache-Control"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"public, max-age=300, stale-while-revalidate=3600"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "Cache-Tag"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"products,product:123"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>而當內容變更時，您的 Worker 可以自行清除快取：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> ctx.cache.</span><span class="sk-6f42c1-ffc799">purge</span><span class="sk-24292e-fff">({ tags: [</span><span class="sk-032f62-99ffe4">"product:123"</span><span class="sk-24292e-fff">] });</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>這就是完整的 API。不需要設定 Zone，不需要架設規則引擎，不需要佈建獨立的快取，也不需要登入第二個產品介面。Worker 的程式碼本身就是設定介面，且快取會跟隨 Worker 在任何執行位置運作——無論是自訂網域、<code>workers.dev</code>、Service Binding 後方、預覽環境，還是 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u>Workers for Platforms</u></a> 的租用戶環境中。一個 Worker，一個快取，一次設定即可。</p>
+<p>以上是表面的 API，底層還有更多機制：橫跨我們整個網路的分層快取 (Tiered Caching)、完整支援 <a href="https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate/?cf_target_id=34011FB5E75D7F22EE8C4916020B61A1" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> 以確保舊有回應不會阻塞使用者、透過 <a href="https://developers.cloudflare.com/workers/cache/#content-negotiation-with-vary" target="_blank" rel="noopener noreferrer"><u>Vary</u></a> 進行內容協商、透過 <a href="https://developers.cloudflare.com/workers/runtime-apis/context/#props" target="_blank" rel="noopener noreferrer"><u>ctx.props</u></a> 確保多租用戶安全的快取鍵、依標籤或路徑前綴進行的程式化清除。而我們認為最大的突破在於，這個快取位於每一個 Worker 進入點的前方，而不僅僅是公開的進入點，且能針對每個進入點精準控制哪些要快取、哪些不要。最後這一點意味著您可以將快取邏輯直接編排進應用程式的結構中：打造一條由多個進入點組成的鏈路，在您需要的任何階段插入快取，並由前後的程式碼進行控制。我們將在下方逐一說明。</p>
+<p>Workers Cache 即日起適用於所有方案下的每一個 Worker，只要在 Wrangler 中啟用即可。</p>
+<p>這就是我們一直以來希望 Workers 能擁有的快取 API。下面將說明為何我們花了這麼長的時間、它將解鎖哪些可能性，以及接下來的規劃。</p>
+<h2>為何伺服器轉譯應用程式需要在前方設定快取</h2>
+<p><a href="https://blog.cloudflare.com/introducing-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>2017 年推出 Workers</u></a> 時，我們主打的概念是讓您能在 Cloudflare 網路上執行程式碼，在請求送往來源伺服器的途中進行轉換。當時，Worker 位於快取與來源伺服器的<em>前方</em>：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="162" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=640&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=750&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=828&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1080&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1280&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1430&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PF2YHMWZB3JXDV3PK7FX.png&amp;w=1920&amp;h=436&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="436" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="162" class="pt-portable-image-media"></div>
+</figure>
+<p>對於當時我們所針對的使用場景而言，這是正確的架構。如果您想為每個請求新增標頭、重寫 URL、進行 A/B 分流，或在流量抵達來源伺服器前進行篩選，將 Worker 放在快取與來源伺服器前方能讓您完全掌控哪些內容被快取，哪些不被快取。客戶們確實利用這套架構打造了許多令人驚豔的產品。</p>
+<p>但世界已經改變了。Workers 不再只是附加在來源伺服器上的配件，而是<em>本身</em>就成為了來源伺服器。像 <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/astro" target="_blank" rel="noopener noreferrer"><u>Astro</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start" target="_blank" rel="noopener noreferrer"><u>TanStack Start</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs" target="_blank" rel="noopener noreferrer"><u>Next.js</u></a>、<a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/remix" target="_blank" rel="noopener noreferrer"><u>Remix</u></a> 和 <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/svelte" target="_blank" rel="noopener noreferrer"><u>SvelteKit</u></a> 這類框架，都提供了 Cloudflare Adapter，能將您的應用程式建置為 Worker。它們背後不再有傳統的來源伺服器，Worker <em>就是</em>伺服器。</p>
+<p>當 Worker 成為來源伺服器時，原本的架構就沒有東西可以快取了。每個請求都會執行您的程式碼，即便回應內容與一秒鐘前回傳的結果完全相同。<a href="https://x.com/KentonVarda/status/1783996343813652801" target="_blank" rel="noopener noreferrer"><u>Workers 執行環境的速度夠快，讓這一切得以順暢運行</u></a>（它通常能輕鬆處理每秒數千萬個請求），但「快到足以渲染每個請求」仍然意味著每次頁面載入都會產生延遲，且每次呼叫都會消耗 CPU 時間。而對於伺服器轉譯應用程式來說，每次頁面載入本質上都是一次轉譯。</p>
+<p>Workers Cache 徹底翻轉了這個架構。Cloudflare 的快取現在直接位於 Worker 的前方：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="162" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=640&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=715&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=750&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=828&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1080&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1280&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1430&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PEZ2NYYNY6NGMJFCTJN6.png&amp;w=1920&amp;h=436&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="436" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="162" class="pt-portable-image-media"></div>
+</figure>
+<p>發生快取命中 (Cache Hit) 時，您的 Worker 完全不會執行。Cloudflare 直接回傳快取內容，您的 CPU 計費維持為零。若發生未命中，Worker 會執行一次並填充快取；隨後，無論請求來自何處，系統都會直接從快取提供內容，而無需再次執行程式碼。</p>
+<p>這正是 Workers 上實作伺服器端轉譯所缺少的一環。過去，開發人員只能在兩個不盡如人意的方案之間做選擇：</p>
+<ul>
+	<li><strong>在建置時預先轉譯所有內容</strong>（「靜態網站產生」）。頁面載入速度快，但每次變更都需要完整的重建與重新部署。對於擁有幾千個頁面的文件網站來說，這需要 5 到 10 分鐘。對於大型電子商務網站，情況則更糟糕——而且只要有任何變動，建置過程就會重新觸發。</li>
+	<li><strong>在每次請求時轉譯每個頁面。</strong>內容永遠最新，但每次頁面載入都要付出轉譯成本，每位訪客都要承受延遲。</li>
+</ul>
+<p>Workers Cache 為您提供了第三種選項：隨需伺服器轉譯，快取轉譯後的回應，並依照您選擇的存留時間 (<a href="https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl" target="_blank" rel="noopener noreferrer"><u>TTL</u></a>) 進行重新整理。新頁面的首次請求仍會觸發渲染。而在快取過期前的後續請求，頁面將如同靜態資源一般被直接提供。當快取過期時，下一個請求會觸發重新轉譯——而有了<code> stale-while-revalidate</code>，就連這一次的請求也不需要等待。</p>
+<p>您無需建置時間即可獲得靜態網站的速度，無需高昂成本即可獲得伺服器轉譯的即時性。不需要像「增量靜態再生 (ISR)」這類特定框架的複雜機制。就只是 HTTP 快取，以它原本被設計的方式運作，並位於被設計為來源伺服器的程式碼前方。</p>
+<h2><code>stale-while-revalidate</code> 是實現「即時回應」體驗的關鍵</h2>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc5861#section-3" target="_blank" rel="noopener noreferrer"><u>stale-while-revalidate</u></a> 指令告訴 Cloudflare：當快取回應過期時，允許它立即提供舊有副本給使用者，<em>同時在背景重新整理回應。</em>Cloudflare <a href="https://developers.cloudflare.com/changelog/post/2026-02-26-async-stale-while-revalidate" target="_blank" rel="noopener noreferrer"><u>在今年稍早已全面支援</u></a>，正是這個指令將「我們會快取您的 Worker」轉化為「您的 Worker 網站感覺起來像靜態網站一樣快」。</p>
+<p>若沒有這個指令，快取項目過期後的第一個請求，就必須等待 Worker 從頭開始轉譯頁面，使用者會明顯感受到延遲。有了它，過期後的第一個請求會立刻拿到舊頁面（並帶有<code> Cf-Cache-Status: UPDATING</code> 標頭），而 Worker 則在背景執行以重新填充快取。每位使用者，包含觸發重新整理的那位，都能獲得快取等級的回應速度。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="479" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=640&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=750&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=828&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1080&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1280&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1430&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q07HWBQK4JMK83P95RYV.png&amp;w=1920&amp;h=1287&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1287" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="479" class="pt-portable-image-media"></div>
+</figure>
+<p>實際應用上，程式碼會像這樣：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0"> export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> html</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> renderPage</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(html, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/html; charset=utf-8"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Treat as fresh for 5 minutes; serve stale for up to an hour</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // while a background refresh runs.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Cache-Control"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"public, max-age=300, stale-while-revalidate=3600"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>要理解這個機制，可以參考以下心智模型：</p>
+<ul>
+	<li><strong>新鮮時段</strong> (<code>max-age</code>)：Cloudflare 直接提供快取回應，您的 Worker 不會執行。</li>
+	<li><strong>陳舊時段</strong> (<code>stale-while-revalidate</code>)：Cloudflare 提供快取回應，同時讓您的 Worker 在背景執行以重新整理內容。沒有任何使用者需要等待。</li>
+	<li><strong>超出兩者時段：</strong>Cloudflare 執行您的 Worker 以產生新鮮回應，而使用者需要等待那一次的轉譯。</li>
+</ul>
+<p>這些時段由您決定。對於一個每幾分鐘更新一次的商品目錄，<code>max-age=300, stale-while-revalidate=3600</code> 意味著訪客基本上無須等待，且您的 Worker 仍會頻繁執行以維持內容新鮮度。對於一個幾乎不變更的部落格封存頁，<code>max-age=86400</code>, <code>stale-while-revalidate=2592000</code> 則意味著每個頁面每天只會執行一次 Worker。</p>
+<p>對於全新頁面的第一個請求，是唯一需要支付完整轉譯成本的請求。此後，該頁面對訪客而言表現得像靜態輸出，而頁面產生的邏輯依然由您的 Worker 掌控。</p>
+<h2>單一 URL，多種呈現：<code>Vary </code>發揮作用</h2>
+<p>現實世界的應用程式很少會對每個用戶端回傳相同的位元組。同一個商品頁面，對瀏覽器可能是 HTML，對 API 用戶端可能是 JSON。同一張影像，對支援的用戶端可能是 WebP，對不支援的則是 JPEG。同一個首頁，可能會根據使用者的不同，以英文、法文或日文呈現。</p>
+<p>在沒有快取的情況下做到這點很簡單——您的 Worker 只需讀取請求標頭並回傳正確的內容即可。但<em>有了</em>快取，事情通常就會變得棘手。大多數快取系統只給您兩個糟糕的選項：針對有多種呈現形式的 URL 完全不快取，或者只快取一種呈現形式並將其傳送給所有人。</p>
+<p>Workers Cache 支援標準的 HTTP <code>Vary</code> 標頭，這才是解決此問題的正確之道。當您的 Worker 回傳帶有<code> Vary: Accept-Encoding</code>（或 <code>Accept</code>、<code>Accept-Language</code> 等任何請求標頭）的回應時，Cloudflare 會針對這些標頭的每種獨特組合分別儲存一個快取變體，且只會回傳儲存值與傳入請求相符的變體。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> accept</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Accept"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">??</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> wantsWebp</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> accept.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"image/webp"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> wantsWebp </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetchWebpImage</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetchJpegImage</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Content-Type"</span><span class="sk-24292e-fff">: wantsWebp </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-032f62-99ffe4"> "image/webp"</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-032f62-99ffe4"> "image/jpeg"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Cache-Control"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"public, max-age=3600"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Cache a separate variant per distinct Accept header value.</span></span>
+<span class="line"><span class="sk-24292e-fff">        Vary: </span><span class="sk-032f62-99ffe4">"Accept"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>一個 URL，兩種快取變體。傳送 <code>Accept: image/webp,*/*</code> 的瀏覽器獲得 WebP。傳送 <code>Accept: image/jpeg</code> 的瀏覽器獲得 JPEG。兩者都來自快取。您的 Worker 在各自的第一次請求時寫入這兩種變體，此後便無需再次執行。</p>
+<p>這是內容協商中歷經考驗的 HTTP 標準，而 Workers Cache 完全依照 <a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-vary" target="_blank" rel="noopener noreferrer"><u>RFC 9110</u></a> 與 <a href="https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with" target="_blank" rel="noopener noreferrer"><u>RFC 9111</u></a> 的規範實作。我們並未限制您可以針對哪些標頭使用 <code>Vary</code>。您只需列出所需的標頭，Cloudflare 就會根據其原始值建立變體鍵值。相關文件也詳細說明了各種<a href="https://developers.cloudflare.com/workers/cache/configuration/#vary" target="_blank" rel="noopener noreferrer"><u>邊緣案例</u></a>，例如如何透過在閘道 Worker 中正規化標頭來控制變體的擴散、為何清除指令會同時使 URL 的所有變體失效，以及唯一會完全停用快取的情況 (<code>Vary: *</code>)。</p>
+<h2>這是您 Worker 的快取，而非區域 (Zone) 的快取</h2>
+<p>在我們探討這一切所帶來的可能性之前，有個值得點明的概念轉變。</p>
+<p>Cloudflare 一直以來都有快取功能，但過去是在區域層級設定的：包括快取規則Cache Rules、Page Rules、可快取檔案副檔名清單、Cache Reserve、Tiered Cache 拓撲結構，以及自訂快取鍵等。所有這些都是針對每個區域設定的，而過去 Worker 必須配合該區域的配置，或是想辦法繞過它。</p>
+<p>Workers Cache 則不同。這是<strong>您 Worker 專屬的快取</strong>——它屬於 Worker，而非某個區域。這帶來了幾項至關重要的影響：</p>
+<ul>
+	<li><strong>無需管理區域設定。</strong>Cache Rules、快取層級設定、檔案副檔名清單、Page Rules——這些都不適用於 Workers Cache。Worker 的 <code>Cache-Control</code> 標頭就是設定本身。</li>
+	<li><strong>快取跟隨 Worker，而非主機名稱。</strong>一個繫結到 <code>api.example.com</code> 和 <code>api.example.net</code>，並透過 Service Binding 被叫用的 Worker，在三個入口之間共用同一個快取。對<code> /users/42</code> 的請求，無論從哪個途徑進入，都會命中同一個快取項目。</li>
+	<li><strong>快取可在</strong> <code>workers.dev</code> <strong>上運作。</strong>它也能在<a href="https://developers.cloudflare.com/workers/configuration/previews" target="_blank" rel="noopener noreferrer"><u>預覽 URL</u></a> 中運作（每個預覽都有自己的快取，因此測試變更不會影響生產環境）。它在 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><u>Workers for Platforms</u></a> 中也能運作（每個使用者 Worker 都有自己的快取，與調度器和其他租用戶隔離）。過去這些在快取方面都屬於次等公民，現在不再是了。</li>
+	<li><strong>清除作業僅限於 Worker 的入口點。</strong>當您呼叫 <code>ctx.cache.purge({ purgeEverything: true }) </code>時，只會清除該 Worker 入口點的快取。不會有誤刪您區域中其他內容的風險，也不會有某個 Worker 的部署使另一個 Worker 的資料失效的風險。</li>
+</ul>
+<p>您對快取的設定，都在程式碼中完成：哪些路徑使用較長的 TTL（根據路徑分支並設定不同的 <code>max-age</code>）、哪些請求繞過快取（回傳 <code>Cache-Control: private</code>）、快取鍵如何形成（控制哪些內容進入 <code>ctx.props</code>，調度之前在閘道 Worker 中正規化 URL）。您已經撰寫好的 Worker 本身就是設定界面。</p>
+<p>關於這一點的詳細說明，請參閱文章<a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>《Workers Cache：您 Worker 的快取》</u></a>。</p>
+<h2>兩層架構，每個 Worker，無需設定</h2>
+<p>Workers Cache <strong>預設為區域分層架構</strong>。分為兩層：</p>
+<ul>
+	<li><strong>下層 (Lower tier)</strong>：位於距離使用者最近的 Cloudflare 資料中心。每個接收您 Worker 流量的資料中心都有自己的下層快取。</li>
+	<li><strong>上層 (Upper tier)</strong>：匯集整個網路中的快取填充。這類資料中心數量較少，每個下層在未命中時都會向上層查詢。</li>
+</ul>
+<p>請求首先抵達下層。若命中，則直接回傳回應，流程結束。若未命中，下層會向上層詢問。若上層命中，回應不僅會傳回給使用者，也會在回傳途中儲存到下層。只有當兩個層級都未命中時，您的 Worker 才會真正執行——而此次執行的回應會同時儲存於上下兩層。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="197" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=715&amp;h=197&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=640&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=715&amp;h=197&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=750&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=828&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1080&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1280&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1430&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2Q4SPEBRGN7EB9KMD8V50.png&amp;w=1920&amp;h=528&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="528" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="197" class="pt-portable-image-media"></div>
+</figure>
+<p>這個機制的重要性在於：<strong>全球任何一個地方的首次請求</strong>，都會填充上層快取。之後來自任何資料中心的後續請求，都能直接從上層快取取得內容，無須執行您的 Worker——即便該資料中心的下層快取從未見過此請求。相較於單層的扁平快取，這能大幅提升快取命中率，而這正是當您的 Worker 作為來源伺服器時最需要的。</p>
+<p>這與現今區域所使用的 <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>Tiered Cache</u></a> 拓撲相同，差別在於您無需進行任何設定。沒有「為我的 Worker 開啟分層快取」的對話框。每個啟用快取的 Worker 都免費獲得分層功能。</p>
+<p>如果您的 Worker 使用了 <a href="https://developers.cloudflare.com/workers/configuration/placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a>，快取也能與其完美結合：系統會先查詢快取層級，只有當兩層都未命中時，Smart Placement 才會將執行請求路由至靠近您來源伺服器的位置。關於這些層級如何互動，以及我們<a href="https://developers.cloudflare.com/workers/cache/#smart-placement-and-the-cache" target="_blank" rel="noopener noreferrer"><u>計劃改進的一些細節問題</u></a>，我們在文件中都有更詳細的說明。</p>
+<h2>在靠近使用者<em>和</em>靠近資料的地方執行您的應用程式</h2>
+<p>網頁效能中有一個反覆出現的兩難問題，至今沒有人能完全解決：您希望程式碼在靠近使用者的地方執行（因為使用者與伺服器之間的往返位於關鍵路徑上），同時也希望程式碼在靠近資料的地方執行（因為每次資料庫查詢也是一次往返）。選擇其中一個，另一個就會變慢。</p>
+<p>我們多年來一直致力於兼顧兩者。我們的網路讓全球約 95% 的網際網路使用者都能在<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>約 50 毫秒內</u></a>連上。<a href="https://blog.cloudflare.com/announcing-workers-smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a> 和 <a href="https://developers.cloudflare.com/changelog/post/2026-01-22-explicit-placement-hints" target="_blank" rel="noopener noreferrer"><u>Placement Hints</u></a> 讓您能將程式碼保持在靠近資料的位置，而無需考慮雲端區域。但直到現在，這兩者還無法完全協同運作。您可以選擇「靠近使用者」或「靠近資料」。若想讓應用程式的兩個部分同時處於最佳位置，您就必須是 Cloudflare 的專家。<a href="https://sunilpai.dev/posts/spatial-compute" target="_blank" rel="noopener noreferrer"><u>我們知道我們可以做得更好。</u></a></p>
+<p>Workers Cache 正是填補這個缺口的最後一塊拼圖。因為快取屬於 Worker（而非區域），且因為 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings" target="_blank" rel="noopener noreferrer"><u>Service Binding</u></a> 和 Worker 之間的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a> 呼叫都會經過快取，您可以將應用程式建構為一串 Worker 鏈——每個 Worker 都在它應該執行的地方執行，並以快取作為它們之間的接縫。</p>
+<p>架構如下：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="175" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=715&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=640&amp;h=157&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=715&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=750&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=828&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1080&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1280&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1430&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PZ4QZ43FJQ0AN6JBXX45.png&amp;w=1920&amp;h=469&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="469" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="175" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li><strong>Worker A</strong> 在靠近使用者的地方執行。它處理每個請求中低成本、對延遲敏感的部分：身分驗證、限速、路由、標頭正規化、轉譯不依賴資料的 HTML 頁面<a href="https://developers.cloudflare.com/workers/examples/spa-shell" target="_blank" rel="noopener noreferrer"><u>外部「殼層」</u></a>。</li>
+	<li><strong>Worker B</strong> 在 Smart Placement 或明確的 Placement Hint 協助下，於資料附近執行。它負責繁重的工作：伺服器轉譯需要擷取資料的頁面、讀取商品目錄、產生搜尋結果、彙整 API，以及執行高成本的轉換。</li>
+	<li><strong>Workers Cache 位於 Worker B 的前方。</strong>當 Worker A 透過 Service Binding 呼叫 Worker B 時，Cloudflare 會先檢查 Worker B 的快取。若命中，Worker A 直接收到回應，Worker B 完全不會執行——沒有資料中心間的跳轉，沒有資料庫查詢，也沒有轉譯工作。</li>
+</ul>
+<p>快取命中的路徑變成：使用者 → 靠近使用者的 Worker A → Worker B 的快取命中 → 回應。資料跳轉的成本僅在快取未命中時才需付出。您的熱門頁面能以「貼近使用者程式碼」的速度執行，而冷門頁面在執行時仍能受惠於「貼近資料」的優勢。</p>
+<p>您不需要為此設計任何特殊的架構。只要將應用程式寫成兩個 Worker，利用 Service Binding 將其中一個指向另一個，並在 Worker B 的 <code>wrangler.jsonc </code>檔案中開啟快取，就大功告成了。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="181" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=640&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=750&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=828&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1080&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1280&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1430&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTK9M6K4BSNM3WA4JX26.png&amp;w=1920&amp;h=485&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="485" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="181" class="pt-portable-image-media"></div>
+</figure>
+<h2>預設支援多租用戶，透過<code> ctx.props </code>實現</h2>
+<p>如果您要快取一個會回傳使用者專屬資料的 Worker（例如一個針對每個登入使用者提供不同內容的 API），您需要確保某個使用者的快取回應絕不會洩漏給另一個使用者。標準解法是「不要快取經過身分驗證的請求」，而 Cloudflare 針對<code> Authorization </code>標頭的<a href="https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass" target="_blank" rel="noopener noreferrer"><u>自動繞過</u></a>機制正是如此。但「什麼都不快取」等於放棄了所有的效能提升。</p>
+<p>Workers Cache 透過將呼叫者的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#ctxprops" target="_blank" rel="noopener noreferrer"><u>ctx.props</u></a> 納入快取鍵來解決這個問題。當一個 Worker 透過 Service Binding 呼叫另一個 Worker，並傳遞包含使用者 ID、租用戶 ID 或其他識別碼的 <code>ctx.props</code> 時，擁有不同 props 的呼叫者會獲得獨立的快取項目。一位使用者的回應絕不會洩漏到另一位使用者的快取中。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Props</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">userId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">; }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Backend</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Props</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ctx.props.userId is part of the cache key. User A and User B</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // requesting the same URL get separate cached entries.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">userId</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.props;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> loadUserData</span><span class="sk-24292e-fff">(userId);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(data), {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Cache-Control"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"public, max-age=300"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>典型的模式是在閘道 Worker 中驗證請求，移除 <code>Authorization</code> 標頭，將已驗證使用者的 ID 設定到 <code>ctx.props</code> 中，然後再呼叫已啟用快取的後端 Worker。閘道會在每次請求時執行（它必須如此才能進行驗證），但昂貴的後端只有在該使用者尚無快取項目時才會執行。經過驗證的 API 從「無法快取」變成「為每位使用者安全地快取」，且快取鍵自動為您處理了隔離。關於此機制的細節，請參閱文件中的「透過 <a href="https://developers.cloudflare.com/workers/cache/cache-keys/#multi-tenant-safety-with-ctxprops" target="_blank" rel="noopener noreferrer"><u>ctx.props</u></a> <a href="https://developers.cloudflare.com/workers/cache/cache-keys/#multi-tenant-safety-with-ctxprops" target="_blank" rel="noopener noreferrer"><u>確保多租用戶安全</u></a>」章節，以及「<a href="https://developers.cloudflare.com/workers/cache/examples/#per-user-authenticated-responses" target="_blank" rel="noopener noreferrer"><u>每位使用者的驗證回應</u></a>」範例。</p>
+<p>其他 CDN 通常迫使您在「正確性」與「命中率」之間二選一：是要根據每位使用者的權杖來設定快取金鑰，還是要將每個請求送回來源進行授權。Workers Cache 讓您能在邊緣共用快取的 API 回應，同時保留每次請求的授權邊界。據我們所知，沒有其他 CDN 將此功能作為已驗證、多租用戶 API 的內建模型提供。我們對此感到相當自豪。</p>
+<h2>橫跨每個 Worker 進入點的快取</h2>
+<p>Workers Cache 最具突破性的特性，往往容易被忽略——尤其是當您僅僅把它看作是「剛好能在 Worker 前方運作的 CDN 快取」時。</p>
+<p><strong>Workers Cache 位於每個 Worker 進入點的前方</strong>——包括預設匯出、每個具名的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints" target="_blank" rel="noopener noreferrer"><u>WorkerEntrypoint</u></a>，以及同一個 Worker 內透過 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a> 在進入點之間的每次呼叫。最後這一項改變了您能建構的應用程式類型。</p>
+<p>當一個進入點透過 <code>ctx.exports </code>呼叫另一個進入點時，快取評估該呼叫的方式，與評估來自瀏覽器的請求完全相同。命中則回傳快取回應，被呼叫者永不執行。未命中則執行被呼叫者，並以其專屬的快取鍵儲存回應——該鍵值取決於被呼叫者的進入點、路徑、查詢字串以及 <code>ctx.props</code>。呼叫者雖然在每次請求時都會執行，但它移交給被呼叫者的任何工作都會被獨立地記憶化。</p>
+<p>您可以針對每個進入點決定是否啟用快取。在您的 Wrangler 設定中，<code>exports</code> 對照表讓您能依名稱為每個進入點開啟或關閉快取（"<code>default</code>" 代表預設匯出）。讓某個進入點<strong>加入</strong>快取以快取其產生的回應；讓另一個<strong>退出</strong>，使其每次請求都執行。閘道或路由器進入點（任何負責驗證、正規化或分派工作的角色）都應該退出快取，確保它們總是執行，且其本身的輸出絕不從快取提供。</p>
+<p>這為您提供了一個可自由組合的基元。您可以將 Worker 編寫為一條由小型進入點組成的鏈路，例如驗證、正規化、路由、昂貴的讀取、資料層，並讓 Workers Cache 在您需要的任何地方插入。每個被快取的進入點都是一個記憶化單元，擁有自己的鍵值、TTL 和用於清除的標籤命名空間。任何您想設定的快取邏輯——何時執行、以什麼為鍵值、何時失效——都可以表示為普通的 Worker 程式碼：您呼叫哪個進入點、轉發什麼請求、傳遞什麼 <code>ctx.props</code>、設定什麼 <code>Cache-Control</code>。</p>
+<p>具體來說，這裡有一個單一的 Worker，它能做到在其他任何平台上都難以同時完成的三件事：對每個請求進行身分驗證、在多租用戶安全的快取鍵後方快取昂貴的後端，並在資料變更時使該快取失效。</p>
+<p>快取是依每個進入點設定的。閘道必須在每次請求時執行，既是為了驗證，也是因為快取的閘道回應會跳過驗證檢查。因此我們在預設進入點上停用快取，僅在內部進入點啟用：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"my-worker"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "main"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"src/index.ts"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_date"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2026-05-01"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "cache"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"enabled"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "exports"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // The gateway runs on every request — don't cache it.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "default"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"worker"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"cache"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"enabled"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">false</span><span class="sk-24292e-fff"> } },</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Cache the expensive inner entrypoint.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "CachedBackend"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"worker"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">"cache"</span><span class="sk-24292e-fff">: { </span><span class="sk-005cc5-ffc799">"enabled"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff"> } }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">API_TOKEN</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">; }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Props</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">userId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">; }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Inner entrypoint: the expensive work. Workers Cache sits in front</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// of this — on a hit, this code never runs.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> CachedBackend</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Props</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ctx.props.userId is part of the cache key, so this is cached</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // separately for every user.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">userId</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.props;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> loadExpensiveData</span><span class="sk-24292e-fff">(userId);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(data), {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Cache-Control"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"public, max-age=300, stale-while-revalidate=3600"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Cache-Tag"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">`user:${</span><span class="sk-24292e-fff">userId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Invalidate a user's cached response. purge() is scoped to the</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // entrypoint that calls it, so it must run inside CachedBackend —</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // the entrypoint that owns the cached response.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> invalidate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">userId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.cache.</span><span class="sk-6f42c1-ffc799">purge</span><span class="sk-24292e-fff">({ tags: [</span><span class="sk-032f62-99ffe4">`user:${</span><span class="sk-24292e-fff">userId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">] });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Outer entrypoint: runs on every request to authenticate and route.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Caching is disabled for it in Wrangler config (above), so it always</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// runs and the auth check is never skipped by a cache hit.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> userId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> authenticate</span><span class="sk-24292e-fff">(request, env);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">userId) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Unauthorized"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">401</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Invalidate this user's cache on writes, from the entrypoint that</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // owns it.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (request.method </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "POST"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-6f42c1-ffc799"> handleWrite</span><span class="sk-24292e-fff">(request, userId);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> ctx.exports.CachedBackend.</span><span class="sk-6f42c1-ffc799">invalidate</span><span class="sk-24292e-fff">(userId);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"OK"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // For reads: strip Authorization (otherwise Cloudflare's automatic</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // bypass fires and nothing caches), then dispatch to the cached</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // backend with the authenticated user's identity in ctx.props.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> forwarded</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">    forwarded.headers.</span><span class="sk-6f42c1-ffc799">delete</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Authorization"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> ctx.exports.CachedBackend.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(forwarded, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      props: { userId },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>整個應用程式就是一個 Worker，只有一個原始碼檔案，只需一次部署。但其中包含兩個執行階段：我們僅在一個小巧的 <code>exports </code>區塊中為閘道關閉快取，同時為後端開啟快取。而在它們之間橫跨著一個快取層：它依每位使用者設定快取鍵、由寫入路徑觸發失效，並在背景重新整理期間持續提供陳舊內容。這個快取階段並非事後硬加上去的配件，而是程式的一個層級，完全由程式碼撰寫而成。</p>
+<p>這種可組合的模式擁有無限可能，相同的架構適用於以下場景：</p>
+<ul>
+	<li><strong>快取 Durable Object</strong>。將 Durable Object (DO) 包裝在一個進入點後方，在回應中設定 <code>Cache-Control</code>，一旦快取命中，讀取操作就不再需要觸及 Durable Object。寫入操作則直接送往 DO，並透過標籤清除快取。DO 本身完全無須感知快取的存在。</li>
+	<li><strong>在</strong> <code>Vary</code> <strong>之前正規化</strong> <code>Accept-Encoding</code><strong>。</strong>外層進入點從 <code>request.cf.clientAcceptEncoding</code> 還原原始編碼（Cloudflare 前端為了快取效率會先將其正規化），然後轉發給一個依真實值進行 Vary 的快取進入點。這能維持高命中率，同時確保用戶端拿到正確的編碼。</li>
+	<li><strong>在快取前剝離追蹤參數。</strong>外層進入點將負責 URL 標準化<strong>，</strong></li>
+</ul>
+<p>或是在 <code>ctx.exports</code> 呼叫時透過 <code>cf.cacheKey</code> 設定<a href="https://developers.cloudflare.com/workers/cache/cache-keys/#custom-cache-keys" target="_blank" rel="noopener noreferrer"><u>自訂快取鍵</u></a>——使得被快取的內層進入點只會看到標準化後的形式，而 <code>?utm_source=anything</code> 這類參數都會折疊為單一快取項目。</p>
+<p>組合疊加。單一 Worker 可以擁有一個負責驗證與路由的外層進入點、一個剝離追蹤參數並還原編碼標頭的正規化進入點、一個作為 Durable Object 前端的快取進入點，以及一個針對未驗證公開 API 的獨立快取進入點。它們之間透過快取階段相互連接，您無需進行複雜的設定，只需決定快取放置的位置即可。<a href="https://developers.cloudflare.com/workers/cache/examples" target="_blank" rel="noopener noreferrer"><u>文件中的「範例」頁面</u></a>詳細示範了其中幾種端到端的實作方式。</p>
+<p>我們尚未發現其他平台能提供這種能力。CDN 快取通常位於來源站之前，而函數運算平台則專注於執行函數。我們不知道還有哪個平台能提供一種位於單一可部署單元內部、處於應用程式各元件之間的快取機制，且每個快取階段的設定都由其兩端的程式碼直接定義。這正是 Workers Cache 的獨特之處。而且，由於它能與平台現有的各項功能（如 Smart Placement、Durable Objects、Service Binding、<code>ctx.props </code>和 <code>ctx.exports</code>）無縫結合，您可以建立無限可能的應用模式。在這篇文章中，我們僅僅是揭開了冰山一角。</p>
+<h2>框架的全方位支援</h2>
+<p>如果您使用 Astro 進行開發，Cloudflare 轉接器會自動為您設定 Workers Cache。只需將 <a href="https://docs.astro.build/en/guides/caching/#cloudflare" target="_blank" rel="noopener noreferrer"><u>cacheCloudflare 提供者</u></a>加入您的設定組態即可：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// astro.config.mjs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { defineConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "astro/config"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> cloudflare </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@astrojs/cloudflare"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { cacheCloudflare } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@astrojs/cloudflare/cache"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> defineConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  adapter: </span><span class="sk-6f42c1-ffc799">cloudflare</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">  output: </span><span class="sk-032f62-99ffe4">"server"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  experimental: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    cache: { provider: </span><span class="sk-6f42c1-ffc799">cacheCloudflare</span><span class="sk-24292e-fff">() },</span></span>
+<span class="line"><span class="sk-24292e-fff">    routeRules: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "/products/*"</span><span class="sk-24292e-fff">: { maxAge: </span><span class="sk-005cc5-ffc799">300</span><span class="sk-24292e-fff">, swr: </span><span class="sk-005cc5-ffc799">3600</span><span class="sk-24292e-fff">, tags: [</span><span class="sk-032f62-99ffe4">"products"</span><span class="sk-24292e-fff">] },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "/blog/*"</span><span class="sk-24292e-fff">:     { maxAge: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">,  swr: </span><span class="sk-005cc5-ffc799">86400</span><span class="sk-24292e-fff">, tags: [</span><span class="sk-032f62-99ffe4">"blog"</span><span class="sk-24292e-fff">] },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre><button type="button" class="code-copy-btn" data-code-copy="" aria-label="複製程式碼" data-copy-label="複製程式碼" data-copied-label="程式碼已複製！"><span class="code-copy-btn__idle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path>
+			</svg></span><span class="code-copy-btn__done"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true">
+				<path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
+			</svg></span></button>
+</div>
+<p>該轉接器會啟用快取、在 Astro 產生的回應上設定正確的標頭、附加用於失效的 <code>Cache-Tag</code> 值，並提供 <code>cache.invalidate() </code>輔助函式，讓您在內容變更時按標籤清除快取。選擇伺服器轉譯的 Astro 頁面會自動獲得上述「轉譯一次、進行快取、背景重新整理」的流程，無需逐一路由設定，也無需學習框架專屬的執行時期層。</p>
+<p>我們正與其他框架的維護者合作，以推出相同的整合。如果您要為 Cloudflare 建構框架轉接器，<a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers Cache API</u></a> 正是您所期望的樣子：以標頭驅動的設定，程式化清除，無需建模任何平台專屬概念。</p>
+<h2>在與 Worker 相同的儀表板上查看您的快取</h2>
+<p>快取只有在您能看清其運作狀況時才有價值。現在，<a href="https://developers.cloudflare.com/workers/observability" target="_blank" rel="noopener noreferrer"><u>Workers Observability 儀表板</u></a>會顯示每次叫用的快取命中資訊：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="351" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=715&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=640&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=715&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=750&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=828&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1080&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1280&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1430&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3262 image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PNJ02ZEGQKCDR18RZXBG.png&amp;w=1920&amp;h=941&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="941" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="351" class="pt-portable-image-media"></div>
+</figure>
+<p>您可以針對每個 Worker 查看：</p>
+<ul>
+	<li>隨時間變化的<strong>快取命中率</strong>：這是您啟用快取後最想看到持續攀升的數字。</li>
+	<li><strong>命中 (Hits)、未命中 (Misses)、更新 (Updates)、繞過 (Bypasses)</strong> 的細項分解。如果命中率偏低，您可以在這裡找出原因——太多 <code>BYPASS</code> 回應（因為某個東西設定了 Cookie？）、太多 <code>MISS </code>回應（快取鍵的分割範圍是否比您想的要廣？）、太多 <code>UPDATING</code> 回應（<code>max-age</code> 是否短於您的流量間隔？）。</li>
+</ul>
+<p>由於所有這些資訊都與 Worker 的其他可觀測性指標（記錄、例外、CPU 時間、請求數）位於同一個儀表板上，您無需在查看區域設定和 Worker 狀態之間來回切換，即可全面瞭解當前的運作情況。</p>
+<h2>計費</h2>
+<p>快取命中不會觸發 Worker 執行，也不會產生 CPU 時間費用。不過，它們仍按標準的 <a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>Workers 請求費率</u></a>計費，與其他任何叫用一樣算作一次請求。快取未命中和繞過情況則以常規方式計費——即同時收取請求費和 CPU 時間費，計費方式與不使用快取時完全相同。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>結果</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>請求費用</strong></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p><strong>CPU 時間費用</strong></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>快取命中 (<code>HIT</code>)（Worker 不執行)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>標準費率</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>不收費</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>快取未命中 (<code>MISS</code>)（Worker 執行）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>標準費率</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>計費</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>快取繞過 (<code>BYPASS</code>)（Worker 執行）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>標準費率</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>計費</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>靜態資產請求</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>標準費率</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>不收費</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Worker 間叫用</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>標準費率</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>若 Worker 執行則計費</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>我們沒有為 Workers Cache 設立獨立的 SKU，也沒有每 GB 的快取儲存費。Tiered Caching、清除機制、<code>stale-while-revalidate </code>以及上述的分析全部都包含在內。如果某個請求原本會執行您的 Worker，但改由 Workers Cache 以命中方式提供，您雖仍需支付標準請求費，但無須支付該請求的 CPU 時間。正因如此，快取命中的成本會低於在 Worker 中轉譯相同的回應。</p>
+<p>有一點需要注意：當啟用快取後，原本通常是免費的請求（例如<a href="https://developers.cloudflare.com/workers/static-assets/billing-and-limitations" target="_blank" rel="noopener noreferrer"><u>靜態資產請求</u></a>，以及透過 Service Binding 或<code> ctx.exports </code>進行的 <a href="https://developers.cloudflare.com/workers/platform/pricing/#service-bindings" target="_blank" rel="noopener noreferrer"><u>Worker 間叫用</u></a>），現在都會以標準請求費率計費，因為每個請求現在都會先查詢位於 Worker 前方的快取。</p>
+<h2>下一步計畫</h2>
+<p>以下是我們明確規劃要推出的功能：</p>
+<ul>
+	<li><strong>利用 Smart Placement 實現更智慧的協同部署。</strong>目前，Cloudflare 會分別選擇上層快取的位置與 Smart Placement 的目標位置。在完全未命中的情況下，請求可能會在 Cloudflare 的機房之間往返兩次：一次是查詢上層快取，另一次是為了在靠近資料的位置執行您的 Worker。我們正致力於協調這些決策，讓未命中只需進行一次長距離的往返。</li>
+	<li><strong>更大的回應大小限制。</strong>在剛推出時，所有回應都遵循<a href="https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#cacheable-size-limits" target="_blank" rel="noopener noreferrer"><u>免費方案的快取大小限制</u></a> (512 MB)，與您的帳戶方案無關。這是暫時性的——在完成幾個部署階段後，將會套用各方案標準的快取限制。</li>
+	<li><strong>更多框架整合。</strong>Astro 已經<a href="https://docs.astro.build/en/guides/caching/#cloudflare" target="_blank" rel="noopener noreferrer"><u>內建了與 Workers Cache 的整合</u></a>。我們正與維護者合作，為其他框架新增類似的整合，包括透過 <a href="https://vinext.dev" target="_blank" rel="noopener noreferrer"><u>Vinext</u></a> 實現的 <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start" target="_blank" rel="noopener noreferrer"><u>TanStack Start</u></a> 與 Next.js。</li>
+	<li><strong>將快取回應標記為過期的 API。</strong>ctx.cache.purge() 會從快取中移除符合條件的回應。我們正在研究 ctx.cache.invalidate() API，讓符合條件的回應表現為已過期，這樣下一個請求仍能透過 stale-while-revalidate 快速獲得過期回應，同時您的 Worker 在背景重新整理快取。</li>
+</ul>
+<h2>立即試用</h2>
+<p>Workers Cache 現已開放給所有方案上的每個 Worker 使用。</p>
+<p>若要開始使用，只需在您的 <code>wrangler.jsonc </code>中加入 <code>"cache": { "enabled": true }</code>，重新部署，並開始設定<code> Cache-Control </code>標頭即可。<a href="https://developers.cloudflare.com/workers/cache" target="_blank" rel="noopener noreferrer"><u>Workers Cache 文件</u></a>詳細介紹了所有功能面向，包含<a href="https://developers.cloudflare.com/workers/cache/#quickstart" target="_blank" rel="noopener noreferrer"><u>快速入門</u></a>、<a href="https://developers.cloudflare.com/workers/cache/cache-keys" target="_blank" rel="noopener noreferrer"><u>快取鍵</u></a>、<a href="https://developers.cloudflare.com/workers/cache/purge" target="_blank" rel="noopener noreferrer"><u>清除機制</u></a>、<a href="https://developers.cloudflare.com/workers/cache/examples" target="_blank" rel="noopener noreferrer"><u>組合模式與範例</u></a>，以及<a href="https://developers.cloudflare.com/workers/cache/debugging" target="_blank" rel="noopener noreferrer"><u>除錯指南</u></a>。</p>
+<p>過去，Worker 僅在快取之前執行；現在，它們也可以在快取之後執行。您可以根據需求選擇執行位置，或利用 Service Binding 同時在兩端執行。</p>
+<p>我們期待看到您的精彩創作。</p>
