@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 21, 2026[Say it once: introducing Bot Preference Sync](https://blog.cloudflare.com/bot-preference-sync/)
+
+Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file with your AI bot policies for Search, Agent, and Training. Easily manage which bots access your content without maintaining static files.
+
+![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECYRV44NP1WR229SCRK7E.png&w=1283&h=766&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/bot-preference-sync/)
+
 August 20, 2026[From all-or-nothing to task-based OAuth consent](https://blog.cloudflare.com/task-based-oauth-consent/)
 
 Cloudflare OAuth now supports optional scopes, giving users more control over what an app can access and helping developers build secure consent flows around the task at hand.
@@ -13,8 +23,6 @@ Cloudflare OAuth now supports optional scopes, giving users more control over wh
 ![Miller Vargas](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2HM2Z37MDHV3RTS1N280R.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Adam Bouhmad](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46V48CPK64MWTYNSCVTA3E.webp&w=64&h=64&f=webp&fit=cover&position=center)![José Enrique Rodríguez](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2KF6STNPG58C7R3CDSF28.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Miller Vargas](https://blog.cloudflare.com/author/miller-vargas/), [Adam Bouhmad](https://blog.cloudflare.com/author/adam-bouhmad/), and [José Enrique Rodríguez](https://blog.cloudflare.com/author/jose-enrique-rodriguez/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0E2VFX1WXFF6TK51VFNP5V3.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/task-based-oauth-consent/)
 
 August 19, 2026[A revisit of remote Spectre attacks on Cloudflare Workers](https://blog.cloudflare.com/revisiting-spectre-attacks-on-workers/)
 
@@ -151,14 +159,6 @@ Agents are a new kind of visitor. They don't render CSS or click ads, but they h
 ![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Andrew Galloni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467820APNFQVPB01C3445A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/), [Will Papper](https://blog.cloudflare.com/author/will-papper/), and [Andrew Galloni](https://blog.cloudflare.com/author/andrew-galloni/)
-
-August 6, 2026[Introducing Kitesurf: The agent-first browser that runs in V8 isolates on Cloudflare Workers](https://blog.cloudflare.com/kitesurf/)
-
-We should be giving all agents tools that excel at what's important for an AI model. Kitesurf is Cloudflare's new stateless, highly scalable, and cost-effective web browser that runs entirely on top of Workers and was designed specifically for the Agentic Cloud.
-
-![Celso Martinho](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K1GG0634XMEFX9CSSGM2.png&w=64&h=64&f=webp&fit=cover&position=center)![Ruskin Constant](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BW07W83PCRTM6JP4W61R.webp&w=64&h=64&f=webp&fit=cover&position=center)![Rui Figueira](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VN7XMZ4WCQMGQSPJ2B3Q.webp&w=64&h=64&f=webp&fit=cover&position=center)![Luís Duarte](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4768W5B20EQMM9ZD5AQMED.png&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Celso Martinho](https://blog.cloudflare.com/author/celso/), [Ruskin Constant](https://blog.cloudflare.com/author/ruskin-constant/), [Rui Figueira](https://blog.cloudflare.com/author/rui-figueira/), and [Luís Duarte](https://blog.cloudflare.com/author/luis-duarte/)
 
 Load more
 
