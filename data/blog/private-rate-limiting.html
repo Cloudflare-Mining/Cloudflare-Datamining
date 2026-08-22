@@ -158,34 +158,34 @@
 </ul>
 <p>These properties can be achieved using a <a href="https://csrc.nist.gov/glossary/term/cryptographic_primitive" target="_blank" rel="noopener noreferrer"><u>cryptographic primitive</u></a> called a <a href="https://blog.cloudflare.com/privacy-pass-the-math" target="_blank" rel="noopener noreferrer"><u>blind signature</u></a><strong> </strong>scheme. In a conventional signature scheme, the signer uses its <strong>private key</strong> to produce a signature for a message. Later on, a verifier can use the signer’s <strong>public key</strong> to verify the signature. Blind signature schemes work in the same way, except that the message to be signed is blinded such that the signer doesn't know the message it's signing. The client “blinds” the message to be signed and sends it to the server, which then computes a blinded signature over the blinded message. The client obtains the final signature by unblinding the signature. </p>
 <p>This is exactly how the standardised Privacy Pass issuance protocols are defined by <a href="https://www.rfc-editor.org/rfc/rfc9578" target="_blank" rel="noopener noreferrer"><u>RFC 9578</u></a>:</p>
-<div id="html-block-k5z" class="html-block">
+<div id="html-block-j5j8frhpk" class="html-block">
 	<ul>
 		<li>
 			<strong>Issuance:</strong> The user generates a random message
-			<strong>$k$</strong>
+			<strong>$mkm$</strong>
 			which we call the
 			<strong>nullifier</strong>. Concretely, this is just a random, 32-byte string. It then blinds the nullifier and sends it to the issuer. The issuer replies with a blind signature. Finally, the user unblinds the signature to get
-			<strong>$\sigma$</strong>,
+			<strong>$m\sigmam$</strong>,
 			a signature for the nullifier
-			<strong>$k$</strong>. The token is the pair
-			<strong>$(k, \sigma)$</strong>.
+			<strong>$mkm$</strong>. The token is the pair
+			<strong>$m(k, \sigma)m$</strong>.
 		</li>
 		<li>
 			<strong>Redemption:</strong> When the user presents
-			<strong>$(k, \sigma)$</strong>,
+			<strong>$m(k, \sigma)m$</strong>,
 			the origin checks that
-			<strong>$\sigma$</strong>
+			<strong>$m\sigmam$</strong>
 			is a valid signature for the nullifier
-			<strong>$k$</strong>
+			<strong>$mkm$</strong>
 			and that
-			<strong>$k$</strong>
+			<strong>$mkm$</strong>
 			is fresh. If both conditions hold, then it accepts and lets the request through.
 		</li>
 	</ul>
 </div>
 <p>Blind signatures are simple, cheap, and perfectly suited for many applications. However, they have some limitations that make them unsuitable for our use case.</p>
 <p>First, the communication cost of the issuance protocol is too high. For each token issued, the user sends a 256-byte, blinded nullifier and the issuer replies with a 256-byte blind signature (assuming RSA-2048 is used). That's 0.5KB of additional communication per request, or 500KB for every 1,000 requests. This is manageable as we’ve seen in a <a href="https://eprint.iacr.org/2023/414.pdf" target="_blank" rel="noopener noreferrer"><u>previous experiment</u></a> for Privacy Pass, but not ideal. Ideally, the bandwidth would be sublinear in the rate limit we want to enforce. An alternative to blind signatures with lower compute time are Oblivious Pseudorandom Functions (<a href="https://datatracker.ietf.org/doc/rfc9497" target="_blank" rel="noopener noreferrer"><u>VOPRF</u></a>), but the bandwidth is still asymptotically linear. We’ve <a href="https://blog.cloudflare.com/privacy-pass-the-math" target="_blank" rel="noopener noreferrer"><u>discussed them in the past</u></a>, as they served as the basis for early deployments of Privacy Pass.</p>
-<p>Second, blind signatures can't be used to rate-limit on a per-origin basis. Ideally, when issuing $N$ tokens to the client, the client would be able to redeem at most $N$ tokens at any origin server that can verify the token's validity. However, the client can't safely redeem the same token at more than one server because it would be possible for the servers to link those redemptions to the same client. What's needed is some mechanism for what we'll call <strong>late origin-binding</strong>: transforming a token for redemption at a particular origin in a way that's unlinkable to other redemptions of the same token.</p>
+<p>Second, blind signatures can't be used to rate-limit on a per-origin basis. Ideally, when issuing <em>N</em> tokens to the client, the client would be able to redeem at most <em>N </em>tokens at any origin server that can verify the token's validity. However, the client can't safely redeem the same token at more than one server because it would be possible for the servers to link those redemptions to the same client. What's needed is some mechanism for what we'll call <strong>late origin-binding</strong>: transforming a token for redemption at a particular origin in a way that's unlinkable to other redemptions of the same token.</p>
 <p>Third, once a token is issued, it can't be revoked: it remains valid as long as the issuer's public key is valid. This makes it impossible for an origin to block a specific user if it detects an attack, or if its tokens are compromised. The origin can block the offending request, but the user can continue to make requests using its remaining token budget.</p>
 <h2>Anonymous credentials and the future of Privacy Pass</h2>
 <p>As noted by <a href="https://dl.acm.org/doi/pdf/10.1145/4372.4373" target="_blank" rel="noopener noreferrer"><u>Chaum</u></a> in 1985, an <strong>anonymous credential</strong> system allows users to obtain a credential from an issuer, and later prove possession of this credential, in an unlinkable way, without revealing any additional information. Also, it is possible to demonstrate that some attributes are attached to the credential.</p>
@@ -259,7 +259,7 @@
 		</tbody>
 	</table>
 </div>
-<div id="html-block-k7h" class="html-block">
+<div id="html-block-58jjdnuox" class="html-block">
 	<p>
 		Let's see how a simple anonymous credential scheme works. The client's message consists of the pair
 		<strong>$(k, C)$</strong>,
@@ -279,7 +279,7 @@
 <p>A blind signature could be used to meet this functionality. However, whereas the nullifier can be blinded as before, it would be necessary to handle the counter in plaintext so that the server can check that the counter is valid (Step 1) and update it (Step 2). This creates an obvious privacy risk since the server, which is in control of the counter, can use it to link multiple presentations by the same client. For example, when you reach out to buy a pepperoni pizza, the origin could assign you a special counter value, which eases fingerprinting when you present it a second time. Fortunately, there exist anonymous credentials designed to close this kind of privacy gap.</p>
 <p>The scheme above is a simplified version of Anonymous Credit Tokens (<a href="https://datatracker.ietf.org/doc/draft-schlesinger-cfrg-act" target="_blank" rel="noopener noreferrer"><u>ACT</u></a>), one of the anonymous credential schemes being considered for adoption by the <a href="https://datatracker.ietf.org/wg/privacypass/about" target="_blank" rel="noopener noreferrer"><u>Privacy Pass working group</u></a> at IETF. The key feature of ACT is its <strong>statefulness</strong>: upon successful redemption, the server re-issues a new credential with updated nullifier and counter values. This creates a feedback loop between the client and server that can be used to express a variety of security policies.</p>
 <p>By design, it's not possible to present ACT credentials multiple times simultaneously: the first presentation must be completed so that the re-issued credential can be presented in the next request. <strong>Parallelism </strong>is the key feature of Anonymous Rate-limited Credential (<a href="https://datatracker.ietf.org/doc/html/draft-yun-cfrg-arc-00" target="_blank" rel="noopener noreferrer"><u>ARC</u></a>), another scheme under discussion at the Privacy Pass working group. ARCs can be presented across multiple requests in parallel up to the presentation limit determined during issuance.</p>
-<p>Another important feature of ARC is its support for late origin-binding: when a client is issued an ARC with presentation limit $N$, it can safely use its credential to present up to $N$ times to any origin that can verify the credential.</p>
+<p>Another important feature of ARC is its support for late origin-binding: when a client is issued an ARC with presentation limit <em>N</em>, it can safely use its credential to present up to <em>N</em> times to any origin that can verify the credential.</p>
 <p>These are just examples of relevant features of some anonymous credentials. Some applications may benefit from a subset of them; others may need additional features. Fortunately, both ACT and ARC can be constructed from a small set of cryptographic primitives that can be easily adapted for other purposes.</p>
 <h2>Building blocks for anonymous credentials</h2>
 <p>ARC and ACT share two primitives in common: <a href="https://eprint.iacr.org/2013/516.pdf" target="_blank" rel="noopener noreferrer"><strong><u>algebraic MACs</u></strong></a>, which provide for limited computations on the blinded message; and <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank" rel="noopener noreferrer"><strong><u>zero-knowledge proofs (ZKP)</u></strong></a> for proving validity of the part of the message not revealed to the server. Let's take a closer look at each.</p>
@@ -289,22 +289,22 @@
 <h3>Zero-Knowledge Proofs for linear relations</h3>
 <p>Zero knowledge proofs (ZKP) allow us to prove a statement is true without revealing the exact value that makes the statement true. The ZKP is constructed by a prover in such a way that it can only be generated by someone who actually possesses the secret. The verifier can then run a quick mathematical check on this proof. If the check passes, the verifier is convinced that the prover's initial statement is valid. The crucial property is that the proof itself is just data that confirms the statement; it contains no other information that could be used to reconstruct the original secret.</p>
 <p>For ARC and ACT, we want to prove <em>linear relations</em> of secrets. In ARC, a user needs to prove that different tokens are linked to the same original secret credential. For example, a user can generate a proof showing that a <em>request token</em> was derived from a valid <em>issued credential</em>. The system can verify this proof to confirm the tokens are legitimately connected, all without ever learning the underlying secret credential that ties them together. This allows the system to validate user actions while guaranteeing their privacy.</p>
-<p>Proving simple linear relations can be extended to prove a number of powerful statements, for example that a number is in range. For example, this is useful to prove that you have a positive balance on your account. To prove your balance is positive, you prove that you can encode your balance in binary. Let’s say you can at most have 1024 credits in your account. To prove your balance is non-zero when it is, for example, 12, you prove two things simultaneously: first, that you have a set of binary bits, in this case 12=(1100)<sub>2</sub>, and second, that a linear equation using these bits (8*1 + 4*1 + 2*0 + 1*0) correctly adds up to your total committed balance. This convinces the verifier that the number is validly constructed without them learning the exact value. This is how it works for powers of two, but it can <a href="https://github.com/chris-wood/draft-arc/pull/38" target="_blank" rel="noopener noreferrer"><u>easily be extended to arbitrary ranges</u></a>.</p>
+<p>Proving simple linear relations can be extended to prove a number of powerful statements, for example that a number is in range. For example, this is useful to prove that you have a positive balance on your account. To prove your balance is positive, you prove that you can encode your balance in binary. Let’s say you can at most have 1024 credits in your account. To prove your balance is non-zero when it is, for example, 12, you prove two things simultaneously: first, that you have a set of binary bits, in this case 12=(1100)2, and second, that a linear equation using these bits (8*1 + 4*1 + 2*0 + 1*0) correctly adds up to your total committed balance. This convinces the verifier that the number is validly constructed without them learning the exact value. This is how it works for powers of two, but it can <a href="https://github.com/chris-wood/draft-arc/pull/38" target="_blank" rel="noopener noreferrer"><u>easily be extended to arbitrary ranges</u></a>.</p>
 <p>The mathematical structure of algebraic MACs allows easy blinding and evaluation. The structure also allows for an easy proof that a MAC has been evaluated with the private key without revealing the MAC. In addition, ARC could use ZKPs to prove that a nonce has not been spent before. In contrast, ACT uses ZKPs to prove we have enough of a balance left on our token. The balance is subtracted homomorphically using more group structure.</p>
 <h2>How much does this all cost?</h2>
 <p>Anonymous credentials allow for more flexibility, and have the potential to reduce the communication cost, compared to blind signatures in certain applications. To identify such applications, we need to measure the concrete communication cost of these new protocols. In addition, we need to understand how their CPU usage compares to blind signatures and oblivious pseudorandom functions.</p>
 <p>We measure the time that each participant spends at each stage of some AC schemes. We also report the size of messages transmitted across the network. For ARC, ACT, and VOPRF, we'll use <a href="https://doi.org/10.17487/RFC9496" target="_blank" rel="noopener noreferrer"><u>ristretto255</u></a> as the prime group and SHAKE128 for hashing. For Blind RSA, we'll use a 2048-bit modulus and SHA-384 for hashing.</p>
 <p>Each algorithm was implemented in Go, on top of the <a href="https://github.com/cloudflare/circl" target="_blank" rel="noopener noreferrer"><u>CIRCL</u></a> library. We plan to open source the code once the specifications of ARC and ACT begin to stabilize.</p>
 <p>Let’s take a look at the most widely used deployment in Privacy Pass: Blind RSA. Redemption time is low, and most of the cost lies with the server at issuance time. Communication cost is mostly constant and in the order of 256 bytes.</p>
-<div id="html-block-k9x" class="html-block">
+<div id="html-block-ac49wjsga" class="html-block">
 	<style>
-		#html-block-k9x .tg {
+		#html-block-ac49wjsga .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		#html-block-k9x .tg td {
+		#html-block-ac49wjsga .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -315,7 +315,7 @@
 			word-break: normal;
 		}
 
-		#html-block-k9x .tg th {
+		#html-block-ac49wjsga .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -327,23 +327,23 @@
 			word-break: normal;
 		}
 
-		#html-block-k9x .tg .tg-baqh {
+		#html-block-ac49wjsga .tg .tg-baqh {
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-k9x .tg .tg-lqy6 {
+		#html-block-ac49wjsga .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		#html-block-k9x .tg .tg-amwm {
+		#html-block-ac49wjsga .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-k9x .tg .tg-0lax {
+		#html-block-ac49wjsga .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
@@ -393,15 +393,15 @@
 	</div>
 </div>
 <p>When looking at VOPRF, verification time on the server is slightly higher than for Blind RSA, but communication cost and issuance are much faster. Evaluation time on the server is 10x faster for 1 token, and more than 25x faster when using <a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens" target="_blank" rel="noopener noreferrer"><u>amortized token issuance</u></a>. Communication cost per token is also more appealing, with a message size at least 3x lower.</p>
-<div id="html-block-ka3" class="html-block">
+<div id="html-block-qjvp4vh6i" class="html-block">
 	<style>
-		#html-block-ka3 .tg {
+		#html-block-qjvp4vh6i .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		#html-block-ka3 .tg td {
+		#html-block-qjvp4vh6i .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -412,7 +412,7 @@
 			word-break: normal;
 		}
 
-		#html-block-ka3 .tg th {
+		#html-block-qjvp4vh6i .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -424,23 +424,23 @@
 			word-break: normal;
 		}
 
-		#html-block-ka3 .tg .tg-baqh {
+		#html-block-qjvp4vh6i .tg .tg-baqh {
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-ka3 .tg .tg-lqy6 {
+		#html-block-qjvp4vh6i .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		#html-block-ka3 .tg .tg-amwm {
+		#html-block-qjvp4vh6i .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-ka3 .tg .tg-0lax {
+		#html-block-qjvp4vh6i .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
@@ -500,16 +500,16 @@
 	</div>
 </div>
 <p>This makes VOPRF tokens appealing for applications requiring a lot of tokens that can accept a slightly higher redemption cost, and that don’t need public verifiability.</p>
-<p>Now, let’s take a look at the figures for ARC and ACT anonymous credential schemes. For both schemes we measure the time to issue a credential that can be presented at most $N=1000$ times.</p>
-<div id="html-block-ka8" class="html-block">
+<p>Now, let’s take a look at the figures for ARC and ACT anonymous credential schemes. For both schemes we measure the time to issue a credential that can be presented at most <em>N=1000</em> times.</p>
+<div id="html-block-8g1mr0b2z" class="html-block">
 	<style>
-		#html-block-ka8 .tg {
+		#html-block-8g1mr0b2z .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		#html-block-ka8 .tg td {
+		#html-block-8g1mr0b2z .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -520,7 +520,7 @@
 			word-break: normal;
 		}
 
-		#html-block-ka8 .tg th {
+		#html-block-8g1mr0b2z .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -532,63 +532,63 @@
 			word-break: normal;
 		}
 
-		#html-block-ka8 .tg .tg-l4d4 {
+		#html-block-8g1mr0b2z .tg .tg-l4d4 {
 			background-color: #D9D2E9;
 			text-align: right;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-8mqg {
+		#html-block-8g1mr0b2z .tg .tg-8mqg {
 			background-color: #FCE5CD;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-sd4m {
+		#html-block-8g1mr0b2z .tg .tg-sd4m {
 			background-color: #CCC;
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-har8 {
+		#html-block-8g1mr0b2z .tg .tg-har8 {
 			background-color: #8E7CC3;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-y4nt {
+		#html-block-8g1mr0b2z .tg .tg-y4nt {
 			background-color: #E69138;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-7nm9 {
+		#html-block-8g1mr0b2z .tg .tg-7nm9 {
 			background-color: #D9D2E9;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-ktyi {
+		#html-block-8g1mr0b2z .tg .tg-ktyi {
 			background-color: #FFF;
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-dzqp {
+		#html-block-8g1mr0b2z .tg .tg-dzqp {
 			background-color: #FCE5CD;
 			text-align: right;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-0lax {
+		#html-block-8g1mr0b2z .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 
-		#html-block-ka8 .tg .tg-dgl5 {
+		#html-block-8g1mr0b2z .tg .tg-dgl5 {
 			background-color: #FFF;
 			font-weight: bold;
 			text-align: left;
@@ -673,9 +673,11 @@
 </div>
 <p>As we would hope, the communication cost and the server’s runtime is much lower than a batched issuance with either Blind RSA or VOPRF. For example, a VOPRF issuance of 1000 tokens takes 99 ms (99 µs per token) <em>vs</em> 1.35 ms for issuing one ARC credential that allows for 1000 presentations. This is about 70x faster. The trade-off is that presentation is more expensive, both for the client and server.</p>
 <p>How about ACT? Like ARC, we would expect the communication cost of issuance grows much slower with respect to the credits issued. Our implementation bears this out. However, there are some interesting performance differences between ARC and ACT: issuance is much cheaper for ACT than it is for ARC, but redemption is the opposite.</p>
-<p>What's going on? The answer has largely to do with what each party needs to prove with ZKPs at each step. For example, during ACT redemption, the client proves to the server (in zero-knowledge) that its counter $C$ is in the desired range, i.e., $0 \leq C \leq N$. The proof size is on the order of $\log_{2} N$, which accounts for the larger message size. In the current version, ARC redemption does not involve range proofs, but a range proof may be added in a <a href="http://mailarchive.ietf.org/arch/msg/privacy-pass/A3VHUdHqhslwBzYEQjcaXzYQAxQ" target="_blank" rel="noopener noreferrer"><u>future version</u></a>. Meanwhile, the statements the client and server need to prove during ARC issuance are a bit more complicated than for ARC presentation, which accounts for the difference in runtime there.</p>
+<div id="html-block-c3tzfkvtg" class="html-block">What's going on? The answer has largely to do with what each party needs to prove with ZKPs at each step. For example, during ACT redemption, the client proves to the server (in zero-knowledge) that its counter $mCm$ is in the desired range, i.e., $m0 \leq C \leq Nm$. The proof size is on the order of $m\log_{2} Nm$, which accounts for the larger message size. </div>
+<p></p>
+<p>In the current version, ARC redemption does not involve range proofs, but a range proof may be added in a <a href="http://mailarchive.ietf.org/arch/msg/privacy-pass/A3VHUdHqhslwBzYEQjcaXzYQAxQ" target="_blank" rel="noopener noreferrer"><u>future version</u></a>. Meanwhile, the statements the client and server need to prove during ARC issuance are a bit more complicated than for ARC presentation, which accounts for the difference in runtime there.</p>
 <p>The advantage of anonymous credentials, as discussed in the previous sections, is that issuance only has to be performed once. When a server evaluates its cost, it takes into account the cost of all issuances and the cost of all verifications. At present, only accounting for credentials costs, it’s cheaper for a server to issue and verify tokens than verify an anonymous credential presentation.</p>
-<p>The advantage of multiple-use anonymous credentials is that instead of the issuer generating $N$ tokens, the bulk of computation is offloaded to the clients. This is more scoped. Late origin binding allows them to work for multiple origins/namespace, range proof to decorrelate expiration from key rotation, and refund to provide a dynamic rate limit. Their current applications are dictated by the limitation of single-use token based schemes, more than by the added efficiency they provide. This seems to be an exciting area to explore, and see if closing the gap is possible.</p>
+<p>The advantage of multiple-use anonymous credentials is that instead of the issuer generating <em>N</em> tokens, the bulk of computation is offloaded to the clients. This is more scoped. Late origin binding allows them to work for multiple origins/namespace, range proof to decorrelate expiration from key rotation, and refund to provide a dynamic rate limit. Their current applications are dictated by the limitation of single-use token based schemes, more than by the added efficiency they provide. This seems to be an exciting area to explore, and see if closing the gap is possible.</p>
 <h2>Managing agents with anonymous credentials</h2>
 <p>Managing agents will likely require features from both ARC and ACT.</p>
 <p>ARC already has much of the functionality we need: it supports rate limiting, is communication-efficient, and it supports late origin-binding. Its main downside is that, once an ARC credential is issued, it can't be revoked. A malicious user can always make up to <em>N</em> requests to any origin it wants.</p>
@@ -690,7 +692,7 @@
 </ul>
 <p>A more fundamental limitation of this design is that the decision to revoke can only be made on the basis of a single request — the one in which the credential was presented. It may be risky to decide to block a user on the basis of a single request; in practice, attack patterns may only emerge across many requests. ACT's statefulness enables at least a rudimentary form of this kind of defense. Consider the following scheme:</p>
 <ul>
-	<li><strong>Issuance: </strong>The client is issued an ARC with presentation limit $N=1$.</li>
+	<li><strong>Issuance: </strong>The client is issued an ARC with presentation limit N=1.</li>
 	<li><strong>Presentation:</strong>
 		<ul>
 			<li>When the client presents its ARC credential to an origin for the first time, the server issues an ACT credential with a valid initial state.</li>

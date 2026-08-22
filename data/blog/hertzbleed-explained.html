@@ -90,14 +90,14 @@
 </figure>
 <p>CPU frequency directly translate to running time</p>
 <p>As illustrated in the table below, if the program with input 1 runs at 4.0 GHz (red) then it takes 1.25 nanoseconds to finish. If the program consumes more power with input 2, under DVFS, it will run at a lower frequency, 3.5 GHz (blue). It takes more time, 1.43 nanoseconds, to finish. If the program consumes even more power with input 3, under DVFS, it will run at an even lower frequency of 3.0 GHz (purple). Now it takes 1.67 nanoseconds to finish. This program always takes five cycles to finish, but the amount of power it consumes depends on the input. The power influences the CPU frequency, and CPU frequency directly translates to execution time. In the end, the program's execution time becomes data-dependent.</p>
-<div id="html-block-k3b" class="html-block">
+<div id="html-block-ppt23avsh" class="html-block">
 	<style>
-		#html-block-k3b .tg {
+		#html-block-ppt23avsh .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		#html-block-k3b .tg td {
+		#html-block-ppt23avsh .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -108,7 +108,7 @@
 			word-break: normal;
 		}
 
-		#html-block-k3b .tg th {
+		#html-block-ppt23avsh .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -120,14 +120,14 @@
 			word-break: normal;
 		}
 
-		#html-block-k3b .tg .tg-3dm3 {
+		#html-block-ppt23avsh .tg .tg-3dm3 {
 			border-color: inherit;
 			font-family: inherit;
 			text-align: center;
 			vertical-align: top
 		}
 
-		#html-block-k3b .tg .tg-sxqf {
+		#html-block-ppt23avsh .tg .tg-sxqf {
 			border-color: inherit;
 			font-family: inherit;
 			text-align: left;
@@ -176,7 +176,7 @@
 </figure>
 <p>SIKE bases its security on the difficulty of computing a relationship between two elliptic curves. On the one hand, it’s easy computing this relation (called an <em>isogeny</em>) if the points that generate such isogeny (called <em>the kernel</em> of the isogeny) are known in advance. On the other hand, it’s difficult to know the isogeny given only two elliptic curves, but without knowledge of the kernel points. An attacker has no advantage if the number of possible kernel points to try is large enough to make the search infeasible (computationally intractable) even with the help of a quantum computer.</p>
 <p>Similarly to other algorithms based on elliptic curves, such as <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">ECDSA</a> or ECDH, the core of SIKE is calculating operations over points on elliptic curves. As usual, points are represented by a pair of coordinates (x,y) which fulfill the elliptic curve equation</p>
-<p>$ y^2= x^3 + Ax^2 +x $</p>
+<div id="html-block-09dvy0bw7" class="html-block">$my^2= x^3 + Ax^2 +xm$</div>
 <p>where A is a parameter identifying different elliptic curves.</p>
 <p>For performance reasons, SIKE uses one of the fastest elliptic curve models: the <a href="https://youtu.be/abStWnmvJO0?t=2684" target="_blank" rel="noopener noreferrer">Montgomery</a> curves. The special property that makes these curves fast is that it allows working only with the x-coordinate of points. Hence, one can express the x-coordinate as a fraction x = X / Z, without using the y-coordinate at all. This representation simplifies the calculation of point additions, scalar multiplications, and isogenies between curves. Nonetheless, such simplicity does not come for free, and there is a price to be paid.</p>
 <p>The formulas for point operations using Montgomery curves have some edge cases. More technically, a formula is said to be complete if for any valid input a valid output point is produced. Otherwise, a formula is not complete, meaning that there are some exceptional inputs for which it cannot produce a valid output point.</p>
@@ -220,6 +220,7 @@
 <p>Hertzbleed allowed us to learn more about how the machines we have in front of us work and how the processor constantly monitors itself, optimizing the performance of the system. Hardware manufacturers have focused on performance of processors by providing many optimizations, however, further study of the security of computations is also needed.</p>
 <p>If you are excited about this project, at Cloudflare we are working on raising the bar on the production of code for cryptography. <a href="https://research.cloudflare.com/contact" target="_blank" rel="noopener noreferrer">Reach out to us</a> if you are interested in high-assurance tools for developers, and don’t forget our <a href="https://research.cloudflare.com/outreach/academic-programs" target="_blank" rel="noopener noreferrer">outreach programs</a> whether you are a student, a faculty member, or an independent researcher.</p>
 <h3>Watch on Cloudflare TV</h3>
-<div id="html-block-k85" class="html-block">
+<div id="html-block-e3ss8fuwi" class="html-block">
 	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/803802d76afc258a95cbfe75146e8155?preload=true&amp;poster=https%3A%2F%2Fcloudflarestream.com%2F803802d76afc258a95cbfe75146e8155%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1m15s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>
+<p></p>
