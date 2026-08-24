@@ -6,6 +6,16 @@ image: https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY3
 
 [Skip to content](#main-content)
 
+August 24, 2026[The Cloudflare Blog – Brought to you by EmDash](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
+
+We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. Here is how we stress-tested performance, safely routed production traffic, and redesigned the frontend experience.
+
+![Kody Jackson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WYRNEDQXNFYKHFAH3WFJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Diogo Carneiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE8R4GSRSY37ME2QWY2Z66.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amy Dutton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE76JV4WWSR820WP54D0RW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+
+[Kody Jackson](https://blog.cloudflare.com/author/kody/), [Diogo Carneiro](https://blog.cloudflare.com/author/diogo-carneiro/), and [Amy Dutton](https://blog.cloudflare.com/author/amy-dutton/)
+
+[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TDC1Q5KWFS3GWEG7SHYMEP.png&w=1200&h=675&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/cloudflare-blog-uses-emdash/)
+
 August 21, 2026[Say it once: introducing Bot Preference Sync](https://blog.cloudflare.com/bot-preference-sync/)
 
 Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file with your AI bot policies for Search, Agent, and Training. Easily manage which bots access your content without maintaining static files.
@@ -13,8 +23,6 @@ Cloudflare's new Bot Preference Sync automatically aligns your robots.txt file w
 ![Jin-Hee Lee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GG1XJCDV61NM8YJGK6YN.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Jin-Hee Lee](https://blog.cloudflare.com/author/jin-hee-lee/)
-
-[![](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0GECYRV44NP1WR229SCRK7E.png&w=1283&h=766&f=webp&fit=cover&position=center)](https://blog.cloudflare.com/bot-preference-sync/)
 
 August 20, 2026[From all-or-nothing to task-based OAuth consent](https://blog.cloudflare.com/task-based-oauth-consent/)
 
@@ -151,14 +159,6 @@ More than half of requests now come from machines, not people. Agent Readiness s
 ![Matthew Conroy](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW1QZW47KMHA09RY62FC.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Matthew Conroy](https://blog.cloudflare.com/author/matthew-conroy/) and [Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/)
-
-August 6, 2026[Building an open Agentic Internet: readable, discoverable, callable, and payable](https://blog.cloudflare.com/the-agentic-internet/)
-
-Agents are a new kind of visitor. They don't render CSS or click ads, but they have a paying human on the other end. Block them and you block your customer. We're building the open tools and protocols so publishers and agents can cooperate and not collide.
-
-![Jack Galilee](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KZA3MX64PMX25X6GHJWTCKYT.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Will Papper](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PWAJT5VPPRZ9Y73A1FEB.webp&w=64&h=64&f=webp&fit=cover&position=center)![Andrew Galloni](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467820APNFQVPB01C3445A.jpg&w=64&h=64&f=webp&fit=cover&position=center)
-
-[Jack Galilee](https://blog.cloudflare.com/author/jack-galilee/), [Will Papper](https://blog.cloudflare.com/author/will-papper/), and [Andrew Galloni](https://blog.cloudflare.com/author/andrew-galloni/)
 
 Load more
 
