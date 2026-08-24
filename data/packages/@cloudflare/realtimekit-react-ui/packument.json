@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-react-ui",
 	"dist-tags": {
 		"latest": "2.0.1",
-		"staging": "2.0.2-staging.2"
+		"staging": "2.0.2-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2159,13 +2159,39 @@
 				"@cloudflare/realtimekit-ui": "2.0.2-staging.2"
 			},
 			"dist": {
-				"integrity": "sha512-lYveuZXPPMySo6vR59HaDz/F3FryWL4A3ms2VGPhbSB2ScmCyXLLLvI7Rq54pKuPsnGRb4DP9TSSr801M908hg==",
 				"shasum": "587827204778c7a43547a7bbdfb812c157b997e7",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-2.0.2-staging.2.tgz",
 				"fileCount": 46,
-				"unpackedSize": 161163,
+				"integrity": "sha512-lYveuZXPPMySo6vR59HaDz/F3FryWL4A3ms2VGPhbSB2ScmCyXLLLvI7Rq54pKuPsnGRb4DP9TSSr801M908hg==",
+				"signatures": [
+					{
+						"sig": "MEUCIHYhtS+B99c8qGDwwPshli4GTg+adPo4GaCD5qa2D8OXAiEA1zZqIAYBpFBovZKv6VwkkrZKnThhiwpS8hVyJzeNQgw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.0.2-staging.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161163
+			}
+		},
+		"2.0.2-staging.3": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "2.0.2-staging.3",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "2.0.2-staging.3"
+			},
+			"dist": {
+				"integrity": "sha512-JYZ6/YO89JLYCdjFPtNhqyDeRD0CJAXFNXrUWhR2OBuXwP4Z+U0QNpxZ2/bsCVeuFEa6JUgcIt8o4iUo3fVLPw==",
+				"shasum": "f7403f1dd382f3dd31d1b6f711dd3723bb6ba790",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-2.0.2-staging.3.tgz",
+				"fileCount": 46,
+				"unpackedSize": 161163,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.0.2-staging.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -2173,7 +2199,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIHYhtS+B99c8qGDwwPshli4GTg+adPo4GaCD5qa2D8OXAiEA1zZqIAYBpFBovZKv6VwkkrZKnThhiwpS8hVyJzeNQgw="
+						"sig": "MEQCICQoiq/YGbQ/WUyPGneFvSbkCn65UJUBVXD3imHryh6HAiB8ujlxC7YH5pNsw3nxTZi51m1EoRj0/DrYuMUSSj3Nig=="
 					}
 				]
 			}
