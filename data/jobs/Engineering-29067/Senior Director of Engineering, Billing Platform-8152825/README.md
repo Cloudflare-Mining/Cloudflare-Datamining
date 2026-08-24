@@ -5,49 +5,112 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><br><strong>Available Location:</strong><strong> </strong>Seattle, WA</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 12pt;"><strong>Job Title: </strong></span></p>
-<p>Procurement Systems Developer&nbsp;</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 12pt;"><strong>Role Summary</strong></span></p>
-<p>The Procurement Systems Developer is responsible for driving the strategy and execution of our global procurement technology ecosystem. Our architecture leverages Zip (Zip HQ) as the premier intake and orchestration layer, integrated natively with Oracle Fusion Cloud as our financial system of record.</p>
-<p>The ideal candidate is a Procurement technologist who understands the nuances of the entire Source-to-Pay (S2P) lifecycle. You will bridge the gap between user-centric intake and rigorous financial controls, ensuring that complex business requirements from Legal, Finance, and Global Sourcing are translated into seamless, automated workflows that maintain data integrity across both Zip and Oracle</p>
-<p>&nbsp;</p>
-<p><span style="font-size: 12pt;"><strong>Role Responsibilities</strong></span></p>
+<p><strong>Locations: Austin, London, Lisbon, SF, NYC, and Seattle</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare's billing platform is a critical part of how customers buy, adopt, and expand across Cloudflare's products. It sits at the intersection of product monetization, customer experience, financial correctness, revenue operations, and enterprise trust.</p>
+<p>We are hiring a Senior Director, Engineering to lead the engineering organization responsible for Cloudflare's billing platform and adjacent quote-to-cash systems. This leader will own the technical strategy, organizational design, execution model, and operational health of the systems that support usage-based billing, subscriptions, invoicing, payments, entitlements, tax, revenue data, customer account lifecycle, and financial reconciliation.</p>
+<p>This is a senior director-level role for someone who has led managers before and can scale a multi-team platform organization where correctness, reliability, auditability, and customer trust are mandatory. The right leader will combine strong engineering judgment, manager-of-managers leadership, and executive-level partnership across Product, Finance, Revenue Operations, Legal, Sales, Support, and external platform vendors.</p>
+<p><strong>What You'll Do</strong></p>
 <ul>
-	<li><strong>End-to-End Process Architecture:</strong> Design and optimize the global S2P process, ensuring a frictionless hand-off between upstream sourcing/intake (Zip) and downstream purchasing/payables (Oracle Fusion).</li>
-	<li><strong>Dual-Platform Configuration:</strong> Act as the functional lead for both Zip and Oracle Fusion Procurement. Build complex intake workflows in Zip while simultaneously configuring Requisitioning, Purchasing, and Supplier Portals in Oracle to match.</li>
-	<li><strong>Integration Ecosystem Management:</strong> Own the technical health of the Zip-to-Oracle integration. Monitor data flow for Requisitions, Purchase Orders, and Supplier Master Data, Compliance screening, ensuring that "In-Flight" changes in one system are accurately reflected in the other.</li>
-	<li><strong>Strategic Business Partnership:</strong> Lead discovery sessions with Global Procurement, Legal, and Accounting. Translate high-level business policies&nbsp; into precise logic within the tech stack.</li>
-	<li><strong>Data Governance &amp; Compliance:</strong> Ensure that the "System of Record" (Oracle) remains audit-ready. Manage the mapping of Category Codes, Cost Centers, and Tax attributes between the Zip UI and the Oracle GL.</li>
-	<li><strong>Release Management:</strong> Manage the quarterly update cycles for both Zip and Oracle. Conduct impact assessments on new features to ensure no disruption to the integrated workflow.</li>
-	<li><strong>AI Procurement Agent Strategy &amp; Governance:</strong> Lead the adoption and functional governance of Oracle's embedded and custom AI agents (e.g., Procurement Policy Advisor), ensuring all AI-driven automation and outputs within the S2P process are compliant, auditable, and drive process efficiency across Zip and Oracle.</li>
+	<li>
+		<p>Own the multi-year engineering strategy, investment plan, and execution roadmap for Cloudflare's billing platform and quote-to-cash integrations.</p>
+	</li>
+	<li>
+		<p>Lead and develop a distributed organization of engineering managers, senior technical leaders, and product engineering teams.</p>
+	</li>
+	<li>
+		<p>Build the next layer of leadership by coaching managers, strengthening technical leadership, and improving planning, accountability, and execution predictability.</p>
+	</li>
+	<li>
+		<p>Drive platform architecture that improves correctness, scalability, reliability, auditability, and speed of product launch.</p>
+	</li>
+	<li>
+		<p>Build systems that support usage-based billing, subscriptions, enterprise contracts, self-serve purchasing, partner and reseller motions, invoicing, payments, credits, refunds, adjustments, entitlements, tax, and customer lifecycle changes.</p>
+	</li>
+	<li>
+		<p>Strengthen financial data integrity across billing, payments, revenue recognition, ERP, CRM, data warehouse, tax, and reporting systems.</p>
+	</li>
+	<li>
+		<p>Improve reconciliation, observability, alerting, SLOs, incident response, and operational controls for billing-critical services.</p>
+	</li>
+	<li>
+		<p>Partner with Product, Finance, Revenue Operations, Accounting, Tax, Legal, Sales, and Support to turn ambiguous business requirements into durable engineering systems.</p>
+	</li>
+	<li>
+		<p>Make pragmatic build, buy, and integrate decisions across billing, payment processing, tax, ERP, CRM, entitlement, and revenue platforms.</p>
+	</li>
+	<li>
+		<p>Represent billing engineering in executive forums with clear tradeoffs, delivery status, risks, and investment recommendations.</p>
+	</li>
 </ul>
-<p><span style="font-size: 12pt;"><strong>Role Requirements</strong></span></p>
-<p><span style="font-size: 12pt;"><strong>Must-Have Skills</strong></span></p>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li><strong>5+</strong> years of hands-on experience in Oracle Fusion Procurement (Self-Service Procurement, Purchasing, Supplier Model) and/or 2+ years of experience with Zip (Zip HQ).</li>
-	<li>Deep understanding of the Source-to-Pay (S2P) lifecycle, including PR/PO lifecycle, 3-way matching, Encumbrance Accounting, and Contract Lifecycle Management.</li>
-	<li>Proven experience managing API-based integrations between Intake-to-Procure tools and Tier-1 ERPs. You should understand how a Zip "Approval" translates into an Oracle "Approved Requisition."</li>
-	<li>Ability to map complex, cross-functional business processes and identify opportunities for automation or bottleneck removal.</li>
-	<li>You don't just fix a field; you understand how changing a workflow in Zip impacts the General Ledger and AP downstream in Oracle.</li>
-	<li>Experience establishing technical standards and governing system changes in a live production environment.</li>
+	<li>
+		<p>15+ years of software engineering experience, including 7+ years leading engineering teams and 3+ years directly managing engineering managers.</p>
+	</li>
+	<li>
+		<p>Experience leading billing, payments, fintech, financial platforms, commerce platforms, quote-to-cash systems, or other systems where correctness and auditability are mandatory.</p>
+	</li>
+	<li>
+		<p>Strong technical judgment in distributed systems, SaaS platforms, service-oriented architectures, APIs, data pipelines, and cloud-native infrastructure.</p>
+	</li>
+	<li>
+		<p>Proven ability to define and execute a multi-year platform strategy across multiple teams, business functions, and executive stakeholders.</p>
+	</li>
+	<li>
+		<p>Experience with usage-based billing, subscription billing, metering, invoicing, payments, credits, refunds, disputes, taxation, entitlement management, revenue data, or reconciliation.</p>
+	</li>
+	<li>
+		<p>Familiarity with platforms such as Stripe or other payment processors, Salesforce or other CRM systems, ERP systems, tax engines, revenue recognition systems, data warehouses, and BI/reporting tools.</p>
+	</li>
+	<li>
+		<p>Track record improving operational excellence for critical systems through SLOs, observability, incident response, change control, migrations, reconciliation, and customer-impact reduction.</p>
+	</li>
+	<li>
+		<p>Ability to translate complex technical, financial, and organizational tradeoffs into clear decisions for executive, finance, product, and engineering audiences.</p>
+	</li>
+	<li>
+		<p>Experience recruiting, coaching, and retaining strong engineering managers and senior technical leaders.</p>
+	</li>
+	<li>
+		<p>High standards for engineering quality, accountability, documentation, customer empathy, and cross-functional follow-through.</p>
+	</li>
+	<li>
+		<p>Practical AI fluency: uses AI tools to accelerate engineering work, improve operating leverage, and raise the team's quality bar without weakening ownership or judgment.</p>
+	</li>
 </ul>
-<p><span style="font-size: 12pt;"><strong>&nbsp;Nice-To-Have Skills</strong></span></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
-	<li>Hands-on experience with Oracle Fusion Global Trade Management system..</li>
-	<li>Third-party supporting software experience like Ironclad, Navan, etc..</li>
-	<li>Exposure to the Data Center Infrastructure industry.</li>
-	<li>Relevant professional product/functional certifications (e.g., Oracle Cloud certifications)</li>
-	<li>Working knowledge of AI Agent Studio for Oracle Fusion Cloud Applications.</li>
+	<li>
+		<p>Experience modernizing or replacing legacy billing, payments, ERP, CRM, tax, entitlement, or revenue systems in a public company or high-growth SaaS business.</p>
+	</li>
+	<li>
+		<p>Experience supporting enterprise contracts, reseller or partner billing, marketplace billing, multi-currency billing, global taxation, or public-sector billing requirements.</p>
+	</li>
+	<li>
+		<p>Experience with internet-scale SaaS, developer platforms, cloud infrastructure, security products, or consumption-based monetization.</p>
+	</li>
+	<li>
+		<p>Experience building platforms that support product-led growth and enterprise sales motions at the same time.</p>
+	</li>
+	<li>
+		<p>Experience leading financial-systems organizations through scale, transformation, and cross-functional operating model changes.</p>
+	</li>
+	<li>
+		<p>Experience with financial controls, SOC 2, PCI, privacy, fraud prevention, audit support, or regulated financial workflows.</p>
+	</li>
+	<li>
+		<p>Experience leading large data migrations or phased platform transformations without interrupting revenue operations or customer billing.</p>
+	</li>
+	<li>
+		<p>Strong product sense around pricing flexibility, customer transparency, billing explainability, and self-service administration.</p>
+	</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Seattle, WA based hires: Estimated annual salary of $114,000 - $156,000.</li>
+	<li><span data-sheets-root="1">For Seattle/NYC/California based hires - Estimated annual salary of: $273,000 - $341,000</span></li>
+	<li><span data-sheets-root="1">For SF/Bay Area based hires - Estimated annual salary of: $286,000 - $258,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
@@ -76,7 +139,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
