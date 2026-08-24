@@ -4224,6 +4224,15 @@
 						"pythonSnapshotRelease": true
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "specCompliantDispatchExceptions",
+					"annotations": {
+						"compatEnableFlag": "spec_compliant_dispatch_exceptions",
+						"compatDisableFlag": "no_spec_compliant_dispatch_exceptions",
+						"compatEnableDate": "2026-09-15"
+					},
+					"type": "Bool"
 				}
 			]
 		},
