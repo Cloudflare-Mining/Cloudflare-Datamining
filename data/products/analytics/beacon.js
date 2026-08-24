@@ -210,7 +210,7 @@
 					let k;
 					const R = () => k ? N : performance.interactionCount ?? 0;
 					let B = 0;
-					class j {
+					class F {
 						h = [];
 						p = new Map;
 						v;
@@ -244,7 +244,7 @@
 							}
 						}
 					}
-					const F = t => {
+					const j = t => {
 							const e = "requestIdleCallback" in globalThis ? 1e3 : 0,
 								n = globalThis.requestIdleCallback || setTimeout,
 								i = globalThis.cancelIdleCallback || clearTimeout;
@@ -387,7 +387,7 @@
 							})(e))
 						}, e)
 					}, t.onINP = (t, e = {}) => {
-						const n = s(e = Object.assign({}, e), j);
+						const n = s(e = Object.assign({}, e), F);
 						let o = [],
 							a = [],
 							c = 0;
@@ -395,7 +395,7 @@
 							p = new WeakMap;
 						let f = !1;
 						const v = () => {
-								f || (F(m), f = !0)
+								f || (j(m), f = !0)
 							},
 							m = () => {
 								const t = new Set(n.h.map(t => g.get(t.entries[0]))),
@@ -456,7 +456,7 @@
 									durationThreshold: 0
 								}));
 								let i, o = T("INP");
-								const r = s(e, j),
+								const r = s(e, F),
 									a = (n, a, s, c, l) => {
 										r.T(), o = T("INP", -1, n, a, s, c, l), i = u(t, o, _, e.reportAllChanges)
 									},
@@ -468,7 +468,7 @@
 										c(), i(!0), a("soft-navigation", t.navigationId, t.interactionId, t.name, t.startTime)
 									},
 									p = (t, e = !1) => {
-										F(() => {
+										j(() => {
 											for (const e of t) "soft-navigation" !== e.entryType ? r.l(e) : g(e);
 											c(), e && i(!0)
 										})
@@ -613,7 +613,7 @@
 										s = t => {
 											if (t.isTrusted && !n) {
 												const t = a.id;
-												F(() => {
+												j(() => {
 													if (!n) {
 														if (!i) {
 															w.disconnect();
@@ -767,12 +767,13 @@
 				"use strict";
 				Object.defineProperty(e, "__esModule", {
 					value: !0
-				}), e.timingsV2TargetKeys = e.timingsTargetKeys = void 0, e.buildTimingsObject = function(t, e, n) {
-					for (const i of n) {
-						const n = t[i];
-						void 0 !== e && ("number" != typeof n && "string" != typeof n || (e[i] = n))
-					}
-				}, e.timingsTargetKeys = ["navigationStart", "domainLookupStart", "domainLookupEnd", "connectStart", "connectEnd", "requestStart", "responseStart", "responseEnd", "domLoading", "domComplete", "loadEventStart", "loadEventEnd"], e.timingsV2TargetKeys = ["nextHopProtocol", "domainLookupStart", "domainLookupEnd", "connectStart", "connectEnd", "requestStart", "responseStart", "responseEnd", "domInteractive", "domComplete", "loadEventStart", "loadEventEnd", "finalResponseHeadersStart", "firstInterimResponseStart", "transferSize", "decodedBodySize"]
+				}), e.positiveOnlyFields = e.timingsV2TargetKeys = e.timingsTargetKeys = void 0, e.buildTimingsObject = function(t, n, i, o) {
+					if (void 0 !== n)
+						for (const r of i) {
+							const i = t[r];
+							"number" != typeof i && "string" != typeof i || (e.positiveOnlyFields.has(r) ? "number" == typeof i && i > o && (n[r] = Math.ceil(i)) : n[r] = i)
+						}
+				}, e.timingsTargetKeys = ["navigationStart", "domainLookupStart", "domainLookupEnd", "connectStart", "connectEnd", "secureConnectionStart", "redirectStart", "redirectEnd", "requestStart", "responseStart", "responseEnd", "domLoading", "domComplete", "loadEventStart", "loadEventEnd"], e.timingsV2TargetKeys = ["nextHopProtocol", "domainLookupStart", "domainLookupEnd", "connectStart", "connectEnd", "secureConnectionStart", "redirectStart", "redirectEnd", "requestStart", "responseStart", "responseEnd", "domInteractive", "domComplete", "loadEventStart", "loadEventEnd", "finalResponseHeadersStart", "firstInterimResponseStart", "transferSize", "decodedBodySize"], e.positiveOnlyFields = new Set(["secureConnectionStart", "redirectStart", "redirectEnd"])
 			},
 			696: (t, e) => {
 				"use strict";
@@ -884,7 +885,7 @@
 					var e, n, i, o, r, a;
 					const s = window.location.pathname;
 					if (!I) {
-						const e = "string" == typeof(c = t.navigationType) && j.has(c) ? t.navigationType : void 0;
+						const e = "string" == typeof(c = t.navigationType) && F.has(c) ? t.navigationType : void 0;
 						e && function(t, e) {
 							const n = k(t);
 							n && (n.navigationType = e)
@@ -928,7 +929,7 @@
 				const M = i => {
 						p++;
 						let o = function(e) {
-							const i = F(u) === t.NavigationType.RoutingApis || F(u) === t.NavigationType.SoftNavigation,
+							const i = j(u) === t.NavigationType.RoutingApis || j(u) === t.NavigationType.SoftNavigation,
 								o = !i,
 								a = s.timing,
 								c = e || n(),
@@ -939,7 +940,7 @@
 									firstContentfulPaint: 0,
 									versions: {
 										fl: v ? v.version : "",
-										js: "2026.6.0-17-gafa3",
+										js: "2026.8.4",
 										timings: 1
 									}
 								});
@@ -949,12 +950,12 @@
 									if (t && Array.isArray(t) && t.length > 0) {
 										l.timingsV2 = {}, l.versions.timings = 2, delete l.timings, t[0].deliveryType && (l.dt = t[0].deliveryType);
 										const e = t[0];
-										(0, r.buildTimingsObject)(e, l.timingsV2, r.timingsV2TargetKeys)
+										(0, r.buildTimingsObject)(e, l.timingsV2, r.timingsV2TargetKeys, e.startTime)
 									}
 								}
 								if (1 === l.versions.timings) {
 									const t = a;
-									l.timings && (0, r.buildTimingsObject)(t, l.timings, r.timingsTargetKeys)
+									l.timings && (0, r.buildTimingsObject)(t, l.timings, r.timingsTargetKeys, t.navigationStart)
 								}
 								s.memory ? function(t, e) {
 									for (const n in t) {
@@ -1006,7 +1007,7 @@
 					var e;
 					if (t) {
 						let n = null === (e = k(t)) || void 0 === e ? void 0 : e.ts;
-						if (n) return Math.ceil(s.timeOrigin) + n
+						if (n) return Math.ceil(s.timeOrigin + n)
 					}
 					return Math.ceil(s.timeOrigin)
 				}
@@ -1054,9 +1055,9 @@
 						navigationType: t.NavigationType.RoutingApis
 					}), M(m))
 				})))));
-				const j = new Set(Object.keys(t.NavigationType).map(e => t.NavigationType[e]));
+				const F = new Set(Object.keys(t.NavigationType).map(e => t.NavigationType[e]));
 
-				function F(t) {
+				function j(t) {
 					var e;
 					return null === (e = k(t)) || void 0 === e ? void 0 : e.navigationType
 				}
@@ -1102,7 +1103,7 @@
 				}
 
 				function H(e, i) {
-					const o = F(u),
+					const o = j(u),
 						r = o === t.NavigationType.RoutingApis || o === t.NavigationType.SoftNavigation,
 						s = {
 							startTime: R(u),
@@ -1114,7 +1115,7 @@
 							referrer: (0, a.cleanLocation)(B(u)),
 							serverTimings: r ? void 0 : _(),
 							versions: {
-								js: "2026.6.0-17-gafa3"
+								js: "2026.8.4"
 							}
 						};
 					return S && s.nt === t.NavigationType.RoutingApis && (s.ntapi = 1), s
