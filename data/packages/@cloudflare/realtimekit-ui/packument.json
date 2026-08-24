@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
-		"latest": "2.0.1",
+		"latest": "2.0.2",
 		"staging": "2.0.2-staging.3"
 	},
 	"versions": {
@@ -2594,6 +2594,36 @@
 			"name": "@cloudflare/realtimekit-ui",
 			"version": "2.0.2-staging.3",
 			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "6a0375fdae93913b44161805a25b71ea2b9d04f3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-2.0.2-staging.3.tgz",
+				"fileCount": 1266,
+				"integrity": "sha512-BSKz3W0xgX/yV2JOaK2i9KeGLBRNDdc1AhNZmaI0fWdbVoZgFVwXV3siSEY5THUwtfaP3pWKvKIfgieB+36BdQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDX5hUQ9b1Yj/hKpN/fnp7v9tqbdw/aYchik2xP+JgeLQIhAIBBEQxZNkT82uiwIwe8ccJA11cP5Srta3qUIPC8IuiA",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-ui@2.0.2-staging.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 28713500
+			}
+		},
+		"2.0.2": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "2.0.2",
+			"dependencies": {
 				"@floating-ui/dom": "^1.7.4",
 				"hark": "^1.2.3",
 				"hls.js": "^1.5.17",
@@ -2601,13 +2631,13 @@
 				"resize-observer-polyfill": "^1.5.1"
 			},
 			"dist": {
-				"integrity": "sha512-BSKz3W0xgX/yV2JOaK2i9KeGLBRNDdc1AhNZmaI0fWdbVoZgFVwXV3siSEY5THUwtfaP3pWKvKIfgieB+36BdQ==",
-				"shasum": "6a0375fdae93913b44161805a25b71ea2b9d04f3",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-2.0.2-staging.3.tgz",
+				"integrity": "sha512-C/YgKh07FBbeMMa/uhRrMGNmJw1g2kzPEYMsfgnq52yd1wWWeecQZFMJ9o+xRtpnhJmnRgPOUc8vOCMf+C/ohQ==",
+				"shasum": "62c940990b6c193fb7d04d758246a2c0d2e9bc9d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-2.0.2.tgz",
 				"fileCount": 1266,
-				"unpackedSize": 28713500,
+				"unpackedSize": 28713513,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-ui@2.0.2-staging.3",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-ui@2.0.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -2615,7 +2645,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDX5hUQ9b1Yj/hKpN/fnp7v9tqbdw/aYchik2xP+JgeLQIhAIBBEQxZNkT82uiwIwe8ccJA11cP5Srta3qUIPC8IuiA"
+						"sig": "MEQCIHLSOn2ZxriyABHm8TLkUwQttL/KBkEGSLvCbm1Tqs6XAiBvCaSpIJiuNv6rSSpTaqYDKWcG/SyJJ0NeM6W7ACNoKg=="
 					}
 				]
 			}
