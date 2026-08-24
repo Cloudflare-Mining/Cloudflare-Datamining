@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-arm64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260823.1"
+		"latest": "1.20260824.1"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -11820,12 +11820,42 @@
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					},
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDvRYqeein45UQvQA87BW7J6rF7JdQXSPEv2HX+yc0W3AIgR3pG7hVRhDhTrQpM2UNi+5/QyqA7k0tN+UjnAOCmR4w="
+						"sig": "MEUCIQDvRYqeein45UQvQA87BW7J6rF7JdQXSPEv2HX+yc0W3AIgR3pG7hVRhDhTrQpM2UNi+5/QyqA7k0tN+UjnAOCmR4w=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
 				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20260823.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 141921364
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260824.1": {
+			"name": "@cloudflare/workerd-darwin-arm64",
+			"version": "1.20260824.1",
+			"dist": {
+				"shasum": "a3da96f16b77456911a4a11eae31b075301053bf",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20260824.1.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-p5FJ2X0jqPVBezBN7HeaFMeLJGQkXW5C1H6I6Z8dcXxEDD2PIsHZyuvQ2eIM+grp/xmcs7HvVv/SDv/fP5Bfpw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEyidZ0+vB2XsnQPUlkBR+uwLMW4CzuasmnEbyPpCVz1AiEAl4EzTMOfC9sMmYIuif+ffMdskBGwzx16NfaV33P10SU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					},
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIDsQ/+y81O5aiEqGXprU34Y0KXWTZnzMsl/yy2P0Rk9hAiEAu7MndOOF1i3nspxjQXiDGE1lsRon0UiIqmAxts9mioo="
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20260824.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
