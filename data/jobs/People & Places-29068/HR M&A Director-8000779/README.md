@@ -5,50 +5,55 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>Austin, US</li>
-	<li>New York, US</li>
-	<li>San Francisco, US</li>
+	<li>US</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare's Developer Platform (Workers, Pages, R2, D1, Durable Objects, AI, and more) is how the next generation of builders ships to the global Internet. Events are one of the most powerful levers we have to reach developers where they are — and to create the moments that turn curiosity into conviction.</p>
-<p>We're looking for a Director of Developer Events to own the end-to-end events strategy and execution for our Developer Platform. This person will be responsible for the full portfolio: flagship tentpole events, Cloudflare-owned developer experiences, sponsored and partnered events, executive dinners, pop-up activations, and field programs. You'll shape how Cloudflare shows up in real life.</p>
-<p>We’re looking for someone with taste — a point of view on what makes a developer event worth attending, a keen eye for design and experience details, and the creative ambition to build moments that developers actually remember and talk about. You'll partner closely with Developer Relations, Product, Sales, Marketing, and Communications to ensure our events strategy drives real developer acquisition, product adoption, and community growth.</p>
-<h2>Responsibilities</h2>
+<h2><strong>About the Role</strong></h2>
+<p><strong>Position Overview:</strong> We are seeking a high-velocity, strategic People M&amp;A Leader to own the human side of our mergers and acquisitions end-to-end. In this role, you will be the single designated point person (DRI) and strategic counterpart to our Corporate Development team. You will own the People lifecycle for all deals—from early-stage confirmatory due diligence through post-close integration.&nbsp;</p>
+<p>You will report directly to the VP, Talent who oversees global HRBPs, Talent Acquisition, Employee Relations, and Talent Development. When deal volume is low, you will focus on strategic programs and talent initiatives for our People organization. You are a systems thinker with an ability to foster relationships internally and externally.</p>
+<p>Acting as the ultimate "Hub to the Spokes," you will translate deal rationale into practical execution strategies, coordinating fluidly across Recruiting, Total Rewards, People Operations, Workplace Immigration, IT, Payroll, Employment Legal and other functions. This is a builder role for someone who thrives under compressed timelines, loves creating order out of ambiguity, and is obsessed with delivering a world-class onboarding experience for newly acquired teams.</p>
+<h2><strong>Responsibilities</strong></h2>
 <ul>
-	<li><strong>Own the developer events strategy</strong> — Define and execute a unified events portfolio for the Developer Platform, spanning flagship moments, owned events, sponsored/third-party events, executive dinners, pop-up experiences, and field activations.</li>
-	<li><strong>Set the creative bar</strong> — Bring a strong point of view on experience design, branding, and storytelling. Every touchpoint — from booth design to keynote content to swag — should reflect Cloudflare's developer-first identity and stand out in a sea of forgettable conference booths.</li>
-	<li><strong>Drive developer acquisition and adoption</strong> —You'll define the metrics that matter and hold the team accountable to them.</li>
-	<li><strong>Build and manage the events calendar</strong> — Evaluate, prioritize, and manage a global calendar of 50+ events per year. Make disciplined bets on where Cloudflare needs to show up and where it doesn't.</li>
-	<li><strong>Manage budget at scale</strong> — Own a significant events budget. Allocate spend across the portfolio with clear ROI frameworks and the ability to pivot mid-year based on performance data.</li>
-	<li><strong>Lead cross-functional execution</strong> — Partner with DevRel (for technical content and speakers), Product (for speakers, launches and demos), Sales (for executive dinners and field events), and Comms (for press and analyst moments) to ensure events are fully integrated into broader GTM motions.</li>
-	<li><strong>Manage vendors and agencies</strong> — Oversee relationships with event production agencies, venue partners, AV vendors, and creative contractors. Hold external partners to the same quality bar you set internally.</li>
-	<li><strong>Build and lead a team</strong> — Manage and grow a lean team of event professionals. Set the culture, operating cadence, and quality standards for the events function.</li>
-	<li><strong>Innovate the format</strong> — The best developer events in 2026 don't look like the best developer events in 2019. Bring fresh thinking on formats: hackathons, build-alongs, AI agent showcases, intimate roundtables, hybrid/digital experiences, and activations that meet developers in non-traditional settings.</li>
+	<li><strong>Corporate Development Partnership &amp; Diligence</strong></li>
+	<ul>
+		<li>Serve as the primary People team representative alongside Corporate Development and Legal from deal kickoff through close.</li>
+		<li>Responsibilities will span from the Letter of Intent (LOI) all the way to closing, including mapping key employees, onboarding, and managing the first 30 days—which will then feed directly into your integration work.&nbsp;</li>
+		<li>Lead rapid-fire HR due diligence to assess target company culture, compensation structures, and compliance risks.</li>
+		<li>Evaluate technical talent density and provide critical input into deal structures, focus areas for retention pools, and offer letters.</li>
+		<li>Partner with finance and legal to analyze equity structures, ensuring seamless alignment on equity rollover mechanics and cash/stock retention incentives.</li>
+	</ul>
+	<li><strong>Cross-Functional Orchestration (The Hub to the Spokes)</strong></li>
+	<ul>
+		<li>Mobilize and serve as the conductor and program manager to cross-functional People and G&amp;A teams (Recruiting, Compensation, People Operations, Immigration, Mobility, Payroll, IT) to ensure workstreams are perfectly sequenced (e.g., ensuring visa/immigration verifications clear before offer letters drop).</li>
+		<li>Build the infrastructure, checklists, and automated workflows that don't exist yet to scale our M&amp;A engine.</li>
+		<li>Identify recurring failure modes across deals and implement upstream fixes to continuously optimize our playbooks.</li>
+	</ul>
+	<li><strong>Integration &amp; Elite Talent Retention</strong></li>
+	<ul>
+		<li>Provide a "white-glove" experience to incoming talent, serving as their primary advocate, guide, and escalation point as they navigate our culture and systems.</li>
+		<li>Partner with leadership and Internal Comms to execute empathetic change management, addressing workforce anxiety through transparent communications, FAQs, and town halls.</li>
+		<li>Design and execute organizational mapping and day-1 onboarding schedules to ensure acquired technical teams maintain momentum and feel integrated from day one.</li>
+	</ul>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h2><strong>Desirable Skills, Knowledge, and Experience</strong></h2>
 <ul>
-	<li>15+ years of experience in events, experiential marketing, or developer marketing, with at least 5 years in a leadership role managing teams and budgets.</li>
-	<li>Deep experience with developer or technical audiences. You understand what resonates with engineers and builders — and what doesn't. You've run events where the attendees are skeptical of marketing by default, and you've earned their attention anyway.</li>
-	<li>Taste and creative vision. You have a portfolio (formal or informal) of events you're proud of. You can articulate why specific design, content, and experience choices mattered. You sweat the details — signage, lighting, run-of-show, speaker prep, the food.</li>
-	<li>Strategic and analytical rigor. You can build a business case for an events portfolio, tie event investments to pipeline and developer acquisition metrics, and make data-informed trade-offs between reach and depth.</li>
-	<li>Proven ability to manage large budgets ($2M+) with financial discipline and transparency.</li>
-	<li>Cross-functional leadership skills. You thrive in matrixed organizations and can influence without authority across Product, Sales, DevRel, and Comms teams.</li>
-	<li>Experience scaling an events function — you've built calendars, playbooks, and teams, not just executed someone else's plan.</li>
-	<li>Comfort with ambiguity and speed. Cloudflare moves fast. You'll need to operate with a bias for action while maintaining quality.</li>
-	<li>Background in or strong exposure to product-led growth (PLG) motions</li>
-	<li>Experience producing hybrid or digital-first event formats</li>
+	<li><strong>Experience:</strong> 6–10+ working in HR M&amp;A.</li>
+	<li><strong>Startup Agility:</strong> Proven track record of building 0-to-1 processes. You excel in fast-moving, unstructured environments where templates are built on the fly.</li>
+	<li><strong>Execution Under Pressure:</strong> Outstanding project management skills; calm under pressure and capable of handling highly confidential data and compressed, unpredictable deal timelines.</li>
+	<li><strong>Technical &amp; Core HR Fluency:</strong> Solid foundational understanding of employment legal basics, high-growth compensation structures, and visa/immigration complexities (critical for international or highly technical talent).</li>
+	<li><strong>Influence Without Authority:</strong> Exceptional communication and relationship-building skills. Ability to earn the trust of elite technical founders and seamlessly align cross-functional internal executives.</li>
 </ul>
 <h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Bay Area based hires: Estimated annual salary of $198,000 - $273,000</li>
-	<li>For NYC based hires: Estimated annual salary of $189,000 - $260,000</li>
+	<li>For San Francisco Bay Area based hires: Estimated annual salary of $214,000 - $295,000</li>
+	<li>For New York City and Washington based hires: Estimated annual salary of $205,000 - $282,000</li>
+	<li>For Colorado based hires: Estimated annual salary of $186,000 - $256,000</li>
 </ul>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -59,14 +64,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3>Financial Benefits</h3>
+<p>Financial Benefits</p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3>Time Off</h3>
+<p>Time Off</p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
