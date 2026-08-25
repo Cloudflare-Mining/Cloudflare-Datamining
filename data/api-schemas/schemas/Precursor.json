@@ -152,6 +152,7 @@
 																"description": "The filter expression that determines which requests the rule matches.",
 																"type": "string",
 																"example": "http.request.uri.path eq \"/login\"",
+																"maxLength": 4000,
 																"x-auditable": true
 															},
 															"id": {
@@ -338,6 +339,7 @@
 																		"description": "The filter expression that determines which requests the rule matches.",
 																		"type": "string",
 																		"example": "http.request.uri.path eq \"/login\"",
+																		"maxLength": 4000,
 																		"x-auditable": true
 																	},
 																	"id": {
@@ -509,6 +511,12 @@
 		"tags": [
 			"Precursor"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.precursor.update",
+				"com.cloudflare.api.account.zone.precursor.read"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -523,7 +531,7 @@
 	"PUT /zones/{zone_id}/precursor": {
 		"operationId": "precursor-for-a-zone-update-config",
 		"summary": "Update Zone Precursor Config",
-		"description": "Updates the Precursor configuration for a zone.\n\n`default_mode` sets the zone-level enforcement mode. `enforcement_rules`\nis the ordered list of rules that override enforcement for matching\nrequests.\n\nThis is a partial update: only the fields present in the request body\nare changed.\n\n- Sending an empty array (`[]`) clears all enforcement rules.\n- At least one of `default_mode` or `enforcement_rules` must be present;\n  an empty body (`{}`) is rejected with `400`.\n- Rule `id` is read-only (assigned by Cloudflare) and ignored on input.\n- Rule `mode` must be `min-friction` or `max-security` (`off` is not a\n  valid rule mode; use `default_mode` to disable enforcement).\n",
+		"description": "Updates the Precursor configuration for a zone.\n\n`default_mode` sets the zone-level enforcement mode. `enforcement_rules`\nis the ordered list of rules that override enforcement for matching\nrequests.\n\nThis is a partial update: only the fields present in the request body\nare changed.\n\n- Sending an empty array (`[]`) clears all enforcement rules.\n- At least one of `default_mode` or `enforcement_rules` must be present;\n  an empty body (`{}`) is rejected with `400`.\n- Rule `id` is read-only (assigned by Cloudflare) and ignored on input.\n- Rule `mode` must be `min-friction` or `max-security` (`off` is not a\n  valid rule mode; use `default_mode` to disable enforcement).\n- Rule `expression` is limited to 4000 characters. The limit applies to\n  each rule individually, not to the combined size of all rules.\n",
 		"parameters": [
 			{
 				"name": "zone_id",
@@ -622,6 +630,7 @@
 											"description": "The filter expression that determines which requests the rule matches.",
 											"type": "string",
 											"example": "http.request.uri.path eq \"/login\"",
+											"maxLength": 4000,
 											"x-auditable": true
 										},
 										"id": {
@@ -802,6 +811,7 @@
 																"description": "The filter expression that determines which requests the rule matches.",
 																"type": "string",
 																"example": "http.request.uri.path eq \"/login\"",
+																"maxLength": 4000,
 																"x-auditable": true
 															},
 															"id": {
@@ -988,6 +998,7 @@
 																		"description": "The filter expression that determines which requests the rule matches.",
 																		"type": "string",
 																		"example": "http.request.uri.path eq \"/login\"",
+																		"maxLength": 4000,
 																		"x-auditable": true
 																	},
 																	"id": {
@@ -1159,6 +1170,11 @@
 		"tags": [
 			"Precursor"
 		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.precursor.update"
+			]
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
