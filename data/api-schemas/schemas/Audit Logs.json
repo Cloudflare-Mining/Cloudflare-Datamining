@@ -802,10 +802,11 @@
 				"name": "actor_context",
 				"in": "query",
 				"schema": {
-					"description": "Filters by the actor context.",
+					"description": "Filters by the actor context.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 					"type": "array",
 					"items": {
 						"enum": [
+							"api",
 							"api_key",
 							"api_token",
 							"dash",
@@ -1106,10 +1107,11 @@
 				"name": "actor_context.not",
 				"in": "query",
 				"schema": {
-					"description": "Filters out audit logs by the actor context.",
+					"description": "Filters out audit logs by the actor context.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 					"type": "array",
 					"items": {
 						"enum": [
+							"api",
 							"api_key",
 							"api_token",
 							"dash",
@@ -1516,9 +1518,11 @@
 																"type": "object",
 																"properties": {
 																	"context": {
+																		"description": "The context in which the action was initiated.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 																		"type": "string",
 																		"example": "dash",
 																		"enum": [
+																			"api",
 																			"api_key",
 																			"api_token",
 																			"dash",
@@ -1922,9 +1926,11 @@
 														"type": "object",
 														"properties": {
 															"context": {
+																"description": "The context in which the action was initiated.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 																"type": "string",
 																"example": "dash",
 																"enum": [
+																	"api",
 																	"api_key",
 																	"api_token",
 																	"dash",
@@ -2499,10 +2505,11 @@
 				"name": "actor_context",
 				"in": "query",
 				"schema": {
-					"description": "Filters by the actor context.",
+					"description": "Filters by the actor context.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 					"type": "array",
 					"items": {
 						"enum": [
+							"api",
 							"api_key",
 							"api_token",
 							"dash",
@@ -2739,10 +2746,11 @@
 				"name": "actor_context.not",
 				"in": "query",
 				"schema": {
-					"description": "Filters out audit logs by the actor context.",
+					"description": "Filters out audit logs by the actor context.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 					"type": "array",
 					"items": {
 						"enum": [
+							"api",
 							"api_key",
 							"api_token",
 							"dash",
@@ -3092,9 +3100,11 @@
 																"type": "object",
 																"properties": {
 																	"context": {
+																		"description": "The context in which the action was initiated.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 																		"type": "string",
 																		"example": "dash",
 																		"enum": [
+																			"api",
 																			"api_key",
 																			"api_token",
 																			"dash",
@@ -3472,9 +3482,11 @@
 														"type": "object",
 														"properties": {
 															"context": {
+																"description": "The context in which the action was initiated.\n- `api`: The action was performed through the API. The specific credential type was not recorded.\n- `api_key`: The action was authenticated with a Cloudflare Global API Key.\n- `api_token`: The action was authenticated with an API token.\n- `dash`: The action was performed through the Cloudflare dashboard.\n- `oauth`: The action was authenticated with an OAuth token.\n- `origin_ca_key`: The action was authenticated with an Origin CA key.\n",
 																"type": "string",
 																"example": "dash",
 																"enum": [
+																	"api",
 																	"api_key",
 																	"api_token",
 																	"dash",

@@ -2412,6 +2412,62 @@
 												"outdated"
 											],
 											"readOnly": true
+										},
+										"warnings": {
+											"type": "array",
+											"items": {
+												"oneOf": [
+													{
+														"properties": {
+															"code": {
+																"type": "string",
+																"enum": [
+																	"custom_metadata_value_not_indexed"
+																]
+															},
+															"expected_type": {
+																"type": "string",
+																"enum": [
+																	"text",
+																	"number",
+																	"boolean",
+																	"datetime"
+																]
+															},
+															"field": {
+																"type": "string",
+																"maxLength": 512
+															}
+														},
+														"required": [
+															"code",
+															"field",
+															"expected_type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"code": {
+																"type": "string",
+																"enum": [
+																	"custom_metadata_field_not_filterable"
+																]
+															},
+															"field": {
+																"type": "string",
+																"maxLength": 512
+															}
+														},
+														"required": [
+															"code",
+															"field"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"maxItems": 10
 										}
 									},
 									"required": [

@@ -1,0 +1,4895 @@
+{
+	"GET /accounts/{account_id}/reporting/industry": {
+		"operationId": "reporting-industry-get",
+		"summary": "Get an account industry",
+		"description": "Gets the industry classification for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare public account ID (32-character hexadecimal string)",
+					"type": "string",
+					"example": "f1234567890abcdef1234567890abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Account industry retrieved successfully (returns 'unknown' if not set)",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"industry": {
+											"description": "Industry string value",
+											"example": "internet",
+											"anyOf": [
+												{
+													"description": "Industry: Unknown",
+													"enum": [
+														"unknown"
+													],
+													"title": "Unknown",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Unsupported",
+													"enum": [
+														"unsupported"
+													],
+													"title": "Unsupported",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Accounting",
+													"enum": [
+														"accounting"
+													],
+													"title": "Accounting",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Adult Entertainment",
+													"enum": [
+														"adult_entertainment"
+													],
+													"title": "Adult Entertainment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Agriculture",
+													"enum": [
+														"agriculture"
+													],
+													"title": "Agriculture",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Airlines, Aviation & Aerospace",
+													"enum": [
+														"airlines_aviation_aerospace"
+													],
+													"title": "Airlines Aviation Aerospace",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Animation & Design",
+													"enum": [
+														"animation_design"
+													],
+													"title": "Animation Design",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Apparel & Fashion",
+													"enum": [
+														"apparel_fashion"
+													],
+													"title": "Apparel Fashion",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Architecture & Planning",
+													"enum": [
+														"architecture_planning"
+													],
+													"title": "Architecture Planning",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Automotive",
+													"enum": [
+														"automotive"
+													],
+													"title": "Automotive",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Banking & Financial Services",
+													"enum": [
+														"banking_financial_services"
+													],
+													"title": "Banking Financial Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Broadcast Media",
+													"enum": [
+														"broadcast_media"
+													],
+													"title": "Broadcast Media",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Building Materials & Construction",
+													"enum": [
+														"building_materials_construction"
+													],
+													"title": "Building Materials Construction",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Business Services, Supplies & Equipment",
+													"enum": [
+														"business_services_supplies_equipment"
+													],
+													"title": "Business Services Supplies Equipment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Computer Hardware",
+													"enum": [
+														"computer_hardware"
+													],
+													"title": "Computer Hardware",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Computer Software",
+													"enum": [
+														"computer_software"
+													],
+													"title": "Computer Software",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Construction & Civil Engineering",
+													"enum": [
+														"construction_civil_engineering"
+													],
+													"title": "Construction Civil Engineering",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Consumer Electronics",
+													"enum": [
+														"consumer_electronics"
+													],
+													"title": "Consumer Electronics",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Consumer Goods",
+													"enum": [
+														"consumer_goods"
+													],
+													"title": "Consumer Goods",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Consumer Services",
+													"enum": [
+														"consumer_services"
+													],
+													"title": "Consumer Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Cosmetics",
+													"enum": [
+														"cosmetics"
+													],
+													"title": "Cosmetics",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Cryptocurrency",
+													"enum": [
+														"cryptocurrency"
+													],
+													"title": "Cryptocurrency",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Cyber Security",
+													"enum": [
+														"cyber_security"
+													],
+													"title": "Cyber Security",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Defense & Space",
+													"enum": [
+														"defense_space"
+													],
+													"title": "Defense Space",
+													"type": "string"
+												},
+												{
+													"description": "Industry: E-Learning",
+													"enum": [
+														"e_learning"
+													],
+													"title": "E Learning",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Education & Academia",
+													"enum": [
+														"education_academia"
+													],
+													"title": "Education Academia",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Education Management",
+													"enum": [
+														"education_management"
+													],
+													"title": "Education Management",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Entertainment",
+													"enum": [
+														"entertainment"
+													],
+													"title": "Entertainment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Environmental Services",
+													"enum": [
+														"environmental_services"
+													],
+													"title": "Environmental Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Events Services",
+													"enum": [
+														"events_services"
+													],
+													"title": "Events Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Facilities Services",
+													"enum": [
+														"facilities_services"
+													],
+													"title": "Facilities Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Fine Art, Luxury Goods & Jewelry",
+													"enum": [
+														"fine_art_luxury_goods_jewelry"
+													],
+													"title": "Fine Art Luxury Goods Jewelry",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Food & Beverage",
+													"enum": [
+														"food_beverage"
+													],
+													"title": "Food Beverage",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Furniture",
+													"enum": [
+														"furniture"
+													],
+													"title": "Furniture",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Gambling & Casinos",
+													"enum": [
+														"gambling_casinos"
+													],
+													"title": "Gambling Casinos",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Gaming",
+													"enum": [
+														"gaming"
+													],
+													"title": "Gaming",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Government",
+													"enum": [
+														"government"
+													],
+													"title": "Government",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Health, Wellness & Fitness",
+													"enum": [
+														"health_wellness_fitness"
+													],
+													"title": "Health Wellness Fitness",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Holding Companies & Conglomerates",
+													"enum": [
+														"holding_companies_conglomerates"
+													],
+													"title": "Holding Companies Conglomerates",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Human Resources, Staffing & Recruiting",
+													"enum": [
+														"human_resources_staffing_recruiting"
+													],
+													"title": "Human Resources Staffing Recruiting",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Information Technology & Services",
+													"enum": [
+														"information_technology_services"
+													],
+													"title": "Information Technology Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Insurance",
+													"enum": [
+														"insurance"
+													],
+													"title": "Insurance",
+													"type": "string"
+												},
+												{
+													"description": "Industry: International Public Affairs",
+													"enum": [
+														"international_public_affairs"
+													],
+													"title": "International Public Affairs",
+													"type": "string"
+												},
+												{
+													"description": "Industry: International Trade & Development",
+													"enum": [
+														"international_trade_development"
+													],
+													"title": "International Trade Development",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Internet",
+													"enum": [
+														"internet"
+													],
+													"title": "Internet",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Investment Management",
+													"enum": [
+														"investment_management"
+													],
+													"title": "Investment Management",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Law Firms & Legal Services",
+													"enum": [
+														"law_firms_legal_services"
+													],
+													"title": "Law Firms Legal Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Leisure, Travel & Tourism",
+													"enum": [
+														"leisure_travel_tourism"
+													],
+													"title": "Leisure Travel Tourism",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Logistics, Supply Chain, Import & Export",
+													"enum": [
+														"logistics_supply_chain_import_export"
+													],
+													"title": "Logistics Supply Chain Import Export",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Management Consulting",
+													"enum": [
+														"management_consulting"
+													],
+													"title": "Management Consulting",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Manufacturing, Machinery, Technology & Engineering",
+													"enum": [
+														"manufacturing_machinery_technology_engineering"
+													],
+													"title": "Manufacturing Machinery Technology Engineering",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Maritime",
+													"enum": [
+														"maritime"
+													],
+													"title": "Maritime",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Market Research",
+													"enum": [
+														"market_research"
+													],
+													"title": "Market Research",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Marketing & Advertising",
+													"enum": [
+														"marketing_advertising"
+													],
+													"title": "Marketing Advertising",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Media Production & Publishing",
+													"enum": [
+														"media_production_publishing"
+													],
+													"title": "Media Production Publishing",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Medical Devices, Healthcare Software & Services",
+													"enum": [
+														"medical_devices_healthcare_software_services"
+													],
+													"title": "Medical Devices Healthcare Software Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Medical Practices, Clinics, Hospitals & Health Care",
+													"enum": [
+														"medical_practices_clinics_hospitals_health_care"
+													],
+													"title": "Medical Practices Clinics Hospitals Health Care",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Military & Law Enforcement",
+													"enum": [
+														"military_law_enforcement"
+													],
+													"title": "Military Law Enforcement",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Mining, Minerals & Metals",
+													"enum": [
+														"mining_minerals_metals"
+													],
+													"title": "Mining Minerals Metals",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Motion Pictures & Film",
+													"enum": [
+														"motion_pictures_and_film"
+													],
+													"title": "Motion Pictures And Film",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Museums & Libraries",
+													"enum": [
+														"museums_libraries"
+													],
+													"title": "Museums Libraries",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Music & Art",
+													"enum": [
+														"music_art"
+													],
+													"title": "Music Art",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Newspapers",
+													"enum": [
+														"newspapers"
+													],
+													"title": "Newspapers",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Nonprofit",
+													"enum": [
+														"nonprofit"
+													],
+													"title": "Nonprofit",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Oil, Energy, Utilities & Waste",
+													"enum": [
+														"oil_energy_utilities_waste"
+													],
+													"title": "Oil Energy Utilities Waste",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Organizations & Local Business",
+													"enum": [
+														"organizations_local_business"
+													],
+													"title": "Organizations Local Business",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Outsourcing & Offshoring",
+													"enum": [
+														"outsourcing_offshoring"
+													],
+													"title": "Outsourcing Offshoring",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Pharmaceuticals, Biotechnology & Alternative Medicine",
+													"enum": [
+														"pharmaceuticals_biotechnology_alternative_medicine"
+													],
+													"title": "Pharmaceuticals Biotechnology Alternative Medicine",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Photographic & Optical Equipment",
+													"enum": [
+														"photographic_optical_equipment"
+													],
+													"title": "Photographic Optical Equipment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Political Organization",
+													"enum": [
+														"political_organization"
+													],
+													"title": "Political Organization",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Print & Digital Media",
+													"enum": [
+														"print_digital_media"
+													],
+													"title": "Print Digital Media",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Professional Training & Coaching",
+													"enum": [
+														"professional_training_coaching"
+													],
+													"title": "Professional Training Coaching",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Real Estate",
+													"enum": [
+														"real_estate"
+													],
+													"title": "Real Estate",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Religious Institutions",
+													"enum": [
+														"religious_institutions"
+													],
+													"title": "Religious Institutions",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Renewables & Environment",
+													"enum": [
+														"renewables_environment"
+													],
+													"title": "Renewables Environment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Research & Think Tanks",
+													"enum": [
+														"research_think_tanks"
+													],
+													"title": "Research Think Tanks",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Restaurants",
+													"enum": [
+														"restaurants"
+													],
+													"title": "Restaurants",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Retail",
+													"enum": [
+														"retail"
+													],
+													"title": "Retail",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Security Services & Investigations",
+													"enum": [
+														"security_services_investigations"
+													],
+													"title": "Security Services Investigations",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Social Impact & Community Services",
+													"enum": [
+														"social_impact_and_community_services"
+													],
+													"title": "Social Impact And Community Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Sporting Goods",
+													"enum": [
+														"sporting_goods"
+													],
+													"title": "Sporting Goods",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Supermarkets & Groceries",
+													"enum": [
+														"supermarkets_groceries"
+													],
+													"title": "Supermarkets Groceries",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Telecommunications Service Providers & Carriers",
+													"enum": [
+														"telecommunications_service_providers_and_carriers"
+													],
+													"title": "Telecommunications Service Providers And Carriers",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Transportation, Shipping, Packaging & Delivery",
+													"enum": [
+														"transportation_shipping_packaging_delivery"
+													],
+													"title": "Transportation Shipping Packaging Delivery",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Travel, Lodging & Hospitality",
+													"enum": [
+														"travel_lodging_hospitality"
+													],
+													"title": "Travel Lodging Hospitality",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Wholesale",
+													"enum": [
+														"wholesale"
+													],
+													"title": "Wholesale",
+													"type": "string"
+												}
+											]
+										},
+										"unlock_time": {
+											"description": "Time when the industry can be updated again",
+											"type": "string",
+											"example": "2026-01-01T00:00:00Z",
+											"nullable": true
+										}
+									},
+									"nullable": true,
+									"required": [
+										"industry",
+										"unlock_time"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"reports_other"
+		],
+		"x-api-token-group": [
+			"#reports:read"
+		],
+		"x-fern-sdk-group-name": "reporting.industry",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/reporting/policies": {
+		"operationId": "reporting-policies-list",
+		"summary": "List reporting policies",
+		"description": "Lists all reporting policies for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare public account ID (32-character hexadecimal string)",
+					"type": "string",
+					"example": "f1234567890abcdef1234567890abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of policies retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"enabled": {
+												"description": "Whether the policy is currently active and will generate reports according to schedule",
+												"type": "boolean",
+												"example": true
+											},
+											"policy_description": {
+												"description": "Optional detailed description of what the policy does and when it runs",
+												"type": "string",
+												"example": "Generates a comprehensive security report every Monday covering firewall events and threat analysis",
+												"default": ""
+											},
+											"policy_id": {
+												"description": "Unique identifier for the policy (UUID format)",
+												"type": "string",
+												"format": "uuid",
+												"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+											},
+											"policy_name": {
+												"description": "Human-readable name for the policy (required, non-empty)",
+												"type": "string",
+												"example": "Weekly Security Report",
+												"minLength": 1
+											},
+											"policy_schedule": {
+												"description": "Cron expression for scheduling (format: minute hour day month weekday). Example: '0 9 * * 1' runs every Monday at 9:00 AM",
+												"type": "string",
+												"example": "0 9 * * 1",
+												"pattern": "^(\\*|([0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9])|\\*\\/[0-9]+)\\s+(\\*|([0-9]|1[0-9]|2[0-3])|\\*\\/[0-9]+)\\s+(\\*|([1-9]|1[0-9]|2[0-9]|3[0-1])|\\*\\/[0-9]+)\\s+(\\*|([1-9]|1[0-2])|\\*\\/[0-9]+)\\s+(\\*|[0-6]|\\*\\/[0-9]+)$"
+											},
+											"valid_from": {
+												"description": "Start date when this policy version becomes effective",
+												"type": "string",
+												"format": "date-time",
+												"example": "2024-01-01T00:00:00Z",
+												"nullable": true
+											},
+											"valid_to": {
+												"description": "End date when this policy version expires (omitted for active policies)",
+												"type": "string",
+												"format": "date-time",
+												"example": "2024-12-31T23:59:59Z",
+												"nullable": true
+											},
+											"version": {
+												"description": "Version number of the policy (incremented when policy is modified, starts at 1)",
+												"type": "integer",
+												"example": 1,
+												"exclusiveMinimum": true,
+												"minimum": 0
+											}
+										},
+										"required": [
+											"policy_id",
+											"policy_name",
+											"policy_schedule",
+											"enabled",
+											"version",
+											"valid_from"
+										],
+										"type": "object"
+									},
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									},
+									"default": []
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"reports_other"
+		],
+		"x-api-token-group": [
+			"#reports:read"
+		],
+		"x-fern-sdk-group-name": "reporting.policies",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/reporting/policies/{policy_id}": {
+		"operationId": "reporting-policies-get",
+		"summary": "Get a reporting policy",
+		"description": "Gets a reporting policy by identifier.",
+		"parameters": [
+			{
+				"name": "policy_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Unique identifier for the policy (UUID format)",
+					"type": "string",
+					"format": "uuid",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+				}
+			},
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare public account ID (32-character hexadecimal string)",
+					"type": "string",
+					"example": "f1234567890abcdef1234567890abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Policy retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"result": {
+									"type": "object",
+									"nullable": true,
+									"properties": {
+										"enabled": {
+											"description": "Whether the policy is currently active and will generate reports according to schedule",
+											"type": "boolean",
+											"example": true
+										},
+										"policy_description": {
+											"description": "Optional detailed description of what the policy does and when it runs",
+											"type": "string",
+											"example": "Generates a comprehensive security report every Monday covering firewall events and threat analysis",
+											"default": ""
+										},
+										"policy_id": {
+											"description": "Unique identifier for the policy (UUID format)",
+											"type": "string",
+											"format": "uuid",
+											"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+										},
+										"policy_name": {
+											"description": "Human-readable name for the policy (required, non-empty)",
+											"type": "string",
+											"example": "Weekly Security Report",
+											"minLength": 1
+										},
+										"policy_schedule": {
+											"description": "Cron expression for scheduling (format: minute hour day month weekday). Example: '0 9 * * 1' runs every Monday at 9:00 AM",
+											"type": "string",
+											"example": "0 9 * * 1",
+											"pattern": "^(\\*|([0-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9])|\\*\\/[0-9]+)\\s+(\\*|([0-9]|1[0-9]|2[0-3])|\\*\\/[0-9]+)\\s+(\\*|([1-9]|1[0-9]|2[0-9]|3[0-1])|\\*\\/[0-9]+)\\s+(\\*|([1-9]|1[0-2])|\\*\\/[0-9]+)\\s+(\\*|[0-6]|\\*\\/[0-9]+)$"
+										},
+										"valid_from": {
+											"description": "Start date when this policy version becomes effective",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-01-01T00:00:00Z",
+											"nullable": true
+										},
+										"valid_to": {
+											"description": "End date when this policy version expires (omitted for active policies)",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-12-31T23:59:59Z",
+											"nullable": true
+										},
+										"version": {
+											"description": "Version number of the policy (incremented when policy is modified, starts at 1)",
+											"type": "integer",
+											"example": 1,
+											"exclusiveMinimum": true,
+											"minimum": 0
+										}
+									},
+									"required": [
+										"policy_id",
+										"policy_name",
+										"policy_schedule",
+										"enabled",
+										"version",
+										"valid_from"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Policy not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									},
+									"default": []
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"reports_other"
+		],
+		"x-api-token-group": [
+			"#reports:read"
+		],
+		"x-fern-sdk-group-name": "reporting.policies",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /accounts/{account_id}/reporting/reports": {
+		"operationId": "reporting-reports-list",
+		"summary": "List generated reports",
+		"description": "Lists all generated reports for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare public account ID (32-character hexadecimal string)",
+					"type": "string",
+					"example": "f1234567890abcdef1234567890abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List of reports retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"result": {
+									"type": "array",
+									"items": {
+										"properties": {
+											"generated_on": {
+												"description": "When this report was actually completed (only present when report is finished)",
+												"type": "string",
+												"example": "2024-01-15T09:05:23Z",
+												"nullable": true
+											},
+											"generation_id": {
+												"description": "Unique identifier for this generation attempt (for retry/deduplication)",
+												"type": "string",
+												"format": "uuid",
+												"example": "c3d4e5f6-g7h8-9012-cdef-345678901234"
+											},
+											"policy_id": {
+												"description": "Reference to the policy that generated this report",
+												"type": "string",
+												"format": "uuid",
+												"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+											},
+											"policy_version": {
+												"description": "Version of the policy that was used to generate this report (positive integer starting at 1)",
+												"type": "integer",
+												"example": 1,
+												"exclusiveMinimum": true,
+												"minimum": 0
+											},
+											"reason": {
+												"description": "Optional reason enum providing additional context about the report status (e.g., cancellation reason, error details)",
+												"example": "invalid_entitlements",
+												"anyOf": [
+													{
+														"description": "No specific reason provided.",
+														"enum": [
+															"unspecified"
+														],
+														"title": "Unspecified",
+														"type": "string"
+													},
+													{
+														"description": "Report cancelled due to invalid or missing entitlements (e.g., no zones analyzed).",
+														"enum": [
+															"invalid_entitlements"
+														],
+														"title": "Invalid Entitlements",
+														"type": "string"
+													},
+													{
+														"description": "Report cancelled because the policy was disabled.",
+														"enum": [
+															"policy_disabled"
+														],
+														"title": "Policy Disabled",
+														"type": "string"
+													}
+												]
+											},
+											"report_id": {
+												"description": "Unique identifier for this specific report instance",
+												"type": "string",
+												"format": "uuid",
+												"example": "b2c3d4e5-f6g7-8901-bcde-f23456789012"
+											},
+											"report_settings": {
+												"description": "Configuration settings used to generate this report, including report type and parameters (may be missing for older reports)",
+												"discriminator": {
+													"propertyName": "type"
+												},
+												"oneOf": [
+													{
+														"description": "Configuration for Application Security Report with time range analysis",
+														"properties": {
+															"type": {
+																"type": "string",
+																"enum": [
+																	"application_security_report_v1"
+																]
+															},
+															"value": {
+																"type": "object",
+																"properties": {
+																	"time_range": {
+																		"description": "Time range that the report covers",
+																		"properties": {
+																			"end_time": {
+																				"description": "End timestamp for the time range (exclusive). Must be after start_time. Accepts ISO 8601 date strings or Date objects.",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2024-01-08T00:00:00Z",
+																				"nullable": true
+																			},
+																			"start_time": {
+																				"description": "Start timestamp for the time range (inclusive). Accepts ISO 8601 date strings or Date objects.",
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2024-01-01T00:00:00Z",
+																				"nullable": true
+																			}
+																		},
+																		"required": [
+																			"start_time",
+																			"end_time"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"time_range"
+																]
+															}
+														},
+														"required": [
+															"type",
+															"value"
+														],
+														"title": "Application Security Report V1 Settings",
+														"type": "object"
+													}
+												],
+												"title": "Report Settings"
+											},
+											"report_status": {
+												"description": "The generation status of the report.",
+												"example": "scheduled",
+												"anyOf": [
+													{
+														"description": "The report status is unspecified.",
+														"enum": [
+															"unspecified"
+														],
+														"title": "Unspecified",
+														"type": "string"
+													},
+													{
+														"description": "The report is scheduled for generation.",
+														"enum": [
+															"scheduled"
+														],
+														"title": "Scheduled",
+														"type": "string"
+													},
+													{
+														"description": "The report is currently being generated.",
+														"enum": [
+															"generating"
+														],
+														"title": "Generating",
+														"type": "string"
+													},
+													{
+														"description": "The report has finished generating.",
+														"enum": [
+															"finished"
+														],
+														"title": "Finished",
+														"type": "string"
+													},
+													{
+														"description": "The report was cancelled and will not be generated.",
+														"enum": [
+															"cancelled"
+														],
+														"title": "Cancelled",
+														"type": "string"
+													}
+												]
+											},
+											"scheduled_for": {
+												"description": "When this report should actually run (execution timestamp)",
+												"type": "string",
+												"format": "date-time",
+												"example": "2024-01-15T09:00:00Z",
+												"nullable": true
+											},
+											"scheduled_on": {
+												"description": "When this report was scheduled (creation timestamp)",
+												"type": "string",
+												"format": "date-time",
+												"example": "2024-01-15T08:30:00Z",
+												"nullable": true
+											}
+										},
+										"required": [
+											"report_id",
+											"generation_id",
+											"report_status",
+											"policy_id",
+											"policy_version",
+											"scheduled_on",
+											"scheduled_for"
+										],
+										"type": "object"
+									},
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Bad request",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									},
+									"default": []
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"reports_other"
+		],
+		"x-api-token-group": [
+			"#reports:read"
+		],
+		"x-fern-sdk-group-name": "reporting.reports",
+		"x-fern-sdk-method-name": "list"
+	},
+	"GET /accounts/{account_id}/reporting/reports/{report_id}": {
+		"operationId": "reporting-reports-get",
+		"summary": "Get a generated report",
+		"description": "Gets a generated report by identifier.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare public account ID (32-character hexadecimal string)",
+					"type": "string",
+					"example": "f1234567890abcdef1234567890abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			},
+			{
+				"name": "report_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Unique report identifier",
+					"type": "string",
+					"format": "uuid",
+					"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Report retrieved successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"generated_on": {
+											"description": "When this report was actually completed (only present when report is finished)",
+											"type": "string",
+											"example": "2024-01-15T09:05:23Z",
+											"nullable": true
+										},
+										"generation_id": {
+											"description": "Unique identifier for this generation attempt (for retry/deduplication)",
+											"type": "string",
+											"format": "uuid",
+											"example": "c3d4e5f6-g7h8-9012-cdef-345678901234"
+										},
+										"policy_id": {
+											"description": "Reference to the policy that generated this report",
+											"type": "string",
+											"format": "uuid",
+											"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+										},
+										"policy_version": {
+											"description": "Version of the policy that was used to generate this report (positive integer starting at 1)",
+											"type": "integer",
+											"example": 1,
+											"exclusiveMinimum": true,
+											"minimum": 0
+										},
+										"reason": {
+											"description": "Optional reason enum providing additional context about the report status (e.g., cancellation reason, error details)",
+											"example": "invalid_entitlements",
+											"anyOf": [
+												{
+													"description": "No specific reason provided.",
+													"enum": [
+														"unspecified"
+													],
+													"title": "Unspecified",
+													"type": "string"
+												},
+												{
+													"description": "Report cancelled due to invalid or missing entitlements (e.g., no zones analyzed).",
+													"enum": [
+														"invalid_entitlements"
+													],
+													"title": "Invalid Entitlements",
+													"type": "string"
+												},
+												{
+													"description": "Report cancelled because the policy was disabled.",
+													"enum": [
+														"policy_disabled"
+													],
+													"title": "Policy Disabled",
+													"type": "string"
+												}
+											]
+										},
+										"report": {
+											"description": "The actual report data and findings",
+											"oneOf": [
+												{
+													"properties": {
+														"type": {
+															"description": "Type identifier for Application Security Report V1",
+															"type": "string",
+															"enum": [
+																"application_security_report_v1"
+															]
+														},
+														"value": {
+															"type": "object",
+															"properties": {
+																"input": {
+																	"description": "Input parameters required to generate an Application Security Report V1",
+																	"type": "object",
+																	"properties": {
+																		"time_range": {
+																			"description": "Time range specification for reports and queries. Used to define the period of data to include in analysis.",
+																			"type": "object",
+																			"properties": {
+																				"end_time": {
+																					"description": "End timestamp for the time range (exclusive). Must be after start_time. Accepts ISO 8601 date strings or Date objects.",
+																					"type": "string",
+																					"format": "date-time",
+																					"example": "2024-01-08T00:00:00Z",
+																					"nullable": true
+																				},
+																				"start_time": {
+																					"description": "Start timestamp for the time range (inclusive). Accepts ISO 8601 date strings or Date objects.",
+																					"type": "string",
+																					"format": "date-time",
+																					"example": "2024-01-01T00:00:00Z",
+																					"nullable": true
+																				}
+																			},
+																			"required": [
+																				"start_time",
+																				"end_time"
+																			]
+																		}
+																	},
+																	"required": [
+																		"time_range"
+																	]
+																},
+																"output": {
+																	"type": "object",
+																	"properties": {
+																		"account_id": {
+																			"description": "Cloudflare account ID this report was generated for",
+																			"type": "string",
+																			"example": "f1234567890abcdef1234567890abcdef"
+																		},
+																		"account_name": {
+																			"description": "Human-readable name of the account",
+																			"type": "string",
+																			"example": "Cloudflare Example"
+																		},
+																		"industry": {
+																			"description": "The industry of the account.",
+																			"example": "internet",
+																			"anyOf": [
+																				{
+																					"description": "Industry: Unknown",
+																					"enum": [
+																						"unknown"
+																					],
+																					"title": "Unknown",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Unsupported",
+																					"enum": [
+																						"unsupported"
+																					],
+																					"title": "Unsupported",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Accounting",
+																					"enum": [
+																						"accounting"
+																					],
+																					"title": "Accounting",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Adult Entertainment",
+																					"enum": [
+																						"adult_entertainment"
+																					],
+																					"title": "Adult Entertainment",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Agriculture",
+																					"enum": [
+																						"agriculture"
+																					],
+																					"title": "Agriculture",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Airlines, Aviation & Aerospace",
+																					"enum": [
+																						"airlines_aviation_aerospace"
+																					],
+																					"title": "Airlines Aviation Aerospace",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Animation & Design",
+																					"enum": [
+																						"animation_design"
+																					],
+																					"title": "Animation Design",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Apparel & Fashion",
+																					"enum": [
+																						"apparel_fashion"
+																					],
+																					"title": "Apparel Fashion",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Architecture & Planning",
+																					"enum": [
+																						"architecture_planning"
+																					],
+																					"title": "Architecture Planning",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Automotive",
+																					"enum": [
+																						"automotive"
+																					],
+																					"title": "Automotive",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Banking & Financial Services",
+																					"enum": [
+																						"banking_financial_services"
+																					],
+																					"title": "Banking Financial Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Broadcast Media",
+																					"enum": [
+																						"broadcast_media"
+																					],
+																					"title": "Broadcast Media",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Building Materials & Construction",
+																					"enum": [
+																						"building_materials_construction"
+																					],
+																					"title": "Building Materials Construction",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Business Services, Supplies & Equipment",
+																					"enum": [
+																						"business_services_supplies_equipment"
+																					],
+																					"title": "Business Services Supplies Equipment",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Computer Hardware",
+																					"enum": [
+																						"computer_hardware"
+																					],
+																					"title": "Computer Hardware",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Computer Software",
+																					"enum": [
+																						"computer_software"
+																					],
+																					"title": "Computer Software",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Construction & Civil Engineering",
+																					"enum": [
+																						"construction_civil_engineering"
+																					],
+																					"title": "Construction Civil Engineering",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Consumer Electronics",
+																					"enum": [
+																						"consumer_electronics"
+																					],
+																					"title": "Consumer Electronics",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Consumer Goods",
+																					"enum": [
+																						"consumer_goods"
+																					],
+																					"title": "Consumer Goods",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Consumer Services",
+																					"enum": [
+																						"consumer_services"
+																					],
+																					"title": "Consumer Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Cosmetics",
+																					"enum": [
+																						"cosmetics"
+																					],
+																					"title": "Cosmetics",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Cryptocurrency",
+																					"enum": [
+																						"cryptocurrency"
+																					],
+																					"title": "Cryptocurrency",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Cyber Security",
+																					"enum": [
+																						"cyber_security"
+																					],
+																					"title": "Cyber Security",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Defense & Space",
+																					"enum": [
+																						"defense_space"
+																					],
+																					"title": "Defense Space",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: E-Learning",
+																					"enum": [
+																						"e_learning"
+																					],
+																					"title": "E Learning",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Education & Academia",
+																					"enum": [
+																						"education_academia"
+																					],
+																					"title": "Education Academia",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Education Management",
+																					"enum": [
+																						"education_management"
+																					],
+																					"title": "Education Management",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Entertainment",
+																					"enum": [
+																						"entertainment"
+																					],
+																					"title": "Entertainment",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Environmental Services",
+																					"enum": [
+																						"environmental_services"
+																					],
+																					"title": "Environmental Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Events Services",
+																					"enum": [
+																						"events_services"
+																					],
+																					"title": "Events Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Facilities Services",
+																					"enum": [
+																						"facilities_services"
+																					],
+																					"title": "Facilities Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Fine Art, Luxury Goods & Jewelry",
+																					"enum": [
+																						"fine_art_luxury_goods_jewelry"
+																					],
+																					"title": "Fine Art Luxury Goods Jewelry",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Food & Beverage",
+																					"enum": [
+																						"food_beverage"
+																					],
+																					"title": "Food Beverage",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Furniture",
+																					"enum": [
+																						"furniture"
+																					],
+																					"title": "Furniture",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Gambling & Casinos",
+																					"enum": [
+																						"gambling_casinos"
+																					],
+																					"title": "Gambling Casinos",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Gaming",
+																					"enum": [
+																						"gaming"
+																					],
+																					"title": "Gaming",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Government",
+																					"enum": [
+																						"government"
+																					],
+																					"title": "Government",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Health, Wellness & Fitness",
+																					"enum": [
+																						"health_wellness_fitness"
+																					],
+																					"title": "Health Wellness Fitness",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Holding Companies & Conglomerates",
+																					"enum": [
+																						"holding_companies_conglomerates"
+																					],
+																					"title": "Holding Companies Conglomerates",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Human Resources, Staffing & Recruiting",
+																					"enum": [
+																						"human_resources_staffing_recruiting"
+																					],
+																					"title": "Human Resources Staffing Recruiting",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Information Technology & Services",
+																					"enum": [
+																						"information_technology_services"
+																					],
+																					"title": "Information Technology Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Insurance",
+																					"enum": [
+																						"insurance"
+																					],
+																					"title": "Insurance",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: International Public Affairs",
+																					"enum": [
+																						"international_public_affairs"
+																					],
+																					"title": "International Public Affairs",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: International Trade & Development",
+																					"enum": [
+																						"international_trade_development"
+																					],
+																					"title": "International Trade Development",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Internet",
+																					"enum": [
+																						"internet"
+																					],
+																					"title": "Internet",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Investment Management",
+																					"enum": [
+																						"investment_management"
+																					],
+																					"title": "Investment Management",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Law Firms & Legal Services",
+																					"enum": [
+																						"law_firms_legal_services"
+																					],
+																					"title": "Law Firms Legal Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Leisure, Travel & Tourism",
+																					"enum": [
+																						"leisure_travel_tourism"
+																					],
+																					"title": "Leisure Travel Tourism",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Logistics, Supply Chain, Import & Export",
+																					"enum": [
+																						"logistics_supply_chain_import_export"
+																					],
+																					"title": "Logistics Supply Chain Import Export",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Management Consulting",
+																					"enum": [
+																						"management_consulting"
+																					],
+																					"title": "Management Consulting",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Manufacturing, Machinery, Technology & Engineering",
+																					"enum": [
+																						"manufacturing_machinery_technology_engineering"
+																					],
+																					"title": "Manufacturing Machinery Technology Engineering",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Maritime",
+																					"enum": [
+																						"maritime"
+																					],
+																					"title": "Maritime",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Market Research",
+																					"enum": [
+																						"market_research"
+																					],
+																					"title": "Market Research",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Marketing & Advertising",
+																					"enum": [
+																						"marketing_advertising"
+																					],
+																					"title": "Marketing Advertising",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Media Production & Publishing",
+																					"enum": [
+																						"media_production_publishing"
+																					],
+																					"title": "Media Production Publishing",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Medical Devices, Healthcare Software & Services",
+																					"enum": [
+																						"medical_devices_healthcare_software_services"
+																					],
+																					"title": "Medical Devices Healthcare Software Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Medical Practices, Clinics, Hospitals & Health Care",
+																					"enum": [
+																						"medical_practices_clinics_hospitals_health_care"
+																					],
+																					"title": "Medical Practices Clinics Hospitals Health Care",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Military & Law Enforcement",
+																					"enum": [
+																						"military_law_enforcement"
+																					],
+																					"title": "Military Law Enforcement",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Mining, Minerals & Metals",
+																					"enum": [
+																						"mining_minerals_metals"
+																					],
+																					"title": "Mining Minerals Metals",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Motion Pictures & Film",
+																					"enum": [
+																						"motion_pictures_and_film"
+																					],
+																					"title": "Motion Pictures And Film",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Museums & Libraries",
+																					"enum": [
+																						"museums_libraries"
+																					],
+																					"title": "Museums Libraries",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Music & Art",
+																					"enum": [
+																						"music_art"
+																					],
+																					"title": "Music Art",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Newspapers",
+																					"enum": [
+																						"newspapers"
+																					],
+																					"title": "Newspapers",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Nonprofit",
+																					"enum": [
+																						"nonprofit"
+																					],
+																					"title": "Nonprofit",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Oil, Energy, Utilities & Waste",
+																					"enum": [
+																						"oil_energy_utilities_waste"
+																					],
+																					"title": "Oil Energy Utilities Waste",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Organizations & Local Business",
+																					"enum": [
+																						"organizations_local_business"
+																					],
+																					"title": "Organizations Local Business",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Outsourcing & Offshoring",
+																					"enum": [
+																						"outsourcing_offshoring"
+																					],
+																					"title": "Outsourcing Offshoring",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Pharmaceuticals, Biotechnology & Alternative Medicine",
+																					"enum": [
+																						"pharmaceuticals_biotechnology_alternative_medicine"
+																					],
+																					"title": "Pharmaceuticals Biotechnology Alternative Medicine",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Photographic & Optical Equipment",
+																					"enum": [
+																						"photographic_optical_equipment"
+																					],
+																					"title": "Photographic Optical Equipment",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Political Organization",
+																					"enum": [
+																						"political_organization"
+																					],
+																					"title": "Political Organization",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Print & Digital Media",
+																					"enum": [
+																						"print_digital_media"
+																					],
+																					"title": "Print Digital Media",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Professional Training & Coaching",
+																					"enum": [
+																						"professional_training_coaching"
+																					],
+																					"title": "Professional Training Coaching",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Real Estate",
+																					"enum": [
+																						"real_estate"
+																					],
+																					"title": "Real Estate",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Religious Institutions",
+																					"enum": [
+																						"religious_institutions"
+																					],
+																					"title": "Religious Institutions",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Renewables & Environment",
+																					"enum": [
+																						"renewables_environment"
+																					],
+																					"title": "Renewables Environment",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Research & Think Tanks",
+																					"enum": [
+																						"research_think_tanks"
+																					],
+																					"title": "Research Think Tanks",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Restaurants",
+																					"enum": [
+																						"restaurants"
+																					],
+																					"title": "Restaurants",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Retail",
+																					"enum": [
+																						"retail"
+																					],
+																					"title": "Retail",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Security Services & Investigations",
+																					"enum": [
+																						"security_services_investigations"
+																					],
+																					"title": "Security Services Investigations",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Social Impact & Community Services",
+																					"enum": [
+																						"social_impact_and_community_services"
+																					],
+																					"title": "Social Impact And Community Services",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Sporting Goods",
+																					"enum": [
+																						"sporting_goods"
+																					],
+																					"title": "Sporting Goods",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Supermarkets & Groceries",
+																					"enum": [
+																						"supermarkets_groceries"
+																					],
+																					"title": "Supermarkets Groceries",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Telecommunications Service Providers & Carriers",
+																					"enum": [
+																						"telecommunications_service_providers_and_carriers"
+																					],
+																					"title": "Telecommunications Service Providers And Carriers",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Transportation, Shipping, Packaging & Delivery",
+																					"enum": [
+																						"transportation_shipping_packaging_delivery"
+																					],
+																					"title": "Transportation Shipping Packaging Delivery",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Travel, Lodging & Hospitality",
+																					"enum": [
+																						"travel_lodging_hospitality"
+																					],
+																					"title": "Travel Lodging Hospitality",
+																					"type": "string"
+																				},
+																				{
+																					"description": "Industry: Wholesale",
+																					"enum": [
+																						"wholesale"
+																					],
+																					"title": "Wholesale",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"industry_percentile": {
+																			"description": "Percentile ranking of this account's security posture within their industry (0-100). Null when industry is unknown/unsupported or benchmarks are unavailable.",
+																			"type": "number",
+																			"example": 75.5,
+																			"nullable": true
+																		},
+																		"time_range": {
+																			"description": "Time range specification for reports and queries. Used to define the period of data to include in analysis.",
+																			"type": "object",
+																			"properties": {
+																				"end_time": {
+																					"description": "End timestamp for the time range (exclusive). Must be after start_time. Accepts ISO 8601 date strings or Date objects.",
+																					"type": "string",
+																					"format": "date-time",
+																					"example": "2024-01-08T00:00:00Z",
+																					"nullable": true
+																				},
+																				"start_time": {
+																					"description": "Start timestamp for the time range (inclusive). Accepts ISO 8601 date strings or Date objects.",
+																					"type": "string",
+																					"format": "date-time",
+																					"example": "2024-01-01T00:00:00Z",
+																					"nullable": true
+																				}
+																			},
+																			"required": [
+																				"start_time",
+																				"end_time"
+																			]
+																		},
+																		"top_countries_by_mitigated_requests": {
+																			"description": "Countries that generated the most mitigated (blocked/challenged) requests",
+																			"type": "array",
+																			"items": {
+																				"properties": {
+																					"count": {
+																						"description": "Number of requests from this country.",
+																						"type": "integer",
+																						"example": 8934,
+																						"minimum": 0
+																					},
+																					"country_alpha2": {
+																						"description": "The ISO 3166-1 alpha-2 country code.",
+																						"type": "string",
+																						"example": "US",
+																						"maxLength": 2,
+																						"minLength": 2
+																					}
+																				},
+																				"required": [
+																					"count",
+																					"country_alpha2"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"top_countries_by_served_requests": {
+																			"description": "Countries that generated the most legitimate (served) requests",
+																			"type": "array",
+																			"items": {
+																				"properties": {
+																					"count": {
+																						"description": "Number of requests from this country.",
+																						"type": "integer",
+																						"example": 8934,
+																						"minimum": 0
+																					},
+																					"country_alpha2": {
+																						"description": "The ISO 3166-1 alpha-2 country code.",
+																						"type": "string",
+																						"example": "US",
+																						"maxLength": 2,
+																						"minLength": 2
+																					}
+																				},
+																				"required": [
+																					"count",
+																					"country_alpha2"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"top_hostnames_by_mitigated_requests": {
+																			"description": "Hostnames with the highest number of mitigated (blocked/challenged) requests",
+																			"type": "array",
+																			"items": {
+																				"properties": {
+																					"count": {
+																						"description": "Number of requests for this hostname.",
+																						"type": "integer",
+																						"example": 15420,
+																						"minimum": 0
+																					},
+																					"hostname": {
+																						"description": "The hostname that received requests.",
+																						"type": "string",
+																						"example": "api.example.com"
+																					}
+																				},
+																				"required": [
+																					"hostname",
+																					"count"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"top_rules_by_mitigated_requests": {
+																			"description": "Firewall rules that blocked or challenged the most requests",
+																			"type": "array",
+																			"items": {
+																				"properties": {
+																					"count": {
+																						"description": "Number of requests that triggered this firewall rule",
+																						"type": "integer",
+																						"example": 234,
+																						"minimum": 0
+																					},
+																					"description": {
+																						"description": "Human readable description of what this rule does",
+																						"type": "string",
+																						"example": "Block known malicious IPs"
+																					},
+																					"kind": {
+																						"description": "The kind of the firewall rule.",
+																						"example": "custom",
+																						"anyOf": [
+																							{
+																								"description": "The rule kind is unknown.",
+																								"enum": [
+																									"unknown"
+																								],
+																								"title": "Unknown",
+																								"type": "string"
+																							},
+																							{
+																								"description": "A custom rule created by the user.",
+																								"enum": [
+																									"custom"
+																								],
+																								"title": "Custom",
+																								"type": "string"
+																							},
+																							{
+																								"description": "A pre-defined rule managed by the system.",
+																								"enum": [
+																									"managed"
+																								],
+																								"title": "Managed",
+																								"type": "string"
+																							}
+																						]
+																					},
+																					"rule_id": {
+																						"description": "Unique identifier of the firewall rule",
+																						"type": "string",
+																						"example": "6183d67b5b5b4a07b87e7c7a"
+																					},
+																					"ruleset_id": {
+																						"description": "Unique identifier of the ruleset containing this rule",
+																						"type": "string",
+																						"example": "efb7b8c949ac4650a09736fc"
+																					},
+																					"source": {
+																						"description": "The source that triggered the firewall event.",
+																						"example": "waf",
+																						"anyOf": [
+																							{
+																								"description": "Firewall Source: Unknown",
+																								"enum": [
+																									"unknown"
+																								],
+																								"title": "Unknown",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: ASN",
+																								"enum": [
+																									"asn"
+																								],
+																								"title": "Asn",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Country",
+																								"enum": [
+																									"country"
+																								],
+																								"title": "Country",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: IP",
+																								"enum": [
+																									"ip"
+																								],
+																								"title": "Ip",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: IP Range",
+																								"enum": [
+																									"ip_range"
+																								],
+																								"title": "Ip Range",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Security Level",
+																								"enum": [
+																									"security_level"
+																								],
+																								"title": "Security Level",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Zone Lockdown",
+																								"enum": [
+																									"zone_lockdown"
+																								],
+																								"title": "Zone Lockdown",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: WAF",
+																								"enum": [
+																									"waf"
+																								],
+																								"title": "Waf",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Firewall Rules",
+																								"enum": [
+																									"firewall_rules"
+																								],
+																								"title": "Firewall Rules",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: UA Block",
+																								"enum": [
+																									"ua_block"
+																								],
+																								"title": "Ua Block",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Rate Limit",
+																								"enum": [
+																									"rate_limit"
+																								],
+																								"title": "Rate Limit",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: BIC",
+																								"enum": [
+																									"bic"
+																								],
+																								"title": "Bic",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: HOT",
+																								"enum": [
+																									"hot"
+																								],
+																								"title": "Hot",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: L7 DDOS",
+																								"enum": [
+																									"l7_ddos"
+																								],
+																								"title": "L7 Ddos",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Validation",
+																								"enum": [
+																									"validation"
+																								],
+																								"title": "Validation",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Bot Fight",
+																								"enum": [
+																									"bot_fight"
+																								],
+																								"title": "Bot Fight",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: API Shield",
+																								"enum": [
+																									"api_shield"
+																								],
+																								"title": "Api Shield",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Bot Management",
+																								"enum": [
+																									"bot_management"
+																								],
+																								"title": "Bot Management",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: DLP",
+																								"enum": [
+																									"dlp"
+																								],
+																								"title": "Dlp",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Firewall Managed",
+																								"enum": [
+																									"firewall_managed"
+																								],
+																								"title": "Firewall Managed",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: Firewall Custom",
+																								"enum": [
+																									"firewall_custom"
+																								],
+																								"title": "Firewall Custom",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: API Shield Schema Validation",
+																								"enum": [
+																									"api_shield_schema_validation"
+																								],
+																								"title": "Api Shield Schema Validation",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: API Shield Token Validation",
+																								"enum": [
+																									"api_shield_token_validation"
+																								],
+																								"title": "Api Shield Token Validation",
+																								"type": "string"
+																							},
+																							{
+																								"description": "Firewall Source: API Shield Sequence Mitigation",
+																								"enum": [
+																									"api_shield_sequence_mitigation"
+																								],
+																								"title": "Api Shield Sequence Mitigation",
+																								"type": "string"
+																							}
+																						]
+																					}
+																				},
+																				"required": [
+																					"count",
+																					"rule_id",
+																					"ruleset_id",
+																					"description",
+																					"source",
+																					"kind"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"total_requests": {
+																			"description": "Summary statistics for request counts with optional period-over-period comparison",
+																			"type": "object",
+																			"properties": {
+																				"count": {
+																					"description": "Total count of requests.",
+																					"type": "integer",
+																					"example": 1250000,
+																					"minimum": 0
+																				},
+																				"percent_change": {
+																					"description": "Percentage change from the previous period (positive = increase, negative = decrease).",
+																					"type": "number",
+																					"example": 15.3
+																				}
+																			},
+																			"required": [
+																				"count"
+																			]
+																		},
+																		"total_requests_mitigated": {
+																			"description": "Summary statistics for request counts with optional period-over-period comparison",
+																			"type": "object",
+																			"properties": {
+																				"count": {
+																					"description": "Total count of requests.",
+																					"type": "integer",
+																					"example": 1250000,
+																					"minimum": 0
+																				},
+																				"percent_change": {
+																					"description": "Percentage change from the previous period (positive = increase, negative = decrease).",
+																					"type": "number",
+																					"example": 15.3
+																				}
+																			},
+																			"required": [
+																				"count"
+																			]
+																		},
+																		"total_requests_served": {
+																			"description": "Summary statistics for request counts with optional period-over-period comparison",
+																			"type": "object",
+																			"properties": {
+																				"count": {
+																					"description": "Total count of requests.",
+																					"type": "integer",
+																					"example": 1250000,
+																					"minimum": 0
+																				},
+																				"percent_change": {
+																					"description": "Percentage change from the previous period (positive = increase, negative = decrease).",
+																					"type": "number",
+																					"example": 15.3
+																				}
+																			},
+																			"required": [
+																				"count"
+																			]
+																		},
+																		"total_zones": {
+																			"description": "Total number of zones (domains) in this account",
+																			"type": "integer",
+																			"example": 25,
+																			"minimum": 0
+																		},
+																		"total_zones_analyzed": {
+																			"description": "Number of zones that were included in this security analysis",
+																			"type": "integer",
+																			"example": 23,
+																			"minimum": 0
+																		}
+																	},
+																	"required": [
+																		"account_id",
+																		"account_name",
+																		"time_range",
+																		"total_zones",
+																		"total_zones_analyzed",
+																		"industry",
+																		"industry_percentile",
+																		"total_requests",
+																		"total_requests_mitigated",
+																		"total_requests_served",
+																		"top_hostnames_by_mitigated_requests",
+																		"top_countries_by_served_requests",
+																		"top_countries_by_mitigated_requests",
+																		"top_rules_by_mitigated_requests"
+																	]
+																}
+															},
+															"required": [
+																"input",
+																"output"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"value"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"report_id": {
+											"description": "Unique identifier for this specific report instance",
+											"type": "string",
+											"format": "uuid",
+											"example": "b2c3d4e5-f6g7-8901-bcde-f23456789012"
+										},
+										"report_settings": {
+											"description": "Configuration settings used to generate this report, including report type and parameters (may be missing for older reports)",
+											"discriminator": {
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"description": "Configuration for Application Security Report with time range analysis",
+													"properties": {
+														"type": {
+															"type": "string",
+															"enum": [
+																"application_security_report_v1"
+															]
+														},
+														"value": {
+															"type": "object",
+															"properties": {
+																"time_range": {
+																	"description": "Time range that the report covers",
+																	"properties": {
+																		"end_time": {
+																			"description": "End timestamp for the time range (exclusive). Must be after start_time. Accepts ISO 8601 date strings or Date objects.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-08T00:00:00Z",
+																			"nullable": true
+																		},
+																		"start_time": {
+																			"description": "Start timestamp for the time range (inclusive). Accepts ISO 8601 date strings or Date objects.",
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2024-01-01T00:00:00Z",
+																			"nullable": true
+																		}
+																	},
+																	"required": [
+																		"start_time",
+																		"end_time"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"time_range"
+															]
+														}
+													},
+													"required": [
+														"type",
+														"value"
+													],
+													"title": "Application Security Report V1 Settings",
+													"type": "object"
+												}
+											],
+											"title": "Report Settings"
+										},
+										"report_status": {
+											"description": "The generation status of the report.",
+											"example": "scheduled",
+											"anyOf": [
+												{
+													"description": "The report status is unspecified.",
+													"enum": [
+														"unspecified"
+													],
+													"title": "Unspecified",
+													"type": "string"
+												},
+												{
+													"description": "The report is scheduled for generation.",
+													"enum": [
+														"scheduled"
+													],
+													"title": "Scheduled",
+													"type": "string"
+												},
+												{
+													"description": "The report is currently being generated.",
+													"enum": [
+														"generating"
+													],
+													"title": "Generating",
+													"type": "string"
+												},
+												{
+													"description": "The report has finished generating.",
+													"enum": [
+														"finished"
+													],
+													"title": "Finished",
+													"type": "string"
+												},
+												{
+													"description": "The report was cancelled and will not be generated.",
+													"enum": [
+														"cancelled"
+													],
+													"title": "Cancelled",
+													"type": "string"
+												}
+											]
+										},
+										"scheduled_for": {
+											"description": "When this report should actually run (execution timestamp)",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-01-15T09:00:00Z",
+											"nullable": true
+										},
+										"scheduled_on": {
+											"description": "When this report was scheduled (creation timestamp)",
+											"type": "string",
+											"format": "date-time",
+											"example": "2024-01-15T08:30:00Z",
+											"nullable": true
+										}
+									},
+									"nullable": true,
+									"required": [
+										"report_id",
+										"generation_id",
+										"report_status",
+										"policy_id",
+										"policy_version",
+										"scheduled_on",
+										"scheduled_for",
+										"report"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Report not found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									},
+									"default": []
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"reports_other"
+		],
+		"x-api-token-group": [
+			"#reports:read"
+		],
+		"x-fern-sdk-group-name": "reporting.reports",
+		"x-fern-sdk-method-name": "get"
+	},
+	"PATCH /accounts/{account_id}/reporting/industry": {
+		"operationId": "reporting-industry-update",
+		"summary": "Update an account industry",
+		"description": "Updates the industry classification for an account.",
+		"parameters": [
+			{
+				"name": "account_id",
+				"in": "path",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare public account ID (32-character hexadecimal string)",
+					"type": "string",
+					"example": "f1234567890abcdef1234567890abcdef",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[a-f0-9]{32}$"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object",
+						"properties": {
+							"industry": {
+								"description": "The industry of the account",
+								"example": "internet",
+								"anyOf": [
+									{
+										"description": "Industry: Accounting",
+										"enum": [
+											"accounting"
+										],
+										"title": "Accounting",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Adult Entertainment",
+										"enum": [
+											"adult_entertainment"
+										],
+										"title": "Adult Entertainment",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Agriculture",
+										"enum": [
+											"agriculture"
+										],
+										"title": "Agriculture",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Airlines, Aviation & Aerospace",
+										"enum": [
+											"airlines_aviation_aerospace"
+										],
+										"title": "Airlines Aviation Aerospace",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Animation & Design",
+										"enum": [
+											"animation_design"
+										],
+										"title": "Animation Design",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Apparel & Fashion",
+										"enum": [
+											"apparel_fashion"
+										],
+										"title": "Apparel Fashion",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Architecture & Planning",
+										"enum": [
+											"architecture_planning"
+										],
+										"title": "Architecture Planning",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Automotive",
+										"enum": [
+											"automotive"
+										],
+										"title": "Automotive",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Banking & Financial Services",
+										"enum": [
+											"banking_financial_services"
+										],
+										"title": "Banking Financial Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Broadcast Media",
+										"enum": [
+											"broadcast_media"
+										],
+										"title": "Broadcast Media",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Building Materials & Construction",
+										"enum": [
+											"building_materials_construction"
+										],
+										"title": "Building Materials Construction",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Business Services, Supplies & Equipment",
+										"enum": [
+											"business_services_supplies_equipment"
+										],
+										"title": "Business Services Supplies Equipment",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Computer Hardware",
+										"enum": [
+											"computer_hardware"
+										],
+										"title": "Computer Hardware",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Computer Software",
+										"enum": [
+											"computer_software"
+										],
+										"title": "Computer Software",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Construction & Civil Engineering",
+										"enum": [
+											"construction_civil_engineering"
+										],
+										"title": "Construction Civil Engineering",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Consumer Electronics",
+										"enum": [
+											"consumer_electronics"
+										],
+										"title": "Consumer Electronics",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Consumer Goods",
+										"enum": [
+											"consumer_goods"
+										],
+										"title": "Consumer Goods",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Consumer Services",
+										"enum": [
+											"consumer_services"
+										],
+										"title": "Consumer Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Cosmetics",
+										"enum": [
+											"cosmetics"
+										],
+										"title": "Cosmetics",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Cryptocurrency",
+										"enum": [
+											"cryptocurrency"
+										],
+										"title": "Cryptocurrency",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Cyber Security",
+										"enum": [
+											"cyber_security"
+										],
+										"title": "Cyber Security",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Defense & Space",
+										"enum": [
+											"defense_space"
+										],
+										"title": "Defense Space",
+										"type": "string"
+									},
+									{
+										"description": "Industry: E-Learning",
+										"enum": [
+											"e_learning"
+										],
+										"title": "E Learning",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Education & Academia",
+										"enum": [
+											"education_academia"
+										],
+										"title": "Education Academia",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Education Management",
+										"enum": [
+											"education_management"
+										],
+										"title": "Education Management",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Entertainment",
+										"enum": [
+											"entertainment"
+										],
+										"title": "Entertainment",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Environmental Services",
+										"enum": [
+											"environmental_services"
+										],
+										"title": "Environmental Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Events Services",
+										"enum": [
+											"events_services"
+										],
+										"title": "Events Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Facilities Services",
+										"enum": [
+											"facilities_services"
+										],
+										"title": "Facilities Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Fine Art, Luxury Goods & Jewelry",
+										"enum": [
+											"fine_art_luxury_goods_jewelry"
+										],
+										"title": "Fine Art Luxury Goods Jewelry",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Food & Beverage",
+										"enum": [
+											"food_beverage"
+										],
+										"title": "Food Beverage",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Furniture",
+										"enum": [
+											"furniture"
+										],
+										"title": "Furniture",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Gambling & Casinos",
+										"enum": [
+											"gambling_casinos"
+										],
+										"title": "Gambling Casinos",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Gaming",
+										"enum": [
+											"gaming"
+										],
+										"title": "Gaming",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Government",
+										"enum": [
+											"government"
+										],
+										"title": "Government",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Health, Wellness & Fitness",
+										"enum": [
+											"health_wellness_fitness"
+										],
+										"title": "Health Wellness Fitness",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Holding Companies & Conglomerates",
+										"enum": [
+											"holding_companies_conglomerates"
+										],
+										"title": "Holding Companies Conglomerates",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Human Resources, Staffing & Recruiting",
+										"enum": [
+											"human_resources_staffing_recruiting"
+										],
+										"title": "Human Resources Staffing Recruiting",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Information Technology & Services",
+										"enum": [
+											"information_technology_services"
+										],
+										"title": "Information Technology Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Insurance",
+										"enum": [
+											"insurance"
+										],
+										"title": "Insurance",
+										"type": "string"
+									},
+									{
+										"description": "Industry: International Public Affairs",
+										"enum": [
+											"international_public_affairs"
+										],
+										"title": "International Public Affairs",
+										"type": "string"
+									},
+									{
+										"description": "Industry: International Trade & Development",
+										"enum": [
+											"international_trade_development"
+										],
+										"title": "International Trade Development",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Internet",
+										"enum": [
+											"internet"
+										],
+										"title": "Internet",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Investment Management",
+										"enum": [
+											"investment_management"
+										],
+										"title": "Investment Management",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Law Firms & Legal Services",
+										"enum": [
+											"law_firms_legal_services"
+										],
+										"title": "Law Firms Legal Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Leisure, Travel & Tourism",
+										"enum": [
+											"leisure_travel_tourism"
+										],
+										"title": "Leisure Travel Tourism",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Logistics, Supply Chain, Import & Export",
+										"enum": [
+											"logistics_supply_chain_import_export"
+										],
+										"title": "Logistics Supply Chain Import Export",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Management Consulting",
+										"enum": [
+											"management_consulting"
+										],
+										"title": "Management Consulting",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Manufacturing, Machinery, Technology & Engineering",
+										"enum": [
+											"manufacturing_machinery_technology_engineering"
+										],
+										"title": "Manufacturing Machinery Technology Engineering",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Maritime",
+										"enum": [
+											"maritime"
+										],
+										"title": "Maritime",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Market Research",
+										"enum": [
+											"market_research"
+										],
+										"title": "Market Research",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Marketing & Advertising",
+										"enum": [
+											"marketing_advertising"
+										],
+										"title": "Marketing Advertising",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Media Production & Publishing",
+										"enum": [
+											"media_production_publishing"
+										],
+										"title": "Media Production Publishing",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Medical Devices, Healthcare Software & Services",
+										"enum": [
+											"medical_devices_healthcare_software_services"
+										],
+										"title": "Medical Devices Healthcare Software Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Medical Practices, Clinics, Hospitals & Health Care",
+										"enum": [
+											"medical_practices_clinics_hospitals_health_care"
+										],
+										"title": "Medical Practices Clinics Hospitals Health Care",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Military & Law Enforcement",
+										"enum": [
+											"military_law_enforcement"
+										],
+										"title": "Military Law Enforcement",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Mining, Minerals & Metals",
+										"enum": [
+											"mining_minerals_metals"
+										],
+										"title": "Mining Minerals Metals",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Motion Pictures & Film",
+										"enum": [
+											"motion_pictures_and_film"
+										],
+										"title": "Motion Pictures And Film",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Museums & Libraries",
+										"enum": [
+											"museums_libraries"
+										],
+										"title": "Museums Libraries",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Music & Art",
+										"enum": [
+											"music_art"
+										],
+										"title": "Music Art",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Newspapers",
+										"enum": [
+											"newspapers"
+										],
+										"title": "Newspapers",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Nonprofit",
+										"enum": [
+											"nonprofit"
+										],
+										"title": "Nonprofit",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Oil, Energy, Utilities & Waste",
+										"enum": [
+											"oil_energy_utilities_waste"
+										],
+										"title": "Oil Energy Utilities Waste",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Organizations & Local Business",
+										"enum": [
+											"organizations_local_business"
+										],
+										"title": "Organizations Local Business",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Outsourcing & Offshoring",
+										"enum": [
+											"outsourcing_offshoring"
+										],
+										"title": "Outsourcing Offshoring",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Pharmaceuticals, Biotechnology & Alternative Medicine",
+										"enum": [
+											"pharmaceuticals_biotechnology_alternative_medicine"
+										],
+										"title": "Pharmaceuticals Biotechnology Alternative Medicine",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Photographic & Optical Equipment",
+										"enum": [
+											"photographic_optical_equipment"
+										],
+										"title": "Photographic Optical Equipment",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Political Organization",
+										"enum": [
+											"political_organization"
+										],
+										"title": "Political Organization",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Print & Digital Media",
+										"enum": [
+											"print_digital_media"
+										],
+										"title": "Print Digital Media",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Professional Training & Coaching",
+										"enum": [
+											"professional_training_coaching"
+										],
+										"title": "Professional Training Coaching",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Real Estate",
+										"enum": [
+											"real_estate"
+										],
+										"title": "Real Estate",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Religious Institutions",
+										"enum": [
+											"religious_institutions"
+										],
+										"title": "Religious Institutions",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Renewables & Environment",
+										"enum": [
+											"renewables_environment"
+										],
+										"title": "Renewables Environment",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Research & Think Tanks",
+										"enum": [
+											"research_think_tanks"
+										],
+										"title": "Research Think Tanks",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Restaurants",
+										"enum": [
+											"restaurants"
+										],
+										"title": "Restaurants",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Retail",
+										"enum": [
+											"retail"
+										],
+										"title": "Retail",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Security Services & Investigations",
+										"enum": [
+											"security_services_investigations"
+										],
+										"title": "Security Services Investigations",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Social Impact & Community Services",
+										"enum": [
+											"social_impact_and_community_services"
+										],
+										"title": "Social Impact And Community Services",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Sporting Goods",
+										"enum": [
+											"sporting_goods"
+										],
+										"title": "Sporting Goods",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Supermarkets & Groceries",
+										"enum": [
+											"supermarkets_groceries"
+										],
+										"title": "Supermarkets Groceries",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Telecommunications Service Providers & Carriers",
+										"enum": [
+											"telecommunications_service_providers_and_carriers"
+										],
+										"title": "Telecommunications Service Providers And Carriers",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Transportation, Shipping, Packaging & Delivery",
+										"enum": [
+											"transportation_shipping_packaging_delivery"
+										],
+										"title": "Transportation Shipping Packaging Delivery",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Travel, Lodging & Hospitality",
+										"enum": [
+											"travel_lodging_hospitality"
+										],
+										"title": "Travel Lodging Hospitality",
+										"type": "string"
+									},
+									{
+										"description": "Industry: Wholesale",
+										"enum": [
+											"wholesale"
+										],
+										"title": "Wholesale",
+										"type": "string"
+									}
+								]
+							}
+						},
+						"required": [
+							"industry"
+						]
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"description": "Account industry set successfully",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "This is an example message"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									},
+									"default": []
+								},
+								"result": {
+									"type": "object",
+									"properties": {
+										"industry": {
+											"description": "Industry string value",
+											"example": "internet",
+											"anyOf": [
+												{
+													"description": "Industry: Unknown",
+													"enum": [
+														"unknown"
+													],
+													"title": "Unknown",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Unsupported",
+													"enum": [
+														"unsupported"
+													],
+													"title": "Unsupported",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Accounting",
+													"enum": [
+														"accounting"
+													],
+													"title": "Accounting",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Adult Entertainment",
+													"enum": [
+														"adult_entertainment"
+													],
+													"title": "Adult Entertainment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Agriculture",
+													"enum": [
+														"agriculture"
+													],
+													"title": "Agriculture",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Airlines, Aviation & Aerospace",
+													"enum": [
+														"airlines_aviation_aerospace"
+													],
+													"title": "Airlines Aviation Aerospace",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Animation & Design",
+													"enum": [
+														"animation_design"
+													],
+													"title": "Animation Design",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Apparel & Fashion",
+													"enum": [
+														"apparel_fashion"
+													],
+													"title": "Apparel Fashion",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Architecture & Planning",
+													"enum": [
+														"architecture_planning"
+													],
+													"title": "Architecture Planning",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Automotive",
+													"enum": [
+														"automotive"
+													],
+													"title": "Automotive",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Banking & Financial Services",
+													"enum": [
+														"banking_financial_services"
+													],
+													"title": "Banking Financial Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Broadcast Media",
+													"enum": [
+														"broadcast_media"
+													],
+													"title": "Broadcast Media",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Building Materials & Construction",
+													"enum": [
+														"building_materials_construction"
+													],
+													"title": "Building Materials Construction",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Business Services, Supplies & Equipment",
+													"enum": [
+														"business_services_supplies_equipment"
+													],
+													"title": "Business Services Supplies Equipment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Computer Hardware",
+													"enum": [
+														"computer_hardware"
+													],
+													"title": "Computer Hardware",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Computer Software",
+													"enum": [
+														"computer_software"
+													],
+													"title": "Computer Software",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Construction & Civil Engineering",
+													"enum": [
+														"construction_civil_engineering"
+													],
+													"title": "Construction Civil Engineering",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Consumer Electronics",
+													"enum": [
+														"consumer_electronics"
+													],
+													"title": "Consumer Electronics",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Consumer Goods",
+													"enum": [
+														"consumer_goods"
+													],
+													"title": "Consumer Goods",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Consumer Services",
+													"enum": [
+														"consumer_services"
+													],
+													"title": "Consumer Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Cosmetics",
+													"enum": [
+														"cosmetics"
+													],
+													"title": "Cosmetics",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Cryptocurrency",
+													"enum": [
+														"cryptocurrency"
+													],
+													"title": "Cryptocurrency",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Cyber Security",
+													"enum": [
+														"cyber_security"
+													],
+													"title": "Cyber Security",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Defense & Space",
+													"enum": [
+														"defense_space"
+													],
+													"title": "Defense Space",
+													"type": "string"
+												},
+												{
+													"description": "Industry: E-Learning",
+													"enum": [
+														"e_learning"
+													],
+													"title": "E Learning",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Education & Academia",
+													"enum": [
+														"education_academia"
+													],
+													"title": "Education Academia",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Education Management",
+													"enum": [
+														"education_management"
+													],
+													"title": "Education Management",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Entertainment",
+													"enum": [
+														"entertainment"
+													],
+													"title": "Entertainment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Environmental Services",
+													"enum": [
+														"environmental_services"
+													],
+													"title": "Environmental Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Events Services",
+													"enum": [
+														"events_services"
+													],
+													"title": "Events Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Facilities Services",
+													"enum": [
+														"facilities_services"
+													],
+													"title": "Facilities Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Fine Art, Luxury Goods & Jewelry",
+													"enum": [
+														"fine_art_luxury_goods_jewelry"
+													],
+													"title": "Fine Art Luxury Goods Jewelry",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Food & Beverage",
+													"enum": [
+														"food_beverage"
+													],
+													"title": "Food Beverage",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Furniture",
+													"enum": [
+														"furniture"
+													],
+													"title": "Furniture",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Gambling & Casinos",
+													"enum": [
+														"gambling_casinos"
+													],
+													"title": "Gambling Casinos",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Gaming",
+													"enum": [
+														"gaming"
+													],
+													"title": "Gaming",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Government",
+													"enum": [
+														"government"
+													],
+													"title": "Government",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Health, Wellness & Fitness",
+													"enum": [
+														"health_wellness_fitness"
+													],
+													"title": "Health Wellness Fitness",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Holding Companies & Conglomerates",
+													"enum": [
+														"holding_companies_conglomerates"
+													],
+													"title": "Holding Companies Conglomerates",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Human Resources, Staffing & Recruiting",
+													"enum": [
+														"human_resources_staffing_recruiting"
+													],
+													"title": "Human Resources Staffing Recruiting",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Information Technology & Services",
+													"enum": [
+														"information_technology_services"
+													],
+													"title": "Information Technology Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Insurance",
+													"enum": [
+														"insurance"
+													],
+													"title": "Insurance",
+													"type": "string"
+												},
+												{
+													"description": "Industry: International Public Affairs",
+													"enum": [
+														"international_public_affairs"
+													],
+													"title": "International Public Affairs",
+													"type": "string"
+												},
+												{
+													"description": "Industry: International Trade & Development",
+													"enum": [
+														"international_trade_development"
+													],
+													"title": "International Trade Development",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Internet",
+													"enum": [
+														"internet"
+													],
+													"title": "Internet",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Investment Management",
+													"enum": [
+														"investment_management"
+													],
+													"title": "Investment Management",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Law Firms & Legal Services",
+													"enum": [
+														"law_firms_legal_services"
+													],
+													"title": "Law Firms Legal Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Leisure, Travel & Tourism",
+													"enum": [
+														"leisure_travel_tourism"
+													],
+													"title": "Leisure Travel Tourism",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Logistics, Supply Chain, Import & Export",
+													"enum": [
+														"logistics_supply_chain_import_export"
+													],
+													"title": "Logistics Supply Chain Import Export",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Management Consulting",
+													"enum": [
+														"management_consulting"
+													],
+													"title": "Management Consulting",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Manufacturing, Machinery, Technology & Engineering",
+													"enum": [
+														"manufacturing_machinery_technology_engineering"
+													],
+													"title": "Manufacturing Machinery Technology Engineering",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Maritime",
+													"enum": [
+														"maritime"
+													],
+													"title": "Maritime",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Market Research",
+													"enum": [
+														"market_research"
+													],
+													"title": "Market Research",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Marketing & Advertising",
+													"enum": [
+														"marketing_advertising"
+													],
+													"title": "Marketing Advertising",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Media Production & Publishing",
+													"enum": [
+														"media_production_publishing"
+													],
+													"title": "Media Production Publishing",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Medical Devices, Healthcare Software & Services",
+													"enum": [
+														"medical_devices_healthcare_software_services"
+													],
+													"title": "Medical Devices Healthcare Software Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Medical Practices, Clinics, Hospitals & Health Care",
+													"enum": [
+														"medical_practices_clinics_hospitals_health_care"
+													],
+													"title": "Medical Practices Clinics Hospitals Health Care",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Military & Law Enforcement",
+													"enum": [
+														"military_law_enforcement"
+													],
+													"title": "Military Law Enforcement",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Mining, Minerals & Metals",
+													"enum": [
+														"mining_minerals_metals"
+													],
+													"title": "Mining Minerals Metals",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Motion Pictures & Film",
+													"enum": [
+														"motion_pictures_and_film"
+													],
+													"title": "Motion Pictures And Film",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Museums & Libraries",
+													"enum": [
+														"museums_libraries"
+													],
+													"title": "Museums Libraries",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Music & Art",
+													"enum": [
+														"music_art"
+													],
+													"title": "Music Art",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Newspapers",
+													"enum": [
+														"newspapers"
+													],
+													"title": "Newspapers",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Nonprofit",
+													"enum": [
+														"nonprofit"
+													],
+													"title": "Nonprofit",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Oil, Energy, Utilities & Waste",
+													"enum": [
+														"oil_energy_utilities_waste"
+													],
+													"title": "Oil Energy Utilities Waste",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Organizations & Local Business",
+													"enum": [
+														"organizations_local_business"
+													],
+													"title": "Organizations Local Business",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Outsourcing & Offshoring",
+													"enum": [
+														"outsourcing_offshoring"
+													],
+													"title": "Outsourcing Offshoring",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Pharmaceuticals, Biotechnology & Alternative Medicine",
+													"enum": [
+														"pharmaceuticals_biotechnology_alternative_medicine"
+													],
+													"title": "Pharmaceuticals Biotechnology Alternative Medicine",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Photographic & Optical Equipment",
+													"enum": [
+														"photographic_optical_equipment"
+													],
+													"title": "Photographic Optical Equipment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Political Organization",
+													"enum": [
+														"political_organization"
+													],
+													"title": "Political Organization",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Print & Digital Media",
+													"enum": [
+														"print_digital_media"
+													],
+													"title": "Print Digital Media",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Professional Training & Coaching",
+													"enum": [
+														"professional_training_coaching"
+													],
+													"title": "Professional Training Coaching",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Real Estate",
+													"enum": [
+														"real_estate"
+													],
+													"title": "Real Estate",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Religious Institutions",
+													"enum": [
+														"religious_institutions"
+													],
+													"title": "Religious Institutions",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Renewables & Environment",
+													"enum": [
+														"renewables_environment"
+													],
+													"title": "Renewables Environment",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Research & Think Tanks",
+													"enum": [
+														"research_think_tanks"
+													],
+													"title": "Research Think Tanks",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Restaurants",
+													"enum": [
+														"restaurants"
+													],
+													"title": "Restaurants",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Retail",
+													"enum": [
+														"retail"
+													],
+													"title": "Retail",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Security Services & Investigations",
+													"enum": [
+														"security_services_investigations"
+													],
+													"title": "Security Services Investigations",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Social Impact & Community Services",
+													"enum": [
+														"social_impact_and_community_services"
+													],
+													"title": "Social Impact And Community Services",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Sporting Goods",
+													"enum": [
+														"sporting_goods"
+													],
+													"title": "Sporting Goods",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Supermarkets & Groceries",
+													"enum": [
+														"supermarkets_groceries"
+													],
+													"title": "Supermarkets Groceries",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Telecommunications Service Providers & Carriers",
+													"enum": [
+														"telecommunications_service_providers_and_carriers"
+													],
+													"title": "Telecommunications Service Providers And Carriers",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Transportation, Shipping, Packaging & Delivery",
+													"enum": [
+														"transportation_shipping_packaging_delivery"
+													],
+													"title": "Transportation Shipping Packaging Delivery",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Travel, Lodging & Hospitality",
+													"enum": [
+														"travel_lodging_hospitality"
+													],
+													"title": "Travel Lodging Hospitality",
+													"type": "string"
+												},
+												{
+													"description": "Industry: Wholesale",
+													"enum": [
+														"wholesale"
+													],
+													"title": "Wholesale",
+													"type": "string"
+												}
+											]
+										},
+										"unlock_time": {
+											"description": "Time when the industry can be updated again",
+											"type": "string",
+											"example": "2026-01-01T00:00:00Z",
+											"nullable": true
+										},
+										"valid_from": {
+											"description": "Start date for this industry association",
+											"type": "string",
+											"example": "2024-01-01T00:00:00Z",
+											"nullable": true
+										},
+										"version": {
+											"description": "Version number for this association",
+											"type": "integer",
+											"example": 1,
+											"exclusiveMinimum": true,
+											"minimum": 0
+										}
+									},
+									"nullable": true,
+									"required": [
+										"industry",
+										"version",
+										"valid_from",
+										"unlock_time"
+									]
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										true
+									]
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"400": {
+				"description": "Invalid request body or industry already set to this value",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									},
+									"default": []
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"423": {
+				"description": "Industry is locked and cannot be updated until unlock_time",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									},
+									"default": []
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			},
+			"500": {
+				"description": "Internal server error",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"errors": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"code": {
+												"type": "number",
+												"example": 10000
+											},
+											"message": {
+												"type": "string",
+												"example": "Authentication error"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										]
+									}
+								},
+								"messages": {
+									"type": "array",
+									"items": {
+										"nullable": true
+									},
+									"default": []
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"type": "boolean",
+									"enum": [
+										false
+									]
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result"
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"tags": [
+			"reports_other"
+		],
+		"x-api-token-group": [
+			"#reports:edit"
+		],
+		"x-fern-sdk-group-name": "reporting.industry",
+		"x-fern-sdk-method-name": "update"
+	}
+}
