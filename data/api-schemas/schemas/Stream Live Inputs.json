@@ -644,6 +644,28 @@
 													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
+												"playback": {
+													"description": "Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.",
+													"type": "object",
+													"properties": {
+														"dash": {
+															"description": "The DASH manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.mpd",
+															"x-auditable": true
+														},
+														"hls": {
+															"description": "The HLS manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.m3u8",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"hls",
+														"dash"
+													]
+												},
 												"preferLowLatency": {
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
 													"type": "boolean",
@@ -1534,6 +1556,28 @@
 													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
+												"playback": {
+													"description": "Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.",
+													"type": "object",
+													"properties": {
+														"dash": {
+															"description": "The DASH manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.mpd",
+															"x-auditable": true
+														},
+														"hls": {
+															"description": "The HLS manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.m3u8",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"hls",
+														"dash"
+													]
+												},
 												"preferLowLatency": {
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
 													"type": "boolean",
@@ -2042,6 +2086,28 @@
 													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
+												"playback": {
+													"description": "Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.",
+													"type": "object",
+													"properties": {
+														"dash": {
+															"description": "The DASH manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.mpd",
+															"x-auditable": true
+														},
+														"hls": {
+															"description": "The HLS manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.m3u8",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"hls",
+														"dash"
+													]
+												},
 												"preferLowLatency": {
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
 													"type": "boolean",
@@ -2547,6 +2613,28 @@
 													"format": "date-time",
 													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
+												},
+												"playback": {
+													"description": "Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.",
+													"type": "object",
+													"properties": {
+														"dash": {
+															"description": "The DASH manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.mpd",
+															"x-auditable": true
+														},
+														"hls": {
+															"description": "The HLS manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.m3u8",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"hls",
+														"dash"
+													]
 												},
 												"preferLowLatency": {
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
@@ -3380,6 +3468,28 @@
 													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
 												},
+												"playback": {
+													"description": "Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.",
+													"type": "object",
+													"properties": {
+														"dash": {
+															"description": "The DASH manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.mpd",
+															"x-auditable": true
+														},
+														"hls": {
+															"description": "The HLS manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.m3u8",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"hls",
+														"dash"
+													]
+												},
 												"preferLowLatency": {
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
 													"type": "boolean",
@@ -3982,6 +4092,28 @@
 													"format": "date-time",
 													"example": "2014-01-02T02:20:00Z",
 													"x-auditable": true
+												},
+												"playback": {
+													"description": "Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.",
+													"type": "object",
+													"properties": {
+														"dash": {
+															"description": "The DASH manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.mpd",
+															"x-auditable": true
+														},
+														"hls": {
+															"description": "The HLS manifest URL used to play live video, referencing the live input ID.",
+															"type": "string",
+															"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/66be4bf738797e01e1fca35a7bdecdcd/manifest/video.m3u8",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"hls",
+														"dash"
+													]
 												},
 												"preferLowLatency": {
 													"description": "When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.",
