@@ -6,8 +6,6 @@ image: https://www.cloudflare.com/preview.png
 
 Compute
 
-[**Browser Run**Automated browsers](/products/browser-run/)
-
 [**Browser Run**Automated browsers](/products/browser-rendering/)
 
 [**Cloudflare Pages**Build & deploy frontend sites](/products/pages/)

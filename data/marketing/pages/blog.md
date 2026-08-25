@@ -10,7 +10,7 @@ August 24, 2026[The Cloudflare Blog – Brought to you by EmDash](https://blog.c
 
 We migrated the Cloudflare Blog to EmDash to prove our stack at massive scale. Here is how we stress-tested performance, safely routed production traffic, and redesigned the frontend experience.
 
-![Kody Jackson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WYRNEDQXNFYKHFAH3WFJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Diogo Carneiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE8R4GSRSY37ME2QWY2Z66.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amy Dutton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE76JV4WWSR820WP54D0RW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
+![Kody Jackson](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WYRNEDQXNFYKHFAH3WFJ.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Diogo Carneiro](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TETGHBYR0R4NPWVRQS2TQK.jpg&w=64&h=64&f=webp&fit=cover&position=center)![Amy Dutton](https://blog.cloudflare.com/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01M0TE76JV4WWSR820WP54D0RW.jpg&w=64&h=64&f=webp&fit=cover&position=center)
 
 [Kody Jackson](https://blog.cloudflare.com/author/kody/), [Diogo Carneiro](https://blog.cloudflare.com/author/diogo-carneiro/), and [Amy Dutton](https://blog.cloudflare.com/author/amy-dutton/)
 
